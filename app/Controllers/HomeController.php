@@ -806,7 +806,9 @@ class HomeController
 		$submenu->dbOrderBy("orden_submenu asc");
 		$submenu->addCallback("format_table_data", "formatTableSubMenu");
 		$submenu->addCallback("before_insert", "insertar_submenu");
+		$submenu->addCallback("after_insert", "despues_insertar_submenu");
 		$submenu->addCallback("before_update", "modificar_submenu");
+		$submenu->addCallback("before_delete", "eliminar_submenu");
 		$submenu->fieldGroups("Name", array("nombre_submenu", "url_submenu"));
 		$submenu->formFieldValue("orden_submenu", $newOrdenSubMenu);
 		$submenu->setSettings("template", "submenu");
