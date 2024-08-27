@@ -1098,6 +1098,23 @@ class HomeController
 
 	public function dashboard_custom(){
 		$pdocrud = DB::PDOCrud();
+		$pdocrud->fieldTypes("cantidad_columnas", "select");
+		$pdocrud->fieldDataBinding("cantidad_columnas", array(
+			"1" => 1,
+			"2" => 2,
+			"3" => 3,
+			"4" => 4,
+			"5" => 5,
+			"6" => 6
+		), "", "","array");
+		//$pdocrud->formFields(array("cantidad_columnas","titulo","icono", "url"));
+		$pdocrud->setSettings("template", "dashboard_custom");
+		$pdocrud->colRename("id_creador_de_panel", "ID");
+		$pdocrud->setSettings("printBtn", false);
+		$pdocrud->setSettings("pdfBtn", false);
+		$pdocrud->setSettings("csvBtn", false);
+		$pdocrud->setSettings("excelBtn", false);
+		$pdocrud->joinTable("custom_panel", "custom_panel.id_creador_de_panel = creador_de_panel.id_creador_de_panel", "LEFT JOIN");
 		$render = $pdocrud->dbTable("creador_de_panel")->render();
 		View::render('dashboard_custom', [
 			'render' => $render
