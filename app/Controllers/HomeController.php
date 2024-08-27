@@ -1112,6 +1112,7 @@ class HomeController
 		$pdocrud->setLangData("add_row", "Agregar");
 		$pdocrud->fieldTypes("icono", "select");
 		$pdocrud->fieldCssClass("icono", array("icono"));
+		$pdocrud->fieldCssClass("titulo", array("titulo"));
 		$pdocrud->formFields(array("cantidad_columnas","titulo","icono", "url"));
 		$pdocrud->setSettings("template", "dashboard_custom");
 		$pdocrud->colRename("id_creador_de_panel", "ID");

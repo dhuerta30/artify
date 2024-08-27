@@ -483,12 +483,9 @@ $(document).ready(function(){
 
                 if (data.action === "add_row") {
                     $(".pdocrud-left-join").each(function () {
-                        // Obtener el último valor de .valor_aumentado
-                        var ultimoValor = parseInt($('.valor_aumentado:last').val()) || 0;
                         
-                        // Incrementar el valor para la próxima fila
-                        var siguienteValor = ultimoValor + 1;
-                
+                        $(this).find('.icono').select2("destroy");
+
                         var tds = '<tr>';
                         $(this).find('tr:last td').slice(0, 3).each(function () {
                             tds += '<td class="form-group pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1">' + $(this).html() + '</td>';
@@ -501,7 +498,7 @@ $(document).ready(function(){
                         $lastRow.find('input, select, textarea').val('');
                 
                         // Asignar el valor incrementado al campo .valor_aumentado en la nueva fila
-                        $lastRow.find('.valor_aumentado').val(siguienteValor);
+                        $(this).find('.icono').select2();
                 
                         if ($('tbody', this).length > 0) {
                             $('tbody', this).append($lastRow);

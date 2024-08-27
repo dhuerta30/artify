@@ -46,7 +46,7 @@
 			},
 			success: function(data){
 				$("#pdocrud-ajax-loader").hide();
-				$('.icono').html(`<option>Seleccionar Icono</option>`);
+				$('.icono').html(`<option value="">Seleccionar Icono</option>`);
 
 				// Recorre cada grupo de íconos
 				$.each(data[0].icons, function(index, group){
@@ -73,7 +73,7 @@
                 $("#pdocrud-ajax-loader").hide();
 				let icono = data['data'][0]['icono'];
 
-                $('.icono').html(`<option>Seleccionar Icono</option>`);
+                $('.icono').html(`<option value="">Seleccionar Icono</option>`);
                 
                 // Recorre cada grupo de íconos
                 $.each(data["icons"][0].icons, function(index, group){
