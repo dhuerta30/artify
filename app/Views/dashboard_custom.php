@@ -38,19 +38,6 @@
 	let action = $(obj).attr('data-action');
 
 	if(action == "add"){
-
-        var clickCount = 0; // Inicializa el contador de clics
-
-        $('.pdocrud-button-add-row').click(function() {
-            clickCount++; // Incrementa el contador de clics
-            $('.mostrar_click').text('Clics: ' + clickCount);
-
-            // Verifica si el contador ha llegado a 4 clics
-            if (clickCount === 4) {
-                alert('¡Has hecho 4 clics!');
-            }
-        });
-
 		$.ajax({
 			url: "<?=$_ENV["BASE_URL"]?>js/icons.json",
 			dataType: "json",

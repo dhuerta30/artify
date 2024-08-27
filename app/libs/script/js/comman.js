@@ -482,6 +482,19 @@ $(document).ready(function(){
 
 
                 if (data.action === "add_row") {
+
+                    var cantidad_columnas = parseFloat($(".cantidad_columnas").val());
+                    var clickCount = 1; // Inicializa el contador de clics
+
+                    $('.pdocrud-button-add-row').click(function() {
+                        clickCount++;
+
+                        // Verifica si el contador ha llegado a cantidad_columnas = cantidad_de_clics
+                        if (clickCount === cantidad_columnas - 1) {
+                            $('.pdocrud-button-add-row').hide();
+                        }
+                    });
+
                     $(".pdocrud-left-join").each(function () {
                         
                         $(this).find('.icono').select2("destroy");
