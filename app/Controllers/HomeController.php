@@ -1099,6 +1099,7 @@ class HomeController
 	public function dashboard_custom(){
 		$pdocrud = DB::PDOCrud();
 		$pdocrud->addPlugin("select2");
+		$pdocrud->formStaticFields("div", "html", "<div class='mostrar_click'></div>");
 		$pdocrud->fieldTypes("cantidad_columnas", "select");
 		$pdocrud->fieldDataBinding("cantidad_columnas", array(
 			"1" => 1,
@@ -1108,6 +1109,9 @@ class HomeController
 			"5" => 5,
 			"6" => 6
 		), "", "","array");
+		$pdocrud->fieldNotMandatory("titulo");
+		$pdocrud->fieldNotMandatory("icono");
+		$pdocrud->fieldNotMandatory("url");
 		$pdocrud->setLangData("title_left_join", "Opciones configuración Panel");
 		$pdocrud->setLangData("add_row", "Agregar");
 		$pdocrud->fieldTypes("icono", "select");
