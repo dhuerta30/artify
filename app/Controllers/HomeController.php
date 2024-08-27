@@ -330,6 +330,7 @@ class HomeController
 			$pdocrud->fieldGroups("Name3",array("idrol","avatar"));
 			$pdocrud->setSettings("required", false);
 			$pdocrud->setSettings("checkboxCol", false);
+			$pdocrud->setSettings("refresh", false);
 			$pdocrud->setSettings("deleteMultipleBtn", false);
 			$pdocrud->colRename("id", "ID");
 			$pdocrud->colRename("idrol", "Rol");
@@ -444,6 +445,7 @@ class HomeController
         $respaldos->setSettings("pdfBtn", false);
         $respaldos->setSettings("csvBtn", false);
         $respaldos->setSettings("excelBtn", false);
+		$respaldos->setSettings("refresh", false);
 		$respaldos->fieldTypes("archivo", "FILE_NEW");
 		$respaldos->enqueueBtnTopActions("Report export",  "<i class='fa fa-database'></i> Generar Respaldo", "javascript:;", array(), "btn-report btn btn-success");
 		$respaldos->crudRemoveCol(array("id"));
@@ -787,6 +789,7 @@ class HomeController
 		$pdocrud->setSettings("csvBtn", false);
 		$pdocrud->setSettings("excelBtn", false);
 		$pdocrud->setSettings("viewbtn", false);
+		$pdocrud->setSettings("refresh", false);
 		$pdocrud->buttonHide("submitBtnSaveBack");
 
 		$submenu = DB::PDOCrud(true);
