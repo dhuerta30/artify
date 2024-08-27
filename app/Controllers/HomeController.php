@@ -1095,4 +1095,12 @@ class HomeController
 			['render' => $render]
 		);
 	}
+
+	public function dashboard_custom(){
+		$pdocrud = DB::PDOCrud();
+		$render = $pdocrud->dbTable("creador_de_panel")->render();
+		View::render('dashboard_custom', [
+			'render' => $render
+		]);
+	}
 }
