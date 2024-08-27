@@ -1,0 +1,1317 @@
+
+2018-08-07 09:50:47 Operation done successfully
+2024-03-07 20:24:30 Operación realizada con éxito
+2024-03-07 20:24:46 Operación realizada con éxito
+2024-03-07 20:24:48 Operación realizada con éxito
+2024-03-07 20:24:52 No tienes permitido acceder a este recurso.
+2024-03-07 20:25:09 Operación realizada con éxito
+2024-03-07 20:31:28 Operación realizada con éxito
+2024-03-07 20:31:32 Operación realizada con éxito
+2024-03-07 20:31:35 Operación realizada con éxito
+2024-03-07 20:32:12 Operación realizada con éxito
+2024-03-07 20:32:23 Operación realizada con éxito
+2024-03-07 20:32:41 Operación realizada con éxito
+2024-03-07 20:32:47 No tienes permitido acceder a este recurso.
+2024-03-07 20:32:48 Operación realizada con éxito
+2024-03-07 20:32:50 No tienes permitido acceder a este recurso.
+2024-03-07 20:32:50 Operación realizada con éxito
+2024-03-07 20:33:08 Operación realizada con éxito
+2024-03-07 20:33:18 Operación realizada con éxito
+2024-03-07 20:34:02 Operación realizada con éxito
+2024-03-07 20:34:07 Operación realizada con éxito
+2024-03-07 20:44:25 Operación realizada con éxito
+2024-03-07 20:44:35 No tienes permitido acceder a este recurso.
+2024-03-07 20:44:41 No tienes permitido acceder a este recurso.
+2024-03-07 20:44:45 No tienes permitido acceder a este recurso.
+2024-03-07 20:45:03 No tienes permitido acceder a este recurso.
+2024-03-07 20:45:09 Operación realizada con éxito
+2024-03-08 12:22:19 No tienes permitido acceder a este recurso.
+2024-03-08 12:22:24 Operación realizada con éxito
+2024-03-08 12:22:29 No tienes permitido acceder a este recurso.
+2024-03-08 12:22:38 Operación realizada con éxito
+2024-03-08 12:23:45 Operación realizada con éxito
+2024-03-08 14:17:48 No tienes permitido acceder a este recurso.
+2024-03-08 14:18:01 No tienes permitido acceder a este recurso.
+2024-03-08 14:18:25 No tienes permitido acceder a este recurso.
+2024-03-08 14:25:13 No tienes permitido acceder a este recurso.
+2024-03-08 14:34:58 No tienes permitido acceder a este recurso.
+2024-03-08 14:35:59 No tienes permitido acceder a este recurso.
+2024-03-08 14:36:06 Operación realizada con éxito
+2024-03-08 14:51:51 Operación realizada con éxito
+2024-03-08 14:53:46 Operación realizada con éxito
+2024-03-08 14:53:48 Operación realizada con éxito
+2024-03-08 14:53:49 Operación realizada con éxito
+2024-03-08 14:53:50 Operación realizada con éxito
+2024-03-08 14:54:18 Operación realizada con éxito
+2024-03-08 14:54:21 Operación realizada con éxito
+2024-03-08 14:55:21 Operación realizada con éxito
+2024-03-08 14:55:22 Operación realizada con éxito
+2024-03-08 14:55:50 Operación realizada con éxito
+2024-03-08 14:55:51 Operación realizada con éxito
+2024-03-08 14:58:30 Operación realizada con éxito
+2024-03-08 15:01:48 Operación realizada con éxito
+2024-03-08 15:01:57 No tienes permitido acceder a este recurso.
+2024-03-08 15:02:16 No tienes permitido acceder a este recurso.
+2024-03-08 15:02:26 No tienes permitido acceder a este recurso.
+2024-03-08 15:02:41 Operación realizada con éxito
+2024-03-08 15:02:53 No tienes permitido acceder a este recurso.
+2024-03-08 15:04:06 No tienes permitido acceder a este recurso.
+2024-03-08 15:05:06 No tienes permitido acceder a este recurso.
+2024-03-08 15:05:27 No tienes permitido acceder a este recurso.
+2024-03-08 15:07:09 No tienes permitido acceder a este recurso.
+2024-03-08 15:08:35 No tienes permitido acceder a este recurso.
+2024-03-08 15:08:50 No tienes permitido acceder a este recurso.
+2024-03-08 15:08:58 Operación realizada con éxito
+2024-03-08 15:13:56 Operación realizada con éxito
+2024-03-08 15:14:10 No tienes permitido acceder a este recurso.
+2024-03-08 15:14:17 Operación realizada con éxito
+2024-03-08 15:16:37 Operación realizada con éxito
+2024-03-08 15:17:13 Operación realizada con éxito
+2024-03-08 15:17:38 Operación realizada con éxito
+2024-03-08 15:17:39 Operación realizada con éxito
+2024-03-08 15:17:40 Operación realizada con éxito
+2024-03-08 15:18:05 No tienes permitido acceder a este recurso.
+2024-03-08 15:18:13 Operación realizada con éxito
+2024-03-08 15:19:59 No tienes permitido acceder a este recurso.
+2024-03-08 15:20:17 Operación realizada con éxito
+2024-03-08 15:21:02 Operación realizada con éxito
+2024-03-08 15:22:01 Operación realizada con éxito
+2024-03-08 15:23:38 Operación realizada con éxito
+2024-03-08 15:24:21 Operación realizada con éxito
+2024-03-08 15:24:24 Operación realizada con éxito
+2024-03-08 15:24:41 Operación realizada con éxito
+2024-03-08 15:25:08 Operación realizada con éxito
+2024-03-08 15:25:47 Operación realizada con éxito
+2024-03-08 15:26:11 Operación realizada con éxito
+2024-03-08 15:27:07 Operación realizada con éxito
+2024-03-08 15:29:39 Operación realizada con éxito
+2024-03-08 15:30:15 Operación realizada con éxito
+2024-03-08 15:31:08 Operación realizada con éxito
+2024-03-08 15:31:36 Operación realizada con éxito
+2024-03-08 15:33:29 Operación realizada con éxito
+2024-03-08 15:33:30 Operación realizada con éxito
+2024-03-08 15:33:30 Operación realizada con éxito
+2024-03-08 15:33:31 Operación realizada con éxito
+2024-03-08 15:34:56 Operación realizada con éxito
+2024-03-08 15:34:57 Operación realizada con éxito
+2024-03-08 15:34:58 Operación realizada con éxito
+2024-03-08 15:36:07 Operación realizada con éxito
+2024-03-08 15:36:45 Operación realizada con éxito
+2024-03-08 15:37:16 Operación realizada con éxito
+2024-03-08 15:37:27 Operación realizada con éxito
+2024-03-08 15:37:58 Operación realizada con éxito
+2024-03-08 15:38:13 Operación realizada con éxito
+2024-03-08 15:38:40 Operación realizada con éxito
+2024-03-08 15:38:52 Operación realizada con éxito
+2024-03-08 15:38:53 Operación realizada con éxito
+2024-03-08 15:39:22 Operación realizada con éxito
+2024-03-08 15:39:50 Operación realizada con éxito
+2024-03-08 15:42:18 Operación realizada con éxito
+2024-03-08 15:42:39 Operación realizada con éxito
+2024-03-08 15:43:19 Operación realizada con éxito
+2024-03-08 15:44:20 Operación realizada con éxito
+2024-03-08 15:44:21 Operación realizada con éxito
+2024-03-08 15:46:16 Operación realizada con éxito
+2024-03-08 15:47:04 Operación realizada con éxito
+2024-03-08 15:47:05 Operación realizada con éxito
+2024-03-08 15:47:12 Operación realizada con éxito
+2024-03-08 15:47:20 Operación realizada con éxito
+2024-03-08 15:47:42 Operación realizada con éxito
+2024-03-08 15:48:01 Operación realizada con éxito
+2024-03-08 15:48:02 Operación realizada con éxito
+2024-03-08 15:48:17 Operación realizada con éxito
+2024-03-08 15:49:47 Operación realizada con éxito
+2024-03-08 15:49:48 Operación realizada con éxito
+2024-03-08 15:50:13 Operación realizada con éxito
+2024-03-08 15:50:14 Operación realizada con éxito
+2024-03-08 15:50:15 Operación realizada con éxito
+2024-03-08 15:50:28 Operación realizada con éxito
+2024-03-08 15:50:33 Operación realizada con éxito
+2024-03-08 15:50:38 Operación realizada con éxito
+2024-03-08 15:51:16 Operación realizada con éxito
+2024-03-08 15:51:19 Operación realizada con éxito
+2024-03-08 15:53:05 Operación realizada con éxito
+2024-03-08 15:53:12 Operación realizada con éxito
+2024-03-08 15:53:47 Operación realizada con éxito
+2024-03-08 15:53:58 Operación realizada con éxito
+2024-03-08 15:54:21 Operación realizada con éxito
+2024-03-08 15:54:42 Operación realizada con éxito
+2024-03-08 15:54:54 Operación realizada con éxito
+2024-03-08 15:55:11 Operación realizada con éxito
+2024-03-08 15:55:20 Operación realizada con éxito
+2024-03-08 15:59:29 Operación realizada con éxito
+2024-03-08 16:01:16 Operación realizada con éxito
+2024-03-08 16:01:39 Operación realizada con éxito
+2024-03-08 16:01:40 Operación realizada con éxito
+2024-03-08 16:01:40 Operación realizada con éxito
+2024-03-08 16:01:43 Operación realizada con éxito
+2024-03-08 16:04:17 Operación realizada con éxito
+2024-03-08 16:04:41 Operación realizada con éxito
+2024-03-08 16:06:45 Operación realizada con éxito
+2024-03-08 16:06:50 Operación realizada con éxito
+2024-03-08 16:07:14 Operación realizada con éxito
+2024-03-08 16:07:55 Operación realizada con éxito
+2024-03-08 16:08:06 Operación realizada con éxito
+2024-03-08 16:08:57 Operación realizada con éxito
+2024-03-08 16:10:12 Operación realizada con éxito
+2024-03-08 16:10:22 Operación realizada con éxito
+2024-03-08 16:10:47 Operación realizada con éxito
+2024-03-08 16:10:56 Operación realizada con éxito
+2024-03-08 16:11:09 Operación realizada con éxito
+2024-03-08 16:11:14 Operación realizada con éxito
+2024-03-08 16:11:25 Operación realizada con éxito
+2024-03-08 16:11:49 Operación realizada con éxito
+2024-03-08 16:13:05 Operación realizada con éxito
+2024-03-08 16:15:09 Operación realizada con éxito
+2024-03-08 16:15:11 Operación realizada con éxito
+2024-03-08 16:16:38 Operación realizada con éxito
+2024-03-08 16:16:39 Operación realizada con éxito
+2024-03-08 16:16:40 Operación realizada con éxito
+2024-03-08 16:16:40 Operación realizada con éxito
+2024-03-08 16:16:40 Operación realizada con éxito
+2024-03-08 16:16:40 Operación realizada con éxito
+2024-03-08 16:17:00 Operación realizada con éxito
+2024-03-08 16:18:29 Operación realizada con éxito
+2024-03-08 16:21:46 Operación realizada con éxito
+2024-03-08 16:22:33 Operación realizada con éxito
+2024-03-08 16:22:52 Operación realizada con éxito
+2024-03-08 16:25:34 Operación realizada con éxito
+2024-03-08 16:27:43 Operación realizada con éxito
+2024-03-08 16:27:46 Operación realizada con éxito
+2024-03-08 16:27:56 Operación realizada con éxito
+2024-03-08 16:28:03 Operación realizada con éxito
+2024-03-08 16:28:06 Operación realizada con éxito
+2024-03-08 16:28:10 Operación realizada con éxito
+2024-03-08 16:29:37 Operación realizada con éxito
+2024-03-08 16:29:47 Operación realizada con éxito
+2024-03-08 16:30:37 Operación realizada con éxito
+2024-03-08 16:30:58 Operación realizada con éxito
+2024-03-08 16:31:11 Operación realizada con éxito
+2024-03-08 16:31:36 Operación realizada con éxito
+2024-03-08 16:32:06 Operación realizada con éxito
+2024-03-08 16:32:21 Operación realizada con éxito
+2024-03-08 16:33:05 Operación realizada con éxito
+2024-03-08 16:34:37 Operación realizada con éxito
+2024-03-08 16:34:39 Operación realizada con éxito
+2024-03-08 16:35:48 Operación realizada con éxito
+2024-03-08 16:35:50 Operación realizada con éxito
+2024-03-08 16:36:51 Operación realizada con éxito
+2024-03-08 16:38:22 Operación realizada con éxito
+2024-03-08 16:38:36 Operación realizada con éxito
+2024-03-08 16:38:38 No tienes permitido acceder a este recurso.
+2024-03-08 16:38:46 Operación realizada con éxito
+2024-03-08 16:39:32 Array
+2024-03-08 16:40:00 Operación realizada con éxito
+2024-03-08 16:40:18 Array
+2024-03-08 16:54:50 Array
+2024-03-08 16:56:01 
+2024-03-08 16:57:18 Operación realizada con éxito
+2024-03-08 16:57:23 Array
+2024-03-08 16:57:33 
+2024-03-08 17:00:04 Operación realizada con éxito
+2024-03-08 17:00:33 Operación realizada con éxito
+2024-03-08 17:00:37 Array
+2024-03-08 17:00:50 Array
+2024-03-08 17:00:51 Array
+2024-03-08 17:01:03 Array
+2024-03-08 17:01:36 Array
+2024-03-08 17:02:04 Operación realizada con éxito
+2024-03-08 17:02:07 Operación realizada con éxito
+2024-03-08 17:08:51 Operación realizada con éxito
+2024-03-08 18:02:03 Operación realizada con éxito
+2024-03-08 18:02:56 Operación realizada con éxito
+2024-03-08 18:04:48 Operación realizada con éxito
+2024-03-08 18:04:53 No tienes permitido acceder a este recurso.
+2024-03-08 18:06:47 Operación realizada con éxito
+2024-03-08 18:38:04 No tienes permitido acceder a este recurso.
+2024-03-08 18:45:38 Operación realizada con éxito
+2024-03-08 18:45:55 Operación realizada con éxito
+2024-03-08 18:45:57 Operación realizada con éxito
+2024-03-08 18:46:00 Array
+2024-03-08 18:46:13 No tienes permitido acceder a este recurso.
+2024-03-08 18:47:00 No tienes permitido acceder a este recurso.
+2024-03-08 18:47:12 Operación realizada con éxito
+2024-03-08 18:47:38 No tienes permitido acceder a este recurso.
+2024-03-08 18:47:48 Operación realizada con éxito
+2024-03-08 18:47:54 No tienes permitido acceder a este recurso.
+2024-03-08 18:49:13 No tienes permitido acceder a este recurso.
+2024-03-08 18:50:07 Operación realizada con éxito
+2024-03-08 18:50:39 No tienes permitido acceder a este recurso.
+2024-03-08 18:55:02 Operación realizada con éxito
+2024-03-08 18:55:12 Operación realizada con éxito
+2024-03-08 18:55:16 Operación realizada con éxito
+2024-03-08 18:55:22 No tienes permitido acceder a este recurso.
+2024-03-08 18:55:29 Operación realizada con éxito
+2024-03-08 18:55:33 Operación realizada con éxito
+2024-03-08 18:55:37 Operación realizada con éxito
+2024-03-08 18:58:39 Operación realizada con éxito
+2024-03-08 18:58:42 Operación realizada con éxito
+2024-03-08 18:58:53 Array
+2024-03-08 18:58:57 Operación realizada con éxito
+2024-03-08 19:00:05 [
+    null
+]
+2024-03-08 19:00:16 Operación realizada con éxito
+2024-03-08 19:00:25 Operación realizada con éxito
+2024-03-08 19:00:31 [
+    null
+]
+2024-03-08 19:01:09 [
+    null
+]
+2024-03-08 19:01:12 [
+    null
+]
+2024-03-08 19:01:16 [
+    null
+]
+2024-03-08 19:02:17 [
+    null
+]
+2024-03-08 19:02:22 Operación realizada con éxito
+2024-03-08 19:02:24 [
+    null
+]
+2024-03-08 19:04:22 Operación realizada con éxito
+2024-03-08 19:11:47 Operación realizada con éxito
+2024-03-08 19:13:39 Operación realizada con éxito
+2024-03-08 19:15:14 Operación realizada con éxito
+2024-03-08 19:15:18 Operación realizada con éxito
+2024-03-08 19:15:21 Operación realizada con éxito
+2024-03-08 19:15:27 Operación realizada con éxito
+2024-03-08 19:15:32 Operación realizada con éxito
+2024-03-08 19:15:35 Operación realizada con éxito
+2024-03-08 19:22:23 Operación realizada con éxito
+2024-03-08 19:57:07 Operación realizada con éxito
+2024-03-08 19:59:40 Operación realizada con éxito
+2024-03-08 19:59:45 Operación realizada con éxito
+2024-03-14 14:41:43 [
+    null
+]
+2024-03-14 14:42:10 Operación realizada con éxito
+2024-03-14 14:42:13 Operación realizada con éxito
+2024-03-14 14:43:23 [
+    null
+]
+2024-03-14 14:43:27 Operación realizada con éxito
+2024-03-14 14:44:40 [
+    null
+]
+2024-03-14 14:44:43 Operación realizada con éxito
+2024-03-14 14:45:16 Operación realizada con éxito
+2024-03-14 14:54:08 Operación realizada con éxito
+2024-03-14 15:13:41 Operación realizada con éxito
+2024-03-14 15:14:11 Operación realizada con éxito
+2024-03-14 15:17:33 Operación realizada con éxito
+2024-03-14 15:17:40 Operación realizada con éxito
+2024-03-14 15:17:42 Operación realizada con éxito
+2024-03-14 15:17:46 Operación realizada con éxito
+2024-03-14 15:17:49 Operación realizada con éxito
+2024-03-14 15:40:21 Operación realizada con éxito
+2024-03-14 15:41:26 Operación realizada con éxito
+2024-03-14 15:41:51 Operación realizada con éxito
+2024-03-14 15:41:56 Operación realizada con éxito
+2024-03-14 15:42:45 Operación realizada con éxito
+2024-03-14 15:43:02 Operación realizada con éxito
+2024-03-14 15:43:07 Operación realizada con éxito
+2024-03-14 15:43:59 Operación realizada con éxito
+2024-03-14 15:44:01 [
+    null
+]
+2024-03-14 15:44:02 [
+    null
+]
+2024-03-14 15:44:08 Operación realizada con éxito
+2024-03-14 15:46:30 Operación realizada con éxito
+2024-03-14 15:46:35 [
+    null
+]
+2024-03-14 15:47:11 [
+    null
+]
+2024-03-14 15:49:16 Operación realizada con éxito
+2024-03-14 15:49:29 [
+    null
+]
+2024-03-14 15:49:43 [
+    null
+]
+2024-03-14 15:50:25 [
+    null
+]
+2024-03-14 15:50:35 Operación realizada con éxito
+2024-03-14 15:51:19 Operación realizada con éxito
+2024-03-14 15:51:24 Operación realizada con éxito
+2024-03-14 15:51:37 Operación realizada con éxito
+2024-03-14 15:51:58 [
+    [
+        "SQLSTATE[42S22]: Column not found: 1054 Unknown column 'order_date\/orderby[]=ID' in 'order clause'"
+    ]
+]
+2024-03-14 15:53:18 Operación realizada con éxito
+2024-03-14 15:53:54 Operación realizada con éxito
+2024-03-14 15:55:50 Operación realizada con éxito
+2024-03-14 15:56:19 Operación realizada con éxito
+2024-03-14 15:56:22 [
+    null
+]
+2024-03-14 15:56:25 Operación realizada con éxito
+2024-03-14 15:57:39 Operación realizada con éxito
+2024-03-14 15:57:45 Operación realizada con éxito
+2024-03-14 15:57:48 [
+    null
+]
+2024-03-14 15:57:53 Operación realizada con éxito
+2024-03-14 17:55:45 Operación realizada con éxito
+2024-03-14 17:55:47 Operación realizada con éxito
+2024-03-14 17:55:51 No tienes permitido acceder a este recurso.
+2024-03-14 17:55:53 Operación realizada con éxito
+2024-03-14 20:13:29 Operación realizada con éxito
+2024-03-14 20:13:33 [
+    null
+]
+2024-03-14 20:13:36 No tienes permitido acceder a este recurso.
+2024-03-14 20:13:45 Operación realizada con éxito
+2024-03-14 20:13:55 No tienes permitido acceder a este recurso.
+2024-03-14 20:14:00 No tienes permitido acceder a este recurso.
+2024-03-14 20:14:11 Operación realizada con éxito
+2024-03-14 20:15:16 Operación realizada con éxito
+2024-03-14 20:15:17 Operación realizada con éxito
+2024-03-14 20:17:38 Operación realizada con éxito
+2024-03-14 20:17:40 Operación realizada con éxito
+2024-03-14 20:17:41 Operación realizada con éxito
+2024-03-14 20:17:42 Operación realizada con éxito
+2024-03-14 20:17:45 Operación realizada con éxito
+2024-03-14 20:17:46 Operación realizada con éxito
+2024-03-14 20:17:47 Operación realizada con éxito
+2024-03-14 20:17:48 Operación realizada con éxito
+2024-03-14 20:17:49 Operación realizada con éxito
+2024-03-14 20:17:51 Operación realizada con éxito
+2024-03-14 20:18:01 Operación realizada con éxito
+2024-03-14 20:18:34 Operación realizada con éxito
+2024-03-14 20:18:38 Operación realizada con éxito
+2024-03-14 20:19:24 Operación realizada con éxito
+2024-03-14 20:19:33 Operación realizada con éxito
+2024-03-14 20:19:36 No tienes permitido acceder a este recurso.
+2024-03-14 20:19:41 Operación realizada con éxito
+2024-03-14 20:20:00 Operación realizada con éxito
+2024-03-14 20:20:08 Operación realizada con éxito
+2024-03-14 20:20:13 [
+    null
+]
+2024-03-14 20:20:49 Operación realizada con éxito
+2024-03-14 20:24:12 Operación realizada con éxito
+2024-03-14 20:24:17 Operación realizada con éxito
+2024-03-14 20:24:18 Operación realizada con éxito
+2024-03-14 20:25:59 Operación realizada con éxito
+2024-03-14 20:26:03 Operación realizada con éxito
+2024-03-14 20:26:05 Operación realizada con éxito
+2024-03-14 20:53:06 Operación realizada con éxito
+2024-03-14 20:53:08 Operación realizada con éxito
+2024-03-14 20:53:09 Operación realizada con éxito
+2024-03-18 14:52:01 Operación realizada con éxito
+2024-03-18 14:53:45 No tienes permitido acceder a este recurso.
+2024-03-18 14:54:00 Operación realizada con éxito
+2024-03-18 14:54:03 Operación realizada con éxito
+2024-03-18 14:54:10 Operación realizada con éxito
+2024-03-18 14:54:13 Operación realizada con éxito
+2024-03-18 14:54:15 Operación realizada con éxito
+2024-03-18 14:54:15 Operación realizada con éxito
+2024-03-18 14:54:22 Operación realizada con éxito
+2024-03-18 14:59:44 Operación realizada con éxito
+2024-03-18 14:59:59 No tienes permitido acceder a este recurso.
+2024-03-18 15:00:00 No tienes permitido acceder a este recurso.
+2024-03-18 15:00:02 No tienes permitido acceder a este recurso.
+2024-03-18 15:00:08 Operación realizada con éxito
+2024-03-18 15:00:10 Operación realizada con éxito
+2024-03-18 15:00:11 Operación realizada con éxito
+2024-03-18 15:00:14 Operación realizada con éxito
+2024-03-18 15:00:17 Operación realizada con éxito
+2024-03-18 15:00:23 No tienes permitido acceder a este recurso.
+2024-03-18 15:00:29 Operación realizada con éxito
+2024-03-18 15:00:33 Operación realizada con éxito
+2024-03-18 15:00:35 Operación realizada con éxito
+2024-03-18 15:01:45 Operación realizada con éxito
+2024-03-18 15:01:49 Operación realizada con éxito
+2024-03-18 15:01:52 Operación realizada con éxito
+2024-03-18 15:01:55 Operación realizada con éxito
+2024-03-18 15:03:38 Operación realizada con éxito
+2024-03-18 15:03:55 Operación realizada con éxito
+2024-03-18 15:04:24 Operación realizada con éxito
+2024-03-18 15:04:27 Operación realizada con éxito
+2024-03-18 15:04:29 Operación realizada con éxito
+2024-03-18 15:04:33 Operación realizada con éxito
+2024-03-18 15:04:35 Operación realizada con éxito
+2024-03-18 15:04:36 Operación realizada con éxito
+2024-03-18 15:04:38 Operación realizada con éxito
+2024-03-18 15:04:39 Operación realizada con éxito
+2024-03-18 15:04:41 Operación realizada con éxito
+2024-03-18 15:04:45 Operación realizada con éxito
+2024-03-18 15:04:47 Operación realizada con éxito
+2024-03-18 15:04:57 No tienes permitido acceder a este recurso.
+2024-03-18 15:04:58 No tienes permitido acceder a este recurso.
+2024-03-18 15:05:31 No tienes permitido acceder a este recurso.
+2024-03-18 15:05:44 No tienes permitido acceder a este recurso.
+2024-03-18 15:05:55 Operación realizada con éxito
+2024-03-18 15:09:44 Operación realizada con éxito
+2024-03-18 15:10:15 No tienes permitido acceder a este recurso.
+2024-03-18 15:11:24 No tienes permitido acceder a este recurso.
+2024-03-18 15:11:48 No tienes permitido acceder a este recurso.
+2024-03-18 15:15:29 No tienes permitido acceder a este recurso.
+2024-03-18 15:16:02 No tienes permitido acceder a este recurso.
+2024-03-18 15:17:14 No tienes permitido acceder a este recurso.
+2024-03-18 15:18:33 No tienes permitido acceder a este recurso.
+2024-03-18 15:18:35 No tienes permitido acceder a este recurso.
+2024-03-18 15:19:46 No tienes permitido acceder a este recurso.
+2024-03-18 15:20:10 No tienes permitido acceder a este recurso.
+2024-03-18 15:20:20 No tienes permitido acceder a este recurso.
+2024-03-18 15:20:30 No tienes permitido acceder a este recurso.
+2024-03-18 15:23:09 [
+    null
+]
+2024-03-18 15:23:30 [
+    null
+]
+2024-03-18 15:23:38 [
+    null
+]
+2024-03-18 15:24:03 [
+    null
+]
+2024-03-18 15:24:25 Operación realizada con éxito
+2024-03-18 15:25:04 [
+    null
+]
+2024-03-18 15:25:15 [
+    null
+]
+2024-03-18 15:25:39 Operación realizada con éxito
+2024-03-18 15:25:48 [
+    null
+]
+2024-03-18 15:25:53 Operación realizada con éxito
+2024-03-18 15:25:56 Operación realizada con éxito
+2024-03-18 15:26:08 Operación realizada con éxito
+2024-03-18 15:26:32 Operación realizada con éxito
+2024-03-18 15:26:34 Operación realizada con éxito
+2024-03-18 15:26:39 Operación realizada con éxito
+2024-03-18 15:26:41 Operación realizada con éxito
+2024-03-18 15:26:43 Operación realizada con éxito
+2024-03-18 15:26:48 Operación realizada con éxito
+2024-03-18 15:26:51 Operación realizada con éxito
+2024-03-18 15:27:24 No tienes permitido acceder a este recurso.
+2024-03-18 15:28:24 Operación realizada con éxito
+2024-03-18 15:28:38 Operación realizada con éxito
+2024-03-18 15:28:44 Operación realizada con éxito
+2024-03-18 15:29:25 Por favor, ingresa un formato de datos de solicitud válido
+2024-03-18 15:29:39 Por favor, ingresa un formato de datos de solicitud válido
+2024-03-18 15:30:51 [
+    null
+]
+2024-03-18 15:31:07 Por favor, ingresa un formato de datos de solicitud válido
+2024-03-18 15:32:14 [
+    null
+]
+2024-03-18 15:32:42 Por favor, ingresa un formato de datos de solicitud válido
+2024-03-18 15:32:47 Operación realizada con éxito
+2024-03-18 15:32:52 Operación realizada con éxito
+2024-03-18 15:33:51 [
+    null
+]
+2024-03-18 15:33:54 No tienes permitido acceder a este recurso.
+2024-03-18 15:33:58 No tienes permitido acceder a este recurso.
+2024-03-18 15:34:17 Operación realizada con éxito
+2024-03-18 15:34:19 Operación realizada con éxito
+2024-03-18 15:34:27 Operación realizada con éxito
+2024-03-18 15:34:35 Operación realizada con éxito
+2024-03-18 15:34:40 Operación realizada con éxito
+2024-03-18 15:34:44 Operación realizada con éxito
+2024-03-18 15:34:59 Operación realizada con éxito
+2024-03-18 15:35:01 Operación realizada con éxito
+2024-03-18 15:35:48 Operación realizada con éxito
+2024-03-18 15:36:13 Operación realizada con éxito
+2024-03-18 15:36:13 Operación realizada con éxito
+2024-03-18 15:36:21 Operación realizada con éxito
+2024-03-18 15:36:22 Operación realizada con éxito
+2024-03-18 15:36:49 Operación realizada con éxito
+2024-03-18 15:37:14 Operación realizada con éxito
+2024-03-18 15:37:26 Operación realizada con éxito
+2024-03-18 15:37:35 Operación realizada con éxito
+2024-03-18 15:37:39 Operación realizada con éxito
+2024-03-18 15:37:50 Operación realizada con éxito
+2024-03-18 15:38:28 Operación realizada con éxito
+2024-03-18 15:38:29 Operación realizada con éxito
+2024-03-18 15:38:40 Operación realizada con éxito
+2024-03-18 15:38:50 Operación realizada con éxito
+2024-03-18 15:38:51 Operación realizada con éxito
+2024-03-18 15:38:53 Operación realizada con éxito
+2024-03-18 15:40:45 Operación realizada con éxito
+2024-03-18 15:41:01 Operación realizada con éxito
+2024-03-18 15:41:12 Operación realizada con éxito
+2024-03-18 15:41:20 No tienes permitido acceder a este recurso.
+2024-03-18 15:41:24 Operación realizada con éxito
+2024-03-18 15:41:33 Operación realizada con éxito
+2024-03-18 15:41:45 Operación realizada con éxito
+2024-03-18 15:42:00 Operación realizada con éxito
+2024-03-18 15:42:09 Operación realizada con éxito
+2024-03-18 15:43:14 No tienes permitido acceder a este recurso.
+2024-03-18 15:43:37 No tienes permitido acceder a este recurso.
+2024-03-18 15:44:27 Operación realizada con éxito
+2024-03-18 15:44:29 Operación realizada con éxito
+2024-03-18 15:44:37 Operación realizada con éxito
+2024-03-18 15:45:33 Operación realizada con éxito
+2024-03-18 15:45:40 Operación realizada con éxito
+2024-03-18 15:45:46 Operación realizada con éxito
+2024-03-18 15:46:47 Operación realizada con éxito
+2024-03-18 15:46:53 Operación realizada con éxito
+2024-03-18 15:46:59 Operación realizada con éxito
+2024-03-18 15:47:27 No tienes permitido acceder a este recurso.
+2024-03-18 15:47:32 No tienes permitido acceder a este recurso.
+2024-03-18 15:49:08 Operación realizada con éxito
+2024-03-18 15:49:17 Operación realizada con éxito
+2024-03-18 15:52:16 No tienes permitido acceder a este recurso.
+2024-03-18 15:55:26 No tienes permitido acceder a este recurso.
+2024-03-18 15:55:32 [
+    null
+]
+2024-03-18 15:56:45 Operación realizada con éxito
+2024-03-18 15:56:48 Operación realizada con éxito
+2024-03-18 15:56:49 Operación realizada con éxito
+2024-03-18 15:56:56 Operación realizada con éxito
+2024-03-18 15:56:57 Operación realizada con éxito
+2024-03-18 16:00:36 Operación realizada con éxito
+2024-03-18 16:01:10 Operación realizada con éxito
+2024-03-18 16:01:21 Operación realizada con éxito
+2024-03-18 16:01:57 Operación realizada con éxito
+2024-03-18 16:03:13 Operación realizada con éxito
+2024-03-18 16:03:20 No tienes permitido acceder a este recurso.
+2024-03-18 16:05:00 Operación realizada con éxito
+2024-03-18 16:05:03 Operación realizada con éxito
+2024-03-18 16:05:38 Operación realizada con éxito
+2024-03-18 16:05:44 Operación realizada con éxito
+2024-03-18 16:05:55 Operación realizada con éxito
+2024-03-18 16:06:43 Operación realizada con éxito
+2024-03-18 16:15:10 Operación realizada con éxito
+2024-03-18 16:15:14 Operación realizada con éxito
+2024-03-18 16:20:04 Operación realizada con éxito
+2024-03-18 16:20:08 Operación realizada con éxito
+2024-03-18 16:20:10 Operación realizada con éxito
+2024-03-18 16:20:15 Operación realizada con éxito
+2024-03-18 16:20:19 Operación realizada con éxito
+2024-03-18 16:20:22 Operación realizada con éxito
+2024-03-18 16:20:23 Operación realizada con éxito
+2024-03-18 16:20:28 Operación realizada con éxito
+2024-03-18 16:20:30 Operación realizada con éxito
+2024-03-18 16:20:31 Operación realizada con éxito
+2024-03-18 16:24:36 Operación realizada con éxito
+2024-03-18 16:24:38 Operación realizada con éxito
+2024-03-18 16:24:49 Operación realizada con éxito
+2024-03-18 16:26:12 Operación realizada con éxito
+2024-03-18 16:26:14 Operación realizada con éxito
+2024-03-18 16:32:46 Operación realizada con éxito
+2024-03-18 16:33:01 Operación realizada con éxito
+2024-03-18 16:37:58 Operación realizada con éxito
+2024-03-18 16:38:00 Operación realizada con éxito
+2024-03-18 16:38:02 Operación realizada con éxito
+2024-03-18 16:38:36 Operación realizada con éxito
+2024-03-18 16:38:47 Operación realizada con éxito
+2024-03-18 16:39:19 Operación realizada con éxito
+2024-03-18 16:39:28 Operación realizada con éxito
+2024-03-18 16:40:14 Operación realizada con éxito
+2024-03-18 16:42:02 Operación realizada con éxito
+2024-03-18 16:42:25 [
+    null
+]
+2024-03-18 16:42:27 Operación realizada con éxito
+2024-03-18 16:42:38 Operación realizada con éxito
+2024-03-18 16:42:41 Operación realizada con éxito
+2024-03-18 16:43:30 Operación realizada con éxito
+2024-03-18 16:43:39 Operación realizada con éxito
+2024-03-18 16:46:54 Operación realizada con éxito
+2024-03-18 16:47:21 [
+    null
+]
+2024-03-18 16:47:24 Operación realizada con éxito
+2024-03-18 16:47:34 Operación realizada con éxito
+2024-03-18 16:49:33 Operación realizada con éxito
+2024-03-18 16:49:34 Operación realizada con éxito
+2024-03-18 16:49:37 Operación realizada con éxito
+2024-03-18 16:50:53 Operación realizada con éxito
+2024-03-18 16:50:57 Operación realizada con éxito
+2024-03-18 16:50:58 Operación realizada con éxito
+2024-03-18 16:50:59 Operación realizada con éxito
+2024-03-18 16:51:02 Operación realizada con éxito
+2024-03-18 16:51:04 Operación realizada con éxito
+2024-03-18 16:51:23 Operación realizada con éxito
+2024-03-18 16:51:58 Operación realizada con éxito
+2024-03-18 16:55:21 Operación realizada con éxito
+2024-03-18 16:55:27 Operación realizada con éxito
+2024-03-18 16:55:34 Operación realizada con éxito
+2024-03-18 16:55:46 Operación realizada con éxito
+2024-03-18 16:55:53 Operación realizada con éxito
+2024-03-18 16:56:15 Operación realizada con éxito
+2024-03-18 16:56:29 Operación realizada con éxito
+2024-03-18 16:56:54 Operación realizada con éxito
+2024-03-18 16:56:59 Operación realizada con éxito
+2024-03-18 16:57:58 Operación realizada con éxito
+2024-03-18 16:58:59 Operación realizada con éxito
+2024-03-19 12:58:00 Operación realizada con éxito
+2024-03-19 12:59:12 Operación realizada con éxito
+2024-03-19 12:59:41 Operación realizada con éxito
+2024-03-19 13:00:44 Operación realizada con éxito
+2024-03-19 13:00:47 Operación realizada con éxito
+2024-03-19 13:00:50 Operación realizada con éxito
+2024-03-19 13:02:40 Operación realizada con éxito
+2024-03-19 13:02:50 Operación realizada con éxito
+2024-03-19 13:04:38 Operación realizada con éxito
+2024-03-19 13:04:41 Operación realizada con éxito
+2024-03-19 13:04:43 Operación realizada con éxito
+2024-03-19 13:04:45 Operación realizada con éxito
+2024-03-19 13:06:47 Operación realizada con éxito
+2024-03-19 13:06:51 [
+    [
+        "SQLSTATE[42000]: Syntax error or access violation: 1103 Incorrect table name ''"
+    ]
+]
+2024-03-19 13:06:56 [
+    [
+        "SQLSTATE[42000]: Syntax error or access violation: 1103 Incorrect table name ''"
+    ]
+]
+2024-03-19 13:23:02 Operación realizada con éxito
+2024-03-22 12:39:15 Operación realizada con éxito
+2024-03-22 12:41:14 Operación realizada con éxito
+2024-03-22 12:41:15 Operación realizada con éxito
+2024-06-13 14:31:48 Operación realizada con éxito
+2024-06-13 14:31:55 Operación realizada con éxito
+2024-06-13 14:32:01 Operación realizada con éxito
+2024-06-13 14:32:48 No tienes permitido acceder a este recurso.
+2024-06-13 14:34:15 No tienes permitido acceder a este recurso.
+2024-06-13 14:34:17 No tienes permitido acceder a este recurso.
+2024-06-13 14:34:25 Operación realizada con éxito
+2024-06-13 14:34:30 Operación realizada con éxito
+2024-06-13 14:34:35 Operación realizada con éxito
+2024-06-13 15:04:08 [
+    [
+        "SQLSTATE[42000]: Syntax error or access violation: 1103 Incorrect table name ''"
+    ]
+]
+2024-06-13 15:04:15 [
+    [
+        "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'pdocrud.usuario' doesn't exist"
+    ]
+]
+2024-06-13 15:05:09 Operación realizada con éxito
+2024-06-13 15:07:28 Operación realizada con éxito
+2024-06-13 15:08:29 Operación realizada con éxito
+2024-06-13 15:08:52 Operación realizada con éxito
+2024-06-13 15:08:58 Operación realizada con éxito
+2024-06-13 15:09:00 Operación realizada con éxito
+2024-06-13 15:14:00 Operación realizada con éxito
+2024-06-13 15:14:13 Operación realizada con éxito
+2024-06-13 15:14:13 Operación realizada con éxito
+2024-06-13 15:14:15 Operación realizada con éxito
+2024-06-13 15:14:32 Operación realizada con éxito
+2024-06-13 15:15:49 [
+    [
+        "SQLSTATE[42000]: Syntax error or access violation: 1103 Incorrect table name ''"
+    ]
+]
+2024-06-13 15:17:20 [
+    "Table name is missing in the request data."
+]
+2024-06-13 15:17:24 Operación realizada con éxito
+2024-06-13 15:17:26 [
+    "Table name is missing in the request data."
+]
+2024-06-13 15:17:47 [
+    "Table name is missing in the request data."
+]
+2024-06-13 15:17:52 Operación realizada con éxito
+2024-06-13 15:18:43 [
+    "Table name is missing in the request data."
+]
+2024-06-13 15:33:01 [
+    [
+        "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'endoscopico.index.php' doesn't exist"
+    ]
+]
+2024-06-13 15:33:09 [
+    [
+        "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'endoscopico.index.php' doesn't exist"
+    ]
+]
+2024-06-13 15:38:31 Operación realizada con éxito
+2024-06-13 15:41:16 Operación realizada con éxito
+2024-06-13 15:44:40 Operación realizada con éxito
+2024-06-13 15:45:51 [
+    "Table name is missing in the request data."
+]
+2024-06-13 15:45:55 Operación realizada con éxito
+2024-06-13 15:45:58 Operación realizada con éxito
+2024-06-13 15:46:54 Operación realizada con éxito
+2024-06-13 15:49:31 Operación realizada con éxito
+2024-06-13 15:49:44 No tienes permitido acceder a este recurso.
+2024-06-13 16:07:05 Operación realizada con éxito
+2024-06-13 16:07:21 Operación realizada con éxito
+2024-06-13 16:07:34 No tienes permitido acceder a este recurso.
+2024-06-13 16:08:42 Operación realizada con éxito
+2024-06-13 16:09:27 No tienes permitido acceder a este recurso.
+2024-06-13 16:09:33 Operación realizada con éxito
+2024-06-13 16:10:20 Operación realizada con éxito
+2024-06-13 16:11:35 Operación realizada con éxito
+2024-06-13 16:12:24 Operación realizada con éxito
+2024-06-13 16:16:50 Operación realizada con éxito
+2024-06-13 16:17:40 Operación realizada con éxito
+2024-06-13 16:17:50 Operación realizada con éxito
+2024-06-13 16:33:27 Operación realizada con éxito
+2024-06-13 16:33:36 No tienes permitido acceder a este recurso.
+2024-06-14 18:45:03 No tienes permitido acceder a este recurso.
+2024-06-14 18:45:08 No tienes permitido acceder a este recurso.
+2024-06-14 18:45:08 No tienes permitido acceder a este recurso.
+2024-06-14 18:45:21 Operación realizada con éxito
+2024-06-14 18:45:26 Operación realizada con éxito
+2024-06-14 18:45:29 Operación realizada con éxito
+2024-06-14 18:48:28 Operación realizada con éxito
+2024-06-14 18:48:39 Operación realizada con éxito
+2024-06-14 18:48:45 Operación realizada con éxito
+2024-06-14 18:52:05 Operación realizada con éxito
+2024-06-14 18:52:19 Operación realizada con éxito
+2024-06-14 18:52:24 Operación realizada con éxito
+2024-06-14 18:52:35 Operación realizada con éxito
+2024-06-14 18:52:44 Operación realizada con éxito
+2024-06-14 18:52:51 Operación realizada con éxito
+2024-06-14 18:53:07 Operación realizada con éxito
+2024-06-14 18:53:16 Operación realizada con éxito
+2024-06-14 18:53:25 Operación realizada con éxito
+2024-06-14 18:54:13 Operación realizada con éxito
+2024-06-14 18:54:29 No tienes permitido acceder a este recurso.
+2024-06-14 21:11:16 No tienes permitido acceder a este recurso.
+2024-06-14 21:11:17 No tienes permitido acceder a este recurso.
+2024-06-17 15:09:20 No tienes permitido acceder a este recurso.
+2024-06-17 15:09:22 No tienes permitido acceder a este recurso.
+2024-06-17 15:11:20 Operación realizada con éxito
+2024-06-17 15:11:35 No tienes permitido acceder a este recurso.
+2024-06-17 15:15:35 [
+    null
+]
+2024-06-17 15:15:45 [
+    null
+]
+2024-06-17 15:16:00 [
+    null
+]
+2024-06-17 15:16:21 [
+    [
+        "SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens"
+    ]
+]
+2024-06-17 15:16:27 [
+    null
+]
+2024-06-17 15:16:32 [
+    null
+]
+2024-06-17 15:16:49 [
+    null
+]
+2024-06-17 15:17:23 [
+    null
+]
+2024-06-17 15:17:37 [
+    null
+]
+2024-06-17 15:17:51 [
+    null
+]
+2024-06-17 15:18:03 [
+    null
+]
+2024-06-17 15:18:26 [
+    null
+]
+2024-06-17 15:23:10 [
+    null
+]
+2024-06-17 15:24:26 [
+    null
+]
+2024-06-17 15:29:13 Operación realizada con éxito
+2024-06-17 15:29:20 Operación realizada con éxito
+2024-06-17 15:29:23 Operación realizada con éxito
+2024-06-17 15:29:24 Operación realizada con éxito
+2024-06-17 15:29:31 Operación realizada con éxito
+2024-06-17 15:29:32 Operación realizada con éxito
+2024-06-17 15:29:38 Operación realizada con éxito
+2024-06-17 15:29:51 Operación realizada con éxito
+2024-06-17 15:29:53 [
+    null
+]
+2024-06-17 15:29:58 Operación realizada con éxito
+2024-06-17 15:30:27 Operación realizada con éxito
+2024-06-17 15:30:31 No tienes permitido acceder a este recurso.
+2024-06-17 15:30:36 No tienes permitido acceder a este recurso.
+2024-06-17 15:30:39 No tienes permitido acceder a este recurso.
+2024-06-17 15:31:19 Operación realizada con éxito
+2024-06-17 15:31:37 Operación realizada con éxito
+2024-06-17 15:34:35 Operación realizada con éxito
+2024-06-17 15:34:59 Operación realizada con éxito
+2024-06-17 15:35:03 Operación realizada con éxito
+2024-06-17 15:35:37 Operación realizada con éxito
+2024-06-17 15:35:39 Operación realizada con éxito
+2024-06-17 15:35:39 Operación realizada con éxito
+2024-06-17 15:35:40 Operación realizada con éxito
+2024-06-17 15:35:50 No tienes permitido acceder a este recurso.
+2024-06-17 15:35:56 Operación realizada con éxito
+2024-06-17 15:43:59 Operación realizada con éxito
+2024-06-17 15:44:20 Operación realizada con éxito
+2024-06-17 15:44:23 Operación realizada con éxito
+2024-06-17 15:45:13 [
+    [
+        "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'endoscopico.{' doesn't exist"
+    ]
+]
+2024-06-17 15:45:44 Operación realizada con éxito
+2024-06-17 15:46:59 Token
+2024-06-17 15:47:16 Token Generado con éxito
+2024-06-17 15:47:50 Token Generado con éxito
+2024-06-17 15:47:51 Token Generado con éxito
+2024-06-17 15:47:54 Token Generado con éxito
+2024-06-17 15:48:01 Token Generado con éxito
+2024-06-17 15:48:03 Token Generado con éxito
+2024-06-17 15:48:05 Operación realizada con éxito
+2024-06-17 15:48:10 Token Generado con éxito
+2024-06-17 15:48:16 No tienes permitido acceder a este recurso.
+2024-06-17 15:48:21 Operación realizada con éxito
+2024-06-17 15:48:48 Token Generado con éxito
+2024-06-17 15:48:54 Token Generado con éxito
+2024-06-17 15:48:55 Token Generado con éxito
+2024-06-17 15:49:18 Token Generado con éxito
+2024-06-17 15:49:20 Token Generado con éxito
+2024-06-17 15:49:21 Token Generado con éxito
+2024-06-17 15:49:25 Operación realizada con éxito
+2024-06-17 15:49:26 Operación realizada con éxito
+2024-06-17 15:49:42 Operación realizada con éxito
+2024-06-17 15:49:43 Operación realizada con éxito
+2024-06-17 15:49:43 Operación realizada con éxito
+2024-06-17 15:49:44 Operación realizada con éxito
+2024-06-17 15:49:46 Token Generado con éxito
+2024-06-17 15:49:53 Token Generado con éxito
+2024-06-17 15:51:53 Token Generado con éxito
+2024-06-17 15:51:54 Token Generado con éxito
+2024-06-17 15:51:55 Token Generado con éxito
+2024-06-17 15:51:57 Operación realizada con éxito
+2024-06-17 15:51:58 Operación realizada con éxito
+2024-06-17 15:51:59 Operación realizada con éxito
+2024-06-17 15:51:59 Operación realizada con éxito
+2024-06-17 15:52:00 Operación realizada con éxito
+2024-06-17 15:52:00 Operación realizada con éxito
+2024-06-17 15:52:01 Operación realizada con éxito
+2024-06-17 15:52:01 Operación realizada con éxito
+2024-06-17 15:52:02 Operación realizada con éxito
+2024-06-17 15:52:02 Operación realizada con éxito
+2024-06-17 15:52:03 Operación realizada con éxito
+2024-06-17 15:52:53 Token Generado con éxito
+2024-06-17 15:53:02 [
+    null
+]
+2024-06-17 15:53:06 Token Generado con éxito
+2024-06-17 15:53:41 Token Generado con éxito
+2024-06-17 15:53:44 [
+    null
+]
+2024-06-17 15:53:51 [
+    null
+]
+2024-06-17 15:53:55 Token Generado con éxito
+2024-06-17 15:53:59 Token Generado con éxito
+2024-06-17 15:54:34 Token Generado con éxito
+2024-06-17 15:54:52 Token Generado con éxito
+2024-06-17 15:54:53 Token Generado con éxito
+2024-06-17 15:54:56 Operación realizada con éxito
+2024-06-17 15:55:10 Operación realizada con éxito
+2024-06-17 15:55:13 [
+    null
+]
+2024-06-17 15:55:16 Operación realizada con éxito
+2024-06-17 15:55:39 Operación realizada con éxito
+2024-06-17 15:55:42 Token Generado con éxito
+2024-06-17 15:55:44 Token Generado con éxito
+2024-06-17 15:57:01 Token Generado con éxito
+2024-06-17 15:57:03 Operación realizada con éxito
+2024-06-17 15:57:05 Operación realizada con éxito
+2024-06-17 15:57:07 Operación realizada con éxito
+2024-06-17 15:57:09 Operación realizada con éxito
+2024-06-17 15:57:11 Operación realizada con éxito
+2024-06-17 15:57:12 Operación realizada con éxito
+2024-06-17 15:57:13 Operación realizada con éxito
+2024-06-17 15:57:13 Operación realizada con éxito
+2024-06-17 15:57:15 Token Generado con éxito
+2024-06-17 15:57:26 Operación realizada con éxito
+2024-06-17 15:57:30 Operación realizada con éxito
+2024-06-17 15:57:32 Operación realizada con éxito
+2024-06-17 15:57:38 Operación realizada con éxito
+2024-06-17 15:57:39 Operación realizada con éxito
+2024-06-17 15:57:40 Operación realizada con éxito
+2024-06-17 15:57:44 Operación realizada con éxito
+2024-06-17 15:57:45 Operación realizada con éxito
+2024-06-17 15:57:52 Operación realizada con éxito
+2024-06-17 15:57:53 Operación realizada con éxito
+2024-06-17 15:57:56 Token Generado con éxito
+2024-06-17 15:57:59 Operación realizada con éxito
+2024-06-17 15:58:00 Operación realizada con éxito
+2024-06-17 15:58:01 Operación realizada con éxito
+2024-06-17 15:58:04 Operación realizada con éxito
+2024-06-17 15:58:05 Operación realizada con éxito
+2024-06-17 15:58:08 Operación realizada con éxito
+2024-06-17 15:58:08 Operación realizada con éxito
+2024-06-17 15:58:09 Operación realizada con éxito
+2024-06-17 15:58:10 Operación realizada con éxito
+2024-06-17 15:58:14 Operación realizada con éxito
+2024-06-17 15:58:17 Operación realizada con éxito
+2024-06-17 15:58:19 Operación realizada con éxito
+2024-06-17 15:58:26 [
+    null
+]
+2024-06-17 15:58:29 Operación realizada con éxito
+2024-06-17 15:58:36 Operación realizada con éxito
+2024-06-17 15:58:39 Operación realizada con éxito
+2024-06-17 15:58:43 Operación realizada con éxito
+2024-06-17 15:58:50 Token Generado con éxito
+2024-06-17 15:58:57 Operación realizada con éxito
+2024-06-17 16:02:40 Operación realizada con éxito
+2024-06-17 16:02:44 Operación realizada con éxito
+2024-06-17 16:03:14 Operación realizada con éxito
+2024-06-17 16:04:13 [
+    null
+]
+2024-06-17 16:04:37 [
+    null
+]
+2024-06-17 16:04:44 Operación realizada con éxito
+2024-06-17 16:05:44 No tienes permitido acceder a este recurso.
+2024-06-17 16:05:53 Token Generado con éxito
+2024-06-17 16:06:02 Error: Los datos para insertar no están presentes.
+2024-06-17 16:06:29 Error: Los datos para insertar no están presentes.
+2024-06-17 16:06:52 Error: Los datos para eliminar no están presentes.
+2024-06-17 16:07:06 Error: Los datos para actualizar no están presentes.
+2024-06-17 16:07:29 Operación realizada con éxito
+2024-06-17 16:13:02 Operación realizada con éxito
+2024-06-17 16:13:07 Operación realizada con éxito
+2024-06-17 16:13:10 Operación realizada con éxito
+2024-06-17 16:13:13 Operación realizada con éxito
+2024-06-17 16:13:16 Operación realizada con éxito
+2024-06-17 16:13:20 Operación realizada con éxito
+2024-06-17 16:17:03 Token Generado con éxito
+2024-06-19 16:44:08 No tienes permitido acceder a este recurso.
+2024-06-19 16:44:08 No tienes permitido acceder a este recurso.
+2024-06-21 15:54:43 No tienes permitido acceder a este recurso.
+2024-07-01 21:41:42 No tienes permitido acceder a este recurso.
+2024-07-02 17:10:50 No tienes permitido acceder a este recurso.
+2024-07-02 17:10:53 No tienes permitido acceder a este recurso.
+2024-07-04 22:20:06 No tienes permitido acceder a este recurso.
+2024-07-04 22:20:10 No tienes permitido acceder a este recurso.
+2024-07-04 22:20:34 Operación realizada con éxito
+2024-07-04 22:20:37 Operación realizada con éxito
+2024-07-04 22:20:39 Operación realizada con éxito
+2024-07-04 22:21:39 Operación realizada con éxito
+2024-07-04 22:21:40 Operación realizada con éxito
+2024-07-04 22:21:41 [
+    [
+        "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sistema_apa.usuarios' doesn't exist"
+    ]
+]
+2024-07-04 22:21:48 Operación realizada con éxito
+2024-07-04 22:22:08 Operación realizada con éxito
+2024-07-04 22:22:09 Operación realizada con éxito
+2024-07-04 22:22:09 Operación realizada con éxito
+2024-07-04 22:22:09 Operación realizada con éxito
+2024-07-04 22:22:09 Operación realizada con éxito
+2024-07-04 22:22:10 Operación realizada con éxito
+2024-07-04 22:22:10 Operación realizada con éxito
+2024-07-04 22:22:13 Operación realizada con éxito
+2024-07-04 22:22:18 Operación realizada con éxito
+2024-07-04 22:23:44 Operación realizada con éxito
+2024-07-04 22:27:17 Operación realizada con éxito
+2024-07-04 22:27:41 Operación realizada con éxito
+2024-07-04 22:27:42 Operación realizada con éxito
+2024-07-04 22:27:42 Operación realizada con éxito
+2024-07-04 22:27:42 Operación realizada con éxito
+2024-07-04 22:27:42 Operación realizada con éxito
+2024-07-04 22:27:42 Operación realizada con éxito
+2024-07-04 22:27:42 Operación realizada con éxito
+2024-07-04 22:27:42 Operación realizada con éxito
+2024-07-04 22:27:44 Operación realizada con éxito
+2024-07-04 22:28:12 Operación realizada con éxito
+2024-07-04 22:28:29 Operación realizada con éxito
+2024-07-04 22:28:29 Operación realizada con éxito
+2024-07-04 22:28:30 Operación realizada con éxito
+2024-07-04 22:28:30 Operación realizada con éxito
+2024-07-04 22:28:30 Operación realizada con éxito
+2024-07-04 22:28:30 Operación realizada con éxito
+2024-07-04 22:28:30 Operación realizada con éxito
+2024-07-04 22:28:30 Operación realizada con éxito
+2024-07-04 22:29:10 Operación realizada con éxito
+2024-07-04 22:29:14 Operación realizada con éxito
+2024-07-04 22:29:18 Operación realizada con éxito
+2024-07-04 22:29:20 Operación realizada con éxito
+2024-07-04 22:29:40 Operación realizada con éxito
+2024-07-04 22:29:44 Operación realizada con éxito
+2024-07-04 22:29:44 Operación realizada con éxito
+2024-07-04 22:29:44 Operación realizada con éxito
+2024-07-04 22:29:44 Operación realizada con éxito
+2024-07-04 22:29:45 Operación realizada con éxito
+2024-07-04 22:29:45 Operación realizada con éxito
+2024-07-04 22:29:45 Operación realizada con éxito
+2024-07-04 22:30:23 Operación realizada con éxito
+2024-07-04 22:30:24 Operación realizada con éxito
+2024-07-04 22:30:24 Operación realizada con éxito
+2024-07-04 22:30:24 Operación realizada con éxito
+2024-07-04 22:30:24 Operación realizada con éxito
+2024-07-04 22:30:24 Operación realizada con éxito
+2024-07-04 22:30:24 Operación realizada con éxito
+2024-07-04 22:30:24 Operación realizada con éxito
+2024-07-04 22:30:35 No tienes permitido acceder a este recurso.
+2024-07-04 22:30:44 No tienes permitido acceder a este recurso.
+2024-07-04 22:30:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:30:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:30:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:30:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:30:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:30:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:30:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:31:14 Operación realizada con éxito
+2024-07-04 22:31:17 No tienes permitido acceder a este recurso.
+2024-07-04 22:32:26 No tienes permitido acceder a este recurso.
+2024-07-04 22:32:37 No tienes permitido acceder a este recurso.
+2024-07-04 22:32:42 No tienes permitido acceder a este recurso.
+2024-07-04 22:32:55 No tienes permitido acceder a este recurso.
+2024-07-04 22:32:58 No tienes permitido acceder a este recurso.
+2024-07-04 22:33:01 No tienes permitido acceder a este recurso.
+2024-07-04 22:33:34 No tienes permitido acceder a este recurso.
+2024-07-04 22:33:37 No tienes permitido acceder a este recurso.
+2024-07-04 22:34:07 Operación realizada con éxito
+2024-07-04 22:34:08 Operación realizada con éxito
+2024-07-04 22:34:08 Operación realizada con éxito
+2024-07-04 22:34:08 Operación realizada con éxito
+2024-07-04 22:34:08 Operación realizada con éxito
+2024-07-04 22:34:08 Operación realizada con éxito
+2024-07-04 22:34:08 Operación realizada con éxito
+2024-07-04 22:34:12 [
+    "Table name is missing in the request data."
+]
+2024-07-04 22:34:19 Operación realizada con éxito
+2024-07-04 22:34:54 Operación realizada con éxito
+2024-07-04 22:34:54 Operación realizada con éxito
+2024-07-04 22:34:55 Operación realizada con éxito
+2024-07-04 22:34:55 Operación realizada con éxito
+2024-07-04 22:34:55 Operación realizada con éxito
+2024-07-04 22:34:55 Operación realizada con éxito
+2024-07-04 22:34:55 Operación realizada con éxito
+2024-07-04 22:34:55 Operación realizada con éxito
+2024-07-04 22:34:56 Operación realizada con éxito
+2024-07-04 22:34:56 Operación realizada con éxito
+2024-07-04 22:34:58 Operación realizada con éxito
+2024-07-04 22:35:43 Operación realizada con éxito
+2024-07-04 22:35:43 Operación realizada con éxito
+2024-07-04 22:35:44 Operación realizada con éxito
+2024-07-04 22:35:44 Operación realizada con éxito
+2024-07-04 22:35:44 Operación realizada con éxito
+2024-07-04 22:35:44 Operación realizada con éxito
+2024-07-04 22:35:44 Operación realizada con éxito
+2024-07-04 22:38:01 Operación realizada con éxito
+2024-07-04 22:38:02 Operación realizada con éxito
+2024-07-04 22:38:02 Operación realizada con éxito
+2024-07-04 22:38:02 Operación realizada con éxito
+2024-07-04 22:38:03 Operación realizada con éxito
+2024-07-04 22:38:03 Operación realizada con éxito
+2024-07-04 22:38:03 Operación realizada con éxito
+2024-07-04 22:38:55 Operación realizada con éxito
+2024-07-04 22:40:33 Operación realizada con éxito
+2024-07-04 22:40:34 Operación realizada con éxito
+2024-07-04 22:40:35 Operación realizada con éxito
+2024-07-04 22:40:35 Operación realizada con éxito
+2024-07-04 22:40:35 Operación realizada con éxito
+2024-07-04 22:40:35 Operación realizada con éxito
+2024-07-04 22:40:35 Operación realizada con éxito
+2024-07-04 22:40:38 Operación realizada con éxito
+2024-07-04 22:40:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:40:51 No tienes permitido acceder a este recurso.
+2024-07-04 22:40:55 Error: Los datos para insertar no están presentes.
+2024-07-04 22:41:06 Operación realizada con éxito
+2024-07-04 22:41:15 Operación realizada con éxito
+2024-07-04 22:41:16 Operación realizada con éxito
+2024-07-04 22:41:16 Operación realizada con éxito
+2024-07-04 22:41:16 Operación realizada con éxito
+2024-07-04 22:41:16 Operación realizada con éxito
+2024-07-04 22:41:22 Operación realizada con éxito
+2024-07-04 22:41:52 No tienes permitido acceder a este recurso.
+2024-07-04 22:42:21 Token Generado con éxito
+2024-07-04 22:42:55 Operación realizada con éxito
+2024-07-04 22:43:03 No tienes permitido acceder a este recurso.
+2024-07-04 22:43:07 Operación realizada con éxito
+2024-07-04 22:43:13 Operación realizada con éxito
+2024-07-04 22:43:30 No tienes permitido acceder a este recurso.
+2024-07-04 22:43:35 No tienes permitido acceder a este recurso.
+2024-07-04 22:43:38 Token Generado con éxito
+2024-07-04 22:43:44 Operación realizada con éxito
+2024-07-04 22:43:50 Operación realizada con éxito
+2024-07-04 22:44:12 Operación realizada con éxito
+2024-07-04 22:44:22 Operación realizada con éxito
+2024-07-04 22:44:25 Operación realizada con éxito
+2024-07-04 22:44:33 Operación realizada con éxito
+2024-07-04 22:46:04 No tienes permitido acceder a este recurso.
+2024-07-04 22:46:05 No tienes permitido acceder a este recurso.
+2024-07-04 22:46:06 No tienes permitido acceder a este recurso.
+2024-07-04 22:46:16 No tienes permitido acceder a este recurso.
+2024-07-04 22:46:20 No tienes permitido acceder a este recurso.
+2024-07-04 22:47:45 No tienes permitido acceder a este recurso.
+2024-07-04 22:47:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:47:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:47:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:47:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:47:46 No tienes permitido acceder a este recurso.
+2024-07-04 22:49:26 No tienes permitido acceder a este recurso.
+2024-07-04 22:49:26 No tienes permitido acceder a este recurso.
+2024-07-04 22:49:26 No tienes permitido acceder a este recurso.
+2024-07-04 22:49:27 No tienes permitido acceder a este recurso.
+2024-07-04 22:49:27 No tienes permitido acceder a este recurso.
+2024-07-04 22:49:27 No tienes permitido acceder a este recurso.
+2024-07-04 22:49:27 No tienes permitido acceder a este recurso.
+2024-07-04 22:51:21 No tienes permitido acceder a este recurso.
+2024-07-04 22:51:43 No tienes permitido acceder a este recurso.
+2024-07-04 22:51:47 Token Generado con éxito
+2024-07-04 22:52:19 No tienes permitido acceder a este recurso.
+2024-07-04 22:52:20 No tienes permitido acceder a este recurso.
+2024-07-04 22:52:20 No tienes permitido acceder a este recurso.
+2024-07-04 22:52:20 No tienes permitido acceder a este recurso.
+2024-07-04 22:52:20 No tienes permitido acceder a este recurso.
+2024-07-04 22:52:20 No tienes permitido acceder a este recurso.
+2024-07-04 22:52:20 No tienes permitido acceder a este recurso.
+2024-07-04 22:52:21 No tienes permitido acceder a este recurso.
+2024-07-04 22:54:00 No tienes permitido acceder a este recurso.
+2024-07-04 22:54:57 No tienes permitido acceder a este recurso.
+2024-07-04 22:54:58 No tienes permitido acceder a este recurso.
+2024-07-04 22:58:15 No tienes permitido acceder a este recurso.
+2024-07-04 22:58:15 No tienes permitido acceder a este recurso.
+2024-07-04 22:58:16 No tienes permitido acceder a este recurso.
+2024-07-04 22:58:16 No tienes permitido acceder a este recurso.
+2024-07-04 22:58:16 No tienes permitido acceder a este recurso.
+2024-07-04 22:58:16 No tienes permitido acceder a este recurso.
+2024-07-04 22:58:16 No tienes permitido acceder a este recurso.
+2024-07-04 22:58:26 Operación realizada con éxito
+2024-07-04 22:58:27 Operación realizada con éxito
+2024-07-04 22:58:27 Operación realizada con éxito
+2024-07-04 22:58:27 Operación realizada con éxito
+2024-07-04 22:58:27 Operación realizada con éxito
+2024-07-04 22:58:27 Operación realizada con éxito
+2024-07-04 22:58:27 Operación realizada con éxito
+2024-07-04 22:58:27 Operación realizada con éxito
+2024-07-04 22:58:28 Operación realizada con éxito
+2024-07-04 22:59:56 No tienes permitido acceder a este recurso.
+2024-07-05 15:58:57 Operación realizada con éxito
+2024-07-05 15:58:59 Operación realizada con éxito
+2024-07-05 15:59:43 No tienes permitido acceder a este recurso.
+2024-07-05 21:26:12 No tienes permitido acceder a este recurso.
+2024-07-05 21:26:13 No tienes permitido acceder a este recurso.
+2024-07-05 21:26:33 Operación realizada con éxito
+2024-07-05 21:26:36 Operación realizada con éxito
+2024-07-05 21:26:38 Operación realizada con éxito
+2024-07-05 21:26:38 Operación realizada con éxito
+2024-07-05 21:26:44 Operación realizada con éxito
+2024-07-05 21:27:52 No tienes permitido acceder a este recurso.
+2024-07-05 21:28:07 No tienes permitido acceder a este recurso.
+2024-07-05 21:28:08 No tienes permitido acceder a este recurso.
+2024-07-05 21:28:22 No tienes permitido acceder a este recurso.
+2024-07-05 21:28:32 No tienes permitido acceder a este recurso.
+2024-07-05 21:28:47 No tienes permitido acceder a este recurso.
+2024-07-09 19:18:03 No tienes permitido acceder a este recurso.
+2024-07-11 17:40:22 No tienes permitido acceder a este recurso.
+2024-07-11 17:40:51 No tienes permitido acceder a este recurso.
+2024-07-11 17:41:22 [
+    null
+]
+2024-07-11 17:41:29 [
+    null
+]
+2024-07-11 17:41:40 [
+    null
+]
+2024-07-11 17:42:12 [
+    null
+]
+2024-07-11 17:42:50 Token Generado con éxito
+2024-07-11 17:42:59 [
+    null
+]
+2024-07-11 17:43:03 Token Generado con éxito
+2024-07-11 17:43:42 Token Generado con éxito
+2024-07-11 17:43:49 [
+    null
+]
+2024-07-11 17:43:53 Token Generado con éxito
+2024-07-11 17:44:05 Token Generado con éxito
+2024-07-11 17:44:07 Token Generado con éxito
+2024-07-11 17:44:09 Token Generado con éxito
+2024-07-11 17:44:10 Token Generado con éxito
+2024-07-11 17:44:11 Token Generado con éxito
+2024-07-11 17:44:12 Token Generado con éxito
+2024-07-11 17:44:14 Token Generado con éxito
+2024-07-15 16:12:25 No tienes permitido acceder a este recurso.
+2024-07-18 17:39:41 No tienes permitido acceder a este recurso.
+2024-07-18 17:39:41 No tienes permitido acceder a este recurso.
+2024-07-19 18:55:43 No tienes permitido acceder a este recurso.
+2024-07-22 14:35:04 No tienes permitido acceder a este recurso.
+2024-07-26 18:46:20 No tienes permitido acceder a este recurso.
+2024-08-13 15:34:55 No tienes permitido acceder a este recurso.
+2024-08-13 15:35:22 [
+    null
+]
+2024-08-13 15:35:38 [
+    null
+]
+2024-08-13 15:35:53 [
+    null
+]
+2024-08-13 15:35:57 Token Generado con éxito
+2024-08-13 15:36:31 No tienes permitido acceder a este recurso.
+2024-08-13 15:36:40 [
+    null
+]
+2024-08-13 15:36:48 [
+    null
+]
+2024-08-13 15:39:33 [
+    null
+]
+2024-08-13 15:39:34 [
+    null
+]
+2024-08-13 15:39:50 [
+    null
+]
+2024-08-13 15:39:59 Token Generado con éxito
+2024-08-13 15:40:26 No tienes permitido acceder a este recurso.
+2024-08-13 15:48:54 No tienes permitido acceder a este recurso.
+2024-08-13 15:49:17 No tienes permitido acceder a este recurso.
+2024-08-13 15:49:26 No tienes permitido acceder a este recurso.
+2024-08-13 15:49:31 Operación realizada con éxito
+2024-08-13 15:49:36 Operación realizada con éxito
+2024-08-13 15:49:42 Operación realizada con éxito
+2024-08-13 15:49:52 Operación realizada con éxito
+2024-08-13 15:49:56 Operación realizada con éxito
+2024-08-13 15:49:58 Operación realizada con éxito
+2024-08-13 15:50:04 No tienes permitido acceder a este recurso.
+2024-08-13 15:58:33 No tienes permitido acceder a este recurso.
+2024-08-13 15:58:45 Operación realizada con éxito
+2024-08-13 15:59:11 Operación realizada con éxito
+2024-08-13 15:59:15 Operación realizada con éxito
+2024-08-13 16:00:07 Operación realizada con éxito
+2024-08-13 16:00:14 Operación realizada con éxito
+2024-08-13 16:00:19 Operación realizada con éxito
+2024-08-13 16:01:04 No tienes permitido acceder a este recurso.
+2024-08-13 16:01:10 No tienes permitido acceder a este recurso.
+2024-08-23 16:03:28 Operación realizada con éxito
+2024-08-23 16:03:38 Operación realizada con éxito
+2024-08-23 16:03:50 Operación realizada con éxito
+2024-08-23 16:03:56 No tienes permitido acceder a este recurso.
