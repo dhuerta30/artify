@@ -34,10 +34,28 @@
 </div>
 <?php require "layouts/footer.php"; ?>
 <script>
-    $(document).on("pdocrud_after_ajax_action", function(event, obj, data){
+
+$(document).on("change", ".cantidad_columnas", function(){
+    var cantidad_columnas = $(".cantidad_columnas").val();
+
+        if(cantidad_columnas == ""){
+            $('.pdocrud-button-add-row').hide();
+        } else {
+            $('.pdocrud-button-add-row').show();
+        }
+});
+
+$(document).on("pdocrud_after_ajax_action", function(event, obj, data){
 	let action = $(obj).attr('data-action');
 
 	if(action == "add"){
+
+        var cantidad_columnas = $(".cantidad_columnas").val();
+
+        if(cantidad_columnas == ""){
+            $('.pdocrud-button-add-row').hide();
+        }
+
 		$.ajax({
 			url: "<?=$_ENV["BASE_URL"]?>js/icons.json",
 			dataType: "json",
