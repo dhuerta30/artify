@@ -1,23 +1,5 @@
 <?php
-
-/**
- * PDOModel - Library of PHP functions for intracting database using PDO
- * File: PDOModel.php
- * Author: Pritesh Gupta
- * Version: 1.6.0
- * Last Updated Date: 2/15/2017
- * Copyright (c) 2016 Pritesh Gupta. All Rights Reserved.
-
-  /* ABOUT THIS FILE:
-  ---------------------------------------------------------------------------------------------------------------
- * PDOModel Class provides set of functions for interacting database using PDO extension.
- * You don't need to write any query to perform insert, update, delete and select operations(CRUD operations).
- * You need to call these functions with appropriate parameters and these functions will perform required 
- * Database operations. 
-  ---------------------------------------------------------------------------------------------------------------
- */
-
-require dirname(__FILE__) . '/library/vendor/autoload.php';
+require dirname(__DIR__, 4) . '/vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -625,13 +607,34 @@ class PDOModel
      * @param   array    $values                    Query to be executed
      * return   array                              returns array as result of query.
      */
-    public function executeQuery($sql, $values = array())
-    {
+    public function DBQuery($sql, $values = array()) {
         try {
             $this->sql = $sql;
             $stmt = $this->dbObj->prepare($this->sql);
             $this->values = $values;
             $stmt->execute($this->values);
+            $result = $stmt->fetchAll($this->getFetchType());
+
+            if (is_array($result))
+                $this->totalRows = count($result);
+
+            return $result;
+        } catch (PDOException $e) {
+            if ($this->dbTransaction == true) {
+                $this->dbRollBack = true;
+                $this->dbObj->rollBack();
+            }
+            $this->setErrors($e->getMessage());
+        }
+    }
+
+    public function executeQuery($sql)
+    {
+        try {
+            $this->sql = $sql;
+            $stmt = $this->dbObj->prepare($this->sql);
+            
+            $stmt->execute();
             $result = $stmt->fetchAll($this->getFetchType());
 
             if (is_array($result))

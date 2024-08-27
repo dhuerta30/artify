@@ -22,6 +22,15 @@
                     </a>
                 </div>
             <?php } ?>
+            <?php if ($settings["refresh"]) { ?>
+                <div class="btn-group pull-right">
+                    <a href="javascript:;" class="btn btn-primary" data-action="refresh" data-rendertype="CRUD" data-obj-key="<?php echo $objKey; ?>"><i class="fa fa-refresh"></i> <?php echo $lang["refresh"]; ?></a>
+                </div>
+            <?php } else { ?>
+                <div class="btn-group pull-right d-none">
+                    <a href="javascript:;" class="btn btn-primary" data-action="refresh" data-rendertype="CRUD" data-obj-key="<?php echo $objKey; ?>"><i class="fa fa-refresh"></i> <?php echo $lang["refresh"]; ?></a>
+                </div>
+            <?php } ?>
             <?php if ($settings["savebtn"]) { ?>
                 <div class="btn-group float-right">
                     <a title="<?php echo $lang["save"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-save green guardar_datos btn btn-success text-white" href="javascript:;" data-action="save_crud_table_data" data-obj-key="<?php echo $objKey; ?>">

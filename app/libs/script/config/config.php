@@ -12,20 +12,20 @@
 /* Configuaration Settings */
 global $config;
 //script url - Enter complete url inside which script folder is placed. Please note that it doesn't include the script folder
-$config["script_url"] = "http://localhost/pdocrud/";
+$config["script_url"] = "";
 /************************ database ************************/
 //Set the host name to connect for database
 $config["hostname"] =  "localhost";
 //Set the database name
-$config["database"] = "pdocrud";
+$config["database"] = "";
 //Set the username for database access
-$config["username"] = "root";
+$config["username"] = "";
 //Set the pwd for the database user
 $config["password"] = "";
 //Set the database type to be used. Available values are "mysql", "pgsql", "sqlite" and "sqlserver".
 $config["dbtype"] = "mysql";
 //Please enter purchase code. Please check how to find purchase code details here https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-
-$config["purchase_code"] = "12eb39e2-a55b-4ca6-9c7d-f6db5438ffaf";
+//$config["purchase_code"] = "12eb39e2-a55b-4ca6-9c7d-f6db5438ffaf";
 //Set the character set to be used
 $config["characterset"] = "utf8";
 //Encryption and Decryption salt
@@ -49,6 +49,10 @@ $config["totalRecordsInfo"] = true;
 $config["savebtn"] = false;
 //show add button (true = show)
 $config["addbtn"] = true;
+//active filter and search logic (true = active)
+$config["function_filter_and_search"] = true;
+//show refresh button (true = show)
+$config["refresh"] = true;
 //show edit button (true = show)
 $config["editbtn"] = true;
 //show view button (true = show)
@@ -131,7 +135,7 @@ $config["includeTemplateJS"] = true;
 //Template name to be used. Templates are present in the script/classes/templ
 $config["template"] = "bootstrap4";
 //set skin css to be used (skin css are placed in the script/skin folder)
-$config["skin"] = "advance";
+$config["skin"] = "fair";
 //default language
 $config["lang"] = "es";
 /******************************** upload/download folder path ***********************************/

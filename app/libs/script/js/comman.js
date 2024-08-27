@@ -188,7 +188,7 @@ $(document).ready(function(){
             if($(".pdocrud_search_input").length > 0 && pdocrud_js.hasOwnProperty('enable_search_on_enter')) {
               $(document).on("keypress",".pdocrud_search_input", function (e) {
                  if (e.which == 13 && pdocrud_js.enable_search_on_enter) {
-                  $("#pdocrud_search_btn").trigger("click");
+                  $(this).closest(".pdocrud-search").find("#pdocrud_search_btn").trigger("click");
                  }
               });
             }
@@ -197,7 +197,7 @@ $(document).ready(function(){
             
             $.pdocrud_actions.setBulkCrudData(this);
             
-            $(document).on("change", ".pdocrud-filter", function (evt) {
+            /*$(document).on("change", ".pdocrud-filter", function (evt) {
                 var instance = $(this).closest(".pdocrud-filters-container").data("objkey");
                 var data = $(this).data();
                 var key = data.key;
@@ -215,26 +215,91 @@ $(document).ready(function(){
                 }
                 data.action = "filter";
                 $.pdocrud_actions.actions(this, data, instance, "");
+            });*/
+
+            $(document).on("click", "#filter-button", function (evt) {
+                var instance = $(".pdocrud-filters-container").data("objkey");
+                var data = {};
+                var filters = $(".pdocrud-filters-options").find(".pdocrud-filter");
+                var selectedFilters = $(".pdocrud-filters-options").find(".pdocrud-filter-selected");
+
+                filters.each(function() {
+                    var key = $(this).data().key;
+                    var val;
+
+                    if ($(this).is(":radio")) {
+                        val = $("input[name='" + $(this).attr('name') + "']:checked").val() || '';
+                    } else {
+                        val = $(this).val();
+                    }
+
+                    if (selectedFilters.find("span[data-key='" + key + "']").length > 0) {
+                        if (val) {
+                            selectedFilters.find("span[data-key='" + key + "']").data("value", val).text(val + " X");
+                        } else {
+                            selectedFilters.find("span[data-key='" + key + "']").remove();
+                        }
+                    } else {
+                        if (val) {
+                            selectedFilters.append("<span data-key='" + key + "' data-value='" + val + "' class='pdocrud-filter-option'>" + val + " X</span>");
+                        }
+                    }
+
+                    data[key] = val;
+                });
+
+                data.action = "filter";
+                $.pdocrud_actions.actions(this, data, instance, "");
             });
-            
+
             $(document).on("click", ".pdocrud-filter-option", function (evt) {
-                 var instance = $(this).closest(".pdocrud-filters-container").data("objkey");
-                 var obj = $(".pdocrud-filters-options");
-                 $(this).remove(); 
-                 var data = $(this).data();
-                 data.action = "filter";
-                 $.pdocrud_actions.actions(obj, data, instance, "");
+                var instance = $(this).closest(".pdocrud-filters-container").data("objkey");
+                var obj = $(".pdocrud-filters-options");
+            
+                // Obtener el data-key y data-value del elemento clicado
+                var dataKey = $(this).data("key");
+                var dataValue = $(this).data("value");
+            
+                // Remover el elemento clicado
+                $(this).remove();
+            
+                // Buscar y resetear el valor del input, radio, checkbox, o select correspondiente
+                var filterElement = $('[data-key="' + dataKey + '"]');
+                if (filterElement.is(":checkbox") || filterElement.is(":radio")) {
+                    filterElement.prop("checked", false);
+                } else if (filterElement.is("select")) {
+                    filterElement.val("");
+                } else {
+                    filterElement.val("");
+                }
+            
+                var data = $(this).data();
+                data.action = "filter";
+                $.pdocrud_actions.actions(obj, data, instance, "");
+                $("#filter-button").click();
             });
             
             $(document).on("click", ".pdocrud-filter-option-remove", function (evt) {
-                 $(this).siblings(".pdocrud-filter-option").each(function(){
-                     $(this).remove();
-                 });
-                 var data = $(this).data();
-                 var instance = $(this).closest(".pdocrud-filters-container").data("objkey");
-                 data.action = "filter";
-                 $.pdocrud_actions.actions(this, data, instance, "");
-            });
+                $(this).siblings(".pdocrud-filter-option").each(function(){
+                    $(this).remove();
+                });
+
+                $(".pdocrud-filter").each(function() {
+                    if ($(this).is(":checkbox") || $(this).is(":radio")) {
+                        $(this).prop("checked", false);
+                    } else {
+                        $(this).val("");
+                    }
+                });
+
+                $(".pdocrud-radio-group input[type='radio']").prop("checked", false);
+
+                var data = $(this).data();
+                var instance = $(this).closest(".pdocrud-filters-container").data("objkey");
+                data.action = "filter";
+                $.pdocrud_actions.actions(this, data, instance, "");
+                $("#filter-button").click();
+           });
 
             /*$(document).on("focus", ".pdocrud-date", function (evt) {
                 $(this).datepicker({
@@ -295,11 +360,11 @@ $(document).ready(function(){
                     showButtonPanel: pdocrud_js.date.show_button_panel});
             });*/
 
-            $(document).on("focus", ".pdocrud-time", function (evt) {
+            /*$(document).on("focus", ".pdocrud-time", function (evt) {
                 $(this).timepicker({
                      timeFormat: pdocrud_js.date.time_format,
                 });
-            });
+            });*/
 
             $(document).on("change", ".pdocrud-select-all", function (evt) {
                 $.pdocrud_actions.selectAll(this);
@@ -319,6 +384,13 @@ $(document).ready(function(){
             $(document).on('change', '.pdocrud-records-per-page', function (evt) {
                 var data = $(this).data();
                 data.records = $(this).val();
+                var instance = $(this).closest(".pdocrud-table-container").data("objkey");
+                $.pdocrud_actions.actions(this, data, instance);
+            });
+
+            $(document).on('click', '[data-action="refresh"]', function (e) {
+                e.preventDefault();
+                var data = $(this).data();
                 var instance = $(this).closest(".pdocrud-table-container").data("objkey");
                 $.pdocrud_actions.actions(this, data, instance);
             });
@@ -408,17 +480,28 @@ $(document).ready(function(){
                     return;
                 }
 
+
                 if (data.action === "add_row") {
                     $(".pdocrud-left-join").each(function () {
+                        // Obtener el último valor de .valor_aumentado
+                        var ultimoValor = parseInt($('.valor_aumentado:last').val()) || 0;
+                        
+                        // Incrementar el valor para la próxima fila
+                        var siguienteValor = ultimoValor + 1;
+                
                         var tds = '<tr>';
-                        jQuery.each($('tr:last td', this), function () {
-                            tds += '<td>' + $(this).html() + '</td>';
+                        $(this).find('tr:last td').slice(0, 3).each(function () {
+                            tds += '<td class="form-group pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1">' + $(this).html() + '</td>';
                         });
+                        tds += '<td class="form-group pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1"><a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a></td>';
                         tds += '</tr>';
                 
-                        // Limpia los valores de los elementos de la última fila
+                        // Agregar la nueva fila al final de la tabla
                         var $lastRow = $(tds).appendTo('tbody', this);
                         $lastRow.find('input, select, textarea').val('');
+                
+                        // Asignar el valor incrementado al campo .valor_aumentado en la nueva fila
+                        $lastRow.find('.valor_aumentado').val(siguienteValor);
                 
                         if ($('tbody', this).length > 0) {
                             $('tbody', this).append($lastRow);
@@ -426,12 +509,22 @@ $(document).ready(function(){
                             $(this).append($lastRow);
                         }
                     });
-                    return;                   
+                    return;
                 }
 
                 if (data.action === "delete_row") {
-                    if ($(this).parents("tbody").children().length > 1)
-                        $(this).parents("tr").remove();
+                    if ($(this).parents("tbody").children().length > 1) {
+                            $(this).parents("tr").remove();
+    
+                            // Reordenar los valores de .valor_aumentado después de eliminar una fila
+                            $(".pdocrud-left-join").each(function () {
+                                var contador = 1;
+                                $(this).find('.valor_aumentado').each(function () {
+                                    $(this).val(contador);
+                                    contador++;
+                                });
+                            });
+                        }
                     return;
                 }
 
@@ -500,7 +593,7 @@ $(document).ready(function(){
                 }
 
                 if (data.action === "add" || data.action === "add_invoice") {
-                    instance = $(this).closest(".pdocrud-table-container").data("objkey");
+                    instance = $(this).closest(".pdocrud-table-container").data("objkey");   
                 }
 
                 $.pdocrud_actions.actions(this, data, instance, printwindow);
@@ -652,6 +745,7 @@ $(document).ready(function(){
         actions: function (obj, data, instance, printwindow) {
             $(document).trigger("pdocrud_before_ajax_action", [obj, data]);
             data = $.pdocrud_actions.getFilterData(obj, data);
+
             $.ajax({
                 type: "post",
                 dataType: "html",
@@ -662,22 +756,31 @@ $(document).ready(function(){
                 },
                 data: {
                     "pdocrud_data": data,
-                    "pdocrud_instance": instance,
+                    "pdocrud_instance": instance
                 },
                 success: function (response) {
                     $("#pdocrud-ajax-loader").hide();
                     if (data.action === "exporttable") {
-                        if (data.exportType === "print")
+                        if (data.exportType === "print") {
                             $.pdocrud_actions.print(response, printwindow);
-                        else
+                        } else if (data.exportType === "excel") {
+                            let json = JSON.parse(response);
+                            let url = json.downloadUrl;
+                            let fileName = url.substring(url.lastIndexOf('/')+1);
+                            window.location.href = pdocrud_js.pdocrudurl + 'script/downloads/' + fileName;
+                        } else {
                             window.location.href = response;
-                    }
-                    else {
+                            console.log(response);
+                        }
+                    } else if (data.action === "refresh") {
+                        $(obj).closest(".pdocrud-table-container").html(response);
+                    } else {
                         if ($(obj).closest(".pdocrud-table-container").data("modal")) {
-                            var actions_arr = ["view_back", "insert_back", "back", "update_back", "delete", "delete_selected","sort", "asc", "desc", "search", "records_per_page", "pagination"];
+                            var actions_arr = ["view_back", "insert_back", "back", "update_back", "delete", "sort", "asc", "desc", "delete_selected", "search", "records_per_page", "pagination"];            
                             if ($.inArray(data.action, actions_arr) !== -1) {
-                                if ($(obj).parents("body").hasClass("modal-open"))
+                                if ($(obj).parents("body").hasClass("modal-open")){
                                     $(obj).parents("body").removeClass("modal-open");
+                                }
                                 $("#" + instance + "_modal").modal('hide');
                                 $(obj).closest(".pdocrud-table-container").html(response);
 
@@ -700,6 +803,7 @@ $(document).ready(function(){
                         else if (data.action === "filter") {
                             $(obj).closest(".pdocrud-filters-container").find(".pdocrud-table-container").html(response);
                         }
+
                         else if (data.action === "onepageview") {
                             var element = $(obj).closest(".pdocrud-one-page-container");
                             $(obj).closest(".pdocrud-one-page-container").after(response);
@@ -767,7 +871,7 @@ $(document).ready(function(){
                 },
             });
         },
-         reload: function (obj, data, instance,element) {
+         reload: function (obj, data, instance, element) {
             $(document).trigger("pdocrud_before_reload_ajax_action", [obj, data]);
 
             $.ajax({
@@ -800,6 +904,39 @@ $(document).ready(function(){
                 },
             });
         },
+        customAjaxAction: function (event, eventId, action, ajaxFunction, postData, successCallback) {
+            $(document).on(event, "#" + eventId, function () {
+                var data = {
+                    action: action,
+                    function: ajaxFunction,
+                    post_data: postData
+                };
+                var instance = $(".pdocrud-table-container").data("objkey");
+        
+                $.ajax({
+                    type: "post",
+                    dataType: "html",
+                    cache: false,
+                    url: pdocrud_js.pdocrudurl + "script/pdocrud.php",
+                    beforeSend: function () {
+                        $("#pdocrud-ajax-loader").show();
+                    },
+                    data: {
+                        "pdocrud_data": data,
+                        "pdocrud_instance": instance,
+                    },
+                    success: function (response) {
+                        $("#pdocrud-ajax-loader").hide();
+                        if (typeof successCallback === 'function') {
+                            successCallback(response);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+            });
+         },
          ajax_actions: function (obj, instance, data, return_value_element) {
             $(document).trigger("pdocrud_before_reload_ajax_action", [obj, data]);
             $.ajax({

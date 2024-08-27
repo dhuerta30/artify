@@ -1,6 +1,8 @@
 <script type="text/javascript">
     jQuery(document).on("pdocrud_on_load pdocrud_after_submission pdocrud_after_ajax_action", function (event, container) {
     jQuery("<?php echo $elementName; ?>").tagsinput({
+            trimValue: true,
+            allowDuplicates: false
             <?php
             if(isset($params))echo implode(', ', array_map(
                             function ($v, $k) {
@@ -10,4 +12,4 @@
             ?>
     });
     });
-</script>    
+</script>

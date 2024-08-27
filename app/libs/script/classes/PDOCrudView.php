@@ -91,7 +91,7 @@ class PDOCrudView {
         }
     }
 
-    public function renderSQL($columns, $data, $objKey, $lang, $settings, $pagination, $perPageRecords) {
+    public function renderSQL($columns, $searchbox, $data, $objKey, $lang, $modal, $settings, $pagination, $perPageRecords, $btnActions, $extraData) {
         ob_start();
         $template = strtolower($settings["template"]);
         require $this->template_path . "/$template/template-sql.php";

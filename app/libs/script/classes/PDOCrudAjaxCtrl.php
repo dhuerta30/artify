@@ -1,21 +1,25 @@
 <?php
 
-@session_start();
-
 Class PDOCrudAjaxCtrl {
 
     public function handleRequest() {
-        $instanceKey = $_REQUEST["pdocrud_instance"];
+        $instanceKey = isset($_REQUEST["pdocrud_instance"]) ? filter_var($_REQUEST["pdocrud_instance"], FILTER_SANITIZE_STRING) : null;
+        
         if(!isset($_SESSION["pdocrud_sess"][$instanceKey])){
-            die("Session has been expired. Please refresh your page to continue.");
+            die("La sesión ha caducado. Actualice su página para continuar.");
         }
 
-        $pdocrud = unserialize($_SESSION["pdocrud_sess"][$instanceKey]);
-        $action = $_POST["pdocrud_data"]["action"];
-        $data = $_POST["pdocrud_data"];
+        $pdocrud = @unserialize($_SESSION["pdocrud_sess"][$instanceKey]);
+        if ($pdocrud === false) {
+            die("Ocurrió un error. Por favor, inténtelo de nuevo más tarde.");
+        }
+
+        $action = isset($_POST["pdocrud_data"]["action"]) ? filter_var($_POST["pdocrud_data"]["action"], FILTER_SANITIZE_STRING) : null;
+        $data = isset($_POST["pdocrud_data"]) ? filter_var_array($_POST["pdocrud_data"], FILTER_SANITIZE_STRING) : [];
         $post = $_POST;
-        if (isset($_FILES))
+        if (isset($_FILES)) {
             $post = array_merge($_FILES, $post);
+        }
         $data["post"] = $post;
         switch (strtoupper($action)) {
             case "VIEW":
@@ -106,22 +110,39 @@ Class PDOCrudAjaxCtrl {
                 echo $pdocrud->render("CRUD", $data);
                 break;
             case "PAGINATION":
-                $pdocrud->setBackOperation();
-                $pdocrud->currentPage($data["page"]);
-                echo $pdocrud->render("CRUD", $data);
+                if($data["rendertype"] == "CRUD"){
+                    $pdocrud->setBackOperation();
+                    $pdocrud->currentPage($data["page"]);
+                    echo $pdocrud->render("CRUD", $data);
+                } else {
+                    $pdocrud->currentPage($data["page"]);
+                    echo $pdocrud->render("SQL", $data);
+                }
                 break;
             case "RECORDS_PER_PAGE":
-                $pdocrud->currentPage(1);
-                $pdocrud->recordsPerPage($data["records"]);
-                echo $pdocrud->render("CRUD", $data);
+                if($data["rendertype"] == "CRUD"){
+                    $pdocrud->currentPage(1);
+                    $pdocrud->recordsPerPage($data["records"]);
+                    echo $pdocrud->render("CRUD", $data);
+                } else {
+                    $pdocrud->currentPage(1);
+                    $pdocrud->recordsPerPage($data["records"]);
+                    echo $pdocrud->render("SQL", $data);
+                }
                 break;
             case "SEARCH":
-                $pdocrud->currentPage(1);
-                echo $pdocrud->render("CRUD", $data);
+                if($data["rendertype"] == "CRUD"){
+                    $pdocrud->currentPage(1);
+                    echo $pdocrud->render("CRUD", $data);
+                } else {
+                    $pdocrud->currentPage(1);
+                    echo $pdocrud->render("SQL", $data);
+                }
                 break;
             case "AUTOSUGGEST":
-                if(isset($_GET["callback"]))
-                    $data["callback"] = $_GET["callback"];
+                if (isset($_GET["callback"])) {
+                    $data["callback"] = filter_var($_GET["callback"], FILTER_SANITIZE_STRING);
+                }
                 echo $pdocrud->render("AUTOSUGGEST", $data);
                 break;
             case "EXPORTTABLE":
@@ -157,6 +178,13 @@ Class PDOCrudAjaxCtrl {
                 $pdocrud->currentPage(1);
                 echo $pdocrud->render("CRUD", $data);
                 break;
+            case "REFRESH":
+                if($data["rendertype"] == "CRUD"){
+                    echo $pdocrud->render("CRUD", $data);
+                } else {
+                    echo $pdocrud->render("SQL", $data);
+                }
+                break;
             case "RELOAD":
                 $pdocrud->setBackOperation();
                 echo $pdocrud->render("CRUD", $data);
@@ -189,7 +217,7 @@ Class PDOCrudAjaxCtrl {
                 break;   
             case "PRINTPDF":
                 echo $pdocrud->render("PRINT_PDF", $data);
-                break;    
+                break;   
             default:
                 break;
         }

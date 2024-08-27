@@ -81,48 +81,93 @@
                     if (is_array($btnActions) && count($btnActions)) {
                     ?>
                         <td class="pdocrud-row-actions">
-                            <?php foreach ($btnActions as  $action_name => $action) {
-                                list($key, $colName, $action_val, $type, $text, $attr, $url, $cssClass, $btnWhere) = $action;
-                                $columnVal = isset($rows[$colName]) ? $rows[$colName] : "";
-                                if(isset($rows['tabla'])){
-                                    $url =  preg_replace('/{[^}]+}/', $rows['tabla'], $url);
-                                } else {
-                                    $url =  preg_replace('/{[^}]+}/', $rows[$pk], $url);
+                        <?php foreach ($btnActions as  $action_name => $action) { 
+                        list( $key, $colName, $action_val, $type, $text, $attr, $url, $cssClass, $btnWhere) = $action;
+                        
+                        $columnVal = isset($rows[$colName]) ? $rows[$colName] : "";
+                        
+                        $url = preg_replace_callback('/{([^}]+)}/', function ($matches) use ($rows) {
+                            $field = $matches[1]; // El campo dentro de las llaves
+                            return isset($rows[$field]) ? $rows[$field] : $matches[0]; // Devuelve el valor del campo o el marcador original si no existe
+                        }, $url);
+                        
+                        if (is_array($text) && isset($text[$rows[$colName]])){
+                            $action_text = $text[$rows[$colName]];
+                        } else {
+                            $action_text = $text;
+                        }
+
+                        $skipBtn = false;
+                        
+                        if(!empty($btnWhere) && is_array($btnWhere) && count($btnWhere)){
+                            $field = $btnWhere[0];
+                            if(!empty($btnWhere[1]) && $btnWhere[1] === "="){
+                                $skipBtn = true;
+                                if(!empty($btnWhere[2]) && in_array($rows[$field], $btnWhere[2])){
+                                    $skipBtn = false;
                                 }
-                                if (is_array($text) && isset($text[$rows[$colName]]))
-                                    $action_text = $text[$rows[$colName]];
-                                else
-                                    $action_text = $text;
-
-                                $skipBtn = false;
-
-                                if (!empty($btnWhere) && is_array($btnWhere) && count($btnWhere)) {
-                                    if (!empty($btnWhere[1]) && $btnWhere[1] === "=") {
-                                        $skipBtn = true;
-                                        if (!empty($btnWhere[2]) && in_array($rows[$pk], $btnWhere[2])) {
-                                            $skipBtn = false;
-                                        }
-                                    } else if (!empty($btnWhere[1]) && $btnWhere[1] === "!=") {
-                                        $skipBtn = true;
-                                        if (!empty($btnWhere[2]) && !in_array($rows[$pk], $btnWhere[2])) {
-                                            $skipBtn = false;
-                                        }
-                                    }
-                                }
-
-                                if ($skipBtn === false) {
-                            ?>
-                                    <a class="pdocrud-actions pdocrud-button pdocrud-button-<?php echo $action_name; ?>" href="<?php echo $url; ?>" <?php
-                                                                                                                                                    echo implode(', ', array_map(
-                                                                                                                                                        function ($v, $k) {
-                                                                                                                                                            return $k . "=" . "'" . $v . "'";
-                                                                                                                                                        },
-                                                                                                                                                        $attr,
-                                                                                                                                                        array_keys($attr)
-                                                                                                                                                    )); ?> data-id="<?php echo $rows[$pk]; ?>" data-column-val="<?php echo $columnVal ?>" data-unique-id="<?php echo $key; ?>" data-action="<?php echo $type; ?>"><?php echo $action_text; ?>
-                                    </a>
-                            <?php }
                             }
+                            else if(!empty($btnWhere[1]) && $btnWhere[1] === "!="){
+                                $skipBtn = true;
+                                if(!empty($btnWhere[2]) && !in_array($rows[$field], $btnWhere[2])){
+                                    $skipBtn = false;
+                                }
+                            }
+                        }    
+                        
+                        if($skipBtn === false)   {
+                        ?>
+                        <?php
+                            $btnClass = "btn ";
+
+                            // Define el conjunto de valores para los cuales queremos clases específicas
+                            $specificActions = ["view", "edit", "inline_edit", "clone", "delete", "url"];
+
+                            if (in_array($action_name, $specificActions)) {
+                                switch ($action_name) {
+                                    case "view":
+                                        $btnClass .= "btn-info";
+                                        break;
+                                    case "edit":
+                                    case "inline_edit":
+                                    case "clone":
+                                        $btnClass .= "btn-warning";
+                                        break;
+                                    case "delete":
+                                        $btnClass .= "btn-danger";
+                                        break;
+                                    case "url":
+                                        $btnClass .= "btn-default";
+                                        break;
+                                }
+                                $btnClass .= " pdocrud-actions";  // Agrega esta clase solo para los actions específicos
+                            } else {
+                                $btnClass .= "btn-default";  // Para cualquier otro action_name
+                            }
+
+                            // Agrega clases adicionales si están definidas
+                            $btnClass .= (isset($cssClass) && !empty($cssClass)) ? " $cssClass" : "";
+
+                            // Sobrescribe btnClass para el caso "url"
+                            if ($action_name == "url") {
+                                $btnClass = "btn btn-default";
+                            }
+                            ?>
+                            <a class="<?php echo $btnClass; ?> btn-sm pdocrud-button <?php echo $action_name;?>"
+                                href="<?php echo $url;?>"
+                                <?php
+                                echo implode(' ', array_map(
+                                                function ($v, $k) {
+                                                    return $k . "=" ."'". $v."'";
+                                                }, $attr, array_keys($attr)
+                                )); ?>  
+                                data-id="<?php echo $rows[$pk]; ?>" 
+                                data-column-val="<?php echo $columnVal ?>"
+                                data-unique-id="<?php echo $key; ?>" 
+                                data-action="<?php echo $type;?>"><?php echo $action_text; ?>
+                            </a>
+                            <?php } 
+                                }
                             ?>
                         </td>
                     <?php } ?>

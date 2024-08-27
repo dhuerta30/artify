@@ -17,7 +17,8 @@
     top: 50%;
     margin-left: -32px; /* -1 * image width / 2 */
     margin-top: -32px;  /* -1 * image height / 2 */
-    display: block;     
+    display: block;  
+    width: 90px;   
 }
 .pdocrud-gmap{
     min-height: 400px;
@@ -115,6 +116,7 @@ span.field-validation-error {
     width: 28px;
     height: 31px;
 }
+
 .pdocrud-options ul li img{
     width: 100%;
 }
@@ -122,13 +124,13 @@ span.field-validation-error {
     margin-bottom: 0px;
 }
 .pdocrud-table-container table tr.pdocrud-header-row {
-    color: #4e5e6a;
+    color: #fff;
+    background-color: #4375e5;
 }
 .pdocrud-table-container table tr.pdocrud-header-row th {
     border: 1px solid #f2f2f2;
 }
 .pdocrud-table-container table tr.pdocrud-header-row th,.pdocrud-table-container .table tbody tr td{
-    border-right: 1px solid #d5d5d5;
     white-space: nowrap;
 }
 .pdocrud-actions-sorting{

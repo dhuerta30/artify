@@ -208,64 +208,144 @@ Class PDOCrudHelper {
                 $pagination .= "<ul class=\"pagination\">";
 
                 if ($page > 1)
-                    $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\" data-page=" . $prev . ">« " . $lang["prev"] . "</a></li>";
+                    $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-rendertype='CRUD' data-action='pagination' href=\"javascript:;\" data-page=" . $prev . ">« " . $lang["prev"] . "</a></li>";
 
                 if ($lastpage < 7 + ($adjacents * 2)) { 
                     for ($counter = 1; $counter <= $lastpage; $counter++) {
                         if ($counter == $page)
-                            $pagination .= "<li class=\"page-item active\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\" data-page=" . $counter . ">$counter</a></li>";
+                            $pagination .= "<li class=\"page-item active\"><a class='pdocrud-actions page-link pdocrud-page' data-rendertype='CRUD' data-action='pagination' href=\"javascript:;\" data-page=" . $counter . ">$counter</a></li>";
                         else
-                            $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
+                            $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-rendertype='CRUD' data-action='pagination' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
                     }
                 } elseif ($lastpage >= 7 + ($adjacents * 2)) { 
                     if ($page < 1 + ($adjacents * 3)) {
                         for ($counter = 1; $counter < 4 + ($adjacents * 2); $counter++) {
                             if ($counter == $page)
-                                $pagination .= "<li class=\"page-item active\"><a class='pdocrud-actions page-link pdocrud-page' data-page=" . $counter . " data-action='pagination' href=\"javascript:;\">$counter</a></li>";
+                                $pagination .= "<li class=\"page-item active\"><a class='pdocrud-actions page-link pdocrud-page' data-page=" . $counter . " data-rendertype='CRUD' data-action='pagination' href=\"javascript:;\">$counter</a></li>";
                             else
-                                $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
+                                $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
                         }
                         $pagination .= "<li class=\"page-item elipses\"></li>";
-                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=" . $lpm1 . ">" . $lpm1 . "</a></li>";
-                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=" . $lastpage . ">" . $lastpage . "</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=" . $lpm1 . ">" . $lpm1 . "</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=" . $lastpage . ">" . $lastpage . "</a></li>";
                     }
                     elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
-                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=\"1\">1</a></li>";
-                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=\"2\">2</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=\"1\">1</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=\"2\">2</a></li>";
                         $pagination .= "<li class=\"elipses\"></li>";
                         for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
                             if ($counter == $page)
-                                $pagination .= "<li class=\"active\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\" data-page=" . $counter . ">$counter</a></li>";
+                                $pagination .= "<li class=\"active\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\" data-page=" . $counter . ">$counter</a></li>";
                             else
-                                $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
+                                $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
                         }
                         $pagination .= "<li class=\"elipses\"></li>";
-                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=" . $lpm1 . ">" . $lpm1 . "</a></li>";
-                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=" . $lastpage . ">" . $lastpage . "</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=" . $lpm1 . ">" . $lpm1 . "</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=" . $lastpage . ">" . $lastpage . "</a></li>";
                     }
                     else {
-                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=\"1\">1</a></li>";
-                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=\"2\">2</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=\"1\">1</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=\"2\">2</a></li>";
                         $pagination .= "<li class=\"elipses\"></li>";
                         for ($counter = $lastpage - (1 + ($adjacents * 3)); $counter <= $lastpage; $counter++) {
                             if ($counter == $page)
-                                $pagination .= "<li class=\"page-item active\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\" data-page=" . $counter . ">$counter</a></li>";
+                                $pagination .= "<li class=\"page-item active\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\" data-page=" . $counter . ">$counter</a></li>";
                             else
-                                $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
+                                $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
                         }
                     }
                 }
 
                 //next button
                 if ($page < $counter - 1)
-                    $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' href=\"javascript:;\"  data-page=" . $next . ">" . $lang["next"] . "</a></li>";
+                    $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='CRUD' href=\"javascript:;\"  data-page=" . $next . ">" . $lang["next"] . "</a></li>";
                 $pagination .= "</ul>\n";
             }
         }
 
         return $pagination;
     }
-    public function verifyPurchaseCode($settings) {
+
+
+    public function paginationSQL($page = 1, $totalrecords = 0, $limit = 10, $adjacents = 1, $lang = array()) {
+        $pagination = "";
+        if ($totalrecords > 0) {
+            if (!$adjacents)
+                $adjacents = 1;
+            if (!$limit)
+                $limit = 15;
+            if (!$page)
+                $page = 1;
+
+            $prev = $page - 1;
+            $next = $page + 1;
+            $lastpage = ceil($totalrecords / $limit);
+            $lpm1 = $lastpage - 1;
+
+
+            if ($lastpage > 1) {
+                $pagination .= "<ul class=\"pagination\">";
+
+                if ($page > 1)
+                    $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-rendertype='SQL' data-action='pagination' href=\"javascript:;\" data-page=" . $prev . ">« " . $lang["prev"] . "</a></li>";
+
+                if ($lastpage < 7 + ($adjacents * 2)) { 
+                    for ($counter = 1; $counter <= $lastpage; $counter++) {
+                        if ($counter == $page)
+                            $pagination .= "<li class=\"page-item active\"><a class='pdocrud-actions page-link pdocrud-page' data-rendertype='SQL' data-action='pagination' href=\"javascript:;\" data-page=" . $counter . ">$counter</a></li>";
+                        else
+                            $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-rendertype='SQL' data-action='pagination' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
+                    }
+                } elseif ($lastpage >= 7 + ($adjacents * 2)) { 
+                    if ($page < 1 + ($adjacents * 3)) {
+                        for ($counter = 1; $counter < 4 + ($adjacents * 2); $counter++) {
+                            if ($counter == $page)
+                                $pagination .= "<li class=\"page-item active\"><a class='pdocrud-actions page-link pdocrud-page' data-page=" . $counter . " data-rendertype='SQL' data-action='pagination' href=\"javascript:;\">$counter</a></li>";
+                            else
+                                $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
+                        }
+                        $pagination .= "<li class=\"page-item elipses\"></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=" . $lpm1 . ">" . $lpm1 . "</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=" . $lastpage . ">" . $lastpage . "</a></li>";
+                    }
+                    elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=\"1\">1</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=\"2\">2</a></li>";
+                        $pagination .= "<li class=\"elipses\"></li>";
+                        for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
+                            if ($counter == $page)
+                                $pagination .= "<li class=\"active\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\" data-page=" . $counter . ">$counter</a></li>";
+                            else
+                                $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
+                        }
+                        $pagination .= "<li class=\"elipses\"></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=" . $lpm1 . ">" . $lpm1 . "</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=" . $lastpage . ">" . $lastpage . "</a></li>";
+                    }
+                    else {
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=\"1\">1</a></li>";
+                        $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=\"2\">2</a></li>";
+                        $pagination .= "<li class=\"elipses\"></li>";
+                        for ($counter = $lastpage - (1 + ($adjacents * 3)); $counter <= $lastpage; $counter++) {
+                            if ($counter == $page)
+                                $pagination .= "<li class=\"page-item active\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\" data-page=" . $counter . ">$counter</a></li>";
+                            else
+                                $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=" . $counter . ">" . $counter . "</a></li>";
+                        }
+                    }
+                }
+
+                //next button
+                if ($page < $counter - 1)
+                    $pagination .= "<li class=\"page-item\"><a class='pdocrud-actions page-link pdocrud-page' data-action='pagination' data-rendertype='SQL' href=\"javascript:;\"  data-page=" . $next . ">" . $lang["next"] . "</a></li>";
+                $pagination .= "</ul>\n";
+            }
+        }
+
+        return $pagination;
+    }
+
+    /*public function verifyPurchaseCode($settings) {
          $purchaseKey = "";
         if (isset($settings["purchase_code"])) {
             $purchaseKey = $settings["purchase_code"];
@@ -350,6 +430,6 @@ Class PDOCrudHelper {
                 return false;
             }
         }
-    }
+    }*/
 
 }

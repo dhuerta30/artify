@@ -1,45 +1,23 @@
-@import url(//db.onlinewebfonts.com/c/98faa91955bef9970bbf7bd19702aa9e?family=8);
-
 .pdocrud-table-container{
     color: #4e5e6a;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 13px;
 }
-.pdocrud-table-container a{ color: #000;}
 .pdocrud-table-container .panel>.table-responsive{
     background: #eee;
 }
-td.pdocrud-row-actions a:hover {
-    background: #2ac2d4;
-    color: #fff;
-    border: 1px solid #2ac2d4;
-}
-td.pdocrud-row-actions a {
-    cursor: pointer;
-    min-width: 28px;
-    background: #fff;
-    color: #a1a3a5;
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    vertical-align: central;
-    text-align: center;
-    margin: 0 5px;
-    padding: 4px 0px;
-    border: 1px solid #e2e7f1;
-}
+
 .pdocrud-table-container .pdocrud-table-heading h3 {
     float: left;
-    font-size: 20px;
+    font-size: 16px;
     margin: 0;
 }
 .pdocrud-table-container .page-title {
-    background: #f2f4f6;
-    border-bottom: 1px solid rgba(221, 230, 233, 0.48); 
-    color: #444;
+    background: #4d4d4d;
+    border-bottom: none;
+    color: #fff;
 }
 .pdo-search-cols a,.pdocrud-button-delete-all{
-    background: #000;
     color: #fff !important;
 }
 
@@ -49,39 +27,44 @@ td.pdocrud-row-actions a {
 .pdocrud-pagination .pagination>.active>a{
     background: #f1f1f5 !important;
     color: #000 !important;
-    border-color: #e2e4e7 !important;
     
 }
+
 .table>thead:first-child>tr:first-child>th {
     border-top: 0;
-    border: 1px solid #f2f2f2;
     padding: 10px 10px;
     width: 50px;
     text-align: center;
+    color: #fff;
 }
-.pdocrud-table-container .table tbody tr td {
-    border-right: 1px solid #f2f2f2;
+
+td.form-group.pdocrud_leftjoin_row_1.pdocrud_leftjoin_col_1, td.form-group.pdocrud_leftjoin_row_1.pdocrud_leftjoin_col_2, td.form-group.pdocrud_leftjoin_row_1.pdocrud_leftjoin_col_3 {
+    width: 30%;
     padding: 5px 10px;
     padding-top: 10px;
-    border: 1px solid #f2f2f2;
     background-color: #fff;
-    width: 50px;
     text-align: center;
-     
+    font-size: 15px;
 }
+
+.pdocrud-table-container .table tbody tr td {
+    padding: 5px 10px;
+    padding-top: 10px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 15px;
+}
+
 .pdocrud-table-container table tr.pdocrud-header-row th{
-    border: 1px solid #f2f2f2;
     padding: 10px 10px; 
     width: 50px;
     text-align: center;
 }
 .pdocrud-button-add{
     margin-left: 8px;
-    background-color: #fff;
     background-image: none;
     border: 1px solid transparent;
     display: inline-block;
-    border-color: #e2e4e7 !important;
     border-radius: 2px;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -94,17 +77,31 @@ td.pdocrud-row-actions a {
     background-color: #fff;
 }
 .pdocrud-button-add:hover{
-    color: #333;
-    background-color: #e6e6e6;
     text-decoration:none;
 }
 .form-control{
-    border: 1px solid #e2e7f1;
+    border: 1px solid #c3c3c3;
 }
 .pdocrud-table-heading{
     background-color: #e5e9ec;
     color: #4e5e6a;
 }
+
+.form-group.has-error .form-control {
+    box-shadow: 0 0 1px red, 0 0 3px red !important;
+    background: #FFEBEB !important;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+    background-color: red;
+    box-shadow: 0 0 1px red, 0 0 3px red !important;
+    color: #fff;
+    padding: 7px;
+    border-radius: 4px;
+}
+
 .pdocrud-export-options ul li a{
     background: #fff;
     border-color: #e2e7f1 !important;
@@ -120,25 +117,35 @@ td.pdocrud-row-actions a {
     text-decoration: none;
     background-color: #f2f2f2 !important;
 }
-.pdo-search-cols a, .pdocrud-button-delete-all{
-    background: #f1f1f5 !important;
-    color: #000 !important;
-    border-color: #e2e4e7 !important;
-}
-.pdo-search-cols a:hover{
-    color: #23527c !important;
-    text-decoration: none;
-    background-color: #f2f2f2 !important;
-    border: 1px solid #ddd;
-}
+
 .pdocrud-button-delete-all:hover{
-    color: #23527c !important;
-    background-color: #f2f2f2 !important;
-    border: 1px solid #ddd;
-}
-.fa-edit:before, .fa-pencil-square-o:before{
-    content: "\f040";
+    color: #fff !important;
 }
 .pdocrud-table-container .pdocrud-table-heading h3{
     padding: 5px 12px;
+}
+
+.card-body.pdocrudbox.pdocrud-top-buttons {
+    background: #f2f2f2;
+}
+
+.card-text:last-child {
+    color: #000;
+}
+
+a.btn.btn-default.btn-sm {
+    color: #000;
+}
+
+.pdocrud-table-container table tr.pdocrud-header-row th{
+    padding: 9px 15px;    
+}
+.pdocrud-table tbody tr.pdocrud-data-row{
+    height: 50px;
+}
+.pdocrud-table tbody tr.pdocrud-data-row:hover td.pdocrud-row-actions {
+    position: sticky;
+    right: 0;
+    border-left: none;
+    margin-top: 0;
 }

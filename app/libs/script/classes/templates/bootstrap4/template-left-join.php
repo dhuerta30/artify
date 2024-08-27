@@ -1,7 +1,7 @@
 <div class="component addrow float-right">
     <div class="control-group">
         <div class="controls">
-            <a class="pdocrud-actions pdocrud-button pdocrud-button-add-row btn btn-success" href="javascript:;" data-action="add_row">
+            <a class="pdocrud-actions pdocrud-button pdocrud-button-add-row btn btn-success agregar_muestras" href="javascript:;" data-action="add_row">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add"]; ?>
             </a>
         </div>
@@ -11,8 +11,9 @@
 $body = "";
 $rowCount = 1;
 foreach ($data as $rows) {
-    $header = "";
+    $header = "<th>#</th>";
     $body .= "<tr>";
+    $body .= "<td><input type='text' class='form-control valor_aumentado' value='1' readonly='true'></td>";
     $colCount = 1;
     foreach ($rows as $row) {
         $header .= "<th>" . $row["lable"] . $row["tooltip"] . "</th>";
