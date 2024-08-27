@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Doctrine\DBAL\Driver\PgSQL;
 
 use Doctrine\DBAL\Driver\AbstractException;
@@ -19,7 +17,8 @@ use const PGSQL_DIAG_SQLSTATE;
  */
 final class Exception extends AbstractException
 {
-    public static function fromResult(PgSqlResult $result): self
+    /** @param PgSqlResult|resource $result */
+    public static function fromResult($result): self
     {
         $sqlstate = pg_result_error_field($result, PGSQL_DIAG_SQLSTATE);
         if ($sqlstate === false) {

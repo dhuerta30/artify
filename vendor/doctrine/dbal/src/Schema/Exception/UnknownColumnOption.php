@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Doctrine\DBAL\Schema\Exception;
 
 use Doctrine\DBAL\Schema\SchemaException;
-use InvalidArgumentException;
 
 use function sprintf;
 
 /** @psalm-immutable */
-final class UnknownColumnOption extends InvalidArgumentException implements SchemaException
+final class UnknownColumnOption extends SchemaException
 {
     public static function new(string $name): self
     {

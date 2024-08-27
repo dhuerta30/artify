@@ -5,15 +5,17 @@ declare(strict_types=1);
 namespace Doctrine\DBAL\Schema\Exception;
 
 use Doctrine\DBAL\Schema\SchemaException;
-use LogicException;
 
 use function sprintf;
 
 /** @psalm-immutable */
-final class ColumnAlreadyExists extends LogicException implements SchemaException
+final class ColumnAlreadyExists extends SchemaException
 {
     public static function new(string $tableName, string $columnName): self
     {
-        return new self(sprintf('The column "%s" on table "%s" already exists.', $columnName, $tableName));
+        return new self(
+            sprintf('The column "%s" on table "%s" already exists.', $columnName, $tableName),
+            self::COLUMN_ALREADY_EXISTS,
+        );
     }
 }

@@ -43,8 +43,8 @@
 			position: absolute;
 			left: 50%;
 			top: 50%;
-			margin-left: -180px; /* -1 * image width / 2 */
-			margin-top: -80px;  /* -1 * image height / 2 */
+			margin-left: -32px; /* -1 * image width / 2 */
+			margin-top: -32px;  /* -1 * image height / 2 */
 			display: block;     
 		}
 
@@ -67,5 +67,5 @@
 		</nav>
 
 		<div id="loader">
-			<img  width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="ajax-loader"/>
+			<img  width="100" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="ajax-loader"/>
 		</div>

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Doctrine\DBAL\Driver\PDO\SQLSrv;
 
 use Doctrine\DBAL\Driver\AbstractSQLServerDriver;
@@ -19,11 +17,13 @@ final class Driver extends AbstractSQLServerDriver
 {
     /**
      * {@inheritDoc}
+     *
+     * @return Connection
      */
     public function connect(
         #[SensitiveParameter]
-        array $params,
-    ): Connection {
+        array $params
+    ) {
         $driverOptions = $dsnOptions = [];
 
         if (isset($params['driverOptions'])) {
@@ -41,7 +41,7 @@ final class Driver extends AbstractSQLServerDriver
         }
 
         $safeParams = $params;
-        unset($safeParams['password']);
+        unset($safeParams['password'], $safeParams['url']);
 
         try {
             $pdo = new PDO(

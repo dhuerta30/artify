@@ -1,10 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Doctrine\DBAL\Exception;
 
-use Doctrine\DBAL\Driver;
+use Doctrine\DBAL\Driver\Exception as TheDriverException;
 use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Query;
 
@@ -15,18 +13,21 @@ use function assert;
  *
  * @psalm-immutable
  */
-class DriverException extends \Exception implements Exception, Driver\Exception
+class DriverException extends Exception implements TheDriverException
 {
+    /**
+     * The query that triggered the exception, if any.
+     */
+    private ?Query $query;
+
     /**
      * @internal
      *
-     * @param Driver\Exception $driverException The DBAL driver exception to chain.
-     * @param Query|null       $query           The SQL query that triggered the exception, if any.
+     * @param TheDriverException $driverException The DBAL driver exception to chain.
+     * @param Query|null         $query           The SQL query that triggered the exception, if any.
      */
-    public function __construct(
-        Driver\Exception $driverException,
-        private readonly ?Query $query,
-    ) {
+    public function __construct(TheDriverException $driverException, ?Query $query)
+    {
         if ($query !== null) {
             $message = 'An exception occurred while executing a query: ' . $driverException->getMessage();
         } else {
@@ -34,12 +35,17 @@ class DriverException extends \Exception implements Exception, Driver\Exception
         }
 
         parent::__construct($message, $driverException->getCode(), $driverException);
+
+        $this->query = $query;
     }
 
-    public function getSQLState(): ?string
+    /**
+     * {@inheritDoc}
+     */
+    public function getSQLState()
     {
         $previous = $this->getPrevious();
-        assert($previous instanceof Driver\Exception);
+        assert($previous instanceof TheDriverException);
 
         return $previous->getSQLState();
     }

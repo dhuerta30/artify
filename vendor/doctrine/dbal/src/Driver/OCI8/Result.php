@@ -25,26 +25,39 @@ use const OCI_RETURN_NULLS;
 
 final class Result implements ResultInterface
 {
+    /** @var resource */
+    private $statement;
+
     /**
      * @internal The result can be only instantiated by its driver connection or statement.
      *
      * @param resource $statement
      */
-    public function __construct(private readonly mixed $statement)
+    public function __construct($statement)
     {
+        $this->statement = $statement;
     }
 
-    public function fetchNumeric(): array|false
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchNumeric()
     {
         return $this->fetch(OCI_NUM);
     }
 
-    public function fetchAssociative(): array|false
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchAssociative()
     {
         return $this->fetch(OCI_ASSOC);
     }
 
-    public function fetchOne(): mixed
+    /**
+     * {@inheritDoc}
+     */
+    public function fetchOne()
     {
         return FetchUtils::fetchOne($this);
     }
@@ -100,8 +113,12 @@ final class Result implements ResultInterface
         oci_cancel($this->statement);
     }
 
-    /** @throws Exception */
-    private function fetch(int $mode): mixed
+    /**
+     * @return mixed|false
+     *
+     * @throws Exception
+     */
+    private function fetch(int $mode)
     {
         $result = oci_fetch_array($this->statement, $mode | OCI_RETURN_NULLS | OCI_RETURN_LOBS);
 
