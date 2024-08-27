@@ -1108,7 +1108,8 @@ class HomeController
 			"6" => 6
 		), "", "","array");
 		$pdocrud->setLangData("title_left_join", "Opciones configuración Panel");
-		//$pdocrud->formFields(array("cantidad_columnas","titulo","icono", "url"));
+		$pdocrud->setLangData("add_row", "Agregar");
+		$pdocrud->formFields(array("cantidad_columnas","titulo","icono", "url"));
 		$pdocrud->setSettings("template", "dashboard_custom");
 		$pdocrud->colRename("id_creador_de_panel", "ID");
 		$pdocrud->setSettings("printBtn", false);
@@ -1116,6 +1117,7 @@ class HomeController
 		$pdocrud->setSettings("csvBtn", false);
 		$pdocrud->setSettings("excelBtn", false);
 		$pdocrud->setSettings("refresh", false);
+		$pdocrud->buttonHide("submitBtnSaveBack");
 		$pdocrud->joinTable("custom_panel", "custom_panel.id_creador_de_panel = creador_de_panel.id_creador_de_panel", "LEFT JOIN");
 		$render = $pdocrud->dbTable("creador_de_panel")->render();
 		View::render('dashboard_custom', [
