@@ -40,6 +40,20 @@ php artify drop:table nombre_tabla
 ```cmd
 php artify create:crud nombre_tabla "columna1 INT, columna2 VARCHAR(255), columna3 DATE" nombre_vista
 ```
+
+# Ejemplo de uso 
+```cmd
+php artify create:crud nombre_tabla "
+    id_miembro INT AUTO_INCREMENT PRIMARY KEY,
+    foto VARCHAR(300) NOT NULL,
+    nombre_del_miembro INT NOT NULL,
+    id_de_miembro INT NOT NULL,
+    dia_de_ingreso DATE NOT NULL,
+    fecha_de_caducidad DATE NOT NULL,
+    tipo_de_miembro VARCHAR(100) NOT NULL,
+    estado_membresia VARCHAR(100),
+    estado VARCHAR(100)" nombre_vista
+```
 # Para crear una migración de BD use el comando por consola
 
 ```cmd
