@@ -10,6 +10,8 @@ use App\Console\Commands\DropTableCommand;
 use App\Console\Commands\CrudControllerCommand;
 use App\Console\Commands\DatabaseMigrationCommand;
 use App\Console\Commands\CreateTemplatesCrudCommand;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -44,4 +46,25 @@ $app->add(new DropTableCommand());
 $app->add(new CrudControllerCommand());
 $app->add(new CreateTemplatesCrudCommand());
 $app->add(new DatabaseMigrationCommand($connection));
+
+$executeCommand = function() use ($app) {
+    $command = $app->find('create:crud');
+
+    $input = new ArrayInput([
+        'command' => 'create:crud',
+        'table' => 'users',
+        'columns' => 'id INT, name VARCHAR(100), created_at DATE',
+        'name' => 'user_view'
+    ]);
+
+    $output = new ConsoleOutput();
+    $statusCode = $command->run($input, $output);
+
+    echo "Status Code: " . $statusCode . "\n";
+    echo $output->fetch();
+};
+
+// Ejecutar el comando programáticamente
+$executeCommand();
+
 $app->run();
