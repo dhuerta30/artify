@@ -91,7 +91,7 @@ class CrudService
                     \$pdomodel = \$pdocrud->getPDOModelObj();
                     \$columnDB = \$pdomodel->columnNames('{$tableName}');
 
-                    \$pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', [$columnDB]);
+                    \$pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', array(\$columnDB));
                     \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
 
                     View::render(

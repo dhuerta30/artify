@@ -264,7 +264,7 @@
                                             </th>
                                             <?php } ?>
                                             <?php if ($columns) foreach ($columns as $colkey => $column) { ?>
-                                                <th <?php echo $column["attr"]; ?> data-action="<?php echo $column["sort"]; ?>" data-sortkey="<?php echo $colkey; ?>" class="pdocrud-actions-sorting pdocrud--<?php echo $column["sort"]; ?>">
+                                                <th <?php echo $column["attr"]; ?> data-action="<?php echo $column["sort"]; ?>" data-sortkey="<?php echo $colkey; ?>" data-rendertype="SQL" class="pdocrud-actions-sorting pdocrud--<?php echo $column["sort"]; ?>">
                                                     <?php echo $column["colname"];
                                                     echo $column["tooltip"];
                                                     ?>
