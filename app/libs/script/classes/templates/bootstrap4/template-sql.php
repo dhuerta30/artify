@@ -142,7 +142,7 @@
                             $rowcount = 0;
                             if ($data)
                                 foreach ($data as $rows) {
-                            print_r($rows);
+
                                     $sumrow = false;
                                     ?>
                                     <tr data-id="<?=$rows[$pk]?>" id="pdocrud-row-<?php echo $rowcount; ?>" class="pdocrud-data-row">
