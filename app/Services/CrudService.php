@@ -75,7 +75,15 @@ class CrudService
                 public function index()
                 {
                     \$pdocrud = DB::PDOCrud();
+                    \$tabla = \$pdocrud->getLangData('{$tableName}');
+                    \$pk = \$pdocrud->getLangData();
+                    \$columnVal = \$pdocrud->getLangData();
+                
+                    \$pdocrud->setLangData('tabla', $tabla)
+                        ->setLangData('pk', $pk)
+                        ->setLangData('columnVal', $columnVal);
                     \$pdocrud->tableHeading('{$tableName}');
+                    \$pdocrud->addCallback(\"before_delete_selected\", \"eliminacion_masiva_\".{$tableName});
                     \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
 
                     View::render(
