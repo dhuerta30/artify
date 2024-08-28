@@ -27,7 +27,7 @@ class CrudService
     public function createCrud($tableName, $crudType, $query = null, $controllerName, $columns, $nameview)
     {
         $this->createTable($tableName, $columns);
-        $this->generateCrudController($tableName, $crudType,  $query, $controllerName, $nameview, $crudType);
+        $this->generateCrudController($tableName, $crudType, $query, $controllerName, $nameview, $crudType);
         $this->generateView($nameview);
     }
 
@@ -80,14 +80,19 @@ class CrudService
                     \$columnVal = \$pdocrud->getLangData();
 
                     \$pdocrud->setSettings('encryption', false);
-                    \$pdocrud->setSettings('template', $tableName);
+                    \$pdocrud->setSettings('template', '{$tableName}');
+                    \$pdocrud->setLangData('no_data', 'Sin Resultados');
                 
-                    \$pdocrud->setLangData('tabla', $tabla)
-                        ->setLangData('pk', $pk)
-                        ->setLangData('columnVal', $columnVal);
+                    \$pdocrud->setLangData('tabla', '{$tableName}')
+                        ->setLangData('pk', '{$pk}')
+                        ->setLangData('columnVal', '{$columnVal}');
                     \$pdocrud->tableHeading('{$tableName}');
-                    \$pdocrud->addCallback('before_delete_selected', \"eliminacion_masiva_\".{$tableName});
-                    \$pdocrud->addCallback('format_sql_col', \"format_sql_col_\".{$tableName});
+                    \$pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
+
+                    \$pdomodel = \$pdocrud->getPDOModelObj();
+                    \$columnDB = \$pdomodel->columnNames('{$tableName}');
+
+                    \$pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', [$columnDB]);
                     \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
 
                     View::render(

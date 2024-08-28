@@ -26,6 +26,55 @@ if (isset($_REQUEST["pdocrud_instance"])) {
     $fomplusajax->handleRequest();
 }
 
+function format_sql_col_tabla($data, $obj, $columnDB = array()) {
+    $pdomodel = $obj->getPDOModelObj();
+    $tabla = $obj->getLangData("tabla");
+ 
+    $columnNames = $pdomodel->columnNames($tabla);
+ 
+    // Columnas a mostrar en el orden deseado, incluye concatenaciones
+    $include_columns = $columnDB;
+ 
+    // Plantilla para los detalles de cada columna
+    $template = array(
+        'colname' => '',
+        'tooltip' => '',
+        'attr' => '',
+        'sort' => '',
+        'col' => '',
+        'type' => ''
+    );
+ 
+    $default_cols = array();
+    foreach ($include_columns as $column) {
+        // Aplicar la plantilla y ajustar los valores específicos de la columna
+        $details = $template;
+        $details['colname'] = ucfirst(str_replace('_', ' ', $column));
+        $details['col'] = $column;
+ 
+        // Verificar si la columna está en la base de datos
+        if (in_array($column, $columnNames)) {
+            // Columna existente en la base de datos
+            $default_cols[$column] = $details;
+        } else {
+            // Columna concatenada o que no está en la base de datos
+            $default_cols[$column] = $details;
+        }
+    }
+ 
+    // Crear un nuevo array en el orden deseado
+    $ordered_default_cols = array();
+    foreach ($include_columns as $column) {
+        if (isset($default_cols[$column])) {
+            $ordered_default_cols[$column] = $default_cols[$column];
+        }
+    }
+ 
+    $data = array_merge($ordered_default_cols, $data);
+    return $data;
+}
+
+
 function carga_masiva_nmedicos_insertar($data, $obj){
     $archivo = basename($data["carga_masiva_nmedicos"]["archivo"]);
     $extension = pathinfo($archivo, PATHINFO_EXTENSION);
