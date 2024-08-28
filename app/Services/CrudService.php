@@ -78,6 +78,9 @@ class CrudService
                     \$tabla = \$pdocrud->getLangData('{$tableName}');
                     \$pk = \$pdocrud->getLangData();
                     \$columnVal = \$pdocrud->getLangData();
+
+                    \$pdocrud->setSettings('encryption', false);
+                    \$pdocrud->setSettings('template', $tableName);
                 
                     \$pdocrud->setLangData('tabla', $tabla)
                         ->setLangData('pk', $pk)
