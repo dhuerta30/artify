@@ -97,23 +97,45 @@
                         <table class="table pdocrud-table table-bordered table-striped table-condensed" data-obj-key="<?php echo $objKey; ?>">
                             <?php if ($settings["headerRow"]) { ?>
                                 <thead>
-                                    <tr class="pdocrud-header-row">
-                                        <?php if ($settings["numberCol"]) { ?>
-                                            <th class="w1">
-                                                #
-                                            </th>
-                                        <?php } ?>
-                                        <?php if ($columns) foreach ($columns as $colkey => $column) { ?>
-                                                <th <?php echo $column["attr"]; ?> data-action="<?php echo $column["sort"]; ?>"  data-sortkey="<?php echo $colkey; ?>" data-rendertype="SQL" class="pdocrud-actions-sorting pdocrud-<?php echo $column["sort"]; ?>">
-                                                    <?php
-                                                    echo $column["colname"];
-                                                    echo $column["tooltip"];
-                                                    ?>
-                                                </th>
-        <?php } ?>
-                                    </tr>
+                                <tr class="pdocrud-header-row">
+                    <?php if ($settings["numberCol"]) { ?>
+                        <th class="w1">
+                            #
+                        </th>
+                    <?php }
+                    if ($settings["checkboxCol"]) { ?>
+                        <th class="w1 text-center">
+                            <input type="checkbox" value="select-all" name="pdocrud_select_all" class="pdocrud-select-all" />
+                        </th>
+                        <?php }
+                    if ($columns) foreach ($columns as $colkey => $column) {
+                        ?>
+                            <?php if ($settings["sortable"]): ?>
+                            <th <?php echo $column["attr"]; ?> data-action="<?php echo $column["sort"]; ?>" data-sortkey="<?php echo $colkey; ?>" class="pdocrud-actions-sorting pdocrud-<?php echo $column["sort"]; ?>">
+                                <span> <?php echo $column["colname"];
+                                        echo $column["tooltip"];
+                                        ?>
+                                </span>
+                            </th>
+                            <?php else: ?>
+                                <th <?php echo $column["attr"]; ?>>
+                                <span> <?php echo $column["colname"];
+                                        echo $column["tooltip"];
+                                        ?>
+                                </span>
+                            </th>
+                            <?php endif; ?>
+                        <?php 
+                    }
+                    if ($settings["actionbtn"]) {
+                        ?>
+                        <th>
+                            <?php echo $lang["actions"] ?>
+                        </th>
+                    <?php } ?>
+                </tr>
                                 </thead>
-<?php } ?>
+                            <?php } ?>
                             <tbody>
                             <input type="hidden" value="<?php echo $objKey; ?>" class="pdocrud-hidden-data pdoobj" />
                             <?php

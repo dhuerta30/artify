@@ -93,6 +93,7 @@ class CrudService
                     \$pdocrud->tableHeading('{$tableName}');
                     \$pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
 
+                    \$pdocrud->setSettings('viewbtn', false);
                     \$pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', array(\$columnDB));
                     \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
 

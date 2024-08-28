@@ -32,8 +32,6 @@ function format_sql_col_tabla($data, $obj, $columnDB = array()) {
  
     $columnNames = $pdomodel->columnNames($tabla);
  
-    $include_columns = $columnDB;
- 
     $template = array(
         'colname' => '',
         'tooltip' => '',
@@ -44,7 +42,7 @@ function format_sql_col_tabla($data, $obj, $columnDB = array()) {
     );
  
     $default_cols = array();
-    foreach ($include_columns as $column) {
+    foreach ($columnDB as $column) {
         // Aplicar la plantilla y ajustar los valores específicos de la columna
         $details = $template;
         $details['colname'] = ucfirst(str_replace('_', ' ', $column));
@@ -60,15 +58,6 @@ function format_sql_col_tabla($data, $obj, $columnDB = array()) {
         }
     }
  
-    // Crear un nuevo array en el orden deseado
-    $ordered_default_cols = array();
-    foreach ($include_columns as $column) {
-        if (isset($default_cols[$column])) {
-            $ordered_default_cols[$column] = $default_cols[$column];
-        }
-    }
- 
-    $data = array_merge($ordered_default_cols, $data);
     return $data;
 }
 
