@@ -62,6 +62,27 @@ function format_sql_col_tabla($data, $obj, $columnDB = array()) {
 }
 
 
+function eliminacion_masiva_tabla($data, $obj){
+    $tabla = $obj->getLangData("tabla");
+    $pk = $obj->getLangData("pk");
+    $pdomodel = $obj->getPDOModelObj();
+ 
+    // Obtener los IDs seleccionados del array
+    $selected_ids = $data["selected_ids"];
+ 
+    // Asegurarse de que $selected_ids no esté vacío
+    if (!empty($selected_ids)) {
+        // Recorrer cada ID y eliminar el producto correspondiente
+        foreach ($selected_ids as $id) {
+            $pdomodel->where($pk, $id);
+            $pdomodel->delete($tabla);
+        }
+    }
+ 
+    return $data;
+}
+
+
 function carga_masiva_nmedicos_insertar($data, $obj){
     $archivo = basename($data["carga_masiva_nmedicos"]["archivo"]);
     $extension = pathinfo($archivo, PATHINFO_EXTENSION);
