@@ -89,7 +89,7 @@ class CrudService
                     \$action = 'http://google.cl';
                     \$text = '<i class='fa fa-globe'></i>';
                     \$attr = array('title'=> 'Editar');
-                    \$pdocrud->enqueueBtnActions('url', $action, 'url', $text, $pk, $attr, 'btn-primary', array(array()));
+                    \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-primary', array(array()));
 
                     \$pdocrud->setSettings('encryption', false);
                     \$pdocrud->setSettings('addbtn', false);
