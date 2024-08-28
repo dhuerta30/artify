@@ -84,7 +84,11 @@ class CrudService
                     \$pk = \$pdocrud->getLangData(\$id);
                     \$columnVal = \$pdocrud->getLangData(\$id);
 
+                    \$pdocrud->enqueueBtnTopActions('Report',  '<i class='fa fa-plus'></i> Agregar', 'javascript:;', array(), 'btn-report');
+
                     \$pdocrud->setSettings('encryption', false);
+                    \$pdocrud->setSettings('addbtn', false);
+                    \$pdocrud->setSettings('editbtn', false);
                     \$pdocrud->setLangData('no_data', 'Sin Resultados');
                 
                     \$pdocrud->setLangData('tabla', '{$tableName}')
