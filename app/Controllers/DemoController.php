@@ -34,7 +34,7 @@
                     $pk = $pdocrud->getLangData($id);
                     $columnVal = $pdocrud->getLangData($id);
 
-                    $pdocrud->enqueueBtnTopActions('Report',  '<i class='fa fa-plus'></i> Agregar', 'javascript:;', array(), 'btn-report');
+                    $pdocrud->enqueueBtnTopActions('Report',  'Agregar', 'javascript:;', array(), 'btn-report');
 
                     $action = 'http://google.cl';
                     $text = '<i class="fa fa-globe"></i>';
