@@ -121,10 +121,11 @@ class HomeController
     try {
         $crudService = new CrudService();
         $tableName = 'example_table';
+        $controllerName = 'controller_name';
         $columns = 'id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)';
         $nameview = 'example_view';
         
-        $crudService->createCrud($tableName, $columns, $nameview);
+        $crudService->createCrud($tableName, $controllerName, $columns, $nameview);
 
         // Mensaje de éxito o redirigir según sea necesario
         echo "CRUD creado con éxito.";
