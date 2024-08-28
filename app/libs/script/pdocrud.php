@@ -32,10 +32,8 @@ function format_sql_col_tabla($data, $obj, $columnDB = array()) {
  
     $columnNames = $pdomodel->columnNames($tabla);
  
-    // Columnas a mostrar en el orden deseado, incluye concatenaciones
     $include_columns = $columnDB;
  
-    // Plantilla para los detalles de cada columna
     $template = array(
         'colname' => '',
         'tooltip' => '',

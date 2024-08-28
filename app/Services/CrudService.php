@@ -80,7 +80,6 @@ class CrudService
                     \$columnVal = \$pdocrud->getLangData();
 
                     \$pdocrud->setSettings('encryption', false);
-                    \$pdocrud->setSettings('template', '{$tableName}');
                     \$pdocrud->setLangData('no_data', 'Sin Resultados');
                 
                     \$pdocrud->setLangData('tabla', '{$tableName}')
@@ -162,8 +161,6 @@ class CrudService
 
                         <div class="row procedimiento">
                             <div class="col-md-12">
-                                <h5>titulo</h5>
-                                <hr>
                                 <?=$render?>
                             </div>
                         </div>
