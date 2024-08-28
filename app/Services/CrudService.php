@@ -43,7 +43,6 @@ class CrudService
 
     private function generateCrudController($tableName, $controllerName, $nameview)
     {
-        $controllerName = $tableName . 'Controller';
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . '.php';
 
         $controllerContent = "<?php
