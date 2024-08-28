@@ -1315,3 +1315,4 @@
 2024-08-23 16:03:38 Operación realizada con éxito
 2024-08-23 16:03:50 Operación realizada con éxito
 2024-08-23 16:03:56 No tienes permitido acceder a este recurso.
+2024-08-28 14:17:55 No tienes permitido acceder a este recurso.
