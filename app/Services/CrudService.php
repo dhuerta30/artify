@@ -24,10 +24,10 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $columns, $nameview)
+    public function createCrud($tableName, $controllerName, $columns, $nameview)
     {
         $this->createTable($tableName, $columns);
-        $this->generateCrudController($tableName, $nameview);
+        $this->generateCrudController($tableName, $controllerName, $nameview);
         $this->generateView($nameview);
     }
 
@@ -41,7 +41,7 @@ class CrudService
         }
     }
 
-    private function generateCrudController($tableName, $nameview)
+    private function generateCrudController($tableName, $controllerName, $nameview)
     {
         $controllerName = $tableName . 'Controller';
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . '.php';
