@@ -166,19 +166,22 @@ class ApiController
 ```
 # Archivo de configuraciones de la BD y mas .env
 ```env
+APP_NAME=Artify
+
 # DB config #
 DB_HOST=localhost
 DB_USER=root
-DB_NAME=procedimiento
+DB_NAME=artify
 DB_PASS=
+
 # Set the database type to be used. Available values are "mysql", "pgsql", "sqlite" and "sqlserver".
 DB_TYPE=mysql
 
-BASE_URL=/procedimiento/  // url base del directorio principal de tu proyecto
+BASE_URL=/artify/
 
-URL_PDOCRUD=/procedimiento/app/libs/
+URL_PDOCRUD=/artify/app/libs/
 UPLOAD_URL=app/libs/script/uploads/
-DOWNLOAD_URL=/procedimiento/app/libs/script/downloads/
+DOWNLOAD_URL=/artify/app/libs/script/downloads/
 DOWNLOAD_FOLDER=downloads/
 UPLOAD_FOLDER=uploads/
 LANG=es
@@ -199,6 +202,24 @@ MAIL_PASSWORD=zdkbgrxsnjmyyzrj
 EMAIL_FROM=Procedimiento
 SMTP_SECURE=tls
 SMTP_KEEP_ALIVE=true
+
+# Api Configuracion
+ENABLE_JWTAUTH=true
+ENCODE_HTML=true
+ENABLE_LOGS=true
+ENABLE_CACHE=false
+CACHE_DURATION=5
+SECRET_KEY=8jiHfds023299fdfnFFsfds
+EXP_TIME=60
+USER_ID_FIELD_NAME=id
+PASSWORD_FIELD_NAME=password
+ENCRYPT_PASSWORD=bcrypt
+DEFAULT_RESPONSE_TYPE=json
+ALLOW_ORIGIN_HEADER=true
+ALLOW_QUERY_EXECUTION=true
+
+# "horizontle" "verticle"
+TABLE_FORMAT=horizontle
 ```
 # Asignar menus a usuarios
 ![Asignar menus a usuarios](https://github.com/dhuerta30/procedimiento/blob/main/Screenshot_21.png)
