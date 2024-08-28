@@ -1,4 +1,9 @@
-<section class="pdocrud-table-container" data-objkey="<?php echo $objKey; ?>" <?php if (!empty($modal)) { ?> data-modal="true"<?php } ?> >
+
+<?php 
+    $pk = $lang["pk"]; 
+    $columnVal = $lang["columnVal"];
+?>
+<section class="pdocrud-table-container <?=$lang["tabla"]?>_table_container" data-objkey="<?php echo $objKey; ?>" <?php if (!empty($modal)) { ?> data-modal="true"<?php } ?> >
     <div class="card">
         <div class="page-title clearfix card-heading pdocrud-table-heading p-2">
             <h3 class="card-title">
@@ -7,6 +12,25 @@
                     <?php echo $lang["tableSubHeading"]; ?>
                 </small>
             </h3>
+            <?php
+             if (isset($extraData["btnTopAction"]) && is_array($extraData["btnTopAction"]) && count($extraData["btnTopAction"])) { 
+                foreach ($extraData["btnTopAction"] as  $action_name => $action) { 
+                    list( $key, $text, $attr, $url, $cssClass) = $action;
+                     ?>
+                    <div class="btn-group pull-right">
+                        <a  title="<?php echo $text; ?>" class="pdocrud-top-actions pdocrud-button <?php echo $cssClass; ?> pdocrud-button-<?php echo $action_name; ?> btn btn-success"  
+                            href="<?php echo $url;?>"
+                            data-action="<?php echo $action_name; ?>" <?php echo implode(' ', array_map(
+                                                                function ($v, $k) {
+                                                            return $k . "=" ."'". $v."'";
+                                                        }, $attr, array_keys($attr)
+                                                )); ?> data-obj-key="<?php echo $objKey; ?>">
+                            <?php echo $text; ?>
+                        </a>                    
+                    </div>
+               <?php } 
+                }
+            ?>
             <?php if ($settings["addbtn"]) { ?>
                 <div class="btn-group float-right">
                     <a title="<?php echo $lang["add"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-add green agregar btn btn-success" href="javascript:;" data-action="add" data-obj-key="<?php echo $objKey; ?>">
@@ -102,8 +126,11 @@
                                             <td class="pdocrud-row-count">
                                             <?php echo $rowcount + 1; ?>
                                             </td>
-                                        <?php } ?>
-                                        <?php
+                                        <?php } if ($settings["checkboxCol"]) { ?>
+                                        <td class="pdocrud-row-checkbox-actions">
+                                            <input type="checkbox" class="pdocrud-select-cb" value="<?php echo $rows[$pk]; ?>" />
+                                        </td>
+                                        <?php }
                                         foreach ($rows as $col => $row) {
                                             if (is_array($row)) {
                                                 ?>    
@@ -119,7 +146,99 @@
                                                 <?php
                                             }
                                         }
+                                        if($sumrow){
+                                            ?>
+                                             <td class="pdocrud-row-actions"></td>
+                                            <?php continue;             
+                                        }
+                                        if (is_array($btnActions) && count($btnActions)) {
                                         ?>
+                                        <td class="pdocrud-row-actions">
+
+                                        <?php foreach ($btnActions as  $action_name => $action) { 
+                                                    list( $key, $colName, $action_val, $type, $text, $attr, $url, $cssClass, $btnWhere) = $action;
+                                                    $columnVal = isset($rows[$colName]) ? $rows[$colName] : "";
+                                                    $url =  preg_replace('/{[^}]+}/', $rows[$pk], $url);
+                                                    if (is_array($text) && isset($text[$rows[$colName]])){
+                                                        $action_text = $text[$rows[$colName]];
+                                                    } else {
+                                                        $action_text = $text;
+                                                    }
+
+                                                    $skipBtn = false;
+                                                    
+                                                    if(!empty($btnWhere) && is_array($btnWhere) && count($btnWhere)){
+                                                        if(!empty($btnWhere[1]) && $btnWhere[1] === "="){
+                                                            $skipBtn = true;
+                                                            if(!empty($btnWhere[2]) && in_array($rows[$lang["colname_where"]], $btnWhere[2])){
+                                                                $skipBtn = false;
+                                                            }
+                                                        }
+                                                        else if(!empty($btnWhere[1]) && $btnWhere[1] === "!="){
+                                                            $skipBtn = true;
+                                                            if(!empty($btnWhere[2]) && !in_array($rows[$lang["colname_where"]], $btnWhere[2])){
+                                                                $skipBtn = false;
+                                                            }
+                                                        }
+                                                    }    
+                                                    
+                                                    if($skipBtn === false)   {
+                                                    ?>
+                                                    <?php
+                                                        $btnClass = "btn ";
+
+                                                        // Define el conjunto de valores para los cuales queremos clases específicas
+                                                        $specificActions = ["view", "edit", "inline_edit", "clone", "delete", "url"];
+
+                                                        if (in_array($action_name, $specificActions)) {
+                                                            switch ($action_name) {
+                                                                case "view":
+                                                                    $btnClass .= "btn-info";
+                                                                    break;
+                                                                case "edit":
+                                                                case "inline_edit":
+                                                                case "clone":
+                                                                    $btnClass .= "btn-warning";
+                                                                    break;
+                                                                case "delete":
+                                                                    $btnClass .= "btn-danger";
+                                                                    break;
+                                                                case "url":
+                                                                    $btnClass .= "btn-default";
+                                                                    break;
+                                                            }
+                                                            $btnClass .= " pdocrud-actions";  // Agrega esta clase solo para los actions específicos
+                                                        } else {
+                                                            $btnClass .= "btn-default";  // Para cualquier otro action_name
+                                                        }
+
+                                                        // Agrega clases adicionales si están definidas
+                                                        $btnClass .= (isset($cssClass) && !empty($cssClass)) ? " $cssClass" : "";
+
+                                                        // Sobrescribe btnClass para el caso "url"
+                                                        if ($action_name == "url") {
+                                                            $btnClass = "btn btn-default";
+                                                        }
+                                                        ?>
+                                                        <a class="<?php echo $btnClass; ?> btn-sm pdocrud-button <?php echo $action_name;?>"
+                                                            href="<?php echo $url;?>"
+                                                            <?php
+                                                            echo implode(' ', array_map(
+                                                                            function ($v, $k) {
+                                                                                return $k . "=" ."'". $v."'";
+                                                                            }, $attr, array_keys($attr)
+                                                            )); ?>  
+                                                            data-id="<?php echo $rows[$pk]; ?>" 
+                                                            data-column-val="<?php echo $columnVal ?>"
+                                                            data-unique-id="<?php echo $key; ?>" 
+                                                            data-action="<?php echo $type;?>"><?php echo $action_text; ?>
+                                                        </a>
+                                                        <?php } 
+                                                            }
+                                                        ?>
+
+                                        </td>
+                                        <?php } ?>
                                     </tr>
                                     <?php
                                     $rowcount++;
@@ -134,25 +253,30 @@
                             }
                             ?>
                             </tbody>
-                                    <?php if ($settings["footerRow"]) { ?>
+                                <?php if ($settings["footerRow"]) { ?>
                                 <tfoot>
                                     <tr class="pdocrud-header-row">
-    <?php if ($settings["numberCol"]) { ?>
+                                        <?php if ($settings["numberCol"]) { ?>
                                             <th class="w1">
                                                 #
                                             </th>
                                             <?php } ?>
                                             <?php if ($columns) foreach ($columns as $colkey => $column) { ?>
-                                                <th <?php echo $column["attr"]; ?> data-action="<?php echo $column["sort"]; ?>" data-sortkey="<?php echo $colkey; ?>" class="pdocrud-actions-sorting">
-                                                    <?php
-                                                    echo $column["colname"];
+                                                <th <?php echo $column["attr"]; ?> data-action="<?php echo $column["sort"]; ?>" data-sortkey="<?php echo $colkey; ?>" class="pdocrud-actions-sorting pdocrud--<?php echo $column["sort"]; ?>">
+                                                    <?php echo $column["colname"];
                                                     echo $column["tooltip"];
                                                     ?>
                                                 </th>
                                     <?php } ?>
+                                    <?php if ($settings["actionbtn"]) {
+                                            ?>
+                                            <th>
+                                            <?php echo $lang["actions"] ?>
+                                            </th>
+                                    <?php } ?>
                                     </tr>
                                 </tfoot>
-<?php } ?>
+                                <?php } ?>
                         </table>
                     </div>
                 </div>
