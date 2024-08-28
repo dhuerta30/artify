@@ -117,23 +117,26 @@ use App\Services\CrudService; // llama al servicio para generar el crud
 class HomeController
 {
 
-  public function metodo(){
-    try {
-        $crudService = new CrudService();
-        $tableName = 'example_table';
-        $controllerName = 'controller_name';
-        $columns = 'id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)';
-        $nameview = 'example_view';
-        
-        $crudService->createCrud($tableName, $controllerName, $columns, $nameview);
+  public function metodo()
+    {
+        try {
+            $crudService = new CrudService();
+            $tableName = 'demo';
+            $crudType = "SQL";
+            $query = "SELECT id as ID, name as Name FROM ". $tableName;
+            $controllerName = 'Demo';
+            $columns = 'id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)';
+            $nameview = 'demo';
+            
+            $crudService->createCrud($tableName, $crudType, $query, $controllerName, $columns, $nameview);
 
-        // Mensaje de éxito o redirigir según sea necesario
-        echo "CRUD creado con éxito.";
-    } catch (\Exception $e) {
-        // Manejo de errores
-        echo "Error: " . $e->getMessage();
+            // Mensaje de éxito o redirigir según sea necesario
+            echo "CRUD creado con éxito.";
+        } catch (\Exception $e) {
+            // Manejo de errores
+            echo "Error: " . $e->getMessage();
+        }
     }
-  }
 
 }
 ?>

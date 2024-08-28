@@ -113,7 +113,6 @@ td.form-group.pdocrud_leftjoin_row_1.pdocrud_leftjoin_col_1, td.form-group.pdocr
 .pdocrud-export-options ul li a:hover{
     color: #23527c !important;
     text-decoration: none;
-    background-color: #f2f2f2 !important;
 }
 
 .pdocrud-button-delete-all:hover{
