@@ -1316,3 +1316,10 @@
 2024-08-23 16:03:50 Operación realizada con éxito
 2024-08-23 16:03:56 No tienes permitido acceder a este recurso.
 2024-08-28 14:17:55 No tienes permitido acceder a este recurso.
+2024-08-28 14:18:14 [
+    [
+        "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'artify.usuarios' doesn't exist"
+    ]
+]
+2024-08-28 14:18:18 Operación realizada con éxito
+2024-08-28 14:18:27 No tienes permitido acceder a este recurso.
