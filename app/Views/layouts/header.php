@@ -29,6 +29,15 @@
 			list-style: none;
 		}
 
+		.brand-link {
+			display: block;
+			font-size: 1.25rem;
+			line-height: 1.5;
+			padding: .1rem .5rem;
+			transition: width .3s ease-in-out;
+			white-space: nowrap;
+		}
+
 		#loader {  
 			position:fixed;
 			top:0;
