@@ -7,7 +7,7 @@
     <div class="card">
         <div class="page-title clearfix card-heading pdocrud-table-heading p-2">
             <h3 class="card-title">
-                <?php echo $lang["tableHeading"]; ?>                 
+                <?php echo $lang["tableHeading"]; ?>
                 <small>
                     <?php echo $lang["tableSubHeading"]; ?>
                 </small>
@@ -142,9 +142,10 @@
                             $rowcount = 0;
                             if ($data)
                                 foreach ($data as $rows) {
+                            print_r($rows);
                                     $sumrow = false;
                                     ?>
-                                    <tr id="pdocrud-row-<?php echo $rowcount; ?>" class="pdocrud-data-row">
+                                    <tr data-id="<?=$rows[$pk]?>" id="pdocrud-row-<?php echo $rowcount; ?>" class="pdocrud-data-row">
                                             <?php if ($settings["numberCol"]) { ?>
                                             <td class="pdocrud-row-count">
                                             <?php echo $rowcount + 1; ?>
@@ -180,9 +181,7 @@
 
                                         <?php foreach ($btnActions as  $action_name => $action) { 
                                         list( $key, $colName, $action_val, $type, $text, $attr, $url, $cssClass, $btnWhere) = $action;
-                                        
                                         $columnVal = isset($rows[$colName]) ? $rows[$colName] : "";
-                                        
                                         $url = preg_replace_callback('/{([^}]+)}/', function ($matches) use ($rows) {
                                             $field = $matches[1]; // El campo dentro de las llaves
                                             return isset($rows[$field]) ? $rows[$field] : $matches[0]; // Devuelve el valor del campo o el marcador original si no existe
@@ -258,7 +257,7 @@
                                                                     return $k . "=" ."'". $v."'";
                                                                 }, $attr, array_keys($attr)
                                                 )); ?>  
-                                                data-id="<?php echo $pk; ?>" 
+                                                data-id="<?php echo $rows[$pk]; ?>" 
                                                 data-column-val="<?php echo $columnVal ?>"
                                                 data-unique-id="<?php echo $key; ?>" 
                                                 data-action="<?php echo $type;?>"><?php echo $action_text; ?>
@@ -275,8 +274,8 @@
                                 } else {
                                 ?>
                                 <tr class="pdocrud-data-row">
-                                    <td class="pdocrud-row-count" colspan="<?php echo count($columns); ?>">
-                                <?php echo $lang["no_data"] ?>
+                                    <td class="pdocrud-row-count" colspan="100%">
+                                        <?php echo $lang["no_data"] ?>
                                     </td>
                                 </tr>
                                 <?php

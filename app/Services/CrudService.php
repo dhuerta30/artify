@@ -78,7 +78,7 @@ class CrudService
 
                     \$pdomodel = \$pdocrud->getPDOModelObj();
                     \$columnDB = \$pdomodel->columnNames('{$tableName}');
-                    \$id = \$columnDB[0];
+                    \$id = strtoupper(\$columnDB[0]);
 
                     \$tabla = \$pdocrud->getLangData('{$tableName}');
                     \$pk = \$pdocrud->getLangData(\$id);
