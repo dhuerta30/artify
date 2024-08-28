@@ -61,7 +61,6 @@ function format_sql_col_tabla($data, $obj, $columnDB = array()) {
     return $data;
 }
 
-
 function eliminacion_masiva_tabla($data, $obj){
     $tabla = $obj->getLangData("tabla");
     $pk = $obj->getLangData("pk");
