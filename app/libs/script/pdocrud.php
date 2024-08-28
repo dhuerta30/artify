@@ -1065,7 +1065,7 @@ function insetar_usuario($data, $obj){
     }
 
     $nombre = $data["usuario"]["nombre"];
-    $rut = $data["usuario"]["rut"];
+    //$rut = $data["usuario"]["rut"];
     $email  = $data["usuario"]["email"];
     $user   = $data["usuario"]["usuario"];
     $clave  = $data["usuario"]["password"];
@@ -1075,9 +1075,9 @@ function insetar_usuario($data, $obj){
     if(empty($nombre)){
         $error_msg = array("message" => "", "error" => "El campo Nombre Completo es obligatorio", "redirectionurl" => "");
         die(json_encode($error_msg));
-    } else if(empty($rut)){
+    /*} else if(empty($rut)){
         $error_msg = array("message" => "", "error" => "El campo Rut es obligatorio", "redirectionurl" => "");
-        die(json_encode($error_msg));
+        die(json_encode($error_msg));*/
     } else if(empty($email)){
         $error_msg = array("message" => "", "error" => "El campo Correo Electrónico es obligatorio", "redirectionurl" => "");
         die(json_encode($error_msg));
@@ -1101,7 +1101,7 @@ function insetar_usuario($data, $obj){
     } else {
         $newdata = array();
         $newdata["usuario"]["nombre"] = $nombre;
-        $newdata["usuario"]["rut"] = $rut;
+        //$newdata["usuario"]["rut"] = $rut;
         $newdata["usuario"]["usuario"] = $user;
         $newdata["usuario"]["email"] = $email;
         if (empty($avatar)) {
