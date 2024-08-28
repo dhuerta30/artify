@@ -484,16 +484,6 @@ $(document).ready(function(){
                 if (data.action === "add_row") {
 
                     var cantidad_columnas = parseFloat($(".cantidad_columnas").val());
-                    var clickCount = 1; // Inicializa el contador de clics
-
-                    $('.pdocrud-button-add-row').click(function() {
-                        clickCount++;
-
-                        // Verifica si el contador ha llegado a cantidad_columnas = cantidad_de_clics
-                        if (clickCount === cantidad_columnas - 1) {
-                            $('.pdocrud-button-add-row').hide();
-                        }
-                    });
 
                     $(".pdocrud-left-join").each(function () {
                         
@@ -512,6 +502,12 @@ $(document).ready(function(){
                 
                         // Asignar el valor incrementado al campo .valor_aumentado en la nueva fila
                         $(this).find('.icono').select2();
+
+                        var rowCount = $(this).find('tbody tr').length;
+
+                        if (rowCount >= cantidad_columnas) {
+                            $('.pdocrud-button-add-row').hide(); // Ocultar el botón cuando se alcance el número de filas
+                        }
                 
                         if ($('tbody', this).length > 0) {
                             $('tbody', this).append($lastRow);
