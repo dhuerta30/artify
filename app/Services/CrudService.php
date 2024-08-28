@@ -86,7 +86,8 @@ class CrudService
                         ->setLangData('pk', $pk)
                         ->setLangData('columnVal', $columnVal);
                     \$pdocrud->tableHeading('{$tableName}');
-                    \$pdocrud->addCallback(\"before_delete_selected\", \"eliminacion_masiva_\".{$tableName});
+                    \$pdocrud->addCallback('before_delete_selected', \"eliminacion_masiva_\".{$tableName});
+                    \$pdocrud->addCallback('format_sql_col', \"format_sql_col_\".{$tableName});
                     \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
 
                     View::render(
