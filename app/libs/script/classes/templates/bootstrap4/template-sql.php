@@ -53,7 +53,18 @@
                     <?php } ?>
                 </div>
                 <div class="col-sm-6 float-right">                    
-                   
+                    <div class="row pdocrud-search">
+                        <?php if ($settings["searchbox"]) { ?>
+                            <?php echo $searchbox; ?>
+                        <?php } ?>
+                        <?php if ($settings["deleteMultipleBtn"]) { ?>
+                            <div class="col-md-1 col-sm-1 col-1 no-padding">
+                                <a title="<?php echo $lang["delete_selected"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-delete-all green btn btn-danger" href="javascript:;" data-action="delete_selected" data-obj-key="<?php echo $objKey; ?>">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
             <div class="row">
