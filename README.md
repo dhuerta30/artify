@@ -54,6 +54,13 @@ php artify create:crud nombre_tabla "
     estado_membresia VARCHAR(100),
     estado VARCHAR(100)" nombre_vista
 ```
+
+# Para crear una Plantilla PDOCrud use el comando por consola
+
+```cmd
+php artify make:templatecrud nombre_template
+```
+
 # Para crear una migración de BD use el comando por consola
 
 ```cmd
