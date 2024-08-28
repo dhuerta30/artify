@@ -24,10 +24,10 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $crudType, $controllerName, $columns, $nameview)
+    public function createCrud($tableName, $crudType, $query = null, $controllerName, $columns, $nameview)
     {
         $this->createTable($tableName, $columns);
-        $this->generateCrudController($tableName, $crudType, $controllerName, $nameview, $crudType);
+        $this->generateCrudController($tableName, $crudType,  $query, $controllerName, $nameview, $crudType);
         $this->generateView($nameview);
     }
 
@@ -41,9 +41,9 @@ class CrudService
         }
     }
 
-    private function generateCrudController($tableName, $crudType, $controllerName, $nameview, $query = null)
+    private function generateCrudController($tableName, $crudType, $query = null, $controllerName, $nameview)
     {
-        $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . '.php';
+        $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
 
         if($crudType == 'SQL'){
             $crudType = 'SQL';
@@ -58,7 +58,7 @@ class CrudService
             use App\core\View;
             use App\core\Redirect;
 
-            class {$controllerName}
+            class {$controllerName}Controller
             {
                 public \$token;
 
@@ -75,8 +75,7 @@ class CrudService
                 public function index()
                 {
                     \$pdocrud = DB::PDOCrud();
-                    \$pdocrud->setQuery('{$query}');
-                    \$render = \$pdocrud->dbTable('{$tableName}')->render('SQL');
+                    \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
 
                     View::render(
                         '{$nameview}', 
@@ -99,7 +98,7 @@ class CrudService
             use App\core\View;
             use App\core\Redirect;
 
-            class {$controllerName}
+            class {$controllerName}Controller
             {
                 public \$token;
 
