@@ -38,7 +38,7 @@
 $(document).on("change", ".cantidad_columnas", function(){
     var cantidad_columnas = $(".cantidad_columnas").val();
 
-        if(cantidad_columnas == ""){
+        if(cantidad_columnas == "" || cantidad_columnas == 1){
             $('.pdocrud-button-add-row').hide();
         } else {
             $('.pdocrud-button-add-row').show();
