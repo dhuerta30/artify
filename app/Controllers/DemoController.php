@@ -25,21 +25,23 @@
                 public function index()
                 {
                     $pdocrud = DB::PDOCrud();
+
+                    $pdomodel = $pdocrud->getPDOModelObj();
+                    $columnDB = $pdomodel->columnNames('demo');
+                    $id = $columnDB[0];
+
                     $tabla = $pdocrud->getLangData('demo');
-                    //$pk = $pdocrud->getLangData();
-                    //$columnVal = $pdocrud->getLangData();
+                    $pk = $pdocrud->getLangData($id);
+                    $columnVal = $pdocrud->getLangData($id);
 
                     $pdocrud->setSettings('encryption', false);
                     $pdocrud->setLangData('no_data', 'Sin Resultados');
                 
                     $pdocrud->setLangData('tabla', 'demo')
-                        ->setLangData('pk', '')
-                        ->setLangData('columnVal', '');
+                        ->setLangData('pk', $pk)
+                        ->setLangData('columnVal', $columnVal);
                     $pdocrud->tableHeading('demo');
                     $pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
-
-                    $pdomodel = $pdocrud->getPDOModelObj();
-                    $columnDB = $pdomodel->columnNames('demo');
 
                     $pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', array($columnDB));
                     $render = $pdocrud->setQuery('SELECT id as ID, name as Name FROM demo')->render('SQL');
