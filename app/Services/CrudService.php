@@ -24,10 +24,10 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $controllerName, $columns, $nameview)
+    public function createCrud($tableName, $crudType, $controllerName, $columns, $nameview)
     {
         $this->createTable($tableName, $columns);
-        $this->generateCrudController($tableName, $controllerName, $nameview);
+        $this->generateCrudController($tableName, $crudType, $controllerName, $nameview, $crudType);
         $this->generateView($nameview);
     }
 
@@ -41,47 +41,92 @@ class CrudService
         }
     }
 
-    private function generateCrudController($tableName, $controllerName, $nameview)
+    private function generateCrudController($tableName, $crudType, $controllerName, $nameview, $query = null)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . '.php';
 
-        $controllerContent = "<?php
+        if($crudType == 'SQL'){
+            $crudType = 'SQL';
 
-        namespace App\Controllers;
+            $controllerContent = "<?php
 
-        use App\core\SessionManager;
-        use App\core\Token;
-        use App\core\DB;
-        use App\core\View;
-        use App\core\Redirect;
+            namespace App\Controllers;
 
-        class {$controllerName}
-        {
-            public \$token;
+            use App\core\SessionManager;
+            use App\core\Token;
+            use App\core\DB;
+            use App\core\View;
+            use App\core\Redirect;
 
-            public function __construct()
+            class {$controllerName}
             {
-                SessionManager::startSession();
-                \$Sesusuario = SessionManager::get('usuario');
-                if (!isset(\$Sesusuario)) {
-                    Redirect::to('login/index');
+                public \$token;
+
+                public function __construct()
+                {
+                    SessionManager::startSession();
+                    \$Sesusuario = SessionManager::get('usuario');
+                    if (!isset(\$Sesusuario)) {
+                        Redirect::to('login/index');
+                    }
+                    \$this->token = Token::generateFormToken('send_message');
                 }
-                \$this->token = Token::generateFormToken('send_message');
-            }
 
-            public function index()
+                public function index()
+                {
+                    \$pdocrud = DB::PDOCrud();
+                    \$pdocrud->setQuery('{$query}');
+                    \$render = \$pdocrud->dbTable('{$tableName}')->render('SQL');
+
+                    View::render(
+                        '{$nameview}', 
+                        [
+                            'render' => \$render
+                        ]
+                    );
+                }
+            }";
+        } else {
+            $crudType = 'CRUD';
+
+            $controllerContent = "<?php
+
+            namespace App\Controllers;
+
+            use App\core\SessionManager;
+            use App\core\Token;
+            use App\core\DB;
+            use App\core\View;
+            use App\core\Redirect;
+
+            class {$controllerName}
             {
-                \$pdocrud = DB::PDOCrud();
-                \$render = \$pdocrud->dbTable('{$tableName}')->render();
+                public \$token;
 
-                View::render(
-                    '{$nameview}', 
-                    [
-                        'render' => \$render
-                    ]
-                );
-            }
-        }";
+                public function __construct()
+                {
+                    SessionManager::startSession();
+                    \$Sesusuario = SessionManager::get('usuario');
+                    if (!isset(\$Sesusuario)) {
+                        Redirect::to('login/index');
+                    }
+                    \$this->token = Token::generateFormToken('send_message');
+                }
+
+                public function index()
+                {
+                    \$pdocrud = DB::PDOCrud();
+                    \$render = \$pdocrud->dbTable('{$tableName}')->render();
+
+                    View::render(
+                        '{$nameview}', 
+                        [
+                            'render' => \$render
+                        ]
+                    );
+                }
+            }";
+        }
 
         file_put_contents($controllerPath, $controllerContent);
     }
