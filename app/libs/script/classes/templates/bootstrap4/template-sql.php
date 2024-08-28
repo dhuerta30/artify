@@ -1,13 +1,49 @@
 <section class="pdocrud-table-container" data-objkey="<?php echo $objKey; ?>" <?php if (!empty($modal)) { ?> data-modal="true"<?php } ?> >
     <div class="card">
-        <div class="page-title clearfix card-heading pdocrud-table-heading">
+        <div class="page-title clearfix card-heading pdocrud-table-heading p-2">
             <h3 class="card-title">
                 <?php echo $lang["tableHeading"]; ?>                 
                 <small>
                     <?php echo $lang["tableSubHeading"]; ?>
                 </small>
             </h3>
-
+            <?php if ($settings["addbtn"]) { ?>
+                <div class="btn-group float-right">
+                    <a title="<?php echo $lang["add"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-add green agregar btn btn-success" href="javascript:;" data-action="add" data-obj-key="<?php echo $objKey; ?>">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        <?php echo $lang["add"]; ?>
+                    </a>
+                </div>
+            <?php } ?>
+            <?php if ($settings["refresh"]) { ?>
+                <div class="btn-group pull-right">
+                    <a href="javascript:;" class="btn btn-primary" data-action="refresh" data-rendertype="CRUD" data-obj-key="<?php echo $objKey; ?>"><i class="fa fa-refresh"></i> <?php echo $lang["refresh"]; ?></a>
+                </div>
+            <?php } else { ?>
+                <div class="btn-group pull-right d-none">
+                    <a href="javascript:;" class="btn btn-primary" data-action="refresh" data-rendertype="CRUD" data-obj-key="<?php echo $objKey; ?>"><i class="fa fa-refresh"></i> <?php echo $lang["refresh"]; ?></a>
+                </div>
+            <?php } ?>
+            <?php if ($settings["savebtn"]) { ?>
+                <div class="btn-group float-right">
+                    <a title="<?php echo $lang["save"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-save green guardar_datos btn btn-success text-white" href="javascript:;" data-action="save_crud_table_data" data-obj-key="<?php echo $objKey; ?>">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        <?php echo $lang["save"]; ?>
+                    </a>
+                </div>
+                <?php }
+            if (isset($extraData["btnTopAction"]) && is_array($extraData["btnTopAction"]) && count($extraData["btnTopAction"])) {
+                foreach ($extraData["btnTopAction"] as  $action_name => $action) {
+                    list($key, $text, $attr, $url, $cssClass) = $action;
+                ?>
+                    <div class="btn-group float-right">
+                        <a title="<?php echo strip_tags($text); ?>" class="pdocrud-top-actions pdocrud-button <?php echo $cssClass; ?> pdocrud-button-<?php echo $action_name; ?>" href="<?php echo $url; ?>" data-action="<?php echo $action_name; ?>" data-obj-key="<?php echo $objKey; ?>">
+                            <?php echo $text; ?>
+                        </a>
+                    </div>
+            <?php }
+            }
+            ?>
         </div><!-- /.card-heading -->
         <div class="card-body pdocrudbox pdocrud-top-buttons">
             <div class="row">
@@ -113,20 +149,23 @@
             <div class="row pdocrud-options-files">
                 <div class="col-sm-12">
                     <div class="btn-group float-left pdocrud-export-options">
-                        <ul>
+                        <ul class="pdocrud-export-options">
                             <?php if ($settings["printBtn"]) { ?>
-                                <li><a title="<?php echo $lang["print"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="print" data-objkey="<?php echo $objKey; ?>"><?php echo $lang["print"]; ?></a></li>
-                            <?php }
+                                <li class="bg-white"><a title="<?php echo $lang["print"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="print" data-objkey="<?php echo $objKey; ?>"><i class="fa fa-print"></i> <?php echo $lang["print"]; ?></a></li>
+                            <?php
+                            }
                             if ($settings["csvBtn"]) {
-                                ?> 
-                                <li><a title="<?php echo $lang["csv"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="csv" data-objkey="<?php echo $objKey; ?>"><?php echo $lang["csv"]; ?></a></li>
-                            <?php }
+                            ?>
+                                <li class="bg-white"><a title="<?php echo $lang["csv"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="csv" data-objkey="<?php echo $objKey; ?>"><i class="fa fa-file-o"></i> <?php echo $lang["csv"]; ?></a></li>
+                            <?php
+                            }
                             if ($settings["pdfBtn"]) {
-                                ?>
-                                <li><a title="<?php echo $lang["pdf"]; ?>"class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="pdf" data-objkey="<?php echo $objKey; ?>"> <?php echo $lang["pdf"]; ?></a></li>                            
-                    <?php } if ($settings["excelBtn"]) { ?>
-                                <li><a title="<?php echo $lang["excel"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="excel" data-objkey="<?php echo $objKey; ?>"><?php echo $lang["excel"]; ?></a></li>
-                        <?php } ?>
+                            ?>
+                                <li class="bg-white"><a title="<?php echo $lang["pdf"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="pdf" data-objkey="<?php echo $objKey; ?>"><i class="fa fa-file-pdf-o"></i> <?php echo $lang["pdf"]; ?></a></li>
+                            <?php }
+                            if ($settings["excelBtn"]) { ?>
+                                <li class="bg-white"><a title="<?php echo $lang["excel"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="excel" data-objkey="<?php echo $objKey; ?>"><i class="fa fa-file-excel"></i> <?php echo $lang["excel"]; ?></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                     <?php if ($settings["recordsPerPageDropdown"]) { ?>

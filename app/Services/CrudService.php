@@ -75,6 +75,7 @@ class CrudService
                 public function index()
                 {
                     \$pdocrud = DB::PDOCrud();
+                    \$pdocrud->tableHeading('{$tableName}');
                     \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
 
                     View::render(

@@ -25,6 +25,7 @@ class DemoController
     public function index()
     {
         $pdocrud = DB::PDOCrud();
+        $pdocrud->tableHeading("demo");
         $render = $pdocrud->setQuery('SELECT id as ID, name as Name FROM demo')->render('SQL');
 
         View::render(
