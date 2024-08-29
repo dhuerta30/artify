@@ -1028,7 +1028,7 @@ function eliminar_modulos($data, $obj)
         }
     }
 
-    $templaesCrudDirPath = dirname(__DIR__, 3) . '/app/libs/script/classes/templates/template_'.$name_view.'/';
+    $templaesCrudDirPath = dirname(__DIR__, 3) . '/app/libs/script/classes/templates/template_'.$nameview.'/';
     if (file_exists($templaesCrudDirPath) && is_dir($templaesCrudDirPath)) {
         $dirFiles = array_diff(scandir($templaesCrudDirPath), ['.', '..']);
         if (empty($dirFiles)) {
