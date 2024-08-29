@@ -59,6 +59,7 @@
                     $pdocrud->setSettings('pdfBtn', true);
                     $pdocrud->setSettings('csvBtn', true);
                     $pdocrud->setSettings('excelBtn', true);
+                    $pdocrud->setSettings('clonebtn', true);
                     $pdocrud->setSettings('template', 'template_demo');
                     $pdocrud->setLangData('no_data', 'Sin Resultados');
                 
