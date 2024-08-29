@@ -30,6 +30,7 @@ class CrudService
         $this->generateCrudController($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
         $this->generateView($nameview);
         $this->generateViewEdit($nameview);
+        $this->generateViewAdd($nameview);
     }
 
     private function createTable($tableName, $columns)
@@ -230,6 +231,36 @@ class CrudService
     private function generateViewEdit($nameview)
     {
         $viewPath = __DIR__ . '/../Views/editar_' . $nameview . '.php';
+
+        $viewContent = '
+        <?php require "layouts/header.php"; ?>
+        <?php require "layouts/sidebar.php"; ?>
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="card mt-4">
+                    <div class="card-body">
+
+                        <div class="row procedimiento">
+                            <div class="col-md-12">
+                                <?=$render?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="pdocrud-ajax-loader">
+            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+        </div>
+        <?php require "layouts/footer.php"; ?>';
+
+        file_put_contents($viewPath, $viewContent);
+    }
+
+    private function generateViewAdd($nameview)
+    {
+        $viewPath = __DIR__ . '/../Views/agregar_' . $nameview . '.php';
 
         $viewContent = '
         <?php require "layouts/header.php"; ?>

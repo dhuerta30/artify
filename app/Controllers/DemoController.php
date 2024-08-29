@@ -35,7 +35,7 @@
                     $pk = $pdocrud->getLangData($id);
                     $columnVal = $pdocrud->getLangData($pk);
 
-                    $pdocrud->enqueueBtnTopActions('Report',  "<i class='fa fa-plus'></i> Agregar", 'javascript:;', array(), 'btn-report');
+                    $pdocrud->enqueueBtnTopActions('Report',  "<i class='fa fa-plus'></i> Agregar", $_ENV['BASE_URL'].'Demo/agregar', array(), 'btn-report');
 
                     $action = $_ENV['BASE_URL'].'Demo/editar/id/{ID}';
                     $text = '<i class="fa fa-edit"></i>';
@@ -69,6 +69,17 @@
                     );
                 }
 
+                public function agregar(){
+                    $pdocrud = DB::PDOCrud();
+                    $render = $pdocrud->dbTable('demo')->render('insertform');
+                    View::render(
+                        'agregar_demo',
+                        [
+                            'render' => $render
+                        ]
+                    );
+                }
+
                 public function editar(){
                     $request = new Request();
 			        $id = $request->get('id');
@@ -80,7 +91,7 @@
                     $id_tabla = strtoupper($columnDB[0]);
 
                     $pdocrud->setPK($id_tabla);
-                    $render = $pdocrud->dbTable('demo')->render('EDITFORM', array('id' => $id));
+                    $render = $pdocrud->dbTable('demo')->render('editform', array('id' => $id));
 
                     View::render(
                         'editar_demo', 
