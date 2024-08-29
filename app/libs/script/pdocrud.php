@@ -970,10 +970,23 @@ function insertar_modulos($data, $obj){
     $tabla = $data["modulos"]["tabla"];
     $id_tabla = $data["modulos"]["id_tabla"];
     $crud_type = $data["modulos"]["crud_type"];
-    $query = $data["modulos"]["query"];
+    $query_db = $data["modulos"]["query"];
     $controller_name = $data["modulos"]["controller_name"];
     $columns_table = $data["modulos"]["columns_table"];
     $name_view = $data["modulos"]["name_view"];
+
+    if($crud_type == "SQL"){
+        $crudService = new App\Services\CrudService();
+        $tableName = $tabla;
+        $idTable = $id_tabla;
+        $crudType = $crud_type;
+        $query = $query_db;
+        $controllerName = $controller_name;
+        $columns = $columns_table;
+        $nameview = $name_view;
+        
+        $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview);
+    }
 }
 
 
