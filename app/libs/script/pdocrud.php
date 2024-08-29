@@ -1042,7 +1042,7 @@ function eliminar_modulos($data, $obj)
                 eliminar_directorio_completo($filePath); // Llamada recursiva
             } else {
                 if (unlink($filePath)) {
-                    echo "Archivo eliminado con éxito: $filePath\n";
+                    echo "Archivo eliminado con éxito:";
                 } else {
                     echo "Error al eliminar el archivo: $filePath\n";
                 }
