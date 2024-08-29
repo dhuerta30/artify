@@ -51,10 +51,22 @@ $(document).on("change", ".data_activar_filtro_de_busqueda", function(){
     }
 });
 
+function refrechMenu(){
+	$.ajax({
+		type: "POST",
+		url: "<?=$_ENV["BASE_URL"]?>home/refrescarMenu",
+		dataType: "json",
+		success: function(response){
+			$('.menu_generator').html(response);
+		}
+	});
+}
+
 $(document).on("pdocrud_after_submission", function(event, obj, data){
     let json = JSON.parse(data);
 
     if(json.message){
+        refrechMenu();
         $('.pdocrud-button-url').removeClass('pdocrud-actions');
         Swal.fire({
             title: "Genial!",

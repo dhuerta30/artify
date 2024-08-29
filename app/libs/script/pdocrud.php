@@ -965,7 +965,7 @@ function formatTable_buscar_examenes($data, $obj){
     return $data;
 }
 
-function insertar_modulos($data, $obj){
+function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $tabla = $data["modulos"]["tabla"];
     $id_tabla = $data["modulos"]["id_tabla"];
     $crud_type = $data["modulos"]["crud_type"];
@@ -986,6 +986,14 @@ function insertar_modulos($data, $obj){
             "icono_menu" => "far fa-circle", 
             "submenu" => "No",
             "orden_menu" => $newOrdenMenu
+        ));
+
+        $id_menu = $pdomodel->getLastQuery();
+
+        $pdomodel->insert("usuario_menu", array(
+            "id_usuario" => $id_sesion_usuario,
+            "id_menu" => $id_menu,
+            "visibilidad_menu" => "Mostrar"
         ));
     }
 
