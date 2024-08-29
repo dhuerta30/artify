@@ -56,17 +56,6 @@
                     </a>
                 </div>
                 <?php }
-            if (isset($extraData["btnTopAction"]) && is_array($extraData["btnTopAction"]) && count($extraData["btnTopAction"])) {
-                foreach ($extraData["btnTopAction"] as  $action_name => $action) {
-                    list($key, $text, $attr, $url, $cssClass) = $action;
-                ?>
-                    <div class="btn-group float-right">
-                        <a title="<?php echo strip_tags($text); ?>" class="pdocrud-top-actions pdocrud-button <?php echo $cssClass; ?> pdocrud-button-<?php echo $action_name; ?>" href="<?php echo $url; ?>" data-action="<?php echo $action_name; ?>" data-obj-key="<?php echo $objKey; ?>">
-                            <?php echo $text; ?>
-                        </a>
-                    </div>
-            <?php }
-            }
             ?>
         </div><!-- /.card-heading -->
         <div class="card-body pdocrudbox pdocrud-top-buttons">
