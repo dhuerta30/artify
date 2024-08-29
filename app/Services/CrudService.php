@@ -34,22 +34,22 @@ class CrudService
         $this->generateTemplateCrud($nameview);
     }
 
-    private function generateTemplateCrud($name)
+    private function generateTemplateCrud($nameview)
     {
         $sourceDir = __DIR__ . '/../../libs/script/classes/templates/bootstrap4'; // Ruta de la carpeta base de plantillas
-        $destinationDir = __DIR__ . '/../../libs/script/classes/templates/template_' . $name;
+        $destinationDir = __DIR__ . '/../../libs/script/classes/templates/template_' . $nameview;
 
         if (!file_exists($destinationDir)) {
             try {
                 $this->copyDirectory($sourceDir, $destinationDir, $output);
-                $this->showSuccessMessage($output, "Template '{$name}' creado con éxito.");
+                $this->showSuccessMessage($output, "Template '{$nameview}' creado con éxito.");
                 return Command::SUCCESS;
             } catch (Exception $e) {
                 $output->writeln("<error>Error al copiar el template: {$e->getMessage()}</error>");
                 return Command::FAILURE;
             }
         } else {
-            $output->writeln("<error>La carpeta '{$name}' ya existe.</error>");
+            $output->writeln("<error>La carpeta '{$nameview}' ya existe.</error>");
             return Command::FAILURE;
         }
     }
