@@ -32,6 +32,7 @@
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
 <script>
 	$(document).on("pdocrud_after_ajax_action",function(event, obj, data){
+    refrechMenu();
     $('.label_Visibilidad_filtro').hide();
     $('.data_visibilidad_filtro').hide();
     $('.data_visibilidad_filtro').attr('required', false);
