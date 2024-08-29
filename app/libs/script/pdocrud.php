@@ -987,6 +987,7 @@ function insertar_modulos($data, $obj){
         
         $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview);
     }
+    return $data;
 }
 
 
