@@ -86,7 +86,7 @@ class CrudService
                     \$pk = \$pdocrud->getLangData(\$id);
                     \$columnVal = \$pdocrud->getLangData(\$pk);
 
-                    \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", 'javascript:;', array(), 'btn-report');
+                    \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", \$_ENV['BASE_URL'].'{$controllerName}/agregar', array(), 'btn-report');
 
                     \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{{$idTable}}';
                     \$text = '<i class=\"fa fa-edit\"></i>';
