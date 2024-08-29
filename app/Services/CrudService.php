@@ -125,6 +125,13 @@ class CrudService
                     \$pdocrud = DB::PDOCrud();
                     \$pdocrud->setPK();
                     \$render = \$pdocrud->dbTable('{$tableName}')->render('EDITFORM', array('id' => \$id));
+
+                    View::render(
+                        '{$nameview}', 
+                        [
+                            'render' => \$render
+                        ]
+                    );
                 }
             }";
         } else {
