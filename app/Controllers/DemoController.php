@@ -99,6 +99,14 @@
                     $id_tabla = strtoupper($columnDB[0]);
 
                     $pdocrud->setPK($id_tabla);
+                    $pdocrud->buttonHide('submitBtn');
+                    $pdocrud->buttonHide('cancel');
+                    $pdocrud->formStaticFields('botones', 'html', '
+                        <div class="col-md-12 text-center">
+                            <input type="submit" class="btn btn-primary pdocrud-form-control pdocrud-submit" data-action="insert" value="Guardar"> 
+                            <a href="'.$_ENV['BASE_URL'].'Demo/index" class="btn btn-danger">Regresar</a>
+                        </div>
+                    ');
                     $render = $pdocrud->dbTable('demo')->render('editform', array('id' => $id));
 
                     View::render(
