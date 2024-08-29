@@ -1013,8 +1013,6 @@ function eliminar_modulos($data, $obj)
     $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd];
 
     foreach ($filesToDelete as $filePath) {
-        print_r($filePath);
-       
         if ($filePath && file_exists($filePath)) {
             try {
                 if (unlink($filePath)) {
@@ -1029,9 +1027,7 @@ function eliminar_modulos($data, $obj)
             echo "El archivo no existe: $filePath\n";
         }
     }
-
-    die();
-
+    
     $pdomodel->dropTable($tabla);
 
     return $data;
