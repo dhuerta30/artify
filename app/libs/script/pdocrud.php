@@ -977,7 +977,6 @@ function insertar_modulos($data, $obj){
 
     $pdomodel = $obj->getPDOModelObj();
     if($add_menu == "Si"){
-
         $datamenu = $pdomodel->executeQuery("SELECT MAX(orden_menu) as orden FROM menu");
 		$newOrdenMenu = $datamenu[0]["orden"] + 1;
 
