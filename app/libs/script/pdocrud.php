@@ -1005,8 +1005,6 @@ function eliminar_modulos($data, $obj)
     $controller_name = $query[0]["controller_name"];
     $nameview = $query[0]["nameview"];
 
-    $pdomodel->dropTable($tabla);
-
     $controllerFilePath = 'app/Controllers/' . $controller_name . '.php';
     $viewFilePath = 'app/Views/' . $nameview . '.php';
     $viewFilePathEdit = 'app/Views/editar_' . $nameview . '.php';
@@ -1029,6 +1027,8 @@ function eliminar_modulos($data, $obj)
             echo "El archivo no existe: $filePath\n";
         }
     }
+
+    $pdomodel->dropTable($tabla);
 
     return $data;
 }
