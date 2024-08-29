@@ -233,14 +233,12 @@
                                             } else {
                                                 $btnClass .= "btn-default";  // Para cualquier otro action_name
                                             }
-
+                                            
                                             // Agrega clases adicionales si están definidas
                                             $btnClass .= (isset($cssClass) && !empty($cssClass)) ? " $cssClass" : "";
 
                                             // Sobrescribe btnClass para el caso "url"
-                                            if ($action_name == "url") {
-                                                $btnClass = "btn btn-default";
-                                            }
+                                           
                                             ?>
                                             <a class="<?php echo $btnClass; ?> btn-sm pdocrud-button <?php echo $action_name;?>"
                                                 href="<?php echo $url;?>"
