@@ -595,6 +595,7 @@ class HomeController
 		$pdocrud->setSettings("viewbtn", false);
 		$pdocrud->setSettings("refresh", false);
 		$pdocrud->setSettings("printBtn", false);
+		$pdocrud->setSettings("editbtn", false);
 		$pdocrud->setSettings("pdfBtn", false);
 		$pdocrud->setSettings("csvBtn", false);
 		$pdocrud->setSettings("excelBtn", false);
