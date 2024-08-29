@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-08-2024 a las 22:13:09
+-- Tiempo de generación: 29-08-2024 a las 22:50:48
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -72,17 +72,6 @@ CREATE TABLE `custom_panel` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `demo`
---
-
-CREATE TABLE `demo` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `menu`
 --
 
@@ -106,8 +95,7 @@ INSERT INTO `menu` (`id_menu`, `nombre_menu`, `url_menu`, `icono_menu`, `submenu
 (7, 'Salir', '/login/salir', 'fas fa-sign-out-alt', 'No', 8),
 (10, 'Mantenedor Menu', '/home/menu', 'fas fa-bars', 'No', 6),
 (12, 'Acceso Menus', '/home/acceso_menus', 'fas fa-outdent', 'No', 7),
-(19, 'Generador de Módulos', '/home/modulos', 'fas fa-table', 'No', 1),
-(23, 'Demo', '/Demo/index', 'far fa-circle', 'No', 2);
+(19, 'Generador de Módulos', '/home/modulos', 'fas fa-table', 'No', 1);
 
 -- --------------------------------------------------------
 
@@ -124,15 +112,9 @@ CREATE TABLE `modulos` (
   `controller_name` varchar(100) NOT NULL,
   `columns_table` text NOT NULL,
   `name_view` varchar(100) NOT NULL,
-  `add_menu` varchar(100) NOT NULL
+  `add_menu` varchar(100) NOT NULL,
+  `id_menu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `modulos`
---
-
-INSERT INTO `modulos` (`id_modulos`, `tabla`, `id_tabla`, `crud_type`, `query`, `controller_name`, `columns_table`, `name_view`, `add_menu`) VALUES
-(107, 'demo', 'ID', 'SQL', 'SELECT id as ID, name as Name FROM demo', 'Demo', 'id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)', 'demo', 'Si');
 
 -- --------------------------------------------------------
 
@@ -227,8 +209,7 @@ INSERT INTO `usuario_menu` (`id_usuario_menu`, `id_usuario`, `id_menu`, `visibil
 (1172, 20, 7, 'Mostrar'),
 (1175, 20, 10, 'Mostrar'),
 (1176, 1, 12, 'Mostrar'),
-(1179, 1, 19, 'Mostrar'),
-(1182, 1, 23, 'Mostrar');
+(1179, 1, 19, 'Mostrar');
 
 -- --------------------------------------------------------
 
@@ -265,12 +246,6 @@ ALTER TABLE `creador_de_panel`
 --
 ALTER TABLE `custom_panel`
   ADD PRIMARY KEY (`id_custom_panel`);
-
---
--- Indices de la tabla `demo`
---
-ALTER TABLE `demo`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `menu`
@@ -338,22 +313,16 @@ ALTER TABLE `custom_panel`
   MODIFY `id_custom_panel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `demo`
---
-ALTER TABLE `demo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `modulos`
 --
 ALTER TABLE `modulos`
-  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -377,7 +346,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario_menu`
 --
 ALTER TABLE `usuario_menu`
-  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1183;
+  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1184;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_submenu`
