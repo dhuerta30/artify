@@ -1009,6 +1009,10 @@ function eliminar_modulos($data, $obj)
 
     $controllerFilePath = 'app/Controllers/' . $controller_name . '.php';
     $viewFilePath = 'app/Views/' . $nameview . '.php';
+    $viewFilePathEdit = 'app/Views/editar_' . $nameview . '.php';
+    $viewFilePathAdd = 'app/Views/agregar_' . $nameview . '.php';
+
+    $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd];
 
     foreach ($filesToDelete as $filePath) {
         if (file_exists($filePath)) {
