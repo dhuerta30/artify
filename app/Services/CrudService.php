@@ -122,8 +122,12 @@ class CrudService
                     \$request = new Request();
 			        \$id = \$request->get('id');
 
+                    \$pdomodel = \$pdocrud->getPDOModelObj();
+                    \$columnDB = \$pdomodel->columnNames('{$tableName}');
+                    \$id_tabla = strtoupper(\$columnDB[0]);
+
                     \$pdocrud = DB::PDOCrud();
-                    \$pdocrud->setPK('{}');
+                    \$pdocrud->setPK(\$id_tabla);
                     \$render = \$pdocrud->dbTable('{$tableName}')->render('EDITFORM', array('id' => \$id));
 
                     View::render(
