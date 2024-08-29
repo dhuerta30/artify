@@ -29,6 +29,7 @@ class CrudService
         $this->createTable($tableName, $columns);
         $this->generateCrudController($tableName, $crudType, $query, $controllerName, $nameview, $crudType);
         $this->generateView($nameview);
+        $this->generateViewEdit($nameview);
     }
 
     private function createTable($tableName, $columns)
@@ -55,6 +56,7 @@ class CrudService
             use App\core\SessionManager;
             use App\core\Token;
             use App\core\DB;
+            use App\core\Request;
             use App\core\View;
             use App\core\Redirect;
 
@@ -87,7 +89,7 @@ class CrudService
                     \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", 'javascript:;', array(), 'btn-report');
 
                     \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/{$id}';
-                    \$text = '<i class=\"fa fa-globe\"></i>';
+                    \$text = '<i class=\"fa fa-edit\"></i>';
                     \$attr = array('title'=> 'Editar');
                     \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
 
@@ -122,11 +124,12 @@ class CrudService
                     \$request = new Request();
 			        \$id = \$request->get('id');
 
+                    \$pdocrud = DB::PDOCrud();
+
                     \$pdomodel = \$pdocrud->getPDOModelObj();
                     \$columnDB = \$pdomodel->columnNames('{$tableName}');
                     \$id_tabla = strtoupper(\$columnDB[0]);
 
-                    \$pdocrud = DB::PDOCrud();
                     \$pdocrud->setPK(\$id_tabla);
                     \$render = \$pdocrud->dbTable('{$tableName}')->render('EDITFORM', array('id' => \$id));
 
@@ -186,6 +189,36 @@ class CrudService
     private function generateView($nameview)
     {
         $viewPath = __DIR__ . '/../Views/' . $nameview . '.php';
+
+        $viewContent = '
+        <?php require "layouts/header.php"; ?>
+        <?php require "layouts/sidebar.php"; ?>
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="card mt-4">
+                    <div class="card-body">
+
+                        <div class="row procedimiento">
+                            <div class="col-md-12">
+                                <?=$render?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="pdocrud-ajax-loader">
+            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+        </div>
+        <?php require "layouts/footer.php"; ?>';
+
+        file_put_contents($viewPath, $viewContent);
+    }
+
+    private function generateViewEdit($nameview)
+    {
+        $viewPath = __DIR__ . '/../Views/editar_' . $nameview . '.php';
 
         $viewContent = '
         <?php require "layouts/header.php"; ?>

@@ -5,6 +5,7 @@
             use App\core\SessionManager;
             use App\core\Token;
             use App\core\DB;
+            use App\core\Request;
             use App\core\View;
             use App\core\Redirect;
 
@@ -36,7 +37,7 @@
 
                     $pdocrud->enqueueBtnTopActions('Report',  "<i class='fa fa-plus'></i> Agregar", 'javascript:;', array(), 'btn-report');
 
-                    $action = 'http://google.cl';
+                    $action = $_ENV['BASE_URL'].'Demo/editar/id/{ID}';
                     $text = '<i class="fa fa-edit"></i>';
                     $attr = array('title'=> 'Editar');
                     $pdocrud->enqueueBtnActions('url', $action, 'url', $text, $pk, $attr, 'btn-warning', array(array()));
@@ -53,7 +54,7 @@
                         ->setLangData('columnVal', $columnVal);
                     $pdocrud->tableHeading('demo');
                     $pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
-                    $pdocrud->addCallback('before_sql_data', 'buscador_tabla', array($columnDB));
+                    $pdocrud->addCallback('before_sql_data', 'buscador_products', array($columnDB));
                     $pdocrud->addCallback('before_delete', 'eliminar_tabla');
 
                     $pdocrud->setSettings('viewbtn', false);
@@ -62,6 +63,27 @@
 
                     View::render(
                         'demo', 
+                        [
+                            'render' => $render
+                        ]
+                    );
+                }
+
+                public function editar(){
+                    $request = new Request();
+			        $id = $request->get('id');
+
+                    $pdocrud = DB::PDOCrud();
+
+                    $pdomodel = $pdocrud->getPDOModelObj();
+                    $columnDB = $pdomodel->columnNames('demo');
+                    $id_tabla = strtoupper($columnDB[0]);
+                    
+                    $pdocrud->setPK($id_tabla);
+                    $render = $pdocrud->dbTable('demo')->render('EDITFORM', array('id' => $id));
+
+                    View::render(
+                        '{editar_demo}', 
                         [
                             'render' => $render
                         ]
