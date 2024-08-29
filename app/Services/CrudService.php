@@ -31,6 +31,23 @@ class CrudService
         $this->generateView($nameview);
         $this->generateViewEdit($nameview);
         $this->generateViewAdd($nameview);
+        $this->generateTemplateCrud($nameview);
+    }
+
+    private function generateTemplateCrud($name)
+    {
+        $templatePath = __DIR__ . '/../Views/templates/' . $name . '.php';
+        $templateContent = "
+        <?php
+        // Aquí se generaría el contenido de la plantilla personalizada para PDOCrud
+        ?>
+        ";
+
+        if (!file_exists(dirname($templatePath))) {
+            mkdir(dirname($templatePath), 0755, true);
+        }
+
+        file_put_contents($templatePath, $templateContent);
     }
 
     private function createTable($tableName, $columns)
