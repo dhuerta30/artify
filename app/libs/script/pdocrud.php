@@ -990,6 +990,10 @@ function insertar_modulos($data, $obj){
     return $data;
 }
 
+function eliminar_modulos($data, $obj){
+    return $data;
+}
+
 
 /*function insertar_modulos($data, $obj)
 {

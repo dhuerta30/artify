@@ -607,6 +607,7 @@ class HomeController
 		$pdocrud->fieldRenameLable("columns_table", "Columnas de la Tabla");
 		$pdocrud->fieldRenameLable("name_view", "Nombre de la Vista");
 		$pdocrud->addCallback("before_insert", "insertar_modulos");
+		$pdocrud->addCallback("before_delete", "eliminar_modulos");
 
 		$action = $_ENV["BASE_URL"] . "{controller_name}/index";
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
