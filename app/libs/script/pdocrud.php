@@ -1005,15 +1005,17 @@ function eliminar_modulos($data, $obj)
     $controller_name = $query[0]["controller_name"];
     $nameview = $query[0]["name_view"];
 
-    $controllerFilePath = '../../app/Controllers/' . $controller_name . 'Controller.php';
-    $viewFilePath = '../../app/Views/' . $nameview . '.php';
-    $viewFilePathEdit = '../../app/Views/editar_' . $nameview . '.php';
-    $viewFilePathAdd = '../../app/Views/agregar_' . $nameview . '.php';
+    $controllerFilePath = dirname(__DIR__, 3) . '/app/Controllers/' . $controller_name . 'Controller.php';
+    $viewFilePath =  dirname(__DIR__, 3) . '/app/Views/' . $nameview . '.php';
+    $viewFilePathEdit =  dirname(__DIR__, 3) . '/app/Views/editar_' . $nameview . '.php';
+    $viewFilePathAdd =  dirname(__DIR__, 3) . '/app/Views/agregar_' . $nameview . '.php';
 
     $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd];
 
     foreach ($filesToDelete as $filePath) {
-        if (file_exists($filePath)) {
+        print_r($filePath);
+       
+        if ($filePath && file_exists($filePath)) {
             try {
                 if (unlink($filePath)) {
                     echo "Archivo eliminado con éxito: $filePath\n";
@@ -1027,6 +1029,8 @@ function eliminar_modulos($data, $obj)
             echo "El archivo no existe: $filePath\n";
         }
     }
+
+    die();
 
     $pdomodel->dropTable($tabla);
 
