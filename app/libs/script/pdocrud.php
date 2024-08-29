@@ -983,7 +983,7 @@ function insertar_modulos($data, $obj){
         $pdomodel->insert("menu", array(
             "nombre_menu" => $controller_name, 
             "url_menu" => "/".$controller_name."/index",
-            "icono_menu" => "fas fa-menu", 
+            "icono_menu" => "far fa-circle", 
             "submenu" => "No",
             "orden_menu" => $newOrdenMenu
         ));
