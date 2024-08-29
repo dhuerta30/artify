@@ -1009,6 +1009,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         
         $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview);
     }
+    $data["modulos"]["id_menu"] = $id_menu;
     return $data;
 }
 
@@ -1019,10 +1020,18 @@ function eliminar_modulos($data, $obj)
     $pdomodel->where("id_modulos", $id);
     $query = $pdomodel->select("modulos");
 
+    $id_menu = $query[0]["id_menu"];
+
     if (empty($query)) {
         echo "No se encontró ningún módulo con el ID proporcionado.";
         return $data;
     }
+
+    $pdomodel->where("id_menu", $id_menu);
+    $pdomodel->delete("menu");
+
+    $pdomodel->where("id_menu", $id_menu);
+    $pdomodel->delete("usuario_menu");
 
     $tabla = $query[0]["tabla"];
     $controller_name = $query[0]["controller_name"];
