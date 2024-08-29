@@ -989,10 +989,6 @@ function insertar_modulos($data, $obj){
     return $data;
 }
 
-function eliminar_modulos($data, $obj){
-    return $data;
-}
-
 
 /*function insertar_modulos($data, $obj)
 {
@@ -1134,7 +1130,7 @@ function actualizar_modulo($data, $obj) {
     return $newdata;
 }
 
-function eliminar_modulo($data, $obj)
+function eliminar_modulos($data, $obj)
 {
     $id = $data["id"];
     $pdomodel = $obj->getPDOModelObj();
