@@ -26,6 +26,51 @@ if (isset($_REQUEST["pdocrud_instance"])) {
     $fomplusajax->handleRequest();
 }
 
+function buscador_tabla($data, $obj) {
+    $pdomodel = $obj->getPDOModelObj();
+    $tabla = $obj->getLangData("tabla");
+ 
+    $whereClause = "";
+ 
+    if(isset($data["action"]) && $data["action"] == "search"){
+        if (isset($data['search_col']) && isset($data['search_text'])) {
+                $search_col = $data['search_col'];
+                $search_text = $data['search_text'];
+             
+                // Sanitize inputs to prevent SQL injection
+                $search_col = preg_replace('/[^a-zA-Z0-9_]/', '', $search_col);
+                $search_text = htmlspecialchars($search_text, ENT_QUOTES, 'UTF-8');
+             
+            if ($search_text !== '') {
+                $_SESSION["search_text"] = $search_text;
+ 
+                if ($search_col !== 'all') {
+                    if ($search_col === 'unido') {
+                        $whereClause = "WHERE CONCAT(product_name, ' ', product_line) LIKE '%$search_text%'";
+                    } else {
+                        $whereClause = "WHERE $search_col LIKE '%$search_text%'";
+                    }
+                } else {
+                    $whereClause = "WHERE product_id LIKE '%$search_text%'
+                                    OR product_name LIKE '%$search_text%'
+                                    OR product_line LIKE '%$search_text%'
+                                    OR productScale LIKE '%$search_text%'
+                                    OR productVendor LIKE '%$search_text%'
+                                    OR CONCAT(product_name, ' ', product_line) LIKE '%$search_text%'";
+                }
+            }
+ 
+            $query = "SELECT product_id, CONCAT(product_name, ' ', product_line) as unido, productScale, productVendor 
+            FROM $tabla
+            $whereClause";
+ 
+            $obj->setQuery($query);
+        }
+    }
+ 
+    return $data;
+}
+
 function format_sql_col_tabla($data, $obj, $columnDB = array()) {
     $pdomodel = $obj->getPDOModelObj();
     $tabla = $obj->getLangData("tabla");

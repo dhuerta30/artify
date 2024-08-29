@@ -53,6 +53,7 @@
                         ->setLangData('columnVal', $columnVal);
                     $pdocrud->tableHeading('demo');
                     $pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
+                    $pdocrud->addCallback('before_sql_data', 'buscador_tabla');
 
                     $pdocrud->setSettings('viewbtn', false);
                     $pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', array($columnDB));
