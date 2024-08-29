@@ -3843,8 +3843,15 @@ Class PDOCrud {
       }
 
     private function getCloneForm($data = array()) {
-        if (isset($data["id"]))
+        if (isset($data["id"])){
             $this->pkVal = $data["id"];
+        }
+
+        if(empty($this->tableName)){
+            $data = $this->handleCallback('before_clone_form_sql', $data);
+            return;
+        }
+        
         $pdoModelObj = $this->getPDOModelObj();
         $pdoModelObj->where($this->pk, $this->pkVal);
         $result = $pdoModelObj->select($this->tableName);
