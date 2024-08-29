@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-03-2024 a las 01:31:10
+-- Tiempo de generación: 29-08-2024 a las 22:13:09
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,6 +47,42 @@ INSERT INTO `backup` (`id`, `usuario`, `archivo`, `fecha`, `hora`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `creador_de_panel`
+--
+
+CREATE TABLE `creador_de_panel` (
+  `id_creador_de_panel` int(11) NOT NULL,
+  `cantidad_columnas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `custom_panel`
+--
+
+CREATE TABLE `custom_panel` (
+  `id_custom_panel` int(11) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `icono` varchar(100) NOT NULL,
+  `url` varchar(300) NOT NULL,
+  `id_creador_de_panel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `demo`
+--
+
+CREATE TABLE `demo` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `menu`
 --
 
@@ -64,12 +100,14 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id_menu`, `nombre_menu`, `url_menu`, `icono_menu`, `submenu`, `orden_menu`) VALUES
-(4, 'usuarios', '/home/usuarios', 'fas fa-users', 'No', 1),
-(5, 'Perfil', '/home/perfil', 'far fa-user', 'No', 2),
-(6, 'Respalda tus Datos', '/home/respaldos', 'fas fa-database', 'No', 3),
-(7, 'Salir', '/login/salir', 'fas fa-sign-out-alt', 'No', 6),
-(10, 'Mantenedor Menu', '/home/menu', 'fas fa-bars', 'No', 4),
-(12, 'Acceso Menus', '/home/acceso_menus', 'fas fa-outdent', 'No', 5);
+(4, 'usuarios', '/home/usuarios', 'fas fa-users', 'No', 3),
+(5, 'Perfil', '/home/perfil', 'far fa-user', 'No', 4),
+(6, 'Respalda tus Datos', '/home/respaldos', 'fas fa-database', 'No', 5),
+(7, 'Salir', '/login/salir', 'fas fa-sign-out-alt', 'No', 8),
+(10, 'Mantenedor Menu', '/home/menu', 'fas fa-bars', 'No', 6),
+(12, 'Acceso Menus', '/home/acceso_menus', 'fas fa-outdent', 'No', 7),
+(19, 'Generador de Módulos', '/home/modulos', 'fas fa-table', 'No', 1),
+(23, 'Demo', '/Demo/index', 'far fa-circle', 'No', 2);
 
 -- --------------------------------------------------------
 
@@ -80,31 +118,21 @@ INSERT INTO `menu` (`id_menu`, `nombre_menu`, `url_menu`, `icono_menu`, `submenu
 CREATE TABLE `modulos` (
   `id_modulos` int(11) NOT NULL,
   `tabla` varchar(100) NOT NULL,
-  `activar_filtro_de_busqueda` varchar(100) NOT NULL,
-  `botones_de_accion` varchar(100) NOT NULL,
-  `activar_buscador` varchar(100) NOT NULL,
-  `botones_de_exportacion` varchar(100) NOT NULL,
-  `activar_eliminacion_multiple` varchar(100) NOT NULL,
-  `activar_modo_popup` varchar(100) NOT NULL,
-  `seleccionar_skin` varchar(100) NOT NULL,
-  `seleccionar_template` varchar(100) NOT NULL,
-  `nombre_funcion_antes_de_insertar` varchar(100) NOT NULL,
-  `nombre_funcion_despues_de_insertar` varchar(100) NOT NULL,
-  `nombre_funcion_antes_de_actualizar` varchar(100) NOT NULL,
-  `nombre_funcion_despues_de_actualizar` varchar(100) NOT NULL,
-  `nombre_funcion_antes_de_eliminar` varchar(100) NOT NULL,
-  `nombre_funcion_despues_de_eliminar` varchar(100) NOT NULL,
-  `nombre_funcion_antes_de_actualizar_gatillo` varchar(100) NOT NULL,
-  `nombre_funcion_despues_de_actualizar_gatillo` varchar(100) NOT NULL,
-  `script_js` varchar(100) NOT NULL
+  `id_tabla` varchar(100) NOT NULL,
+  `crud_type` varchar(100) NOT NULL,
+  `query` text NOT NULL,
+  `controller_name` varchar(100) NOT NULL,
+  `columns_table` text NOT NULL,
+  `name_view` varchar(100) NOT NULL,
+  `add_menu` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `modulos`
 --
 
-INSERT INTO `modulos` (`id_modulos`, `tabla`, `activar_filtro_de_busqueda`, `botones_de_accion`, `activar_buscador`, `botones_de_exportacion`, `activar_eliminacion_multiple`, `activar_modo_popup`, `seleccionar_skin`, `seleccionar_template`, `nombre_funcion_antes_de_insertar`, `nombre_funcion_despues_de_insertar`, `nombre_funcion_antes_de_actualizar`, `nombre_funcion_despues_de_actualizar`, `nombre_funcion_antes_de_eliminar`, `nombre_funcion_despues_de_eliminar`, `nombre_funcion_antes_de_actualizar_gatillo`, `nombre_funcion_despues_de_actualizar_gatillo`, `script_js`) VALUES
-(94, 'demo4', 'AUTO_INCREMENT', 'Agregar,Editar,Eliminar,Guardar,Regresar,Cancelar', 'si', 'imprimir,csv,pdf,excel', 'si', 'no', 'advance', 'bootstrap4', '', '', '', '', '', '', '', '', '');
+INSERT INTO `modulos` (`id_modulos`, `tabla`, `id_tabla`, `crud_type`, `query`, `controller_name`, `columns_table`, `name_view`, `add_menu`) VALUES
+(107, 'demo', 'ID', 'SQL', 'SELECT id as ID, name as Name FROM demo', 'Demo', 'id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)', 'demo', 'Si');
 
 -- --------------------------------------------------------
 
@@ -123,8 +151,7 @@ CREATE TABLE `rol` (
 
 INSERT INTO `rol` (`idrol`, `nombre_rol`) VALUES
 (1, 'Administrador'),
-(2, 'Supervisor'),
-(3, 'Vendedor');
+(2, 'Supervisor');
 
 -- --------------------------------------------------------
 
@@ -199,7 +226,9 @@ INSERT INTO `usuario_menu` (`id_usuario_menu`, `id_usuario`, `id_menu`, `visibil
 (1171, 20, 6, 'Mostrar'),
 (1172, 20, 7, 'Mostrar'),
 (1175, 20, 10, 'Mostrar'),
-(1176, 1, 12, 'Mostrar');
+(1176, 1, 12, 'Mostrar'),
+(1179, 1, 19, 'Mostrar'),
+(1182, 1, 23, 'Mostrar');
 
 -- --------------------------------------------------------
 
@@ -223,6 +252,24 @@ CREATE TABLE `usuario_submenu` (
 -- Indices de la tabla `backup`
 --
 ALTER TABLE `backup`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `creador_de_panel`
+--
+ALTER TABLE `creador_de_panel`
+  ADD PRIMARY KEY (`id_creador_de_panel`);
+
+--
+-- Indices de la tabla `custom_panel`
+--
+ALTER TABLE `custom_panel`
+  ADD PRIMARY KEY (`id_custom_panel`);
+
+--
+-- Indices de la tabla `demo`
+--
+ALTER TABLE `demo`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -279,16 +326,34 @@ ALTER TABLE `backup`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
+-- AUTO_INCREMENT de la tabla `creador_de_panel`
+--
+ALTER TABLE `creador_de_panel`
+  MODIFY `id_creador_de_panel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `custom_panel`
+--
+ALTER TABLE `custom_panel`
+  MODIFY `id_custom_panel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `demo`
+--
+ALTER TABLE `demo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `modulos`
 --
 ALTER TABLE `modulos`
-  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -306,13 +371,13 @@ ALTER TABLE `submenu`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_menu`
 --
 ALTER TABLE `usuario_menu`
-  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1179;
+  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1183;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_submenu`
