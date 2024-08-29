@@ -1028,6 +1028,24 @@ function eliminar_modulos($data, $obj)
         }
     }
 
+    $templaesCrudDirPath = dirname(__DIR__, 3) . '/app/libs/script/classes/templates/template_'.$name_view.'/';
+    if (file_exists($templaesCrudDirPath) && is_dir($templaesCrudDirPath)) {
+        $dirFiles = array_diff(scandir($templaesCrudDirPath), ['.', '..']);
+        if (empty($dirFiles)) {
+            try {
+                if (rmdir($templaesCrudDirPath)) {
+                    echo "Directorio de vistas eliminado con éxito: $templaesCrudDirPath\n";
+                } else {
+                    echo "Error al eliminar el directorio de vistas: $templaesCrudDirPath\n";
+                }
+            } catch (Exception $e) {
+                echo "Error al intentar eliminar el directorio de vistas: " . $e->getMessage() . "\n";
+            }
+        } else {
+            echo "El directorio de vistas no está vacío: $templaesCrudDirPath\n";
+        }
+    }
+
     $pdomodel->dropTable($tabla);
 
     return $data;
