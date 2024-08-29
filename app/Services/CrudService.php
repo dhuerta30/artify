@@ -119,7 +119,12 @@ class CrudService
                 }
 
                 public function editar(){
-                    
+                    \$request = new Request();
+			        \$id = \$request->get('modulo');
+
+                    \$pdocrud = DB::PDOCrud();
+                    \$pdocrud->setPK();
+                    \$render = \$pdocrud->dbTable('{$tableName}')->render('EDITFORM', array('id' => \$id));
                 }
             }";
         } else {
