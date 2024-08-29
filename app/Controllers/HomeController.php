@@ -587,9 +587,13 @@ class HomeController
 
 		$pdocrud->fieldTypes("crud_type", "select");
 		$pdocrud->fieldDataBinding("crud_type", array("CRUD"=> "CRUD", "SQL"=> "SQL"), "", "","array");
-
+		$pdocrud->buttonHide("submitBtnSaveBack");
 		$pdocrud->setSettings("viewbtn", false);
 		$pdocrud->setSettings("refresh", false);
+		$pdocrud->setSettings("printBtn", false);
+		$pdocrud->setSettings("pdfBtn", false);
+		$pdocrud->setSettings("csvBtn", false);
+		$pdocrud->setSettings("excelBtn", false);
 		$pdocrud->fieldRenameLable("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->fieldRenameLable("id_tabla", "ID Tabla Base de Datos");
 		$pdocrud->fieldRenameLable("crud_type", "Tipo de Crud");
