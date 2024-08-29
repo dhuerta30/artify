@@ -94,6 +94,7 @@ class CrudService
                     \$pdocrud->setSettings('encryption', false);
                     \$pdocrud->setSettings('addbtn', false);
                     \$pdocrud->setSettings('editbtn', false);
+                    \$pdocrud->setSettings('refresh', false);
                     \$pdocrud->setLangData('no_data', 'Sin Resultados');
                 
                     \$pdocrud->setLangData('tabla', '{$tableName}')
