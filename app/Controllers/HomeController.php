@@ -585,6 +585,9 @@ class HomeController
 		$pdocrud->colRename("name_view", "Nombre de la Vista");
 		$pdocrud->fieldDesc("nombre_funcion_antes_de_insertar", "Campo opcional");
 
+		$pdocrud->fieldTypes("crud_type", "select");
+		$pdocrud->fieldDataBinding("crud_type", array("CRUD"=> "CRUD", "SQL"=> "SQL"), "", "","array");
+
 		$pdocrud->setSettings("viewbtn", false);
 		$pdocrud->setSettings("refresh", false);
 		$pdocrud->fieldRenameLable("tabla", "Nombre Tabla Base de Datos");
