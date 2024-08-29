@@ -86,7 +86,7 @@ class CrudService
 
                     \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", 'javascript:;', array(), 'btn-report');
 
-                    \$action = 'http://google.cl';
+                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar';
                     \$text = '<i class=\"fa fa-globe\"></i>';
                     \$attr = array('title'=> 'Editar');
                     \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
@@ -116,6 +116,10 @@ class CrudService
                             'render' => \$render
                         ]
                     );
+                }
+
+                public function editar(){
+                    
                 }
             }";
         } else {
