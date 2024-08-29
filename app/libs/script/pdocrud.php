@@ -1016,18 +1016,18 @@ function eliminar_modulos($data, $obj)
         if ($filePath && file_exists($filePath)) {
             try {
                 if (unlink($filePath)) {
-                    echo "Archivo eliminado con éxito: $filePath\n";
+                    echo "Archivo eliminado con éxito: $filePath";
                 } else {
-                    echo "Error al eliminar el archivo: $filePath\n";
+                    echo "Error al eliminar el archivo: $filePath";
                 }
             } catch (Exception $e) {
-                echo "Error al intentar eliminar el archivo $filePath: " . $e->getMessage() . "\n";
+                echo "Error al intentar eliminar el archivo $filePath: " . $e->getMessage();
             }
         } else {
-            echo "El archivo no existe: $filePath\n";
+            echo "El archivo no existe: $filePath";
         }
     }
-    
+
     $pdomodel->dropTable($tabla);
 
     return $data;
