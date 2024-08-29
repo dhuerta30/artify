@@ -17,8 +17,6 @@ use App\Models\UserModel;
 use App\Models\ProcedimientoModel;
 use App\Models\UsuarioSubMenuModel;
 
-use App\Services\CrudService;
-
 class HomeController
 {
     public $token;
@@ -32,28 +30,6 @@ class HomeController
 		}
         $this->token = Token::generateFormToken('send_message');
 	}
-
-	public function metodo()
-    {
-        try {
-            $crudService = new CrudService();
-            $tableName = 'demo';
-			$idTable = 'ID';
-			$crudType = "SQL";
-			$query = "SELECT id as ID, name as Name FROM ". $tableName;
-			$controllerName = 'Demo';
-            $columns = 'id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)';
-            $nameview = 'demo';
-            
-            $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview);
-
-            // Mensaje de éxito o redirigir según sea necesario
-            echo "CRUD creado con éxito.";
-        } catch (\Exception $e) {
-            // Manejo de errores
-            echo "Error: " . $e->getMessage();
-        }
-    }
 
 	public static function obtener_menu_por_id_usuario($id_usuario){
 		$usuario_menu = new UsuarioMenuModel();
