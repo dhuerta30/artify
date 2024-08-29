@@ -45,20 +45,17 @@ function buscador_tabla($data, $obj, $columnDB = array()) {
              
             if ($search_text !== '') { 
                 if ($search_col !== 'all') {
-                   
                     $whereClause = "WHERE $search_col LIKE '%$search_text%'";
-                    
                 } else {
-                    $whereClause = "WHERE product_id LIKE '%$search_text%'
-                                    OR product_name LIKE '%$search_text%'
-                                    OR product_line LIKE '%$search_text%'
-                                    OR productScale LIKE '%$search_text%'
-                                    OR productVendor LIKE '%$search_text%'
-                                    OR CONCAT(product_name, ' ', product_line) LIKE '%$search_text%'";
+                    $whereConditions = [];
+                    foreach ($columnNames as $columnName) {
+                        $whereConditions[] = "$columnName LIKE '%$search_text%'";
+                    }
+                    $whereClause = "WHERE " . implode(" OR ", $whereConditions);
                 }
             }
  
-            $query = "SELECT product_id, CONCAT(product_name, ' ', product_line) as unido, productScale, productVendor 
+            $query = "SELECT id as ID, name as Name 
             FROM $tabla
             $whereClause";
  
