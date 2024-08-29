@@ -1028,22 +1028,43 @@ function eliminar_modulos($data, $obj)
         }
     }
 
-    $templaesCrudDirPath = dirname(__DIR__, 3) . '/app/libs/script/classes/templates/template_'.$nameview.'/';
-    if (file_exists($templaesCrudDirPath) && is_dir($templaesCrudDirPath)) {
-        $dirFiles = array_diff(scandir($templaesCrudDirPath), ['.', '..']);
-        if (empty($dirFiles)) {
-            try {
-                if (rmdir($templaesCrudDirPath)) {
-                    echo "Directorio de vistas eliminado con éxito: $templaesCrudDirPath\n";
-                } else {
-                    echo "Error al eliminar el directorio de vistas: $templaesCrudDirPath\n";
-                }
-            } catch (Exception $e) {
-                echo "Error al intentar eliminar el directorio de vistas: " . $e->getMessage() . "\n";
-            }
-        } else {
-            echo "El directorio de vistas no está vacío: $templaesCrudDirPath\n";
+    // Función para eliminar un directorio completo y su contenido
+    function eliminar_directorio_completo($dir)
+    {
+        if (!file_exists($dir)) {
+            return false;
         }
+
+        $files = array_diff(scandir($dir), ['.', '..']);
+        foreach ($files as $file) {
+            $filePath = $dir . DIRECTORY_SEPARATOR . $file;
+            if (is_dir($filePath)) {
+                eliminar_directorio_completo($filePath); // Llamada recursiva
+            } else {
+                if (unlink($filePath)) {
+                    echo "Archivo eliminado con éxito: $filePath\n";
+                } else {
+                    echo "Error al eliminar el archivo: $filePath\n";
+                }
+            }
+        }
+
+        return rmdir($dir);
+    }
+
+    $templaesCrudDirPath = dirname(__DIR__, 3) . '/app/libs/script/classes/templates/template_' . $nameview . '/';
+    if (file_exists($templaesCrudDirPath) && is_dir($templaesCrudDirPath)) {
+        try {
+            if (eliminar_directorio_completo($templaesCrudDirPath)) {
+                echo "Directorio eliminado con éxito:";
+            } else {
+                echo "Error al eliminar el directorio: $templaesCrudDirPath\n";
+            }
+        } catch (Exception $e) {
+            echo "Error al intentar eliminar el directorio: " . $e->getMessage() . "\n";
+        }
+    } else {
+        echo "El directorio no existe: $templaesCrudDirPath\n";
     }
 
     $pdomodel->dropTable($tabla);
