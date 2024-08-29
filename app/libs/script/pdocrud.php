@@ -995,8 +995,37 @@ function eliminar_modulos($data, $obj)
     $pdomodel = $obj->getPDOModelObj();
     $pdomodel->where("id_modulos", $id);
     $query = $pdomodel->select("modulos");
+
+    if (empty($query)) {
+        echo "No se encontró ningún módulo con el ID proporcionado.";
+        return $data;
+    }
+
     $tabla = $query[0]["tabla"];
+    $controller_name = $query[0]["controller_name"];
+    $nameview = $query[0]["nameview"];
+
     $pdomodel->dropTable($tabla);
+
+    $controllerFilePath = 'app/Controllers/' . $controller_name . '.php';
+    $viewFilePath = 'app/Views/' . $nameview . '.php';
+
+    foreach ($filesToDelete as $filePath) {
+        if (file_exists($filePath)) {
+            try {
+                if (unlink($filePath)) {
+                    echo "Archivo eliminado con éxito: $filePath\n";
+                } else {
+                    echo "Error al eliminar el archivo: $filePath\n";
+                }
+            } catch (Exception $e) {
+                echo "Error al intentar eliminar el archivo $filePath: " . $e->getMessage() . "\n";
+            }
+        } else {
+            echo "El archivo no existe: $filePath\n";
+        }
+    }
+
     return $data;
 }
 
