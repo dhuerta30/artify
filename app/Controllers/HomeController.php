@@ -707,10 +707,10 @@ class HomeController
 		$pdocrud = DB::PDOCrud();
 
 		$pdomodel = $pdocrud->getPDOModelObj();
-		$datamenu = $pdomodel->executeQuery("SELECT MAX(orden_menu) as orden FROM menu");
+		$datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
 		$newOrdenMenu = $datamenu[0]["orden"] + 1;
 
-		$datasubmenu = $pdomodel->executeQuery("SELECT MAX(orden_submenu) as orden_submenu FROM submenu");
+		$datasubmenu = $pdomodel->DBQuery("SELECT MAX(orden_submenu) as orden_submenu FROM submenu");
 		$newOrdenSubMenu = $datasubmenu[0]["orden_submenu"] + 1;
 
 		$action = "javascript:;";
