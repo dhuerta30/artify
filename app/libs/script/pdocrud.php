@@ -973,6 +973,22 @@ function insertar_modulos($data, $obj){
     $controller_name = $data["modulos"]["controller_name"];
     $columns_table = $data["modulos"]["columns_table"];
     $name_view = $data["modulos"]["name_view"];
+    $add_menu = $data["modulos"]["add_menu"];
+
+    $pdomodel = $obj->getPDOModelObj();
+    if($add_menu == "Si"){
+
+        $datamenu = $pdomodel->executeQuery("SELECT MAX(orden_menu) as orden FROM menu");
+		$newOrdenMenu = $datamenu[0]["orden"] + 1;
+
+        $pdomodel->insert("menu", array(
+            "nombre_menu" => $controller_name, 
+            "url_menu" => "/".$controller_name."/index",
+            "icono_menu" => "fas fa-menu", 
+            "submenu" => "No",
+            "orden_menu" => $newOrdenMenu
+        ));
+    }
 
     if($crud_type == "SQL"){
         $crudService = new App\Services\CrudService();
