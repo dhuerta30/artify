@@ -107,8 +107,6 @@ function format_sql_col_tabla($data, $obj, $columnDB = array()) {
             $data[$key] = $value;
         }
     }
-
-    print_r($data);
  
     return $data;
 }
