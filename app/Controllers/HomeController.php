@@ -576,98 +576,21 @@ class HomeController
 	{
 		$pdocrud = DB::PDOCrud();
 		$pdocrud->tableHeading("Generador de Módulos");
-		$pdocrud->setSearchCols(array("tabla", "activar_filtro_de_busqueda", "botones_de_exportacion", "seleccionar_skin", "seleccionar_template"));
+		$pdocrud->setSearchCols(array("tabla", "crud_type", "query", "controller_name", "columns_table", "name_view"));
 		$pdocrud->crudRemoveCol(array("id_modulos"));
+		$pdocrud->colRename("crud_type", "Tipo de Crud");
+		$pdocrud->colRename("query", "Consulta BD");
+		$pdocrud->colRename("controller_name", "Nombre del Controlador");
+		$pdocrud->colRename("columns_table", "Columnas de la Tabla");
+		$pdocrud->colRename("name_view", "Nombre de la Vista");
 		$pdocrud->fieldDesc("nombre_funcion_antes_de_insertar", "Campo opcional");
-		$pdocrud->fieldDesc("nombre_funcion_despues_de_insertar", "Campo opcional");
-		$pdocrud->fieldDesc("nombre_funcion_antes_de_actualizar", "Campo opcional");
-		$pdocrud->fieldDesc("nombre_funcion_despues_de_actualizar", "Campo opcional");
-		$pdocrud->fieldDesc("nombre_funcion_antes_de_eliminar", "Campo opcional");
-		$pdocrud->fieldDesc("nombre_funcion_despues_de_eliminar", "Campo opcional");
-		$pdocrud->fieldDesc("nombre_funcion_antes_de_actualizar_gatillo", "Campo opcional");
-		$pdocrud->fieldDesc("nombre_funcion_despues_de_actualizar_gatillo", "Campo opcional");
 
-		$pdocrud->fieldNotMandatory("nombre_funcion_antes_de_insertar");
-		$pdocrud->fieldNotMandatory("nombre_funcion_despues_de_insertar");
-		$pdocrud->fieldNotMandatory("nombre_funcion_antes_de_actualizar");
-		$pdocrud->fieldNotMandatory("nombre_funcion_despues_de_actualizar");
-		$pdocrud->fieldNotMandatory("nombre_funcion_antes_de_eliminar");
-		$pdocrud->fieldNotMandatory("nombre_funcion_despues_de_eliminar");
-		$pdocrud->fieldNotMandatory("nombre_funcion_antes_de_actualizar_gatillo");
-		$pdocrud->fieldNotMandatory("nombre_funcion_despues_de_actualizar_gatillo");
-
-		$pdocrud->fieldGroups("Name", array("seleccionar_skin", "seleccionar_template"));
-		$pdocrud->fieldGroups("filtr", array("activar_filtro_de_busqueda", "botones_de_accion", "activar_buscador"));
-		$pdocrud->fieldGroups("Name1", array("botones_de_exportacion", "activar_eliminacion_multiple", "activar_modo_popup"));
-		$pdocrud->fieldGroups("Name2", array("nombre_funcion_antes_de_insertar", "nombre_funcion_despues_de_insertar"));
-		$pdocrud->fieldGroups("Name3", array("nombre_funcion_antes_de_actualizar", "nombre_funcion_despues_de_actualizar"));
-		$pdocrud->fieldGroups("Name4", array("nombre_funcion_antes_de_eliminar", "nombre_funcion_despues_de_eliminar"));
-		$pdocrud->fieldGroups("Name5", array("nombre_funcion_antes_de_actualizar_gatillo", "nombre_funcion_despues_de_actualizar_gatillo"));
-		$pdocrud->fieldTypes("activar_eliminacion_multiple", "radio");
-		$pdocrud->fieldDataBinding("activar_eliminacion_multiple", array("si" => "si", "no" => "no"), "", "", "array");
-		$pdocrud->fieldTypes("activar_modo_popup", "radio");
-		$pdocrud->fieldDataBinding("activar_modo_popup", array("si" => "si", "no" => "no"), "", "", "array");
-		$pdocrud->fieldTypes("nulo", "select");
-		$pdocrud->fieldDataBinding("nulo", array("si" => "si", "NOT NULL" => "no"), "", "", "array");
-		$pdocrud->fieldTypes("activar_buscador", "radio");
-		$pdocrud->fieldDataBinding("activar_buscador", array("si" => "si", "no" => "no"), "", "", "array");
-		$pdocrud->fieldCssClass("activar_filtro_de_busqueda", array("data_activar_filtro_de_busqueda"));
-		$pdocrud->fieldTypes("seleccionar_skin", "select");
-		$pdocrud->fieldDataBinding("seleccionar_skin", array("green" => "green", "pure" => "pure", "advance" => "advance", "fair" => "fair", "default" => "default", "hover" => "hover", "dark" => "dark"), "", "", "array");
-		$pdocrud->fieldTypes("visibilidad_formulario", "select");
-		$pdocrud->fieldTypes("seleccionar_template", "select");
-		$pdocrud->fieldDataBinding("seleccionar_template", array("bootstrap" => "bootstrap", "bootstrap4" => "bootstrap4", "pure" => "pure", "simple" => "simple", "Personalizado" => "Personalizado"), "", "", "array");
-		$pdocrud->fieldTypes("visibilidad_formulario", "select");
-		$pdocrud->fieldDataBinding("visibilidad_formulario", array("Mostrar" => "Mostrar", "Ocultar" => "Ocultar"), "", "", "array");
-
-		$pdocrud->fieldTypes("visibilidad_busqueda", "select");
-		$pdocrud->fieldDataBinding("visibilidad_busqueda", array("Mostrar" => "Mostrar", "Ocultar" => "Ocultar"), "", "", "array");
-
-		$pdocrud->fieldTypes("tipo_de_campo", "select");
-		$pdocrud->fieldDataBinding("tipo_de_campo", array("Imagen" => "Imagen", "select" => "select", "Input" => "Input", "summernote" => "summernote", "ckeditor" => "ckeditor"), "", "", "array");
-
-
-		$pdocrud->fieldTypes("visibilidad_grilla", "select");
-		$pdocrud->fieldDataBinding("visibilidad_grilla", array("Mostrar" => "Mostrar", "Ocultar" => "Ocultar"), "", "", "array");
-
-		$pdocrud->fieldTypes("visibilidad_de_filtro_busqueda", "select");
-		$pdocrud->fieldDataBinding("visibilidad_de_filtro_busqueda", array("Mostrar" => "Mostrar", "Ocultar" => "Ocultar"), "", "", "array");
-
-		$pdocrud->fieldTypes("botones_de_exportacion", "checkbox");
-		$pdocrud->fieldDataBinding("botones_de_exportacion", array("imprimir" => "imprimir", "csv" => "csv", "pdf" => "pdf", "excel" => "excel"), "", "", "array");
-
-		$pdocrud->fieldTypes("botones_de_accion", "checkbox");
-		$pdocrud->fieldDataBinding("botones_de_accion", array("Agregar" => "Agregar", "Ver" => "Ver", "Editar" => "Editar", "Eliminar" => "Eliminar", "Guardar" => "Guardar", "Guardar y regresar" => "Guardar y regresar", "Regresar" => "Regresar", "Cancelar" => "Cancelar"), "", "", "array");
-
-		$pdocrud->setLangData("no_data", "No hay Módulos creados");
-		$pdocrud->fieldTypes("activar_filtro_de_busqueda", "select");
-		$pdocrud->fieldDataBinding("activar_filtro_de_busqueda", array("AUTO_INCREMENT" => "si", "no" => "no"), "", "", "array");
-		$pdocrud->buttonHide("submitBtnSaveBack");
-		$pdocrud->fieldTypes("autoincrementable", "select");
-		$pdocrud->fieldDataBinding("autoincrementable", array("AUTO_INCREMENT" => "si", "no" => "no"), "", "", "array");
-		$pdocrud->fieldTypes("indice", "select");
-		$pdocrud->fieldDataBinding("indice", array("PRIMARY KEY" => " PRIMARY"), "", "", "array");
-		$pdocrud->fieldNotMandatory("longitud");
-		$pdocrud->fieldNotMandatory("indice");
-		$pdocrud->fieldNotMandatory("autoincrementable");
-		$pdocrud->fieldNotMandatory("botones_de_exportacion");
-		$pdocrud->fieldNotMandatory("botones_de_accion");
-		$pdocrud->fieldNotMandatory("script_js");
-		$pdocrud->fieldTypes("tipo", "select");
-		$pdocrud->addCallback("before_insert", "insertar_modulos");
-		$pdocrud->addCallback("before_update", "actualizar_modulo");
-		$pdocrud->addCallback("before_delete", "eliminar_modulo");
-		$pdocrud->joinTable("campos", "campos.id_modulos = modulos.id_modulos", "LEFT JOIN");
-		$pdocrud->fieldDataBinding("tipo", array("INT" => "Número", "VARCHAR" => "Caracteres", "TEXT" => "Contenido", "DATE" => "Fecha"), "", "", "array");
-		$pdocrud->setSettings("printBtn", false);
-		$pdocrud->setSettings("pdfBtn", false);
-		$pdocrud->setSettings("csvBtn", false);
-		$pdocrud->setSettings("excelBtn", false);
 		$pdocrud->setSettings("viewbtn", false);
+		$pdocrud->setSettings("refresh", false);
 		$pdocrud->fieldRenameLable("nombre", "Nombre campo");
 		$pdocrud->fieldRenameLable("tabla", "Nombre Tabla Base de Datos");
 
-		$action = $_ENV["BASE_URL"] . "home/pagina/modulo/{pk}";
+		$action = $_ENV["BASE_URL"] . "home/pagina/modulo/{id_modulos}";
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
 		$pdocrud->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "booking_status", $attr);

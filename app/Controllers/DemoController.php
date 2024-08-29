@@ -59,7 +59,7 @@
                     $pdocrud->setSettings('pdfBtn', true);
                     $pdocrud->setSettings('csvBtn', true);
                     $pdocrud->setSettings('excelBtn', true);
-                    $pdocrud->setSettings('clonebtn', true);
+                    $pdocrud->setSettings('clonebtn', false);
                     $pdocrud->setSettings('template', 'template_demo');
                     $pdocrud->setLangData('no_data', 'Sin Resultados');
                 
@@ -87,6 +87,7 @@
                     $pdocrud = DB::PDOCrud();
                     $pdocrud->buttonHide('submitBtn');
                     $pdocrud->buttonHide('cancel');
+                    $pdocrud->setSettings('template', 'template_demo');
                     $pdocrud->formStaticFields('botones', 'html', '
                         <div class="col-md-12 text-center">
                             <input type="submit" class="btn btn-primary pdocrud-form-control pdocrud-submit" data-action="insert" value="Guardar"> 
@@ -113,6 +114,7 @@
                     $id_tabla = strtoupper($columnDB[0]);
 
                     $pdocrud->setPK($id_tabla);
+                    $pdocrud->setSettings('template', 'template_demo');
                     $pdocrud->buttonHide('submitBtn');
                     $pdocrud->buttonHide('cancel');
                     $pdocrud->formStaticFields('botones', 'html', '
