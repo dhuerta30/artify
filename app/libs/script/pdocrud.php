@@ -988,7 +988,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
             "orden_menu" => $newOrdenMenu
         ));
 
-        $id_menu = $pdomodel->getLastQuery();
+        $id_menu = $pdomodel->lastInsertId;
 
         $pdomodel->insert("usuario_menu", array(
             "id_usuario" => $id_sesion_usuario,
