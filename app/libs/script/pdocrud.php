@@ -1016,15 +1016,15 @@ function eliminar_modulos($data, $obj)
         if ($filePath && file_exists($filePath)) {
             try {
                 if (unlink($filePath)) {
-                    echo "Archivo eliminado con éxito: $filePath";
+                    echo "Archivo eliminado con éxito";
                 } else {
-                    echo "Error al eliminar el archivo: $filePath";
+                    echo "Error al eliminar el archivo";
                 }
             } catch (Exception $e) {
                 echo "Error al intentar eliminar el archivo $filePath: " . $e->getMessage();
             }
         } else {
-            echo "El archivo no existe: $filePath";
+            echo "El archivo no existe";
         }
     }
 
