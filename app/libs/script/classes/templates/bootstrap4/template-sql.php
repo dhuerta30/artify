@@ -128,37 +128,41 @@
                             <tbody>
                             <input type="hidden" value="<?php echo $objKey; ?>" class="pdocrud-hidden-data pdoobj" />
                             <?php
-                            $rowcount = 0;
+                            $rowcount = $settings["row_no"];
                             if ($data)
                                 foreach ($data as $rows) {
 
                                     $sumrow = false;
                                     ?>
-                                    <tr data-id="<?=$rows[$pk]?>" id="pdocrud-row-<?php echo $rowcount; ?>" class="pdocrud-data-row">
+                                    <tr data-id="<?=$rows[$pk]?>" id="pdocrud-row-<?php echo $rowcount; ?>" class="pdocrud-data-row <?php if (isset($rows[0]["class"])) echo $rows[0]["class"]; ?>" <?php if (isset($rows[0]["style"])) echo $rows[0]["style"]; ?>>
                                             <?php if ($settings["numberCol"]) { ?>
                                             <td class="pdocrud-row-count">
                                             <?php echo $rowcount + 1; ?>
                                             </td>
                                         <?php } if ($settings["checkboxCol"]) { ?>
-                                        <td class="pdocrud-row-checkbox-actions">
-                                            <input type="checkbox" class="pdocrud-select-cb" value="<?php echo $rows[$pk]; ?>" />
-                                        </td>
+                                            <td class="pdocrud-row-checkbox-actions">
+                                                <input type="checkbox" class="pdocrud-select-cb" value="<?php echo $rows[$pk]; ?>" />
+                                            </td>
                                         <?php }
                                         foreach ($rows as $col => $row) {
                                             if (is_array($row)) {
                                                 ?>    
                                                 <td class="pdocrud-row-cols <?php echo $row["class"]; ?>"  <?php echo $row["style"]; ?>>
-                                                <?php echo $row["content"]; ?>
+                                                    <?php if (isset($row["sum_type"])) {
+                                                        echo $lang[$row["sum_type"]];
+                                                        $sumrow = true;
+                                                    } ?>
+                                                    <?php echo $row["content"]; ?>
                                                 </td>
                                                 <?php
-                                            } else {
+                                                } else {
                                                 ?>    
-                                                <td class="pdocrud-row-cols">
-                                                <?php echo $row; ?>
-                                                </td>
-                                                <?php
+                                                    <td class="pdocrud-row-cols">
+                                                        <?php echo $row; ?>
+                                                    </td>
+                                            <?php
+                                                }
                                             }
-                                        }
                                         if($sumrow){
                                             ?>
                                              <td class="pdocrud-row-actions"></td>
@@ -263,7 +267,7 @@
                                 } else {
                                 ?>
                                 <tr class="pdocrud-data-row">
-                                    <td class="pdocrud-row-count" colspan="100%">
+                                    <td class="pdocrud-row-count text-center" colspan="100%">
                                         <?php echo $lang["no_data"] ?>
                                     </td>
                                 </tr>
@@ -278,6 +282,11 @@
                                             <th class="w1">
                                                 #
                                             </th>
+                                            <?php }
+                                            if ($settings["checkboxCol"]) { ?>
+                                                <th class="w1">
+                                                    <input type="checkbox" value="select-all" name="pdocrud_select_all" class="pdocrud-select-all" />
+                                                </th>
                                             <?php } ?>
                                             <?php if ($columns) foreach ($columns as $colkey => $column) { ?>
                                                 <th <?php echo $column["attr"]; ?> data-action="<?php echo $column["sort"]; ?>" data-sortkey="<?php echo $colkey; ?>" data-rendertype="SQL" class="pdocrud-actions-sorting pdocrud--<?php echo $column["sort"]; ?>">

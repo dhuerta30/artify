@@ -182,11 +182,10 @@
                         </td>
                     <?php } ?>
                 </tr>
-            <?php
+                <?php
                     $rowcount++;
-                }
-            else {
-            ?>
+                } else {
+                ?>
                 <tr class="pdocrud-data-row">
                     <td class="pdocrud-row-count text-center" colspan="100%">
                         <?php echo $lang["no_data"] ?>
