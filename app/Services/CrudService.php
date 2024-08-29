@@ -36,25 +36,21 @@ class CrudService
 
     private function generateTemplateCrud($nameview)
     {
-        $sourceDir = __DIR__ . '/../../libs/script/classes/templates/bootstrap4'; // Ruta de la carpeta base de plantillas
-        $destinationDir = __DIR__ . '/../../libs/script/classes/templates/template_' . $nameview;
+        $sourceDir = __DIR__ . '/../libs/script/classes/templates/bootstrap4'; // Ruta de la carpeta base de plantillas
+        $destinationDir = __DIR__ . '/../libs/script/classes/templates/template_' . $nameview;
 
         if (!file_exists($destinationDir)) {
-            try {
-                $this->copyDirectory($sourceDir, $destinationDir, $output);
-                $this->showSuccessMessage($output, "Template '{$nameview}' creado con éxito.");
-                return Command::SUCCESS;
-            } catch (Exception $e) {
-                $output->writeln("<error>Error al copiar el template: {$e->getMessage()}</error>");
-                return Command::FAILURE;
-            }
-        } else {
-            $output->writeln("<error>La carpeta '{$nameview}' ya existe.</error>");
-            return Command::FAILURE;
+            $this->copyDirectory($sourceDir, $destinationDir);
+            $this->showSuccessMessage("Template '{$nameview}' creado con éxito.");
         }
     }
 
-    private function copyDirectory($source, $destination, OutputInterface $output)
+    private function showSuccessMessage($message)
+    {
+        echo "<div class='alert alert-success'>{$message}</div>";
+    }
+
+    private function copyDirectory($source, $destination)
     {
         if (!file_exists($destination)) {
             mkdir($destination, 0755, true); // Crear la carpeta de destino
@@ -68,7 +64,7 @@ class CrudService
                 $destPath = $destination . DIRECTORY_SEPARATOR . $file;
 
                 if (is_dir($sourcePath)) {
-                    $this->copyDirectory($sourcePath, $destPath, $output);
+                    $this->copyDirectory($sourcePath, $destPath);
                 } else {
                     copy($sourcePath, $destPath);
                 }
@@ -183,6 +179,7 @@ class CrudService
                     \$pdocrud = DB::PDOCrud();
                     \$pdocrud->buttonHide('submitBtn');
                     \$pdocrud->buttonHide('cancel');
+                    \$pdocrud->setSettings('template', 'template_{$nameview}');
                     \$pdocrud->formStaticFields('botones', 'html', '
                         <div class=\"col-md-12 text-center\">
                             <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
@@ -209,6 +206,7 @@ class CrudService
                     \$id_tabla = strtoupper(\$columnDB[0]);
 
                     \$pdocrud->setPK(\$id_tabla);
+                    \$pdocrud->setSettings('template', 'template_{$nameview}');
                     \$pdocrud->buttonHide('submitBtn');
                     \$pdocrud->buttonHide('cancel');
                     \$pdocrud->formStaticFields('botones', 'html', '
