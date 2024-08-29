@@ -97,6 +97,18 @@ function format_sql_col_tabla($data, $obj, $columnDB = array()) {
             $default_cols[$column] = $details;
         }
     }
+
+     // Convertir las claves de $data a minúsculas
+    $data = array_change_key_case($data, CASE_LOWER);
+
+    // Evitar duplicados y combinar datos de manera controlada
+    foreach ($default_cols as $key => $value) {
+        if (!array_key_exists($key, $data)) {
+            $data[$key] = $value;
+        }
+    }
+
+    print_r($data);
  
     return $data;
 }
