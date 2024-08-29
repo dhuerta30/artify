@@ -99,6 +99,10 @@ class CrudService
                     \$pdocrud->setSettings('editbtn', false);
                     \$pdocrud->setSettings('refresh', false);
                     \$pdocrud->setSettings('numberCol', true);
+                    \$pdocrud->setSettings('printBtn', true);
+                    \$pdocrud->setSettings('pdfBtn', true);
+                    \$pdocrud->setSettings('csvBtn', true);
+                    \$pdocrud->setSettings('excelBtn', true);
                     \$pdocrud->setLangData('no_data', 'Sin Resultados');
                 
                     \$pdocrud->setLangData('tabla', '{$tableName}')
