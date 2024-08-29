@@ -18,7 +18,7 @@
 </style>
 <div class="content-wrapper">
 	<section class="content">
-		<div class="card">
+		<div class="card mt-4">
 			<div class="card-body">
 				<?=$render?>
 				<div class="emergente"></div>
