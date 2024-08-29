@@ -65,7 +65,8 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
             if (result.isConfirmed) {
                 Swal.fire({
                     title: "Guardado con éxito!",
-                    icon: "success"
+                    icon: "success",
+                    confirmButtonText: "Aceptar"
                 });
                 $('.pdocrud-back').click();
             }
