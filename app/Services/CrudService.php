@@ -95,6 +95,11 @@ class CrudService
                     \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
 
                     \$pdocrud->setSettings('encryption', false);
+                    \$pdocrud->setSettings('pagination', true);
+                    \$pdocrud->setSettings('searchbox', true);
+                    \$pdocrud->setSettings('deleteMultipleBtn', true);
+                    \$pdocrud->setSettings('recordsPerPageDropdown', true);
+                    \$pdocrud->setSettings('totalRecordsInfo', true);
                     \$pdocrud->setSettings('addbtn', false);
                     \$pdocrud->setSettings('editbtn', false);
                     \$pdocrud->setSettings('refresh', false);
