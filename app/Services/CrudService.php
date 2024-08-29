@@ -88,7 +88,7 @@ class CrudService
 
                     \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", 'javascript:;', array(), 'btn-report');
 
-                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{\$idTable}';
+                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{{$idTable}}';
                     \$text = '<i class=\"fa fa-edit\"></i>';
                     \$attr = array('title'=> 'Editar');
                     \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
@@ -120,6 +120,17 @@ class CrudService
                     );
                 }
 
+                public function agregar(){
+                    \$pdocrud = DB::PDOCrud();
+                    \$render = \$pdocrud->dbTable('{$tableName}')->render('insertform');
+                    View::render(
+                        'agregar_{$nameview}',
+                        [
+                            'render' => \$render
+                        ]
+                    );
+                }
+
                 public function editar(){
                     \$request = new Request();
 			        \$id = \$request->get('id');
@@ -131,7 +142,7 @@ class CrudService
                     \$id_tabla = strtoupper(\$columnDB[0]);
 
                     \$pdocrud->setPK(\$id_tabla);
-                    \$render = \$pdocrud->dbTable('{$tableName}')->render('EDITFORM', array('id' => \$id));
+                    \$render = \$pdocrud->dbTable('{$tableName}')->render('editform', array('id' => \$id));
 
                     View::render(
                         'editar_{$nameview}', 
