@@ -26,9 +26,11 @@ if (isset($_REQUEST["pdocrud_instance"])) {
     $fomplusajax->handleRequest();
 }
 
-function buscador_tabla($data, $obj) {
+function buscador_tabla($data, $obj, $columnDB = array()) {
     $pdomodel = $obj->getPDOModelObj();
     $tabla = $obj->getLangData("tabla");
+
+    $columnNames = $pdomodel->columnNames($tabla);
  
     $whereClause = "";
  
@@ -41,15 +43,11 @@ function buscador_tabla($data, $obj) {
                 $search_col = preg_replace('/[^a-zA-Z0-9_]/', '', $search_col);
                 $search_text = htmlspecialchars($search_text, ENT_QUOTES, 'UTF-8');
              
-            if ($search_text !== '') {
-                $_SESSION["search_text"] = $search_text;
- 
+            if ($search_text !== '') { 
                 if ($search_col !== 'all') {
-                    if ($search_col === 'unido') {
-                        $whereClause = "WHERE CONCAT(product_name, ' ', product_line) LIKE '%$search_text%'";
-                    } else {
-                        $whereClause = "WHERE $search_col LIKE '%$search_text%'";
-                    }
+                   
+                    $whereClause = "WHERE $search_col LIKE '%$search_text%'";
+                    
                 } else {
                     $whereClause = "WHERE product_id LIKE '%$search_text%'
                                     OR product_name LIKE '%$search_text%'
@@ -126,6 +124,20 @@ function eliminacion_masiva_tabla($data, $obj){
     return $data;
 }
 
+function eliminar_tabla($data, $obj){
+    $tabla = $obj->langData["tabla"];
+    $pk = $obj->langData["pk"];
+    $pdomodel = $obj->getPDOModelObj();
+ 
+    $id = $data["id"];
+ 
+    if (!empty($id)) {
+        $pdomodel->where($pk, $id);
+        $pdomodel->delete($tabla);
+    }
+ 
+    return $data;
+}
 
 function carga_masiva_nmedicos_insertar($data, $obj){
     $archivo = basename($data["carga_masiva_nmedicos"]["archivo"]);

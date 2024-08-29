@@ -103,7 +103,8 @@ class CrudService
                         ->setLangData('columnVal', \$columnVal);
                     \$pdocrud->tableHeading('{$tableName}');
                     \$pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
-                    \$pdocrud->addCallback('before_sql_data', 'buscador_products');
+                    \$pdocrud->addCallback('before_sql_data', 'buscador_products', array(\$columnDB));
+                    \$pdocrud->addCallback('before_delete', 'eliminar_tabla');
 
                     \$pdocrud->setSettings('viewbtn', false);
                     \$pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', array(\$columnDB));
