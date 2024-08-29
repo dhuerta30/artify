@@ -588,6 +588,12 @@ class HomeController
 		$pdocrud->setSettings("viewbtn", false);
 		$pdocrud->setSettings("refresh", false);
 		$pdocrud->fieldRenameLable("tabla", "Nombre Tabla Base de Datos");
+		$pdocrud->fieldRenameLable("id_tabla", "ID Tabla Base de Datos");
+		$pdocrud->fieldRenameLable("crud_type", "Tipo de Crud");
+		$pdocrud->fieldRenameLable("query", "Consulta BD");
+		$pdocrud->fieldRenameLable("controller_name", "Nombre del Controlador");
+		$pdocrud->fieldRenameLable("columns_table", "Columnas de la Tabla");
+		$pdocrud->fieldRenameLable("name_view", "Nombre de la Vista");
 
 		$action = $_ENV["BASE_URL"] . "home/modulo/id/{id_modulos}";
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
