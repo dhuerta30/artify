@@ -576,7 +576,7 @@ class HomeController
 	{
 		$pdocrud = DB::PDOCrud();
 		$pdocrud->tableHeading("Generador de Módulos");
-		$pdocrud->setSearchCols(array("tabla", "crud_type", "query", "controller_name", "columns_table", "name_view"));
+		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view"));
 		$pdocrud->crudRemoveCol(array("id_modulos"));
 		$pdocrud->colRename("crud_type", "Tipo de Crud");
 		$pdocrud->colRename("query", "Consulta BD");
