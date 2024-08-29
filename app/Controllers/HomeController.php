@@ -553,8 +553,9 @@ class HomeController
 		$pdocrud = DB::PDOCrud();
 		$pdocrud->formDisplayInPopup();
 		$pdocrud->fieldGroups("Name1",array("tabla","id_tabla", "crud_type"));
+		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
-		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view"));
+		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu"));
 		$pdocrud->crudRemoveCol(array("id_modulos"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
@@ -563,10 +564,15 @@ class HomeController
 		$pdocrud->colRename("controller_name", "Nombre del Controlador");
 		$pdocrud->colRename("columns_table", "Columnas de la Tabla");
 		$pdocrud->colRename("name_view", "Nombre de la Vista");
+		$pdocrud->colRename("add_menu", "Agregar Al Menú Principal");
 		$pdocrud->fieldDesc("nombre_funcion_antes_de_insertar", "Campo opcional");
 
 		$pdocrud->fieldTypes("crud_type", "select");
 		$pdocrud->fieldDataBinding("crud_type", array("CRUD"=> "CRUD", "SQL"=> "SQL"), "", "","array");
+
+		$pdocrud->fieldTypes("add_menu", "select");
+		$pdocrud->fieldDataBinding("add_menu", array("Si"=> "Si", "No"=> "No"), "", "","array");
+
 		$pdocrud->buttonHide("submitBtnSaveBack");
 		$pdocrud->setSettings("viewbtn", false);
 		$pdocrud->setSettings("refresh", false);
@@ -582,6 +588,7 @@ class HomeController
 		$pdocrud->fieldRenameLable("controller_name", "Nombre del Controlador");
 		$pdocrud->fieldRenameLable("columns_table", "Columnas de la Tabla");
 		$pdocrud->fieldRenameLable("name_view", "Nombre de la Vista");
+		$pdocrud->fieldRenameLable("add_menu", "Agregar Al Menú Principal");
 		$pdocrud->addCallback("before_insert", "insertar_modulos");
 		$pdocrud->addCallback("before_delete", "eliminar_modulos");
 
