@@ -575,6 +575,8 @@ class HomeController
 	public function modulos()
 	{
 		$pdocrud = DB::PDOCrud();
+		$pdocrud->fieldGroups("Name1",array("tabla","id_tabla", "crud_type"));
+		$pdocrud->fieldGroups("Name2",array("query","controller_name", "columns_table", "name_view"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view"));
 		$pdocrud->crudRemoveCol(array("id_modulos"));
@@ -603,6 +605,7 @@ class HomeController
 		$pdocrud->fieldRenameLable("controller_name", "Nombre del Controlador");
 		$pdocrud->fieldRenameLable("columns_table", "Columnas de la Tabla");
 		$pdocrud->fieldRenameLable("name_view", "Nombre de la Vista");
+		$pdocrud->addCallback("before_insert", "insertar_modulos");
 
 		$action = $_ENV["BASE_URL"] . "home/modulo/id/{id_modulos}";
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';

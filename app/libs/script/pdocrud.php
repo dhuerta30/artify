@@ -965,7 +965,19 @@ function formatTable_buscar_examenes($data, $obj){
     return $data;
 }
 
-function insertar_modulos($data, $obj)
+
+function insertar_modulos($data, $obj){
+    $tabla = $data["modulos"]["tabla"];
+    $id_tabla = $data["modulos"]["id_tabla"];
+    $crud_type = $data["modulos"]["crud_type"];
+    $query = $data["modulos"]["query"];
+    $controller_name = $data["modulos"]["controller_name"];
+    $columns_table = $data["modulos"]["columns_table"];
+    $name_view = $data["modulos"]["name_view"];
+}
+
+
+/*function insertar_modulos($data, $obj)
 {
     $newdata = array();
     $newdata["modulos"]["tabla"] = $data["modulos"]["tabla"];
@@ -1030,7 +1042,7 @@ function insertar_modulos($data, $obj)
     //die();
     
     return $newdata;
-}
+}*/
 
 function actualizar_modulo($data, $obj) {
     $newdata = array();
