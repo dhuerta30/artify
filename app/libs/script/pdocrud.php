@@ -965,7 +965,6 @@ function formatTable_buscar_examenes($data, $obj){
     return $data;
 }
 
-
 function insertar_modulos($data, $obj){
     $tabla = $data["modulos"]["tabla"];
     $id_tabla = $data["modulos"]["id_tabla"];
