@@ -607,7 +607,7 @@ class HomeController
 		$pdocrud->fieldRenameLable("name_view", "Nombre de la Vista");
 		$pdocrud->addCallback("before_insert", "insertar_modulos");
 
-		$action = $_ENV["BASE_URL"] . "home/modulo/id/{id_modulos}";
+		$action = $_ENV["BASE_URL"] . "{controller_name}/index";
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
 		$pdocrud->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "booking_status", $attr);

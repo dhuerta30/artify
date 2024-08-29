@@ -55,13 +55,20 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
     let json = JSON.parse(data);
 
     if(json.message){
-        $('.pdocrud-back').click();
         $('.pdocrud-button-url').removeClass('pdocrud-actions');
         Swal.fire({
             title: "Genial!",
             text: json.message,
             icon: "success",
             confirmButtonText: "Aceptar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Guardado con éxito!",
+                    icon: "success"
+                });
+                $('.pdocrud-back').click();
+            }
         });
     }
 });

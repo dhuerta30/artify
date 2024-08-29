@@ -47,7 +47,7 @@ class CrudService
 
     private function showSuccessMessage($message)
     {
-        echo "<div class='alert alert-success'>{$message}</div>";
+        echo "{$message}";
     }
 
     private function copyDirectory($source, $destination)
