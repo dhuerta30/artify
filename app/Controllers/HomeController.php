@@ -587,10 +587,9 @@ class HomeController
 
 		$pdocrud->setSettings("viewbtn", false);
 		$pdocrud->setSettings("refresh", false);
-		$pdocrud->fieldRenameLable("nombre", "Nombre campo");
 		$pdocrud->fieldRenameLable("tabla", "Nombre Tabla Base de Datos");
 
-		$action = $_ENV["BASE_URL"] . "home/pagina/modulo/{id_modulos}";
+		$action = $_ENV["BASE_URL"] . "home/modulo/id/{id_modulos}";
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
 		$pdocrud->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "booking_status", $attr);
