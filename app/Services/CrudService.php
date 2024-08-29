@@ -24,10 +24,10 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $crudType, $query = null, $controllerName, $columns, $nameview)
+    public function createCrud($tableName, $idTable, $crudType, $query = null, $controllerName, $columns, $nameview)
     {
         $this->createTable($tableName, $columns);
-        $this->generateCrudController($tableName, $crudType, $query, $controllerName, $nameview, $crudType);
+        $this->generateCrudController($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
         $this->generateView($nameview);
         $this->generateViewEdit($nameview);
     }
@@ -42,7 +42,7 @@ class CrudService
         }
     }
 
-    private function generateCrudController($tableName, $crudType, $query = null, $controllerName, $nameview)
+    private function generateCrudController($tableName, $idTable, $crudType, $query = null, $controllerName, $nameview)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
 
@@ -84,11 +84,11 @@ class CrudService
 
                     \$tabla = \$pdocrud->getLangData('{$tableName}');
                     \$pk = \$pdocrud->getLangData(\$id);
-                    \$columnVal = \$pdocrud->getLangData(\$id);
+                    \$columnVal = \$pdocrud->getLangData(\$pk);
 
                     \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", 'javascript:;', array(), 'btn-report');
 
-                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{\$id}';
+                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{\$idTable}';
                     \$text = '<i class=\"fa fa-edit\"></i>';
                     \$attr = array('title'=> 'Editar');
                     \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));

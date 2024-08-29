@@ -38,6 +38,7 @@ class HomeController
         try {
             $crudService = new CrudService();
             $tableName = 'demo';
+			$idTable = 'ID';
 			$crudType = "SQL";
 			$query = "SELECT id as ID, name as Name FROM ". $tableName;
 			$controllerName = 'Demo';

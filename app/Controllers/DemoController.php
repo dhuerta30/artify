@@ -37,7 +37,7 @@
 
                     $pdocrud->enqueueBtnTopActions('Report',  "<i class='fa fa-plus'></i> Agregar", 'javascript:;', array(), 'btn-report');
 
-                    $action = $_ENV['BASE_URL'].'Demo/editar/id/{$id}';
+                    $action = $_ENV['BASE_URL']."Demo/editar/id/{$id}";
                     $text = '<i class="fa fa-edit"></i>';
                     $attr = array('title'=> 'Editar');
                     $pdocrud->enqueueBtnActions('url', $action, 'url', $text, $pk, $attr, 'btn-warning', array(array()));
