@@ -127,7 +127,7 @@ class CrudService
                     \$render = \$pdocrud->dbTable('{$tableName}')->render('EDITFORM', array('id' => \$id));
 
                     View::render(
-                        '{$nameview}', 
+                        '{esitar_$nameview}', 
                         [
                             'render' => \$render
                         ]
