@@ -37,14 +37,15 @@
                     $pdocrud->enqueueBtnTopActions('Report',  "<i class='fa fa-plus'></i> Agregar", 'javascript:;', array(), 'btn-report');
 
                     $action = 'http://google.cl';
-                    $text = '<i class="fa fa-globe"></i>';
+                    $text = '<i class="fa fa-edit"></i>';
                     $attr = array('title'=> 'Editar');
-                    $pdocrud->enqueueBtnActions('url', $action, 'url', $text, $pk, $attr, 'btn-primary', array(array()));
+                    $pdocrud->enqueueBtnActions('url', $action, 'url', $text, $pk, $attr, 'btn-warning', array(array()));
 
                     $pdocrud->setSettings('encryption', false);
                     $pdocrud->setSettings('addbtn', false);
                     $pdocrud->setSettings('editbtn', false);
                     $pdocrud->setSettings('refresh', false);
+                    $pdocrud->setSettings('numberCol', true);
                     $pdocrud->setLangData('no_data', 'Sin Resultados');
                 
                     $pdocrud->setLangData('tabla', 'demo')
