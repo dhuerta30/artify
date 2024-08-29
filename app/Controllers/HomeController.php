@@ -575,8 +575,8 @@ class HomeController
 	public function modulos()
 	{
 		$pdocrud = DB::PDOCrud();
+		$pdocrud->formDisplayInPopup();
 		$pdocrud->fieldGroups("Name1",array("tabla","id_tabla", "crud_type"));
-		$pdocrud->fieldGroups("Name2",array("query","controller_name", "columns_table", "name_view"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view"));
 		$pdocrud->crudRemoveCol(array("id_modulos"));
