@@ -36,18 +36,46 @@ class CrudService
 
     private function generateTemplateCrud($name)
     {
-        $templatePath = __DIR__ . '/../Views/templates/' . $name . '.php';
-        $templateContent = "
-        <?php
-        // Aquí se generaría el contenido de la plantilla personalizada para PDOCrud
-        ?>
-        ";
+        $sourceDir = __DIR__ . '/../../libs/script/classes/templates/bootstrap4'; // Ruta de la carpeta base de plantillas
+        $destinationDir = __DIR__ . '/../../libs/script/classes/templates/template_' . $name;
 
-        if (!file_exists(dirname($templatePath))) {
-            mkdir(dirname($templatePath), 0755, true);
+        if (!file_exists($destinationDir)) {
+            try {
+                $this->copyDirectory($sourceDir, $destinationDir, $output);
+                $this->showSuccessMessage($output, "Template '{$name}' creado con éxito.");
+                return Command::SUCCESS;
+            } catch (Exception $e) {
+                $output->writeln("<error>Error al copiar el template: {$e->getMessage()}</error>");
+                return Command::FAILURE;
+            }
+        } else {
+            $output->writeln("<error>La carpeta '{$name}' ya existe.</error>");
+            return Command::FAILURE;
+        }
+    }
+
+    private function copyDirectory($source, $destination, OutputInterface $output)
+    {
+        if (!file_exists($destination)) {
+            mkdir($destination, 0755, true); // Crear la carpeta de destino
         }
 
-        file_put_contents($templatePath, $templateContent);
+        $dir = opendir($source);
+
+        while (($file = readdir($dir)) !== false) {
+            if ($file != '.' && $file != '..') {
+                $sourcePath = $source . DIRECTORY_SEPARATOR . $file;
+                $destPath = $destination . DIRECTORY_SEPARATOR . $file;
+
+                if (is_dir($sourcePath)) {
+                    $this->copyDirectory($sourcePath, $destPath, $output);
+                } else {
+                    copy($sourcePath, $destPath);
+                }
+            }
+        }
+
+        closedir($dir);
     }
 
     private function createTable($tableName, $columns)
