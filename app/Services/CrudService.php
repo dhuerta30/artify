@@ -156,6 +156,7 @@ class CrudService
                     \$pdocrud->setSettings('pdfBtn', true);
                     \$pdocrud->setSettings('csvBtn', true);
                     \$pdocrud->setSettings('excelBtn', true);
+                    \$pdocrud->setSettings('template', 'template_{$nameview}');
                     \$pdocrud->setLangData('no_data', 'Sin Resultados');
                 
                     \$pdocrud->setLangData('tabla', '{$tableName}')
