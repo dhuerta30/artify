@@ -88,7 +88,7 @@ class CrudService
 
                     \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", 'javascript:;', array(), 'btn-report');
 
-                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/{$id}';
+                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{\$id}';
                     \$text = '<i class=\"fa fa-edit\"></i>';
                     \$attr = array('title'=> 'Editar');
                     \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
@@ -134,7 +134,7 @@ class CrudService
                     \$render = \$pdocrud->dbTable('{$tableName}')->render('EDITFORM', array('id' => \$id));
 
                     View::render(
-                        '{editar_$nameview}', 
+                        'editar_{$nameview}', 
                         [
                             'render' => \$render
                         ]
