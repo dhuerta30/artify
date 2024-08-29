@@ -1003,12 +1003,12 @@ function eliminar_modulos($data, $obj)
 
     $tabla = $query[0]["tabla"];
     $controller_name = $query[0]["controller_name"];
-    $nameview = $query[0]["nameview"];
+    $nameview = $query[0]["name_view"];
 
-    $controllerFilePath = 'app/Controllers/' . $controller_name . '.php';
-    $viewFilePath = 'app/Views/' . $nameview . '.php';
-    $viewFilePathEdit = 'app/Views/editar_' . $nameview . '.php';
-    $viewFilePathAdd = 'app/Views/agregar_' . $nameview . '.php';
+    $controllerFilePath = '../../app/Controllers/' . $controller_name . 'Controller.php';
+    $viewFilePath = '../../app/Views/' . $nameview . '.php';
+    $viewFilePathEdit = '../../app/Views/editar_' . $nameview . '.php';
+    $viewFilePathAdd = '../../app/Views/agregar_' . $nameview . '.php';
 
     $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd];
 
