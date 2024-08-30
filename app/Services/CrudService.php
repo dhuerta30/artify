@@ -24,14 +24,19 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html)
     {
-        $this->createTable($tableName, $columns);
-        $this->generateCrudController($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
-        $this->generateView($nameview);
-        $this->generateViewEdit($nameview);
-        $this->generateViewAdd($nameview);
-        $this->generateTemplateCrud($nameview);
+            $this->createTable($tableName, $columns);
+            if($crudType == 'SQL'){
+                $crudType = 'SQL';
+                $this->generateCrudControllerSQL($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
+            } else {
+                $this->generateCrudControllerCRUD($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
+            }
+            $this->generateView($nameview);
+            $this->generateViewEdit($nameview);
+            $this->generateViewAdd($nameview);
+            $this->generateTemplateCrud($nameview);
     }
 
     private function generateTemplateCrud($nameview)
@@ -78,13 +83,11 @@ class CrudService
         }
     }
 
-    private function generateCrudController($tableName, $idTable, $crudType, $query = null, $controllerName, $nameview)
+    private function generateCrudControllerSQL($tableName, $idTable, $crudType, $query = null, $controllerName, $nameview)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
 
-        if($crudType == 'SQL'){
-            $crudType = 'SQL';
-
+       
             $controllerContent = "<?php
 
             namespace App\Controllers;
@@ -220,10 +223,15 @@ class CrudService
                     );
                 }
             }";
-        } else {
-            $crudType = 'CRUD';
+     
+        file_put_contents($controllerPath, $controllerContent);
+    }
 
-            $controllerContent = "<?php
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $crudType, $query = null, $controllerName, $nameview){
+
+        $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
+        
+        $controllerContent = "<?php
 
             namespace App\Controllers;
 
@@ -260,7 +268,6 @@ class CrudService
                     );
                 }
             }";
-        }
 
         file_put_contents($controllerPath, $controllerContent);
     }
