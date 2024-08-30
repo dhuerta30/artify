@@ -347,7 +347,7 @@ class CrudService
                 \$pdocrud->formStaticFields('botones', 'html', '
                     <div class=\"col-md-12 text-center\">
                         <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
-                        <a href=\"'.\$_ENV['BASE_URL'].'Demo/index\" class=\"btn btn-danger\">Regresar</a>
+                        <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
                     </div>
                 ');
                 \$render = \$pdocrud->dbTable('{$tableName}')->render('insertform');
@@ -376,7 +376,7 @@ class CrudService
                 \$pdocrud->formStaticFields('botones', 'html', '
                     <div class=\"col-md-12 text-center\">
                         <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
-                        <a href=\"'.\$_ENV['BASE_URL'].'Demo/index\" class=\"btn btn-danger\">Regresar</a>
+                        <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
                     </div>
                 ');
                 \$render = \$pdocrud->dbTable('{$tableName}')->render('editform', array('id' => \$id));
