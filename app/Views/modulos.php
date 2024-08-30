@@ -31,12 +31,23 @@
 </div>
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
 <script>
-	$(document).on("pdocrud_after_ajax_action",function(event, obj, data){
+$(document).on("pdocrud_after_ajax_action",function(event, obj, data){
     refrechMenu();
     $('.label_Visibilidad_filtro').hide();
     $('.data_visibilidad_filtro').hide();
     $('.data_visibilidad_filtro').attr('required', false);
     $('.pdocrud-button-url').removeClass('pdocrud-actions');
+});
+
+$(document).on("change", ".crud_type", function(){
+    let val = $(this).val();
+    if(val == "CRUD"){
+        $(".id_tabla").removeAttr("required");
+        $(".query").removeAttr("required");
+    } else {
+        $(".id_tabla").attr("required", "required");
+        $(".query").attr("required", "required");
+    }
 });
 
 $(document).on("change", ".data_activar_filtro_de_busqueda", function(){
