@@ -258,6 +258,25 @@ class CrudService
                 public function index()
                 {
                     \$pdocrud = DB::PDOCrud();
+                    \$pdocrud->setSettings('encryption', false);
+                    \$pdocrud->setSettings('pagination', true);
+                    \$pdocrud->setSettings('searchbox', true);
+                    \$pdocrud->setSettings('deleteMultipleBtn', true);
+                    \$pdocrud->setSettings('checkboxCol', true);
+                    \$pdocrud->setSettings('recordsPerPageDropdown', true);
+                    \$pdocrud->setSettings('totalRecordsInfo', true);
+                    \$pdocrud->setSettings('addbtn', false);
+                    \$pdocrud->setSettings('editbtn', false);
+                    \$pdocrud->setSettings('delbtn', true);
+                    \$pdocrud->setSettings('actionbtn', true);
+                    \$pdocrud->setSettings('refresh', false);
+                    \$pdocrud->setSettings('numberCol', true);
+                    \$pdocrud->setSettings('printBtn', true);
+                    \$pdocrud->setSettings('pdfBtn', true);
+                    \$pdocrud->setSettings('csvBtn', true);
+                    \$pdocrud->setSettings('excelBtn', true);
+                    \$pdocrud->setSettings('clonebtn', false);
+                    \$pdocrud->setSettings('template', 'template_{$nameview}');
                     \$render = \$pdocrud->dbTable('{$tableName}')->render();
 
                     View::render(
