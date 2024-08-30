@@ -981,6 +981,11 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $pdomodel->where("tabla", $tabla);
     $db_result = $pdomodel->select("modulos");
 
+    if($db_result){
+        echo "Lo siento La Tabla Ingresada ya existe, pruebe con otra diferente";
+        die();
+    }
+
     if($add_menu == "Si"){
         $datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
 		$newOrdenMenu = $datamenu[0]["orden"] + 1;
