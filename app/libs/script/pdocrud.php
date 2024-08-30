@@ -974,6 +974,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $columns_table = $data["modulos"]["columns_table"];
     $name_view = $data["modulos"]["name_view"];
     $add_menu = $data["modulos"]["add_menu"];
+    $template_fields = $data["modulos"]["template_fields"];
 
     $pdomodel = $obj->getPDOModelObj();
     if($add_menu == "Si"){
@@ -1006,8 +1007,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         $controllerName = $controller_name;
         $columns = $columns_table;
         $nameview = $name_view;
+        $template_html = $template_fields;
         
-        $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview);
+        $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, $template_html);
     }
     $data["modulos"]["id_menu"] = $id_menu;
     $data["modulos"]["controller_name"] = ucfirst($controller_name);
