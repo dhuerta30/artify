@@ -621,6 +621,13 @@ class HomeController
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<label class="form-label">Usar Plantilla de Campos HTML:</label>
+					{template_fields}
+					<p class="pdocrud_help_block help-block form-text with-errors"></p>
+				</div>
+			</div>
 		</div>';
 		$pdocrud->set_template($html_template);
 		$pdocrud->formDisplayInPopup();
@@ -660,14 +667,6 @@ class HomeController
 		$pdocrud->setSettings("pdfBtn", false);
 		$pdocrud->setSettings("csvBtn", false);
 		$pdocrud->setSettings("excelBtn", false);
-		$pdocrud->fieldRenameLable("tabla", "Nombre Tabla Base de Datos");
-		$pdocrud->fieldRenameLable("id_tabla", "ID Tabla Base de Datos");
-		$pdocrud->fieldRenameLable("crud_type", "Tipo de Crud");
-		$pdocrud->fieldRenameLable("query", "Consulta BD");
-		$pdocrud->fieldRenameLable("controller_name", "Nombre del Controlador");
-		$pdocrud->fieldRenameLable("columns_table", "Columnas de la Tabla");
-		$pdocrud->fieldRenameLable("name_view", "Nombre de la Vista");
-		$pdocrud->fieldRenameLable("add_menu", "Agregar Al Menú Principal");
 		$pdocrud->addCallback("before_insert", "insertar_modulos", array($id_sesion_usuario));
 		$pdocrud->addCallback("before_delete", "eliminar_modulos");
 
