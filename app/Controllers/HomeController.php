@@ -604,7 +604,7 @@ class HomeController
 		$action = $_ENV["BASE_URL"] . "{controller_name}/index";
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
-		$pdocrud->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "booking_status", $attr);
+		$pdocrud->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
 
 		$render = $pdocrud->dbTable("modulos")->render();
 
