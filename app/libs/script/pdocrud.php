@@ -977,6 +977,10 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $template_fields = $data["modulos"]["template_fields"];
 
     $pdomodel = $obj->getPDOModelObj();
+
+    $pdomodel->where("tabla", $tabla);
+    $db_result = $pdomodel->select("modulos");
+
     if($add_menu == "Si"){
         $datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
 		$newOrdenMenu = $datamenu[0]["orden"] + 1;
@@ -1039,8 +1043,8 @@ function eliminar_modulos($data, $obj)
     $id_menu = $query[0]["id_menu"];
 
     if (empty($query)) {
-        echo "No se encontró ningún módulo con el ID proporcionado.";
-        return $data;
+        $error_msg = array("message" => "", "error" => "No se encontró ningún módulo con el ID proporcionado.", "redirectionurl" => "");
+        die(json_encode($error_msg));
     }
 
     $pdomodel->where("id_menu", $id_menu);
@@ -1066,13 +1070,16 @@ function eliminar_modulos($data, $obj)
                 if (unlink($filePath)) {
                     echo "Archivo eliminado con éxito";
                 } else {
-                    echo "Error al eliminar el archivo";
+                    $error_msg = array("message" => "", "error" => "Error al eliminar el archivo.", "redirectionurl" => "");
+                    die(json_encode($error_msg));
                 }
             } catch (Exception $e) {
-                echo "Error al intentar eliminar el archivo $filePath: " . $e->getMessage();
+                $error_msg = array("message" => "", "error" => "Error al intentar eliminar el archivo $filePath:". $e->getMessage(), "redirectionurl" => "");
+                die(json_encode($error_msg));
             }
         } else {
-            echo "El archivo no existe";
+            $error_msg = array("message" => "", "error" => "El archivo no existe", "redirectionurl" => "");
+            die(json_encode($error_msg));
         }
     }
 
@@ -1091,8 +1098,6 @@ function eliminar_modulos($data, $obj)
             } else {
                 if (unlink($filePath)) {
                     echo "Archivo eliminado con éxito:";
-                } else {
-                    echo "Error al eliminar el archivo: $filePath\n";
                 }
             }
         }
@@ -1109,10 +1114,10 @@ function eliminar_modulos($data, $obj)
                 echo "Error al eliminar el directorio: $templaesCrudDirPath\n";
             }
         } catch (Exception $e) {
-            echo "Error al intentar eliminar el directorio: " . $e->getMessage() . "\n";
+            echo "Error al intentar eliminar el directorio: " . $e->getMessage();
         }
     } else {
-        echo "El directorio no existe: $templaesCrudDirPath\n";
+        echo "El directorio no existe: $templaesCrudDirPath";
     }
 
     $pdomodel->dropTable($tabla);
