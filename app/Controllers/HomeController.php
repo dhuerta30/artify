@@ -606,26 +606,26 @@ class HomeController
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<div class="form-group">
 						<label class="form-label">Nombre de La Vista:</label>
 						{name_view}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<div class="form-group">
 						<label class="form-label">Agregar Al Menú Principal:</label>
 						{add_menu}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<label class="form-label">Usar Plantilla de Campos HTML:</label>
-					{template_fields}
-					<p class="pdocrud_help_block help-block form-text with-errors"></p>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="form-label">Usar Plantilla de Campos HTML:</label>
+						{template_fields}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
 				</div>
 			</div>
 		</div>';
@@ -634,8 +634,8 @@ class HomeController
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu"));
-		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu"));
-		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu"));
+		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields"));
+		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields"));
 		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
@@ -658,6 +658,9 @@ class HomeController
 
 		$pdocrud->fieldTypes("add_menu", "select");
 		$pdocrud->fieldDataBinding("add_menu", array("Si"=> "Si", "No"=> "No"), "", "","array");
+
+		$pdocrud->fieldTypes("template_fields", "select");
+		$pdocrud->fieldDataBinding("template_fields", array("Si"=> "Si", "No"=> "No"), "", "","array");
 
 		$pdocrud->buttonHide("submitBtnSaveBack");
 		$pdocrud->setSettings("viewbtn", false);
