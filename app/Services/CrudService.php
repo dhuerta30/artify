@@ -34,9 +34,7 @@ class CrudService
                 $this->generateViewAdd($nameview);
 
                 if($template_html == "Si"){
-
-                } else {
-
+                    $this->generateCrudControllerSQLTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html);
                 }
 
             } else {
