@@ -633,7 +633,7 @@ class HomeController
 		$pdocrud->formFieldValue("add_menu", "Si");
 
 		$pdocrud->fieldTypes("tipo_de_campo", "select");
-		$pdocrud->fieldDataBinding("tipo_de_campo", array("Imagen" => "Imagen", "Combobox" => "Combobox", "Input" => "Input", "Campo de Texto" => "Campo de Texto"), "", "", "array");
+		$pdocrud->fieldDataBinding("tipo_de_campo", array("Numerico" => "Numerico", "Imagen" => "Imagen", "Combobox" => "Combobox", "Caracteres" => "Caracteres", "Campo de Texto" => "Campo de Texto", "Fecha" => "Fecha"), "", "", "array");
 
 		$pdocrud->fieldCssClass("crud_type", array("crud_type"));
 		$pdocrud->fieldCssClass("id_tabla", array("id_tabla"));
@@ -642,9 +642,6 @@ class HomeController
 		$pdocrud->fieldTypes("autoincrementable", "select");
 		$pdocrud->fieldDataBinding("autoincrementable", array("Si" => "Si", "No" => "No"), "", "", "array");
 		
-		$pdocrud->fieldTypes("tipo", "select");
-		$pdocrud->fieldDataBinding("tipo", array("Numerico" => "Numerico", "Caracteres" => "Caracteres", "Contenido" => "Contenido", "Fecha" => "Fecha"), "", "", "array");
-
 		$pdocrud->fieldTypes("nulo", "select");
 		$pdocrud->fieldDataBinding("nulo", array("Si" => "Si", "No" => "No"), "", "", "array");
 
@@ -658,9 +655,9 @@ class HomeController
 		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
-		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "nombre", "tipo_de_campo", "nulo", "indice", "autoincrementable", "tipo", "longitud"));
+		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "nombre", "tipo_de_campo", "nulo", "indice", "autoincrementable", "longitud"));
 		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields"));
-		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "nombre", "tipo_de_campo", "nulo", "indice", "autoincrementable", "tipo", "longitud"));
+		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "nombre", "tipo_de_campo", "nulo", "indice", "autoincrementable", "longitud"));
 		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
