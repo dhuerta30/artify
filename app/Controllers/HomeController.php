@@ -621,7 +621,7 @@ class HomeController
 				</div>
 				<div class="col-md-4">
 					<div class="form-group">
-						<label class="form-label">Usar Plantilla de Campos HTML:</label>
+						<label class="form-label">Usar Plantilla de Formulario HTML:</label>
 						{template_fields}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
