@@ -44,9 +44,11 @@ $(document).on("change", ".crud_type", function(){
     if(val == "CRUD"){
         $(".id_tabla").removeAttr("required");
         $(".query").removeAttr("required");
+        $(".query").attr("disabled", "disabled");
     } else {
         $(".id_tabla").attr("required", "required");
         $(".query").attr("required", "required");
+        $(".query").removeAttr("disabled");
     }
 });
 
