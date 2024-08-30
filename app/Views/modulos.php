@@ -5,12 +5,6 @@
 .btn.btn-default {
     background: #fff;
 }
-@media (min-width: 576px){
-	.modal-dialog {
-		max-width: 1200px!important;
-		margin: 1.75rem auto;
-	}
-}
 
 .form-control {
     min-width: 200px;

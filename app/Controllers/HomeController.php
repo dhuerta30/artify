@@ -554,15 +554,21 @@ class HomeController
 
 		$pdocrud = DB::PDOCrud();
 		$pdocrud->formDisplayInPopup();
-		$pdocrud->fieldGroups("Name1",array("tabla","id_tabla", "crud_type"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
+		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu"));
 		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu"));
 		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu"));
 		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
 		$pdocrud->colRename("crud_type", "Tipo de Crud");
+		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "=", "query", "hide");
+		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "!=", "query", "show");
+
+		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "=", "id_tabla", "hide");
+		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "!=", "id_tabla", "show");
+		
 		$pdocrud->colRename("query", "Consulta BD");
 		$pdocrud->colRename("controller_name", "Nombre del Controlador");
 		$pdocrud->colRename("columns_table", "Columnas de la Tabla");
