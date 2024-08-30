@@ -615,7 +615,7 @@ class HomeController
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label class="form-label">Agregar AL Menú Principal:</label>
+						<label class="form-label">Agregar Al Menú Principal:</label>
 						{add_menu}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
