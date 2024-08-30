@@ -553,7 +553,6 @@ class HomeController
 		$id_sesion_usuario = $_SESSION['usuario'][0]["id"];
 
 		$pdocrud = DB::PDOCrud();
-
 		$html_template = '<div class="form">
 			<h5>Agregar Módulo</h5>
 			<hr>
@@ -631,6 +630,8 @@ class HomeController
 		</div>';
 		$pdocrud->set_template($html_template);
 		$pdocrud->formDisplayInPopup();
+		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo"));
+		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu"));
