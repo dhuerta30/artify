@@ -554,7 +554,7 @@ class HomeController
 
 		$pdocrud = DB::PDOCrud();
 
-		$html_template = '<div class="order-form">
+		$html_template = '<div class="form">
 			<h5>Agregar Módulo</h5>
 			<hr>
 			<div class="row">
