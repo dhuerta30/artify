@@ -582,6 +582,13 @@ class HomeController
 				</div>
 				<div class="col-md-12">
 					<div class="form-group">
+						<label class="form-label">Nombre del Controlador:</label>
+						{controller_name}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
 						<label class="form-label">Consulta DB:</label>
 						{query}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
@@ -589,13 +596,6 @@ class HomeController
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<label class="form-label">Nombre del Controlador:</label>
-						{controller_name}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
 				<div class="col-md-12">
 					<div class="form-group">
 						<label class="form-label">Columnas de La Tabla:</label>
@@ -646,9 +646,10 @@ class HomeController
 		$pdocrud->fieldDataBinding("nulo", array("Si" => "Si", "No" => "No"), "", "", "array");
 
 		$pdocrud->fieldTypes("indice", "select");
-		$pdocrud->fieldDataBinding("indice", array("Primario" => " Primario"), "", "", "array");
+		$pdocrud->fieldDataBinding("indice", array("Primario" => " Primario", "Sin Indice" => "Sin Indice"), "", "", "array");
 		$pdocrud->fieldRenameLable("nombre", "Nombre campo");
 		$pdocrud->fieldRenameLable("nulo", "Campo con Valor Vacio");
+		$pdocrud->fieldRenameLable("longitud", "Cantidad de caracteres");
 		$pdocrud->formFieldValue("query", "SELECT id as ID, name as Name FROM demo");
 		$pdocrud->formFieldValue("columns_table", "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)");
 		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));

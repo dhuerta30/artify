@@ -20,7 +20,7 @@ foreach ($data as $rows) {
         $body .= "<td class='pdocrud_leftjoin_row_$rowCount pdocrud_leftjoin_col_$colCount'>" . $row["element"] . "</td>";
         $colCount++;
     }
-    $body .= ' <td class="text-right"><a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> ' . $lang["remove"] . '</a></td>';
+    $body .= ' <td><a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> ' . $lang["remove"] . '</a></td>';
     $body .= "</tr>";
     $rowCount++;
 }
