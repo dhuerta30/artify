@@ -109,6 +109,10 @@ function construirFrase() {
             campo2 = "INT";
         }
 
+        if(campo2 == "Caracteres"){
+            campo2 = "VARCHAR()";
+        }
+
         if(campo4 == "Primario"){
             campo4 = "PRIMARY KEY";
         } else {
@@ -124,6 +128,37 @@ function construirFrase() {
 
         // Asignar la frase al textarea
         $('.columns_table').val(frase);
+
+        $('.pdocrud-left-join tr').each(function() {
+            // Obtener los valores de los campos de la fila
+            var $row = $(this);
+            var campo1 = $row.find('.nombre').val().trim();
+            var campo2 = $row.find('.tipo_de_campo').val().trim();
+            var campo3 = $row.find('.nulo').val().trim();
+            var campo4 = $row.find('.indice').val().trim();
+            var campo5 = $row.find('.autoincrementable').val().trim();
+            var campo6 = $row.find('.longitud').val().trim();
+
+            if(campo2 == "Numerico"){
+                campo2 = "INT";
+            }
+
+            if(campo4 == "Primario"){
+                campo4 = "PRIMARY KEY";
+            } else {
+                campo4 = "";
+            }
+
+            if(campo5 == "Si"){
+                campo5 = "AUTO_INCREMENT,";
+            }
+
+            // Construir la frase
+            var frase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5} ${campo6} `;
+
+            // Agregar la frase al textarea
+            $('.columns_table').val($('.columns_table').val() + frase);
+        });
     });
 }
 
