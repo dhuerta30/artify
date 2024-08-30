@@ -553,6 +553,76 @@ class HomeController
 		$id_sesion_usuario = $_SESSION['usuario'][0]["id"];
 
 		$pdocrud = DB::PDOCrud();
+
+		$html_template = '<div class="order-form">
+			<h5>Agregar Módulo</h5>
+			<hr>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">Tipo de Crud:</label>
+						{crud_type}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">Nombre Tabla Base de Datos:</label>
+						{tabla}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">ID Tabla Base de Datos:</label>
+						{id_tabla}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">Consulta DB:</label>
+						{query}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">Nombre del Controlador:</label>
+						{controller_name}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="form-label">Columnas de La Tabla:</label>
+						{columns_table}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Nombre de La Vista:</label>
+						{name_view}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Agregar AL Menú Principal:</label>
+						{add_menu}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+			</div>
+		</div>';
+		$pdocrud->set_template($html_template);
 		$pdocrud->formDisplayInPopup();
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
