@@ -32,6 +32,13 @@ class CrudService
                 $this->generateCrudControllerSQL($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
                 $this->generateViewEdit($nameview);
                 $this->generateViewAdd($nameview);
+
+                if($template_html == "Si"){
+
+                } else {
+
+                }
+
             } else {
                 $this->generateCrudControllerCRUD($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
             }
@@ -86,143 +93,141 @@ class CrudService
     private function generateCrudControllerSQL($tableName, $idTable, $crudType, $query = null, $controllerName, $nameview)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
+        $controllerContent = "<?php
 
-       
-            $controllerContent = "<?php
+        namespace App\Controllers;
 
-            namespace App\Controllers;
+        use App\core\SessionManager;
+        use App\core\Token;
+        use App\core\DB;
+        use App\core\Request;
+        use App\core\View;
+        use App\core\Redirect;
 
-            use App\core\SessionManager;
-            use App\core\Token;
-            use App\core\DB;
-            use App\core\Request;
-            use App\core\View;
-            use App\core\Redirect;
+        class {$controllerName}Controller
+        {
+            public \$token;
 
-            class {$controllerName}Controller
+            public function __construct()
             {
-                public \$token;
-
-                public function __construct()
-                {
-                    SessionManager::startSession();
-                    \$Sesusuario = SessionManager::get('usuario');
-                    if (!isset(\$Sesusuario)) {
-                        Redirect::to('login/index');
-                    }
-                    \$this->token = Token::generateFormToken('send_message');
+                SessionManager::startSession();
+                \$Sesusuario = SessionManager::get('usuario');
+                if (!isset(\$Sesusuario)) {
+                    Redirect::to('login/index');
                 }
+                \$this->token = Token::generateFormToken('send_message');
+            }
 
-                public function index()
-                {
-                    \$pdocrud = DB::PDOCrud();
+            public function index()
+            {
+                \$pdocrud = DB::PDOCrud();
 
-                    \$pdomodel = \$pdocrud->getPDOModelObj();
-                    \$columnDB = \$pdomodel->columnNames('{$tableName}');
-                    \$id = strtoupper(\$columnDB[0]);
+                \$pdomodel = \$pdocrud->getPDOModelObj();
+                \$columnDB = \$pdomodel->columnNames('{$tableName}');
+                \$id = strtoupper(\$columnDB[0]);
 
-                    \$tabla = \$pdocrud->getLangData('{$tableName}');
-                    \$pk = \$pdocrud->getLangData(\$id);
-                    \$columnVal = \$pdocrud->getLangData(\$pk);
+                \$tabla = \$pdocrud->getLangData('{$tableName}');
+                \$pk = \$pdocrud->getLangData(\$id);
+                \$columnVal = \$pdocrud->getLangData(\$pk);
 
-                    \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", \$_ENV['BASE_URL'].'{$controllerName}/agregar', array(), 'btn-report');
+                \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", \$_ENV['BASE_URL'].'{$controllerName}/agregar', array(), 'btn-report');
 
-                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{{$idTable}}';
-                    \$text = '<i class=\"fa fa-edit\"></i>';
-                    \$attr = array('title'=> 'Editar');
-                    \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
+                \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{{$idTable}}';
+                \$text = '<i class=\"fa fa-edit\"></i>';
+                \$attr = array('title'=> 'Editar');
+                \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
 
-                    \$pdocrud->setSettings('encryption', false);
-                    \$pdocrud->setSettings('pagination', true);
-                    \$pdocrud->setSettings('searchbox', true);
-                    \$pdocrud->setSettings('deleteMultipleBtn', true);
-                    \$pdocrud->setSettings('checkboxCol', true);
-                    \$pdocrud->setSettings('recordsPerPageDropdown', true);
-                    \$pdocrud->setSettings('totalRecordsInfo', true);
-                    \$pdocrud->setSettings('addbtn', false);
-                    \$pdocrud->setSettings('editbtn', false);
-                    \$pdocrud->setSettings('delbtn', true);
-                    \$pdocrud->setSettings('actionbtn', true);
-                    \$pdocrud->setSettings('refresh', false);
-                    \$pdocrud->setSettings('numberCol', true);
-                    \$pdocrud->setSettings('printBtn', true);
-                    \$pdocrud->setSettings('pdfBtn', true);
-                    \$pdocrud->setSettings('csvBtn', true);
-                    \$pdocrud->setSettings('excelBtn', true);
-                    \$pdocrud->setSettings('clonebtn', false);
-                    \$pdocrud->setSettings('template', 'template_{$nameview}');
-                    \$pdocrud->setLangData('no_data', 'Sin Resultados');
-                
-                    \$pdocrud->setLangData('tabla', '{$tableName}')
-                        ->setLangData('pk', \$pk)
-                        ->setLangData('columnVal', \$columnVal);
-                    \$pdocrud->tableHeading('{$tableName}');
-                    \$pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
-                    \$pdocrud->addCallback('before_sql_data', 'buscador_tabla', array(\$columnDB));
-                    \$pdocrud->addCallback('before_delete', 'eliminar_tabla');
+                \$pdocrud->setSettings('encryption', false);
+                \$pdocrud->setSettings('pagination', true);
+                \$pdocrud->setSettings('searchbox', true);
+                \$pdocrud->setSettings('deleteMultipleBtn', true);
+                \$pdocrud->setSettings('checkboxCol', true);
+                \$pdocrud->setSettings('recordsPerPageDropdown', true);
+                \$pdocrud->setSettings('totalRecordsInfo', true);
+                \$pdocrud->setSettings('addbtn', false);
+                \$pdocrud->setSettings('editbtn', false);
+                \$pdocrud->setSettings('delbtn', true);
+                \$pdocrud->setSettings('actionbtn', true);
+                \$pdocrud->setSettings('refresh', false);
+                \$pdocrud->setSettings('numberCol', true);
+                \$pdocrud->setSettings('printBtn', true);
+                \$pdocrud->setSettings('pdfBtn', true);
+                \$pdocrud->setSettings('csvBtn', true);
+                \$pdocrud->setSettings('excelBtn', true);
+                \$pdocrud->setSettings('clonebtn', false);
+                \$pdocrud->setSettings('template', 'template_{$nameview}');
+                \$pdocrud->setLangData('no_data', 'Sin Resultados');
+            
+                \$pdocrud->setLangData('tabla', '{$tableName}')
+                    ->setLangData('pk', \$pk)
+                    ->setLangData('columnVal', \$columnVal);
+                \$pdocrud->tableHeading('{$tableName}');
+                \$pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
+                \$pdocrud->addCallback('before_sql_data', 'buscador_tabla', array(\$columnDB));
+                \$pdocrud->addCallback('before_delete', 'eliminar_tabla');
 
-                    \$pdocrud->setSettings('viewbtn', false);
-                    \$pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', array(\$columnDB));
-                    \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
+                \$pdocrud->setSettings('viewbtn', false);
+                \$pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', array(\$columnDB));
+                \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
 
-                    View::render(
-                        '{$nameview}', 
-                        [
-                            'render' => \$render
-                        ]
-                    );
-                }
+                View::render(
+                    '{$nameview}', 
+                    [
+                        'render' => \$render
+                    ]
+                );
+            }
 
-                public function agregar(){
-                    \$pdocrud = DB::PDOCrud();
-                    \$pdocrud->buttonHide('submitBtn');
-                    \$pdocrud->buttonHide('cancel');
-                    \$pdocrud->setSettings('template', 'template_{$nameview}');
-                    \$pdocrud->formStaticFields('botones', 'html', '
-                        <div class=\"col-md-12 text-center\">
-                            <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
-                            <a href=\"'.\$_ENV['BASE_URL'].'Demo/index\" class=\"btn btn-danger\">Regresar</a>
-                        </div>
-                    ');
-                    \$render = \$pdocrud->dbTable('{$tableName}')->render('insertform');
-                    View::render(
-                        'agregar_{$nameview}',
-                        [
-                            'render' => \$render
-                        ]
-                    );
-                }
+            public function agregar(){
+                \$pdocrud = DB::PDOCrud();
+                \$pdocrud->buttonHide('submitBtn');
+                \$pdocrud->buttonHide('cancel');
+                \$pdocrud->setSettings('template', 'template_{$nameview}');
+                \$pdocrud->formStaticFields('botones', 'html', '
+                    <div class=\"col-md-12 text-center\">
+                        <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
+                        <a href=\"'.\$_ENV['BASE_URL'].'Demo/index\" class=\"btn btn-danger\">Regresar</a>
+                    </div>
+                ');
+                \$render = \$pdocrud->dbTable('{$tableName}')->render('insertform');
+                View::render(
+                    'agregar_{$nameview}',
+                    [
+                        'render' => \$render
+                    ]
+                );
+            }
 
-                public function editar(){
-                    \$request = new Request();
-			        \$id = \$request->get('id');
+            public function editar(){
+                \$request = new Request();
+                \$id = \$request->get('id');
 
-                    \$pdocrud = DB::PDOCrud();
+                \$pdocrud = DB::PDOCrud();
 
-                    \$pdomodel = \$pdocrud->getPDOModelObj();
-                    \$columnDB = \$pdomodel->columnNames('{$tableName}');
-                    \$id_tabla = strtoupper(\$columnDB[0]);
+                \$pdomodel = \$pdocrud->getPDOModelObj();
+                \$columnDB = \$pdomodel->columnNames('{$tableName}');
+                \$id_tabla = strtoupper(\$columnDB[0]);
 
-                    \$pdocrud->setPK(\$id_tabla);
-                    \$pdocrud->setSettings('template', 'template_{$nameview}');
-                    \$pdocrud->buttonHide('submitBtn');
-                    \$pdocrud->buttonHide('cancel');
-                    \$pdocrud->formStaticFields('botones', 'html', '
-                        <div class=\"col-md-12 text-center\">
-                            <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
-                            <a href=\"'.\$_ENV['BASE_URL'].'Demo/index\" class=\"btn btn-danger\">Regresar</a>
-                        </div>
-                    ');
-                    \$render = \$pdocrud->dbTable('{$tableName}')->render('editform', array('id' => \$id));
+                \$pdocrud->setPK(\$id_tabla);
+                \$pdocrud->setSettings('template', 'template_{$nameview}');
+                \$pdocrud->buttonHide('submitBtn');
+                \$pdocrud->buttonHide('cancel');
+                \$pdocrud->formStaticFields('botones', 'html', '
+                    <div class=\"col-md-12 text-center\">
+                        <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
+                        <a href=\"'.\$_ENV['BASE_URL'].'Demo/index\" class=\"btn btn-danger\">Regresar</a>
+                    </div>
+                ');
+                \$render = \$pdocrud->dbTable('{$tableName}')->render('editform', array('id' => \$id));
 
-                    View::render(
-                        'editar_{$nameview}',
-                        [
-                            'render' => \$render
-                        ]
-                    );
-                }
-            }";
+                View::render(
+                    'editar_{$nameview}',
+                    [
+                        'render' => \$render
+                    ]
+                );
+            }
+        }";
      
         file_put_contents($controllerPath, $controllerContent);
     }
@@ -233,60 +238,60 @@ class CrudService
         
         $controllerContent = "<?php
 
-            namespace App\Controllers;
+        namespace App\Controllers;
 
-            use App\core\SessionManager;
-            use App\core\Token;
-            use App\core\DB;
-            use App\core\View;
-            use App\core\Redirect;
+        use App\core\SessionManager;
+        use App\core\Token;
+        use App\core\DB;
+        use App\core\View;
+        use App\core\Redirect;
 
-            class {$controllerName}Controller
+        class {$controllerName}Controller
+        {
+            public \$token;
+
+            public function __construct()
             {
-                public \$token;
-
-                public function __construct()
-                {
-                    SessionManager::startSession();
-                    \$Sesusuario = SessionManager::get('usuario');
-                    if (!isset(\$Sesusuario)) {
-                        Redirect::to('login/index');
-                    }
-                    \$this->token = Token::generateFormToken('send_message');
+                SessionManager::startSession();
+                \$Sesusuario = SessionManager::get('usuario');
+                if (!isset(\$Sesusuario)) {
+                    Redirect::to('login/index');
                 }
+                \$this->token = Token::generateFormToken('send_message');
+            }
 
-                public function index()
-                {
-                    \$pdocrud = DB::PDOCrud();
-                    \$pdocrud->setSettings('encryption', false);
-                    \$pdocrud->setSettings('pagination', true);
-                    \$pdocrud->setSettings('searchbox', true);
-                    \$pdocrud->setSettings('deleteMultipleBtn', true);
-                    \$pdocrud->setSettings('checkboxCol', true);
-                    \$pdocrud->setSettings('recordsPerPageDropdown', true);
-                    \$pdocrud->setSettings('totalRecordsInfo', true);
-                    \$pdocrud->setSettings('addbtn', false);
-                    \$pdocrud->setSettings('editbtn', false);
-                    \$pdocrud->setSettings('delbtn', true);
-                    \$pdocrud->setSettings('actionbtn', true);
-                    \$pdocrud->setSettings('refresh', false);
-                    \$pdocrud->setSettings('numberCol', true);
-                    \$pdocrud->setSettings('printBtn', true);
-                    \$pdocrud->setSettings('pdfBtn', true);
-                    \$pdocrud->setSettings('csvBtn', true);
-                    \$pdocrud->setSettings('excelBtn', true);
-                    \$pdocrud->setSettings('clonebtn', false);
-                    \$pdocrud->setSettings('template', 'template_{$nameview}');
-                    \$render = \$pdocrud->dbTable('{$tableName}')->render();
+            public function index()
+            {
+                \$pdocrud = DB::PDOCrud();
+                \$pdocrud->setSettings('encryption', false);
+                \$pdocrud->setSettings('pagination', true);
+                \$pdocrud->setSettings('searchbox', true);
+                \$pdocrud->setSettings('deleteMultipleBtn', true);
+                \$pdocrud->setSettings('checkboxCol', true);
+                \$pdocrud->setSettings('recordsPerPageDropdown', true);
+                \$pdocrud->setSettings('totalRecordsInfo', true);
+                \$pdocrud->setSettings('addbtn', false);
+                \$pdocrud->setSettings('editbtn', false);
+                \$pdocrud->setSettings('delbtn', true);
+                \$pdocrud->setSettings('actionbtn', true);
+                \$pdocrud->setSettings('refresh', false);
+                \$pdocrud->setSettings('numberCol', true);
+                \$pdocrud->setSettings('printBtn', true);
+                \$pdocrud->setSettings('pdfBtn', true);
+                \$pdocrud->setSettings('csvBtn', true);
+                \$pdocrud->setSettings('excelBtn', true);
+                \$pdocrud->setSettings('clonebtn', false);
+                \$pdocrud->setSettings('template', 'template_{$nameview}');
+                \$render = \$pdocrud->dbTable('{$tableName}')->render();
 
-                    View::render(
-                        '{$nameview}', 
-                        [
-                            'render' => \$render
-                        ]
-                    );
-                }
-            }";
+                View::render(
+                    '{$nameview}', 
+                    [
+                        'render' => \$render
+                    ]
+                );
+            }
+        }";
 
         file_put_contents($controllerPath, $controllerContent);
     }
