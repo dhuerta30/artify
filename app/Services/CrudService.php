@@ -30,12 +30,12 @@ class CrudService
             if($crudType == 'SQL'){
                 $crudType = 'SQL';
                 $this->generateCrudControllerSQL($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
+                $this->generateViewEdit($nameview);
+                $this->generateViewAdd($nameview);
             } else {
                 $this->generateCrudControllerCRUD($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
             }
             $this->generateView($nameview);
-            $this->generateViewEdit($nameview);
-            $this->generateViewAdd($nameview);
             $this->generateTemplateCrud($nameview);
     }
 
