@@ -639,6 +639,13 @@ class HomeController
 		$pdocrud->fieldCssClass("id_tabla", array("id_tabla"));
 		$pdocrud->fieldCssClass("query", array("query"));
 
+		$pdocrud->fieldCssClass("nombre", array("nombre"));
+		$pdocrud->fieldCssClass("tipo_de_campo", array("tipo_de_campo"));
+		$pdocrud->fieldCssClass("nulo", array("nulo"));
+		$pdocrud->fieldCssClass("indice", array("indice"));
+		$pdocrud->fieldCssClass("autoincrementable", array("autoincrementable"));
+		$pdocrud->fieldCssClass("longitud", array("longitud"));
+
 		$pdocrud->fieldTypes("autoincrementable", "select");
 		$pdocrud->fieldDataBinding("autoincrementable", array("Si" => "Si", "No" => "No"), "", "", "array");
 		

@@ -88,5 +88,102 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
         });
     }
 });
+
+$(document).ready(function() {
+    // Función para construir la consulta SQL
+    function buildQuery() {
+        var query = "SELECT ";
+        var columns = [];
+        
+        $("#table-body tr").each(function() {
+            var $row = $(this);
+            var columnName = $row.find('input[name="campo_nombre[]"]').val();
+            var columnType = $row.find('select[name="campo_tipo[]"]').val();
+            var columnEmpty = $row.find('select[name="campo_valor_vacio[]"]').val();
+            var columnIndex = $row.find('select[name="campo_indice[]"]').val();
+            var columnAutoIncrement = $row.find('select[name="campo_autoincrementable[]"]').val();
+            var columnLength = $row.find('input[name="campo_caracteres[]"]').val();
+
+            if (columnName) {
+                var columnDefinition = columnName;
+
+                if (columnType) {
+                    columnDefinition += " " + columnType;
+                }
+
+                if (columnEmpty === "Si") {
+                    columnDefinition += " NULL";
+                }
+
+                if (columnIndex === "Primario") {
+                    columnDefinition += " PRIMARY KEY";
+                }
+
+                if (columnAutoIncrement === "Si") {
+                    columnDefinition += " AUTO_INCREMENT";
+                }
+
+                if (columnLength) {
+                    columnDefinition += "(" + columnLength + ")";
+                }
+
+                columns.push(columnDefinition);
+            }
+        });
+
+        query += columns.join(", ");
+        query += " FROM table_name"; // Cambia 'table_name' por el nombre real de tu tabla
+
+        $(".query").val(query);
+    }
+
+    // Llama a buildQuery cuando cambie el contenido de los campos de entrada
+    $("#table-body").on('input change', 'input[name="campo_nombre[]"], select[name="campo_tipo[]"], select[name="campo_valor_vacio[]"], select[name="campo_indice[]"], select[name="campo_autoincrementable[]"], input[name="campo_caracteres[]"]', buildQuery);
+
+    // Función para agregar una fila
+    $("#add-row").click(function() {
+        var newRow = `
+            <tr>
+                <td><input type="text" class="form-control" name="campo_nombre[]"></td>
+                <td><select class="form-control" name="campo_tipo[]">
+                    <option value="">Seleccionar</option>
+                    <option value="Numerico">Numerico</option>
+                    <option value="Imagen">Imagen</option>
+                    <!-- Otros valores -->
+                </select></td>
+                <td><select class="form-control" name="campo_valor_vacio[]">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select></td>
+                <td><select class="form-control" name="campo_indice[]">
+                    <option value="">Seleccionar</option>
+                    <option value="Primario">Primario</option>
+                    <option value="Sin Indice">Sin Indice</option>
+                </select></td>
+                <td><select class="form-control" name="campo_autoincrementable[]">
+                    <option value="">Seleccionar</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select></td>
+                <td><input type="text" class="form-control" name="campo_caracteres[]"></td>
+                <td><a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a></td>
+            </tr>
+        `;
+        $("#table-body").append(newRow);
+        buildQuery(); // Actualiza la consulta después de agregar una fila
+    });
+
+    // Función para eliminar una fila
+    $(document).on('click', '[data-action="delete_row"]', function() {
+        $(this).closest('tr').remove();
+        buildQuery(); // Actualiza la consulta después de eliminar una fila
+    });
+
+    // Inicializar la consulta al cargar la página
+    buildQuery();
+});
+
+
 </script>
 <?php require 'layouts/footer.php'; ?>
