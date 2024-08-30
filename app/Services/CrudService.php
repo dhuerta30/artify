@@ -29,7 +29,7 @@ class CrudService
             $this->createTable($tableName, $columns);
             if($crudType == 'SQL'){
                 $crudType = 'SQL';
-                $this->generateCrudControllerSQL($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
+                $this->generateCrudControllerSQL($tableName, $idTable, $query, $controllerName, $nameview);
                 $this->generateViewEdit($nameview);
                 $this->generateViewAdd($nameview);
 
@@ -40,7 +40,7 @@ class CrudService
                 }
 
             } else {
-                $this->generateCrudControllerCRUD($tableName, $idTable, $crudType, $query, $controllerName, $nameview, $crudType);
+                $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview);
             }
             $this->generateView($nameview);
             $this->generateTemplateCrud($nameview);
@@ -90,7 +90,7 @@ class CrudService
         }
     }
 
-    private function generateCrudControllerSQL($tableName, $idTable, $crudType, $query = null, $controllerName, $nameview)
+    private function generateCrudControllerSQL($tableName, $idTable, $query = null, $controllerName, $nameview)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -232,10 +232,9 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $crudType, $query = null, $controllerName, $nameview){
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview){
 
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
-        
         $controllerContent = "<?php
 
         namespace App\Controllers;
