@@ -967,9 +967,9 @@ function formatTable_buscar_examenes($data, $obj){
 
 function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $tabla = $data["modulos"]["tabla"];
-    $id_tabla = $data["modulos"]["id_tabla"];
+    $id_tabla = isset($data["modulos"]["id_tabla"]) ? $data["modulos"]["id_tabla"] : null;
     $crud_type = $data["modulos"]["crud_type"];
-    $query_db = $data["modulos"]["query"];
+    $query_db = isset($data["modulos"]["query"]) ? $data["modulos"]["query"] : null;
     $controller_name = $data["modulos"]["controller_name"];
     $columns_table = $data["modulos"]["columns_table"];
     $name_view = $data["modulos"]["name_view"];
@@ -1048,8 +1048,7 @@ function eliminar_modulos($data, $obj)
     $id_menu = $query[0]["id_menu"];
 
     if (empty($query)) {
-        $error_msg = array("message" => "", "error" => "No se encontró ningún módulo con el ID proporcionado.", "redirectionurl" => "");
-        die(json_encode($error_msg));
+       echo "No se encontró ningún módulo con el ID proporcionado.";
     }
 
     $pdomodel->where("id_menu", $id_menu);
@@ -1075,16 +1074,13 @@ function eliminar_modulos($data, $obj)
                 if (unlink($filePath)) {
                     echo "Archivo eliminado con éxito";
                 } else {
-                    $error_msg = array("message" => "", "error" => "Error al eliminar el archivo.", "redirectionurl" => "");
-                    die(json_encode($error_msg));
+                    echo "Error al eliminar el archivo.";
                 }
             } catch (Exception $e) {
-                $error_msg = array("message" => "", "error" => "Error al intentar eliminar el archivo $filePath:". $e->getMessage(), "redirectionurl" => "");
-                die(json_encode($error_msg));
+                echo "Error al intentar eliminar el archivo $filePath:". $e->getMessage();
             }
         } else {
-            $error_msg = array("message" => "", "error" => "El archivo no existe", "redirectionurl" => "");
-            die(json_encode($error_msg));
+            echo "El archivo no existe";
         }
     }
 
