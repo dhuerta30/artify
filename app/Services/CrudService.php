@@ -268,74 +268,74 @@ class CrudService
                 \$html_template = '<div class=\"form\">
                     <h5>Agregar Módulo</h5>
                     <hr>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">Tipo de Crud:</label>
+                    <div class=\"row\">
+                        <div class=\"col-md-12\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">Tipo de Crud:</label>
                                 {crud_type}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">Nombre Tabla Base de Datos:</label>
+                        <div class=\"col-md-12\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">Nombre Tabla Base de Datos:</label>
                                 {tabla}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">ID Tabla Base de Datos:</label>
+                    <div class=\"row\">
+                        <div class=\"col-md-12\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">ID Tabla Base de Datos:</label>
                                 {id_tabla}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">Consulta DB:</label>
+                        <div class=\"col-md-12\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">Consulta DB:</label>
                                 {query}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">Nombre del Controlador:</label>
+                    <div class=\"row\">
+                        <div class=\"col-md-12\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">Nombre del Controlador:</label>
                                 {controller_name}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">Columnas de La Tabla:</label>
+                        <div class=\"col-md-12\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">Columnas de La Tabla:</label>
                                 {columns_table}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="form-label">Nombre de La Vista:</label>
+                    <div class=\"row\">
+                        <div class=\"col-md-4\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">Nombre de La Vista:</label>
                                 {name_view}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="form-label">Agregar Al Menú Principal:</label>
+                        <div class=\"col-md-4\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">Agregar Al Menú Principal:</label>
                                 {add_menu}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="form-label">Usar Plantilla Formulario HTML:</label>
+                        <div class=\"col-md-4\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">Usar Plantilla Formulario HTML:</label>
                                 {template_fields}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
                     </div>
