@@ -230,6 +230,225 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
+    private function generateCrudControllerSQLTemplateFields($tableName, $idTable, $query = null, $controllerName, $nameview, $template_html)
+    {
+        $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
+        $controllerContent = "<?php
+
+        namespace App\Controllers;
+
+        use App\core\SessionManager;
+        use App\core\Token;
+        use App\core\DB;
+        use App\core\Request;
+        use App\core\View;
+        use App\core\Redirect;
+
+        class {$controllerName}Controller
+        {
+            public \$token;
+
+            public function __construct()
+            {
+                SessionManager::startSession();
+                \$Sesusuario = SessionManager::get('usuario');
+                if (!isset(\$Sesusuario)) {
+                    Redirect::to('login/index');
+                }
+                \$this->token = Token::generateFormToken('send_message');
+            }
+
+            public function index()
+            {
+                \$pdocrud = DB::PDOCrud();
+
+                \$html_template = '<div class=\"form\">
+                    <h5>Agregar Módulo</h5>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">Tipo de Crud:</label>
+                                {crud_type}
+                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">Nombre Tabla Base de Datos:</label>
+                                {tabla}
+                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">ID Tabla Base de Datos:</label>
+                                {id_tabla}
+                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">Consulta DB:</label>
+                                {query}
+                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">Nombre del Controlador:</label>
+                                {controller_name}
+                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">Columnas de La Tabla:</label>
+                                {columns_table}
+                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Nombre de La Vista:</label>
+                                {name_view}
+                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Agregar Al Menú Principal:</label>
+                                {add_menu}
+                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="form-label">Usar Plantilla Formulario HTML:</label>
+                                {template_fields}
+                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+
+                \$pdocrud->set_template(\$html_template);
+                \$pdomodel = \$pdocrud->getPDOModelObj();
+                \$columnDB = \$pdomodel->columnNames('{$tableName}');
+                \$id = strtoupper(\$columnDB[0]);
+
+                \$tabla = \$pdocrud->getLangData('{$tableName}');
+                \$pk = \$pdocrud->getLangData(\$id);
+                \$columnVal = \$pdocrud->getLangData(\$pk);
+
+                \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", \$_ENV['BASE_URL'].'{$controllerName}/agregar', array(), 'btn-report');
+
+                \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{{$idTable}}';
+                \$text = '<i class=\"fa fa-edit\"></i>';
+                \$attr = array('title'=> 'Editar');
+                \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
+
+                \$pdocrud->setSettings('encryption', false);
+                \$pdocrud->setSettings('pagination', true);
+                \$pdocrud->setSettings('searchbox', true);
+                \$pdocrud->setSettings('deleteMultipleBtn', true);
+                \$pdocrud->setSettings('checkboxCol', true);
+                \$pdocrud->setSettings('recordsPerPageDropdown', true);
+                \$pdocrud->setSettings('totalRecordsInfo', true);
+                \$pdocrud->setSettings('addbtn', false);
+                \$pdocrud->setSettings('editbtn', false);
+                \$pdocrud->setSettings('delbtn', true);
+                \$pdocrud->setSettings('actionbtn', true);
+                \$pdocrud->setSettings('refresh', false);
+                \$pdocrud->setSettings('numberCol', true);
+                \$pdocrud->setSettings('printBtn', true);
+                \$pdocrud->setSettings('pdfBtn', true);
+                \$pdocrud->setSettings('csvBtn', true);
+                \$pdocrud->setSettings('excelBtn', true);
+                \$pdocrud->setSettings('clonebtn', false);
+                \$pdocrud->setSettings('template', 'template_{$nameview}');
+                \$pdocrud->setLangData('no_data', 'Sin Resultados');
+            
+                \$pdocrud->setLangData('tabla', '{$tableName}')
+                    ->setLangData('pk', \$pk)
+                    ->setLangData('columnVal', \$columnVal);
+                \$pdocrud->tableHeading('{$tableName}');
+                \$pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
+                \$pdocrud->addCallback('before_sql_data', 'buscador_tabla', array(\$columnDB));
+                \$pdocrud->addCallback('before_delete', 'eliminar_tabla');
+
+                \$pdocrud->setSettings('viewbtn', false);
+                \$pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', array(\$columnDB));
+                \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
+
+                View::render(
+                    '{$nameview}', 
+                    [
+                        'render' => \$render
+                    ]
+                );
+            }
+
+            public function agregar(){
+                \$pdocrud = DB::PDOCrud();
+                \$pdocrud->buttonHide('submitBtn');
+                \$pdocrud->buttonHide('cancel');
+                \$pdocrud->setSettings('template', 'template_{$nameview}');
+                \$pdocrud->formStaticFields('botones', 'html', '
+                    <div class=\"col-md-12 text-center\">
+                        <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
+                        <a href=\"'.\$_ENV['BASE_URL'].'Demo/index\" class=\"btn btn-danger\">Regresar</a>
+                    </div>
+                ');
+                \$render = \$pdocrud->dbTable('{$tableName}')->render('insertform');
+                View::render(
+                    'agregar_{$nameview}',
+                    [
+                        'render' => \$render
+                    ]
+                );
+            }
+
+            public function editar(){
+                \$request = new Request();
+                \$id = \$request->get('id');
+
+                \$pdocrud = DB::PDOCrud();
+
+                \$pdomodel = \$pdocrud->getPDOModelObj();
+                \$columnDB = \$pdomodel->columnNames('{$tableName}');
+                \$id_tabla = strtoupper(\$columnDB[0]);
+
+                \$pdocrud->setPK(\$id_tabla);
+                \$pdocrud->setSettings('template', 'template_{$nameview}');
+                \$pdocrud->buttonHide('submitBtn');
+                \$pdocrud->buttonHide('cancel');
+                \$pdocrud->formStaticFields('botones', 'html', '
+                    <div class=\"col-md-12 text-center\">
+                        <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
+                        <a href=\"'.\$_ENV['BASE_URL'].'Demo/index\" class=\"btn btn-danger\">Regresar</a>
+                    </div>
+                ');
+                \$render = \$pdocrud->dbTable('{$tableName}')->render('editform', array('id' => \$id));
+
+                View::render(
+                    'editar_{$nameview}',
+                    [
+                        'render' => \$render
+                    ]
+                );
+            }
+        }";
+     
+        file_put_contents($controllerPath, $controllerContent);
+    }
+
     private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview){
 
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
