@@ -662,7 +662,7 @@ class HomeController
 		$pdocrud->fieldDesc("nombre_funcion_antes_de_insertar", "Campo opcional");
 
 		$pdocrud->fieldTypes("crud_type", "select");
-		$pdocrud->fieldDataBinding("crud_type", array("CRUD"=> "CRUD", "SQL"=> "SQL"), "", "","array");
+		$pdocrud->fieldDataBinding("crud_type", array("CRUD"=> "CRUD (Mantenedor a base de una tabla)", "SQL"=> "SQL (Mantenedor a base de una consulta)"), "", "","array");
 
 		$pdocrud->fieldTypes("add_menu", "select");
 		$pdocrud->fieldDataBinding("add_menu", array("Si"=> "Si"), "", "","array");
