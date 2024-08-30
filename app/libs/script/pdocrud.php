@@ -1010,6 +1010,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview);
     }
     $data["modulos"]["id_menu"] = $id_menu;
+    $data["modulos"]["controller_name"] = ucfirst($controller_name);
     return $data;
 }
 
