@@ -261,6 +261,9 @@ class CrudService
             public function index()
             {
                 \$pdocrud = DB::PDOCrud();
+                \$pdomodel = \$pdocrud->getPDOModelObj();
+                \$columnDB = \$pdomodel->columnNames('{$tableName}');
+                \$id = strtoupper(\$columnDB[0]);
 
                 \$html_template = '<div class=\"form\">
                     <h5>Agregar Módulo</h5>
@@ -339,10 +342,6 @@ class CrudService
                 </div>';
 
                 \$pdocrud->set_template(\$html_template);
-                \$pdomodel = \$pdocrud->getPDOModelObj();
-                \$columnDB = \$pdomodel->columnNames('{$tableName}');
-                \$id = strtoupper(\$columnDB[0]);
-
                 \$tabla = \$pdocrud->getLangData('{$tableName}');
                 \$pk = \$pdocrud->getLangData(\$id);
                 \$columnVal = \$pdocrud->getLangData(\$pk);
