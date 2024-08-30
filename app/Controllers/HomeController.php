@@ -634,8 +634,10 @@ class HomeController
 		$pdocrud->fieldCssClass("crud_type", array("crud_type"));
 		$pdocrud->fieldCssClass("id_tabla", array("id_tabla"));
 		$pdocrud->fieldCssClass("query", array("query"));
-		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo"));
-		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)"));
+		$pdocrud->formFieldValue("query", "SELECT id as ID, name as Name FROM demo");
+		$pdocrud->formFieldValue("columns_table", "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)");
+		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
+		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu"));
