@@ -42,10 +42,12 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
 $(document).on("change", ".crud_type", function(){
     let val = $(this).val();
     if(val == "CRUD"){
+        $(".id_tabla").attr("disabled", "disabled");
         $(".id_tabla").removeAttr("required");
         $(".query").removeAttr("required");
         $(".query").attr("disabled", "disabled");
     } else {
+        $(".id_tabla").removeAttr("disabled");
         $(".id_tabla").attr("required", "required");
         $(".query").attr("required", "required");
         $(".query").removeAttr("disabled");
