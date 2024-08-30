@@ -1096,9 +1096,7 @@ function eliminar_modulos($data, $obj)
             if (is_dir($filePath)) {
                 eliminar_directorio_completo($filePath); // Llamada recursiva
             } else {
-                if (unlink($filePath)) {
-                    echo "Archivo eliminado con éxito:";
-                }
+                unlink($filePath);
             }
         }
 
@@ -1111,7 +1109,7 @@ function eliminar_modulos($data, $obj)
             if (eliminar_directorio_completo($templaesCrudDirPath)) {
                 echo "Directorio eliminado con éxito:";
             } else {
-                echo "Error al eliminar el directorio: $templaesCrudDirPath\n";
+                echo "Error al eliminar el directorio: $templaesCrudDirPath";
             }
         } catch (Exception $e) {
             echo "Error al intentar eliminar el directorio: " . $e->getMessage();

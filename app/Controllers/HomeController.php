@@ -605,21 +605,21 @@ class HomeController
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="form-group">
 						<label class="form-label">Nombre de La Vista:</label>
 						{name_view}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 d-none">
 					<div class="form-group">
 						<label class="form-label">Agregar Al Menú Principal:</label>
 						{add_menu}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="form-group">
 						<label class="form-label">Usar Plantilla Formulario HTML:</label>
 						{template_fields}
@@ -663,7 +663,7 @@ class HomeController
 		$pdocrud->fieldDataBinding("crud_type", array("CRUD"=> "CRUD", "SQL"=> "SQL"), "", "","array");
 
 		$pdocrud->fieldTypes("add_menu", "select");
-		$pdocrud->fieldDataBinding("add_menu", array("Si"=> "Si", "No"=> "No"), "", "","array");
+		$pdocrud->fieldDataBinding("add_menu", array("Si"=> "Si"), "", "","array");
 
 		$pdocrud->fieldTypes("template_fields", "select");
 		$pdocrud->fieldDataBinding("template_fields", array("Si"=> "Si", "No"=> "No"), "", "","array");
