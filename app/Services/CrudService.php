@@ -27,7 +27,7 @@ class CrudService
     public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html)
     {
             $this->createTable($tableName, $columns);
-            if($crudType == 'SQL'){
+            if($crudType == 'SQL' && $template_html == 'No'){
                 $this->generateCrudControllerSQL($tableName, $idTable, $query, $controllerName, $nameview);
                 $this->generateViewEdit($nameview);
                 $this->generateViewAdd($nameview);
@@ -37,7 +37,7 @@ class CrudService
                 }
             }  
             
-            if($crudType == 'CRUD'){
+            if($crudType == 'CRUD' && $template_html == 'No'){
                 $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview);
             }
             $this->generateView($nameview);

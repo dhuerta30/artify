@@ -998,7 +998,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         ));
     }
 
-    if($crud_type == "SQL"){
+    if($crud_type == "SQL" && $template_fields == "No"){
         $crudService = new App\Services\CrudService();
         $tableName = $tabla;
         $idTable = $id_tabla;
@@ -1011,6 +1011,19 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         
         $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, $template_html);
     }
+
+    if($crud_type == "CRUD" && $template_fields == "No"){
+        $crudService = new App\Services\CrudService();
+        $tableName = $tabla;
+        $crudType = $crud_type;
+        $controllerName = $controller_name;
+        $columns = $columns_table;
+        $nameview = $name_view;
+        $template_html = $template_fields;
+        
+        $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, $template_html);
+    }
+
     $data["modulos"]["id_menu"] = $id_menu;
     $data["modulos"]["controller_name"] = ucfirst($controller_name);
     return $data;

@@ -630,6 +630,7 @@ class HomeController
 		</div>';
 		$pdocrud->set_template($html_template);
 		$pdocrud->formDisplayInPopup();
+		$pdocrud->formFieldValue("add_menu", "Si");
 		$pdocrud->fieldCssClass("crud_type", array("crud_type"));
 		$pdocrud->fieldCssClass("id_tabla", array("id_tabla"));
 		$pdocrud->fieldCssClass("query", array("query"));
