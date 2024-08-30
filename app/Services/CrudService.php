@@ -266,80 +266,25 @@ class CrudService
                 \$id = strtoupper(\$columnDB[0]);
 
                 \$html_template = '<div class=\"form\">
-                    <h5>Agregar Módulo</h5>
-                    <hr>
+                <h5>Agregar Módulo</h5>
+                <hr>';
+
+                foreach (\$columns as \$column) {
+                    \$columnName = ucfirst(str_replace('_', ' ', \$column)); // Opcional: transformar el nombre de la columna
+                    \$html_template .= '
                     <div class=\"row\">
                         <div class=\"col-md-12\">
                             <div class=\"form-group\">
-                                <label class=\"form-label\">Tipo de Crud:</label>
-                                {crud_type}
+                                <label class=\"form-label\">' . \$columnName . ':</label>
+                                {' . \$column . '}
                                 <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
-                        <div class=\"col-md-12\">
-                            <div class=\"form-group\">
-                                <label class=\"form-label\">Nombre Tabla Base de Datos:</label>
-                                {tabla}
-                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=\"row\">
-                        <div class=\"col-md-12\">
-                            <div class=\"form-group\">
-                                <label class=\"form-label\">ID Tabla Base de Datos:</label>
-                                {id_tabla}
-                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
-                            </div>
-                        </div>
-                        <div class=\"col-md-12\">
-                            <div class=\"form-group\">
-                                <label class=\"form-label\">Consulta DB:</label>
-                                {query}
-                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=\"row\">
-                        <div class=\"col-md-12\">
-                            <div class=\"form-group\">
-                                <label class=\"form-label\">Nombre del Controlador:</label>
-                                {controller_name}
-                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
-                            </div>
-                        </div>
-                        <div class=\"col-md-12\">
-                            <div class=\"form-group\">
-                                <label class=\"form-label\">Columnas de La Tabla:</label>
-                                {columns_table}
-                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=\"row\">
-                        <div class=\"col-md-4\">
-                            <div class=\"form-group\">
-                                <label class=\"form-label\">Nombre de La Vista:</label>
-                                {name_view}
-                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
-                            </div>
-                        </div>
-                        <div class=\"col-md-4\">
-                            <div class=\"form-group\">
-                                <label class=\"form-label\">Agregar Al Menú Principal:</label>
-                                {add_menu}
-                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
-                            </div>
-                        </div>
-                        <div class=\"col-md-4\">
-                            <div class=\"form-group\">
-                                <label class=\"form-label\">Usar Plantilla Formulario HTML:</label>
-                                {template_fields}
-                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>';
+                    </div>';
+                }
+
+                \$html_template .= '
+                </div>'; // Cierre del div de formulario
 
                 \$pdocrud->set_template(\$html_template);
                 \$tabla = \$pdocrud->getLangData('{$tableName}');
