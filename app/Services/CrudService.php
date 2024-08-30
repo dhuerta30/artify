@@ -28,7 +28,6 @@ class CrudService
     {
             $this->createTable($tableName, $columns);
             if($crudType == 'SQL'){
-                $crudType = 'SQL';
                 $this->generateCrudControllerSQL($tableName, $idTable, $query, $controllerName, $nameview);
                 $this->generateViewEdit($nameview);
                 $this->generateViewAdd($nameview);
@@ -36,8 +35,9 @@ class CrudService
                 if($template_html == "Si"){
                     $this->generateCrudControllerSQLTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html);
                 }
-
-            } else {
+            }  
+            
+            if($crudType == 'CRUD'){
                 $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview);
             }
             $this->generateView($nameview);
