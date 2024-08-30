@@ -25,15 +25,15 @@
             public function index()
             {
                 $pdocrud = DB::PDOCrud();
-                $pdocrud->setSettings('encryption', false);
+                $pdocrud->setSettings('encryption', true);
                 $pdocrud->setSettings('pagination', true);
                 $pdocrud->setSettings('searchbox', true);
                 $pdocrud->setSettings('deleteMultipleBtn', true);
                 $pdocrud->setSettings('checkboxCol', true);
                 $pdocrud->setSettings('recordsPerPageDropdown', true);
                 $pdocrud->setSettings('totalRecordsInfo', true);
-                $pdocrud->setSettings('addbtn', false);
-                $pdocrud->setSettings('editbtn', false);
+                $pdocrud->setSettings('addbtn', true);
+                $pdocrud->setSettings('editbtn', true);
                 $pdocrud->setSettings('delbtn', true);
                 $pdocrud->setSettings('actionbtn', true);
                 $pdocrud->setSettings('refresh', false);
