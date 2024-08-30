@@ -481,6 +481,27 @@ $(document).ready(function(){
                 }
 
 
+                if (data.action === "add_row_module") {
+                    $(".pdocrud-left-join").each(function () {
+                        var tds = '<tr>';
+                        jQuery.each($('tr:last td', this), function () {
+                            tds += '<td>' + $(this).html() + '</td>';
+                        });
+                        tds += '</tr>';
+                
+                        // Limpia los valores de los elementos de la última fila
+                        var $lastRow = $(tds).appendTo('tbody', this);
+                        $lastRow.find('input, select, textarea').val('');
+                
+                        if ($('tbody', this).length > 0) {
+                            $('tbody', this).append($lastRow);
+                        } else {
+                            $(this).append($lastRow);
+                        }
+                    });
+                    return;                   
+                }
+
                 if (data.action === "add_row") {
 
                     var cantidad_columnas = parseFloat($(".cantidad_columnas").val());

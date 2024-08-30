@@ -54,19 +54,6 @@ $(document).on("change", ".crud_type", function(){
     }
 });
 
-$(document).on("change", ".data_activar_filtro_de_busqueda", function(){
-    let val = $(this).val();
-    if(val == "AUTO_INCREMENT"){
-        $('.label_Visibilidad_filtro').show();
-        $('.data_visibilidad_filtro').show();
-        $('.data_visibilidad_filtro').attr('required', true);
-    } else {
-        $('.label_Visibilidad_filtro').hide();
-        $('.data_visibilidad_filtro').hide();
-        $('.data_visibilidad_filtro').attr('required', false);
-    }
-});
-
 function refrechMenu(){
 	$.ajax({
 		type: "POST",
@@ -100,10 +87,6 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
             }
         });
     }
-});
-
-$(document).ready(function(){
-    $('.pdocrud-button-url').removeClass('pdocrud-actions');
 });
 </script>
 <?php require 'layouts/footer.php'; ?>
