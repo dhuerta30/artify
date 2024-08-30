@@ -37,6 +37,7 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
     $('.data_visibilidad_filtro').hide();
     $('.data_visibilidad_filtro').attr('required', false);
     $('.pdocrud-button-url').removeClass('pdocrud-actions');
+    construirFrase();
 });
 
 $(document).on("change", ".crud_type", function(){
@@ -89,101 +90,44 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
     }
 });
 
-$(document).ready(function() {
-    // Función para construir la consulta SQL
-    function buildQuery() {
-        var query = "SELECT ";
-        var columns = [];
-        
-        $("#table-body tr").each(function() {
-            var $row = $(this);
-            var columnName = $row.find('input[name="campo_nombre[]"]').val();
-            var columnType = $row.find('select[name="campo_tipo[]"]').val();
-            var columnEmpty = $row.find('select[name="campo_valor_vacio[]"]').val();
-            var columnIndex = $row.find('select[name="campo_indice[]"]').val();
-            var columnAutoIncrement = $row.find('select[name="campo_autoincrementable[]"]').val();
-            var columnLength = $row.find('input[name="campo_caracteres[]"]').val();
-
-            if (columnName) {
-                var columnDefinition = columnName;
-
-                if (columnType) {
-                    columnDefinition += " " + columnType;
-                }
-
-                if (columnEmpty === "Si") {
-                    columnDefinition += " NULL";
-                }
-
-                if (columnIndex === "Primario") {
-                    columnDefinition += " PRIMARY KEY";
-                }
-
-                if (columnAutoIncrement === "Si") {
-                    columnDefinition += " AUTO_INCREMENT";
-                }
-
-                if (columnLength) {
-                    columnDefinition += "(" + columnLength + ")";
-                }
-
-                columns.push(columnDefinition);
-            }
-        });
-
-        query += columns.join(", ");
-        query += " FROM table_name"; // Cambia 'table_name' por el nombre real de tu tabla
-
-        $(".query").val(query);
-    }
-
-    // Llama a buildQuery cuando cambie el contenido de los campos de entrada
-    $("#table-body").on('input change', 'input[name="campo_nombre[]"], select[name="campo_tipo[]"], select[name="campo_valor_vacio[]"], select[name="campo_indice[]"], select[name="campo_autoincrementable[]"], input[name="campo_caracteres[]"]', buildQuery);
-
-    // Función para agregar una fila
-    $("#add-row").click(function() {
-        var newRow = `
-            <tr>
-                <td><input type="text" class="form-control" name="campo_nombre[]"></td>
-                <td><select class="form-control" name="campo_tipo[]">
-                    <option value="">Seleccionar</option>
-                    <option value="Numerico">Numerico</option>
-                    <option value="Imagen">Imagen</option>
-                    <!-- Otros valores -->
-                </select></td>
-                <td><select class="form-control" name="campo_valor_vacio[]">
-                    <option value="">Seleccionar</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                </select></td>
-                <td><select class="form-control" name="campo_indice[]">
-                    <option value="">Seleccionar</option>
-                    <option value="Primario">Primario</option>
-                    <option value="Sin Indice">Sin Indice</option>
-                </select></td>
-                <td><select class="form-control" name="campo_autoincrementable[]">
-                    <option value="">Seleccionar</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                </select></td>
-                <td><input type="text" class="form-control" name="campo_caracteres[]"></td>
-                <td><a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a></td>
-            </tr>
-        `;
-        $("#table-body").append(newRow);
-        buildQuery(); // Actualiza la consulta después de agregar una fila
-    });
-
-    // Función para eliminar una fila
-    $(document).on('click', '[data-action="delete_row"]', function() {
-        $(this).closest('tr').remove();
-        buildQuery(); // Actualiza la consulta después de eliminar una fila
-    });
-
-    // Inicializar la consulta al cargar la página
-    buildQuery();
+$(document).on("click", ".agregar_muestras", function(){
+    construirFrase();
 });
 
+function construirFrase() {
+    $('.pdocrud-left-join').on("keyup change", ".nombre, .tipo_de_campo, .nulo, .indice, .autoincrementable, .longitud", function() {
+        var $row = $(this).closest('tr');
+        // Get input values within the row
+        var campo1 = $row.find('.nombre').val().trim();
+        var campo2 = $row.find('.tipo_de_campo').val().trim();
+        var campo3 = $row.find('.nulo').val().trim();
+        var campo4 = $row.find('.indice').val().trim();
+        var campo5 = $row.find('.autoincrementable').val().trim();
+        var campo6 = $row.find('.longitud').val().trim();
+
+        if(campo2 == "Numerico"){
+            campo2 = "INT";
+        }
+
+        if(campo4 == "Primario"){
+            campo4 = "PRIMARY KEY";
+        } else {
+            campo4 = "";
+        }
+
+        if(campo5 == "Si"){
+            campo5 = "AUTO_INCREMENT,";
+        }
+
+        // Construir la frase
+        var frase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5} ${campo6} `;
+
+        // Asignar la frase al textarea
+        $('.columns_table').val(frase);
+    });
+}
+
+construirFrase();
 
 </script>
 <?php require 'layouts/footer.php'; ?>

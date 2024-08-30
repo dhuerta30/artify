@@ -645,6 +645,7 @@ class HomeController
 		$pdocrud->fieldCssClass("indice", array("indice"));
 		$pdocrud->fieldCssClass("autoincrementable", array("autoincrementable"));
 		$pdocrud->fieldCssClass("longitud", array("longitud"));
+		$pdocrud->fieldCssClass("columns_table", array("columns_table"));
 
 		$pdocrud->fieldTypes("autoincrementable", "select");
 		$pdocrud->fieldDataBinding("autoincrementable", array("Si" => "Si", "No" => "No"), "", "", "array");
@@ -657,8 +658,8 @@ class HomeController
 		$pdocrud->fieldRenameLable("nombre", "Nombre campo");
 		$pdocrud->fieldRenameLable("nulo", "Campo con Valor Vacio");
 		$pdocrud->fieldRenameLable("longitud", "Cantidad de caracteres");
-		$pdocrud->formFieldValue("query", "SELECT id as ID, name as Name FROM demo");
-		$pdocrud->formFieldValue("columns_table", "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)");
+		//$pdocrud->formFieldValue("query", "SELECT");
+		//$pdocrud->formFieldValue("columns_table", "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)");
 		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
