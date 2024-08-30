@@ -643,7 +643,7 @@ class HomeController
 		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu"));
 		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields"));
 		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields"));
-		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu"));
+		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
 		$pdocrud->colRename("crud_type", "Tipo de Crud");
