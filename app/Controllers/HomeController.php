@@ -645,6 +645,7 @@ class HomeController
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
 		$pdocrud->colRename("crud_type", "Tipo de Crud");
+		$pdocrud->colRename("template_fields", "Usar Plantilla Formulario HTML");
 		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "=", "query", "hide");
 		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "!=", "query", "show");
 
