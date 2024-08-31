@@ -104,7 +104,7 @@ function construirFrase() {
 
         // Convertir valores según reglas definidas
         if (campo2 === "Numerico") {
-            campo2 = `INT(${campo6})`;
+            campo2 = campo6 ? `INT(${campo6})` : "INT";
             campo6 = ""; // Si es numérico, el campo6 no se usa
         } else if (campo2 === "Caracteres") {
             campo2 = `VARCHAR(${campo6})`; // Si es caracteres, usar VARCHAR con el valor de campo6
@@ -127,7 +127,7 @@ function construirFrase() {
         }
 
         if (campo5 == "Si") {
-            campo5 = "AUTO_INCREMENT,";
+            campo5 = "AUTO_INCREMENT";
         } else {
             campo5 = "";
         }
@@ -149,6 +149,15 @@ function construirFrase() {
                 frasesUnicas.set(key, frase);
             }
         });
+
+        // Obtener la última frase del textarea
+        var ultimaFrase = Array.from(frasesUnicas.values()).pop();
+
+        // Si la última frase no termina con una coma, agregarla
+        if (ultimaFrase && !ultimaFrase.endsWith(',')) {
+            ultimaFrase += ',';
+            frasesUnicas.set(ultimaFrase.split(' ')[0], ultimaFrase); // Actualizar el Map con la última frase modificada
+        }
 
         // Agregar la nueva frase al Map
         if (nuevaFrase.length > 0) {
