@@ -104,7 +104,7 @@ function construirFrase() {
 
         // Convertir valores según reglas definidas
         if (campo2 === "Numerico") {
-            campo2 = "INT";
+            campo2 = `INT(${campo6})`;
             campo6 = ""; // Si es numérico, el campo6 no se usa
         } else if (campo2 === "Caracteres") {
             campo2 = `VARCHAR(${campo6})`; // Si es caracteres, usar VARCHAR con el valor de campo6
@@ -133,7 +133,7 @@ function construirFrase() {
         }
 
         // Construir la nueva frase
-        var nuevaFrase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5} ${campo6}`.trim();
+        var nuevaFrase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5} `.trim();
 
         // Obtener el contenido actual del textarea
         var currentContent = $('.columns_table').val();
