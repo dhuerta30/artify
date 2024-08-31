@@ -103,12 +103,21 @@ function construirFrase() {
         var campo6 = $row.find('.longitud').val().trim();
 
         // Convertir valores según reglas definidas
-        if (campo2 == "Numerico") {
+        if (campo2 === "Numerico") {
             campo2 = "INT";
+            campo6 = ""; // Si es numérico, el campo6 no se usa
+        } else if (campo2 === "Caracteres") {
+            campo2 = `VARCHAR(${campo6})`; // Si es caracteres, usar VARCHAR con el valor de campo6
         }
 
         if (campo2 == "Caracteres") {
             campo2 = "VARCHAR()";
+        }
+
+        if (campo3 == "Si") {
+            campo3 = "NULL";
+        } else {
+            campo3 = "NOT NULL";
         }
 
         if (campo4 == "Primario") {
@@ -119,6 +128,8 @@ function construirFrase() {
 
         if (campo5 == "Si") {
             campo5 = "AUTO_INCREMENT,";
+        } else {
+            campo5 = "";
         }
 
         // Construir la nueva frase
