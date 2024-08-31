@@ -608,6 +608,13 @@ $(document).ready(function(){
                 
                 if (data.action === "save_crud_table_data") {
                     instance = $(this).closest(".pdocrud-table-container").data("objkey");
+
+                    var modalElement = jQuery(this).closest(".pdocrud-table-container").find(".modal");
+                    if (modalElement.length > 0) {
+                        modalElement.modal('hide'); // Ocultar el modal si está abierto
+                        modalElement.remove(); // Eliminar el modal del DOM si es necesario
+                    }
+                    
                     var updateData = [];
                     $(".input-bulk-crud-update").each(function () {
                         var col = $(this).data("col");
