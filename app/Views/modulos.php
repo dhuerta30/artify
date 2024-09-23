@@ -111,7 +111,6 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
 
     if(json.message){
         refrechMenu();
-        $('.pdocrud-button-url').removeClass('pdocrud-actions');
         Swal.fire({
             title: "Genial!",
             text: json.message,
