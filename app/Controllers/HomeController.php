@@ -559,7 +559,7 @@ class HomeController
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group">
-						<label class="form-label">Tipo de Crud:</label>
+						<label class="form-label">Tipo de Módulo:</label>
 						{crud_type}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
