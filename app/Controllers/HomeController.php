@@ -675,7 +675,7 @@ class HomeController
 		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
-		$pdocrud->colRename("crud_type", "Tipo de Crud");
+		$pdocrud->colRename("crud_type", "Tipo de Módulo");
 		
 		$pdocrud->colRename("template_fields", "Usar Plantilla Formulario HTML");
 
