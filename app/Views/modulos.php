@@ -32,26 +32,51 @@
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
 <script>
 $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
-    refrechMenu();
+    //refrechMenu();
     $('.label_Visibilidad_filtro').hide();
     $('.data_visibilidad_filtro').hide();
     $('.data_visibilidad_filtro').attr('required', false);
     $('.pdocrud-button-url').removeClass('pdocrud-actions');
-    construirFrase();
 });
 
 $(document).on("change", ".crud_type", function(){
     let val = $(this).val();
+
     if(val == "CRUD"){
+        
         $(".id_tabla").attr("disabled", "disabled");
         $(".id_tabla").removeAttr("required");
+        $(".id_tabla").val("");
         $(".query").removeAttr("required");
         $(".query").attr("disabled", "disabled");
+        $(".columns_table").val("");
+        $(".tabla").val("");
+        $(".name_view").val("");
+        $(".controller_name").val("");
+
+    } else if(val == "Modulo de Inventario"){
+        
+        $(".id_tabla").attr("disabled", "disabled");
+        $(".id_tabla").removeAttr("required");
+        $(".id_tabla").val("");
+        $(".query").removeAttr("required");
+        $(".query").attr("disabled", "disabled");
+        $(".columns_table").val('id_inventario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, nombre_producto VARCHAR(255) NOT NULL, tipo VARCHAR(200) NOT NULL, cantidad VARCHAR(100) NOT NULL, cantidad_vendida VARCHAR(100) NOT NULL, nuevos_ingresos VARCHAR(100) NOT NULL, stock_actual VARCHAR(100) NOT NULL, ubicacion VARCHAR(255) DEFAULT NULL, precio INT(11) NOT NULL, observacion TEXT');
+        $(".tabla").val("Inventario");
+        $(".name_view").val("Inventario");
+        $(".controller_name").val("Inventario");
+
     } else {
+        
         $(".id_tabla").removeAttr("disabled");
         $(".id_tabla").attr("required", "required");
+        $(".id_tabla").val("");
         $(".query").attr("required", "required");
         $(".query").removeAttr("disabled");
+        $(".columns_table").val("");
+        $(".tabla").val("");
+        $(".name_view").val("");
+        $(".controller_name").val("");
     }
 });
 
@@ -90,7 +115,7 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
     }
 });
 
-function construirFrase() {
+/*function construirFrase() {
     $('.pdocrud-left-join').on("change", ".nombre, .tipo_de_campo, .nulo, .indice, .autoincrementable, .longitud", function() {
         var $row = $(this).closest('tr');
         
@@ -175,7 +200,7 @@ function construirFrase() {
 }
 
 
-construirFrase();
+construirFrase();*/
 
 </script>
 <?php require 'layouts/footer.php'; ?>
