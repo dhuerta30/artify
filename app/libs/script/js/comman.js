@@ -502,6 +502,39 @@ $(document).ready(function(){
                     return;                   
                 }
 
+                if (data.action === "add_row_lubricentro") {
+                   $(".pdocrud-left-join").each(function () {
+                        $('.producto').select2("destroy");
+                        var tds = '<tr>';
+                        jQuery.each($('tr:last td', this), function () {
+                            tds += '<td>' + $(this).html() + '</td>';
+                            $('.agregar_pro_vent').removeClass('pdocrud-actions');
+                            $('.agregar_pro_vent').removeAttr("data-action","add_row_vent");
+                        });
+                        tds += '</tr>';
+                        if ($('tbody', this).length > 0) {
+                            $('tbody', this).append(tds);
+                        } else {
+                            $(this).append(tds);
+                        }
+                        $('.producto:last').val("");
+                        $('.precio_vehiculo:last').val("");
+                        $('.cantidad_vehiculo:last').val("");
+                        $('.total_vehiculo:last').val("");
+
+                        $('.producto').select2({
+                            placeholder: 'Escribe el nombre del producto',
+                            allowClear: true,
+                            language: {
+                                noResults: function() {
+                                    return "No hay resultados";
+                                }
+                            }
+                        });
+                    });
+                    return;
+                }
+
                 if (data.action === "add_row") {
 
                     var cantidad_columnas = parseFloat($(".cantidad_columnas").val());
@@ -608,6 +641,13 @@ $(document).ready(function(){
                 
                 if (data.action === "save_crud_table_data") {
                     instance = $(this).closest(".pdocrud-table-container").data("objkey");
+
+                    var modalElement = jQuery(this).closest(".pdocrud-table-container").find(".modal");
+                    if (modalElement.length > 0) {
+                        modalElement.modal('hide'); // Ocultar el modal si está abierto
+                        modalElement.remove(); // Eliminar el modal del DOM si es necesario
+                    }
+
                     var updateData = [];
                     $(".input-bulk-crud-update").each(function () {
                         var col = $(this).data("col");

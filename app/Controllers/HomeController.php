@@ -627,13 +627,89 @@ class HomeController
 					</div>
 				</div>
 			</div>
-		</div>';
+		</div>
+		<div class="form-group"><div class="component addrow float-right">
+		    <div class="control-group">
+		        <div class="controls">
+		            <a class="pdocrud-actions pdocrud-button pdocrud-button-add-row btn btn-success agregar_muestras" href="javascript:;" data-action="add_row_module">
+		                <i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar            
+		            </a>
+		        </div>
+		    </div>
+		</div>
+		<div class="table-responsive">
+		<table class="table pdocrud-left-join responsive">
+		    <thead>
+		        <tr>
+		            <th>
+		            	<label for="Y2FtcG9zIyRub21icmVAM2RzZnNkZioqOTkzNDMyNA==[]" class=" control-label col-form-label">Nombre campo</label>
+		            </th>
+		            <th>
+		            	<label for="Y2FtcG9zIyR0aXBvX2RlX2NhbXBvQDNkc2ZzZGYqKjk5MzQzMjQ=[]" class=" control-label col-form-label">Tipo de campo</label>
+		            </th>
+		            <th>
+		            	<label for="Y2FtcG9zIyRudWxvQDNkc2ZzZGYqKjk5MzQzMjQ=[]" class=" control-label col-form-label">Campo con Valor Vacio</label>
+		            </th>
+		            <th>
+		            	<label for="Y2FtcG9zIyRpbmRpY2VAM2RzZnNkZioqOTkzNDMyNA==[]" class=" control-label col-form-label">Indice</label>
+		            </th>
+		            <th>
+		            	<label for="Y2FtcG9zIyRhdXRvaW5jcmVtZW50YWJsZUAzZHNmc2RmKio5OTM0MzI0[]" class=" control-label col-form-label">Autoincrementable</label>
+		            </th>
+		            <th>
+		            	<label for="Y2FtcG9zIyRsb25naXR1ZEAzZHNmc2RmKio5OTM0MzI0[]" class=" control-label col-form-label">Cantidad de caracteres</label>
+		            </th>        
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		        	<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1">
+		        		<input type="text" class="form-control pdocrud-form-control pdocrud-text nombre" id="Y2FtcG9zIyRub21icmVAM2RzZnNkZioqOTkzNDMyNA==[]" name="Y2FtcG9zIyRub21icmVAM2RzZnNkZioqOTkzNDMyNA==[]" required="1">
+		        	</td>
+		        	<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_2">
+		        		<select class="form-control pdocrud-form-control pdocrud-select tipo_de_campo" id="Y2FtcG9zIyR0aXBvX2RlX2NhbXBvQDNkc2ZzZGYqKjk5MzQzMjQ=[]" name="Y2FtcG9zIyR0aXBvX2RlX2NhbXBvQDNkc2ZzZGYqKjk5MzQzMjQ=[]" required="1">
+			        		<option value="">Seleccionar</option>
+			        		<option value="Numerico">Numerico</option>
+			        		<option value="Combobox">Combobox</option>
+			        		<option value="Caracteres">Caracteres</option>
+			        		<option value="Campo de Texto">Campo de Texto</option>
+			        		<option value="Fecha">Fecha</option>
+		        		</select>
+		        	</td>
+		        	<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+		        		<select class="form-control pdocrud-form-control pdocrud-select nulo" id="Y2FtcG9zIyRudWxvQDNkc2ZzZGYqKjk5MzQzMjQ=[]" name="Y2FtcG9zIyRudWxvQDNkc2ZzZGYqKjk5MzQzMjQ=[]" required="1">
+		        			<option value="">Seleccionar</option>
+		        			<option value="Si">Si</option>
+		        			<option value="No">No</option>
+		        		</select>
+		        	</td>
+		        	<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_4">
+		        		<select class="form-control pdocrud-form-control pdocrud-select indice" id="Y2FtcG9zIyRpbmRpY2VAM2RzZnNkZioqOTkzNDMyNA==[]" name="Y2FtcG9zIyRpbmRpY2VAM2RzZnNkZioqOTkzNDMyNA==[]" required="1">
+		        			<option value="">Seleccionar</option>
+		        			<option value="Primario"> Primario</option>
+		        			<option value="Sin Indice">Sin Indice</option>
+		        		</select>
+		        	</td>
+		        	<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_5"><select class="form-control pdocrud-form-control pdocrud-select autoincrementable" id="Y2FtcG9zIyRhdXRvaW5jcmVtZW50YWJsZUAzZHNmc2RmKio5OTM0MzI0[]" name="Y2FtcG9zIyRhdXRvaW5jcmVtZW50YWJsZUAzZHNmc2RmKio5OTM0MzI0[]" required="1"><option value="">Seleccionar</option><option value="Si">Si</option><option value="No">No</option></select>
+		        	</td>
+		        	<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_6">
+		        		<input type="text" class="form-control pdocrud-form-control pdocrud-text longitud" id="Y2FtcG9zIyRsb25naXR1ZEAzZHNmc2RmKio5OTM0MzI0[]" name="Y2FtcG9zIyRsb25naXR1ZEAzZHNmc2RmKio5OTM0MzI0[]" required="1">
+		        	</td> 
+		        	<td>
+		        		<a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a>
+		        	</td>
+		        </tr>    
+		    </tbody>
+		</table>
+		</div>
+		</div>
+		';
 		$pdocrud->set_template($html_template);
 		//$pdocrud->formDisplayInPopup();
 		$pdocrud->formFieldValue("add_menu", "Si");
 
 		$pdocrud->fieldTypes("tipo_de_campo", "select");
-		$pdocrud->fieldDataBinding("tipo_de_campo", array("Numerico" => "Numerico", "Imagen" => "Imagen", "Combobox" => "Combobox", "Caracteres" => "Caracteres", "Campo de Texto" => "Campo de Texto", "Fecha" => "Fecha"), "", "", "array");
+		$pdocrud->fieldDataBinding("tipo_de_campo", array("Numerico" => "Numerico", "Combobox" => "Combobox", "Caracteres" => "Caracteres", "Campo de Texto" => "Campo de Texto", "Fecha" => "Fecha"), "", "", "array");
 
 		$pdocrud->fieldCssClass("crud_type", array("crud_type"));
 		$pdocrud->fieldCssClass("id_tabla", array("id_tabla"));
@@ -661,7 +737,7 @@ class HomeController
 		//$pdocrud->formFieldValue("query", "SELECT");
 		//$pdocrud->formFieldValue("columns_table", "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)");
 		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
-		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
+		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "nombre", "tipo_de_campo", "nulo", "indice", "autoincrementable", "longitud"));
@@ -671,7 +747,7 @@ class HomeController
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
 		$pdocrud->colRename("crud_type", "Tipo de Crud");
-		$pdocrud->joinTable("campos", "campos.id_modulos = modulos.id_modulos", "LEFT JOIN");
+		//$pdocrud->joinTable("campos", "campos.id_modulos = modulos.id_modulos", "LEFT JOIN");
 		$pdocrud->colRename("template_fields", "Usar Plantilla Formulario HTML");
 		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "=", "query", "hide");
 		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "!=", "query", "show");

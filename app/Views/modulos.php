@@ -90,14 +90,11 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
     }
 });
 
-$(document).on("click", ".agregar_muestras", function(){
-    construirFrase();
-});
-
 function construirFrase() {
-    $('.pdocrud-left-join').on("keyup change", ".nombre, .tipo_de_campo, .nulo, .indice, .autoincrementable, .longitud", function() {
+    $('.pdocrud-left-join').on("change", ".nombre, .tipo_de_campo, .nulo, .indice, .autoincrementable, .longitud", function() {
         var $row = $(this).closest('tr');
-        // Get input values within the row
+        
+        // Obtener valores de los campos de la fila actual
         var campo1 = $row.find('.nombre').val().trim();
         var campo2 = $row.find('.tipo_de_campo').val().trim();
         var campo3 = $row.find('.nulo').val().trim();
@@ -105,62 +102,78 @@ function construirFrase() {
         var campo5 = $row.find('.autoincrementable').val().trim();
         var campo6 = $row.find('.longitud').val().trim();
 
-        if(campo2 == "Numerico"){
-            campo2 = "INT";
+        // Convertir valores según reglas definidas
+        if (campo2 === "Numerico") {
+            campo2 = campo6 ? `INT(${campo6})` : "INT";
+            campo6 = ""; // Si es numérico, el campo6 no se usa
+        } else if (campo2 === "Caracteres") {
+            campo2 = `VARCHAR(${campo6})`; // Si es caracteres, usar VARCHAR con el valor de campo6
         }
 
-        if(campo2 == "Caracteres"){
+        if (campo2 == "Caracteres") {
             campo2 = "VARCHAR()";
         }
 
-        if(campo4 == "Primario"){
+        if (campo3 == "Si") {
+            campo3 = "NULL";
+        } else {
+            campo3 = "NOT NULL";
+        }
+
+        if (campo4 == "Primario") {
             campo4 = "PRIMARY KEY";
         } else {
             campo4 = "";
         }
 
-        if(campo5 == "Si"){
-            campo5 = "AUTO_INCREMENT,";
+        if (campo5 == "Si") {
+            campo5 = "AUTO_INCREMENT";
+        } else {
+            campo5 = "";
         }
 
-        // Construir la frase
-        var frase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5} ${campo6} `;
+        // Construir la nueva frase
+        var nuevaFrase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5} `.trim();
 
-        // Asignar la frase al textarea
-        $('.columns_table').val(frase);
+        // Obtener el contenido actual del textarea
+        var currentContent = $('.columns_table').val();
 
-        $('.pdocrud-left-join tr').each(function() {
-            // Obtener los valores de los campos de la fila
-            var $row = $(this);
-            var campo1 = $row.find('.nombre').val().trim();
-            var campo2 = $row.find('.tipo_de_campo').val().trim();
-            var campo3 = $row.find('.nulo').val().trim();
-            var campo4 = $row.find('.indice').val().trim();
-            var campo5 = $row.find('.autoincrementable').val().trim();
-            var campo6 = $row.find('.longitud').val().trim();
+        // Dividir el contenido en líneas y eliminar duplicados
+        var frases = currentContent.split('\n').map(f => f.trim());
+        var frasesUnicas = new Map();
 
-            if(campo2 == "Numerico"){
-                campo2 = "INT";
+        // Añadir las frases únicas a un Map usando el campo1 como clave para evitar duplicados
+        frases.forEach(frase => {
+            if (frase.length > 0) {
+                var key = frase.split(' ')[0]; // Usar el primer campo como clave para evitar duplicados
+                frasesUnicas.set(key, frase);
             }
-
-            if(campo4 == "Primario"){
-                campo4 = "PRIMARY KEY";
-            } else {
-                campo4 = "";
-            }
-
-            if(campo5 == "Si"){
-                campo5 = "AUTO_INCREMENT,";
-            }
-
-            // Construir la frase
-            var frase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5} ${campo6} `;
-
-            // Agregar la frase al textarea
-            $('.columns_table').val($('.columns_table').val() + frase);
         });
+
+        // Obtener la última frase del textarea
+        var ultimaFrase = Array.from(frasesUnicas.values()).pop();
+
+        // Si la última frase no termina con una coma, agregarla
+        if (ultimaFrase && !ultimaFrase.endsWith(',')) {
+            ultimaFrase += ',';
+            frasesUnicas.set(ultimaFrase.split(' ')[0], ultimaFrase); // Actualizar el Map con la última frase modificada
+        }
+
+        // Agregar la nueva frase al Map
+        if (nuevaFrase.length > 0) {
+            var key = nuevaFrase.split(' ')[0]; // Usar el primer campo como clave
+            frasesUnicas.set(key, nuevaFrase);
+        }
+
+        // Convertir el Map de vuelta a una cadena de texto
+        var nuevasFrases = Array.from(frasesUnicas.values()).join('\n');
+
+        // Actualizar el textarea con las frases únicas
+        $('.columns_table').val(nuevasFrases);
+        
     });
 }
+
 
 construirFrase();
 
