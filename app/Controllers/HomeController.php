@@ -605,31 +605,38 @@ class HomeController
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="form-group">
 						<label class="form-label">Nombre de La Vista:</label>
 						{name_view}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
-				<div class="col-md-4 d-none">
+				<div class="col-md-3 d-none">
 					<div class="form-group">
 						<label class="form-label">Agregar Al Menú Principal:</label>
 						{add_menu}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="form-group">
 						<label class="form-label">Usar Plantilla Formulario HTML:</label>
 						{template_fields}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="form-group">
 						<label class="form-label">Activar Filtro de Busqueda:</label>
 						{active_filter}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">Clonar Filas:</label>
+						{clone_row}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
@@ -641,9 +648,13 @@ class HomeController
 		//$pdocrud->formDisplayInPopup();
 		$pdocrud->formFieldValue("add_menu", "Si");
 		$pdocrud->formFieldValue("active_filter", "No");
-
+		$pdocrud->formFieldValue("clone_row", "No");
+		
 		$pdocrud->fieldTypes("active_filter", "select");
 		$pdocrud->fieldDataBinding("active_filter", array("Si" => "Si", "No" => "No"), "", "", "array");
+
+		$pdocrud->fieldTypes("clone_row", "select");
+		$pdocrud->fieldDataBinding("clone_row", array("Si" => "Si", "No" => "No"), "", "", "array");
 
 		$pdocrud->fieldTypes("tipo_de_campo", "select");
 		$pdocrud->fieldDataBinding("tipo_de_campo", array("Numerico" => "Numerico", "Combobox" => "Combobox", "Caracteres" => "Caracteres", "Campo de Texto" => "Campo de Texto", "Fecha" => "Fecha"), "", "", "array");
@@ -680,10 +691,10 @@ class HomeController
 		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
-		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "active_filter"));
-		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter"));
+		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "active_filter", "clone_row"));
+		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row"));
 		
-		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter"));
+		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row"));
 
 		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
