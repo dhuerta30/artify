@@ -825,6 +825,9 @@ class HomeController
 		$datasubmenu = $pdomodel->DBQuery("SELECT MAX(orden_submenu) as orden_submenu FROM submenu");
 		$newOrdenSubMenu = $datasubmenu[0]["orden_submenu"] + 1;
 
+		$pdocrud->addWhereConditionActionButtons("delete", "id_menu", "!=", array(4,5,6,7,10,12,19));
+		$pdocrud->addWhereConditionActionButtons("edit", "id_menu", "!=", array(4,5,6,7,10,12,19));
+
 		$action = "javascript:;";
 		$text = '<i class="fas fa-arrows-alt-v"></i>';
 		$attr = array("title"=>"Arrastra para Reordenar Fila");
