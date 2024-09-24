@@ -230,7 +230,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerSQLTemplateFields($tableName, $idTable, $query = null, $controllerName, $nameview, $template_html)
+    private function generateCrudControllerSQLTemplateFields($tableName, $idTable, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -301,6 +301,7 @@ class CrudService
                 \$pdocrud->setSettings('encryption', false);
                 \$pdocrud->setSettings('pagination', true);
                 \$pdocrud->setSettings('searchbox', true);
+                \$pdocrud->setSettings('clonebtn', true);
                 \$pdocrud->setSettings('deleteMultipleBtn', true);
                 \$pdocrud->setSettings('checkboxCol', true);
                 \$pdocrud->setSettings('recordsPerPageDropdown', true);
