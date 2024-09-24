@@ -493,6 +493,10 @@ class CrudService
             $controllerContent .= "
                 \$pdocrud->setSettings('searchbox', true);
             ";
+        } else {
+            $controllerContent .= "
+                \$pdocrud->setSettings('searchbox', false);
+            ";
         }
 
         // Continue with the remaining settings
