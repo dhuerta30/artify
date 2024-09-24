@@ -694,7 +694,7 @@ class HomeController
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label class="form-label">Vista Previa Campos Tabla:</label>
+						<label class="form-label">Vista Previa Campos Tabla Actual:</label>
 						<ul class="list-group vista_previa_campos_tabla"></ul>
 					</div>
 				</div>

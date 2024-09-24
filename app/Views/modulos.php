@@ -97,7 +97,7 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
             success: function(data){
                 $.each(data["columnas_tabla"], function(index, obj){  
                     $(".vista_previa_campos_tabla").append(`
-                        <li class="list-group-item">${obj}</li>
+                        <li class="list-group-item bg-light">${obj}</li>
                     `);
                 });
             }
