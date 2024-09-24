@@ -83,6 +83,8 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "edit"){
         $(".columns_table").attr("disabled", "disabled");
+        $(".tabla").attr("readonly", "true");
+        $(".controller_name").attr("readonly", "true");
         $(".modificar_tabla_col").show();
     }
 

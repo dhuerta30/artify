@@ -24,17 +24,18 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null)
     {
         $this->createTable($tableName, $columns);
-        
-        if ($crudType == 'SQL') {
+        $this->modifyTable($tableName, $modify_query);
+
+        /*if ($crudType == 'SQL') {
             if ($template_html == 'No' && $active_filter == 'No' && $clone_row == 'No') {
                 $this->generateCrudControllerSQL($tableName, $idTable, $query, $controllerName, $nameview);
             } elseif ($template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si') {
                 $this->generateCrudControllerSQLTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
             }
-        }
+        }*/
 
         if ($crudType == 'CRUD') {
             $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid);
@@ -87,6 +88,16 @@ class CrudService
             $this->pdo->exec($sql);
         } catch (\PDOException $e) {
             throw new \Exception("Error al crear la tabla: {$e->getMessage()}");
+        }
+    }
+
+    private function modifyTable($tableName, $modify_query)
+    {
+        $sql = "ALTER TABLE {$tableName} {$modify_query}";
+        try {
+            $this->pdo->exec($sql);
+        } catch (\PDOException $e) {
+            throw new \Exception("Error al modificar la tabla: {$e->getMessage()}");
         }
     }
 

@@ -736,7 +736,7 @@ class HomeController
 		$pdocrud->fieldCssClass("modify_query", array("modify_query"));
 		
 		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
-		$pdocrud->fieldAttributes("modify_query", array("placeholder"=> "Ejemplo: ALTER TABLE personas ADD COLUMN nuevo_campo VARCHAR(255) NOT NULL;", "style"=> "min-height: 200px; max-height: 200px;"));
+		$pdocrud->fieldAttributes("modify_query", array("placeholder"=> "Ejemplo: DROP COLUMN categoria, ADD COLUMN edad INT(3)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
