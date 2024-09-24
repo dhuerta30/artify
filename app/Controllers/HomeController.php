@@ -746,7 +746,7 @@ class HomeController
 		
 		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid"));
 		$pdocrud->editFormFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query"));
-		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table"));
+		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table", "modify_query"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
 		$pdocrud->colRename("crud_type", "Tipo de Módulo");
