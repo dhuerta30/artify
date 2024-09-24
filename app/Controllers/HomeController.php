@@ -645,6 +645,22 @@ class HomeController
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">Activar Popup:</label>
+						{active_popup}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">Activar Búsqueda:</label>
+						{active_search}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+			</div>
 		</div>
 		</div>
 		';
@@ -654,6 +670,12 @@ class HomeController
 		$pdocrud->formFieldValue("active_filter", "No");
 		$pdocrud->formFieldValue("clone_row", "No");
 		
+		$pdocrud->fieldTypes("active_search", "select");
+		$pdocrud->fieldDataBinding("active_search", array("Si" => "Si", "No" => "No"), "", "", "array");
+
+		$pdocrud->fieldTypes("active_popup", "select");
+		$pdocrud->fieldDataBinding("active_popup", array("Si" => "Si", "No" => "No"), "", "", "array");
+
 		$pdocrud->fieldTypes("active_filter", "select");
 		$pdocrud->fieldDataBinding("active_filter", array("Si" => "Si", "No" => "No"), "", "", "array");
 
@@ -695,15 +717,17 @@ class HomeController
 		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
-		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "active_filter", "clone_row"));
-		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row"));
+		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search"));
+		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search"));
 		
-		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row"));
+		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search"));
 
 		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
 		$pdocrud->colRename("crud_type", "Tipo de Módulo");
+		$pdocrud->colRename("active_popup", "Activar Popup");
+		$pdocrud->colRename("active_search", "Activar Búsqueda");
 
 		$pdocrud->colRename("active_filter", "Activar Filtro de Busqueda");
 		$pdocrud->colRename("clone_row", "Clonar Fila");

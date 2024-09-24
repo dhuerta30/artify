@@ -399,8 +399,6 @@ class CrudService
     private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
-        
-        // Start building the controller content
         $controllerContent = "<?php
 
         namespace App\Controllers;
@@ -434,7 +432,6 @@ class CrudService
 
                 ";
 
-        // Check if template_html is "Si"
         if ($template_html == "Si") {
             $controllerContent .= "
                 \$html_template = '<div class=\"form\">
