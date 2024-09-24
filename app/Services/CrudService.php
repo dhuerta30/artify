@@ -488,8 +488,8 @@ class CrudService
                 foreach (\$columnDB as \$column) {
                     \$columnName = ucfirst(str_replace('_', ' ', \$column));
                     
-                    \$pdocrud->addFilter('filterAdd'.\$columnName, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
-                    \$pdocrud->setFilterSource('filterAdd'.\$columnName, '{$tableName}', \$columnName, \$columnName.' as pl', 'db');
+                    \$pdocrud->addFilter('filterAdd'.\$column, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
+                    \$pdocrud->setFilterSource('filterAdd'.\$column, '{$tableName}', \$column, \$column.' as pl', 'db');
                 }
                 ";
         }
