@@ -96,6 +96,7 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
             },
             dataType: "json",
             success: function(data){
+                console.log(data);
                 $.each(data["columnas_tabla"], function(index, obj){  
                     $(".vista_previa_campos_tabla").append(`
                         <li class="list-group-item bg-light">${obj}</li>
