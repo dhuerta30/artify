@@ -24,7 +24,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn)
     {
         $this->createTable($tableName, $columns);
         
@@ -37,7 +37,7 @@ class CrudService
         }
 
         if ($crudType == 'CRUD') {
-            $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search);
+            $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn);
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
         }
@@ -396,7 +396,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search)
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -510,11 +510,20 @@ class CrudService
             ";
         }
 
+        if($activate_deleteMultipleBtn == 'Si'){
+            $controllerContent .= "
+                \$pdocrud->setSettings('deleteMultipleBtn', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$pdocrud->setSettings('deleteMultipleBtn', false);
+            ";
+        }
+
         $controllerContent .= "
                 \$pdocrud->setSettings('encryption', true);
                 \$pdocrud->setSettings('pagination', true);
                 \$pdocrud->setSettings('function_filter_and_search', true);
-                \$pdocrud->setSettings('deleteMultipleBtn', true);
                 \$pdocrud->setSettings('checkboxCol', true);
                 \$pdocrud->setSettings('recordsPerPageDropdown', true);
                 \$pdocrud->setSettings('totalRecordsInfo', true);
