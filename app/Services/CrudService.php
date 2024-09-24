@@ -442,6 +442,7 @@ class CrudService
                 \$pdocrud->setSettings('function_filter_and_search', true);
                 \$pdocrud->setSettings('addbtn', true);
                 \$pdocrud->setSettings('editbtn', true);
+                \$pdocrud->setSettings('viewbtn', false);
                 \$pdocrud->setSettings('delbtn', true);
                 \$pdocrud->setSettings('actionbtn', true);
                 \$pdocrud->setSettings('refresh', false);
@@ -549,6 +550,7 @@ class CrudService
                 \$pdocrud->setSettings('totalRecordsInfo', true);
                 \$pdocrud->setSettings('addbtn', true);
                 \$pdocrud->setSettings('editbtn', true);
+                \$pdocrud->setSettings('viewbtn', false);
                 \$pdocrud->setSettings('delbtn', true);
                 \$pdocrud->setSettings('actionbtn', true);
                 \$pdocrud->setSettings('refresh', false);
