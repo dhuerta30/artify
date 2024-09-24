@@ -24,7 +24,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter = "No", $clone_row = "No")
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html = "No", $active_filter = "No", $clone_row = "No")
     {
         $this->createTable($tableName, $columns);
         
