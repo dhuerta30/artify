@@ -685,11 +685,17 @@ class HomeController
 				</div>
 			</div>
 			<div class="row modificar_tabla_col">
-				<div class="col-md-12">
+				<div class="col-md-6">
 					<div class="form-group">
 						<label class="form-label">Modificar Tabla:</label>
 						{modify_query}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Vista Previa Campos Tabla:</label>
+						<ul class="vista_previa_campos_tabla"></ul>
 					</div>
 				</div>
 			</div>
@@ -817,6 +823,20 @@ class HomeController
 			"modulos",
 			['render' => $render]
 		);
+	}
+
+	public function obtenerTablaActual(){
+		$request = new Request();
+
+		if ($request->getMethod() === 'POST') {
+			$tabla = $request->post('tabla');
+
+			$pdocrud = DB::PDOCrud();
+			$pdomodel = $pdocrud->getPDOModelObj();
+			$columnDB = $pdomodel->columnNames($tabla);
+
+			echo json_encode(['columnas_tabla' => $columnDB]);
+		}
 	}
 
 	public function actualizar_orden_menu(){

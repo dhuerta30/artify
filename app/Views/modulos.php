@@ -86,6 +86,23 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
         $(".controller_name").attr("readonly", "true");
         $(".modificar_tabla_col").show();
 
+        var tabla = $(".tabla").val();
+        $.ajax({
+            type: "POST",
+            url: "<?=$_ENV["BASE_URL"]?>Home/obtenerTablaActual",
+            data: {
+                tabla: tabla
+            },
+            dataType: "json",
+            success: function(data){
+                $.each(data["columnas_tabla"], function(index, obj){  
+                    $(".vista_previa_campos_tabla").append(`
+                        <li class="list-group-item">${obj}</li>
+                    `);
+                });
+            }
+        });
+
         var val = $(".crud_type").val();
 
         if (val == "CRUD") {
