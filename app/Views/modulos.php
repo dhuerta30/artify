@@ -86,6 +86,7 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
         $(".tabla").attr("readonly", "true");
         $(".controller_name").attr("readonly", "true");
         $(".modificar_tabla_col").show();
+        $(".modify_query").val("DROP COLUMN categoria, ADD COLUMN edad INT(3)");
     }
 
     if(dataAction == "delete"){
