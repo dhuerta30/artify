@@ -24,7 +24,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html = "No", $active_filter = "No", $clone_row = "No")
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row)
     {
         $this->createTable($tableName, $columns);
         
@@ -37,15 +37,9 @@ class CrudService
         }
 
         if ($crudType == 'CRUD') {
-            if ($template_html == 'No' && $active_filter == 'No' && $clone_row == 'No') {
-                $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview);
-                $this->generateView($nameview);
-                //$this->generateViewAdd($nameview);
-            } elseif ($template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si') {
-                $this->generateCrudControllerCRUDTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
-                $this->generateView($nameview);
-                //$this->generateViewAdd($nameview);
-            }
+            $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
+            $this->generateView($nameview);
+            //$this->generateViewAdd($nameview);
         }
 
         $this->generateTemplateCrud($nameview);
@@ -402,75 +396,11 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview){
-
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row)
+    {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
-        $controllerContent = "<?php
-
-        namespace App\Controllers;
-
-        use App\core\SessionManager;
-        use App\core\Token;
-        use App\core\DB;
-        use App\core\View;
-        use App\core\Redirect;
-
-        class {$controllerName}Controller
-        {
-            public \$token;
-
-            public function __construct()
-            {
-                SessionManager::startSession();
-                \$Sesusuario = SessionManager::get('usuario');
-                if (!isset(\$Sesusuario)) {
-                    Redirect::to('login/index');
-                }
-                \$this->token = Token::generateFormToken('send_message');
-            }
-
-            public function index()
-            {
-                \$pdocrud = DB::PDOCrud();
-                \$pdocrud->setSettings('encryption', true);
-                \$pdocrud->setSettings('pagination', true);
-                \$pdocrud->setSettings('searchbox', true);
-                \$pdocrud->setSettings('deleteMultipleBtn', true);
-                \$pdocrud->setSettings('checkboxCol', true);
-                \$pdocrud->setSettings('recordsPerPageDropdown', true);
-                \$pdocrud->setSettings('totalRecordsInfo', true);
-                \$pdocrud->setSettings('function_filter_and_search', true);
-                \$pdocrud->setSettings('addbtn', true);
-                \$pdocrud->setSettings('editbtn', true);
-                \$pdocrud->setSettings('viewbtn', false);
-                \$pdocrud->setSettings('delbtn', true);
-                \$pdocrud->setSettings('actionbtn', true);
-                \$pdocrud->setSettings('refresh', false);
-                \$pdocrud->setSettings('numberCol', true);
-                \$pdocrud->setSettings('printBtn', true);
-                \$pdocrud->setSettings('pdfBtn', true);
-                \$pdocrud->setSettings('csvBtn', true);
-                \$pdocrud->setSettings('excelBtn', true);
-                \$pdocrud->setSettings('clonebtn', false);
-                \$pdocrud->buttonHide('submitBtnSaveBack');
-                \$pdocrud->setSettings('template', 'template_{$nameview}');
-                \$render = \$pdocrud->dbTable('{$tableName}')->render();
-
-                View::render(
-                    '{$nameview}', 
-                    [
-                        'render' => \$render
-                    ]
-                );
-            }
-        }";
-
-        file_put_contents($controllerPath, $controllerContent);
-    }
-
-    private function generateCrudControllerCRUDTemplateFields($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html = "Si", $active_filter = "Si", $clone_row = "Si"){
-
-        $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
+        
+        // Start building the controller content
         $controllerContent = "<?php
 
         namespace App\Controllers;
@@ -502,6 +432,11 @@ class CrudService
                 \$columnDB = \$pdomodel->columnNames('{$tableName}');
                 unset(\$columnDB[0]);
 
+                ";
+
+        // Check if template_html is "Si"
+        if ($template_html == "Si") {
+            $controllerContent .= "
                 \$html_template = '<div class=\"form\">
                 <h5>Agregar Módulo</h5>
                 <hr>
@@ -531,15 +466,29 @@ class CrudService
                     </div>';
 
                     \$sizeIndex++;
-
-                    \$pdocrud->addFilter('filterAdd'.\$columnName, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
-                    \$pdocrud->setFilterSource('filterAdd'.\$columnName, '{$tableName}', \$columnName, \$columnName.' as pl', 'db');
                 }
 
                 \$html_template .= '</div></div>';
 
                 \$pdocrud->set_template(\$html_template);
+                ";
+        }
 
+        // Check if active_filter is "Si"
+        if ($active_filter == "Si") {
+            $controllerContent .= "
+                foreach (\$columnDB as \$column) {
+                    \$columnName = ucfirst(str_replace('_', ' ', \$column));
+                    
+                    \$pdocrud->addFilter('filterAdd'.\$columnName, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
+                    \$pdocrud->setFilterSource('filterAdd'.\$columnName, '{$tableName}', \$columnName, \$columnName.' as pl', 'db');
+                }
+                ";
+        }
+
+        // Continue with the remaining settings
+        if ($clone_row == 'Si') {
+        $controllerContent .= "
                 \$pdocrud->setSettings('encryption', true);
                 \$pdocrud->setSettings('pagination', true);
                 \$pdocrud->setSettings('searchbox', true);
@@ -552,6 +501,7 @@ class CrudService
                 \$pdocrud->setSettings('editbtn', true);
                 \$pdocrud->setSettings('viewbtn', false);
                 \$pdocrud->setSettings('delbtn', true);
+                \$pdocrud->setSettings('clonebtn', true);
                 \$pdocrud->setSettings('actionbtn', true);
                 \$pdocrud->setSettings('refresh', false);
                 \$pdocrud->setSettings('numberCol', true);
@@ -559,22 +509,52 @@ class CrudService
                 \$pdocrud->setSettings('pdfBtn', true);
                 \$pdocrud->setSettings('csvBtn', true);
                 \$pdocrud->setSettings('excelBtn', true);
-                \$pdocrud->setSettings('clonebtn', true);
                 \$pdocrud->buttonHide('submitBtnSaveBack');
                 \$pdocrud->setSettings('template', 'template_{$nameview}');
                 \$render = \$pdocrud->dbTable('{$tableName}')->render();
 
                 View::render(
-                    '{$nameview}', 
-                    [
-                        'render' => \$render
-                    ]
-                );
-            }
-        }";
+                    '{$nameview}', ['render' => \$render]
+                    );
+                }
+            }";
+        } else {
+            $controllerContent .= "
+                \$pdocrud->setSettings('encryption', true);
+                \$pdocrud->setSettings('pagination', true);
+                \$pdocrud->setSettings('searchbox', true);
+                \$pdocrud->setSettings('function_filter_and_search', true);
+                \$pdocrud->setSettings('deleteMultipleBtn', true);
+                \$pdocrud->setSettings('checkboxCol', true);
+                \$pdocrud->setSettings('recordsPerPageDropdown', true);
+                \$pdocrud->setSettings('totalRecordsInfo', true);
+                \$pdocrud->setSettings('addbtn', true);
+                \$pdocrud->setSettings('editbtn', true);
+                \$pdocrud->setSettings('viewbtn', false);
+                \$pdocrud->setSettings('delbtn', true);
+                \$pdocrud->setSettings('clonebtn', false);
+                \$pdocrud->setSettings('actionbtn', true);
+                \$pdocrud->setSettings('refresh', false);
+                \$pdocrud->setSettings('numberCol', true);
+                \$pdocrud->setSettings('printBtn', true);
+                \$pdocrud->setSettings('pdfBtn', true);
+                \$pdocrud->setSettings('csvBtn', true);
+                \$pdocrud->setSettings('excelBtn', true);
+                \$pdocrud->buttonHide('submitBtnSaveBack');
+                \$pdocrud->setSettings('template', 'template_{$nameview}');
+                \$render = \$pdocrud->dbTable('{$tableName}')->render();
 
+                View::render(
+                    '{$nameview}', ['render' => \$render]
+                    );
+                }
+            }";
+        }
+
+        // Save the generated controller content to a file
         file_put_contents($controllerPath, $controllerContent);
     }
+
 
     private function generateView($nameview)
     {

@@ -29,44 +29,14 @@
                 $columnDB = $pdomodel->columnNames('personas');
                 unset($columnDB[0]);
 
-                $html_template = '<div class="form">
-                <h5>Agregar Módulo</h5>
-                <hr>
-                <div class="row">';
-
-                $columnSizes = [
-                    'col-md-4',
-                    'col-md-4',
-                    'col-md-4',
-                    'col-md-12'
-                ];
-
-                $sizeIndex = 0;
-
+                
                 foreach ($columnDB as $column) {
                     $columnName = ucfirst(str_replace('_', ' ', $column));
                     
-                    $colClass = $columnSizes[$sizeIndex % count($columnSizes)];
-                    
-                    $html_template .= '
-                    <div class="' . $colClass . '">
-                        <div class="form-group">
-                            <label class="form-label">' . $columnName . ':</label>
-                            {' . $column . '}
-                            <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                        </div>
-                    </div>';
-
-                    $sizeIndex++;
-
                     $pdocrud->addFilter('filterAdd'.$columnName, 'Filtrar por '.$columnName.' ', '', 'dropdown');
                     $pdocrud->setFilterSource('filterAdd'.$columnName, 'personas', $columnName, $columnName.' as pl', 'db');
                 }
-
-                $html_template .= '</div></div>';
-
-                $pdocrud->set_template($html_template);
-
+                
                 $pdocrud->setSettings('encryption', true);
                 $pdocrud->setSettings('pagination', true);
                 $pdocrud->setSettings('searchbox', true);
@@ -86,7 +56,9 @@
                 $pdocrud->setSettings('pdfBtn', true);
                 $pdocrud->setSettings('csvBtn', true);
                 $pdocrud->setSettings('excelBtn', true);
-                $pdocrud->setSettings('clonebtn', true);
+                if ('Si' == 'Si') {
+                    $pdocrud->setSettings('clonebtn', true);
+                }
                 $pdocrud->buttonHide('submitBtnSaveBack');
                 $pdocrud->setSettings('template', 'template_personas');
                 $render = $pdocrud->dbTable('personas')->render();
