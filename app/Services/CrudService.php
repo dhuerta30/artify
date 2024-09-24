@@ -483,6 +483,16 @@ class CrudService
                 ";
         }
 
+        if (in_array("Imprimir", $actions_buttons_grid)) {
+            $controllerContent .= "
+                \$pdocrud->setSettings('printBtn', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$pdocrud->setSettings('printBtn', false);
+            ";
+        }
+
         if($active_popup == 'Si'){
             $controllerContent .= "
                 \$pdocrud->formDisplayInPopup();
@@ -544,7 +554,6 @@ class CrudService
                 \$pdocrud->setSettings('actionbtn', true);
                 \$pdocrud->setSettings('refresh', false);
                 \$pdocrud->setSettings('numberCol', true);
-                \$pdocrud->setSettings('printBtn', true);
                 \$pdocrud->setSettings('pdfBtn', true);
                 \$pdocrud->setSettings('csvBtn', true);
                 \$pdocrud->setSettings('excelBtn', true);
