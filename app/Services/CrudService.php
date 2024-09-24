@@ -40,11 +40,11 @@ class CrudService
             if ($template_html == 'No' && $active_filter == 'No' && $clone_row == 'No') {
                 $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview);
                 $this->generateView($nameview);
-                $this->generateViewAdd($nameview);
+                //$this->generateViewAdd($nameview);
             } elseif ($template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si') {
                 $this->generateCrudControllerCRUDTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
                 $this->generateView($nameview);
-                $this->generateViewAdd($nameview);
+                //$this->generateViewAdd($nameview);
             }
         }
 
