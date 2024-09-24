@@ -493,6 +493,36 @@ class CrudService
             ";
         }
 
+        if (in_array("PDF", $actions_buttons_grid)) {
+            $controllerContent .= "
+                \$pdocrud->setSettings('pdfBtn', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$pdocrud->setSettings('pdfBtn', false);
+            ";
+        }
+
+        if (in_array("CSV", $actions_buttons_grid)) {
+            $controllerContent .= "
+                \$pdocrud->setSettings('csvBtn', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$pdocrud->setSettings('csvBtn', false);
+            ";
+        }
+
+        if (in_array("Excel", $actions_buttons_grid)) {
+            $controllerContent .= "
+                \$pdocrud->setSettings('excelBtn', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$pdocrud->setSettings('excelBtn', false);
+            ";
+        }
+
         if($active_popup == 'Si'){
             $controllerContent .= "
                 \$pdocrud->formDisplayInPopup();
@@ -554,9 +584,6 @@ class CrudService
                 \$pdocrud->setSettings('actionbtn', true);
                 \$pdocrud->setSettings('refresh', false);
                 \$pdocrud->setSettings('numberCol', true);
-                \$pdocrud->setSettings('pdfBtn', true);
-                \$pdocrud->setSettings('csvBtn', true);
-                \$pdocrud->setSettings('excelBtn', true);
                 \$pdocrud->buttonHide('submitBtnSaveBack');
                 \$pdocrud->setSettings('template', 'template_{$nameview}');
                 \$render = \$pdocrud->dbTable('{$tableName}')->render();
