@@ -37,6 +37,7 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
     if(dataAction == "add"){
 
         $(".modificar_tabla_col").hide();
+        $(".campos_view_tabla").hide();
 
         $(".crud_type").change(function() {
             var val = $(this).val();

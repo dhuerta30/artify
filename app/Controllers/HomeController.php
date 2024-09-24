@@ -692,7 +692,7 @@ class HomeController
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 campos_view_tabla">
 					<div class="form-group">
 						<label class="form-label">Vista Previa Campos Tabla Actual:</label>
 						<ul class="list-group vista_previa_campos_tabla"></ul>
