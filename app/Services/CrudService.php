@@ -37,8 +37,8 @@ class CrudService
                 }
             }
             
-            if($crudType == 'CRUD' && $template_html == 'No' && $active_filter == 'No' && $clone_row == 'No'){
-                $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview);
+            if($crudType == 'CRUD' && $template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si'){
+                $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
             }
             $this->generateView($nameview);
             $this->generateTemplateCrud($nameview);
@@ -394,7 +394,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview){
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row){
 
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -424,6 +424,10 @@ class CrudService
             public function index()
             {
                 \$pdocrud = DB::PDOCrud();
+
+                \$pdocrud->addFilter('ProductLineFilter', 'Product Line', 'product_line', 'dropdown');
+                \$pdocrud->setFilterSource('ProductLineFilter', 'products', 'product_line', 'product_line as pl', 'db');
+
                 \$pdocrud->setSettings('encryption', true);
                 \$pdocrud->setSettings('pagination', true);
                 \$pdocrud->setSettings('searchbox', true);
@@ -441,7 +445,7 @@ class CrudService
                 \$pdocrud->setSettings('pdfBtn', true);
                 \$pdocrud->setSettings('csvBtn', true);
                 \$pdocrud->setSettings('excelBtn', true);
-                \$pdocrud->setSettings('clonebtn', false);
+                \$pdocrud->setSettings('clonebtn', true);
                 \$pdocrud->buttonHide('submitBtnSaveBack');
                 \$pdocrud->setSettings('template', 'template_{$nameview}');
                 \$render = \$pdocrud->dbTable('{$tableName}')->render();
