@@ -26,22 +26,31 @@ class CrudService
 
     public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row)
     {
-            $this->createTable($tableName, $columns);
-            if($crudType == 'SQL' && $template_html == 'No' && $active_filter == 'No' && $clone_row == 'No'){
+        $this->createTable($tableName, $columns);
+        
+        if ($crudType == 'SQL') {
+            if ($template_html == 'No' && $active_filter == 'No' && $clone_row == 'No') {
                 $this->generateCrudControllerSQL($tableName, $idTable, $query, $controllerName, $nameview);
-                $this->generateViewEdit($nameview);
-                $this->generateViewAdd($nameview);
-
-            } else if ($crudType == 'SQL' && $template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si') {
+            } elseif ($template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si') {
                 $this->generateCrudControllerSQLTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
             }
-            
-            if($crudType == 'CRUD' && $template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si'){
-                $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
+        }
+
+        if ($crudType == 'CRUD') {
+            if ($template_html == 'No' && $active_filter == 'No' && $clone_row == 'No') {
+                $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview);
+                $this->generateView($nameview);
+                $this->generateViewAdd($nameview);
+            } elseif ($template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si') {
+                $this->generateCrudControllerCRUDTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
+                $this->generateView($nameview);
+                $this->generateViewAdd($nameview);
             }
-            $this->generateView($nameview);
-            $this->generateTemplateCrud($nameview);
+        }
+
+        $this->generateTemplateCrud($nameview); // Mover esta línea dentro de condiciones si no debe ejecutarse siempre
     }
+
 
     private function generateTemplateCrud($nameview)
     {
@@ -393,7 +402,71 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row){
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview){
+
+        $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
+        $controllerContent = "<?php
+
+        namespace App\Controllers;
+
+        use App\core\SessionManager;
+        use App\core\Token;
+        use App\core\DB;
+        use App\core\View;
+        use App\core\Redirect;
+
+        class {$controllerName}Controller
+        {
+            public \$token;
+
+            public function __construct()
+            {
+                SessionManager::startSession();
+                \$Sesusuario = SessionManager::get('usuario');
+                if (!isset(\$Sesusuario)) {
+                    Redirect::to('login/index');
+                }
+                \$this->token = Token::generateFormToken('send_message');
+            }
+
+            public function index()
+            {
+                \$pdocrud = DB::PDOCrud();
+                \$pdocrud->setSettings('encryption', true);
+                \$pdocrud->setSettings('pagination', true);
+                \$pdocrud->setSettings('searchbox', true);
+                \$pdocrud->setSettings('deleteMultipleBtn', true);
+                \$pdocrud->setSettings('checkboxCol', true);
+                \$pdocrud->setSettings('recordsPerPageDropdown', true);
+                \$pdocrud->setSettings('totalRecordsInfo', true);
+                \$pdocrud->setSettings('addbtn', true);
+                \$pdocrud->setSettings('editbtn', true);
+                \$pdocrud->setSettings('delbtn', true);
+                \$pdocrud->setSettings('actionbtn', true);
+                \$pdocrud->setSettings('refresh', false);
+                \$pdocrud->setSettings('numberCol', true);
+                \$pdocrud->setSettings('printBtn', true);
+                \$pdocrud->setSettings('pdfBtn', true);
+                \$pdocrud->setSettings('csvBtn', true);
+                \$pdocrud->setSettings('excelBtn', true);
+                \$pdocrud->setSettings('clonebtn', false);
+                \$pdocrud->buttonHide('submitBtnSaveBack');
+                \$pdocrud->setSettings('template', 'template_{$nameview}');
+                \$render = \$pdocrud->dbTable('{$tableName}')->render();
+
+                View::render(
+                    '{$nameview}', 
+                    [
+                        'render' => \$render
+                    ]
+                );
+            }
+        }";
+
+        file_put_contents($controllerPath, $controllerContent);
+    }
+
+    private function generateCrudControllerCRUDTemplateFields($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row){
 
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -490,36 +563,6 @@ class CrudService
     private function generateView($nameview)
     {
         $viewPath = __DIR__ . '/../Views/' . $nameview . '.php';
-
-        $viewContent = '
-        <?php require "layouts/header.php"; ?>
-        <?php require "layouts/sidebar.php"; ?>
-        <div class="content-wrapper">
-            <section class="content">
-                <div class="card mt-4">
-                    <div class="card-body">
-
-                        <div class="row procedimiento">
-                            <div class="col-md-12">
-                                <?=$render?>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div id="pdocrud-ajax-loader">
-            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
-        </div>
-        <?php require "layouts/footer.php"; ?>';
-
-        file_put_contents($viewPath, $viewContent);
-    }
-
-    private function generateViewEdit($nameview)
-    {
-        $viewPath = __DIR__ . '/../Views/editar_' . $nameview . '.php';
 
         $viewContent = '
         <?php require "layouts/header.php"; ?>
