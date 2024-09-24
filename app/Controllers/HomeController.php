@@ -700,6 +700,9 @@ class HomeController
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
 		$pdocrud->colRename("crud_type", "Tipo de Módulo");
+
+		$pdocrud->colRename("active_filter", "Activar Filtro de Busqueda");
+		$pdocrud->colRename("clone_row", "Clonar Fila");
 		
 		$pdocrud->colRename("template_fields", "Usar Plantilla Formulario HTML");
 
