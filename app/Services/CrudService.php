@@ -32,9 +32,8 @@ class CrudService
                 $this->generateViewEdit($nameview);
                 $this->generateViewAdd($nameview);
 
-                if($template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si'){
-                    $this->generateCrudControllerSQLTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
-                }
+            } else if ($crudType == 'SQL' && $template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si') {
+                $this->generateCrudControllerSQLTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
             }
             
             if($crudType == 'CRUD' && $template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si'){
