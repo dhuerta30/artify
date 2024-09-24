@@ -1049,7 +1049,6 @@ function actualizar_modulos($data, $obj){
     $crud_type = $data["modulos"]["crud_type"];
     $query_db = isset($data["modulos"]["query"]) ? $data["modulos"]["query"] : null;
     $controller_name = $data["modulos"]["controller_name"];
-    $columns_table = $data["modulos"]["columns_table"];
     $name_view = $data["modulos"]["name_view"];
     $add_menu = $data["modulos"]["add_menu"];
     $template_fields = $data["modulos"]["template_fields"];
@@ -1062,29 +1061,6 @@ function actualizar_modulos($data, $obj){
     $actions_buttons_grid = $data["modulos"]["actions_buttons_grid"];
     $modify_query = $data["modulos"]["modify_query"];
 
-    $pdomodel = $obj->getPDOModelObj();
-
-    if($add_menu == "Si"){
-        $datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
-		$newOrdenMenu = $datamenu[0]["orden"] + 1;
-
-        $pdomodel->insert("menu", array(
-            "nombre_menu" => $controller_name, 
-            "url_menu" => "/".$controller_name."/index",
-            "icono_menu" => "far fa-circle", 
-            "submenu" => "No",
-            "orden_menu" => $newOrdenMenu
-        ));
-
-        $id_menu = $pdomodel->lastInsertId;
-
-        $pdomodel->insert("usuario_menu", array(
-            "id_usuario" => $id_sesion_usuario,
-            "id_menu" => $id_menu,
-            "visibilidad_menu" => "Mostrar"
-        ));
-    }
-
     if($crud_type == "SQL"){
         $crudService = new App\Services\CrudService();
         $tableName = $tabla;
@@ -1092,10 +1068,9 @@ function actualizar_modulos($data, $obj){
         $crudType = $crud_type;
         $query = $query_db;
         $controllerName = $controller_name;
-        $columns = $columns_table;
         $nameview = $name_view;
         $template_html = $template_fields;
-        $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row);
+        $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, null, $nameview, $template_html, $active_filter, $clone_row);
     }
 
     if($crud_type == "CRUD"){
@@ -1103,7 +1078,6 @@ function actualizar_modulos($data, $obj){
         $tableName = $tabla;
         $crudType = $crud_type;
         $controllerName = $controller_name;
-        $columns = $columns_table;
         $nameview = $name_view;
         $template_html = $template_fields;
         $crudService->createCrud(
@@ -1112,7 +1086,7 @@ function actualizar_modulos($data, $obj){
             $crudType, 
             null, 
             $controllerName, 
-            $columns, 
+            null, 
             $nameview, 
             $template_html, 
             $active_filter, 
@@ -1126,7 +1100,6 @@ function actualizar_modulos($data, $obj){
         );
     }
 
-    $data["modulos"]["id_menu"] = $id_menu;
     $data["modulos"]["controller_name"] = ucfirst($controller_name);
     return $data;
 }

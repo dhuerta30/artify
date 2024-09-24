@@ -32,7 +32,6 @@
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
 <script>
 $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
-    //refrechMenu();
     var dataAction = obj.getAttribute('data-action');
 
     if(dataAction == "add"){
@@ -82,11 +81,49 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
     }
 
     if(dataAction == "edit"){
-        $(".columns_table").attr("disabled", "disabled");
+        $(".columns_table").attr("disabled", "disabled").removeAttr("required");
         $(".tabla").attr("readonly", "true");
         $(".controller_name").attr("readonly", "true");
         $(".modificar_tabla_col").show();
-        $(".modify_query").val("DROP COLUMN categoria, ADD COLUMN edad INT(3)");
+
+        var val = $(".crud_type").val();
+
+        if (val == "CRUD") {
+            $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
+            $(".query").removeAttr("required").attr("disabled", "disabled");
+            $(".columns_table").val("id INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
+            "nombre VARCHAR(255) NOT NULL,\n" +
+            "apellido VARCHAR(255) NOT NULL,\n" +
+            "categoria INT(11) NOT NULL,\n" +
+            "producto VARCHAR(100) NOT NULL");
+            $(".tabla").val("personas");
+            $(".name_view").val("personas");
+            $(".controller_name").val("Personas");
+        } else if (val == "Modulo de Inventario") {
+            $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
+            $(".query").removeAttr("required").attr("disabled", "disabled");
+            $(".columns_table").val('id_inventario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,\n' +
+            'nombre_producto VARCHAR(255) NOT NULL,\n' +
+            'tipo VARCHAR(200) NOT NULL,\n' +
+            'cantidad VARCHAR(100) NOT NULL,\n' +
+            'cantidad_vendida VARCHAR(100) NOT NULL,\n' +
+            'nuevos_ingresos VARCHAR(100) NOT NULL,\n' +
+            'stock_actual VARCHAR(100) NOT NULL,\n' +
+            'ubicacion VARCHAR(255) DEFAULT NULL,\n' +
+            'precio INT(11) NOT NULL,\n' +
+            'observacion TEXT');
+
+            $(".tabla").val("Inventario");
+            $(".name_view").val("Inventario");
+            $(".controller_name").val("Inventario");
+        } else {
+            $(".id_tabla").removeAttr("disabled").attr("required", "required").val("");
+            $(".query").attr("required", "required").removeAttr("disabled");
+            $(".columns_table").val("");
+            $(".tabla").val("");
+            $(".name_view").val("");
+            $(".controller_name").val("");
+        }
     }
 
     if(dataAction == "delete"){

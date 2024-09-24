@@ -704,6 +704,7 @@ class HomeController
 		$pdocrud->formFieldValue("button_add", "Si");
 		$pdocrud->formFieldValue("activate_deleteMultipleBtn", "No");
 		$pdocrud->formFieldValue("active_search", "No");
+		$pdocrud->fieldNotMandatory("actions_buttons_grid");
 		
 		$pdocrud->fieldTypes("actions_buttons_grid", "checkbox");
 		$pdocrud->fieldDataBinding("actions_buttons_grid", array("Imprimir" => "Imprimir", "PDF" => "PDF", "CSV" => "CSV", "Excel" => "Excel"), "", "", "array");
