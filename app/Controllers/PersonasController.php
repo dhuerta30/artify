@@ -30,64 +30,14 @@
                 unset($columnDB[0]);
 
                 
-                $html_template = '<div class="form">
-                <h5>Agregar Módulo</h5>
-                <hr>
-                <div class="row">';
-
-                $columnSizes = [
-                    'col-md-4',
-                    'col-md-4',
-                    'col-md-4',
-                    'col-md-12'
-                ];
-
-                $sizeIndex = 0;
-
-                foreach ($columnDB as $column) {
-                    $columnName = ucfirst(str_replace('_', ' ', $column));
-                    
-                    $colClass = $columnSizes[$sizeIndex % count($columnSizes)];
-                    
-                    $html_template .= '
-                    <div class="' . $colClass . '">
-                        <div class="form-group">
-                            <label class="form-label">' . $columnName . ':</label>
-                            {' . $column . '}
-                            <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                        </div>
-                    </div>';
-
-                    $sizeIndex++;
-                }
-
-                $html_template .= '</div></div>';
-
-                $pdocrud->set_template($html_template);
-                
-                foreach ($columnDB as $column) {
-                    $columnName = ucfirst(str_replace('_', ' ', $column));
-                    
-                    $pdocrud->addFilter('filterAdd'.$columnName, 'Filtrar por '.$columnName.' ', '', 'dropdown');
-                    $pdocrud->setFilterSource('filterAdd'.$columnName, 'personas', $columnName, $columnName.' as pl', 'db');
-                }
-                
                     $pdocrud->setSettings('printBtn', true);
                 
-                    $pdocrud->setSettings('pdfBtn', true);
-                
-                    $pdocrud->setSettings('csvBtn', true);
-                
-                    $pdocrud->setSettings('excelBtn', true);
-                
-                $pdocrud->formDisplayInPopup();
+                $pdocrud->setSettings('searchbox', false);
             
-                $pdocrud->setSettings('searchbox', true);
+                $pdocrud->setSettings('clonebtn', false);
             
-                $pdocrud->setSettings('clonebtn', true);
-            
-                $pdocrud->setSettings('checkboxCol', true);
-                $pdocrud->setSettings('deleteMultipleBtn', true);
+                $pdocrud->setSettings('checkboxCol', false);
+                $pdocrud->setSettings('deleteMultipleBtn', false);
             
                 $pdocrud->setSettings('addbtn', true);
             
