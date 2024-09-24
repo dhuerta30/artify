@@ -439,6 +439,7 @@ class CrudService
                 \$pdocrud->setSettings('checkboxCol', true);
                 \$pdocrud->setSettings('recordsPerPageDropdown', true);
                 \$pdocrud->setSettings('totalRecordsInfo', true);
+                \$pdocrud->setSettings('function_filter_and_search', true);
                 \$pdocrud->setSettings('addbtn', true);
                 \$pdocrud->setSettings('editbtn', true);
                 \$pdocrud->setSettings('delbtn', true);
@@ -529,6 +530,7 @@ class CrudService
                 \$pdocrud->setSettings('encryption', true);
                 \$pdocrud->setSettings('pagination', true);
                 \$pdocrud->setSettings('searchbox', true);
+                \$pdocrud->setSettings('function_filter_and_search', true);
                 \$pdocrud->setSettings('deleteMultipleBtn', true);
                 \$pdocrud->setSettings('checkboxCol', true);
                 \$pdocrud->setSettings('recordsPerPageDropdown', true);
