@@ -516,7 +516,7 @@ class CrudService
                 \$sizeIndex = 0;
 
                 foreach (\$columnDB as \$column) {
-                    \$columnName = ucfirst(str_replace('_', ' ', \$column)); // Opcional: transformar el nombre de la columna
+                    \$columnName = ucfirst(str_replace('_', ' ', \$column));
                     
                     \$colClass = \$columnSizes[\$sizeIndex % count(\$columnSizes)];
                     
