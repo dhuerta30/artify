@@ -502,39 +502,17 @@ class CrudService
         // Continue with the remaining settings
         if ($clone_row == 'Si') {
         $controllerContent .= "
-                \$pdocrud->setSettings('encryption', true);
-                \$pdocrud->setSettings('pagination', true);
-                \$pdocrud->setSettings('function_filter_and_search', true);
-                \$pdocrud->setSettings('deleteMultipleBtn', true);
-                \$pdocrud->setSettings('checkboxCol', true);
-                \$pdocrud->setSettings('recordsPerPageDropdown', true);
-                \$pdocrud->setSettings('totalRecordsInfo', true);
-                \$pdocrud->setSettings('addbtn', true);
-                \$pdocrud->setSettings('editbtn', true);
-                \$pdocrud->setSettings('viewbtn', false);
-                \$pdocrud->setSettings('delbtn', true);
                 \$pdocrud->setSettings('clonebtn', true);
-                \$pdocrud->setSettings('actionbtn', true);
-                \$pdocrud->setSettings('refresh', false);
-                \$pdocrud->setSettings('numberCol', true);
-                \$pdocrud->setSettings('printBtn', true);
-                \$pdocrud->setSettings('pdfBtn', true);
-                \$pdocrud->setSettings('csvBtn', true);
-                \$pdocrud->setSettings('excelBtn', true);
-                \$pdocrud->buttonHide('submitBtnSaveBack');
-                \$pdocrud->setSettings('template', 'template_{$nameview}');
-                \$render = \$pdocrud->dbTable('{$tableName}')->render();
-
-                View::render(
-                    '{$nameview}', ['render' => \$render]
-                    );
-                }
-            }";
+            ";
         } else {
             $controllerContent .= "
+                \$pdocrud->setSettings('clonebtn', false);
+            ";
+        }
+
+        $controllerContent .= "
                 \$pdocrud->setSettings('encryption', true);
                 \$pdocrud->setSettings('pagination', true);
-                \$pdocrud->setSettings('searchbox', true);
                 \$pdocrud->setSettings('function_filter_and_search', true);
                 \$pdocrud->setSettings('deleteMultipleBtn', true);
                 \$pdocrud->setSettings('checkboxCol', true);
@@ -544,7 +522,6 @@ class CrudService
                 \$pdocrud->setSettings('editbtn', true);
                 \$pdocrud->setSettings('viewbtn', false);
                 \$pdocrud->setSettings('delbtn', true);
-                \$pdocrud->setSettings('clonebtn', false);
                 \$pdocrud->setSettings('actionbtn', true);
                 \$pdocrud->setSettings('refresh', false);
                 \$pdocrud->setSettings('numberCol', true);
@@ -561,7 +538,6 @@ class CrudService
                     );
                 }
             }";
-        }
 
         // Save the generated controller content to a file
         file_put_contents($controllerPath, $controllerContent);
