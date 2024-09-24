@@ -520,6 +520,16 @@ class CrudService
             ";
         }
 
+        if($button_add == 'Si'){
+            $controllerContent .= "
+                \$pdocrud->setSettings('addbtn', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$pdocrud->setSettings('addbtn', false);
+            ";
+        }
+
         $controllerContent .= "
                 \$pdocrud->setSettings('encryption', true);
                 \$pdocrud->setSettings('pagination', true);
@@ -527,7 +537,6 @@ class CrudService
                 \$pdocrud->setSettings('checkboxCol', true);
                 \$pdocrud->setSettings('recordsPerPageDropdown', true);
                 \$pdocrud->setSettings('totalRecordsInfo', true);
-                \$pdocrud->setSettings('addbtn', true);
                 \$pdocrud->setSettings('editbtn', true);
                 \$pdocrud->setSettings('viewbtn', false);
                 \$pdocrud->setSettings('delbtn', true);
