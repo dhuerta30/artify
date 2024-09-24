@@ -1020,7 +1020,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
             $columns = $columns_table;
             $nameview = $name_view;
             $template_html = $template_fields;
-            $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, "No");
+            $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, "No", "No", "No");
         }
     }
 
@@ -1033,7 +1033,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
             $columns = $columns_table;
             $nameview = $name_view;
             $template_html = $template_fields;
-            $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, "No");
+            $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, "No", "No", "No");
         }
     }
 
