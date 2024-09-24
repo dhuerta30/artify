@@ -1138,8 +1138,6 @@ function eliminar_modulos($data, $obj)
     foreach ($filesToDelete as $filePath) {
         if ($filePath && file_exists($filePath)) {
             unlink($filePath);
-        } else {
-            echo "El archivo no existe";
         }
     }
 
@@ -1154,7 +1152,7 @@ function eliminar_modulos($data, $obj)
         foreach ($files as $file) {
             $filePath = $dir . DIRECTORY_SEPARATOR . $file;
             if (is_dir($filePath)) {
-                eliminar_directorio_completo($filePath); // Llamada recursiva
+                eliminar_directorio_completo($filePath);
             } else {
                 unlink($filePath);
             }
