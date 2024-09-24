@@ -424,6 +424,32 @@ class CrudService
             public function index()
             {
                 \$pdocrud = DB::PDOCrud();
+                \$pdomodel = \$pdocrud->getPDOModelObj();
+                \$columnDB = \$pdomodel->columnNames('{$tableName}');
+                \$id = strtoupper(\$columnDB[0]);
+
+                \$html_template = '<div class=\"form\">
+                <h5>Agregar Módulo</h5>
+                <hr>';
+
+                foreach (\$columns as \$column) {
+                    \$columnName = ucfirst(str_replace('_', ' ', \$column)); // Opcional: transformar el nombre de la columna
+                    \$html_template .= '
+                    <div class=\"row\">
+                        <div class=\"col-md-12\">
+                            <div class=\"form-group\">
+                                <label class=\"form-label\">' . \$columnName . ':</label>
+                                {' . \$column . '}
+                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
+                            </div>
+                        </div>
+                    </div>';
+                }
+
+                \$html_template .= '
+                </div>'; // Cierre del div de formulario
+
+                \$pdocrud->set_template(\$html_template);
 
                 \$pdocrud->addFilter('ProductLineFilter', 'Product Line', 'product_line', 'dropdown');
                 \$pdocrud->setFilterSource('ProductLineFilter', 'products', 'product_line', 'product_line as pl', 'db');
