@@ -975,6 +975,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $name_view = $data["modulos"]["name_view"];
     $add_menu = $data["modulos"]["add_menu"];
     $template_fields = $data["modulos"]["template_fields"];
+    $active_filter = $data["modulos"]["active_filter"];
+    $clone_row = $data["modulos"]["clone_row"];
 
     $pdomodel = $obj->getPDOModelObj();
 
@@ -1007,7 +1009,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         ));
     }
 
-    if($crud_type == "SQL" && $template_fields == "No"){
+    if($crud_type == "SQL" && $template_fields == "No" && $active_filter == "No" && $clone_row == "No"){
         $crudService = new App\Services\CrudService();
         $tableName = $tabla;
         $idTable = $id_tabla;
@@ -1021,7 +1023,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, $template_html);
     }
 
-    if($crud_type == "CRUD" && $template_fields == "No"){
+    if($crud_type == "CRUD" && $template_fields == "No" && $active_filter == "No" && $clone_row == "No"){
         $crudService = new App\Services\CrudService();
         $tableName = $tabla;
         $crudType = $crud_type;
