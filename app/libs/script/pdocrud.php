@@ -1021,6 +1021,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
             $nameview = $name_view;
             $template_html = $template_fields;
             $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, "No", "No", "No");
+
         } else if($template_fields == "Si" && $active_filter == "Si" && $clone_row == "Si"){
             $crudService = new App\Services\CrudService();
             $tableName = $tabla;
@@ -1031,7 +1032,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
             $columns = $columns_table;
             $nameview = $name_view;
             $template_html = $template_fields;
-            $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, "Si", "Si", "Si");
+            $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, $template_fields, $active_filter, $clone_row);
         }
     }
 
@@ -1045,6 +1046,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
             $nameview = $name_view;
             $template_html = $template_fields;
             $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, "No", "No", "No");
+            
         } else if($template_fields == "Si" && $active_filter == "Si" && $clone_row == "Si"){
             $crudService = new App\Services\CrudService();
             $tableName = $tabla;
@@ -1053,7 +1055,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
             $columns = $columns_table;
             $nameview = $name_view;
             $template_html = $template_fields;
-            $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, "Si", "Si", "Si");
+            $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, $template_fields, $active_filter, $clone_row);
         }
     }
 
