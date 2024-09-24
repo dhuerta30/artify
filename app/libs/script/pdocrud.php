@@ -1009,30 +1009,32 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         ));
     }
 
-    if($crud_type == "SQL" && $template_fields == "No" && $active_filter == "No" && $clone_row == "No"){
-        $crudService = new App\Services\CrudService();
-        $tableName = $tabla;
-        $idTable = $id_tabla;
-        $crudType = $crud_type;
-        $query = $query_db;
-        $controllerName = $controller_name;
-        $columns = $columns_table;
-        $nameview = $name_view;
-        $template_html = $template_fields;
-        
-        $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, $template_html);
+    if($crud_type == "SQL"){
+        if($template_fields == "No" && $active_filter == "No" && $clone_row == "No"){
+            $crudService = new App\Services\CrudService();
+            $tableName = $tabla;
+            $idTable = $id_tabla;
+            $crudType = $crud_type;
+            $query = $query_db;
+            $controllerName = $controller_name;
+            $columns = $columns_table;
+            $nameview = $name_view;
+            $template_html = $template_fields;
+            $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, "No");
+        }
     }
 
-    if($crud_type == "CRUD" && $template_fields == "No" && $active_filter == "No" && $clone_row == "No"){
-        $crudService = new App\Services\CrudService();
-        $tableName = $tabla;
-        $crudType = $crud_type;
-        $controllerName = $controller_name;
-        $columns = $columns_table;
-        $nameview = $name_view;
-        $template_html = $template_fields;
-        
-        $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, $template_html);
+    if($crud_type == "CRUD"){
+        if($template_fields == "No" && $active_filter == "No" && $clone_row == "No"){
+            $crudService = new App\Services\CrudService();
+            $tableName = $tabla;
+            $crudType = $crud_type;
+            $controllerName = $controller_name;
+            $columns = $columns_table;
+            $nameview = $name_view;
+            $template_html = $template_fields;
+            $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, "No");
+        }
     }
 
     $data["modulos"]["id_menu"] = $id_menu;
