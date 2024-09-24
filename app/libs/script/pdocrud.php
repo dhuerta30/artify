@@ -981,6 +981,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $active_search = $data["modulos"]["active_search"];
     $activate_deleteMultipleBtn = $data["modulos"]["activate_deleteMultipleBtn"];
     $button_add = $data["modulos"]["button_add"];
+    $actions_buttons_grid = $data["modulos"]["actions_buttons_grid"];
 
     $pdomodel = $obj->getPDOModelObj();
     $pdomodel->where("tabla", $tabla);
@@ -1033,7 +1034,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         $columns = $columns_table;
         $nameview = $name_view;
         $template_html = $template_fields;
-        $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add);
+        $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid);
     }
 
     $data["modulos"]["id_menu"] = $id_menu;
