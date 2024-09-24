@@ -498,13 +498,13 @@ class CrudService
                 \$pdocrud = DB::PDOCrud();
                 \$pdomodel = \$pdocrud->getPDOModelObj();
                 \$columnDB = \$pdomodel->columnNames('{$tableName}');
-                \$id = strtoupper(\$columnDB[0]);
+                unset(\$columnDB[0]);
 
                 \$html_template = '<div class=\"form\">
                 <h5>Agregar Módulo</h5>
                 <hr>';
 
-                foreach (\$columns as \$column) {
+                foreach (\$columnDB as \$column) {
                     \$columnName = ucfirst(str_replace('_', ' ', \$column)); // Opcional: transformar el nombre de la columna
                     \$html_template .= '
                     <div class=\"row\">
@@ -516,15 +516,15 @@ class CrudService
                             </div>
                         </div>
                     </div>';
+
+                    \$pdocrud->addFilter('filterAdd'.\$columnName, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
+                    \$pdocrud->setFilterSource('filterAdd'.\$columnName, '{$tableName}', \$columnName, \$columnName.' as pl', 'db');
                 }
 
                 \$html_template .= '
                 </div>'; // Cierre del div de formulario
 
                 \$pdocrud->set_template(\$html_template);
-
-                \$pdocrud->addFilter('ProductLineFilter', 'Product Line', 'product_line', 'dropdown');
-                \$pdocrud->setFilterSource('ProductLineFilter', 'products', 'product_line', 'product_line as pl', 'db');
 
                 \$pdocrud->setSettings('encryption', true);
                 \$pdocrud->setSettings('pagination', true);
