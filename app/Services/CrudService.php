@@ -512,10 +512,12 @@ class CrudService
 
         if($activate_deleteMultipleBtn == 'Si'){
             $controllerContent .= "
+                \$pdocrud->setSettings('checkboxCol', true);
                 \$pdocrud->setSettings('deleteMultipleBtn', true);
             ";
         } else {
             $controllerContent .= "
+                \$pdocrud->setSettings('checkboxCol', false);
                 \$pdocrud->setSettings('deleteMultipleBtn', false);
             ";
         }
@@ -534,7 +536,6 @@ class CrudService
                 \$pdocrud->setSettings('encryption', true);
                 \$pdocrud->setSettings('pagination', true);
                 \$pdocrud->setSettings('function_filter_and_search', true);
-                \$pdocrud->setSettings('checkboxCol', true);
                 \$pdocrud->setSettings('recordsPerPageDropdown', true);
                 \$pdocrud->setSettings('totalRecordsInfo', true);
                 \$pdocrud->setSettings('editbtn', true);
