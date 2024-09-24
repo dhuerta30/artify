@@ -49,7 +49,7 @@ class CrudService
 
     private function generateTemplateCrud($nameview)
     {
-        $sourceDir = __DIR__ . '/../libs/script/classes/templates/bootstrap4'; // Ruta de la carpeta base de plantillas
+        $sourceDir = __DIR__ . '/../libs/script/classes/templates/bootstrap4';
         $destinationDir = __DIR__ . '/../libs/script/classes/templates/template_' . $nameview;
 
         if (!file_exists($destinationDir)) {
