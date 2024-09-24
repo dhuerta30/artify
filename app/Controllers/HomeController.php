@@ -569,6 +569,7 @@ class HomeController
 						<label class="form-label">Nombre Tabla Base de Datos:</label>
 						{tabla}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						<p>Cambie por su tabla o utilice la actual</p>
 					</div>
 				</div>
 			</div>
@@ -585,6 +586,7 @@ class HomeController
 						<label class="form-label">Nombre del Controlador:</label>
 						{controller_name}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						<p>Cambie por su controlador o utilice el actual</p>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -592,6 +594,7 @@ class HomeController
 						<label class="form-label">Consulta DB:</label>
 						{query}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						<p>Cambie por su consulta o utilice la actual</p>
 					</div>
 				</div>
 			</div>
@@ -610,6 +613,7 @@ class HomeController
 						<label class="form-label">Nombre de La Vista:</label>
 						{name_view}
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						<p>Cambie por su vista o utilice la actual</p>
 					</div>
 				</div>
 				<div class="col-md-3 d-none">
