@@ -675,6 +675,15 @@ class HomeController
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">Botones de Acción Grilla:</label>
+						{actions_buttons_grid}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+			</div>
 		</div>
 		</div>
 		';
@@ -683,10 +692,13 @@ class HomeController
 		$pdocrud->formFieldValue("add_menu", "Si");
 		$pdocrud->formFieldValue("active_filter", "No");
 		$pdocrud->formFieldValue("clone_row", "No");
-		$pdocrud->formFieldValue("button_add", "No");
+		$pdocrud->formFieldValue("button_add", "Si");
 		$pdocrud->formFieldValue("activate_deleteMultipleBtn", "No");
 		$pdocrud->formFieldValue("active_search", "No");
 		
+		$pdocrud->fieldTypes("actions_buttons_grid", "checkbox");
+		$pdocrud->fieldDataBinding("actions_buttons_grid", array("Imprimir" => "Imprimir", "PDF" => "PDF", "CSV" => "CSV", "Excel" => "PDF"), "", "", "array");
+
 		$pdocrud->fieldTypes("button_add", "select");
 		$pdocrud->fieldDataBinding("button_add", array("Si" => "Si", "No" => "No"), "", "", "array");
 
@@ -739,10 +751,10 @@ class HomeController
 		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
-		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add"));
-		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add"));
+		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid"));
+		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid"));
 		
-		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add"));
+		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid"));
 
 		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
@@ -752,6 +764,7 @@ class HomeController
 		$pdocrud->colRename("active_search", "Activar Búsqueda");
 		$pdocrud->colRename("activate_deleteMultipleBtn", "Activar Eliminación Masiva");
 		$pdocrud->colRename("button_add", "Botón Agregar");
+		$pdocrud->colRename("actions_buttons_grid", "Botones de Acción Grilla");
 
 		$pdocrud->colRename("active_filter", "Activar Filtro de Busqueda");
 		$pdocrud->colRename("clone_row", "Clonar Fila");
