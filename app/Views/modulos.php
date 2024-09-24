@@ -43,14 +43,28 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
             if (val == "CRUD") {
                 $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
                 $(".query").removeAttr("required").attr("disabled", "disabled");
-                $(".columns_table").val("");
-                $(".tabla").val("");
-                $(".name_view").val("");
-                $(".controller_name").val("");
+                $(".columns_table").val("id INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
+                "nombre VARCHAR(255) NOT NULL,\n" +
+                "apellido VARCHAR(255) NOT NULL,\n" +
+                "categoria INT(11) NOT NULL,\n" +
+                "producto VARCHAR(100) NOT NULL");
+                $(".tabla").val("personas");
+                $(".name_view").val("personas");
+                $(".controller_name").val("Personas");
             } else if (val == "Modulo de Inventario") {
                 $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
                 $(".query").removeAttr("required").attr("disabled", "disabled");
-                $(".columns_table").val('id_inventario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, nombre_producto VARCHAR(255) NOT NULL, tipo VARCHAR(200) NOT NULL, cantidad VARCHAR(100) NOT NULL, cantidad_vendida VARCHAR(100) NOT NULL, nuevos_ingresos VARCHAR(100) NOT NULL, stock_actual VARCHAR(100) NOT NULL, ubicacion VARCHAR(255) DEFAULT NULL, precio INT(11) NOT NULL, observacion TEXT');
+                $(".columns_table").val('id_inventario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,\n' +
+                'nombre_producto VARCHAR(255) NOT NULL,\n' +
+                'tipo VARCHAR(200) NOT NULL,\n' +
+                'cantidad VARCHAR(100) NOT NULL,\n' +
+                'cantidad_vendida VARCHAR(100) NOT NULL,\n' +
+                'nuevos_ingresos VARCHAR(100) NOT NULL,\n' +
+                'stock_actual VARCHAR(100) NOT NULL,\n' +
+                'ubicacion VARCHAR(255) DEFAULT NULL,\n' +
+                'precio INT(11) NOT NULL,\n' +
+                'observacion TEXT');
+
                 $(".tabla").val("Inventario");
                 $(".name_view").val("Inventario");
                 $(".controller_name").val("Inventario");
