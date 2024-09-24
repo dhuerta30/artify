@@ -802,6 +802,7 @@ class HomeController
 		$pdocrud->setSettings("csvBtn", false);
 		$pdocrud->setSettings("excelBtn", false);
 		$pdocrud->addCallback("before_insert", "insertar_modulos", array($id_sesion_usuario));
+		$pdocrud->addCallback("before_update", "actualizar_modulos");
 		$pdocrud->addCallback("before_delete", "eliminar_modulos");
 
 		$action = $_ENV["BASE_URL"] . "{controller_name}/index";
