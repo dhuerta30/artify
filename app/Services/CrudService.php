@@ -238,7 +238,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerSQLTemplateFields($tableName, $idTable, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row)
+    private function generateCrudControllerSQLTemplateFields($tableName, $idTable, $query = null, $controllerName, $nameview, $template_html, $active_filter = "Si", $clone_row = "Si")
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
