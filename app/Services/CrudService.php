@@ -483,46 +483,56 @@ class CrudService
                 ";
         }
 
-        if (in_array("Imprimir", $actions_buttons_grid)) {
-            $controllerContent .= "
-                \$pdocrud->setSettings('printBtn', true);
-            ";
-        } else {
-            $controllerContent .= "
-                \$pdocrud->setSettings('printBtn', false);
-            ";
-        }
+        $actions_buttons_grid_array = explode(',', $actions_buttons_grid);
 
-        if (in_array("PDF", $actions_buttons_grid)) {
-            $controllerContent .= "
-                \$pdocrud->setSettings('pdfBtn', true);
-            ";
-        } else {
-            $controllerContent .= "
-                \$pdocrud->setSettings('pdfBtn', false);
-            ";
-        }
+        // Check if the result is a valid array and not empty
+        if (is_array($actions_buttons_grid_array) && !empty($actions_buttons_grid_array)) {
+            foreach ($actions_buttons_grid_array as $action) {
+                // Perform actions based on each element
+                // Example: 
+                if ($action === 'Imprimir') {
+                     $controllerContent .= "
+                        \$pdocrud->setSettings('printBtn', true);
+                    ";
+                } else {
+                    $controllerContent .= "
+                        \$pdocrud->setSettings('printBtn', false);
+                    ";
+                } 
+                
+                if ($action === 'PDF') {
+                     $controllerContent .= "
+                        \$pdocrud->setSettings('pdfBtn', true);
+                    ";
+                } else {
+                    $controllerContent .= "
+                        \$pdocrud->setSettings('pdfBtn', false);
+                    ";
+                }
+                
+                if ($action === 'CSV') {
+                     $controllerContent .= "
+                        \$pdocrud->setSettings('csvBtn', true);
+                    ";
+                } else {
+                    $controllerContent .= "
+                        \$pdocrud->setSettings('csvBtn', false);
+                    ";
+                }
+                
+                if ($action === 'Excel') {
+                     $controllerContent .= "
+                        \$pdocrud->setSettings('excelBtn', true);
+                    ";
+                } else {
+                    $controllerContent .= "
+                        \$pdocrud->setSettings('excelBtn', false);
+                    ";
+                }
+            }
+        } 
 
-        if (in_array("CSV", $actions_buttons_grid)) {
-            $controllerContent .= "
-                \$pdocrud->setSettings('csvBtn', true);
-            ";
-        } else {
-            $controllerContent .= "
-                \$pdocrud->setSettings('csvBtn', false);
-            ";
-        }
-
-        if (in_array("Excel", $actions_buttons_grid)) {
-            $controllerContent .= "
-                \$pdocrud->setSettings('excelBtn', true);
-            ";
-        } else {
-            $controllerContent .= "
-                \$pdocrud->setSettings('excelBtn', false);
-            ";
-        }
-
+        
         if($active_popup == 'Si'){
             $controllerContent .= "
                 \$pdocrud->formDisplayInPopup();

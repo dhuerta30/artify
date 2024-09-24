@@ -697,7 +697,7 @@ class HomeController
 		$pdocrud->formFieldValue("active_search", "No");
 		
 		$pdocrud->fieldTypes("actions_buttons_grid", "checkbox");
-		$pdocrud->fieldDataBinding("actions_buttons_grid", array("Imprimir" => "Imprimir", "PDF" => "PDF", "CSV" => "CSV", "Excel" => "PDF"), "", "", "array");
+		$pdocrud->fieldDataBinding("actions_buttons_grid", array("Imprimir" => "Imprimir", "PDF" => "PDF", "CSV" => "CSV", "Excel" => "Excel"), "", "", "array");
 
 		$pdocrud->fieldTypes("button_add", "select");
 		$pdocrud->fieldDataBinding("button_add", array("Si" => "Si", "No" => "No"), "", "", "array");
