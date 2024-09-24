@@ -24,20 +24,20 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row)
     {
             $this->createTable($tableName, $columns);
-            if($crudType == 'SQL' && $template_html == 'No'){
+            if($crudType == 'SQL' && $template_html == 'No' && $active_filter == 'No' && $clone_row == 'No'){
                 $this->generateCrudControllerSQL($tableName, $idTable, $query, $controllerName, $nameview);
                 $this->generateViewEdit($nameview);
                 $this->generateViewAdd($nameview);
 
-                if($template_html == "Si"){
-                    $this->generateCrudControllerSQLTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html);
+                if($template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si'){
+                    $this->generateCrudControllerSQLTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
                 }
             }
             
-            if($crudType == 'CRUD' && $template_html == 'No'){
+            if($crudType == 'CRUD' && $template_html == 'No' && $active_filter == 'No' && $clone_row == 'No'){
                 $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview);
             }
             $this->generateView($nameview);
