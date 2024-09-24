@@ -977,6 +977,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $template_fields = $data["modulos"]["template_fields"];
     $active_filter = $data["modulos"]["active_filter"];
     $clone_row = $data["modulos"]["clone_row"];
+    $active_popup = $data["modulos"]["active_popup"];
 
     $pdomodel = $obj->getPDOModelObj();
 
@@ -1030,7 +1031,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         $columns = $columns_table;
         $nameview = $name_view;
         $template_html = $template_fields;
-        $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row);
+        $crudService->createCrud($tableName, null, $crudType, null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row, $active_popup);
     }
 
     $data["modulos"]["id_menu"] = $id_menu;

@@ -24,7 +24,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row, $active_popup)
     {
         $this->createTable($tableName, $columns);
         
@@ -37,7 +37,7 @@ class CrudService
         }
 
         if ($crudType == 'CRUD') {
-            $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
+            $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup);
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
         }
@@ -396,7 +396,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row)
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -481,6 +481,12 @@ class CrudService
                     \$pdocrud->setFilterSource('filterAdd'.\$columnName, '{$tableName}', \$columnName, \$columnName.' as pl', 'db');
                 }
                 ";
+        }
+
+        if($active_popup == 'Si'){
+            $controllerContent .= "
+                \$pdocrud->formDisplayInPopup();
+            ";
         }
 
         // Continue with the remaining settings
