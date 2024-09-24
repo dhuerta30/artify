@@ -981,7 +981,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $active_search = $data["modulos"]["active_search"];
     $activate_deleteMultipleBtn = $data["modulos"]["activate_deleteMultipleBtn"];
     $button_add = $data["modulos"]["button_add"];
-    $actions_buttons_grid = $data["modulos"]["actions_buttons_grid"];
+    $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
 
     $pdomodel = $obj->getPDOModelObj();
     $pdomodel->where("tabla", $tabla);
