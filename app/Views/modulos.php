@@ -64,6 +64,10 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
             }
         });
     }
+
+    if(dataAction == "delete"){
+        refrechMenu();
+    }
 });
 
 
