@@ -31,33 +31,46 @@
 
                 $html_template = '<div class="form">
                 <h5>Agregar Módulo</h5>
-                <hr>';
+                <hr>
+                <div class="row">';
+
+                $columnSizes = [
+                    'col-md-4',
+                    'col-md-4',
+                    'col-md-4',
+                    'col-md-12'
+                ];
+
+                $sizeIndex = 0;
 
                 foreach ($columnDB as $column) {
                     $columnName = ucfirst(str_replace('_', ' ', $column)); // Opcional: transformar el nombre de la columna
+                    
+                    $colClass = $columnSizes[$sizeIndex % count($columnSizes)];
+                    
                     $html_template .= '
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-label">' . $columnName . ':</label>
-                                {' . $column . '}
-                                <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                            </div>
+                    <div class="' . $colClass . '">
+                        <div class="form-group">
+                            <label class="form-label">' . $columnName . ':</label>
+                            {' . $column . '}
+                            <p class="pdocrud_help_block help-block form-text with-errors"></p>
                         </div>
                     </div>';
+
+                    $sizeIndex++;
 
                     $pdocrud->addFilter('filterAdd'.$columnName, 'Filtrar por '.$columnName.' ', '', 'dropdown');
                     $pdocrud->setFilterSource('filterAdd'.$columnName, 'personas', $columnName, $columnName.' as pl', 'db');
                 }
 
-                $html_template .= '
-                </div>'; // Cierre del div de formulario
+                $html_template .= '</div></div>';
 
                 $pdocrud->set_template($html_template);
 
                 $pdocrud->setSettings('encryption', true);
                 $pdocrud->setSettings('pagination', true);
                 $pdocrud->setSettings('searchbox', true);
+                $pdocrud->setSettings('function_filter_and_search', true);
                 $pdocrud->setSettings('deleteMultipleBtn', true);
                 $pdocrud->setSettings('checkboxCol', true);
                 $pdocrud->setSettings('recordsPerPageDropdown', true);
