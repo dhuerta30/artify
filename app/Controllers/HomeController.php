@@ -660,16 +660,39 @@ class HomeController
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">Activar Eliminación Masiva:</label>
+						{activate_deleteMultipleBtn}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">Botón Agregar:</label>
+						{button_add}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
 			</div>
 		</div>
 		</div>
 		';
 		$pdocrud->set_template($html_template);
-		//$pdocrud->formDisplayInPopup();
+		$pdocrud->formFieldValue("active_popup", "No");
 		$pdocrud->formFieldValue("add_menu", "Si");
 		$pdocrud->formFieldValue("active_filter", "No");
 		$pdocrud->formFieldValue("clone_row", "No");
+		$pdocrud->formFieldValue("button_add", "No");
+		$pdocrud->formFieldValue("activate_deleteMultipleBtn", "No");
+		$pdocrud->formFieldValue("active_search", "No");
 		
+		$pdocrud->fieldTypes("button_add", "select");
+		$pdocrud->fieldDataBinding("button_add", array("Si" => "Si", "No" => "No"), "", "", "array");
+
+		$pdocrud->fieldTypes("activate_deleteMultipleBtn", "select");
+		$pdocrud->fieldDataBinding("activate_deleteMultipleBtn", array("Si" => "Si", "No" => "No"), "", "", "array");
+
 		$pdocrud->fieldTypes("active_search", "select");
 		$pdocrud->fieldDataBinding("active_search", array("Si" => "Si", "No" => "No"), "", "", "array");
 
@@ -711,16 +734,15 @@ class HomeController
 		$pdocrud->fieldRenameLable("nombre", "Nombre campo");
 		$pdocrud->fieldRenameLable("nulo", "Campo con Valor Vacio");
 		$pdocrud->fieldRenameLable("longitud", "Cantidad de caracteres");
-		//$pdocrud->formFieldValue("query", "SELECT");
-		//$pdocrud->formFieldValue("columns_table", "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)");
+		
 		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
-		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search"));
-		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search"));
+		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add"));
+		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add"));
 		
-		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search"));
+		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add"));
 
 		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
@@ -728,6 +750,8 @@ class HomeController
 		$pdocrud->colRename("crud_type", "Tipo de Módulo");
 		$pdocrud->colRename("active_popup", "Activar Popup");
 		$pdocrud->colRename("active_search", "Activar Búsqueda");
+		$pdocrud->colRename("activate_deleteMultipleBtn", "Activar Eliminación Masiva");
+		$pdocrud->colRename("button_add", "Botón Agregar");
 
 		$pdocrud->colRename("active_filter", "Activar Filtro de Busqueda");
 		$pdocrud->colRename("clone_row", "Clonar Fila");
