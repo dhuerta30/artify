@@ -37,6 +37,8 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
+        $(".modificar_tabla_col").hide();
+
         $(".crud_type").change(function() {
             var val = $(this).val();
 
@@ -77,6 +79,11 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
                 $(".controller_name").val("");
             }
         });
+    }
+
+    if(dataAction == "edit"){
+        $(".columns_table").attr("disabled", "disabled");
+        $(".modificar_tabla_col").show();
     }
 
     if(dataAction == "delete"){

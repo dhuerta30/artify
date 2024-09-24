@@ -684,7 +684,7 @@ class HomeController
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row modificar_tabla_col">
 				<div class="col-md-12">
 					<div class="form-group">
 						<label class="form-label">Modificar Tabla:</label>
