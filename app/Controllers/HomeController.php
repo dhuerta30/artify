@@ -836,7 +836,7 @@ class HomeController
 		$pdocrud->fieldDataBinding("template_fields", array("Si"=> "Si", "No"=> "No"), "", "","array");
 
 		$pdocrud->buttonHide("submitBtnSaveBack");
-		$pdocrud->setSettings("template", "modulos");
+		//$pdocrud->setSettings("template", "modulos");
 		$pdocrud->setSettings("viewbtn", false);
 		$pdocrud->setSettings("refresh", false);
 		$pdocrud->setSettings("printBtn", false);

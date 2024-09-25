@@ -965,7 +965,8 @@ function formatTable_buscar_examenes($data, $obj){
     return $data;
 }
 
-function insertar_modulos($data, $obj, $id_sesion_usuario = null){
+function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
+    // Extract data from $data['modulos']
     $tabla = $data["modulos"]["tabla"];
     $id_tabla = isset($data["modulos"]["id_tabla"]) ? $data["modulos"]["id_tabla"] : null;
     $crud_type = $data["modulos"]["crud_type"];
@@ -984,30 +985,36 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
 
-    $id_modulos = isset($data["tabla_anidada"]["id_modulos"]) ? $data["tabla_anidada"]["id_modulos"] : null;
-    $nivel = isset($data["tabla_anidada"]["nivel"]) ? $data["tabla_anidada"]["nivel"] : null;
-    $tabla_db = isset($data["tabla_anidada"]["tabla_db"]) ? $data["tabla_anidada"]["tabla_db"] : null;
-    $consulta_crear_tabla = isset($data["tabla_anidada"]["consulta_crear_tabla"]) ? $data["tabla_anidada"]["consulta_crear_tabla"] : null;
-    $name_controller_db = isset($data["tabla_anidada"]["name_controller_db"]) ? $data["tabla_anidada"]["name_controller_db"] : null;
-    $name_view_db = isset($data["tabla_anidada"]["name_view_db"]) ? $data["tabla_anidada"]["name_view_db"] : null;
+    // Ensure 'anidada' exists and is an array
+    $data['anidada'] = isset($data['anidada']) && is_array($data['anidada']) ? $data['anidada'] : [];
 
+    // Extract data from $data['anidada'] with null checks
+    $id_modulos = isset($data["anidada"]["id_modulos"]) ? $data["anidada"]["id_modulos"] : null;
+    $nivel_db = isset($data["anidada"]["nivel_db"]) ? $data["anidada"]["nivel_db"] : null;
+    $tabla_db = isset($data["anidada"]["tabla_db"]) ? $data["anidada"]["tabla_db"] : null;
+    $consulta_crear_tabla = isset($data["anidada"]["consulta_crear_tabla"]) ? $data["anidada"]["consulta_crear_tabla"] : null;
+    $name_controller_db = isset($data["anidada"]["name_controller_db"]) ? $data["anidada"]["name_controller_db"] : null;
+    $name_view_db = isset($data["anidada"]["name_view_db"]) ? $data["anidada"]["name_view_db"] : null;
+
+    // Check if the table already exists
     $pdomodel = $obj->getPDOModelObj();
     $pdomodel->where("tabla", $tabla);
     $db_result = $pdomodel->select("modulos");
 
-    if($db_result){
+    if ($db_result) {
         echo "Lo siento La Tabla Ingresada ya existe, pruebe con otra diferente";
         die();
     }
 
-    if($add_menu == "Si"){
+    // Insert menu if requested
+    if ($add_menu == "Si") {
         $datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
-		$newOrdenMenu = $datamenu[0]["orden"] + 1;
+        $newOrdenMenu = $datamenu[0]["orden"] + 1;
 
         $pdomodel->insert("menu", array(
-            "nombre_menu" => $controller_name, 
-            "url_menu" => "/".$controller_name."/index",
-            "icono_menu" => "far fa-circle", 
+            "nombre_menu" => $controller_name,
+            "url_menu" => "/" . $controller_name . "/index",
+            "icono_menu" => "far fa-circle",
             "submenu" => "No",
             "orden_menu" => $newOrdenMenu
         ));
@@ -1021,50 +1028,29 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         ));
     }
 
-    if($crud_type == "SQL"){
+    // Process SQL CRUD or normal CRUD
+    if ($crud_type == "SQL") {
         $crudService = new App\Services\CrudService();
-        $tableName = $tabla;
-        $idTable = $id_tabla;
-        $crudType = $crud_type;
-        $query = $query_db;
-        $controllerName = $controller_name;
-        $columns = $columns_table;
-        $nameview = $name_view;
-        $template_html = $template_fields;
-        $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, $columns, $nameview, $template_html, $active_filter, $clone_row);
-    }
-
-    if($crud_type == "CRUD"){
+        $crudService->createCrud($tabla, $id_tabla, $crud_type, $query_db, $controller_name, $columns_table, $name_view, $template_fields, $active_filter, $clone_row);
+    } elseif ($crud_type == "CRUD") {
         $crudService = new App\Services\CrudService();
-        $tableName = $tabla;
-        $crudType = $crud_type;
-        $controllerName = $controller_name;
-        $columns = $columns_table;
-        $nameview = $name_view;
-        $template_html = $template_fields;
         $crudService->createCrud(
-            $tableName, 
-            null,
-            $crudType, 
-            null,
-            $controllerName, 
-            $columns, 
-            $nameview, 
-            $template_html,
-            $active_filter,
-            $clone_row,
-            $active_popup,
-            $active_search,
-            $activate_deleteMultipleBtn,
-            $button_add,
-            $actions_buttons_grid,
-            null,
-            $activate_nested_table
+            $tabla, null, $crud_type, null, $controller_name, $columns_table, $name_view, $template_fields,
+            $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, null, $activate_nested_table
         );
     }
 
-    $data["modulos"]["id_menu"] = $id_menu;
+    // Assign id_menu and other anidada fields
+    $data["modulos"]["id_menu"] = $id_menu ?? null;
     $data["modulos"]["controller_name"] = ucfirst($controller_name);
+
+    $data["anidada"]["id_modulos"] = $id_modulos;
+    $data["anidada"]["nivel_db"] = $nivel_db;
+    $data["anidada"]["tabla_db"] = $tabla_db;
+    $data["anidada"]["consulta_crear_tabla"] = $consulta_crear_tabla;
+    $data["anidada"]["name_controller_db"] = $name_controller_db;
+    $data["anidada"]["name_view_db"] = $name_view_db;
+
     return $data;
 }
 

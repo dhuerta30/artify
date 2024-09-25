@@ -2748,46 +2748,46 @@ Class PDOCrud {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) === "LEFT JOIN") {
                     $keyName = $this->getJoinKeyName($join["condition"]);
-                    if ($operation === "update") {
+                    if ($operation === "update" || $operation === "delete") {
                         $pdoModelObj->resetWhere();
                         $pdoModelObj->resetValues();
                         $pdoModelObj->where($keyName, $this->pkVal);
                         $pdoModelObj->delete($join["table"]);
                     }
-                    if ($operation === "delete") {
-                        $pdoModelObj->resetWhere();
-                        $pdoModelObj->resetValues();
-                        $pdoModelObj->where($keyName, $this->pkVal);
-                        $pdoModelObj->delete($join["table"]);
-                    }
-
-                    $keys = array_keys($data[$join["table"]]);
-                    for ($loop = 0; $loop < count($data[$join["table"]][$keys[0]]); $loop++) {
-                        $joinData = array();
-                        foreach ($data[$join["table"]] as $key => $val) {
-                            $joinData[$key] = $val[$loop];
+    
+                    if (isset($data[$join["table"]]) && is_array($data[$join["table"]])) {
+                        $keys = array_keys($data[$join["table"]]);
+                        if (is_array($data[$join["table"]][$keys[0]])) {
+                            for ($loop = 0; $loop < count($data[$join["table"]][$keys[0]]); $loop++) {
+                                $joinData = array();
+                                foreach ($data[$join["table"]] as $key => $val) {
+                                    $joinData[$key] = $val[$loop];
+                                }
+    
+                                $joinData[$keyName] = $lastInsertId;
+                                $pdoModelObj->insert($join["table"], $joinData);
+                            }
                         }
-
-                        $joinData[$keyName] = $lastInsertId;
-                        $pdoModelObj->insert($join["table"], $joinData);
                     }
                 } else if (strtoupper($join["type"]) === "INNER JOIN") {
                     $keyName = $this->getJoinKeyName($join["condition"]);
-                    $data[$join["table"]][$keyName] = $lastInsertId;
-                    $pdoModelObj->resetWhere();
-                    $pdoModelObj->resetValues();
-                    if ($operation === "update") {
-                        $keyVal = $this->getJoinKeyValue($keyName, $data);
-                        $data[$join["table"]][$keyName] = $keyVal;
-                        $pdoModelObj->where($keyName, $keyVal);
-                        $pdoModelObj->update($join["table"], $data[$join["table"]]);
-                    } else {
-                        $pdoModelObj->insert($join["table"], $data[$join["table"]]);
+                    if (isset($data[$join["table"]]) && is_array($data[$join["table"]])) {
+                        $data[$join["table"]][$keyName] = $lastInsertId;
+                        $pdoModelObj->resetWhere();
+                        $pdoModelObj->resetValues();
+                        if ($operation === "update") {
+                            $keyVal = $this->getJoinKeyValue($keyName, $data);
+                            $data[$join["table"]][$keyName] = $keyVal;
+                            $pdoModelObj->where($keyName, $keyVal);
+                            $pdoModelObj->update($join["table"], $data[$join["table"]]);
+                        } else {
+                            $pdoModelObj->insert($join["table"], $data[$join["table"]]);
+                        }
                     }
                 }
             }
         }
-    }
+    }    
 
     private function dbDelJoinData(PDOModel $pdoModelObj, $data, $lastInsertId, $operation = "delete") {
         if (is_array($this->joinTable) && count($this->joinTable) > 0 && $this->delJoinTableData) {
