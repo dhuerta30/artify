@@ -12,6 +12,10 @@
 	}
 }
 
+.pdocrud_leftjoin_row_1 {
+    width: 20%;
+}
+
 .form-control {
     min-width: 200px;
 }
