@@ -1042,6 +1042,7 @@ function actualizar_modulos($data, $obj){
     $crud_type = $data["modulos"]["crud_type"];
     $query_db = isset($data["modulos"]["query"]) ? $data["modulos"]["query"] : null;
     $controller_name = $data["modulos"]["controller_name"];
+    $columns_table = isset($data["modulos"]["columns_table"]) ? $data["modulos"]["columns_table"] : null;
     $name_view = $data["modulos"]["name_view"];
     $add_menu = $data["modulos"]["add_menu"];
     $template_fields = $data["modulos"]["template_fields"];
@@ -1051,45 +1052,17 @@ function actualizar_modulos($data, $obj){
     $active_search = $data["modulos"]["active_search"];
     $activate_deleteMultipleBtn = $data["modulos"]["activate_deleteMultipleBtn"];
     $button_add = $data["modulos"]["button_add"];
-    $actions_buttons_grid = $data["modulos"]["actions_buttons_grid"];
-    $modify_query = $data["modulos"]["modify_query"];
+    $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
+    $activate_nested_table = $data["modulos"]["activate_nested_table"];
 
-    if($crud_type == "SQL"){
+    if ($crud_type == "SQL") {
         $crudService = new App\Services\CrudService();
-        $tableName = $tabla;
-        $idTable = $id_tabla;
-        $crudType = $crud_type;
-        $query = $query_db;
-        $controllerName = $controller_name;
-        $nameview = $name_view;
-        $template_html = $template_fields;
-        $crudService->createCrud($tableName, $idTable, $crudType, $query, $controllerName, null, $nameview, $template_html, $active_filter, $clone_row);
-    }
-
-    if($crud_type == "CRUD"){
+        $crudService->createCrud($tabla, $id_tabla, $crud_type, $query_db, $controller_name, $columns_table, $name_view, $template_fields, $active_filter, $clone_row);
+    } elseif ($crud_type == "CRUD") {
         $crudService = new App\Services\CrudService();
-        $tableName = $tabla;
-        $crudType = $crud_type;
-        $controllerName = $controller_name;
-        $nameview = $name_view;
-        $template_html = $template_fields;
         $crudService->createCrud(
-            $tableName, 
-            null, 
-            $crudType, 
-            null, 
-            $controllerName, 
-            null, 
-            $nameview, 
-            $template_html, 
-            $active_filter, 
-            $clone_row, 
-            $active_popup, 
-            $active_search, 
-            $activate_deleteMultipleBtn, 
-            $button_add, 
-            $actions_buttons_grid, 
-            $modify_query
+            $tabla, null, $crud_type, null, $controller_name, $columns_table, $name_view, $template_fields,
+            $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, null, $activate_nested_table
         );
     }
 

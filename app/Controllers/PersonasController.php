@@ -78,16 +78,14 @@
                 
                     $pdocrud->setSettings('csvBtn', true);
                 
-                    $pdocrud->setSettings('excelBtn', true);
-                
                 $pdocrud->formDisplayInPopup();
             
                 $pdocrud->setSettings('searchbox', true);
             
                 $pdocrud->setSettings('clonebtn', true);
             
-                $pdocrud->setSettings('checkboxCol', true);
-                $pdocrud->setSettings('deleteMultipleBtn', true);
+                $pdocrud->setSettings('checkboxCol', false);
+                $pdocrud->setSettings('deleteMultipleBtn', false);
             
                 $pdocrud->setSettings('addbtn', true);
             

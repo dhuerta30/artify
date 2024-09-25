@@ -717,6 +717,8 @@ class HomeController
 		$pdocrud->formFieldValue("active_search", "No");
 		$pdocrud->fieldNotMandatory("actions_buttons_grid");
 		$pdocrud->formFieldValue("activate_nested_table", "No");
+
+		$pdocrud->fieldNotMandatory("modify_query");
 		
 		$pdocrud->formFieldValue("nivel_db", "2");
 
