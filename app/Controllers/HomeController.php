@@ -716,6 +716,7 @@ class HomeController
 		</div>
 		';
 		$pdocrud->set_template($html_template);
+		$pdocrud->setLangData("no_data", "No Hay Módulos creados");
 		$pdocrud->formFieldValue("active_popup", "No");
 		$pdocrud->formFieldValue("add_menu", "Si");
 		$pdocrud->formFieldValue("active_filter", "No");
