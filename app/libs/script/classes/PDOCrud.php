@@ -3917,13 +3917,13 @@ Class PDOCrud {
             }
 
             if (isset($this->leftJoin))
-                $output .= "<div class='form-group'>".$this->leftJoin."</div>";
+                $output .= $this->leftJoin;
 
             return $output;
         }
 
         if (isset($this->leftJoin))
-            $output .= "<div class='form-group'>".$this->leftJoin."</div>";
+            $output .= $this->leftJoin;
 
         return $output;
     }
