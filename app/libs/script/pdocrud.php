@@ -1057,6 +1057,7 @@ function actualizar_modulos($data, $obj){
     $button_add = $data["modulos"]["button_add"];
     $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
+    $buttons_actions = $data["modulos"]["buttons_actions"];
 
     if ($crud_type == "SQL") {
         $crudService = new App\Services\CrudService();
@@ -1067,7 +1068,8 @@ function actualizar_modulos($data, $obj){
         $crudService = new App\Services\CrudService();
         $crudService->createCrud(
             $tabla, null, $crud_type, null, $controller_name, $columns_table, $name_view, $template_fields,
-            $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, null, $activate_nested_table
+            $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, null, $activate_nested_table,
+            $buttons_actions
         );
     }
 

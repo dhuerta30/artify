@@ -519,7 +519,7 @@ class CrudService
         foreach ($buttons_actions_array as $Btnaction) {
             if ($Btnaction === 'Ver') {
                 $controllerContent .= "
-                    \$pdocrud->setSettings('viewbtn', false);
+                    \$pdocrud->setSettings('viewbtn', true);
                 ";
             } else if ($Btnaction === 'Editar') {
                 $controllerContent .= "
