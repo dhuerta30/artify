@@ -30,9 +30,11 @@
                 unset($columnDB[0]);
 
                 
-                    $pdocrud->setSettings('delbtn', true);
-                
+
             
+                    $pdocrud->setSettings('editbtn', true);
+                
+                    $pdocrud->setSettings('delbtn', true);
                 
                 $pdocrud->setSettings('searchbox', false);
             
