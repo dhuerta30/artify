@@ -733,6 +733,30 @@ class HomeController
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="component addrow float-right">
+								<div class="control-group">
+									<div class="controls">
+										<a class="pdocrud-actions pdocrud-button pdocrud-button-add-row btn btn-success agregar_muestras d-none" href="javascript:;" data-action="add_row_module">
+											<i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar       
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="table-responsive">
+							<table class="table pdocrud-left-join responsive">
+								<thead>
+									<tr>
+										<th><label for="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" class=" control-label col-form-label">Número de módulo a crear</label></th><th><label for="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" class=" control-label col-form-label">Nombre Tabla Base de Datos</label></th><th><label for="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA==[]" class=" control-label col-form-label">Columnas de la Tabla</label></th><th><label for="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" class=" control-label col-form-label">Nombre del Controlador</label></th><th><label for="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" class=" control-label col-form-label">Nombre de La Vista</label></th>        </tr>
+								</thead>
+								<tbody>
+									<tr><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1"><select class="form-control pdocrud-form-control pdocrud-select nivel" id="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" name="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" disabled="disabled" required="1"><option value="">Seleccionar</option><option selected="selected" value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_2"><input type="text" class="form-control pdocrud-form-control pdocrud-text tabla_db" id="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" name="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" disabled="disabled" required="1"></td><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3"><textarea class="form-control pdocrud-form-control  pdocrud-textarea consulta_crear_tabla" id="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA==[]" name="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA==[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea></td><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_4"><input type="text" class="form-control pdocrud-form-control pdocrud-text name_controller_db" id="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" name="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" disabled="disabled" required="1"></td><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_5"><input type="text" class="form-control pdocrud-form-control pdocrud-text name_view_db" id="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" name="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" disabled="disabled" required="1"></td> <td><a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a></td></tr>    </tbody>
+							</table>
+							</div>
+
+						</div>
+					</div>
 				</div>
 			
 			</div>
@@ -906,7 +930,7 @@ class HomeController
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
 		$pdocrud->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
 		
-		$pdocrud->joinTable("anidada", "anidada.id_modulos = modulos.id_modulos", "LEFT JOIN");
+		//$pdocrud->joinTable("anidada", "anidada.id_modulos = modulos.id_modulos", "LEFT JOIN");
 		$render = $pdocrud->dbTable("modulos")->render();
 
 		View::render(
