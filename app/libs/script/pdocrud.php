@@ -985,7 +985,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = $data["modulos"]["buttons_actions"];
 
-    $id_modulos = null;
     $nivel = $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"];
     $tabla_db = $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"];
     $consulta_crear_tabla = $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"];
