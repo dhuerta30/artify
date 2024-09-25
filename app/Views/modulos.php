@@ -121,9 +121,13 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
             dataType: "json",
             success: function(data){
                 console.log(data);
-                $.each(data["columnas_tabla"], function(index, obj){  
+                $.each(data["columnas_tabla"], function(index, obj) {  
+                    // Acceder al nombre del campo y su tipo
+                    var campo = obj.Field;
+                    var tipo = obj.Type;
+
                     $(".vista_previa_campos_tabla").append(`
-                        <li class="list-group-item bg-light">${obj}</li>
+                        <li class="list-group-item bg-light">${campo}: ${tipo}</li>
                     `);
                 });
             }

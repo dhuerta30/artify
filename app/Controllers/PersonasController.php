@@ -72,11 +72,15 @@
                     $pdocrud->setFilterSource('filterAdd'.$column, 'personas', $column, $column.' as pl', 'db');
                 }
                 
+
+            
                     $pdocrud->setSettings('printBtn', true);
                 
                     $pdocrud->setSettings('pdfBtn', true);
                 
                     $pdocrud->setSettings('csvBtn', true);
+                
+                    $pdocrud->setSettings('excelBtn', true);
                 
                 $pdocrud->formDisplayInPopup();
             
@@ -84,8 +88,8 @@
             
                 $pdocrud->setSettings('clonebtn', true);
             
-                $pdocrud->setSettings('checkboxCol', false);
-                $pdocrud->setSettings('deleteMultipleBtn', false);
+                $pdocrud->setSettings('checkboxCol', true);
+                $pdocrud->setSettings('deleteMultipleBtn', true);
             
                 $pdocrud->setSettings('addbtn', true);
             

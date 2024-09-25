@@ -872,7 +872,7 @@ class HomeController
 
 			$pdocrud = DB::PDOCrud();
 			$pdomodel = $pdocrud->getPDOModelObj();
-			$columnDB = $pdomodel->columnNames($tabla);
+			$columnDB = $pdomodel->tableFieldInfo($tabla);
 
 			echo json_encode(['columnas_tabla' => $columnDB]);
 		}
