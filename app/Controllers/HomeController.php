@@ -553,7 +553,14 @@ class HomeController
 		$id_sesion_usuario = $_SESSION['usuario'][0]["id"];
 
 		$pdocrud = DB::PDOCrud();
-		$html_template = '<div class="form">
+		$html_template = '
+		<div class="card">
+		<div class="card-body bg-dark">
+			<h5 class="card-title">Generador de Módulos</h5>
+		</div>
+		<div class="card-body bg-light">
+
+		<div class="form">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group">
@@ -704,6 +711,7 @@ class HomeController
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 		</div>
 		';
