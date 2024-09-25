@@ -637,7 +637,25 @@ class CrudService
         <div id="pdocrud-ajax-loader">
             <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
         </div>
-        <?php require "layouts/footer.php"; ?>';
+        <?php require "layouts/footer.php"; ?>
+        <script>
+            $(document).on("pdocrud_after_submission", function(event, obj, data) {
+                let json = JSON.parse(data);
+
+                if (json.message) {
+                    Swal.fire({
+                        icon: "success",
+                        text: json["message"],
+                        confirmButtonText: "Aceptar",
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $(".pdocrud-back").click();
+                        }
+                    });
+                }
+            });
+        </script>';
 
         file_put_contents($viewPath, $viewContent);
     }
