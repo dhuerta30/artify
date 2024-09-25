@@ -287,6 +287,7 @@
   input[type="checkbox"] {
     box-sizing: border-box;
     padding: 0;
+    margin: 5px;
   }
   
   textarea {
@@ -5043,7 +5044,7 @@
     z-index: 3;
     color: #fff;
     background-color: #007bff;
-    border-color: #007bff;
+    border-color: #dee2e6;
   }
   
   .page-item.disabled .page-link {
@@ -6705,7 +6706,7 @@
   }
   
   .bg-primary {
-    background-color: #007bff !important;
+    background-color: #3a393f !important;
   }
   
   a.bg-primary:hover, a.bg-primary:focus,
@@ -6775,7 +6776,7 @@
   }
   
   .bg-dark {
-    background-color: #c41a27 !important;
+    background-color: #4d4d4d !important;
   }
   
   a.bg-dark:hover, a.bg-dark:focus,
