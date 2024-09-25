@@ -966,7 +966,6 @@ function formatTable_buscar_examenes($data, $obj){
 }
 
 function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
-    // Extract data from $data['modulos']
     $tabla = $data["modulos"]["tabla"];
     $id_tabla = isset($data["modulos"]["id_tabla"]) ? $data["modulos"]["id_tabla"] : null;
     $crud_type = $data["modulos"]["crud_type"];
@@ -985,6 +984,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = $data["modulos"]["buttons_actions"];
+
+    $id_modulos = $_POST[""];
 
     // Check if the table already exists
     $pdomodel = $obj->getPDOModelObj();
@@ -1035,7 +1036,38 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     // Assign id_menu and other anidada fields
     $data["modulos"]["id_menu"] = $id_menu ?? null;
     $data["modulos"]["controller_name"] = ucfirst($controller_name);
-    return $data;
+
+    $newdata = array();
+    $newdata["modulos"]["tabla"] = $tabla;
+    $newdata["modulos"]["id_tabla"] = $id_tabla;
+    $newdata["modulos"]["crud_type"] = $crud_type;
+    $newdata["modulos"]["query"] = $query_db;
+    $newdata["modulos"]["controller_name"] = $controller_name;
+    $newdata["modulos"]["columns_table"] = $columns_table;
+    $newdata["modulos"]["name_view"] = $name_view;
+    $newdata["modulos"]["add_menu"] = $add_menu;
+    $newdata["modulos"]["template_fields"] = $template_fields;
+    $newdata["modulos"]["active_filter"] = $active_filter;
+    $newdata["modulos"]["clone_row"] = $clone_row;
+    $newdata["modulos"]["active_popup"] = $active_popup;
+    $newdata["modulos"]["active_search"] = $active_search;
+    $newdata["modulos"]["activate_deleteMultipleBtn"] = $activate_deleteMultipleBtn;
+    $newdata["modulos"]["button_add"] = $button_add;
+    $newdata["modulos"]["actions_buttons_grid"] = $actions_buttons_grid;
+    $newdata["modulos"]["activate_nested_table"] = $activate_nested_table;
+    $newdata["modulos"]["buttons_actions"] = $buttons_actions;
+
+    $newdata["anidada"]["id_modulos"] = $id_modulos;
+    $newdata["anidada"]["nivel_db"] = $buttons_actions;
+    $newdata["anidada"]["tabla_db"] = $buttons_actions;
+    $newdata["anidada"]["consulta_crear_tabla"] = $buttons_actions;
+    $newdata["anidada"]["name_controller_db"] = $buttons_actions;
+    $newdata["anidada"]["name_view_db"] = $buttons_actions;
+
+    print_r($newdata);
+    die();
+
+    return $newdata;
 }
 
 

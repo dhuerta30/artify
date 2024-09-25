@@ -748,10 +748,49 @@ class HomeController
 							<table class="table pdocrud-left-join responsive">
 								<thead>
 									<tr>
-										<th><label for="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" class=" control-label col-form-label">Número de módulo a crear</label></th><th><label for="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" class=" control-label col-form-label">Nombre Tabla Base de Datos</label></th><th><label for="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA==[]" class=" control-label col-form-label">Columnas de la Tabla</label></th><th><label for="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" class=" control-label col-form-label">Nombre del Controlador</label></th><th><label for="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" class=" control-label col-form-label">Nombre de La Vista</label></th>        </tr>
+										<th>
+											<label class=" control-label col-form-label">Número de módulo a crear</label>
+										</th>
+										<th>
+											<label class=" control-label col-form-label">Nombre Tabla Base de Datos</label>
+										</th>
+										<th>
+											<label class=" control-label col-form-label">Columnas de la Tabla</label>
+										</th>
+										<th>
+											<label class=" control-label col-form-label">Nombre del Controlador</label>
+										</th>
+										<th>
+											<label class=" control-label col-form-label">Nombre de La Vista</label>
+										</th>      
+									</tr>
 								</thead>
 								<tbody>
-									<tr><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1"><select class="form-control pdocrud-form-control pdocrud-select nivel" id="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" name="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" disabled="disabled" required="1"><option value="">Seleccionar</option><option selected="selected" value="2">2</option><option value="3">3</option><option value="4">4</option></select></td><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_2"><input type="text" class="form-control pdocrud-form-control pdocrud-text tabla_db" id="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" name="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA==[]" disabled="disabled" required="1"></td><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3"><textarea class="form-control pdocrud-form-control  pdocrud-textarea consulta_crear_tabla" id="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA==[]" name="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA==[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea></td><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_4"><input type="text" class="form-control pdocrud-form-control pdocrud-text name_controller_db" id="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" name="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" disabled="disabled" required="1"></td><td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_5"><input type="text" class="form-control pdocrud-form-control pdocrud-text name_view_db" id="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" name="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" disabled="disabled" required="1"></td> <td><a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a></td></tr>    </tbody>
+									<tr>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1">
+											<select class="form-control pdocrud-form-control pdocrud-select nivel" id="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA[]" name="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA[]" disabled="disabled" required="1">
+												<option value="">Seleccionar</option>
+												<option selected="selected" value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+											</select>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_2">
+											<input type="text" class="form-control pdocrud-form-control pdocrud-text tabla_db" id="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA[]" name="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA[]" disabled="disabled" required="1">
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<textarea class="form-control pdocrud-form-control  pdocrud-textarea consulta_crear_tabla" id="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA[]" name="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_4">
+											<input type="text" class="form-control pdocrud-form-control pdocrud-text name_controller_db" id="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ[]" name="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ[]" disabled="disabled" required="1">
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_5">
+											<input type="text" class="form-control pdocrud-form-control pdocrud-text name_view_db" id="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ[]" name="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" disabled="disabled" required="1"></td> 
+										<td>
+											<a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a>
+										</td>
+									</tr>
+								</tbody>
 							</table>
 							</div>
 
@@ -785,11 +824,10 @@ class HomeController
 		$pdocrud->formFieldValue("activate_deleteMultipleBtn", "No");
 		$pdocrud->formFieldValue("active_search", "No");
 		$pdocrud->fieldNotMandatory("actions_buttons_grid");
+		$pdocrud->fieldNotMandatory("buttons_actions");
 		$pdocrud->formFieldValue("activate_nested_table", "No");
 
 		$pdocrud->fieldNotMandatory("modify_query");
-		
-		$pdocrud->formFieldValue("nivel_db", "2");
 
 		$pdocrud->fieldTypes("buttons_actions", "checkbox");
 		$pdocrud->fieldDataBinding("buttons_actions", array("Ver" => "Ver", "Editar" => "Editar", "Eliminar" => "Eliminar", "Personalizado" => "Personalizado"), "", "", "array");
@@ -818,21 +856,6 @@ class HomeController
 		$pdocrud->fieldTypes("clone_row", "select");
 		$pdocrud->fieldDataBinding("clone_row", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("nivel_db", "select");
-		$pdocrud->fieldDataBinding("nivel_db", array("2" => "2", "3" => "3", "4" => "4"), "", "", "array");
-
-		$pdocrud->fieldDataAttr("nivel_db", array("disabled"=>"disabled"));
-		$pdocrud->fieldDataAttr("tabla_db", array("disabled"=>"disabled"));
-		$pdocrud->fieldDataAttr("consulta_crear_tabla", array("disabled"=>"disabled"));
-		$pdocrud->fieldDataAttr("name_controller_db", array("disabled"=>"disabled"));
-		$pdocrud->fieldDataAttr("name_view_db", array("disabled"=>"disabled"));
-
-		$pdocrud->fieldCssClass("nivel_db", array("nivel"));
-		$pdocrud->fieldCssClass("tabla_db", array("tabla_db"));
-		$pdocrud->fieldCssClass("consulta_crear_tabla", array("consulta_crear_tabla"));
-		$pdocrud->fieldCssClass("name_controller_db", array("name_controller_db"));
-		$pdocrud->fieldCssClass("name_view_db", array("name_view_db"));
-
 		$pdocrud->fieldCssClass("crud_type", array("crud_type"));
 		$pdocrud->fieldCssClass("tabla", array("tabla"));
 		$pdocrud->fieldCssClass("id_tabla", array("id_tabla"));
@@ -843,12 +866,6 @@ class HomeController
 		$pdocrud->fieldCssClass("modify_query", array("modify_query"));
 		$pdocrud->fieldCssClass("activate_nested_table", array("activate_nested_table"));
 
-		$pdocrud->fieldRenameLable("nivel_db", "Número de módulo a crear");
-		$pdocrud->fieldRenameLable("tabla_db", "Nombre Tabla Base de Datos");
-		$pdocrud->fieldRenameLable("name_controller_db", "Nombre del Controlador");
-		$pdocrud->fieldRenameLable("name_view_db", "Nombre de La Vista");
-		$pdocrud->fieldRenameLable("consulta_crear_tabla", "Columnas de la Tabla");
-
 		$pdocrud->fieldAttributes("consulta_crear_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("modify_query", array("placeholder"=> "Ejemplo: DROP COLUMN categoria, ADD COLUMN edad INT(3)", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -857,7 +874,7 @@ class HomeController
 		$pdocrud->tableHeading("Generador de Módulos");
 		
 		$pdocrud->setSearchCols(array("id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "nivel_db", "tabla_db", "consulta_crear_tabla", "name_controller_db", "name_view_db", "buttons_actions"));
+		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$pdocrud->editFormFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$pdocrud->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
