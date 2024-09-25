@@ -22,7 +22,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions)
     {
         $this->createTable($tableName, $columns);
         $this->modifyTable($tableName, $modify_query);
@@ -50,7 +50,8 @@ class CrudService
                 $activate_deleteMultipleBtn, 
                 $button_add, 
                 $actions_buttons_grid,
-                $activate_nested_table
+                $activate_nested_table,
+                $buttons_actions
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -420,7 +421,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table)
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -513,6 +514,29 @@ class CrudService
             ";
         }
 
+        $buttons_actions_array = explode(',', $buttons_actions);
+       
+        foreach ($buttons_actions_array as $Btnaction) {
+            if ($Btnaction === 'Ver') {
+                $controllerContent .= "
+                    \$pdocrud->setSettings('viewbtn', false);
+                ";
+            } else if ($Btnaction === 'Editar') {
+                $controllerContent .= "
+                    \$pdocrud->setSettings('editbtn', true);
+                ";
+            } else if ($Btnaction === 'Eliminar') {
+                $controllerContent .= "
+                    \$pdocrud->setSettings('delbtn', true);
+                ";
+            } else if ($Btnaction === 'Personalizado') {
+                $controllerContent .= "
+            
+                ";
+            }
+        }
+
+
         $actions_buttons_grid_array = explode(',', $actions_buttons_grid);
        
         foreach ($actions_buttons_grid_array as $action) {
@@ -591,9 +615,6 @@ class CrudService
                 \$pdocrud->setSettings('function_filter_and_search', true);
                 \$pdocrud->setSettings('recordsPerPageDropdown', true);
                 \$pdocrud->setSettings('totalRecordsInfo', true);
-                \$pdocrud->setSettings('editbtn', true);
-                \$pdocrud->setSettings('viewbtn', false);
-                \$pdocrud->setSettings('delbtn', true);
                 \$pdocrud->setSettings('actionbtn', true);
                 \$pdocrud->setSettings('refresh', false);
                 \$pdocrud->setSettings('numberCol', true);

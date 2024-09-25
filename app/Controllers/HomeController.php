@@ -695,6 +695,13 @@ class HomeController
 						<p class="pdocrud_help_block help-block form-text with-errors"></p>
 					</div>
 				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="form-label">Botones de Acción:</label>
+						{buttons_actions}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
 			</div>
 			<div class="row modificar_tabla_col">
 				<div class="col-md-6">
@@ -730,6 +737,9 @@ class HomeController
 		$pdocrud->fieldNotMandatory("modify_query");
 		
 		$pdocrud->formFieldValue("nivel_db", "2");
+
+		$pdocrud->fieldTypes("buttons_actions", "checkbox");
+		$pdocrud->fieldDataBinding("buttons_actions", array("Ver" => "Ver", "Editar" => "Editar", "Eliminar" => "Eliminar", "Personalizado" => "Personalizado"), "", "", "array");
 
 		$pdocrud->fieldTypes("actions_buttons_grid", "checkbox");
 		$pdocrud->fieldDataBinding("actions_buttons_grid", array("Imprimir" => "Imprimir", "PDF" => "PDF", "CSV" => "CSV", "Excel" => "Excel"), "", "", "array");
@@ -793,9 +803,9 @@ class HomeController
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		
-		$pdocrud->setSearchCols(array("id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table"));
-		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "nivel_db", "tabla_db", "consulta_crear_tabla", "name_controller_db", "name_view_db"));
-		$pdocrud->editFormFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table"));
+		$pdocrud->setSearchCols(array("id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "nivel_db", "tabla_db", "consulta_crear_tabla", "name_controller_db", "name_view_db", "buttons_actions"));
+		$pdocrud->editFormFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 		
 		$pdocrud->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
@@ -809,6 +819,7 @@ class HomeController
 		$pdocrud->colRename("modify_query", "Modificar Tabla");
 		$pdocrud->colRename("activate_nested_table", "Activar Tabla Anidada");
 		$pdocrud->colRename("id_modulos", "ID");
+		$pdocrud->colRename("buttons_actions", "Botones de Acción");
 
 		$pdocrud->colRename("active_filter", "Activar Filtro de Busqueda");
 		$pdocrud->colRename("clone_row", "Clonar Fila");
