@@ -1037,20 +1037,21 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
         $template_html = $template_fields;
         $crudService->createCrud(
             $tableName, 
-            null, 
+            null,
             $crudType, 
-            null, 
+            null,
             $controllerName, 
             $columns, 
             $nameview, 
             $template_html, 
             $active_filter, 
-            $clone_row, 
+            $clone_row,
             $active_popup, 
             $active_search, 
             $activate_deleteMultipleBtn, 
             $button_add, 
             $actions_buttons_grid,
+            null,
             $activate_nested_table
         );
     }

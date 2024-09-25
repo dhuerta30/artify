@@ -14,13 +14,11 @@ class CrudService
         $dotenv = DotenvVault::createImmutable(dirname(__DIR__, 3));
         $dotenv->safeLoad();
 
-        // Obtener variables de entorno
         $databaseHost = $_ENV['DB_HOST'];
         $databaseName = $_ENV['DB_NAME'];
         $databaseUser = $_ENV['DB_USER'];
         $databasePassword = $_ENV['DB_PASS'];
 
-        // Configurar PDO
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
@@ -511,7 +509,7 @@ class CrudService
 
         if($activate_nested_table == "Si"){
             $controllerContent .= "
-            
+
             ";
         }
 
