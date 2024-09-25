@@ -784,7 +784,7 @@ class HomeController
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		
-		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table"));
+		$pdocrud->setSearchCols(array("id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table"));
 		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "nivel_db", "tabla_db", "consulta_crear_tabla", "name_controller_db", "name_view_db"));
 		$pdocrud->editFormFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table"));
 		
@@ -799,6 +799,7 @@ class HomeController
 		$pdocrud->colRename("actions_buttons_grid", "Botones de Exportación Grilla");
 		$pdocrud->colRename("modify_query", "Modificar Tabla");
 		$pdocrud->colRename("activate_nested_table", "Activar Tabla Anidada");
+		$pdocrud->colRename("id_modulos", "ID");
 
 		$pdocrud->colRename("active_filter", "Activar Filtro de Busqueda");
 		$pdocrud->colRename("clone_row", "Clonar Fila");
