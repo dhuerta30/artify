@@ -2787,8 +2787,8 @@ Class PDOCrud {
                 }
             }
         }
-    }    
-
+    }
+    
     private function dbDelJoinData(PDOModel $pdoModelObj, $data, $lastInsertId, $operation = "delete") {
         if (is_array($this->joinTable) && count($this->joinTable) > 0 && $this->delJoinTableData) {
             foreach ($this->joinTable as $join) {

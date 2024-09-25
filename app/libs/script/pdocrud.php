@@ -985,17 +985,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
 
-    // Ensure 'anidada' exists and is an array
-    $data['anidada'] = isset($data['anidada']) && is_array($data['anidada']) ? $data['anidada'] : [];
-
-    // Extract data from $data['anidada'] with null checks
-    $id_modulos = isset($data["anidada"]["id_modulos"]) ? $data["anidada"]["id_modulos"] : null;
-    $nivel_db = isset($data["anidada"]["nivel_db"]) ? $data["anidada"]["nivel_db"] : null;
-    $tabla_db = isset($data["anidada"]["tabla_db"]) ? $data["anidada"]["tabla_db"] : null;
-    $consulta_crear_tabla = isset($data["anidada"]["consulta_crear_tabla"]) ? $data["anidada"]["consulta_crear_tabla"] : null;
-    $name_controller_db = isset($data["anidada"]["name_controller_db"]) ? $data["anidada"]["name_controller_db"] : null;
-    $name_view_db = isset($data["anidada"]["name_view_db"]) ? $data["anidada"]["name_view_db"] : null;
-
     // Check if the table already exists
     $pdomodel = $obj->getPDOModelObj();
     $pdomodel->where("tabla", $tabla);
@@ -1043,14 +1032,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     // Assign id_menu and other anidada fields
     $data["modulos"]["id_menu"] = $id_menu ?? null;
     $data["modulos"]["controller_name"] = ucfirst($controller_name);
-
-    $data["anidada"]["id_modulos"] = $id_modulos;
-    $data["anidada"]["nivel_db"] = $nivel_db;
-    $data["anidada"]["tabla_db"] = $tabla_db;
-    $data["anidada"]["consulta_crear_tabla"] = $consulta_crear_tabla;
-    $data["anidada"]["name_controller_db"] = $name_controller_db;
-    $data["anidada"]["name_view_db"] = $name_view_db;
-
     return $data;
 }
 
