@@ -770,6 +770,7 @@ class HomeController
 		$pdocrud->fieldCssClass("controller_name", array("controller_name"));
 		$pdocrud->fieldCssClass("columns_table", array("columns_table"));
 		$pdocrud->fieldCssClass("modify_query", array("modify_query"));
+		$pdocrud->fieldCssClass("activate_nested_table", array("activate_nested_table"));
 
 		$pdocrud->fieldRenameLable("nivel", "Número de módulo a crear");
 		$pdocrud->fieldRenameLable("tabla_db", "Nombre Tabla Base de Datos");

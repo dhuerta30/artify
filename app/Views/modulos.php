@@ -43,6 +43,16 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
         $(".modificar_tabla_col").hide();
         $(".campos_view_tabla").hide();
 
+        $(".activate_nested_table").change(function() {
+            var val = $(this).val();
+
+            if(val == "Si"){
+                $(".agregar_muestras").removeClass("d-none");
+            } else {
+                $(".agregar_muestras").addClass("d-none");
+            }
+        });
+
         $(".crud_type").change(function() {
             var val = $(this).val();
 
