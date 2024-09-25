@@ -719,7 +719,6 @@ class HomeController
 		$pdocrud->formFieldValue("active_search", "No");
 		$pdocrud->fieldNotMandatory("actions_buttons_grid");
 		$pdocrud->formFieldValue("activate_nested_table", "No");
-		$pdocrud->joinTable("tabla_anidada", "tabla_anidada.id_modulos = modulos.id_modulos", "LEFT JOIN");
 		
 		$pdocrud->formFieldValue("nivel", "2");
 
@@ -784,12 +783,13 @@ class HomeController
 		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
+		
 		$pdocrud->fieldDisplayOrder(array("crud_type","tabla","id_tabla", "query", "controller_name", "columns_table", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "modify_query", "activate_nested_table", "nivel", "tabla_db", "consulta_crear_tabla", "name_controller_db", "name_view_db"));
 		$pdocrud->setSearchCols(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "nivel", "tabla_db", "consulta_crear_tabla", "name_controller_db", "name_view_db"));
-		
 		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "nivel", "tabla_db", "consulta_crear_tabla", "name_controller_db", "name_view_db"));
 		$pdocrud->editFormFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table"));
-		$pdocrud->crudRemoveCol(array("id_modulos", "id_menu", "query", "columns_table", "modify_query"));
+		
+		$pdocrud->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
 		$pdocrud->colRename("crud_type", "Tipo de Módulo");
@@ -854,7 +854,8 @@ class HomeController
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
 		$pdocrud->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
-
+		
+		$pdocrud->joinTable("tabla_anidada", "tabla_anidada.id_modulos = modulos.id_modulos", "LEFT JOIN");
 		$render = $pdocrud->dbTable("modulos")->render();
 
 		View::render(

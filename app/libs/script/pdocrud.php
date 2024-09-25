@@ -984,6 +984,13 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
     $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
 
+    $id_modulos = isset($data["tabla_anidada"]["id_modulos"]) ? $data["tabla_anidada"]["id_modulos"] : null;
+    $nivel = isset($data["tabla_anidada"]["nivel"]) ? $data["tabla_anidada"]["nivel"] : null;
+    $tabla_db = isset($data["tabla_anidada"]["tabla_db"]) ? $data["tabla_anidada"]["tabla_db"] : null;
+    $consulta_crear_tabla = isset($data["tabla_anidada"]["consulta_crear_tabla"]) ? $data["tabla_anidada"]["consulta_crear_tabla"] : null;
+    $name_controller_db = isset($data["tabla_anidada"]["name_controller_db"]) ? $data["tabla_anidada"]["name_controller_db"] : null;
+    $name_view_db = isset($data["tabla_anidada"]["name_view_db"]) ? $data["tabla_anidada"]["name_view_db"] : null;
+
     $pdomodel = $obj->getPDOModelObj();
     $pdomodel->where("tabla", $tabla);
     $db_result = $pdomodel->select("modulos");
@@ -1043,13 +1050,13 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null){
             $controllerName, 
             $columns, 
             $nameview, 
-            $template_html, 
-            $active_filter, 
+            $template_html,
+            $active_filter,
             $clone_row,
-            $active_popup, 
-            $active_search, 
-            $activate_deleteMultipleBtn, 
-            $button_add, 
+            $active_popup,
+            $active_search,
+            $activate_deleteMultipleBtn,
+            $button_add,
             $actions_buttons_grid,
             null,
             $activate_nested_table
