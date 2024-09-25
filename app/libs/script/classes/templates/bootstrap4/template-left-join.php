@@ -1,7 +1,7 @@
 <div class="component addrow float-right">
     <div class="control-group">
         <div class="controls">
-            <a class="pdocrud-actions pdocrud-button pdocrud-button-add-row btn btn-success agregar_muestras" href="javascript:;" data-action="add_row_module">
+            <a class="pdocrud-actions pdocrud-button pdocrud-button-add-row btn btn-success agregar_muestras d-none" href="javascript:;" data-action="add_row_module">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add"]; ?>
             </a>
         </div>
