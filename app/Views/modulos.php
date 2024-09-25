@@ -53,6 +53,12 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
                 $(".consulta_crear_tabla").removeAttr("disabled", "disabled");
                 $(".name_controller_db").removeAttr("disabled", "disabled");
                 $(".name_view_db").removeAttr("disabled", "disabled");
+                $(".tabla_db").val("personas");
+                $(".consulta_crear_tabla").val("id INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
+                "nombre VARCHAR(255) NOT NULL,\n" +
+                "apellido VARCHAR(255) NOT NULL,\n" +
+                "categoria INT(11) NOT NULL,\n" +
+                "producto VARCHAR(100) NOT NULL");
             } else {
                 $(".agregar_muestras").addClass("d-none");
                 $(".nivel").attr("disabled", "disabled");
@@ -60,6 +66,8 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
                 $(".consulta_crear_tabla").attr("disabled", "disabled");
                 $(".name_controller_db").attr("disabled", "disabled");
                 $(".name_view_db").attr("disabled", "disabled");
+                $(".tabla_db").val("");
+                $(".consulta_crear_tabla").val("");
             }
         });
 
