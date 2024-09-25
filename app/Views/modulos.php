@@ -48,8 +48,18 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
 
             if(val == "Si"){
                 $(".agregar_muestras").removeClass("d-none");
+                $(".nivel").removeAttr("disabled", "disabled");
+                $(".tabla_db").removeAttr("disabled", "disabled");
+                $(".consulta_crear_tabla").removeAttr("disabled", "disabled");
+                $(".name_controller_db").removeAttr("disabled", "disabled");
+                $(".name_view_db").removeAttr("disabled", "disabled");
             } else {
                 $(".agregar_muestras").addClass("d-none");
+                $(".nivel").attr("disabled", "disabled");
+                $(".tabla_db").attr("disabled", "disabled");
+                $(".consulta_crear_tabla").attr("disabled", "disabled");
+                $(".name_controller_db").attr("disabled", "disabled");
+                $(".name_view_db").attr("disabled", "disabled");
             }
         });
 

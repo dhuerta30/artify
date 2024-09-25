@@ -24,7 +24,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table)
     {
         $this->createTable($tableName, $columns);
         $this->modifyTable($tableName, $modify_query);
@@ -38,7 +38,22 @@ class CrudService
         }*/
 
         if ($crudType == 'CRUD') {
-            $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid);
+            $this->generateCrudControllerCRUD(
+                $tableName, 
+                $idTable, 
+                $query, 
+                $controllerName, 
+                $nameview, 
+                $template_html, 
+                $active_filter, 
+                $clone_row, 
+                $active_popup, 
+                $active_search, 
+                $activate_deleteMultipleBtn, 
+                $button_add, 
+                $actions_buttons_grid,
+                $activate_nested_table
+            );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
         }
@@ -407,7 +422,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid)
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -492,6 +507,12 @@ class CrudService
                     \$pdocrud->setFilterSource('filterAdd'.\$column, '{$tableName}', \$column, \$column.' as pl', 'db');
                 }
                 ";
+        }
+
+        if($activate_nested_table == "Si"){
+            $controllerContent .= "
+            
+            ";
         }
 
         $actions_buttons_grid_array = explode(',', $actions_buttons_grid);
