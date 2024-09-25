@@ -560,165 +560,190 @@ class HomeController
 		</div>
 		<div class="card-body bg-light">
 
-		<div class="form">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<label class="form-label">Tipo de Módulo:</label>
-						{crud_type}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<a class="nav-link active" id="modulos-tab" data-toggle="tab" href="#modulos" role="tab" aria-controls="modulos" aria-selected="true">Configuración de Módulos</a>
+			</li>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="pdf" aria-selected="false">Configuración de PDF</a>
+			</li>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+			</li>
+		</ul>
+
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="modulos" role="tabpanel" aria-labelledby="modulos-tab">
+			
+				<div class="form mt-4">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="form-label">Tipo de Módulo:</label>
+								{crud_type}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="form-label">Nombre Tabla Base de Datos:</label>
+								{tabla}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p>Cambie por su tabla o utilice la actual</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="form-label">ID Tabla Base de Datos:</label>
+								{id_tabla}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="form-label">Nombre del Controlador:</label>
+								{controller_name}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p>Cambie por su controlador o utilice el actual</p>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="form-label">Consulta DB:</label>
+								{query}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p>Cambie por su consulta o utilice la actual</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="form-label">Columnas de La Tabla:</label>
+								{columns_table}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Nombre de La Vista:</label>
+								{name_view}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p>Cambie por su vista o utilice la actual</p>
+							</div>
+						</div>
+						<div class="col-md-3 d-none">
+							<div class="form-group">
+								<label class="form-label">Agregar Al Menú Principal:</label>
+								{add_menu}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Usar Plantilla Formulario HTML:</label>
+								{template_fields}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Activar Filtro de Busqueda:</label>
+								{active_filter}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Clonar Filas:</label>
+								{clone_row}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Activar Popup:</label>
+								{active_popup}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Activar Búsqueda:</label>
+								{active_search}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Activar Eliminación Masiva:</label>
+								{activate_deleteMultipleBtn}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Botón Agregar:</label>
+								{button_add}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Botones de Exportación Grilla:</label>
+								{actions_buttons_grid}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Activar Tabla Anidada:</label>
+								{activate_nested_table}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Botones de Acción:</label>
+								{buttons_actions}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row modificar_tabla_col">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Modificar Tabla:</label>
+								{modify_query}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-6 campos_view_tabla">
+							<div class="form-group">
+								<label class="form-label">Vista Previa Campos Tabla Actual:</label>
+								<ul class="list-group vista_previa_campos_tabla"></ul>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-md-12">
-					<div class="form-group">
-						<label class="form-label">Nombre Tabla Base de Datos:</label>
-						{tabla}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						<p>Cambie por su tabla o utilice la actual</p>
-					</div>
-				</div>
+			
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<label class="form-label">ID Tabla Base de Datos:</label>
-						{id_tabla}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="form-group">
-						<label class="form-label">Nombre del Controlador:</label>
-						{controller_name}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						<p>Cambie por su controlador o utilice el actual</p>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="form-group">
-						<label class="form-label">Consulta DB:</label>
-						{query}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						<p>Cambie por su consulta o utilice la actual</p>
-					</div>
-				</div>
+			<div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdf-tab">
+			
+
+			
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<label class="form-label">Columnas de La Tabla:</label>
-						{columns_table}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Nombre de La Vista:</label>
-						{name_view}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						<p>Cambie por su vista o utilice la actual</p>
-					</div>
-				</div>
-				<div class="col-md-3 d-none">
-					<div class="form-group">
-						<label class="form-label">Agregar Al Menú Principal:</label>
-						{add_menu}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Usar Plantilla Formulario HTML:</label>
-						{template_fields}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Activar Filtro de Busqueda:</label>
-						{active_filter}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Clonar Filas:</label>
-						{clone_row}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Activar Popup:</label>
-						{active_popup}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Activar Búsqueda:</label>
-						{active_search}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Activar Eliminación Masiva:</label>
-						{activate_deleteMultipleBtn}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Botón Agregar:</label>
-						{button_add}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Botones de Exportación Grilla:</label>
-						{actions_buttons_grid}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Activar Tabla Anidada:</label>
-						{activate_nested_table}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group">
-						<label class="form-label">Botones de Acción:</label>
-						{buttons_actions}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-			</div>
-			<div class="row modificar_tabla_col">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label class="form-label">Modificar Tabla:</label>
-						{modify_query}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
-				</div>
-				<div class="col-md-6 campos_view_tabla">
-					<div class="form-group">
-						<label class="form-label">Vista Previa Campos Tabla Actual:</label>
-						<ul class="list-group vista_previa_campos_tabla"></ul>
-					</div>
-				</div>
-			</div>
+			<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
 		</div>
+
 		</div>
 		</div>
 		';
@@ -806,7 +831,7 @@ class HomeController
 		$pdocrud->setSearchCols(array("id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$pdocrud->formFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "nivel_db", "tabla_db", "consulta_crear_tabla", "name_controller_db", "name_view_db", "buttons_actions"));
 		$pdocrud->editFormFields(array("tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
-		
+
 		$pdocrud->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
 		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
