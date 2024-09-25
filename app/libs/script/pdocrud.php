@@ -1017,7 +1017,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         ));
     }
 
-    // Process SQL CRUD or normal CRUD
     if ($crud_type == "SQL") {
         $crudService = new App\Services\CrudService();
         $crudService->createCrud($tabla, $id_tabla, $crud_type, $query_db, $controller_name, $columns_table, $name_view, $template_fields, $active_filter, $clone_row);
