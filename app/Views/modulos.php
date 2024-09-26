@@ -19,6 +19,10 @@
 .form-control {
     min-width: 200px;
 }
+
+label:not(.form-check-label):not(.custom-file-label) {
+    display: flex;
+}
 </style>
 <div class="content-wrapper">
 	<section class="content">
