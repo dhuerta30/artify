@@ -950,6 +950,13 @@ class HomeController
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="form-label">Consulta de Base de Datos PDF:</label>
+							{consulta_pdf}
+							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						</div>
+					</div>	
 				</div>
 
 				<div class="row mt-4">
@@ -1045,6 +1052,7 @@ class HomeController
 		$pdocrud->fieldDataAttr("api_type", array("disabled"=>"disabled"));
 		$pdocrud->fieldDataAttr("autenticate_jwt_token", array("disabled"=>"disabled"));
 		$pdocrud->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
+		$pdocrud->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
 
 		$pdocrud->fieldTypes("refrescar_grilla", "select");
 		$pdocrud->fieldDataBinding("refrescar_grilla", array("Si" => "Si", "No" => "No"), "", "", "array");
@@ -1108,12 +1116,14 @@ class HomeController
 		$pdocrud->fieldCssClass("modify_query", array("modify_query"));
 		$pdocrud->fieldCssClass("activate_nested_table", array("activate_nested_table"));
 		$pdocrud->fieldCssClass("consulta_api", array("consulta_api"));
+		$pdocrud->fieldCssClass("consulta_pdf", array("consulta_pdf"));
 
 		$pdocrud->fieldCssClass("api_type", array("api_type"));
 		$pdocrud->fieldCssClass("generate_token_jwt", array("generate_token_jwt"));
 		$pdocrud->fieldCssClass("activate_api", array("activate_api"));
 		$pdocrud->fieldCssClass("autenticate_jwt_token", array("autenticate_jwt_token"));
 
+		$pdocrud->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("consulta_crear_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1122,9 +1132,9 @@ class HomeController
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		
-		$pdocrud->setSearchCols(array("consulta_api", "refrescar_grilla", "autenticate_jwt_token", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->formFields(array("consulta_api", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->editFormFields(array("consulta_api", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$pdocrud->setSearchCols(array("consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$pdocrud->formFields(array("consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$pdocrud->editFormFields(array("consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$pdocrud->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
