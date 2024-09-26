@@ -46,7 +46,7 @@ Class Artify {
     private $ArtifyView;
     private $ArtifyErrorCtrl;
     private $ArtifyHelper;
-    private $pdoTableFormatObj;
+    private $ArtifyTableFormat;
     private $pdocrudvalidate;
     private $objKey;
     private $HTMLContent;
@@ -194,7 +194,7 @@ Class Artify {
         $this->ArtifyView = new ArtifyView();
         $this->ArtifyErrorCtrl = new ArtifyErrorCtrl();
         $this->ArtifyHelper = new ArtifyHelper($this->ArtifyErrorCtrl);
-        $this->pdoTableFormatObj = new PDOCrudTableFormat($this->ArtifyErrorCtrl);
+        $this->ArtifyTableFormat = new ArtifyTableFormat($this->ArtifyErrorCtrl);
         $this->multi = $multi;
         /*if(!$this->pdocrudhelper->verifyPurchaseCode($this->settings)){
             die();
@@ -2378,7 +2378,7 @@ Class Artify {
      */
     public function setJsActions($element, $formula, $event, $eventFields = array() ) {
         $this->fieldCssClass($element, array("pdo_js_".$element));
-        $formulajs = $this->pdoTableFormatObj->renderFormula($element, $formula);
+        $formulajs = $this->ArtifyTableFormat->renderFormula($element, $formula);
         if(count($formulajs["fields"])){
           foreach($formulajs["fields"] as $field){
             $this->fieldCssClass($field, array("pdo_js_".$field));
@@ -2859,7 +2859,7 @@ Class Artify {
                     $field = $fieldName[1];
 
                     if (isset($this->fieldFormula[$field])) {
-                        $val = $this->pdoTableFormatObj->formatTableColOptions($field, $this->fieldFormula[$field], $val);
+                        $val = $this->ArtifyTableFormat->formatTableColOptions($field, $this->fieldFormula[$field], $val);
                     }
 
                     $data[$tableName][$field] = $val;
@@ -2902,7 +2902,7 @@ Class Artify {
                     $tableName = $fieldName[0];
                     $field = $fieldName[1];
                      if (isset($this->fieldFormula[$field])) {
-                        $val = $this->pdoTableFormatObj->formatTableColOptions($field, $this->fieldFormula[$field], $val);
+                        $val = $this->ArtifyTableFormat->formatTableColOptions($field, $this->fieldFormula[$field], $val);
                     }
 
                     $data[$tableName][$field] = $val;
@@ -2934,7 +2934,7 @@ Class Artify {
             $tablename = empty($val["tablename"]) ? $this->tableName :$val["tablename"];
             
             if (isset($this->fieldFormula[$field])) {
-                  $val = $this->pdoTableFormatObj->formatTableColOptions($field, $this->fieldFormula[$field], 
+                  $val = $this->ArtifyTableFormat->formatTableColOptions($field, $this->fieldFormula[$field], 
                     $val["value"], $data[$tablename]);
               }
               else
@@ -3500,19 +3500,19 @@ Class Artify {
         $this->crudTableColDataSource();
 
         if (is_array($this->tableDataFormat) && count($this->tableDataFormat)) {
-            $result = $this->pdoTableFormatObj->formatTableData($result, $this->tableDataFormat);
+            $result = $this->ArtifyTableFormat->formatTableData($result, $this->tableDataFormat);
         }
 
         if (is_array($this->colFormat) && count($this->colFormat)) {
-            $result = $this->pdoTableFormatObj->formatTableCol($result, $this->colFormat);
+            $result = $this->ArtifyTableFormat->formatTableCol($result, $this->colFormat);
         }
 
         if (is_array($this->colAdd) && count($this->colAdd)) {
-            $result = $this->pdoTableFormatObj->addTableCol($result, $this->colAdd);
+            $result = $this->ArtifyTableFormat->addTableCol($result, $this->colAdd);
         }
 
         if (is_array($this->colSumPerPage) && count($this->colSumPerPage)) {
-            $result = $this->pdoTableFormatObj->addSumPerPage($result, $this->colSumPerPage);
+            $result = $this->ArtifyTableFormat->addSumPerPage($result, $this->colSumPerPage);
         }
 
         if (is_array($this->colSumTotals) && count($this->colSumTotals)) {
@@ -3520,7 +3520,7 @@ Class Artify {
         }
 
         if (is_array($this->actions)  && count($this->actions)) {
-            $result = $this->pdoTableFormatObj->addColSwitch($result, $this->actions, $this->pk);
+            $result = $this->ArtifyTableFormat->addColSwitch($result, $this->actions, $this->pk);
         }
 
         if (is_array($this->bulkCrudUpdateCol) && count($this->bulkCrudUpdateCol)) {
@@ -3529,7 +3529,7 @@ Class Artify {
                 $data = array();
                 $param["attr"] = array_merge($param["attr"], array("data-id" => "{pk-val}", "data-col" => $col, "data-orignal-val" => "{val}"));
                 $data[$col] = array("field" => $this->getHTMLElement($col . "[]", $param["fieldType"], $param["attr"],  array("{val}"),  $param["fieldData"], array("input-bulk-crud-update")));
-                $result = $this->pdoTableFormatObj->bulkUpdate($result, $data, $this->pk);
+                $result = $this->ArtifyTableFormat->bulkUpdate($result, $data, $this->pk);
             }
         }
 
@@ -3702,7 +3702,7 @@ Class Artify {
             exit();
         }
         if (is_array($this->viewColFormat) && count($this->viewColFormat)) {
-            $result = $this->pdoTableFormatObj->formatTableCol($result, $this->viewColFormat);
+            $result = $this->ArtifyTableFormat->formatTableCol($result, $this->viewColFormat);
         }
         $result = $this->getViewHTMLData($result[0], $this->tableName);
         $result = $this->getSortedData($result);

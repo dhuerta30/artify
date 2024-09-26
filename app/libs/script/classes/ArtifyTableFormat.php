@@ -1,6 +1,6 @@
 <?php
 
-Class PDOCrudTableFormat extends ArtifyHelper {
+Class ArtifyTableFormat extends ArtifyHelper {
 
     public function __construct() {
         
