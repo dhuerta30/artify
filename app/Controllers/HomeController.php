@@ -896,6 +896,12 @@ class HomeController
 							</table>
 							</div>
 
+							<div class="row mt-4">
+								<div class="col-md-12 text-center">
+									<a href="javascript:;" class="btn btn-primary siguiente_1">Siguiente</a>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -924,6 +930,12 @@ class HomeController
 							{marca_de_agua_pdf}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
+					</div>
+				</div>
+
+				<div class="row mt-4">
+					<div class="col-md-12 text-center">
+						<a href="javascript:;" class="btn btn-primary siguiente_2">Siguiente</a>
 					</div>
 				</div>
 		
@@ -964,7 +976,7 @@ class HomeController
 				</div>
 
 
-				<div class="form-group text-center">
+				<div class="form-group mt-4 text-center">
                 	<input type="submit" class="btn btn-primary pdocrud-form-control pdocrud-submit mb-3" name="pdocrud_submit_19MsSO3Edq" data-action="insert" value="Guardar"> 
 					<button type="button" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-back" name="pdocrud_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
 					<button type="reset" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-cancel-btn" name="pdocrud_cancel_19MsSO3Edq">Cancelar</button>
