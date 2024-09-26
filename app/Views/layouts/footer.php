@@ -17,6 +17,21 @@
 <script src="<?=$_ENV["BASE_URL"]?>theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=$_ENV["BASE_URL"]?>theme/dist/js/adminlte.min.js"></script>
+<script src="<?=$_ENV["BASE_URL"]?>js/shBrushPhp.js"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.all();
+    jQuery(".sidebar-menu li a").each(function ($) {
+        var path = window.location.href;
+
+        var current = path.substring(path.lastIndexOf('/') + 1);
+        var url = jQuery(this).attr('href');
+        if (url == current) {
+            jQuery(this).parent().addClass("active");
+            jQuery(this).parents("ul").css({"display": "block"});
+        }
+    });
+
+</script>
 <!-- AdminLTE for demo purposes -->
 <script>
     $('#loader').show();

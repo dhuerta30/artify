@@ -109,7 +109,7 @@
        
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                <a class="nav-link active" id="columns_search-tab" data-toggle="tab" href="#columns_search" role="tab" aria-controls="columns_search" aria-selected="true">Establecer columnas de búsqueda</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
@@ -119,7 +119,15 @@
             </li>
         </ul>
             <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+            <div class="tab-pane fade show active" id="columns_search" role="tabpanel" aria-labelledby="columns_search-tab">
+
+                <section class="code-section">
+                    <pre class="brush: php;"> 
+                        $pdocrud->setSearchCols(array("id","first_name"));
+                    </pre>
+                </section>
+                                    
+            </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
