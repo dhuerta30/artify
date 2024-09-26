@@ -796,7 +796,7 @@ class HomeController
 								<tbody>
 									<tr>
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1">
-											<select class="form-control pdocrud-form-control pdocrud-select nivel" id="nivel_db[]" name="nivel_db[]" disabled="disabled" required="1">
+											<select class="form-control pdocrud-form-control pdocrud-select nivel" name="nivel_db[]" disabled="disabled" required="1">
 												<option value="">Seleccionar</option>
 												<option selected="selected" value="2">2</option>
 												<option value="3">3</option>
@@ -804,10 +804,79 @@ class HomeController
 											</select>
 										</td>
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_2">
-											<input type="text" class="form-control pdocrud-form-control pdocrud-text tabla_db" id="tabla_db[]" name="tabla_db[]" disabled="disabled" required="1">
+											<input type="text" class="form-control pdocrud-form-control pdocrud-text tabla_db" name="tabla_db[]" disabled="disabled" required="1">
 										</td>
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
-											<textarea class="form-control pdocrud-form-control  pdocrud-textarea consulta_crear_tabla" id="consulta_crear_tabla[]" name="consulta_crear_tabla[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
+											<textarea class="form-control pdocrud-form-control  pdocrud-textarea consulta_crear_tabla" name="consulta_crear_tabla[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<select class="form-control pdocrud-form-control pdocrud-select template_fields_db" disabled="disabled" name="template_fields_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<select class="form-control pdocrud-form-control pdocrud-select active_filter_db" disabled="disabled" name="active_filter_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<select class="form-control pdocrud-form-control pdocrud-select clone_row_db" disabled="disabled" name="clone_row_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<select class="form-control pdocrud-form-control pdocrud-select active_popup_db" disabled="disabled" name="active_popup_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<select class="form-control pdocrud-form-control pdocrud-select " id="active_search_db" disabled="disabled" name="active_search_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<select class="form-control pdocrud-form-control pdocrud-select activate_deleteMultipleBtn_db" disabled="disabled" name="activate_deleteMultipleBtn_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<select class="form-control pdocrud-form-control pdocrud-select button_add_db" disabled="disabled" name="button_add_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<div class="checkbox pdocrud-checkbox-group"><label class="checkbox-inline">
+												<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" name="actions_buttons_grid_db[]" value="Imprimir">Imprimir</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" name="actions_buttons_grid_db[]" value="PDF">PDF</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" name="actions_buttons_grid_db[]" value="CSV">CSV</label>
+												<label class="checkbox-inline"><input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" name="actions_buttons_grid_db[]" value="Excel">Excel</label>
+											</div>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<select class="form-control pdocrud-form-control pdocrud-select activate_nested_table_db" disabled="disabled" name="activate_nested_table_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
+											<textarea class="form-control pdocrud-form-control  pdocrud-textarea buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
 										</td>
 										<td>
 											<a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a>
