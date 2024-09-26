@@ -15,11 +15,11 @@ class UserController
         // Obtener un parámetro de la URL
         $parametro = $request->get('id');
 
-        $pdocrud = DB::PDOCrud();
+        $artify = DB::ArtifyCrud();
         if(isset($parametro)){
-            $pdocrud->where("id", $parametro, "=");
+            $artify->where("id", $parametro, "=");
         }
-        $render = $pdocrud->dbTable("usuario")->render();
+        $render = $artify->dbTable("usuario")->render();
 
         View::render('index', ['render' => $render]);
     }
