@@ -951,6 +951,7 @@ class HomeController
 							<label class="form-label">Generar JWT Token Api:</label>
 							{generate_token_jwt}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							<button class="btn btn-info generar_token_api d-none">Generar Token</button>
 						</div>
 					</div>
 					<div class="col-md-4">
@@ -960,6 +961,13 @@ class HomeController
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
+				</div>
+
+
+				<div class="form-group text-center">
+                	<input data-form-id="iJQqfzrBgy" type="submit" class="btn btn-primary pdocrud-form-control pdocrud-submit mb-3 " id="pdocrud_submit_19MsSO3Edq" name="pdocrud_submit_19MsSO3Edq" data-action="insert" value="Guardar"> 
+					<button data-form-id="iJQqfzrBgy" type="button" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-back" id="pdocrud_submit_19MsSO3Edq_back" name="pdocrud_submit_19MsSO3Edq_back" data-action="back" data-dismiss="modal">Regresar</button> 
+					<button data-form-id="iJQqfzrBgy" type="button" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-cancel-btn" id="pdocrud_cancel_19MsSO3Edq" name="pdocrud_cancel_19MsSO3Edq">Cancelar</button> 
 				</div>
 
 			</div>
@@ -1043,6 +1051,11 @@ class HomeController
 		$pdocrud->fieldCssClass("modify_query", array("modify_query"));
 		$pdocrud->fieldCssClass("activate_nested_table", array("activate_nested_table"));
 
+		$pdocrud->fieldCssClass("api_type", array("api_type"));
+		$pdocrud->fieldCssClass("generate_token_jwt", array("generate_token_jwt"));
+		$pdocrud->fieldCssClass("activate_api", array("activate_api"));
+		$pdocrud->fieldCssClass("autenticate_jwt_token", array("autenticate_jwt_token"));
+
 		$pdocrud->fieldAttributes("consulta_crear_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("modify_query", array("placeholder"=> "Ejemplo: DROP COLUMN categoria, ADD COLUMN edad INT(3)", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1119,6 +1132,10 @@ class HomeController
 		$pdocrud->addCallback("after_insert", "despues_de_insertar_modulos");
 		$pdocrud->addCallback("before_update", "actualizar_modulos");
 		$pdocrud->addCallback("before_delete", "eliminar_modulos");
+
+		$pdocrud->buttonHide("submitBtn");
+		$pdocrud->buttonHide("submitBtnBack");
+		$pdocrud->buttonHide("cancel");
 
 		$action = $_ENV["BASE_URL"] . "{controller_name}/index";
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
