@@ -965,9 +965,9 @@ class HomeController
 
 
 				<div class="form-group text-center">
-                	<input data-form-id="iJQqfzrBgy" type="submit" class="btn btn-primary pdocrud-form-control pdocrud-submit mb-3 " id="pdocrud_submit_19MsSO3Edq" name="pdocrud_submit_19MsSO3Edq" data-action="insert" value="Guardar"> 
-					<button data-form-id="iJQqfzrBgy" type="button" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-back" id="pdocrud_submit_19MsSO3Edq_back" name="pdocrud_submit_19MsSO3Edq_back" data-action="back" data-dismiss="modal">Regresar</button> 
-					<button data-form-id="iJQqfzrBgy" type="button" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-cancel-btn" id="pdocrud_cancel_19MsSO3Edq" name="pdocrud_cancel_19MsSO3Edq">Cancelar</button> 
+                	<input type="submit" class="btn btn-primary pdocrud-form-control pdocrud-submit mb-3" name="pdocrud_submit_19MsSO3Edq" data-action="insert" value="Guardar"> 
+					<button type="button" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-back" name="pdocrud_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
+					<button type="reset" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-cancel-btn" name="pdocrud_cancel_19MsSO3Edq">Cancelar</button>
 				</div>
 
 			</div>
