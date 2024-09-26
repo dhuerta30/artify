@@ -229,7 +229,7 @@ DB_TYPE=mysql
 
 BASE_URL=/artify/
 
-URL_PDOCRUD=/artify/app/libs/
+URL_ArtifyCrud=/artify/app/libs/
 UPLOAD_URL=app/libs/script/uploads/
 DOWNLOAD_URL=/artify/app/libs/script/downloads/
 DOWNLOAD_FOLDER=downloads/
