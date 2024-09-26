@@ -898,7 +898,7 @@ class HomeController
 
 							<div class="row mt-4">
 								<div class="col-md-12 text-center">
-									<a href="javascript:;" class="btn btn-primary siguiente_1">Siguiente</a>
+									<a href="javascript:;" class="btn btn-primary siguiente_1">Siguiente <i class="fa fa-arrow-right"></i></a>
 								</div>
 							</div>
 
@@ -935,8 +935,8 @@ class HomeController
 
 				<div class="row mt-4">
 					<div class="col-md-12 text-center">
-						<a href="javascript:;" class="btn btn-primary anterior">Anterior</a>
-						<a href="javascript:;" class="btn btn-primary siguiente_2">Siguiente</a>
+						<a href="javascript:;" class="btn btn-primary anterior"><i class="fa fa-arrow-left"></i> Anterior</a>
+						<a href="javascript:;" class="btn btn-primary siguiente_2">Siguiente <i class="fa fa-arrow-right"></i></a>
 					</div>
 				</div>
 		
