@@ -901,6 +901,13 @@ class HomeController
 			<div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdf-tab">
 			
 				<div class="row mt-4">
+					<div class="col-md-12">
+							<div class="form-group">
+								<label class="form-label">Activar PDF:</label>
+								{activate_pdf}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>	
 					<div class="col-md-6">
 						<div class="form-group">
 							<label class="form-label">Subir Logo PDF:</label>
@@ -935,6 +942,7 @@ class HomeController
 		$pdocrud->fieldNotMandatory("actions_buttons_grid");
 		$pdocrud->fieldNotMandatory("buttons_actions");
 		$pdocrud->formFieldValue("activate_nested_table", "No");
+		$pdocrud->formFieldValue("activate_pdf", "No");
 
 		$pdocrud->fieldNotMandatory("modify_query");
 
@@ -952,6 +960,9 @@ class HomeController
 
 		$pdocrud->fieldTypes("button_add", "select");
 		$pdocrud->fieldDataBinding("button_add", array("Si" => "Si", "No" => "No"), "", "", "array");
+
+		$pdocrud->fieldTypes("activate_pdf", "select");
+		$pdocrud->fieldDataBinding("activate_pdf", array("Si" => "Si", "No" => "No"), "", "", "array");
 
 		$pdocrud->fieldTypes("activate_deleteMultipleBtn", "select");
 		$pdocrud->fieldDataBinding("activate_deleteMultipleBtn", array("Si" => "Si", "No" => "No"), "", "", "array");
@@ -986,8 +997,8 @@ class HomeController
 		$pdocrud->tableHeading("Generador de Módulos");
 		
 		$pdocrud->setSearchCols(array("id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->formFields(array("logo_pdf", "marca_de_agua_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->editFormFields(array("logo_pdf", "marca_de_agua_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$pdocrud->formFields(array("logo_pdf", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$pdocrud->editFormFields(array("logo_pdf", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$pdocrud->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
