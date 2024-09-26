@@ -269,10 +269,10 @@ ALLOW_QUERY_EXECUTION=true
 TABLE_FORMAT=horizontle
 ```
 # Asignar menus a usuarios
-![Asignar menus a usuarios](https://github.com/dhuerta30/procedimiento/blob/main/Screenshot_21.png)
+![Asignar menus a usuarios](https://github.com/dhuerta30/procedimiento/blob/main/Screenshot_208.png)
 
 # Mantenedor de Menus
-![Mantenedor de Menus](https://github.com/dhuerta30/procedimiento/blob/main/Screenshot_22.png)
+![Mantenedor de Menus](https://github.com/dhuerta30/procedimiento/blob/main/Screenshot_210.png)
 
 # Respaldo de DB
-![Respaldo de DB](https://github.com/dhuerta30/procedimiento/blob/main/Screenshot_23.png)
+![Respaldo de DB](https://github.com/dhuerta30/procedimiento/blob/main/Screenshot_212.png)
