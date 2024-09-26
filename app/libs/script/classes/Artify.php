@@ -45,7 +45,7 @@ Class Artify {
     private $currentLang;
     private $ArtifyView;
     private $ArtifyErrorCtrl;
-    private $pdocrudhelper;
+    private $ArtifyHelper;
     private $pdoTableFormatObj;
     private $pdocrudvalidate;
     private $objKey;
@@ -193,7 +193,7 @@ Class Artify {
         $this->objKey = $this->getRandomKey();
         $this->ArtifyView = new ArtifyView();
         $this->ArtifyErrorCtrl = new ArtifyErrorCtrl();
-        $this->pdocrudhelper = new PDOCrudHelper($this->ArtifyErrorCtrl);
+        $this->ArtifyHelper = new ArtifyHelper($this->ArtifyErrorCtrl);
         $this->pdoTableFormatObj = new PDOCrudTableFormat($this->ArtifyErrorCtrl);
         $this->multi = $multi;
         /*if(!$this->pdocrudhelper->verifyPurchaseCode($this->settings)){
@@ -3101,7 +3101,7 @@ Class Artify {
         if (strtolower($recordPerPage) === "all" || $recordPerPage > $totalRecords)
             $recordPerPage = $totalRecords;
 
-        $pagination = $this->pdocrudhelper->pagination($this->currentpage, $totalRecords, $recordPerPage, $this->settings["adjacents"], $this->langData);
+        $pagination = $this->ArtifyHelper->pagination($this->currentpage, $totalRecords, $recordPerPage, $this->settings["adjacents"], $this->langData);
         $this->setTableColumns($pdoModelObj);
 
         if ($totalRecords > 0) {
@@ -3227,7 +3227,7 @@ Class Artify {
         $result = $pdoModelObj->executeQuery($limitSql, $data);
 
         // Genera la paginación
-        $pagination = $this->pdocrudhelper->paginationSQL($this->currentpage, $totalRecords, $recordPerPage, $this->settings["adjacents"], $this->langData);
+        $pagination = $this->ArtifyHelper->paginationSQL($this->currentpage, $totalRecords, $recordPerPage, $this->settings["adjacents"], $this->langData);
     
         // Configura los encabezados y datos de la tabla
         if ($totalRecords > 0 && !empty($result)) {

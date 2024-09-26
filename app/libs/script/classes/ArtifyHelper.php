@@ -1,6 +1,6 @@
 <?php
 
-Class PDOCrudHelper {
+Class ArtifyHelper {
 
     private $logFile = "log.txt";
     public $recordErrorLog = true;
@@ -13,7 +13,7 @@ Class PDOCrudHelper {
     public $pdfSubject = "PDF Subject Name"; // Subject name for pdf	
     private $errorCollector;
 
-    function __construct(PDOCrudErrorCtrl $errorCollector) {
+    function __construct(ArtifyErrorCtrl $errorCollector) {
         $this->errorCollector = $errorCollector;
     }
 

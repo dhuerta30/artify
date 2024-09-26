@@ -28,7 +28,7 @@ class PDOModel
     public $rowsChanged;                // rows changed/affected during insert, update and delete operation
     public $dbSQLitePath;               // Path for sqlite
     public $fetchType;                  // set different ways of fetching data
-    private $pdocrudErrCtrl;            // set error controller
+    private $ArtifyErrorCtrl;            // set error controller
 
     private $whereCondition = "";
     private $dbObj = NULL;
@@ -99,9 +99,9 @@ class PDOModel
     {
     }
 
-    public function setErrorCtrl(PDOCrudErrorCtrl $pdocrudErrCtrl)
+    public function setErrorCtrl(ArtifyErrorCtrl $ArtifyErrorCtrl)
     {
-        $this->pdocrudErrCtrl = $pdocrudErrCtrl;
+        $this->ArtifyErrorCtrl = $ArtifyErrorCtrl;
     }
 
     /**
