@@ -271,6 +271,9 @@ TABLE_FORMAT=horizontle
 # Asignar menus a usuarios
 ![Asignar menus a usuarios](https://github.com/dhuerta30/artify/blob/main/Screenshot_208.png)
 
+# Generador de Módulos
+![Asignar menus a usuarios](https://github.com/dhuerta30/artify/blob/main/Screenshot_209.png)
+
 # Mantenedor de Menus
 ![Mantenedor de Menus](https://github.com/dhuerta30/artify/blob/main/Screenshot_210.png)
 
