@@ -571,6 +571,9 @@ class HomeController
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="pdf" aria-selected="false">Configuración de PDF</a>
 			</li>
+			 <li class="nav-item" role="presentation">
+				<a class="nav-link" id="Api-tab" data-toggle="tab" href="#Api" role="tab" aria-controls="Api" aria-selected="false">Conficuración Api</a>
+			</li>
 		</ul>
 
 		<div class="tab-content" id="myTabContent">
@@ -924,6 +927,10 @@ class HomeController
 					</div>
 				</div>
 		
+			</div>
+
+			<div class="tab-pane fade" id="Api" role="tabpanel" aria-labelledby="Api-tab">
+
 			</div>
 		</div>
 
