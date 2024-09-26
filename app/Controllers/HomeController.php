@@ -721,6 +721,13 @@ class HomeController
 								<p class="pdocrud_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="form-label">Refrescar Grilla:</label>
+								{refrescar_grilla}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
 					</div>
 					<div class="row modificar_tabla_col">
 						<div class="col-md-6">
@@ -1006,6 +1013,8 @@ class HomeController
 		$pdocrud->formFieldValue("activate_pdf", "No");
 		$pdocrud->formFieldValue("activate_api", "No");
 		$pdocrud->formFieldValue("generate_token_jwt", "No");
+		$pdocrud->formFieldValue("refrescar_grilla", "No");
+
 		$pdocrud->fieldNotMandatory("modify_query");
 		$pdocrud->fieldTypes("logo_pdf", "FILE_NEW");
 		$pdocrud->fieldTypes("marca_de_agua_pdf", "FILE_NEW");
@@ -1016,6 +1025,9 @@ class HomeController
 		//$pdocrud->fieldDataAttr("generate_token_jwt", array("disabled"=>"disabled"));
 		//$pdocrud->fieldDataAttr("api_type", array("disabled"=>"disabled"));
 		$pdocrud->fieldDataAttr("autenticate_jwt_token", array("disabled"=>"disabled"));
+
+		$pdocrud->fieldTypes("refrescar_grilla", "select");
+		$pdocrud->fieldDataBinding("refrescar_grilla", array("Si" => "Si", "No" => "No"), "", "", "array");
 
 		$pdocrud->fieldTypes("generate_token_jwt", "select");
 		$pdocrud->fieldDataBinding("generate_token_jwt", array("Si" => "Si", "No" => "No"), "", "", "array");
@@ -1078,9 +1090,9 @@ class HomeController
 		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
 		$pdocrud->tableHeading("Generador de Módulos");
 		
-		$pdocrud->setSearchCols(array("autenticate_jwt_token", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->formFields(array("autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->editFormFields(array("autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$pdocrud->setSearchCols(array("refrescar_grilla", "autenticate_jwt_token", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$pdocrud->formFields(array("refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$pdocrud->editFormFields(array("refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$pdocrud->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
