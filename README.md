@@ -58,7 +58,7 @@ php artify create:crud nombre_tabla "
     estado VARCHAR(100)" nombre_vista
 ```
 
-# Para crear una Plantilla PDOCrud use el comando por consola
+# Para crear una Plantilla ArtifyCrud use el comando por consola
 
 ```cmd
 php artify make:templatecrud nombre_template
@@ -86,7 +86,7 @@ use App\core\Token;  // llama a los tokens de formularios
 use App\core\Request; // llama a los parametros por $_POST
 use App\core\View; // llama a los metodos que cargan la vista
 use App\core\Redirect;  // llama a los metodos que usan redirecciones para no usar header("Location: ");
-use App\core\DB;  // llama a PDOModel y PDOCrud para generar mantenedores con pocas lineas de codigo y consultas a la base de datos
+use App\core\DB;  // llama a Queryfy y ArtifyCrud para generar mantenedores con pocas lineas de codigo y consultas a la base de datos
 use Xinvoice;  // llama al generador de PDF
 use Coderatio\SimpleBackup\SimpleBackup;  // libreria para generar respaldos a la BD
 use App\Models\DatosPacienteModel;  // llama al modelo 
