@@ -1,10 +1,10 @@
 <?php
 
 namespace App\core;
-use PDOCrud;
+use Artify;
 
 class DB {
-    public static function PDOCrud($multi = false, $template = "", $skin = "", $settings = array())
+    public static function ArtifyCrud($multi = false, $template = "", $skin = "", $settings = array())
     {
         $settings["script_url"] = $_ENV['URL_PDOCRUD'];
         $settings["uploadURL"] = $_ENV['UPLOAD_URL'];
@@ -16,8 +16,8 @@ class DB {
         $settings["dbtype"] = $_ENV['DB_TYPE'];
         $settings["characterset"] = $_ENV["CHARACTER_SET"];
 
-        $pdocrud = new PDOCrud($multi, $template, $skin, $settings);
-        return $pdocrud;
+        $artify = new Artify($multi, $template, $skin, $settings);
+        return $artify;
     }
 
 	public static function evalBool($value)
@@ -27,14 +27,14 @@ class DB {
 
     public static function PDOModel()
     {
-        $pdocrud = DB::PDOCrud();
-        $pdomodel = $pdocrud->getPDOMOdelObj();
+        $artify = DB::ArtifyCrud();
+        $pdomodel = $artify->getPDOMOdelObj();
         $pdomodel->fetchType = "OBJ";
         return $pdomodel;
     }
 
     public static function PHPMail($hacia, $desde, $asunto, $mensaje){
-		$pdocrud = DB::PDOCrud();
+		$artify = DB::ArtifyCrud();
 		// Parámetros para el correo electrónico
 		$to = array(
 			$hacia => 'Nombre Destinatario 1'
@@ -57,7 +57,7 @@ class DB {
 			'SMTPKeepAlive' => DB::evalBool($_ENV['SMTP_KEEP_ALIVE'])
 		);
 		$isHTML = true;
-		return $pdocrud->sendEmail($to, $subject, $message, $from, $altMessage, $cc, $bcc, $attachments, $mode, $smtp, $isHTML);
+		return $artify->sendEmail($to, $subject, $message, $from, $altMessage, $cc, $bcc, $attachments, $mode, $smtp, $isHTML);
 	}
 
 	public static function performPagination($registros_por_pagina, $pagina_actual, $tabla, $id, $parametro)

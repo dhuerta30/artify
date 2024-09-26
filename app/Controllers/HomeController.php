@@ -188,8 +188,8 @@ class HomeController
 			$selectedMenus = $request->post("selectedMenus");
 
 			if (is_array($selectedMenus)) {
-				$pdocrud = DB::PDOCrud();
-				$pdomodel = $pdocrud->getPDOModelObj();
+				$artify = DB::ArtifyCrud();
+				$pdomodel = $artify->getPDOModelObj();
 
 				$menuMarcado = false;
 				$menuDesmarcado = false;
@@ -288,25 +288,25 @@ class HomeController
 
 
 	public function acceso_menus(){
-		$pdocrud = DB::PDOCrud();
-		$pdocrud->colRename("idrol", "Rol");
-		$pdocrud->colRename("id", "ID");
-		$pdocrud->relatedData('idrol','rol','idrol','nombre_rol');
-		$pdocrud->tableColFormatting("avatar", "html",array("type" =>"html","str"=>'<img width="50" src="'.$_ENV["BASE_URL"].'app/libs/script/uploads/{col-name}">'));
-		$pdocrud->crudRemoveCol(array("rol","estatus","password", "token", "token_api", "expiration_token"));
-		$pdocrud->setSearchCols(array("id","nombre","email", "usuario", "idrol"));
-		$pdocrud->setSettings("addbtn", false);
-		$pdocrud->setSettings("viewbtn", false);
-		$pdocrud->setSettings('editbtn', true);    
-		$pdocrud->setSettings('delbtn', true);
-		$pdocrud->setSettings("printBtn", false);
-		$pdocrud->setSettings("pdfBtn", false);
-		$pdocrud->setSettings("csvBtn", false);
-		$pdocrud->setSettings("excelBtn", false);
-		$pdocrud->setSettings("template", "acceso_usuarios_menus");
-		$pdocrud->setSettings("deleteMultipleBtn", false);
-		$pdocrud->setSettings("checkboxCol", false);
-		$render = $pdocrud->dbTable("usuario")->render();
+		$artify = DB::ArtifyCrud();
+		$artify->colRename("idrol", "Rol");
+		$artify->colRename("id", "ID");
+		$artify->relatedData('idrol','rol','idrol','nombre_rol');
+		$artify->tableColFormatting("avatar", "html",array("type" =>"html","str"=>'<img width="50" src="'.$_ENV["BASE_URL"].'app/libs/script/uploads/{col-name}">'));
+		$artify->crudRemoveCol(array("rol","estatus","password", "token", "token_api", "expiration_token"));
+		$artify->setSearchCols(array("id","nombre","email", "usuario", "idrol"));
+		$artify->setSettings("addbtn", false);
+		$artify->setSettings("viewbtn", false);
+		$artify->setSettings('editbtn', true);    
+		$artify->setSettings('delbtn', true);
+		$artify->setSettings("printBtn", false);
+		$artify->setSettings("pdfBtn", false);
+		$artify->setSettings("csvBtn", false);
+		$artify->setSettings("excelBtn", false);
+		$artify->setSettings("template", "acceso_usuarios_menus");
+		$artify->setSettings("deleteMultipleBtn", false);
+		$artify->setSettings("checkboxCol", false);
+		$render = $artify->dbTable("usuario")->render();
 
 		View::render(
 			'acceso_menus',[
@@ -319,50 +319,50 @@ class HomeController
 	{
 		if($_SESSION["usuario"][0]["idrol"] == 1){
             $token = $this->token;
-			$pdocrud = DB::PDOCrud();
-			$pdocrud->fieldCssClass("id", array("d-none"));
-			$pdocrud->tableHeading("Lista de usuarios");
-            $pdocrud->formStaticFields("token_form", "html", "<input type='hidden' name='auth_token' value='" . $token . "' />");
-			$pdocrud->tableColFormatting("avatar", "html",array("type" =>"html","str"=>'<img width="80" src="'.$_ENV["BASE_URL"].'app/libs/script/uploads/{col-name}">'));
-			$pdocrud->fieldDataAttr("password", array("value"=>"", "placeholder" => "*****", "autocomplete" => "new-password"));
-			$pdocrud->formDisplayInPopup();
-			$pdocrud->fieldGroups("Name",array("nombre","email"));
-			$pdocrud->fieldGroups("Name2",array("usuario","password"));
-			$pdocrud->fieldGroups("Name3",array("idrol","avatar"));
-			$pdocrud->setSettings("required", false);
-			$pdocrud->setSettings("checkboxCol", false);
-			$pdocrud->setSettings("refresh", false);
-			$pdocrud->setSettings('editbtn', true);    
-            $pdocrud->setSettings('delbtn', true);
-			$pdocrud->setSettings("deleteMultipleBtn", false);
-			$pdocrud->colRename("id", "ID");
-			$pdocrud->colRename("idrol", "Rol");
-			$pdocrud->colRename("email", "Correo");
-			$pdocrud->fieldHideLable("id");
-			$pdocrud->addCallback("before_insert", "insetar_usuario");
-			$pdocrud->addCallback("before_update", "editar_usuario");
-			$pdocrud->crudRemoveCol(array("rol","estatus","password", "token", "token_api", "expiration_token"));
-			$pdocrud->setSearchCols(array("id","nombre","email", "usuario", "idrol"));
-			$pdocrud->where("estatus", 1);
-			$pdocrud->recordsPerPage(5);
-			$pdocrud->fieldTypes("avatar", "FILE_NEW");
-			$pdocrud->fieldTypes("password", "password");
-			$pdocrud->fieldRenameLable("nombre", "Nombre Completo");
-			$pdocrud->fieldRenameLable("email", "Correo electrónico");
-			$pdocrud->fieldRenameLable("password", "Clave de acceso");
-			$pdocrud->fieldRenameLable("idrol", "Tipo Usuario");
-			$pdocrud->setSettings("viewbtn", false);
-			$pdocrud->setSettings("hideAutoIncrement", false);
-			$pdocrud->setSettings("template", "usuarios");
-			$pdocrud->buttonHide("submitBtnSaveBack");
-			$pdocrud->formFields(array("id","nombre","email","password","usuario", "idrol", "avatar"));
-			$pdocrud->setRecordsPerPageList(array(5, 10, 15, 'All'=> 'Todo'));
-			$pdocrud->setSettings("printBtn", false);
-			$pdocrud->setSettings("pdfBtn", false);
-			$pdocrud->setSettings("csvBtn", false);
-			$pdocrud->setSettings("excelBtn", false);
-			$pdocrud->relatedData('idrol','rol','idrol','nombre_rol');
-			$render = $pdocrud->dbTable("usuario")->render();
+			$artify = DB::ArtifyCrud();
+			$artify->fieldCssClass("id", array("d-none"));
+			$artify->tableHeading("Lista de usuarios");
+            $artify->formStaticFields("token_form", "html", "<input type='hidden' name='auth_token' value='" . $token . "' />");
+			$artify->tableColFormatting("avatar", "html",array("type" =>"html","str"=>'<img width="80" src="'.$_ENV["BASE_URL"].'app/libs/script/uploads/{col-name}">'));
+			$artify->fieldDataAttr("password", array("value"=>"", "placeholder" => "*****", "autocomplete" => "new-password"));
+			$artify->formDisplayInPopup();
+			$artify->fieldGroups("Name",array("nombre","email"));
+			$artify->fieldGroups("Name2",array("usuario","password"));
+			$artify->fieldGroups("Name3",array("idrol","avatar"));
+			$artify->setSettings("required", false);
+			$artify->setSettings("checkboxCol", false);
+			$artify->setSettings("refresh", false);
+			$artify->setSettings('editbtn', true);    
+            $artify->setSettings('delbtn', true);
+			$artify->setSettings("deleteMultipleBtn", false);
+			$artify->colRename("id", "ID");
+			$artify->colRename("idrol", "Rol");
+			$artify->colRename("email", "Correo");
+			$artify->fieldHideLable("id");
+			$artify->addCallback("before_insert", "insetar_usuario");
+			$artify->addCallback("before_update", "editar_usuario");
+			$artify->crudRemoveCol(array("rol","estatus","password", "token", "token_api", "expiration_token"));
+			$artify->setSearchCols(array("id","nombre","email", "usuario", "idrol"));
+			$artify->where("estatus", 1);
+			$artify->recordsPerPage(5);
+			$artify->fieldTypes("avatar", "FILE_NEW");
+			$artify->fieldTypes("password", "password");
+			$artify->fieldRenameLable("nombre", "Nombre Completo");
+			$artify->fieldRenameLable("email", "Correo electrónico");
+			$artify->fieldRenameLable("password", "Clave de acceso");
+			$artify->fieldRenameLable("idrol", "Tipo Usuario");
+			$artify->setSettings("viewbtn", false);
+			$artify->setSettings("hideAutoIncrement", false);
+			$artify->setSettings("template", "usuarios");
+			$artify->buttonHide("submitBtnSaveBack");
+			$artify->formFields(array("id","nombre","email","password","usuario", "idrol", "avatar"));
+			$artify->setRecordsPerPageList(array(5, 10, 15, 'All'=> 'Todo'));
+			$artify->setSettings("printBtn", false);
+			$artify->setSettings("pdfBtn", false);
+			$artify->setSettings("csvBtn", false);
+			$artify->setSettings("excelBtn", false);
+			$artify->relatedData('idrol','rol','idrol','nombre_rol');
+			$render = $artify->dbTable("usuario")->render();
 
 			View::render(
 				'home',
@@ -434,7 +434,7 @@ class HomeController
 	}
 
 	public function respaldos(){
-		$respaldos = DB::PDOCrud();
+		$respaldos = DB::ArtifyCrud();
         $respaldos->tableHeading("Respaldos");
         $respaldos->fieldTypes("file", "file");
         $respaldos->dbOrderBy("hora desc");
@@ -478,8 +478,8 @@ class HomeController
 			$hour = date('G:i:s');
 			$user = $_SESSION['usuario'][0]["usuario"];
 
-			$pdocrud = DB::PDOCrud();
-			$pdomodel = $pdocrud->getPDOModelObj();
+			$artify = DB::ArtifyCrud();
+			$pdomodel = $artify->getPDOModelObj();
 			$id = $pdomodel->select("backup");
 
 			$exportDirectory = realpath(__DIR__ . '/../libs/script/uploads');
@@ -536,16 +536,16 @@ class HomeController
     }
 
 	public static function menuDB(){
-		$pdocrud = DB::PDOCrud();
-		$pdomodel = $pdocrud->getPDOModelObj();
+		$artify = DB::ArtifyCrud();
+		$pdomodel = $artify->getPDOModelObj();
 		$pdomodel->orderBy(array("orden_menu asc"));
 		$data = $pdomodel->select("menu");
 		return $data;
 	}
 
 	public static function submenuDB($idMenu){
-		$pdocrud = DB::PDOCrud();
-		$pdomodel = $pdocrud->getPDOModelObj();
+		$artify = DB::ArtifyCrud();
+		$pdomodel = $artify->getPDOModelObj();
 		$pdomodel->where("id_menu", $idMenu, "=");
 		$pdomodel->orderBy(array("orden_submenu asc")); // Ajusta el nombre de la columna de ordenación si es diferente
 		$data = $pdomodel->select("submenu");
@@ -556,7 +556,7 @@ class HomeController
 	{
 		$id_sesion_usuario = $_SESSION['usuario'][0]["id"];
 
-		$pdocrud = DB::PDOCrud();
+		$artify = DB::ArtifyCrud();
 		$html_template = '
 		<div class="card">
 		<div class="card-body bg-dark">
@@ -1024,44 +1024,44 @@ class HomeController
 		</div>
 		</div>
 		';
-		$pdocrud->set_template($html_template);
-		$pdocrud->setLangData("no_data", "No Hay Módulos creados");
-		$pdocrud->formFieldValue("active_popup", "No");
-		$pdocrud->formFieldValue("add_menu", "Si");
-		$pdocrud->formFieldValue("active_filter", "No");
-		$pdocrud->formFieldValue("clone_row", "No");
-		$pdocrud->formFieldValue("button_add", "Si");
-		$pdocrud->formFieldValue("activate_deleteMultipleBtn", "No");
-		$pdocrud->formFieldValue("active_search", "No");
-		$pdocrud->fieldNotMandatory("actions_buttons_grid");
-		$pdocrud->fieldNotMandatory("buttons_actions");
-		$pdocrud->formFieldValue("activate_nested_table", "No");
-		$pdocrud->formFieldValue("activate_pdf", "No");
-		$pdocrud->formFieldValue("activate_api", "No");
-		$pdocrud->formFieldValue("generate_token_jwt", "No");
-		$pdocrud->formFieldValue("refrescar_grilla", "No");
+		$artify->set_template($html_template);
+		$artify->setLangData("no_data", "No Hay Módulos creados");
+		$artify->formFieldValue("active_popup", "No");
+		$artify->formFieldValue("add_menu", "Si");
+		$artify->formFieldValue("active_filter", "No");
+		$artify->formFieldValue("clone_row", "No");
+		$artify->formFieldValue("button_add", "Si");
+		$artify->formFieldValue("activate_deleteMultipleBtn", "No");
+		$artify->formFieldValue("active_search", "No");
+		$artify->fieldNotMandatory("actions_buttons_grid");
+		$artify->fieldNotMandatory("buttons_actions");
+		$artify->formFieldValue("activate_nested_table", "No");
+		$artify->formFieldValue("activate_pdf", "No");
+		$artify->formFieldValue("activate_api", "No");
+		$artify->formFieldValue("generate_token_jwt", "No");
+		$artify->formFieldValue("refrescar_grilla", "No");
 
-		$pdocrud->fieldNotMandatory("modify_query");
-		$pdocrud->fieldTypes("logo_pdf", "FILE_NEW");
-		$pdocrud->fieldTypes("marca_de_agua_pdf", "FILE_NEW");
+		$artify->fieldNotMandatory("modify_query");
+		$artify->fieldTypes("logo_pdf", "FILE_NEW");
+		$artify->fieldTypes("marca_de_agua_pdf", "FILE_NEW");
 
-		$pdocrud->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
-		$pdocrud->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
 
-		$pdocrud->fieldDataAttr("generate_token_jwt", array("disabled"=>"disabled"));
-		$pdocrud->fieldDataAttr("api_type", array("disabled"=>"disabled"));
-		$pdocrud->fieldDataAttr("autenticate_jwt_token", array("disabled"=>"disabled"));
-		$pdocrud->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
-		$pdocrud->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("generate_token_jwt", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("api_type", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("autenticate_jwt_token", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
 
-		$pdocrud->fieldTypes("refrescar_grilla", "select");
-		$pdocrud->fieldDataBinding("refrescar_grilla", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("refrescar_grilla", "select");
+		$artify->fieldDataBinding("refrescar_grilla", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("generate_token_jwt", "select");
-		$pdocrud->fieldDataBinding("generate_token_jwt", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("generate_token_jwt", "select");
+		$artify->fieldDataBinding("generate_token_jwt", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("buttons_actions", "checkbox");
-		$pdocrud->fieldDataBinding("buttons_actions", array(
+		$artify->fieldTypes("buttons_actions", "checkbox");
+		$artify->fieldDataBinding("buttons_actions", array(
 			"Ver" => "Ver",
 			"Editar" => "Editar",
 			"Eliminar" => "Eliminar",
@@ -1073,146 +1073,146 @@ class HomeController
 			"Personalizado URL" => "Personalizado URL"
 		), "", "", "array");
 
-		$pdocrud->fieldTypes("actions_buttons_grid", "checkbox");
-		$pdocrud->fieldDataBinding("actions_buttons_grid", array("Imprimir" => "Imprimir", "PDF" => "PDF", "CSV" => "CSV", "Excel" => "Excel"), "", "", "array");
+		$artify->fieldTypes("actions_buttons_grid", "checkbox");
+		$artify->fieldDataBinding("actions_buttons_grid", array("Imprimir" => "Imprimir", "PDF" => "PDF", "CSV" => "CSV", "Excel" => "Excel"), "", "", "array");
 
-		$pdocrud->fieldTypes("api_type", "select");
-		$pdocrud->fieldDataBinding("api_type", array("Obtener" => "Obtener", "Insertar" => "Insertar", "Actualizar" => "Actualizar", "Eliminar" => "Eliminar"), "", "", "array");
+		$artify->fieldTypes("api_type", "select");
+		$artify->fieldDataBinding("api_type", array("Obtener" => "Obtener", "Insertar" => "Insertar", "Actualizar" => "Actualizar", "Eliminar" => "Eliminar"), "", "", "array");
 
-		$pdocrud->fieldTypes("activate_nested_table", "select");
-		$pdocrud->fieldDataBinding("activate_nested_table", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("activate_nested_table", "select");
+		$artify->fieldDataBinding("activate_nested_table", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("button_add", "select");
-		$pdocrud->fieldDataBinding("button_add", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("button_add", "select");
+		$artify->fieldDataBinding("button_add", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("activate_pdf", "select");
-		$pdocrud->fieldDataBinding("activate_pdf", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("activate_pdf", "select");
+		$artify->fieldDataBinding("activate_pdf", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("activate_api", "select");
-		$pdocrud->fieldDataBinding("activate_api", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("activate_api", "select");
+		$artify->fieldDataBinding("activate_api", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("activate_deleteMultipleBtn", "select");
-		$pdocrud->fieldDataBinding("activate_deleteMultipleBtn", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("activate_deleteMultipleBtn", "select");
+		$artify->fieldDataBinding("activate_deleteMultipleBtn", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("active_search", "select");
-		$pdocrud->fieldDataBinding("active_search", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("active_search", "select");
+		$artify->fieldDataBinding("active_search", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("active_popup", "select");
-		$pdocrud->fieldDataBinding("active_popup", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("active_popup", "select");
+		$artify->fieldDataBinding("active_popup", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("active_filter", "select");
-		$pdocrud->fieldDataBinding("active_filter", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("active_filter", "select");
+		$artify->fieldDataBinding("active_filter", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldTypes("clone_row", "select");
-		$pdocrud->fieldDataBinding("clone_row", array("Si" => "Si", "No" => "No"), "", "", "array");
+		$artify->fieldTypes("clone_row", "select");
+		$artify->fieldDataBinding("clone_row", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$pdocrud->fieldCssClass("crud_type", array("crud_type"));
-		$pdocrud->fieldCssClass("tabla", array("tabla"));
-		$pdocrud->fieldCssClass("id_tabla", array("id_tabla"));
-		$pdocrud->fieldCssClass("query", array("query"));
-		$pdocrud->fieldCssClass("name_view", array("name_view"));
-		$pdocrud->fieldCssClass("controller_name", array("controller_name"));
-		$pdocrud->fieldCssClass("columns_table", array("columns_table"));
-		$pdocrud->fieldCssClass("modify_query", array("modify_query"));
-		$pdocrud->fieldCssClass("activate_nested_table", array("activate_nested_table"));
-		$pdocrud->fieldCssClass("consulta_api", array("consulta_api"));
-		$pdocrud->fieldCssClass("consulta_pdf", array("consulta_pdf"));
+		$artify->fieldCssClass("crud_type", array("crud_type"));
+		$artify->fieldCssClass("tabla", array("tabla"));
+		$artify->fieldCssClass("id_tabla", array("id_tabla"));
+		$artify->fieldCssClass("query", array("query"));
+		$artify->fieldCssClass("name_view", array("name_view"));
+		$artify->fieldCssClass("controller_name", array("controller_name"));
+		$artify->fieldCssClass("columns_table", array("columns_table"));
+		$artify->fieldCssClass("modify_query", array("modify_query"));
+		$artify->fieldCssClass("activate_nested_table", array("activate_nested_table"));
+		$artify->fieldCssClass("consulta_api", array("consulta_api"));
+		$artify->fieldCssClass("consulta_pdf", array("consulta_pdf"));
 
-		$pdocrud->fieldCssClass("api_type", array("api_type"));
-		$pdocrud->fieldCssClass("generate_token_jwt", array("generate_token_jwt"));
-		$pdocrud->fieldCssClass("activate_api", array("activate_api"));
-		$pdocrud->fieldCssClass("autenticate_jwt_token", array("autenticate_jwt_token"));
+		$artify->fieldCssClass("api_type", array("api_type"));
+		$artify->fieldCssClass("generate_token_jwt", array("generate_token_jwt"));
+		$artify->fieldCssClass("activate_api", array("activate_api"));
+		$artify->fieldCssClass("autenticate_jwt_token", array("autenticate_jwt_token"));
 
-		$pdocrud->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
-		$pdocrud->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
-		$pdocrud->fieldAttributes("consulta_crear_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
-		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
-		$pdocrud->fieldAttributes("modify_query", array("placeholder"=> "Ejemplo: DROP COLUMN categoria, ADD COLUMN edad INT(3)", "style"=> "min-height: 200px; max-height: 200px;"));
-		$pdocrud->fieldAttributes("columns_table", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
-		$pdocrud->fieldGroups("Name2",array("name_view","add_menu"));
-		$pdocrud->tableHeading("Generador de Módulos");
+		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
+		$artify->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
+		$artify->fieldAttributes("consulta_crear_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
+		$artify->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
+		$artify->fieldAttributes("modify_query", array("placeholder"=> "Ejemplo: DROP COLUMN categoria, ADD COLUMN edad INT(3)", "style"=> "min-height: 200px; max-height: 200px;"));
+		$artify->fieldAttributes("columns_table", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
+		$artify->fieldGroups("Name2",array("name_view","add_menu"));
+		$artify->tableHeading("Generador de Módulos");
 		
-		$pdocrud->setSearchCols(array("consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->formFields(array("consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->editFormFields(array("consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$artify->setSearchCols(array("consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->formFields(array("consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->editFormFields(array("consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
-		$pdocrud->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$pdocrud->colRename("tabla", "Nombre Tabla Base de Datos");
-		$pdocrud->colRename("id_tabla", "ID Tabla Base de Datos");
-		$pdocrud->colRename("crud_type", "Tipo de Módulo");
-		$pdocrud->colRename("active_popup", "Activar Popup");
-		$pdocrud->colRename("active_search", "Activar Búsqueda");
-		$pdocrud->colRename("activate_deleteMultipleBtn", "Activar Eliminación Masiva");
-		$pdocrud->colRename("button_add", "Botón Agregar");
-		$pdocrud->colRename("actions_buttons_grid", "Botones de Exportación Grilla");
-		$pdocrud->colRename("modify_query", "Modificar Tabla");
-		$pdocrud->colRename("activate_nested_table", "Activar Tabla Anidada");
-		$pdocrud->colRename("id_modulos", "ID");
-		$pdocrud->colRename("buttons_actions", "Botones de Acción");
+		$artify->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->colRename("tabla", "Nombre Tabla Base de Datos");
+		$artify->colRename("id_tabla", "ID Tabla Base de Datos");
+		$artify->colRename("crud_type", "Tipo de Módulo");
+		$artify->colRename("active_popup", "Activar Popup");
+		$artify->colRename("active_search", "Activar Búsqueda");
+		$artify->colRename("activate_deleteMultipleBtn", "Activar Eliminación Masiva");
+		$artify->colRename("button_add", "Botón Agregar");
+		$artify->colRename("actions_buttons_grid", "Botones de Exportación Grilla");
+		$artify->colRename("modify_query", "Modificar Tabla");
+		$artify->colRename("activate_nested_table", "Activar Tabla Anidada");
+		$artify->colRename("id_modulos", "ID");
+		$artify->colRename("buttons_actions", "Botones de Acción");
 
-		$pdocrud->colRename("active_filter", "Activar Filtro de Busqueda");
-		$pdocrud->colRename("clone_row", "Clonar Fila");
+		$artify->colRename("active_filter", "Activar Filtro de Busqueda");
+		$artify->colRename("clone_row", "Clonar Fila");
 		
-		$pdocrud->colRename("template_fields", "Usar Plantilla Formulario HTML");
+		$artify->colRename("template_fields", "Usar Plantilla Formulario HTML");
 
-		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "=", "query", "hide");
-		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "!=", "query", "show");
+		$artify->fieldConditionalLogic("crud_type", "CRUD", "=", "query", "hide");
+		$artify->fieldConditionalLogic("crud_type", "CRUD", "!=", "query", "show");
 
-		$pdocrud->fieldConditionalLogic("crud_type", "Modulo de Inventario", "=", "query", "hide");
+		$artify->fieldConditionalLogic("crud_type", "Modulo de Inventario", "=", "query", "hide");
 
-		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "=", "id_tabla", "hide");
-		$pdocrud->fieldConditionalLogic("crud_type", "CRUD", "!=", "id_tabla", "show");
+		$artify->fieldConditionalLogic("crud_type", "CRUD", "=", "id_tabla", "hide");
+		$artify->fieldConditionalLogic("crud_type", "CRUD", "!=", "id_tabla", "show");
 
-		$pdocrud->fieldConditionalLogic("crud_type", "Modulo de Inventario", "=", "id_tabla", "hide");
+		$artify->fieldConditionalLogic("crud_type", "Modulo de Inventario", "=", "id_tabla", "hide");
 		
-		$pdocrud->formFieldValue("template_fields", "No");
+		$artify->formFieldValue("template_fields", "No");
 
-		$pdocrud->colRename("query", "Consulta BD");
-		$pdocrud->colRename("controller_name", "Nombre del Controlador");
-		$pdocrud->colRename("columns_table", "Columnas de la Tabla");
-		$pdocrud->colRename("name_view", "Nombre de la Vista");
-		$pdocrud->colRename("add_menu", "Agregar Al Menú Principal");
-		$pdocrud->fieldDesc("nombre_funcion_antes_de_insertar", "Campo opcional");
+		$artify->colRename("query", "Consulta BD");
+		$artify->colRename("controller_name", "Nombre del Controlador");
+		$artify->colRename("columns_table", "Columnas de la Tabla");
+		$artify->colRename("name_view", "Nombre de la Vista");
+		$artify->colRename("add_menu", "Agregar Al Menú Principal");
+		$artify->fieldDesc("nombre_funcion_antes_de_insertar", "Campo opcional");
 
-		$pdocrud->fieldTypes("crud_type", "select");
-		$pdocrud->fieldDataBinding("crud_type", array(
+		$artify->fieldTypes("crud_type", "select");
+		$artify->fieldDataBinding("crud_type", array(
 			"CRUD"=> "CRUD (Mantenedor a base de una tabla)",
 			"SQL"=> "SQL (Mantenedor a base de una consulta)",
 			"Modulo de Inventario" => "Modulo de Inventario"
 		), "", "","array");
 
-		$pdocrud->fieldTypes("add_menu", "select");
-		$pdocrud->fieldDataBinding("add_menu", array("Si"=> "Si"), "", "","array");
+		$artify->fieldTypes("add_menu", "select");
+		$artify->fieldDataBinding("add_menu", array("Si"=> "Si"), "", "","array");
 
-		$pdocrud->fieldTypes("template_fields", "select");
-		$pdocrud->fieldDataBinding("template_fields", array("Si"=> "Si", "No"=> "No"), "", "","array");
+		$artify->fieldTypes("template_fields", "select");
+		$artify->fieldDataBinding("template_fields", array("Si"=> "Si", "No"=> "No"), "", "","array");
 
-		$pdocrud->buttonHide("submitBtnSaveBack");
-		$pdocrud->setSettings("template", "modulos");
-		$pdocrud->setSettings("viewbtn", false);
-		$pdocrud->setSettings("refresh", false);
-		$pdocrud->setSettings("printBtn", false);
-		$pdocrud->setSettings("editbtn", true);
-		$pdocrud->setSettings("delbtn", true);
-		$pdocrud->setSettings("pdfBtn", false);
-		$pdocrud->setSettings("csvBtn", false);
-		$pdocrud->setSettings("excelBtn", false);
-		$pdocrud->addCallback("before_insert", "insertar_modulos", array($id_sesion_usuario));
-		$pdocrud->addCallback("after_insert", "despues_de_insertar_modulos");
-		$pdocrud->addCallback("before_update", "actualizar_modulos");
-		$pdocrud->addCallback("before_delete", "eliminar_modulos");
+		$artify->buttonHide("submitBtnSaveBack");
+		$artify->setSettings("template", "modulos");
+		$artify->setSettings("viewbtn", false);
+		$artify->setSettings("refresh", false);
+		$artify->setSettings("printBtn", false);
+		$artify->setSettings("editbtn", true);
+		$artify->setSettings("delbtn", true);
+		$artify->setSettings("pdfBtn", false);
+		$artify->setSettings("csvBtn", false);
+		$artify->setSettings("excelBtn", false);
+		$artify->addCallback("before_insert", "insertar_modulos", array($id_sesion_usuario));
+		$artify->addCallback("after_insert", "despues_de_insertar_modulos");
+		$artify->addCallback("before_update", "actualizar_modulos");
+		$artify->addCallback("before_delete", "eliminar_modulos");
 
-		$pdocrud->buttonHide("submitBtn");
-		$pdocrud->buttonHide("submitBtnBack");
-		$pdocrud->buttonHide("cancel");
+		$artify->buttonHide("submitBtn");
+		$artify->buttonHide("submitBtnBack");
+		$artify->buttonHide("cancel");
 
 		$action = $_ENV["BASE_URL"] . "{controller_name}/index";
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
-		$pdocrud->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
+		$artify->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
 		
-		//$pdocrud->joinTable("anidada", "anidada.id_modulos = modulos.id_modulos", "LEFT JOIN");
-		$render = $pdocrud->dbTable("modulos")->render();
+		//$artify->joinTable("anidada", "anidada.id_modulos = modulos.id_modulos", "LEFT JOIN");
+		$render = $artify->dbTable("modulos")->render();
 
 		View::render(
 			"modulos",
@@ -1226,8 +1226,8 @@ class HomeController
 		if ($request->getMethod() === 'POST') {
 			$tabla = $request->post('tabla');
 
-			$pdocrud = DB::PDOCrud();
-			$pdomodel = $pdocrud->getPDOModelObj();
+			$artify = DB::ArtifyCrud();
+			$pdomodel = $artify->getPDOModelObj();
 			$columnDB = $pdomodel->tableFieldInfo($tabla);
 
 			echo json_encode(['columnas_tabla' => $columnDB]);
@@ -1246,8 +1246,8 @@ class HomeController
 
 				foreach ($newOrder as $position => $itemId) {
 					$position++;
-					$pdocrud = DB::PDOCrud();
-					$pdomodel = $pdocrud->getPDOModelObj();
+					$artify = DB::ArtifyCrud();
+					$pdomodel = $artify->getPDOModelObj();
 					$pdomodel->where("id_menu", $itemId);
 					$pdomodel->update("menu", array("orden_menu" => $position));
 				}
@@ -1269,8 +1269,8 @@ class HomeController
 
 				foreach ($newOrder as $position => $itemId) {
 					$position++;
-					$pdocrud = DB::PDOCrud();
-					$pdomodel = $pdocrud->getPDOModelObj();
+					$artify = DB::ArtifyCrud();
+					$pdomodel = $artify->getPDOModelObj();
 					$pdomodel->where("id_submenu", $itemId);
 					$pdomodel->update("submenu", array("orden_submenu" => $position));
 				}
@@ -1287,8 +1287,8 @@ class HomeController
 		if ($request->getMethod() === 'POST') {
 			$id = $request->post('id');
 
-			$pdocrud = DB::PDOcrud();
-			$pdomodel = $pdocrud->getPDOModelObj();
+			$artify = DB::ArtifyCrud();
+			$pdomodel = $artify->getPDOModelObj();
 			$pdomodel->columns = array("icono_menu");
 			$pdomodel->where("id_menu", $id);
 			$data = $pdomodel->select("menu");
@@ -1312,8 +1312,8 @@ class HomeController
 		if ($request->getMethod() === 'POST') {
 			$id = $request->post('id');
 
-			$pdocrud = DB::PDOcrud();
-			$pdomodel = $pdocrud->getPDOModelObj();
+			$artify = DB::ArtifyCrud();
+			$pdomodel = $artify->getPDOModelObj();
 			$pdomodel->columns = array("icono_submenu");
 			$pdomodel->where("id_submenu", $id);
 			$data = $pdomodel->select("submenu");
@@ -1331,51 +1331,51 @@ class HomeController
 	}
 
 	public function menu(){
-		$pdocrud = DB::PDOCrud();
+		$artify = DB::ArtifyCrud();
 
-		$pdomodel = $pdocrud->getPDOModelObj();
+		$pdomodel = $artify->getPDOModelObj();
 		$datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
 		$newOrdenMenu = $datamenu[0]["orden"] + 1;
 
 		$datasubmenu = $pdomodel->DBQuery("SELECT MAX(orden_submenu) as orden_submenu FROM submenu");
 		$newOrdenSubMenu = $datasubmenu[0]["orden_submenu"] + 1;
 
-		$pdocrud->addWhereConditionActionButtons("delete", "id_menu", "!=", array(4,5,6,7,10,12,19));
-		$pdocrud->addWhereConditionActionButtons("edit", "id_menu", "!=", array(4,5,6,7,10,12,19));
+		$artify->addWhereConditionActionButtons("delete", "id_menu", "!=", array(4,5,6,7,10,12,19));
+		$artify->addWhereConditionActionButtons("edit", "id_menu", "!=", array(4,5,6,7,10,12,19));
 
 		$action = "javascript:;";
 		$text = '<i class="fas fa-arrows-alt-v"></i>';
 		$attr = array("title"=>"Arrastra para Reordenar Fila");
-		$pdocrud->enqueueBtnActions("url btn btn-primary btn-sm reordenar_fila", $action, "url",$text,"orden_menu", $attr);
-		$pdocrud->multiTableRelationDisplay("tab", "Menu");
-		$pdocrud->setSearchCols(array("nombre_menu","url_menu", "icono_menu", "submenu", "orden_menu"));
-		$pdocrud->fieldHideLable("orden_menu");
-		$pdocrud->fieldDataAttr("orden_menu", array("style"=>"display:none"));
-		$pdocrud->fieldHideLable("submenu");
-		$pdocrud->fieldDataAttr("submenu", array("style"=>"display:none"));
-		$pdocrud->formFieldValue("orden_menu", $newOrdenMenu);
-		$pdocrud->formFieldValue("submenu", "No");
-		$pdocrud->addPlugin("select2");
-		$pdocrud->dbOrderBy("orden_menu asc");
-		$pdocrud->addCallback("format_table_data", "formatTableMenu");
-		$pdocrud->addCallback("after_insert", "agregar_menu");
-		$pdocrud->addCallback("before_delete", "eliminar_menu");
-		$pdocrud->fieldTypes("icono_menu", "select");
-		$pdocrud->fieldCssClass("icono_menu", array("icono_menu"));
-		$pdocrud->fieldCssClass("submenu", array("submenu"));
-		$pdocrud->fieldGroups("Name", array("nombre_menu", "url_menu"));
-		$pdocrud->crudRemoveCol(array("id_menu"));
-		$pdocrud->setSettings("printBtn", false);
-		$pdocrud->setSettings("pdfBtn", false);
-		$pdocrud->setSettings("csvBtn", false);
-		$pdocrud->setSettings("excelBtn", false);
-		$pdocrud->setSettings("viewbtn", false);
-		$pdocrud->setSettings("refresh", false);
-		$pdocrud->setSettings('editbtn', true);    
-		$pdocrud->setSettings('delbtn', true);
-		$pdocrud->buttonHide("submitBtnSaveBack");
+		$artify->enqueueBtnActions("url btn btn-primary btn-sm reordenar_fila", $action, "url",$text,"orden_menu", $attr);
+		$artify->multiTableRelationDisplay("tab", "Menu");
+		$artify->setSearchCols(array("nombre_menu","url_menu", "icono_menu", "submenu", "orden_menu"));
+		$artify->fieldHideLable("orden_menu");
+		$artify->fieldDataAttr("orden_menu", array("style"=>"display:none"));
+		$artify->fieldHideLable("submenu");
+		$artify->fieldDataAttr("submenu", array("style"=>"display:none"));
+		$artify->formFieldValue("orden_menu", $newOrdenMenu);
+		$artify->formFieldValue("submenu", "No");
+		$artify->addPlugin("select2");
+		$artify->dbOrderBy("orden_menu asc");
+		$artify->addCallback("format_table_data", "formatTableMenu");
+		$artify->addCallback("after_insert", "agregar_menu");
+		$artify->addCallback("before_delete", "eliminar_menu");
+		$artify->fieldTypes("icono_menu", "select");
+		$artify->fieldCssClass("icono_menu", array("icono_menu"));
+		$artify->fieldCssClass("submenu", array("submenu"));
+		$artify->fieldGroups("Name", array("nombre_menu", "url_menu"));
+		$artify->crudRemoveCol(array("id_menu"));
+		$artify->setSettings("printBtn", false);
+		$artify->setSettings("pdfBtn", false);
+		$artify->setSettings("csvBtn", false);
+		$artify->setSettings("excelBtn", false);
+		$artify->setSettings("viewbtn", false);
+		$artify->setSettings("refresh", false);
+		$artify->setSettings('editbtn', true);    
+		$artify->setSettings('delbtn', true);
+		$artify->buttonHide("submitBtnSaveBack");
 
-		$submenu = DB::PDOCrud(true);
+		$submenu = DB::ArtifyCrud(true);
 		$submenu->multiTableRelationDisplay("tab", "SubMenu");
 		$action = "javascript:;";
 		$text = '<i class="fas fa-arrows-alt-v"></i>';
@@ -1408,9 +1408,9 @@ class HomeController
 		$submenu->fieldTypes("icono_submenu", "select");
 		$submenu->fieldCssClass("icono_submenu", array("icono_submenu"));
 		$submenu->buttonHide("submitBtnSaveBack");
-		$pdocrud->multiTableRelation("id_menu", "id_menu", $submenu);
-		$select2 = $pdocrud->loadPluginJsCode("select2",".icono_menu, .icono_submenu");
-		$render = $pdocrud->dbTable("menu")->render();
+		$artify->multiTableRelation("id_menu", "id_menu", $submenu);
+		$select2 = $artify->loadPluginJsCode("select2",".icono_menu, .icono_submenu");
+		$render = $artify->dbTable("menu")->render();
 
 		View::render(
 			"menu",
@@ -1425,27 +1425,27 @@ class HomeController
 	{
 		$id = $_SESSION['usuario'][0]["id"];
         $token = $this->token;
-		$pdocrud = DB::PDOCrud();
-		$pdocrud->fieldHideLable("id");
-		$pdocrud->fieldCssClass("id", array("d-none"));
-		$pdocrud->setSettings("hideAutoIncrement", false);
-		$pdocrud->setSettings("required", false);
-		$pdocrud->addCallback("before_update", "editar_perfil");
-		$pdocrud->fieldGroups("Name",array("nombre","email"));
-		$pdocrud->fieldGroups("Name2",array("usuario","password"));
-		$pdocrud->fieldGroups("Name3",array("idrol","avatar"));
-		$pdocrud->fieldTypes("avatar", "FILE_NEW");
-		$pdocrud->fieldTypes("password", "password");
-		$pdocrud->fieldRenameLable("nombre", "Nombre Completo");
-		$pdocrud->fieldRenameLable("email", "Correo electrónico");
-		$pdocrud->fieldRenameLable("password", "Clave de acceso");
-		$pdocrud->fieldRenameLable("idrol", "Tipo Usuario");
-		$pdocrud->relatedData('idrol','rol','idrol','nombre_rol');
-		$pdocrud->formFields(array("id","nombre","email","password","usuario", "idrol", "avatar"));
-        $pdocrud->formStaticFields("token_form", "html", "<input type='hidden' name='auth_token' value='" . $token . "' />");
-		$pdocrud->fieldDataAttr("password", array("value"=> "", "placeholder" => "*****", "autocomplete" => "new-password"));
-		$pdocrud->setPK("id");
-		$render = $pdocrud->dbTable("usuario")->render("editform", array("id" => $id));
+		$artify = DB::ArtifyCrud();
+		$artify->fieldHideLable("id");
+		$artify->fieldCssClass("id", array("d-none"));
+		$artify->setSettings("hideAutoIncrement", false);
+		$artify->setSettings("required", false);
+		$artify->addCallback("before_update", "editar_perfil");
+		$artify->fieldGroups("Name",array("nombre","email"));
+		$artify->fieldGroups("Name2",array("usuario","password"));
+		$artify->fieldGroups("Name3",array("idrol","avatar"));
+		$artify->fieldTypes("avatar", "FILE_NEW");
+		$artify->fieldTypes("password", "password");
+		$artify->fieldRenameLable("nombre", "Nombre Completo");
+		$artify->fieldRenameLable("email", "Correo electrónico");
+		$artify->fieldRenameLable("password", "Clave de acceso");
+		$artify->fieldRenameLable("idrol", "Tipo Usuario");
+		$artify->relatedData('idrol','rol','idrol','nombre_rol');
+		$artify->formFields(array("id","nombre","email","password","usuario", "idrol", "avatar"));
+        $artify->formStaticFields("token_form", "html", "<input type='hidden' name='auth_token' value='" . $token . "' />");
+		$artify->fieldDataAttr("password", array("value"=> "", "placeholder" => "*****", "autocomplete" => "new-password"));
+		$artify->setPK("id");
+		$render = $artify->dbTable("usuario")->render("editform", array("id" => $id));
 
 		View::render(
 			"perfil",
@@ -1454,11 +1454,11 @@ class HomeController
 	}
 
 	public function dashboard_custom(){
-		$pdocrud = DB::PDOCrud();
-		$pdocrud->addPlugin("select2");
-		$pdocrud->formStaticFields("div", "html", "<div class='mostrar_click'></div>");
-		$pdocrud->fieldTypes("cantidad_columnas", "select");
-		$pdocrud->fieldDataBinding("cantidad_columnas", array(
+		$artify = DB::ArtifyCrud();
+		$artify->addPlugin("select2");
+		$artify->formStaticFields("div", "html", "<div class='mostrar_click'></div>");
+		$artify->fieldTypes("cantidad_columnas", "select");
+		$artify->fieldDataBinding("cantidad_columnas", array(
 			"1" => 1,
 			"2" => 2,
 			"3" => 3,
@@ -1466,27 +1466,27 @@ class HomeController
 			"5" => 5,
 			"6" => 6
 		), "", "","array");
-		$pdocrud->fieldNotMandatory("titulo");
-		$pdocrud->fieldNotMandatory("icono");
-		$pdocrud->fieldNotMandatory("url");
-		$pdocrud->setLangData("title_left_join", "Opciones configuración Panel");
-		$pdocrud->setLangData("add_row", "Agregar");
-		$pdocrud->fieldTypes("icono", "select");
-		$pdocrud->fieldCssClass("icono", array("icono"));
-		$pdocrud->fieldCssClass("titulo", array("titulo"));
-		$pdocrud->fieldCssClass("cantidad_columnas", array("cantidad_columnas"));
-		$pdocrud->formFields(array("cantidad_columnas","titulo","icono", "url"));
-		$pdocrud->setSettings("template", "dashboard_custom");
-		$pdocrud->colRename("id_creador_de_panel", "ID");
-		$pdocrud->setSettings("printBtn", false);
-		$pdocrud->setSettings("pdfBtn", false);
-		$pdocrud->setSettings("csvBtn", false);
-		$pdocrud->setSettings("excelBtn", false);
-		$pdocrud->setSettings("refresh", false);
-		$pdocrud->buttonHide("submitBtnSaveBack");
-		$pdocrud->joinTable("custom_panel", "custom_panel.id_creador_de_panel = creador_de_panel.id_creador_de_panel", "LEFT JOIN");
-		$render = $pdocrud->dbTable("creador_de_panel")->render();
-		$select2 = $pdocrud->loadPluginJsCode("select2",".icono");
+		$artify->fieldNotMandatory("titulo");
+		$artify->fieldNotMandatory("icono");
+		$artify->fieldNotMandatory("url");
+		$artify->setLangData("title_left_join", "Opciones configuración Panel");
+		$artify->setLangData("add_row", "Agregar");
+		$artify->fieldTypes("icono", "select");
+		$artify->fieldCssClass("icono", array("icono"));
+		$artify->fieldCssClass("titulo", array("titulo"));
+		$artify->fieldCssClass("cantidad_columnas", array("cantidad_columnas"));
+		$artify->formFields(array("cantidad_columnas","titulo","icono", "url"));
+		$artify->setSettings("template", "dashboard_custom");
+		$artify->colRename("id_creador_de_panel", "ID");
+		$artify->setSettings("printBtn", false);
+		$artify->setSettings("pdfBtn", false);
+		$artify->setSettings("csvBtn", false);
+		$artify->setSettings("excelBtn", false);
+		$artify->setSettings("refresh", false);
+		$artify->buttonHide("submitBtnSaveBack");
+		$artify->joinTable("custom_panel", "custom_panel.id_creador_de_panel = creador_de_panel.id_creador_de_panel", "LEFT JOIN");
+		$render = $artify->dbTable("creador_de_panel")->render();
+		$select2 = $artify->loadPluginJsCode("select2",".icono");
 		View::render('dashboard_custom', [
 			'render' => $render,
 			'select2' => $select2
