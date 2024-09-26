@@ -2,7 +2,7 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
      <a href="<?=$_ENV["BASE_URL"]?>" class="brand-link text-center" style="background-color:#fff;">
-         <img src="<?=$_ENV["BASE_URL"]?>theme/img/hospital.png" alt="AdminLTE Logo" width="55">
+         <img src="<?=$_ENV["BASE_URL"]?>theme/img/artify.png" alt="AdminLTE Logo" width="55">
          <span class="brand-text font-weight-light"></span>
      </a>
 

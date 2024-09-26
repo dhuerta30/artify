@@ -27,7 +27,7 @@
             <li class="list-group-item bg-primary text-white text-center">Iniciar Sesión</li>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <img src="<?=$_ENV["BASE_URL"]?>theme/img/hospital.png" width="80">
+                    <img src="<?=$_ENV["BASE_URL"]?>theme/img/logo.png" width="150">
                 </div>
             </div>
             <li class="list-group-item bg-white">
