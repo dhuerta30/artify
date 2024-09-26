@@ -1,6 +1,6 @@
 <?php
 
-class PDOCrudView {
+class ArtifyView {
 
     private $template_path;
 

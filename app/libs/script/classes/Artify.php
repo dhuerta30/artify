@@ -43,7 +43,7 @@ Class Artify {
     private $crudTooltip;
     private $settings;
     private $currentLang;
-    private $pdocrudView;
+    private $ArtifyView;
     private $pdocrudErrCtrl;
     private $pdocrudhelper;
     private $pdoTableFormatObj;
@@ -191,7 +191,7 @@ Class Artify {
         $this->initializeSettings();
         $this->loadLangData();
         $this->objKey = $this->getRandomKey();
-        $this->pdocrudView = new PDOCrudView();
+        $this->ArtifyView = new ArtifyView();
         $this->pdocrudErrCtrl = new PDOCrudErrorCtrl();
         $this->pdocrudhelper = new PDOCrudHelper($this->pdocrudErrCtrl);
         $this->pdoTableFormatObj = new PDOCrudTableFormat($this->pdocrudErrCtrl);
@@ -1860,7 +1860,7 @@ Class Artify {
      * return   mixed                                     Object of class or html content
      */
     public function outputHTMLContent($output = true) {
-        $html = $this->pdocrudView->outputHTMLContent($this->HTMLContent);
+        $html = $this->ArtifyView->outputHTMLContent($this->HTMLContent);
         $this->HTMLContent = array();
         if ($output)
             echo $html;
@@ -2043,7 +2043,7 @@ Class Artify {
      * return   mixed                                     Object of class or js content
      */
     public function outputJs($output = true) {
-        $js = $this->pdocrudView->outputJs($this->js);
+        $js = $this->ArtifyView->outputJs($this->js);
         $this->js = array();
         if ($output)
             echo $js;
@@ -2058,7 +2058,7 @@ Class Artify {
      * return   mixed                                     Object of class or js content
      */
     public function outputApplyJs($output = true) {
-        $js = $this->pdocrudView->outputApplyJs($this->colApplyJs);
+        $js = $this->ArtifyView->outputApplyJs($this->colApplyJs);
         $this->colApplyJs = array();
         if ($output)
             echo $js;
@@ -2155,7 +2155,7 @@ Class Artify {
     }
 
     private function outputJsSettings($output = true) {
-        $js = $this->pdocrudView->outputJsSetting($this->jsSettings);
+        $js = $this->ArtifyView->outputJsSetting($this->jsSettings);
         $this->jsSettings = array();
         if ($output)
             echo $js;
@@ -2230,7 +2230,7 @@ Class Artify {
      * return   mixed                                     Object of class or css content
      */
     public function outputCss($output = true) {
-        $css = $this->pdocrudView->outputCss($this->css);
+        $css = $this->ArtifyView->outputCss($this->css);
         $this->css = array();
         if ($output)
             echo $css;
@@ -2385,7 +2385,7 @@ Class Artify {
           }
         }
         $eventFields = count($eventFields) ? $eventFields : $formulajs["fields"]; 
-        $this->enqueueHTMLContent($this->pdocrudView->renderJSFormula( $formulajs["returnFormula"], $eventFields, $event));
+        $this->enqueueHTMLContent($this->ArtifyView->renderJSFormula( $formulajs["returnFormula"], $eventFields, $event));
         return $this;
     }
 
@@ -2409,7 +2409,7 @@ Class Artify {
         $field .= " $type, ";
       }
       $field = rtrim($field, ", ");
-      $this->enqueueHTMLContent($this->pdocrudView->renderLeftJoinJSFormula($element, $formula, $event, 
+      $this->enqueueHTMLContent($this->ArtifyView->renderLeftJoinJSFormula($element, $formula, $event, 
         $field));
       return $this;
     }
@@ -2822,7 +2822,7 @@ Class Artify {
         }, $this->formEmail["subject"]);
 
         if ($this->formEmail["message"] === "default_template") {
-            $message = $this->pdocrudView->renderMessage($fields, $this->settings);
+            $message = $this->ArtifyView->renderMessage($fields, $this->settings);
         } else {
             $message = preg_replace_callback('/{{([^}]+)}}/', function($m) use ($fields) {
                 return $fields[$m[1]];
@@ -3059,7 +3059,7 @@ Class Artify {
         $crud = $this->dbCRUD($data);
         $this->crudCall = false;
         $crud = $this->handleCallback('after_onepage_data', $crud);
-        return $this->pdocrudView->renderOnePage($form, $crud, $this->settings);
+        return $this->ArtifyView->renderOnePage($form, $crud, $this->settings);
     }
 
     private function dbCRUD($data) {
@@ -3150,9 +3150,9 @@ Class Artify {
         if (!isset($this->colsRemove))
             $this->colsRemove = array();
         if (isset($this->portfolioCol))
-            $output = $this->pdocrudView->renderPortfolio($cols, $result, $pk, $this->objKey, $this->langData, $this->settings, $this->colsRemove, $this->btnActions, $this->portfolioCol);
+            $output = $this->ArtifyView->renderPortfolio($cols, $result, $pk, $this->objKey, $this->langData, $this->settings, $this->colsRemove, $this->btnActions, $this->portfolioCol);
         else
-            $output = $this->pdocrudView->renderTable($cols, $result, $pk, $this->objKey, $this->langData, $this->settings, $this->colsRemove, $this->btnActions);
+            $output = $this->ArtifyView->renderTable($cols, $result, $pk, $this->objKey, $this->langData, $this->settings, $this->colsRemove, $this->btnActions);
         if ($this->settings["inlineEditbtn"]) {
             $formtag = $this->getFormTag();
             $output = "<form " . $formtag . ">" . $output . "</form>";
@@ -3161,10 +3161,10 @@ Class Artify {
         if ($this->formPopup){
             $modal = $this->getMoodelContent($this->objKey . "_modal", "", "", "");
         }
-        $crud = $this->pdocrudView->renderCrud($output, $search, $pagination, $perPageRecords, $this->langData, $this->objKey, $modal, $this->settings, $extraData);
+        $crud = $this->ArtifyView->renderCrud($output, $search, $pagination, $perPageRecords, $this->langData, $this->objKey, $modal, $this->settings, $extraData);
         $crud = $this->handleCallback('after_table_data', $crud);
         if (is_array($filterbox) && count($filterbox) && !isset($data["action"])){
-            $crud = $this->pdocrudView->renderCrudFilter($filterbox, $crud, $this->langData, $this->objKey, $this->settings);
+            $crud = $this->ArtifyView->renderCrudFilter($filterbox, $crud, $this->langData, $this->objKey, $this->settings);
         }
         return $crud;
     }
@@ -3265,11 +3265,11 @@ Class Artify {
             $modal = "";
         }
         
-        $output = $this->pdocrudView->renderSQL($cols, $search, $result, $this->objKey, $this->langData, $modal, $this->settings, $pagination, $perPageRecords, $this->btnActions, $extraData);
+        $output = $this->ArtifyView->renderSQL($cols, $search, $result, $this->objKey, $this->langData, $modal, $this->settings, $pagination, $perPageRecords, $this->btnActions, $extraData);
         $output = $this->handleCallback('after_sql_data', $output);
 
         if (is_array($filterbox) && count($filterbox) && !isset($data["action"])){
-            $output = $this->pdocrudView->renderCrudFilter($filterbox, $output, $this->langData, $this->objKey, $this->settings);
+            $output = $this->ArtifyView->renderCrudFilter($filterbox, $output, $this->langData, $this->objKey, $this->settings);
         }
         return $output;
     }
@@ -3321,7 +3321,7 @@ Class Artify {
 
     private function dbAdvSearch() {
         $advanceSearch = $this->getAdvSearchControls();
-        return $this->pdocrudView->renderCrudAdvSearch($advanceSearch, $this->langData, $this->objKey, $this->settings);
+        return $this->ArtifyView->renderCrudAdvSearch($advanceSearch, $this->langData, $this->objKey, $this->settings);
     }
 
     private function setTableHeadings() {
@@ -3648,7 +3648,7 @@ Class Artify {
         $output = $this->handleCallback('before_insert_form', $output);
         $submitData = $this->getSubmitData("insert", $this->submitbtnClass);
         $this->langData["operation"] = $this->langData["add"];
-        $form = $this->pdocrudView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
+        $form = $this->ArtifyView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
         $this->leftJoin = "";
         if (isset($this->formPopup) && $this->directCall)
             $form = $this->getFormPopup($form);
@@ -3688,13 +3688,13 @@ Class Artify {
 
         $submitData = $this->getSubmitData($submitType);
         if ($this->inlineEdit)
-            return $this->pdocrudView->renderInlineField($data, $this->settings, $submitData);
+            return $this->ArtifyView->renderInlineField($data, $this->settings, $submitData);
         else
             $output = $this->renderFormData($data, $submitData);
         $output = $this->handleCallback('before_edit_form', $output);
         $this->langData["operation"] = $this->langData["edit"];
         $this->leftJoin = "";
-        $form = $this->pdocrudView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
+        $form = $this->ArtifyView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
         if (isset($this->formPopup) && $this->directCall)
             $form = $this->getFormPopup($form);
         if (isset($this->multiTableRelation))
@@ -3760,7 +3760,7 @@ Class Artify {
         if (isset($this->sidebar))
             $output = $this->getSidebarData($output, $queryData);
         $output = $this->handleCallback('before_view_form', $output);
-        $output = $this->pdocrudView->renderViewForm($output, $this->settings, $this->objKey, $this->langData);
+        $output = $this->ArtifyView->renderViewForm($output, $this->settings, $this->objKey, $this->langData);
         if (isset($this->multiTableRelation) && isset($this->settings["viewFormTabs"]) && $this->settings["viewFormTabs"] === true)
             $output = $this->getRelatedTable($output, $queryData);
         $output = $this->handleCallback('after_view_form', $output);
@@ -3780,7 +3780,7 @@ Class Artify {
         $submitData = $this->getSubmitData("selectform", $this->submitbtnClass);
         $this->langData["operation"] = $this->langData["add"];
         $output = $this->handleCallback('before_select_form', $output);
-        $form = $this->pdocrudView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
+        $form = $this->ArtifyView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
         if (isset($this->formPopup) && $this->directCall)
             $form = $this->getFormPopup($form);
         $this->leftJoin = "";
@@ -3799,7 +3799,7 @@ Class Artify {
         $output = $this->renderFormData($data);
         $output = $this->handleCallback('before_email_form', $output);
         $submitData = $this->getSubmitData("email", $this->submitbtnClass);
-        $form = $this->pdocrudView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
+        $form = $this->ArtifyView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
         if (isset($this->formPopup))
             $form = $this->getFormPopup($form);
         $form = $this->handleCallback('after_email_form', $form);
@@ -3871,7 +3871,7 @@ Class Artify {
         $output = $this->renderFormData($data, $submitData);
         $this->langData["operation"] = $this->langData["insert"];
         $this->leftJoin = "";
-        $form = $this->pdocrudView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
+        $form = $this->ArtifyView->renderForm($formTag, $output, $this->settings, $submitData, $this->langData);
         if (isset($this->formPopup) && $this->directCall)
             $form = $this->getFormPopup($form);
         if (isset($this->multiTableRelation))
@@ -3909,9 +3909,9 @@ Class Artify {
                 $this->settings["formtype"] = "step";
                 $this->submitbtnClass = "finish";
             } else if ($this->inlineEdit) {
-                return $this->pdocrudView->renderInlineField($data, $this->settings, $submitData);
+                return $this->ArtifyView->renderInlineField($data, $this->settings, $submitData);
             } else {
-                $output = $this->pdocrudView->renderField($data, $this->settings);
+                $output = $this->ArtifyView->renderField($data, $this->settings);
                 $this->settings["formtype"] = "normal";
                 $this->submitbtnClass = "";
             }
@@ -3954,7 +3954,7 @@ Class Artify {
                 $this->settings["formtype"] = "step";
                 $this->submitbtnClass = "finish";
             } else {
-                $output = $this->pdocrudView->renderViewFields($result, $columns, $this->langData, $this->settings, $this->objKey, $leftJoinData, $data["id"]);
+                $output = $this->ArtifyView->renderViewFields($result, $columns, $this->langData, $this->settings, $this->objKey, $leftJoinData, $data["id"]);
                 $this->settings["formtype"] = "normal";
                 $this->submitbtnClass = "";
             }
@@ -4072,10 +4072,10 @@ Class Artify {
                         foreach ($joinData as $joins) {
                             $leftJoindata[] = $this->getHTMLData($fields, $join["table"], $joins, true);
                         }
-                        $this->leftJoin .= $this->pdocrudView->renderLeftJoin($leftJoindata, $this->settings, $this->langData);
+                        $this->leftJoin .= $this->ArtifyView->renderLeftJoin($leftJoindata, $this->settings, $this->langData);
                     } else {
                         $leftJoindata[] = $this->getHTMLData($fields, $join["table"], $result, true);
-                        $this->leftJoin = $this->pdocrudView->renderLeftJoin($leftJoindata, $this->settings, $this->langData);
+                        $this->leftJoin = $this->ArtifyView->renderLeftJoin($leftJoindata, $this->settings, $this->langData);
                     }
                 } else if (strtoupper($join["type"]) === "INNER JOIN") {
                     if ($edit) {
@@ -4125,9 +4125,9 @@ Class Artify {
                     }
                 }
                 if (is_array($viewData) && count($viewData))
-                    $stepBody .= "<div id=" . $step["stepId"] . ">" . $this->pdocrudView->renderViewFields($content, $viewData["columns"], $this->langData, $this->settings, $this->objKey, $viewData["leftJoinData"], $viewData["data"]["id"]) . "</div>";
+                    $stepBody .= "<div id=" . $step["stepId"] . ">" . $this->ArtifyView->renderViewFields($content, $viewData["columns"], $this->langData, $this->settings, $this->objKey, $viewData["leftJoinData"], $viewData["data"]["id"]) . "</div>";
                 else
-                    $stepBody .= "<div id=" . $step["stepId"] . ">" . $this->pdocrudView->renderField($content, $this->settings) . "</div>";
+                    $stepBody .= "<div id=" . $step["stepId"] . ">" . $this->ArtifyView->renderField($content, $this->settings) . "</div>";
             }
         }
         $output = $stepstart . $stepHeader . $stepend . $stepBody . "</div>";
@@ -4156,9 +4156,9 @@ Class Artify {
                     }
                 }
                 if (is_array($viewData) && count($viewData))
-                    $stepBody .= "<fieldset title=\"" . $step["stepName"] . "\" class=\"step\" id=\"" . $step["stepId"] . "\"><legend> </legend>" . $this->pdocrudView->renderViewFields($content, $viewData["columns"], $this->langData, $this->settings, $this->objKey, $viewData["leftJoinData"], $viewData["data"]["id"]) . "</fieldset>";
+                    $stepBody .= "<fieldset title=\"" . $step["stepName"] . "\" class=\"step\" id=\"" . $step["stepId"] . "\"><legend> </legend>" . $this->ArtifyView->renderViewFields($content, $viewData["columns"], $this->langData, $this->settings, $this->objKey, $viewData["leftJoinData"], $viewData["data"]["id"]) . "</fieldset>";
                 else
-                    $stepBody .= "<fieldset title=\"" . $step["stepName"] . "\" class=\"step\" id=\"" . $step["stepId"] . "\"><legend> </legend>" . $this->pdocrudView->renderField($content, $this->settings) . "</fieldset>";
+                    $stepBody .= "<fieldset title=\"" . $step["stepName"] . "\" class=\"step\" id=\"" . $step["stepId"] . "\"><legend> </legend>" . $this->ArtifyView->renderField($content, $this->settings) . "</fieldset>";
             }
         }
         $output = $stepstart . $stepHeader . $stepend . $stepBody;
@@ -4665,7 +4665,7 @@ Class Artify {
                 else if ($filter["filterType"] === "checkbox")
                     $filterControl = $this->getCheckboxField($fieldName, $attr, $data, $fieldData, $fieldClass);
 
-                $filterBox[$key] = $this->pdocrudView->renderFilter($filterControl, $filter["displayText"], $this->settings);
+                $filterBox[$key] = $this->ArtifyView->renderFilter($filterControl, $filter["displayText"], $this->settings);
             }
         }
         return $filterBox;
@@ -6390,7 +6390,7 @@ Class Artify {
                 $sidebar_url[] = $this->getAnchorField($text, $url, $attr, $anchorClass);
             }
         }
-        return $this->pdocrudView->renderSidebar($sidebarImage, $sidebarHeading1, $sidebarHeading2, $sidebar_url, $this->settings, $this->objKey);
+        return $this->ArtifyView->renderSidebar($sidebarImage, $sidebarHeading1, $sidebarHeading2, $sidebar_url, $this->settings, $this->objKey);
     }
 
     /**
