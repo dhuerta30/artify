@@ -932,6 +932,7 @@ class HomeController
 		$pdocrud->setSettings("csvBtn", false);
 		$pdocrud->setSettings("excelBtn", false);
 		$pdocrud->addCallback("before_insert", "insertar_modulos", array($id_sesion_usuario));
+		$pdocrud->addCallback("after_insert", "despues_de_insertar_modulos");
 		$pdocrud->addCallback("before_update", "actualizar_modulos");
 		$pdocrud->addCallback("before_delete", "eliminar_modulos");
 
