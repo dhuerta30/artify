@@ -2843,7 +2843,7 @@ Class Artify {
         @session_start();
         $data = array();
         $tableName = "";
-        require_once(dirname(__FILE__) . "/library/phpvalidation/pdocrudphpvalidation.php");
+        require_once(dirname(__FILE__) . "/library/phpvalidation/artifyphpvalidation.php");
 
         foreach ($values as $field => $val) {
             

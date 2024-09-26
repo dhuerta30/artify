@@ -62,7 +62,7 @@ class DB {
 
 	public static function performPagination($registros_por_pagina, $pagina_actual, $tabla, $id, $parametro)
     {
-        $pdomodel = DB::PDOModel();
+        $pdomodel = DB::Queryfy();
 
         $totalRegistros = $pdomodel->executeQuery("SELECT COUNT(*) as total FROM $tabla");
         $pagination = $pdomodel->simplepagination($pagina_actual, $totalRegistros[0]["total"], $registros_por_pagina, 'index.php', $parametro);
