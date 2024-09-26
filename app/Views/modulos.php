@@ -13,7 +13,7 @@
 }
 
 .pdocrud_leftjoin_row_1 {
-    width: 20%;
+    width: 7.692307692307692%;
 }
 
 .form-control {
