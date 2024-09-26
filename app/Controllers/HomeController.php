@@ -859,13 +859,15 @@ class HomeController
 											</select>
 										</td>
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_11">
-											<div class="checkbox pdocrud-checkbox-group"><label class="checkbox-inline">
-												<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" name="actions_buttons_grid_db[]" value="Imprimir">Imprimir</label>
+											<div class="checkbox pdocrud-checkbox-group">
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" name="actions_buttons_grid_db[]" value="PDF">PDF</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Imprimir">Imprimir</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" name="actions_buttons_grid_db[]" value="CSV">CSV</label>
-												<label class="checkbox-inline"><input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" name="actions_buttons_grid_db[]" value="Excel">Excel</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="PDF">PDF</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="CSV">CSV</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Excel">Excel</label>
 											</div>
 										</td>
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_12">
@@ -876,13 +878,14 @@ class HomeController
 											</select>
 										</td>
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_13">
-											<div class="checkbox pdocrud-checkbox-group"><label class="checkbox-inline">
-												<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" name="buttons_actions_db[]" value="Ver">Ver</label>
+											<div class="checkbox pdocrud-checkbox-group">
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" name="buttons_actions_db[]" value="Editar">Editar</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Ver">Ver</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" name="buttons_actions_db[]" value="Eliminar">Eliminar</label>
-												<label class="checkbox-inline"><input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" name="buttons_actions_db[]" value="Personalizado">Personalizado</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Editar">Editar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Eliminar">Eliminar</label>
+												<label class="checkbox-inline"><input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado">Personalizado</label>
 											</div>
 										</td>
 										<td>
