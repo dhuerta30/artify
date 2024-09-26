@@ -40,6 +40,22 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
+        $('.siguiente_1').click(function() {
+            $('#pdf-tab').tab('show');
+        });
+
+        $('.siguiente_2').click(function() {
+            $('#Api-tab').tab('show');
+        });
+
+        $('.anterior').click(function() {
+            $('#modulos-tab').tab('show');
+        });
+
+        $('.atras').click(function() {
+            $('#pdf-tab').tab('show');
+        });
+
         $(".modificar_tabla_col").hide();
         $(".campos_view_tabla").hide();
 
