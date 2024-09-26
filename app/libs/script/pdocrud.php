@@ -985,7 +985,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = isset($data["modulos"]["buttons_actions"]) ? $data["modulos"]["buttons_actions"] : null;
 
-    // Check if the table already exists
     $pdomodel = $obj->getPDOModelObj();
     $pdomodel->where("tabla", $tabla);
     $db_result = $pdomodel->select("modulos");
@@ -1009,31 +1008,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         );
     }
 
-    // Assign id_menu and other anidada fields
-    $data["modulos"]["id_menu"] = $id_menu ?? null;
-    $data["modulos"]["controller_name"] = ucfirst($controller_name);
-
-    $newdata = array();
-    $newdata["modulos"]["tabla"] = $tabla;
-    $newdata["modulos"]["id_tabla"] = $id_tabla;
-    $newdata["modulos"]["crud_type"] = $crud_type;
-    $newdata["modulos"]["query"] = $query_db;
-    $newdata["modulos"]["controller_name"] = $controller_name;
-    $newdata["modulos"]["columns_table"] = $columns_table;
-    $newdata["modulos"]["name_view"] = $name_view;
-    $newdata["modulos"]["add_menu"] = $add_menu;
-    $newdata["modulos"]["template_fields"] = $template_fields;
-    $newdata["modulos"]["active_filter"] = $active_filter;
-    $newdata["modulos"]["clone_row"] = $clone_row;
-    $newdata["modulos"]["active_popup"] = $active_popup;
-    $newdata["modulos"]["active_search"] = $active_search;
-    $newdata["modulos"]["activate_deleteMultipleBtn"] = $activate_deleteMultipleBtn;
-    $newdata["modulos"]["button_add"] = $button_add;
-    $newdata["modulos"]["actions_buttons_grid"] = $actions_buttons_grid;
-    $newdata["modulos"]["activate_nested_table"] = $activate_nested_table;
-    $newdata["modulos"]["buttons_actions"] = $buttons_actions;
-
-   
     /*if ($add_menu == "Si") {
         $datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
         $newOrdenMenu = $datamenu[0]["orden"] + 1;
@@ -1054,6 +1028,27 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             "visibilidad_menu" => "Mostrar"
         ));
     }*/
+    
+    $newdata = array();
+    $newdata["modulos"]["tabla"] = $tabla;
+    $newdata["modulos"]["id_tabla"] = $id_tabla;
+    $newdata["modulos"]["crud_type"] = $crud_type;
+    $newdata["modulos"]["query"] = $query_db;
+    $newdata["modulos"]["controller_name"] = ucfirst($controller_name);
+    $newdata["modulos"]["columns_table"] = $columns_table;
+    $newdata["modulos"]["name_view"] = $name_view;
+    $newdata["modulos"]["add_menu"] = $add_menu;
+    $newdata["modulos"]["template_fields"] = $template_fields;
+    $newdata["modulos"]["id_menu"] = $id_menu ?? null;
+    $newdata["modulos"]["active_filter"] = $active_filter;
+    $newdata["modulos"]["clone_row"] = $clone_row;
+    $newdata["modulos"]["active_popup"] = $active_popup;
+    $newdata["modulos"]["active_search"] = $active_search;
+    $newdata["modulos"]["activate_deleteMultipleBtn"] = $activate_deleteMultipleBtn;
+    $newdata["modulos"]["button_add"] = $button_add;
+    $newdata["modulos"]["actions_buttons_grid"] = $actions_buttons_grid;
+    $newdata["modulos"]["activate_nested_table"] = $activate_nested_table;
+    $newdata["modulos"]["buttons_actions"] = $buttons_actions;
 
     return $newdata;
 }
