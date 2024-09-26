@@ -25,7 +25,7 @@ class DB {
 		return (strcasecmp($value, 'true') ? false : true);
 	}
 
-    public static function PDOModel()
+    public static function Queryfy()
     {
         $artify = DB::ArtifyCrud();
         $QueryfyObj = $artify->getQueryfyObj();

@@ -8,10 +8,10 @@ class PageModel
 {
     public function PageById($id)
     {
-        $pdomodel = DB::PDOModel();
-        $pdomodel->where("modulos.tabla", $id);
-        $pdomodel->joinTables("campos", "modulos.id_modulos = campos.id_modulos", "LEFT JOIN");
-        $data = $pdomodel->select("modulos");
+        $Queryfy = DB::Queryfy();
+        $Queryfy->where("modulos.tabla", $id);
+        $Queryfy->joinTables("campos", "modulos.id_modulos = campos.id_modulos", "LEFT JOIN");
+        $data = $Queryfy->select("modulos");
 
         $arr_campos = [];
 

@@ -15,22 +15,22 @@ class DatosPacienteModel
 
 	public function insertar_datos_paciente($data = array())
 	{
-		$pdomodel = DB::PDOModel();
-		$pdomodel->insert($this->tabla, $data);
-		return $pdomodel;
+		$Queryfy = DB::Queryfy();
+		$Queryfy->insert($this->tabla, $data);
+		return $Queryfy;
 	}
 
 	public function PacientePorRut($rut){
-		$pdomodel = DB::PDOModel();
-		$pdomodel->where("rut", $rut);
-		$data = $pdomodel->select($this->tabla);
+		$Queryfy = DB::Queryfy();
+		$Queryfy->where("rut", $rut);
+		$data = $Queryfy->select($this->tabla);
 		return $data;
 	}
 
 	public function PacientePorId($id){
-		$pdomodel = DB::PDOModel();
-		$pdomodel->where("id_datos_paciente", $id);
-		$data = $pdomodel->select($this->tabla);
+		$Queryfy = DB::Queryfy();
+		$Queryfy->where("id_datos_paciente", $id);
+		$data = $Queryfy->select($this->tabla);
 		return $data;
 	}
 }
