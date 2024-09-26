@@ -15,8 +15,8 @@ class ProcedimientoModel
 
     public function insertar_procedimiento($data = array())
     {
-        $pdomodel = DB::Queryfy();
-        $pdomodel->insert($this->table, $data);
-        return $pdomodel;
+        $Queryfy = DB::Queryfy();
+        $Queryfy->insert($this->table, $data);
+        return $Queryfy;
     }
 }
