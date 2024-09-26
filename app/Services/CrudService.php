@@ -529,9 +529,12 @@ class CrudService
                 $controllerContent .= "
                     \$pdocrud->setSettings('delbtn', true);
                 ";
-            } else if ($Btnaction === 'Personalizado') {
+            } else if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
-            
+                    \$action = \"http://google.com/?id={booking_Id}&name={first_name}\";
+                    \$text = \"<i class=\"fa fa-external-link\"></i>\';
+                    \$attr = array(\"title\"=>\"Redirect URL\", \"target\"=> \"_blank\");
+                    \$pdocrud->enqueueBtnActions(\"pdocrud-button-url\", \$action, \"url\", \$text, \"booking_status\", \$attr);
                 ";
             }
         }
