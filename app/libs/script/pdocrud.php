@@ -1028,7 +1028,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             "visibilidad_menu" => "Mostrar"
         ));
     }*/
-    
+
     $newdata = array();
     $newdata["modulos"]["tabla"] = $tabla;
     $newdata["modulos"]["id_tabla"] = $id_tabla;
@@ -1058,13 +1058,13 @@ function despues_de_insertar_modulos($data, $obj) {
 
     // Verificamos si las variables POST son arrays, si no, las dejamos en null.
     $nivel_db = isset($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) 
-        ? $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
+        ? $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"] : [];
 
     $tabla_db = isset($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) 
-        ? $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
+        ? $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"] : [];
 
     $consulta_crear_tabla = isset($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) 
-        ? $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"] : null;
+        ? $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"] : [];
 
     $count = count($nivel_db);
     if ($count !== count($tabla_db) || $count !== count($consulta_crear_tabla)) {

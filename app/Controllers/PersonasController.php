@@ -30,8 +30,6 @@
                 unset($columnDB[0]);
 
                 
-
-            
                 $pdocrud->setSettings('searchbox', false);
             
                 $pdocrud->setSettings('clonebtn', false);
