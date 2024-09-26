@@ -22,7 +22,7 @@ function pdocrudAutoLoad($class) {
 }
 
 if (isset($_REQUEST["pdocrud_instance"])) {
-    $fomplusajax = new PDOCrudAjaxCtrl();
+    $fomplusajax = new ArtifyAjaxCtrl();
     $fomplusajax->handleRequest();
 }
 

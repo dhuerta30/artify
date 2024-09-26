@@ -1,6 +1,6 @@
 <?php
 
-Class PDOCrudAjaxCtrl {
+Class ArtifyAjaxCtrl {
 
     public function handleRequest() {
         $instanceKey = isset($_REQUEST["pdocrud_instance"]) ? filter_var($_REQUEST["pdocrud_instance"], FILTER_SANITIZE_STRING) : null;
