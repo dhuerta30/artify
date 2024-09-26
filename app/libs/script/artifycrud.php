@@ -27,10 +27,10 @@ if (isset($_REQUEST["pdocrud_instance"])) {
 }
 
 function buscador_tabla($data, $obj, $columnDB = array()) {
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
     $tabla = $obj->getLangData("tabla");
 
-    $columnNames = $pdomodel->columnNames($tabla);
+    $columnNames = $queryfy->columnNames($tabla);
  
     $whereClause = "";
  
@@ -67,10 +67,10 @@ function buscador_tabla($data, $obj, $columnDB = array()) {
 }
 
 function format_sql_col_tabla($data, $obj, $columnDB = array()) {
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
     $tabla = $obj->getLangData("tabla");
  
-    $columnNames = $pdomodel->columnNames($tabla);
+    $columnNames = $queryfy->columnNames($tabla);
  
     $template = array(
         'colname' => '',
@@ -114,7 +114,7 @@ function format_sql_col_tabla($data, $obj, $columnDB = array()) {
 function eliminacion_masiva_tabla($data, $obj){
     $tabla = $obj->getLangData("tabla");
     $pk = $obj->getLangData("pk");
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
  
     // Obtener los IDs seleccionados del array
     $selected_ids = $data["selected_ids"];
@@ -123,8 +123,8 @@ function eliminacion_masiva_tabla($data, $obj){
     if (!empty($selected_ids)) {
         // Recorrer cada ID y eliminar el producto correspondiente
         foreach ($selected_ids as $id) {
-            $pdomodel->where($pk, $id);
-            $pdomodel->delete($tabla);
+            $queryfy->where($pk, $id);
+            $queryfy->delete($tabla);
         }
     }
  
@@ -134,13 +134,13 @@ function eliminacion_masiva_tabla($data, $obj){
 function eliminar_tabla($data, $obj){
     $tabla = $obj->langData["tabla"];
     $pk = $obj->langData["pk"];
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
  
     $id = $data["id"];
  
     if (!empty($id)) {
-        $pdomodel->where($pk, $id);
-        $pdomodel->delete($tabla);
+        $queryfy->where($pk, $id);
+        $queryfy->delete($tabla);
     }
  
     return $data;
@@ -150,7 +150,7 @@ function carga_masiva_nmedicos_insertar($data, $obj){
     $archivo = basename($data["carga_masiva_nmedicos"]["archivo"]);
     $extension = pathinfo($archivo, PATHINFO_EXTENSION);
 
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
    
     $rutInvalidos = [];
 
@@ -164,7 +164,7 @@ function carga_masiva_nmedicos_insertar($data, $obj){
             die(json_encode($error_msg));
         } else {
 
-            $records = $pdomodel->excelToArray("uploads/".$archivo); /* Acá capturamos el nombre del archivo excel a importar */
+            $records = $queryfy->excelToArray("uploads/".$archivo); /* Acá capturamos el nombre del archivo excel a importar */
 
             $sql = array();
             foreach ($records as $Excelval) {
@@ -175,7 +175,7 @@ function carga_masiva_nmedicos_insertar($data, $obj){
                     $rutInvalidos[] = $rut_completo;
                 } else {
 
-                    $existingMedico = $pdomodel->DBQuery("SELECT * FROM nmedico WHERE rutmedico = :rut", ['rut' => $rut_completo]);
+                    $existingMedico = $queryfy->DBQuery("SELECT * FROM nmedico WHERE rutmedico = :rut", ['rut' => $rut_completo]);
 
                     if (!$existingMedico) {
                         $sql = array(
@@ -184,7 +184,7 @@ function carga_masiva_nmedicos_insertar($data, $obj){
                             'rutmedico' => $rut_completo
                         );
 
-                        $pdomodel->insertBatch("nmedico", array($sql));
+                        $queryfy->insertBatch("nmedico", array($sql));
                     } else {
                         $error_msg = array("message" => "", "error" => "Lo Siguientes Médicos ingresados ya existen: ". implode(", ", $Excelval["Nombre"]), "redirectionurl" => "");
                         die(json_encode($error_msg));
@@ -209,8 +209,8 @@ function actualizar_criticosapa($data, $obj){
     $notificado = $data["criticosapa"]["notificado"];
 
     if($notificado == "si"){
-        $pdomodel = $obj->getPDOModelObj();
-        $pdomodel->insert("historico_caso", array(
+        $queryfy = $obj->getQueryfyObj();
+        $queryfy->insert("historico_caso", array(
             "tipo" => "6",
             "fecha_y_hora" => $fecharesultado,
             "Id_solicitud" => $Idsolicitud
@@ -228,8 +228,8 @@ function actualizar_notificar_paciente($data, $obj){
     $nombre_funcionario = $data["criticosapa"]["nombre_funcionario"];
     $texto_libre = $data["criticosapa"]["texto_libre"];
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->insert("historico_caso", array(
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->insert("historico_caso", array(
         "tipo" => "5",
         "fecha_y_hora" => $fecha . ' ' . $hora,
         "Id_solicitud" => $Idsolicitud
@@ -367,9 +367,9 @@ function actualizar_resultados($data, $obj){
     }
 
     if ($critico == 'si') {
-        $pdomodel = $obj->getPDOModelObj();
+        $queryfy = $obj->getQueryfyObj();
        
-        $pdomodel->insert("criticosapa", array(
+        $queryfy->insert("criticosapa", array(
             "Id_solicitud" => $Idsolicitud, 
             "rut" => $rut,
             "nombres" => $nombres,
@@ -380,11 +380,11 @@ function actualizar_resultados($data, $obj){
         ));    
     }
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("Idsolicitud", $Idsolicitud);
-    $solicitudes = $pdomodel->select("solicitudesapa");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("Idsolicitud", $Idsolicitud);
+    $solicitudes = $queryfy->select("solicitudesapa");
 
-    $pdomodel->insert("historico_caso", array(
+    $queryfy->insert("historico_caso", array(
         "tipo" => $solicitudes[0]["estado"],
         "fecha_y_hora" => $fecharesultadoMysql,
         "Id_solicitud" => $Idsolicitud
@@ -453,12 +453,12 @@ function beforeTableDataCallBackCriticos($data, $obj){
 
 function despues_de_insertar_solicitudesapa($data, $obj){
     $id = $data;   
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
 
-    $pdomodel->where("Idsolicitud", $id);
-    $solicitudes = $pdomodel->select("solicitudesapa");
+    $queryfy->where("Idsolicitud", $id);
+    $solicitudes = $queryfy->select("solicitudesapa");
 
-    $pdomodel->insert("historico_caso", array(
+    $queryfy->insert("historico_caso", array(
         "tipo" => $solicitudes[0]["estado"],
         "fecha_y_hora" => $solicitudes[0]["fecharegistro"],
         "Id_solicitud" => $id
@@ -499,15 +499,15 @@ function seleccionar_solicitudesapa($data, $obj){
         die(json_encode($error_msg));
     }
 
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
     foreach ($id as $Idsolicitud) {
-        $pdomodel->where("Idsolicitud", $Idsolicitud);
-        $pdomodel->update("solicitudesapa", array(
+        $queryfy->where("Idsolicitud", $Idsolicitud);
+        $queryfy->update("solicitudesapa", array(
             "estado" => $estado, 
             "fechaderivacion" => $fechaderivacion
         ));
 
-        $pdomodel->insert("historico_caso", array(
+        $queryfy->insert("historico_caso", array(
             "tipo" => $estado,
             "fecha_y_hora" => $fechaderivacion,
             "Id_solicitud" => $Idsolicitud
@@ -549,16 +549,16 @@ function seleccionar_solicitudesapa_derivacion($data, $obj){
         die(json_encode($error_msg));
     }
 
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
     foreach ($id as $Idsolicitud) {
-        $pdomodel->where("Idsolicitud", $Idsolicitud);
-        $pdomodel->update("solicitudesapa", array(
+        $queryfy->where("Idsolicitud", $Idsolicitud);
+        $queryfy->update("solicitudesapa", array(
             "estado" => $estado, 
             "fechaderivacion" => $fechaderivacion, 
             "centroderivacion" => $centroderivacion
         ));
 
-        $pdomodel->insert("historico_caso", array(
+        $queryfy->insert("historico_caso", array(
             "tipo" => $estado,
             "fecha_y_hora" => $fechaderivacion,
             "Id_solicitud" => $Idsolicitud
@@ -585,8 +585,8 @@ function agregar_menu($data, $obj){
     $id_menu = $data;
     $id_usuario_session = $_SESSION["usuario"][0]["id"];
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->insert("usuario_menu", array("id_menu" => $id_menu, "id_usuario" => $id_usuario_session, "visibilidad_menu" => "Mostrar"));
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->insert("usuario_menu", array("id_menu" => $id_menu, "id_usuario" => $id_usuario_session, "visibilidad_menu" => "Mostrar"));
 
     return $data;
 }
@@ -595,10 +595,10 @@ function despues_insertar_submenu($data, $obj){
     $id_submenu = $data;
     $id_usuario_session = $_SESSION["usuario"][0]["id"];
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("id_submenu", $id_submenu);
-    $id_menu = $pdomodel->select("submenu");
-    $pdomodel->insert("usuario_submenu", array("id_menu" => $id_menu[0]["id_menu"], "id_submenu" => $id_submenu, "id_usuario" => $id_usuario_session, "visibilidad_submenu" => "Mostrar"));
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("id_submenu", $id_submenu);
+    $id_menu = $queryfy->select("submenu");
+    $queryfy->insert("usuario_submenu", array("id_menu" => $id_menu[0]["id_menu"], "id_submenu" => $id_submenu, "id_usuario" => $id_usuario_session, "visibilidad_submenu" => "Mostrar"));
 
     return $data;
 }
@@ -607,26 +607,26 @@ function eliminar_menu($data, $obj){
     $id_menu = $data["id"];
     $id_usuario_session = $_SESSION["usuario"][0]["id"];
     
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("id_menu", $id_menu);
-    $pdomodel->where("id_usuario", $id_usuario_session);
-    $pdomodel->delete("usuario_menu");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("id_menu", $id_menu);
+    $queryfy->where("id_usuario", $id_usuario_session);
+    $queryfy->delete("usuario_menu");
 
-    $pdomodel->where("id_menu", $id_menu);
-    $id_menu_db = $pdomodel->select("submenu");
+    $queryfy->where("id_menu", $id_menu);
+    $id_menu_db = $queryfy->select("submenu");
 
     if($id_menu_db){
-        $pdomodel->where("id_submenu", $id_menu_db[0]["id_submenu"]);
-        $pdomodel->delete("submenu");
+        $queryfy->where("id_submenu", $id_menu_db[0]["id_submenu"]);
+        $queryfy->delete("submenu");
 
-        $pdomodel->where("id_menu", $id_menu);
-        $pdomodel->where("id_usuario", $id_usuario_session);
-        $pdomodel->delete("usuario_submenu");
+        $queryfy->where("id_menu", $id_menu);
+        $queryfy->where("id_usuario", $id_usuario_session);
+        $queryfy->delete("usuario_submenu");
     }
 
     if(!$id_menu_db){
-        $pdomodel->where("id_menu", $id_menu_db[0]["id_menu"]);
-        $pdomodel->update("menu", array("submenu" => "No"));
+        $queryfy->where("id_menu", $id_menu_db[0]["id_menu"]);
+        $queryfy->update("menu", array("submenu" => "No"));
     }
 
     return $data;
@@ -636,23 +636,23 @@ function eliminar_submenu($data, $obj){
     $id_submenu = $data["id"];
     $id_usuario_session = $_SESSION["usuario"][0]["id"];
 
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
 
-    $pdomodel->where("id_submenu", $id_submenu);
-    $id_menu = $pdomodel->select("submenu");
+    $queryfy->where("id_submenu", $id_submenu);
+    $id_menu = $queryfy->select("submenu");
 
-    $result = $pdomodel->DBQuery("SELECT COUNT(*) AS total FROM submenu WHERE id_menu = :id_menu", [":id_menu" => $id_menu[0]["id_menu"]]);
+    $result = $queryfy->DBQuery("SELECT COUNT(*) AS total FROM submenu WHERE id_menu = :id_menu", [":id_menu" => $id_menu[0]["id_menu"]]);
 
     $num_submenus = $result[0]["total"];
 
     if ($num_submenus == 0) {
-        $pdomodel->where("id_menu", $id_menu[0]["id_menu"]);
-        $pdomodel->update("menu", array("submenu" => "No"));
+        $queryfy->where("id_menu", $id_menu[0]["id_menu"]);
+        $queryfy->update("menu", array("submenu" => "No"));
     }
 
-    $pdomodel->where("id_submenu", $id_submenu);
-    $pdomodel->where("id_usuario", $id_usuario_session);
-    $pdomodel->delete("usuario_submenu");
+    $queryfy->where("id_submenu", $id_submenu);
+    $queryfy->where("id_usuario", $id_usuario_session);
+    $queryfy->delete("usuario_submenu");
 
     return $data;
 }
@@ -663,7 +663,7 @@ function carga_masiva_prestaciones_insertar($data, $obj){
     $explode = explode('.', $archivo);
     $extension = array_pop($explode);
 
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
    
     if (empty($archivo)) { 
         $error_msg = array("message" => "", "error" => "No se ha subido ningún Archivo", "redirectionurl" => "");
@@ -676,7 +676,7 @@ function carga_masiva_prestaciones_insertar($data, $obj){
 
         } else {
 
-            $records = $pdomodel->excelToArray("uploads/".$archivo); /* Acá capturamos el nombre del archivo excel a importar */
+            $records = $queryfy->excelToArray("uploads/".$archivo); /* Acá capturamos el nombre del archivo excel a importar */
 
             $sql = array();
             foreach ($records as $Excelval) {
@@ -687,7 +687,7 @@ function carga_masiva_prestaciones_insertar($data, $obj){
                 $sql['codigo_fonasa'] = $Excelval['CODIGO FONASA'];
                 $sql['glosa'] = $Excelval['GLOSA'];
 
-                $pdomodel->insertBatch("prestaciones", array($sql));
+                $queryfy->insertBatch("prestaciones", array($sql));
             }
             $data["carga_masiva_prestaciones"]["archivo"] = basename($data["carga_masiva_prestaciones"]["archivo"]);
         }
@@ -742,10 +742,10 @@ function insertar_procedimientos($data, $obj){
 function delete_file_data($data, $obj)
 {
     $id = $data['id'];
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->fetchType = "OBJ";
-    $pdomodel->where("id", $id);
-    $result = $pdomodel->select("backup");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->fetchType = "OBJ";
+    $queryfy->where("id", $id);
+    $result = $queryfy->select("backup");
 
     $file_sql = $result[0]->archivo;
 
@@ -768,13 +768,13 @@ function delete_file_data($data, $obj)
 function eliminar_detalle_solicitud($data, $obj){
     /*$id = $data["id"];
     
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("id_detalle_de_solicitud", $id);
-    $result = $pdomodel->select("detalle_de_solicitud");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("id_detalle_de_solicitud", $id);
+    $result = $queryfy->select("detalle_de_solicitud");
     
     $id_datos_paciente = $result[0]["id_datos_paciente"];
-    $pdomodel->where("id_datos_paciente", $id_datos_paciente);
-    $pdomodel->delete("diagnostico_antecedentes_paciente");*/
+    $queryfy->where("id_datos_paciente", $id_datos_paciente);
+    $queryfy->delete("diagnostico_antecedentes_paciente");*/
     return $data;
 }
 
@@ -793,19 +793,19 @@ function before_sql_data_estat($data, $obj){
     $id_detalle_de_solicitud = $data["detalle_de_solicitud"]["id_detalle_de_solicitud"];
     $id_diagnostico_antecedentes_paciente = $data["diagnostico_antecedentes_paciente"]["id_diagnostico_antecedentes_paciente"];
  
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("id_detalle_de_solicitud", $id_detalle_de_solicitud, "=");
-    $data_detalle = $pdomodel->select("detalle_de_solicitud");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("id_detalle_de_solicitud", $id_detalle_de_solicitud, "=");
+    $data_detalle = $queryfy->select("detalle_de_solicitud");
    
-    $pdomodel->where("id_diagnostico_antecedentes_paciente", $id_diagnostico_antecedentes_paciente, "=");
-    $data_diagnostico = $pdomodel->select("diagnostico_antecedentes_paciente");
+    $queryfy->where("id_diagnostico_antecedentes_paciente", $id_diagnostico_antecedentes_paciente, "=");
+    $data_diagnostico = $queryfy->select("diagnostico_antecedentes_paciente");
     
     if($data_detalle && $data_diagnostico){
-        $pdomodel->where("id_detalle_de_solicitud", $id_detalle_de_solicitud, "=", "AND");
-        $pdomodel->update("detalle_de_solicitud", array("fecha" => $fecha, "estado" => $estado));
+        $queryfy->where("id_detalle_de_solicitud", $id_detalle_de_solicitud, "=", "AND");
+        $queryfy->update("detalle_de_solicitud", array("fecha" => $fecha, "estado" => $estado));
 
-        $pdomodel->where("id_diagnostico_antecedentes_paciente", $id_diagnostico_antecedentes_paciente);
-        $pdomodel->update("diagnostico_antecedentes_paciente", array("fundamento" => $fundamento, "adjuntar" => basename($adjuntar)));
+        $queryfy->where("id_diagnostico_antecedentes_paciente", $id_diagnostico_antecedentes_paciente);
+        $queryfy->update("diagnostico_antecedentes_paciente", array("fundamento" => $fundamento, "adjuntar" => basename($adjuntar)));
 
         $success = array("message" => "Operación realizada con éxito", "error" => [], "redirectionurl" => "");
         die(json_encode($success));
@@ -828,34 +828,34 @@ function editar_procedimientos($data, $obj){
     $diagnostico = $data["diagnostico_antecedentes_paciente"]["diagnostico"];
     $fundamento = $data["diagnostico_antecedentes_paciente"]["fundamento"];
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->columns = array("fecha", "datos_paciente.id_datos_paciente", "fecha_solicitud", "diagnostico", "fundamento", "adjuntar", "estado");
-    $pdomodel->joinTables("detalle_de_solicitud", "detalle_de_solicitud.id_datos_paciente = datos_paciente.id_datos_paciente", "INNER JOIN");
-    $pdomodel->joinTables("diagnostico_antecedentes_paciente", "diagnostico_antecedentes_paciente.id_datos_paciente = datos_paciente.id_datos_paciente", "INNER JOIN");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->columns = array("fecha", "datos_paciente.id_datos_paciente", "fecha_solicitud", "diagnostico", "fundamento", "adjuntar", "estado");
+    $queryfy->joinTables("detalle_de_solicitud", "detalle_de_solicitud.id_datos_paciente = datos_paciente.id_datos_paciente", "INNER JOIN");
+    $queryfy->joinTables("diagnostico_antecedentes_paciente", "diagnostico_antecedentes_paciente.id_datos_paciente = datos_paciente.id_datos_paciente", "INNER JOIN");
 
     // Filtrar por ID y Fecha
-    $pdomodel->where("datos_paciente.id_datos_paciente", $id_datos_paciente);
-    $pdomodel->where("detalle_de_solicitud.fecha_solicitud", $fecha_solicitud);
+    $queryfy->where("datos_paciente.id_datos_paciente", $id_datos_paciente);
+    $queryfy->where("detalle_de_solicitud.fecha_solicitud", $fecha_solicitud);
 
     // Condiciones para verificar si los valores son diferentes
-    $pdomodel->where("detalle_de_solicitud.estado", $estado, "=");
-    $pdomodel->where("detalle_de_solicitud.fecha", $fecha, "=");
-    $pdomodel->where("diagnostico_antecedentes_paciente.diagnostico", $diagnostico, "=");
-    $pdomodel->where("diagnostico_antecedentes_paciente.fundamento", $fundamento, "=");
-    $pdomodel->where("diagnostico_antecedentes_paciente.adjuntar", $adjuntar, "=");
+    $queryfy->where("detalle_de_solicitud.estado", $estado, "=");
+    $queryfy->where("detalle_de_solicitud.fecha", $fecha, "=");
+    $queryfy->where("diagnostico_antecedentes_paciente.diagnostico", $diagnostico, "=");
+    $queryfy->where("diagnostico_antecedentes_paciente.fundamento", $fundamento, "=");
+    $queryfy->where("diagnostico_antecedentes_paciente.adjuntar", $adjuntar, "=");
 
      // Seleccionar para verificar si existen registros con condiciones diferentes
-    $result = $pdomodel->select("datos_paciente");
+    $result = $queryfy->select("datos_paciente");
     
     if ($result) {
         $error_msg = array("message" => "", "error" => "Modifique los campos para actualizar", "redirectionurl" => "");
         die(json_encode($error_msg));
     }
     
-    $pdomodel->where("id_datos_paciente", $id_datos_paciente);
-    $pdomodel->where("detalle_de_solicitud.fecha_solicitud", $fecha_solicitud);
-    $pdomodel->update("detalle_de_solicitud", array("estado" => $estado, "fecha" => $fecha));
-    $pdomodel->update("diagnostico_antecedentes_paciente", array("adjuntar" => $adjuntar, "diagnostico" => $diagnostico, "fundamento" => $fundamento));
+    $queryfy->where("id_datos_paciente", $id_datos_paciente);
+    $queryfy->where("detalle_de_solicitud.fecha_solicitud", $fecha_solicitud);
+    $queryfy->update("detalle_de_solicitud", array("estado" => $estado, "fecha" => $fecha));
+    $queryfy->update("diagnostico_antecedentes_paciente", array("adjuntar" => $adjuntar, "diagnostico" => $diagnostico, "fundamento" => $fundamento));
     
     return $data;
 }
@@ -867,14 +867,14 @@ function editar_egresar_solicitud($data, $obj) {
     $motivo_egreso = $data['diagnostico_antecedentes_paciente']['motivo_egreso'];
     $observacion = $_POST['observacion'];
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("observacion", $observacion, "!=", "AND");
-    $pdomodel->where("id_datos_paciente", $id_datos_paciente, "=");
-    $data_observacion = $pdomodel->select("detalle_de_solicitud");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("observacion", $observacion, "!=", "AND");
+    $queryfy->where("id_datos_paciente", $id_datos_paciente, "=");
+    $data_observacion = $queryfy->select("detalle_de_solicitud");
 
     if($data_observacion){
-        $pdomodel->where("id_datos_paciente", $id_datos_paciente);
-        $pdomodel->update("detalle_de_solicitud", array("observacion" => $observacion));
+        $queryfy->where("id_datos_paciente", $id_datos_paciente);
+        $queryfy->update("detalle_de_solicitud", array("observacion" => $observacion));
 
         $success = array("message" => "Operación realizada con éxito", "error" => [], "redirectionurl" => "");
         die(json_encode($success));
@@ -913,24 +913,24 @@ function editar_lista_examenes_notas($data, $obj){
     $fecha_solicitud = $data["detalle_de_solicitud"]["fecha_solicitud"];
     $observacion = $data["detalle_de_solicitud"]["observacion"];
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->columns = array("datos_paciente.id_datos_paciente", "fecha_solicitud", "observacion");
-    $pdomodel->joinTables("detalle_de_solicitud", "detalle_de_solicitud.id_datos_paciente = datos_paciente.id_datos_paciente", "INNER JOIN");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->columns = array("datos_paciente.id_datos_paciente", "fecha_solicitud", "observacion");
+    $queryfy->joinTables("detalle_de_solicitud", "detalle_de_solicitud.id_datos_paciente = datos_paciente.id_datos_paciente", "INNER JOIN");
 
-    $pdomodel->where("datos_paciente.id_datos_paciente", $id_datos_paciente, "=", "AND");
-    $pdomodel->where("detalle_de_solicitud.fecha_solicitud", $fecha_solicitud);
+    $queryfy->where("datos_paciente.id_datos_paciente", $id_datos_paciente, "=", "AND");
+    $queryfy->where("detalle_de_solicitud.fecha_solicitud", $fecha_solicitud);
     
-    $pdomodel->where("observacion", $observacion, "=");
-    $result = $pdomodel->select("datos_paciente");
+    $queryfy->where("observacion", $observacion, "=");
+    $result = $queryfy->select("datos_paciente");
 
     if ($result) {
         $error_msg = array("message" => "", "error" => "Modifique los campos para actualizar", "redirectionurl" => "");
         die(json_encode($error_msg));
     }
     
-    $pdomodel->where("id_datos_paciente", $id_datos_paciente);
-    $pdomodel->where("detalle_de_solicitud.fecha_solicitud", $fecha_solicitud);
-    $pdomodel->update("detalle_de_solicitud", array("observacion" => $observacion));
+    $queryfy->where("id_datos_paciente", $id_datos_paciente);
+    $queryfy->where("detalle_de_solicitud.fecha_solicitud", $fecha_solicitud);
+    $queryfy->update("detalle_de_solicitud", array("observacion" => $observacion));
 
     return $data;
 }
@@ -985,9 +985,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = isset($data["modulos"]["buttons_actions"]) ? $data["modulos"]["buttons_actions"] : null;
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("tabla", $tabla);
-    $db_result = $pdomodel->select("modulos");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("tabla", $tabla);
+    $db_result = $queryfy->select("modulos");
 
     if ($db_result) {
         echo "Lo siento La Tabla Ingresada ya existe, pruebe con otra diferente";
@@ -1009,10 +1009,10 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     }
 
     if ($add_menu == "Si") {
-        $datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
+        $datamenu = $queryfy->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
         $newOrdenMenu = $datamenu[0]["orden"] + 1;
 
-        $pdomodel->insert("menu", array(
+        $queryfy->insert("menu", array(
             "nombre_menu" => $controller_name,
             "url_menu" => "/" . $controller_name . "/index",
             "icono_menu" => "far fa-circle",
@@ -1020,9 +1020,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             "orden_menu" => $newOrdenMenu
         ));
 
-        $id_menu = $pdomodel->lastInsertId;
+        $id_menu = $queryfy->lastInsertId;
 
-        $pdomodel->insert("usuario_menu", array(
+        $queryfy->insert("usuario_menu", array(
             "id_usuario" => $id_sesion_usuario,
             "id_menu" => $id_menu,
             "visibilidad_menu" => "Mostrar"
@@ -1072,10 +1072,10 @@ function despues_de_insertar_modulos($data, $obj) {
         die();
     }
 
-    $pdomodel = $obj->getPDOModelObj();
+    $queryfy = $obj->getQueryfyObj();
 
     for ($i = 0; $i < $count; $i++) {
-        $pdomodel->insert("anidada", array(
+        $queryfy->insert("anidada", array(
             "id_modulos" => $id_modulos,
             "nivel_db" => $nivel_db[$i],
             "tabla_db" => $tabla_db[$i],
@@ -1128,9 +1128,9 @@ function actualizar_modulos($data, $obj){
 function eliminar_modulos($data, $obj)
 {
     $id = $data["id"];
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("id_modulos", $id);
-    $query = $pdomodel->select("modulos");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("id_modulos", $id);
+    $query = $queryfy->select("modulos");
 
     $id_menu = $query[0]["id_menu"];
 
@@ -1138,11 +1138,11 @@ function eliminar_modulos($data, $obj)
        echo "No se encontró ningún módulo con el ID proporcionado.";
     }
 
-    $pdomodel->where("id_menu", $id_menu);
-    $pdomodel->delete("menu");
+    $queryfy->where("id_menu", $id_menu);
+    $queryfy->delete("menu");
 
-    $pdomodel->where("id_menu", $id_menu);
-    $pdomodel->delete("usuario_menu");
+    $queryfy->where("id_menu", $id_menu);
+    $queryfy->delete("usuario_menu");
 
     $tabla = $query[0]["tabla"];
     $controller_name = $query[0]["controller_name"];
@@ -1196,7 +1196,7 @@ function eliminar_modulos($data, $obj)
         echo "El directorio no existe: $templaesCrudDirPath";
     }
 
-    $pdomodel->dropTable($tabla);
+    $queryfy->dropTable($tabla);
 
     return $data;
 }
@@ -1233,8 +1233,8 @@ function editar_perfil($data, $obj){
         die(json_encode($error_msg));
     }
 
-    $pdomodel = $obj->getPDOModelObj();
-    $result = $pdomodel->DBQuery("SELECT * FROM usuario WHERE (usuario = :user OR email = :email) AND id != :id", [':user' => $user, ':email' => $email, ':id' => $id]);
+    $queryfy = $obj->getQueryfyObj();
+    $result = $queryfy->DBQuery("SELECT * FROM usuario WHERE (usuario = :user OR email = :email) AND id != :id", [':user' => $user, ':email' => $email, ':id' => $id]);
 
     if($result){
         $error_msg = array("message" => "", "error" => "El correo o el usuario ya existe.", "redirectionurl" => "");
@@ -1297,8 +1297,8 @@ function insetar_usuario($data, $obj){
         die(json_encode($error_msg));
     }
 
-    $pdomodel = $obj->getPDOModelObj();
-    $result = $pdomodel->DBQuery("SELECT * FROM usuario WHERE usuario = '$user' OR email = '$email'");
+    $queryfy = $obj->getQueryfyObj();
+    $result = $queryfy->DBQuery("SELECT * FROM usuario WHERE usuario = '$user' OR email = '$email'");
 
     if($result){
         $error_msg = array("message" => "", "error" => "El correo o el usuario ya existe.", "redirectionurl" => "");
@@ -1362,8 +1362,8 @@ function editar_usuario($data, $obj){
         die(json_encode($error_msg));
     }
 
-    $pdomodel = $obj->getPDOModelObj();
-    $result = $pdomodel->DBQuery("SELECT * FROM usuario WHERE (usuario = :user OR email = :email) AND id != :id", [':user' => $user, ':email' => $email, ':id' => $id]);
+    $queryfy = $obj->getQueryfyObj();
+    $result = $queryfy->DBQuery("SELECT * FROM usuario WHERE (usuario = :user OR email = :email) AND id != :id", [':user' => $user, ':email' => $email, ':id' => $id]);
     
     if ($result) {
         $error_msg = array("message" => "", "error" => "El correo o el usuario ya existe.", "redirectionurl" => "");
@@ -1392,9 +1392,9 @@ function beforeloginCallback($data, $obj) {
     $pass = $data['usuario']['password'];
     $user = $data['usuario']['usuario'];
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("usuario", $user);
-    $hash = $pdomodel->select("usuario");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("usuario", $user);
+    $hash = $queryfy->select("usuario");
 
     if($hash){
         if (password_verify($pass, $hash[0]['password'])) {
@@ -1417,13 +1417,13 @@ function beforeloginCallback($data, $obj) {
 function insertar_submenu($data, $obj){
     $id_menu = $data["submenu"]["id_menu"];
    
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("id_menu", $id_menu);
-    $result = $pdomodel->select("menu");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("id_menu", $id_menu);
+    $result = $queryfy->select("menu");
     
     if($result){
-        $pdomodel->where("id_menu", $id_menu);
-        $pdomodel->update("menu", array("submenu"=> "Si"));
+        $queryfy->where("id_menu", $id_menu);
+        $queryfy->update("menu", array("submenu"=> "Si"));
     }
     return $data;
 }
@@ -1431,13 +1431,13 @@ function insertar_submenu($data, $obj){
 function modificar_submenu($data, $obj){
     $id_menu = $data["submenu"]["id_menu"];
    
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("id_menu", $id_menu);
-    $result = $pdomodel->select("menu");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("id_menu", $id_menu);
+    $result = $queryfy->select("menu");
     
     if($result){
-        $pdomodel->where("id_menu", $id_menu);
-        $pdomodel->update("menu", array("submenu"=> "Si"));
+        $queryfy->where("id_menu", $id_menu);
+        $queryfy->update("menu", array("submenu"=> "Si"));
     }
     return $data;
 }
@@ -1526,22 +1526,22 @@ function resetloginCallback($data, $obj)
         die(); 
     } 
 
-    $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("email", $email);
-    $hash = $pdomodel->select("usuario");
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->where("email", $email);
+    $hash = $queryfy->select("usuario");
 
     if ($hash) {
-        $pass = $pdomodel->getRandomPassword(15, true);
+        $pass = $queryfy->getRandomPassword(15, true);
         $encrypt = password_hash($pass, PASSWORD_DEFAULT);
 
-        $pdomodel->where("id", $hash[0]["id"]);
-        $pdomodel->update("usuario", array("password" => $encrypt));
+        $queryfy->where("id", $hash[0]["id"]);
+        $queryfy->update("usuario", array("password" => $encrypt));
 
         $emailBody = "Correo enviado  tu nueva contraseña es: $pass";
         $subject = "Nueva Contraseña de acceso al sistema de Procedimentos";
         $to = $email;
 
-        //$pdomodel->send_email_public($to, 'daniel.telematico@gmail.com', null, $subject, $emailBody);
+        //$queryfy->send_email_public($to, 'daniel.telematico@gmail.com', null, $subject, $emailBody);
         App\core\DB::PHPMail($to, "daniel.telematico@gmail.com", $subject, $emailBody);
         $obj->setLangData("success", "Correo enviado con éxito");
     }
