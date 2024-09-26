@@ -949,6 +949,9 @@ class HomeController
 		$pdocrud->fieldTypes("logo_pdf", "FILE_NEW");
 		$pdocrud->fieldTypes("marca_de_agua_pdf", "FILE_NEW");
 
+		$pdocrud->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
+		$pdocrud->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
+
 		$pdocrud->fieldTypes("buttons_actions", "checkbox");
 		$pdocrud->fieldDataBinding("buttons_actions", array("Ver" => "Ver", "Editar" => "Editar", "Eliminar" => "Eliminar", "Personalizado" => "Personalizado"), "", "", "array");
 
