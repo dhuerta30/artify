@@ -640,7 +640,7 @@ class HomeController
 								<p>Cambie por su vista o utilice la actual</p>
 							</div>
 						</div>
-						<div class="col-md-3 d-none">
+						<div class="col-md-12 d-none">
 							<div class="form-group">
 								<label class="form-label">Agregar Al Menú Principal:</label>
 								{add_menu}
@@ -760,13 +760,7 @@ class HomeController
 										</th>
 										<th>
 											<label class=" control-label col-form-label">Columnas de la Tabla</label>
-										</th>
-										<th>
-											<label class=" control-label col-form-label">Nombre del Controlador</label>
-										</th>
-										<th>
-											<label class=" control-label col-form-label">Nombre de La Vista</label>
-										</th>      
+										</th>    
 									</tr>
 								</thead>
 								<tbody>
@@ -785,11 +779,6 @@ class HomeController
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
 											<textarea class="form-control pdocrud-form-control  pdocrud-textarea consulta_crear_tabla" id="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA[]" name="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_4">
-											<input type="text" class="form-control pdocrud-form-control pdocrud-text name_controller_db" id="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ[]" name="YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ[]" disabled="disabled" required="1">
-										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_5">
-											<input type="text" class="form-control pdocrud-form-control pdocrud-text name_view_db" id="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ[]" name="YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ=[]" disabled="disabled" required="1"></td> 
 										<td>
 											<a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a>
 										</td>

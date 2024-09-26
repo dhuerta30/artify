@@ -988,8 +988,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $nivel = $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"];
     $tabla_db = $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"];
     $consulta_crear_tabla = $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"];
-    $name_controller_db = $_POST["YW5pZGFkYSMkbmFtZV9jb250cm9sbGVyX2RiQDNkc2ZzZGYqKjk5MzQzMjQ"];
-    $name_view_db = $_POST["YW5pZGFkYSMkbmFtZV92aWV3X2RiQDNkc2ZzZGYqKjk5MzQzMjQ"];
 
     // Check if the table already exists
     $pdomodel = $obj->getPDOModelObj();
@@ -1065,8 +1063,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["anidada"]["nivel_db"] = $nivel;
     $newdata["anidada"]["tabla_db"] = $tabla_db;
     $newdata["anidada"]["consulta_crear_tabla"] = $consulta_crear_tabla;
-    $newdata["anidada"]["name_controller_db"] = $name_controller_db;
-    $newdata["anidada"]["name_view_db"] = $name_view_db;
 
     print_r($newdata);
     die();
