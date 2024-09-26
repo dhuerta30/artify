@@ -760,6 +760,36 @@ class HomeController
 										</th>
 										<th>
 											<label class=" control-label col-form-label">Columnas de la Tabla</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Usar Plantilla Formulario HTML</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Filtro de Busqueda</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Clonar Filas</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Popup</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Búsqueda</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Eliminación Masiva</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Botón Agregar</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Botones de Exportación Grilla</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Tabla Anidada</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Botones de Acción</label>
 										</th>    
 									</tr>
 								</thead>
