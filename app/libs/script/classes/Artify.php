@@ -3273,51 +3273,6 @@ Class Artify {
         }
         return $output;
     }
-    
-    
-
-    /*private function dbSQL($data) {
-        $this->setSettings("pagination", false);
-        $this->setSettings("recordsPerPageDropdown", false);
-        $this->setSettings("totalRecordsInfo", false);
-        $data = $this->handleCallback('before_sql_data', $data);
-        $pdoModelObj = $this->getPDOModelObj();
-        
-        $result = $pdoModelObj->executeQuery($this->sql, $data);
-        
-        $totalRecords = count($result);
-        $recordPerPage = $this->settings["recordsPerPage"];
-
-        //echo $pdoModelObj->getLastQuery();
-        //die();
-
-        if (strtolower($recordPerPage) === "all")
-            $recordPerPage = $totalRecords;
-        $pagination = $this->pdocrudhelper->pagination($this->currentpage, $totalRecords, $recordPerPage, $this->settings["adjacents"], $this->langData);
-
-        if (isset($this->columns)) {
-            $cols = $this->getColumnNames($this->columns);
-        }
-
-        if ($totalRecords > 0) {
-            $cols = array_keys($result[0]);
-            $cols = $this->getColumnNames($cols);
-            $result = $this->formatTableData($result);
-            $from = ($this->currentpage - 1) * $recordPerPage + 1;
-            $to = $totalRecords > (($this->currentpage - 1) * $recordPerPage + $recordPerPage) ? ($this->currentpage - 1) * $recordPerPage + $recordPerPage : $totalRecords;
-            $this->langData["dispaly_records_info"] = $this->langData["showing"] . " " . $from . " " . $this->langData["to"] . " " . $to . " " . $this->langData["of"] . " " . $totalRecords . " " . $this->langData["entries"];
-            $this->settings["row_no"] = ($this->currentpage - 1) * $recordPerPage;
-        }
-
-        $result = $this->handleCallback('format_sql_data', $result);
-        $cols = $this->handleCallback('format_sql_col', $cols);
-        $this->setTableHeadings();
-        $search = $this->getSearchBox($cols, $data);
-        $perPageRecords = $this->perPageRecords($totalRecords, $data);
-        $output = $this->pdocrudView->renderSQL($cols, $result, $this->objKey, $this->langData, $this->settings, $pagination, $perPageRecords);
-        $output = $this->handleCallback('after_sql_data', $output);
-        return $output;
-    }*/
 
     private function dbAdvSearch() {
         $advanceSearch = $this->getAdvSearchControls();
