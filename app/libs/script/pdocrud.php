@@ -983,11 +983,11 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $button_add = $data["modulos"]["button_add"];
     $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
-    $buttons_actions = $data["modulos"]["buttons_actions"];
+    $buttons_actions = isset($data["modulos"]["buttons_actions"]) ? $data["modulos"]["buttons_actions"] : null;
 
-    $nivel = $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"];
-    $tabla_db = $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"];
-    $consulta_crear_tabla = $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"];
+    $nivel = isset($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
+    $tabla_db = isset($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
+    $consulta_crear_tabla = isset($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"] : null;
 
     // Check if the table already exists
     $pdomodel = $obj->getPDOModelObj();
