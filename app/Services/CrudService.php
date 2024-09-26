@@ -531,7 +531,7 @@ class CrudService
                 ";
             } else if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
-                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{{$idTable}}';
+                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/invoice_pdf/id/{{$idTable}}';
                     \$text = \"<i class=\"fa fa-external-link\"></i>\';
                     \$attr = array(\"title\"=>\"Redirect URL\", \"target\"=> \"_blank\");
                     \$pdocrud->enqueueBtnActions(\"pdocrud-button-url\", \$action, \"url\", \$text, \"booking_status\", \$attr);
@@ -613,23 +613,31 @@ class CrudService
         }
 
         $controllerContent .= "
-                \$pdocrud->setSettings('encryption', true);
-                \$pdocrud->setSettings('pagination', true);
-                \$pdocrud->setSettings('function_filter_and_search', true);
-                \$pdocrud->setSettings('recordsPerPageDropdown', true);
-                \$pdocrud->setSettings('totalRecordsInfo', true);
-                \$pdocrud->setSettings('actionbtn', true);
-                \$pdocrud->setSettings('refresh', false);
-                \$pdocrud->setSettings('numberCol', true);
-                \$pdocrud->buttonHide('submitBtnSaveBack');
-                \$pdocrud->setSettings('template', 'template_{$nameview}');
-                \$render = \$pdocrud->dbTable('{$tableName}')->render();
+            \$pdocrud->setSettings('encryption', true);
+            \$pdocrud->setSettings('pagination', true);
+            \$pdocrud->setSettings('function_filter_and_search', true);
+            \$pdocrud->setSettings('recordsPerPageDropdown', true);
+            \$pdocrud->setSettings('totalRecordsInfo', true);
+            \$pdocrud->setSettings('actionbtn', true);
+            \$pdocrud->setSettings('refresh', false);
+            \$pdocrud->setSettings('numberCol', true);
+            \$pdocrud->buttonHide('submitBtnSaveBack');
+            \$pdocrud->setSettings('template', 'template_{$nameview}');
+            \$render = \$pdocrud->dbTable('{$tableName}')->render();
 
-                View::render(
-                    '{$nameview}', ['render' => \$render]
-                    );
+            View::render(
+                '{$nameview}', ['render' => \$render]
+                );
+            }
+        }";
+        
+        if ($Btnaction === 'Personalizado PDF') {
+            $controllerContent .= "
+                public function invoice_pdf(){
+
                 }
-            }";
+            ";
+        }
 
         // Save the generated controller content to a file
         file_put_contents($controllerPath, $controllerContent);
