@@ -1112,6 +1112,7 @@ class HomeController
 		$pdocrud->fieldCssClass("activate_api", array("activate_api"));
 		$pdocrud->fieldCssClass("autenticate_jwt_token", array("autenticate_jwt_token"));
 
+		$pdocrud->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("consulta_crear_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
 		$pdocrud->fieldAttributes("modify_query", array("placeholder"=> "Ejemplo: DROP COLUMN categoria, ADD COLUMN edad INT(3)", "style"=> "min-height: 200px; max-height: 200px;"));
