@@ -631,12 +631,14 @@ class CrudService
             }
         }";
         
-        if ($Btnaction === 'Personalizado PDF') {
-            $controllerContent .= "
-                public function invoice_pdf(){
+        foreach ($buttons_actions_array as $Btnaction) {
+            if ($Btnaction === 'Personalizado PDF') {
+                $controllerContent .= "
+                    public function invoice_pdf(){
 
-                }
-            ";
+                    }
+                ";
+            }
         }
 
         // Save the generated controller content to a file
