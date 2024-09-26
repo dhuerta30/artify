@@ -985,10 +985,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = isset($data["modulos"]["buttons_actions"]) ? $data["modulos"]["buttons_actions"] : null;
 
-    // Aplica filter_var a los valores de $_POST
-    $nivel_db = isset($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
+    /*$nivel_db = isset($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
     $tabla_db = isset($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
-    $consulta_crear_tabla = isset($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"] : null;
+    $consulta_crear_tabla = isset($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"] : null;*/
 
     // Check if the table already exists
     $pdomodel = $obj->getPDOModelObj();
@@ -1038,15 +1037,12 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["activate_nested_table"] = $activate_nested_table;
     $newdata["modulos"]["buttons_actions"] = $buttons_actions;
 
-    $newdata["anidada"]["nivel_db"] = $nivel_db;
+    /*$newdata["anidada"]["nivel_db"] = $nivel_db;
     $newdata["anidada"]["tabla_db"] = $tabla_db;
-    $newdata["anidada"]["consulta_crear_tabla"] = $consulta_crear_tabla;
+    $newdata["anidada"]["consulta_crear_tabla"] = $consulta_crear_tabla;*/
 
-    print_r($newdata);
-    die();
-
-    // Insert menu if requested
-    if ($add_menu == "Si") {
+    
+    /*if ($add_menu == "Si") {
         $datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
         $newOrdenMenu = $datamenu[0]["orden"] + 1;
 
@@ -1065,7 +1061,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             "id_menu" => $id_menu,
             "visibilidad_menu" => "Mostrar"
         ));
-    }
+    }*/
 
     return $newdata;
 }
@@ -1073,12 +1069,28 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
 function despues_de_insertar_modulos($data, $obj) {
     $id_modulos = $data;
 
+    // Verificamos si las variables POST son arrays, si no, las dejamos en null.
+    $nivel_db = isset($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) 
+        ? $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
+
+    $tabla_db = isset($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) 
+        ? $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
+
+    $consulta_crear_tabla = isset($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) 
+        ? $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"] : null;
+
+    $nivel_db_str = $nivel_db ? implode(",", $nivel_db) : null;
+    $tabla_db_str = $tabla_db ? implode(",", $tabla_db) : null;
+    $consulta_crear_tabla_str = $consulta_crear_tabla ? implode(",", $consulta_crear_tabla) : null;
+
     $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->where("id_modulos", $id_modulos);
-    $pdomodel->update("anidada", array(
-        "id_modulos" => $id_modulos
+    $pdomodel->insert("anidada", array(
+        "id_modulos" => $id_modulos,
+        "nivel_db" => $nivel_db_str,
+        "tabla_db" => $tabla_db_str,
+        "consulta_crear_tabla" => $consulta_crear_tabla_str
     ));
-    
+
     return $data; // Retornamos el id_modulos
 }
 
