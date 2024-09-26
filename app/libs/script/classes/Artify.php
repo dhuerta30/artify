@@ -3354,7 +3354,7 @@ Class Artify {
         return $subquery;
     }
 
-    private function addLimitOrderBy(PDOModel $pdoModelObj, $data = array(), $recordPerPage = 10) {
+    private function addLimitOrderBy(Queryfy $pdoModelObj, $data = array(), $recordPerPage = 10) {
         $pdoModelObj->limit = $this->getSelectPageLimit($recordPerPage);
         if (isset($data["sortkey"])) {
             $fieldName = $this->decrypt($data["sortkey"]);

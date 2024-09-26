@@ -1401,7 +1401,7 @@ function beforeloginCallback($data, $obj) {
             @session_start();
             $_SESSION["data"] = $data;
             $obj->setLangData("no_data", "Bienvenido");
-            $obj->formRedirection($_ENV['URL_PDOCRUD']."home/datos_paciente");
+            $obj->formRedirection($_ENV['URL_ArtifyCrud']."home/datos_paciente");
         } else {
             echo "El usuario o la contraseña ingresada no coinciden";
             die();
