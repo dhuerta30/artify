@@ -531,7 +531,7 @@ class CrudService
                 ";
             } else if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
-                    \$action = \"http://google.com/?id={booking_Id}&name={first_name}\";
+                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{{$idTable}}';
                     \$text = \"<i class=\"fa fa-external-link\"></i>\';
                     \$attr = array(\"title\"=>\"Redirect URL\", \"target\"=> \"_blank\");
                     \$pdocrud->enqueueBtnActions(\"pdocrud-button-url\", \$action, \"url\", \$text, \"booking_status\", \$attr);
