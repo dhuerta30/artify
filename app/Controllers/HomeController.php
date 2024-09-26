@@ -935,6 +935,7 @@ class HomeController
 
 				<div class="row mt-4">
 					<div class="col-md-12 text-center">
+						<a href="javascript:;" class="btn btn-primary anterior">Anterior</a>
 						<a href="javascript:;" class="btn btn-primary siguiente_2">Siguiente</a>
 					</div>
 				</div>
