@@ -1058,12 +1058,15 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     return $newdata;
 }
 
-function despues_de_insertar_modulos($data, $obj){
+function despues_de_insertar_modulos($data, $obj) {
     $id_modulos = $data;
-    $nivel = isset($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
-    $tabla_db = isset($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
-    $consulta_crear_tabla = isset($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"] : null;
 
+    // Aplica filter_var a los valores de $_POST
+    $nivel = isset($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? filter_var($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"], FILTER_SANITIZE_STRING) : null;
+    $tabla_db = isset($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? filter_var($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"], FILTER_SANITIZE_STRING) : null;
+    $consulta_crear_tabla = isset($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) ? filter_var($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"], FILTER_SANITIZE_STRING) : null;
+
+    // Inserta los datos en la tabla
     $pdomodel = $obj->getPDOModelObj();
     $pdomodel->insert("anidada", array(
         "id_modulos" => $id_modulos,
