@@ -271,6 +271,12 @@ ALLOW_QUERY_EXECUTION=true
 # "horizontle" "verticle"
 TABLE_FORMAT=horizontle
 ```
+# Login de acceso
+![Respaldo de DB](https://github.com/dhuerta30/artify/blob/main/Screenshot_205.png)
+
+# Recuperar Contraseña
+![Respaldo de DB](https://github.com/dhuerta30/artify/blob/main/Screenshot_207.png)
+
 # Asignar menus a usuarios
 ![Asignar menus a usuarios](https://github.com/dhuerta30/artify/blob/main/Screenshot_208.png)
 
