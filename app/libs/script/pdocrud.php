@@ -1058,7 +1058,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     return $newdata;
 }
 
-
 function despues_de_insertar_modulos($data, $obj){
     $id_modulos = $data;
     $nivel = isset($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) ? $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"] : null;
@@ -1072,7 +1071,7 @@ function despues_de_insertar_modulos($data, $obj){
         "tabla_db" => $tabla_db,
         "consulta_crear_tabla" => $consulta_crear_tabla
     ));
-    
+
     return $data;
 }
 
