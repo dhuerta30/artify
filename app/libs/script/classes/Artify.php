@@ -44,7 +44,7 @@ Class Artify {
     private $settings;
     private $currentLang;
     private $ArtifyView;
-    private $pdocrudErrCtrl;
+    private $ArtifyErrorCtrl;
     private $pdocrudhelper;
     private $pdoTableFormatObj;
     private $pdocrudvalidate;
@@ -192,9 +192,9 @@ Class Artify {
         $this->loadLangData();
         $this->objKey = $this->getRandomKey();
         $this->ArtifyView = new ArtifyView();
-        $this->pdocrudErrCtrl = new PDOCrudErrorCtrl();
-        $this->pdocrudhelper = new PDOCrudHelper($this->pdocrudErrCtrl);
-        $this->pdoTableFormatObj = new PDOCrudTableFormat($this->pdocrudErrCtrl);
+        $this->ArtifyErrorCtrl = new ArtifyErrorCtrl();
+        $this->pdocrudhelper = new PDOCrudHelper($this->ArtifyErrorCtrl);
+        $this->pdoTableFormatObj = new PDOCrudTableFormat($this->ArtifyErrorCtrl);
         $this->multi = $multi;
         /*if(!$this->pdocrudhelper->verifyPurchaseCode($this->settings)){
             die();
@@ -2452,7 +2452,7 @@ Class Artify {
      * return array                                   array of error list
      */
     public function getErrors() {
-        return $this->pdocrudErrCtrl->getErrors();
+        return $this->ArtifyErrorCtrl->getErrors();
     }
 
     /**     * ***************** private functions ************************************* */
@@ -3171,8 +3171,8 @@ Class Artify {
 
     private function setErrors($error)
     {
-        if (isset($this->pdocrudErrCtrl)) {
-            $this->pdocrudErrCtrl->addError($error, TRUE);
+        if (isset($this->ArtifyErrorCtrl)) {
+            $this->ArtifyErrorCtrl->addError($error, TRUE);
         } else {
             $this->error[] = $error;
             if ($this->displayError)
@@ -5451,7 +5451,7 @@ Class Artify {
     }
 
     private function addError($error) {
-        return $this->pdocrudErrCtrl->addError($error, false);
+        return $this->ArtifyErrorCtrl->addError($error, false);
     }
     
     private function encryptPassword($method, $val) {
@@ -5513,7 +5513,7 @@ Class Artify {
 
     public function getPDOModelObj() {
         $pdoModelObj = new PDOModel();
-        $pdoModelObj->setErrorCtrl($this->pdocrudErrCtrl);
+        $pdoModelObj->setErrorCtrl($this->ArtifyErrorCtrl);
         if ($pdoModelObj->connect($this->settings["hostname"], $this->settings["username"], $this->settings["password"], $this->settings["database"], $this->settings["dbtype"], $this->settings["characterset"])) {
             return $pdoModelObj;
         } else {

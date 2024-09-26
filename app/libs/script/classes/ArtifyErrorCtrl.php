@@ -1,6 +1,6 @@
 <?php
 
-Class PDOCrudErrorCtrl {
+Class ArtifyErrorCtrl {
 
     private $errors = array();
 
