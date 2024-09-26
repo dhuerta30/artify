@@ -571,9 +571,6 @@ class HomeController
 			<li class="nav-item" role="presentation">
 				<a class="nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="pdf" aria-selected="false">Configuración de PDF</a>
 			</li>
-			<li class="nav-item" role="presentation">
-				<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-			</li>
 		</ul>
 
 		<div class="tab-content" id="myTabContent">
@@ -904,11 +901,6 @@ class HomeController
 			<div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdf-tab">
 			
 
-			
-			</div>
-			<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-			
-			
 			
 			</div>
 		</div>
