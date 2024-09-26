@@ -433,6 +433,7 @@ class CrudService
         use App\core\DB;
         use App\core\View;
         use App\core\Redirect;
+        use Xinvoice;
 
         class {$controllerName}Controller
         {
@@ -635,7 +636,18 @@ class CrudService
             if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
                     public function invoice_pdf(){
-
+                        \$xinvoice = new Xinvoice();
+                        \$xinvoice->setInvoiceDisplaySettings(\"header\","", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"to\","", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"from\","", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"footer\", "", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"payment\", "", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"message\", "", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"total\", \"subtotal\", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"total"\, \"discount\", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"total\", \"tax\", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"total\", \"shipping\", false);
+                        \$xinvoice->setInvoiceDisplaySettings(\"total\", \"grandtotal\", false);
                     }
                 ";
             }
