@@ -1037,9 +1037,8 @@ class HomeController
 			"Ver" => "Ver",
 			"Editar" => "Editar",
 			"Eliminar" => "Eliminar",
-			"Guardar" => "Guardar", 
-			"Guardar y regresar" => 
-			"Guardar y regresar", 
+			"Guardar" => "Guardar",
+			"Guardar y regresar" => "Guardar y regresar", 
 			"Regresar" => "Regresar", 
 			"Cancelar" => "Cancelar", 
 			"Personalizado PDF" => "Personalizado PDF",
