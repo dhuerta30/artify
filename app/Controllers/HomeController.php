@@ -755,7 +755,7 @@ class HomeController
 									</div>
 								</div>
 							</div>
-							<div class="table-responsive">
+							<div class="table-responsive leftjoin_grilla d-none">
 							<table class="table pdocrud-left-join responsive">
 								<thead>
 									<tr>
@@ -1041,9 +1041,10 @@ class HomeController
 		$pdocrud->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
 		$pdocrud->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
 
-		//$pdocrud->fieldDataAttr("generate_token_jwt", array("disabled"=>"disabled"));
-		//$pdocrud->fieldDataAttr("api_type", array("disabled"=>"disabled"));
+		$pdocrud->fieldDataAttr("generate_token_jwt", array("disabled"=>"disabled"));
+		$pdocrud->fieldDataAttr("api_type", array("disabled"=>"disabled"));
 		$pdocrud->fieldDataAttr("autenticate_jwt_token", array("disabled"=>"disabled"));
+		$pdocrud->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
 
 		$pdocrud->fieldTypes("refrescar_grilla", "select");
 		$pdocrud->fieldDataBinding("refrescar_grilla", array("Si" => "Si", "No" => "No"), "", "", "array");
@@ -1106,6 +1107,7 @@ class HomeController
 		$pdocrud->fieldCssClass("columns_table", array("columns_table"));
 		$pdocrud->fieldCssClass("modify_query", array("modify_query"));
 		$pdocrud->fieldCssClass("activate_nested_table", array("activate_nested_table"));
+		$pdocrud->fieldCssClass("consulta_api", array("consulta_api"));
 
 		$pdocrud->fieldCssClass("api_type", array("api_type"));
 		$pdocrud->fieldCssClass("generate_token_jwt", array("generate_token_jwt"));

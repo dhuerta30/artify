@@ -79,8 +79,10 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
                 "apellido VARCHAR(255) NOT NULL,\n" +
                 "categoria INT(11) NOT NULL,\n" +
                 "producto VARCHAR(100) NOT NULL");
+                $(".leftjoin_grilla").removeClass("d-none");
             } else {
                 $(".agregar_muestras").addClass("d-none");
+                $(".leftjoin_grilla").addClass("d-none");
                 $(".nivel").attr("disabled", "disabled");
                 $(".tabla_db").attr("disabled", "disabled");
                 $(".consulta_crear_tabla").attr("disabled", "disabled");
