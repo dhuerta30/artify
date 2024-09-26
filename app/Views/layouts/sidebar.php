@@ -81,6 +81,10 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
 
+                    <li class="nav-item">
+                        <a href="javascript:;" class="nav-link"><i class="fa fa-book"></i> Documentación</a>
+                    </li>
+
                     </ul>
                 </nav>
             </div>
