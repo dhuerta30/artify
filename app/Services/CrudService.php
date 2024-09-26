@@ -650,7 +650,7 @@ class CrudService
                         \$xinvoice->setInvoiceDisplaySettings(\"total\", \"grandtotal\", false);
                         \$xinvoice->setSettings(\"filename\", \"procedimiento.pdf\");
 				        \$xinvoice->setSettings(\"output\", \"F\");
-				        \$path = \$xinvoice->render();
+				        echo \$xinvoice->render();
                     }
                 ";
             }
