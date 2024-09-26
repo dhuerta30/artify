@@ -892,7 +892,18 @@ class HomeController
 													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Editar">Editar</label>
 												<label class="checkbox-inline">
 													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Eliminar">Eliminar</label>
-												<label class="checkbox-inline"><input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado">Personalizado</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar">Guardar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar y regresar">Guardar y regresar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Regresar">Regresar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Cancelar">Cancelar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado PDF">Personalizado PDF</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado URL">Personalizado URL</label>
 											</div>
 										</td>
 										<td>
