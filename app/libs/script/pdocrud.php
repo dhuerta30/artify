@@ -1057,14 +1057,14 @@ function despues_de_insertar_modulos($data, $obj) {
     $id_modulos = $data;
 
     // Verificamos si las variables POST son arrays, si no, las dejamos en null.
-    $nivel_db = isset($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"]) 
-        ? $_POST["YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA"] : [];
+    $nivel_db = isset($_POST["nivel_db"]) && is_array($_POST["nivel_db"]) 
+        ? $_POST["nivel_db"] : [];
 
-    $tabla_db = isset($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"]) 
-        ? $_POST["YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA"] : [];
+    $tabla_db = isset($_POST["tabla_db"]) && is_array($_POST["tabla_db"]) 
+        ? $_POST["tabla_db"] : [];
 
-    $consulta_crear_tabla = isset($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) 
-        ? $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"] : [];
+    $consulta_crear_tabla = isset($_POST["consulta_crear_tabla"]) && is_array($_POST["consulta_crear_tabla"]) 
+        ? $_POST["consulta_crear_tabla"] : [];
 
     $count = count($nivel_db);
     if ($count !== count($tabla_db) || $count !== count($consulta_crear_tabla)) {

@@ -796,7 +796,7 @@ class HomeController
 								<tbody>
 									<tr>
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1">
-											<select class="form-control pdocrud-form-control pdocrud-select nivel" id="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA[]" name="YW5pZGFkYSMkbml2ZWxfZGJAM2RzZnNkZioqOTkzNDMyNA[]" disabled="disabled" required="1">
+											<select class="form-control pdocrud-form-control pdocrud-select nivel" id="nivel_db[]" name="nivel_db[]" disabled="disabled" required="1">
 												<option value="">Seleccionar</option>
 												<option selected="selected" value="2">2</option>
 												<option value="3">3</option>
@@ -804,10 +804,10 @@ class HomeController
 											</select>
 										</td>
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_2">
-											<input type="text" class="form-control pdocrud-form-control pdocrud-text tabla_db" id="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA[]" name="YW5pZGFkYSMkdGFibGFfZGJAM2RzZnNkZioqOTkzNDMyNA[]" disabled="disabled" required="1">
+											<input type="text" class="form-control pdocrud-form-control pdocrud-text tabla_db" id="tabla_db[]" name="tabla_db[]" disabled="disabled" required="1">
 										</td>
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
-											<textarea class="form-control pdocrud-form-control  pdocrud-textarea consulta_crear_tabla" id="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA[]" name="YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
+											<textarea class="form-control pdocrud-form-control  pdocrud-textarea consulta_crear_tabla" id="consulta_crear_tabla[]" name="consulta_crear_tabla[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
 										</td>
 										<td>
 											<a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a>
