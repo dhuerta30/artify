@@ -1034,15 +1034,16 @@ class HomeController
 
 		$pdocrud->fieldTypes("buttons_actions", "checkbox");
 		$pdocrud->fieldDataBinding("buttons_actions", array(
-			"Ver" => "Ver", 
-			"Editar" => "Editar", 
-			"Eliminar" => "Eliminar", 
+			"Ver" => "Ver",
+			"Editar" => "Editar",
+			"Eliminar" => "Eliminar",
 			"Guardar" => "Guardar", 
 			"Guardar y regresar" => 
 			"Guardar y regresar", 
 			"Regresar" => "Regresar", 
 			"Cancelar" => "Cancelar", 
-			"Personalizado" => "Personalizado"
+			"Personalizado PDF" => "Personalizado PDF",
+			"Personalizado URL" => "Personalizado URL"
 		), "", "", "array");
 
 		$pdocrud->fieldTypes("actions_buttons_grid", "checkbox");
