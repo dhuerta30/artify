@@ -6,7 +6,7 @@ use Artify;
 class DB {
     public static function ArtifyCrud($multi = false, $template = "", $skin = "", $settings = array())
     {
-        $settings["script_url"] = $_ENV['URL_PDOCRUD'];
+        $settings["script_url"] = $_ENV['URL_ArtifyCrud'];
         $settings["uploadURL"] = $_ENV['UPLOAD_URL'];
         $settings["downloadURL"] = $_ENV['DOWNLOAD_URL'];
         $settings["hostname"] = $_ENV['DB_HOST'];
