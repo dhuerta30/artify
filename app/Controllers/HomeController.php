@@ -297,7 +297,8 @@ class HomeController
 		$pdocrud->setSearchCols(array("id","nombre","email", "usuario", "idrol"));
 		$pdocrud->setSettings("addbtn", false);
 		$pdocrud->setSettings("viewbtn", false);
-		$pdocrud->setSettings("delbtn", false);
+		$pdocrud->setSettings('editbtn', true);    
+		$pdocrud->setSettings('delbtn', true);
 		$pdocrud->setSettings("printBtn", false);
 		$pdocrud->setSettings("pdfBtn", false);
 		$pdocrud->setSettings("csvBtn", false);
@@ -331,6 +332,8 @@ class HomeController
 			$pdocrud->setSettings("required", false);
 			$pdocrud->setSettings("checkboxCol", false);
 			$pdocrud->setSettings("refresh", false);
+			$pdocrud->setSettings('editbtn', true);    
+            $pdocrud->setSettings('delbtn', true);
 			$pdocrud->setSettings("deleteMultipleBtn", false);
 			$pdocrud->colRename("id", "ID");
 			$pdocrud->colRename("idrol", "Rol");
@@ -439,7 +442,8 @@ class HomeController
 		$respaldos->setSearchCols(array("usuario", "fecha", "hora"));
         $respaldos->tableColFormatting("archivo", "html", array("type" => "html", "str" => "<a class='btn btn-success btn-sm' href=\"".$_ENV["BASE_URL"]."app/libs/script/uploads/{col-name}\" data-attribute=\"abc-{col-name}\"><i class=\"fa fa-download\"></i> Descargar Respaldo</a>"));
         $respaldos->setSettings("addbtn", false);
-		$respaldos->setSettings("editbtn", false);
+		$respaldos->setSettings('editbtn', true);    
+		$respaldos->setSettings('delbtn', true);
         $respaldos->setSettings("viewbtn", false);
         $respaldos->setSettings("printBtn", false);
         $respaldos->setSettings("pdfBtn", false);
@@ -1107,6 +1111,8 @@ class HomeController
 		$pdocrud->setSettings("excelBtn", false);
 		$pdocrud->setSettings("viewbtn", false);
 		$pdocrud->setSettings("refresh", false);
+		$pdocrud->setSettings('editbtn', true);    
+		$pdocrud->setSettings('delbtn', true);
 		$pdocrud->buttonHide("submitBtnSaveBack");
 
 		$submenu = DB::PDOCrud(true);
@@ -1134,6 +1140,8 @@ class HomeController
 		$submenu->setSettings("template", "submenu");
 		$submenu->setSettings("printBtn", false);
 		$submenu->setSettings("pdfBtn", false);
+		$submenu->setSettings('editbtn', true);    
+		$submenu->setSettings('delbtn', true);
 		$submenu->setSettings("csvBtn", false);
 		$submenu->setSettings("excelBtn", false);
 		$submenu->setSettings("viewbtn", false);
