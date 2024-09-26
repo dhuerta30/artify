@@ -162,9 +162,9 @@ class NombreModel
   }
 
   public function MiMetodo($param){
-	$pdomodel = DB::PDOModel();
-	$pdomodel->where("rut", $param);
-	$data = $pdomodel->select($this->tabla);
+	$Queryfy = DB::Queryfy();
+	$Queryfy->where("rut", $param);
+	$data = $Queryfy->select($this->tabla);
 	return $data;
   }
 
