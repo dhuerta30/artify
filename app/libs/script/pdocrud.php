@@ -1008,7 +1008,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         );
     }
 
-    /*if ($add_menu == "Si") {
+    if ($add_menu == "Si") {
         $datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
         $newOrdenMenu = $datamenu[0]["orden"] + 1;
 
@@ -1027,7 +1027,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             "id_menu" => $id_menu,
             "visibilidad_menu" => "Mostrar"
         ));
-    }*/
+    }
 
     $newdata = array();
     $newdata["modulos"]["tabla"] = $tabla;
