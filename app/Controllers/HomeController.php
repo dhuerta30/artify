@@ -1033,7 +1033,17 @@ class HomeController
 		$pdocrud->fieldDataBinding("generate_token_jwt", array("Si" => "Si", "No" => "No"), "", "", "array");
 
 		$pdocrud->fieldTypes("buttons_actions", "checkbox");
-		$pdocrud->fieldDataBinding("buttons_actions", array("Ver" => "Ver", "Editar" => "Editar", "Eliminar" => "Eliminar", "Personalizado" => "Personalizado"), "", "", "array");
+		$pdocrud->fieldDataBinding("buttons_actions", array(
+			"Ver" => "Ver", 
+			"Editar" => "Editar", 
+			"Eliminar" => "Eliminar", 
+			"Guardar" => "Guardar", 
+			"Guardar y regresar" => 
+			"Guardar y regresar", 
+			"Regresar" => "Regresar", 
+			"Cancelar" => "Cancelar", 
+			"Personalizado" => "Personalizado"
+		), "", "", "array");
 
 		$pdocrud->fieldTypes("actions_buttons_grid", "checkbox");
 		$pdocrud->fieldDataBinding("actions_buttons_grid", array("Imprimir" => "Imprimir", "PDF" => "PDF", "CSV" => "CSV", "Excel" => "Excel"), "", "", "array");
