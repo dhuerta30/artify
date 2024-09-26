@@ -189,7 +189,7 @@ class HomeController
 
 			if (is_array($selectedMenus)) {
 				$artify = DB::ArtifyCrud();
-				$pdomodel = $artify->getPDOModelObj();
+				$pdomodel = $artify->getQueryfyObj();
 
 				$menuMarcado = false;
 				$menuDesmarcado = false;
@@ -479,7 +479,7 @@ class HomeController
 			$user = $_SESSION['usuario'][0]["usuario"];
 
 			$artify = DB::ArtifyCrud();
-			$pdomodel = $artify->getPDOModelObj();
+			$pdomodel = $artify->getQueryfyObj();
 			$id = $pdomodel->select("backup");
 
 			$exportDirectory = realpath(__DIR__ . '/../libs/script/uploads');
@@ -537,7 +537,7 @@ class HomeController
 
 	public static function menuDB(){
 		$artify = DB::ArtifyCrud();
-		$pdomodel = $artify->getPDOModelObj();
+		$pdomodel = $artify->getQueryfyObj();
 		$pdomodel->orderBy(array("orden_menu asc"));
 		$data = $pdomodel->select("menu");
 		return $data;
@@ -545,7 +545,7 @@ class HomeController
 
 	public static function submenuDB($idMenu){
 		$artify = DB::ArtifyCrud();
-		$pdomodel = $artify->getPDOModelObj();
+		$pdomodel = $artify->getQueryfyObj();
 		$pdomodel->where("id_menu", $idMenu, "=");
 		$pdomodel->orderBy(array("orden_submenu asc")); // Ajusta el nombre de la columna de ordenación si es diferente
 		$data = $pdomodel->select("submenu");
@@ -1227,7 +1227,7 @@ class HomeController
 			$tabla = $request->post('tabla');
 
 			$artify = DB::ArtifyCrud();
-			$pdomodel = $artify->getPDOModelObj();
+			$pdomodel = $artify->getQueryfyObj();
 			$columnDB = $pdomodel->tableFieldInfo($tabla);
 
 			echo json_encode(['columnas_tabla' => $columnDB]);
@@ -1247,7 +1247,7 @@ class HomeController
 				foreach ($newOrder as $position => $itemId) {
 					$position++;
 					$artify = DB::ArtifyCrud();
-					$pdomodel = $artify->getPDOModelObj();
+					$pdomodel = $artify->getQueryfyObj();
 					$pdomodel->where("id_menu", $itemId);
 					$pdomodel->update("menu", array("orden_menu" => $position));
 				}
@@ -1270,7 +1270,7 @@ class HomeController
 				foreach ($newOrder as $position => $itemId) {
 					$position++;
 					$artify = DB::ArtifyCrud();
-					$pdomodel = $artify->getPDOModelObj();
+					$pdomodel = $artify->getQueryfyObj();
 					$pdomodel->where("id_submenu", $itemId);
 					$pdomodel->update("submenu", array("orden_submenu" => $position));
 				}
@@ -1288,7 +1288,7 @@ class HomeController
 			$id = $request->post('id');
 
 			$artify = DB::ArtifyCrud();
-			$pdomodel = $artify->getPDOModelObj();
+			$pdomodel = $artify->getQueryfyObj();
 			$pdomodel->columns = array("icono_menu");
 			$pdomodel->where("id_menu", $id);
 			$data = $pdomodel->select("menu");
@@ -1313,7 +1313,7 @@ class HomeController
 			$id = $request->post('id');
 
 			$artify = DB::ArtifyCrud();
-			$pdomodel = $artify->getPDOModelObj();
+			$pdomodel = $artify->getQueryfyObj();
 			$pdomodel->columns = array("icono_submenu");
 			$pdomodel->where("id_submenu", $id);
 			$data = $pdomodel->select("submenu");
@@ -1333,7 +1333,7 @@ class HomeController
 	public function menu(){
 		$artify = DB::ArtifyCrud();
 
-		$pdomodel = $artify->getPDOModelObj();
+		$pdomodel = $artify->getQueryfyObj();
 		$datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
 		$newOrdenMenu = $datamenu[0]["orden"] + 1;
 

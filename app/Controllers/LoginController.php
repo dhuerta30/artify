@@ -17,7 +17,7 @@ class LoginController {
 
 		if (isset($_SESSION["data"]["usuario"]["usuario"])) {
 			$artify = DB::ArtifyCrud();
-			$pdomodel = $artify->getPDOModelObj();
+			$pdomodel = $artify->getQueryfyObj();
 			$pdomodel->where("usuario", $_SESSION["data"]["usuario"]["usuario"]);
 			$sesion_users = $pdomodel->select("usuario");
 			$_SESSION["usuario"] = $sesion_users;

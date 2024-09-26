@@ -28,9 +28,9 @@ class DB {
     public static function PDOModel()
     {
         $artify = DB::ArtifyCrud();
-        $pdomodel = $artify->getPDOMOdelObj();
-        $pdomodel->fetchType = "OBJ";
-        return $pdomodel;
+        $getQueryfyObj = $artify->getQueryfyObj();
+        $getQueryfyObj->fetchType = "OBJ";
+        return $getQueryfyObj;
     }
 
     public static function PHPMail($hacia, $desde, $asunto, $mensaje){
@@ -62,14 +62,14 @@ class DB {
 
 	public static function performPagination($registros_por_pagina, $pagina_actual, $tabla, $id, $parametro)
     {
-        $pdomodel = DB::Queryfy();
+        $getQueryfyObj = DB::Queryfy();
 
-        $totalRegistros = $pdomodel->executeQuery("SELECT COUNT(*) as total FROM $tabla");
-        $pagination = $pdomodel->simplepagination($pagina_actual, $totalRegistros[0]["total"], $registros_por_pagina, 'index.php', $parametro);
+        $totalRegistros = $getQueryfyObj->executeQuery("SELECT COUNT(*) as total FROM $tabla");
+        $pagination = $getQueryfyObj->simplepagination($pagina_actual, $totalRegistros[0]["total"], $registros_por_pagina, 'index.php', $parametro);
     
         $inicio = max(0, ($pagina_actual - 1) * $registros_por_pagina);
         $query = "SELECT * FROM $tabla LIMIT $inicio, $registros_por_pagina";
-        $resultados = $pdomodel->executeQuery($query);
+        $resultados = $getQueryfyObj->executeQuery($query);
 		
         return ['output' => $pagination, 'resultados' => $resultados];
     }
