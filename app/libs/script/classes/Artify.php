@@ -3376,7 +3376,7 @@ Class Artify {
     }
 
 
-    private function addGroupBy(PDOModel $pdoModelObj, $data = array(), $recordPerPage = 10) {
+    private function addGroupBy(Queryfy $pdoModelObj, $data = array(), $recordPerPage = 10) {
         $pdoModelObj->limit = $this->getSelectPageLimit($recordPerPage);
         if (isset($data["groupby"])) {
             $fieldName = $this->decrypt($data["groupby"]);
@@ -3401,7 +3401,7 @@ Class Artify {
         return $limit;
     }
 
-    private function addJoinCondtion(PDOModel $pdoModelObj, $showLeftJoinCol = false) {
+    private function addJoinCondtion(Queryfy $pdoModelObj, $showLeftJoinCol = false) {
         if (is_array($this->joinTable) && count($this->joinTable) > 0) {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) == "INNER JOIN")
@@ -4013,7 +4013,7 @@ Class Artify {
         }
     }
 
-    private function getJoinFormData(PDOModel $pdoModelObj, $data, $result = array(), $edit = false) {
+    private function getJoinFormData(Queryfy $pdoModelObj, $data, $result = array(), $edit = false) {
         if (is_array($this->joinTable) && count($this->joinTable) > 0) {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) === "LEFT JOIN") {
@@ -5227,7 +5227,7 @@ Class Artify {
         return $this->settings["function_filter_and_search"] ?? false;
     }
     
-    private function addWhereCondition(PDOModel $pdoModelObj, $data = array()) {
+    private function addWhereCondition(Queryfy $pdoModelObj, $data = array()) {
         if ($this->isFilterAndSearchEnabled()) {
             if (!isset($this->searchOperator))
             $this->searchOperator = $this->settings["searchOperator"];
@@ -5512,7 +5512,7 @@ Class Artify {
     }
 
     public function getPDOModelObj() {
-        $pdoModelObj = new PDOModel();
+        $pdoModelObj = new Queryfy();
         $pdoModelObj->setErrorCtrl($this->ArtifyErrorCtrl);
         if ($pdoModelObj->connect($this->settings["hostname"], $this->settings["username"], $this->settings["password"], $this->settings["database"], $this->settings["dbtype"], $this->settings["characterset"])) {
             return $pdoModelObj;
