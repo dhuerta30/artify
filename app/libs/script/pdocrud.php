@@ -1071,19 +1071,24 @@ function despues_de_insertar_modulos($data, $obj) {
     $consulta_crear_tabla = isset($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) && is_array($_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"]) 
         ? $_POST["YW5pZGFkYSMkY29uc3VsdGFfY3JlYXJfdGFibGFAM2RzZnNkZioqOTkzNDMyNA"] : null;
 
-    $nivel_db_str = $nivel_db ? implode(",", $nivel_db) : null;
-    $tabla_db_str = $tabla_db ? implode(",", $tabla_db) : null;
-    $consulta_crear_tabla_str = $consulta_crear_tabla ? implode(",", $consulta_crear_tabla) : null;
+    $count = count($nivel_db);
+    if ($count !== count($tabla_db) || $count !== count($consulta_crear_tabla)) {
+        echo 'Los arrays no tienen la misma cantidad de elementos.';
+        die();
+    }
 
     $pdomodel = $obj->getPDOModelObj();
-    $pdomodel->insert("anidada", array(
-        "id_modulos" => $id_modulos,
-        "nivel_db" => $nivel_db_str,
-        "tabla_db" => $tabla_db_str,
-        "consulta_crear_tabla" => $consulta_crear_tabla_str
-    ));
 
-    return $data; // Retornamos el id_modulos
+    for ($i = 0; $i < $count; $i++) {
+        $pdomodel->insert("anidada", array(
+            "id_modulos" => $id_modulos,
+            "nivel_db" => $nivel_db[$i],
+            "tabla_db" => $tabla_db[$i],
+            "consulta_crear_tabla" => $consulta_crear_tabla[$i]
+        ));
+    }
+
+    return $data;
 }
 
 function actualizar_modulos($data, $obj){
