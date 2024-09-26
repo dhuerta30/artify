@@ -648,6 +648,9 @@ class CrudService
                         \$xinvoice->setInvoiceDisplaySettings(\"total\", \"tax\", false);
                         \$xinvoice->setInvoiceDisplaySettings(\"total\", \"shipping\", false);
                         \$xinvoice->setInvoiceDisplaySettings(\"total\", \"grandtotal\", false);
+                        \$xinvoice->setSettings(\"filename\", \"procedimiento.pdf\");
+				        \$xinvoice->setSettings(\"output\", \"F\");
+				        \$path = \$xinvoice->render();
                     }
                 ";
             }
