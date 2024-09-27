@@ -204,17 +204,17 @@ class CrudService
             }
 
             public function agregar(){
-                \$pdocrud = DB::PDOCrud();
-                \$pdocrud->buttonHide('submitBtn');
-                \$pdocrud->buttonHide('cancel');
-                \$pdocrud->setSettings('template', 'template_{$nameview}');
-                \$pdocrud->formStaticFields('botones', 'html', '
+                \$artify = DB::ArtifyCrud();
+                \$artify->buttonHide('submitBtn');
+                \$artify->buttonHide('cancel');
+                \$artify->setSettings('template', 'template_{$nameview}');
+                \$artify->formStaticFields('botones', 'html', '
                     <div class=\"col-md-12 text-center\">
                         <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
                         <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
                     </div>
                 ');
-                \$render = \$pdocrud->dbTable('{$tableName}')->render('insertform');
+                \$render = \$artify->dbTable('{$tableName}')->render('insertform');
                 View::render(
                     'agregar_{$nameview}',
                     [
@@ -227,23 +227,23 @@ class CrudService
                 \$request = new Request();
                 \$id = \$request->get('id');
 
-                \$pdocrud = DB::PDOCrud();
+                \$artify = DB::ArtifyCrud();
 
-                \$pdomodel = \$pdocrud->getQueryfyObj();
-                \$columnDB = \$pdomodel->columnNames('{$tableName}');
+                \$queryfy = \$artify->getQueryfyObj();
+                \$columnDB = \$queryfy->columnNames('{$tableName}');
                 \$id_tabla = strtoupper(\$columnDB[0]);
 
-                \$pdocrud->setPK(\$id_tabla);
-                \$pdocrud->setSettings('template', 'template_{$nameview}');
-                \$pdocrud->buttonHide('submitBtn');
-                \$pdocrud->buttonHide('cancel');
-                \$pdocrud->formStaticFields('botones', 'html', '
+                \$artify->setPK(\$id_tabla);
+                \$artify->setSettings('template', 'template_{$nameview}');
+                \$artify->buttonHide('submitBtn');
+                \$artify->buttonHide('cancel');
+                \$artify->formStaticFields('botones', 'html', '
                     <div class=\"col-md-12 text-center\">
                         <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
                         <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
                     </div>
                 ');
-                \$render = \$pdocrud->dbTable('{$tableName}')->render('editform', array('id' => \$id));
+                \$render = \$artify->dbTable('{$tableName}')->render('editform', array('id' => \$id));
 
                 View::render(
                     'editar_{$nameview}',
