@@ -127,89 +127,41 @@
                         $artify = DB::ArtifyCrud();
 
                         // Para usar una Plantilla personalizada para las vistas de formulario use
-                        $html_template = '<div class="order-form">
-                            <h2>Proucts</h2>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Product Id:</label>
+                        $html_template = '&lt;div class="order-form"&gt;
+                            &lt;h2&gt;Products&lt;/h2&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-md-6"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;label class="form-label"&gt;Product Id:&lt;/label&gt;
                                         {product_id}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Product Name:</label>
+                                        &lt;p class="pdocrud_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class="col-md-6"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;label class="form-label"&gt;Product Name:&lt;/label&gt;
                                         {product_name}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Product Price:</label>
+                                        &lt;p class="pdocrud_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="row"&gt;
+                                &lt;div class="col-md-6"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;label class="form-label"&gt;Product Price:&lt;/label&gt;
                                         {product_price}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Product Sell Price:</label>
+                                        &lt;p class="pdocrud_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class="col-md-6"&gt;
+                                    &lt;div class="form-group"&gt;
+                                        &lt;label class="form-label"&gt;Product Sell Price:&lt;/label&gt;
                                         {product_sell_price}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Discount:</label>
-                                        {discount}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Product Description:</label>
-                                        {product_description}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Product Image:</label>
-                                        {product_image}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Qty Available:</label>
-                                        {qty_available}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Added Date:</label>
-                                        {added_date}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Product Rating:</label>
-                                        {product_rating}
-                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>';
+                                        &lt;p class="pdocrud_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;';
                         $pdocrud->set_template($html_template);
 
                         // Para renombrar una columna de la grilla use
