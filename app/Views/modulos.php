@@ -64,6 +64,19 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
         $(".campos_view_tabla").hide();
 
 
+        $(".generar_token_api").click(function(){
+            $.ajax({
+                type: "POST",
+                url: "<?=$_ENV["BASE_URL"]?>Home/generarToken",
+                dataType: 'json',
+                success: function(data){
+                    let token = data["data"];
+                    $(".autenticate_jwt_token").val(token);
+                }
+            });
+        });
+
+
         $(".activate_api").change(function() {
             var val = $(this).val();
 

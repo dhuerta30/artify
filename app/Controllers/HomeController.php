@@ -15,6 +15,9 @@ use App\Models\UsuarioMenuModel;
 use App\Models\UserModel;
 use App\Models\ProcedimientoModel;
 use App\Models\UsuarioSubMenuModel;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 
 class HomeController
 {
@@ -1218,6 +1221,32 @@ class HomeController
 			['render' => $render]
 		);
 	}
+
+
+	public function generarToken(){
+		$request = new Request();
+
+		if ($request->getMethod() === 'POST') {
+			try {
+				$data = array("data" => array("usuario" => "admin", "password" => "123"));
+				$data = json_encode($data);
+			
+				$client = new Client();
+				$response = $client->post("http://localhost/". $_ENV["BASE_URL"]."/api/usuario/?op=jwtauth", [
+					'body' => $data
+				]);
+	
+				$result = $response->getBody()->getContents();
+				echo $result;
+	
+			} catch (ClientException $e) {
+				if ($e->getResponse()->getStatusCode() == 404) {
+					echo $e->getResponse()->getBody()->getContents() . PHP_EOL;
+				}
+			}
+		}
+	}
+
 
 	public function obtenerTablaActual(){
 		$request = new Request();
