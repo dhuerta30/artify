@@ -270,6 +270,15 @@
                                     ?&gt;
                                 </pre>
 
+                                <h5>Forma de uso obtener_datos_usuario</h5>
+                                <pre class="brush: xml;">
+                                    url: http://tudominio.com/artify/Ejemplo/obtener_datos_usuario
+                                </pre>
+
+                                <h5>Forma de uso generarToken</h5>
+                                <pre class="brush: xml;">
+                                    url: http://tudominio.com/artify/Ejemplo/generarToken
+                                </pre>
                             </div>
                         </div>
 

@@ -19,6 +19,7 @@
 <script src="<?=$_ENV["BASE_URL"]?>theme/dist/js/adminlte.min.js"></script>
 <script src="<?=$_ENV["BASE_URL"]?>js/shCore.js"></script>
 <script src="<?=$_ENV["BASE_URL"]?>js/shBrushPhp.js"></script>
+<script src="<?=$_ENV["BASE_URL"]?>js/shBrushXml.js"></script>
 <script src="<?=$_ENV["BASE_URL"]?>js/shBrushJScript.js"></script>
 <script type="text/javascript">
     SyntaxHighlighter.all();
