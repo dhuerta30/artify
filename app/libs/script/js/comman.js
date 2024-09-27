@@ -775,7 +775,7 @@ $(document).ready(function(){
                             type: "post",
                             data: {
                                 "pdocrud_data": data,
-                                "pdocrud_instance": instance,
+                                "artify_instance": instance,
                                 term: request.term,
                             },
                             success: function (data) {
@@ -801,7 +801,7 @@ $(document).ready(function(){
                 },
                 data: {
                     "pdocrud_data": data,
-                    "pdocrud_instance": instance,
+                    "artify_instance": instance,
                 },
                 success: function (response) {
                     $("#pdocrud-ajax-loader").hide();
@@ -823,7 +823,7 @@ $(document).ready(function(){
                 },
                 data: {
                     "pdocrud_data": data,
-                    "pdocrud_instance": instance
+                    "artify_instance": instance
                 },
                 success: function (response) {
                     $("#pdocrud-ajax-loader").hide();
@@ -948,7 +948,7 @@ $(document).ready(function(){
                 url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
                 data: {
                     "pdocrud_data": data,
-                    "pdocrud_instance": instance,
+                    "artify_instance": instance,
                 },
                 success: function (response) {
                     element.html(response);
@@ -990,7 +990,7 @@ $(document).ready(function(){
                     },
                     data: {
                         "pdocrud_data": data,
-                        "pdocrud_instance": instance,
+                        "artify_instance": instance,
                     },
                     success: function (response) {
                         $("#pdocrud-ajax-loader").hide();
@@ -1013,7 +1013,7 @@ $(document).ready(function(){
                 url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
                 data: {
                     "pdocrud_data": data,
-                    "pdocrud_instance": instance,
+                    "artify_instance": instance,
                 },
                 success: function (response) {                    
                     $(document).trigger("pdocrud_after_custom_ajax_action", [obj, response]);
@@ -1333,7 +1333,7 @@ $(document).ready(function(){
                         "pdocrud_data[pdocrud_dependent_name]": dependent.attr("id"),
                         "pdocrud_data[pdocrud_field_name]": $(obj).attr("id"),
                         "pdocrud_data[pdocrud_field_val]": $(obj).val(),
-                        "pdocrud_instance": instance,
+                        "artify_instance": instance,
                     },
                     success: function (response) {
                         dependent.html(response);
