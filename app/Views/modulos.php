@@ -69,7 +69,11 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
                 type: "POST",
                 url: "<?=$_ENV["BASE_URL"]?>Home/generarToken",
                 dataType: 'json',
+                beforeSend: function() {
+                    $("#pdocrud-ajax-loader").show();
+                },
                 success: function(data){
+                    $("#pdocrud-ajax-loader").hide();
                     let token = data["data"];
                     $(".autenticate_jwt_token").val(token);
                 }
