@@ -1924,8 +1924,8 @@ Class Artify {
      * @return   object                                    Object of class
      */
     public function addPlugin($pluginName) {
-        $this->plugins["css"][$pluginName] = $this->getDirFiles(PDOCrudABSPATH . "plugins/" . $pluginName . "/css/", "css");
-        $this->plugins["js"][$pluginName] = $this->getDirFiles(PDOCrudABSPATH . "plugins/" . $pluginName . "/js/", "js");
+        $this->plugins["css"][$pluginName] = $this->getDirFiles(ArtifyABSPATH . "plugins/" . $pluginName . "/css/", "css");
+        $this->plugins["js"][$pluginName] = $this->getDirFiles(ArtifyABSPATH . "plugins/" . $pluginName . "/js/", "js");
         return $this;
     }
 
@@ -2117,7 +2117,7 @@ Class Artify {
      */
     public function loadPluginJsCode($pluginName, $elementName, $params = array()) {
         ob_start();
-        require PDOCrudABSPATH . "classes/plugin-helper/plugin-$pluginName.php";
+        require ArtifyABSPATH . "classes/plugin-helper/plugin-$pluginName.php";
         $output = ob_get_contents();
         ob_end_clean();
         return $output;
@@ -2271,10 +2271,10 @@ Class Artify {
     }
 
     private function loadLangData() {
-        $file = PDOCrudABSPATH . '/languages/' . $this->currentLang . '.ini';
+        $file = ArtifyABSPATH . '/languages/' . $this->currentLang . '.ini';
         if (!file_exists($file)) {
             $this->currentLang = "en";
-            $file = PDOCrudABSPATH . '/languages/' . $this->currentLang . '.ini';
+            $file = ArtifyABSPATH . '/languages/' . $this->currentLang . '.ini';
         }
 
         $this->langData = parse_ini_file($file);

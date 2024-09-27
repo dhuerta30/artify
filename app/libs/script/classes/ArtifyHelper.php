@@ -94,7 +94,7 @@ Class ArtifyHelper {
             return false;
         }
 
-        require_once(PDOCrudABSPATH . "library/tcpdf/tcpdf.php");
+        require_once(ArtifyABSPATH . "library/tcpdf/tcpdf.php");
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetFont($this->pdfFontName, $this->pdfFontWeight, $this->pdfFontSize, '', 'false');

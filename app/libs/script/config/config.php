@@ -140,11 +140,11 @@ $config["skin"] = "fair";
 $config["lang"] = "es";
 /******************************** upload/download folder path ***********************************/
 //Upload folder
-$config["uploadFolder"] = PDOCrudABSPATH . "uploads/";
+$config["uploadFolder"] = ArtifyABSPATH . "uploads/";
 //Upload folder URL
 $config["uploadURL"] = $config["script_url"] . "script/uploads/";
 //download folder
-$config["downloadFolder"] = PDOCrudABSPATH . "downloads/";
+$config["downloadFolder"] = ArtifyABSPATH . "downloads/";
 //Download folder URL
 $config["downloadURL"] = $config["script_url"] . "script/downloads/";
 

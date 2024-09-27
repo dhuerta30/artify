@@ -12,13 +12,13 @@ $dotenv->safeLoad();
 //ini_set('display_errors', 1);
 //error_reporting(-1);
 date_default_timezone_set(@date_default_timezone_get());
-define('PDOCrudABSPATH', dirname(__FILE__) . '/');
-require_once PDOCrudABSPATH . "config/config.php";
+define('ArtifyABSPATH', dirname(__FILE__) . '/');
+require_once ArtifyABSPATH . "config/config.php";
 spl_autoload_register('pdocrudAutoLoad');
 
 function pdocrudAutoLoad($class) {
-    if (file_exists(PDOCrudABSPATH . "classes/" . $class . ".php"))
-        require_once PDOCrudABSPATH . "classes/" . $class . ".php";
+    if (file_exists(ArtifyABSPATH . "classes/" . $class . ".php"))
+        require_once ArtifyABSPATH . "classes/" . $class . ".php";
 }
 
 if (isset($_REQUEST["pdocrud_instance"])) {
@@ -1310,7 +1310,7 @@ function insetar_usuario($data, $obj){
         $newdata["usuario"]["usuario"] = $user;
         $newdata["usuario"]["email"] = $email;
         if (empty($avatar)) {
-            $image = PDOCrudABSPATH . 'uploads/1710162578_user.png';
+            $image = ArtifyABSPATH . 'uploads/1710162578_user.png';
             $newdata["usuario"]["avatar"] =  basename($image);
         } else {
             $newdata["usuario"]["avatar"] = basename($avatar);
