@@ -5043,7 +5043,7 @@ Class Artify {
             $submitBtnBack = "";
         }
 
-        $hiddenInstance = $this->getInputField("pdocrud_instance", array(), array(
+        $hiddenInstance = $this->getInputField("artify_instance", array(), array(
             $this->objKey
                 ), "hidden", array(
             "pdocrud-hidden-data",

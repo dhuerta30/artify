@@ -3,7 +3,7 @@
 Class ArtifyAjaxCtrl {
 
     public function handleRequest() {
-        $instanceKey = isset($_REQUEST["pdocrud_instance"]) ? filter_var($_REQUEST["pdocrud_instance"], FILTER_SANITIZE_STRING) : null;
+        $instanceKey = isset($_REQUEST["artify_instance"]) ? filter_var($_REQUEST["artify_instance"], FILTER_SANITIZE_STRING) : null;
         
         if(!isset($_SESSION["pdocrud_sess"][$instanceKey])){
             die("La sesión ha caducado. Actualice su página para continuar.");

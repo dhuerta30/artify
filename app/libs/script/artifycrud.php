@@ -21,7 +21,7 @@ function pdocrudAutoLoad($class) {
         require_once ArtifyABSPATH . "classes/" . $class . ".php";
 }
 
-if (isset($_REQUEST["pdocrud_instance"])) {
+if (isset($_REQUEST["artify_instance"])) {
     $fomplusajax = new ArtifyAjaxCtrl();
     $fomplusajax->handleRequest();
 }
