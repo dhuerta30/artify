@@ -53,7 +53,7 @@ $xSettings["watermarkType"] = "text";
 //Water mark value
 $xSettings["watermarkValue"] = "Invoice";
 //Default download folder name of invoice
-$xSettings["downloadFolder"] = XInvoiceABSPATH."downloads/";
+$xSettings["downloadFolder"] = DocufyABSPATH."downloads/";
 //Default pdf file name 
 $xSettings["filename"] = "invoice.pdf";
 //whether to ouput it on browser or browser+force download or save file at particular location
@@ -65,7 +65,7 @@ $xSettings["delimiter"] = ",";
 //whether to enable the logs.
 $xSettings["enableLogs"] = true;
 //Path of log file
-$xSettings["logFile"] = XInvoiceABSPATH."logs/logs.txt";
+$xSettings["logFile"] = DocufyABSPATH."logs/logs.txt";
 //whether to enable rest or not.
 $xSettings["enableREST"] = true;
 //Complete path till download folder to create url for the pdf

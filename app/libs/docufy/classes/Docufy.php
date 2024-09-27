@@ -265,7 +265,7 @@ class Docufy
     /**
      * Set invoice 'header' details e.g. invoice no, date, due date, total due
      * @param   array   $data                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceHeaderData($data)
     {
@@ -282,7 +282,7 @@ class Docufy
     /**
      * Set invoice 'from' details 
      * @param   array   $data                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceFromData($data)
     {
@@ -299,7 +299,7 @@ class Docufy
     /**
      * Set invoice 'to' details 
      * @param   array   $data                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceToData($data)
     {
@@ -316,7 +316,7 @@ class Docufy
     /**
      * Set invoice 'Company' details 
      * @param   array   $data                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceCompanyData($data)
     {
@@ -333,7 +333,7 @@ class Docufy
     /**
      * Set invoice 'Payment' details 
      * @param   array   $data                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoicePaymentData($data)
     {
@@ -350,7 +350,7 @@ class Docufy
     /**
      * Set invoice 'Total' details 
      * @param   array   $data                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceTotalData($data)
     {
@@ -367,7 +367,7 @@ class Docufy
     /**
      * Set invoice 'Message' details 
      * @param   array   $data                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceMessageData($data)
     {
@@ -384,7 +384,7 @@ class Docufy
     /**
      * Set invoice 'Footer' details 
      * @param   array   $data                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceFooterData($data)
     {
@@ -401,7 +401,7 @@ class Docufy
     /**
      * Set invoice 'Logo'  
      * @param   string   $logo                  logo of company
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceLogo($logo)
     {
@@ -412,7 +412,7 @@ class Docufy
     /**
      * Set invoice 'Number'  
      * @param   string   $no                    invoice no. to be set
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceNo($no)
     {
@@ -423,7 +423,7 @@ class Docufy
     /**
      * Set invoice 'Date'  
      * @param   string   $date                  invoice date to be set
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceDate($date)
     {
@@ -434,7 +434,7 @@ class Docufy
     /**
      * Set invoice 'Due Date'  
      * @param   string   $date                  invoice due date to be set
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceDueDate($date)
     {
@@ -445,7 +445,7 @@ class Docufy
     /**
      * Set invoice Items  
      * @param   array   $items                  array of items to be added 
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceItems($items)
     {
@@ -462,7 +462,7 @@ class Docufy
     /**
      * Set invoice single item
      * @param   array   $item                   Item to be added 
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceItem($item)
     {
@@ -477,7 +477,7 @@ class Docufy
      * Set invoice diffrent section data
      * @param   string   $sectionName           section name to be set
      * @param   string   $val                   value of section
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceSections($sectionName, $val)
     {
@@ -488,7 +488,7 @@ class Docufy
     /**
      * Set invoice complete data passed as in array format
      * @param   array   $invoiceData            Complete invoice data array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceCompleteData($invoiceData)
     {
@@ -577,7 +577,7 @@ class Docufy
     /**
      * Set invoice 'header' details 
      * @param   array   $label                   label in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceHeaderLabel($label)
     {
@@ -594,7 +594,7 @@ class Docufy
     /**
      * Set invoice 'from' details 
      * @param   array   $label                   label in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceFromLabel($label)
     {
@@ -611,7 +611,7 @@ class Docufy
     /**
      * Set invoice 'to' details 
      * @param   array   $label                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceToLabel($label)
     {
@@ -628,7 +628,7 @@ class Docufy
     /**
      * Set invoice 'Company' details 
      * @param   array   $label                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceCompanyLabel($label)
     {
@@ -645,7 +645,7 @@ class Docufy
     /**
      * Set invoice 'Payment' details 
      * @param   array   $label                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoicePaymentLabel($label)
     {
@@ -662,7 +662,7 @@ class Docufy
     /**
      * Set invoice 'Message' details 
      * @param   array   $label                   data in format of array
-     * return   object                           Object of xinvoice
+     * return   object                           Object of Docufy
      */
     public function setInvoiceMessageLabel($label)
     {
@@ -679,7 +679,7 @@ class Docufy
     /**
      * Set invoice 'Footer' details 
      * @param   array   $label                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceFooterLabel($label)
     {
@@ -696,7 +696,7 @@ class Docufy
     /**
      * Set invoice 'Total' details 
      * @param   array   $label                   data in format of array
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceTotalLabel($label)
     {
@@ -713,7 +713,7 @@ class Docufy
     /**
      * Set invoice 'Invoice no'  
      * @param   string   $label                 invoice no label to be set
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceNoLabel($label)
     {
@@ -724,7 +724,7 @@ class Docufy
     /**
      * Set invoice 'Date' Label  
      * @param   string   $label                 invoice date label to be set
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceDateLabel($label)
     {
@@ -735,7 +735,7 @@ class Docufy
     /**
      * Set invoice 'Due Date'  
      * @param   string   $label                 invoice due date label to be set
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceDueDateLabel($label)
     {
@@ -746,7 +746,7 @@ class Docufy
     /**
      * Set invoice Items label  
      * @param   array   $label                  array of items label to be added 
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceItemsLabel($label)
     {
@@ -765,7 +765,7 @@ class Docufy
      * @param   string   $section               section of invoice
      * @param   string   $subsection            sub section of invoice (optional)
      * @param   bool     $display               set display of section true to show, false to hide  
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceDisplaySettings($section, $subsection = "", $display = true)
     {
@@ -786,7 +786,7 @@ class Docufy
      * @param   string   $section               section of invoice
      * @param   string   $subsection            sub section of invoice (optional)
      * @param   string   $style                 set style of section
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceStyleSettings($section, $subsection = "", $style = "")
     {
@@ -807,7 +807,7 @@ class Docufy
      * @param   string   $section               section of invoice
      * @param   string   $subsection            sub section of invoice (optional)
      * @param   array    $format                set format of the invoice section
-     * return   object                          Object of xinvoice
+     * return   object                          Object of Docufy
      */
     public function setInvoiceFormatSettings($section, $subsection = "", $format = "")
     {
@@ -909,7 +909,7 @@ class Docufy
      * @param   string   $operation                 Whether to use sum or percentage operation to generate field
      * @param   string   $param                     Parameter like how much percentage etc.
      * @param   bool     $negative                  Whether field will be negative or positive for further calculations.
-     * return   object                              Object of xinvoice
+     * return   object                              Object of Docufy
      */
     public function addInvoiceTotal($totalId, $lableName = "", $data = array(), $operation = "+", $param = 0, $negative = false)
     {
