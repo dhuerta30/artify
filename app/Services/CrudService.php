@@ -60,7 +60,6 @@ class CrudService
         $this->generateTemplateCrud($nameview);
     }
 
-
     private function generateTemplateCrud($nameview)
     {
         $sourceDir = __DIR__ . '/../libs/artify/classes/templates/bootstrap4';

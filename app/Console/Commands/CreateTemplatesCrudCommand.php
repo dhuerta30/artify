@@ -20,8 +20,8 @@ class CreateTemplatesCrudCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $name = $input->getArgument('name');
-        $sourceDir = __DIR__ . '/../../libs/script/classes/templates/solicitudes'; // Ruta de la carpeta base de plantillas
-        $destinationDir = __DIR__ . '/../../libs/script/classes/templates/' . $name; // Nueva carpeta de destino
+        $sourceDir = __DIR__ . '/../../libs/artify/classes/templates/solicitudes'; // Ruta de la carpeta base de plantillas
+        $destinationDir = __DIR__ . '/../../libs/artify/classes/templates/' . $name; // Nueva carpeta de destino
 
         if (!file_exists($destinationDir)) {
             $this->copyDirectory($sourceDir, $destinationDir, $output);

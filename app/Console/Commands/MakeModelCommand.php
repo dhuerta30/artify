@@ -40,9 +40,9 @@ class MakeModelCommand extends Command
 
             public function mi_metodo(\$data = array())
             {
-                \$pdomodel = DB::PDOModel();
-                \$pdomodel->insert(\$this->table, \$data);
-                return \$pdomodel;
+                \$queryfy = DB::Queryfy();
+                \$queryfy->insert(\$this->table, \$data);
+                return \$queryfy;
             }
 
         }";

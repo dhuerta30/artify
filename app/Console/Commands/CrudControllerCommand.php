@@ -52,7 +52,7 @@ class CrudControllerCommand extends Command
                 <div class="card mt-4">
                     <div class="card-body">
 
-                        <div class="row procedimiento">
+                        <div class="row">
                             <div class="col-md-12">
                                 <h5>titulo</h5>
                                 <hr>
@@ -65,7 +65,7 @@ class CrudControllerCommand extends Command
             </section>
         </div>
         <div id="pdocrud-ajax-loader">
-            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
         </div>
         <?php require "layouts/footer.php"; ?>';
 
@@ -133,8 +133,8 @@ class CrudControllerCommand extends Command
 
             public function index()
             {
-                \$pdocrud = DB::PDOCrud();
-                \$render = \$pdocrud->dbTable('{$tableName}')->render();
+                \$artify = DB::ArtifyCrud();
+                \$render = \$artify->dbTable('{$tableName}')->render();
 
                 View::render(
                     '{$nameview}', 
