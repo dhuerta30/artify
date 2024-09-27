@@ -349,7 +349,24 @@
                                                     }
                                                 }
                                             }
-                                                                                }
+
+                                            // Para ejecutar una consulta de base de datos
+                                            public function ejecutar_consulta_bd(){
+                                                $data = array("op" => "query", "sql" => "SELECT * FROM usuario WHERE id = '1' ");
+
+                                                // Convertir datos en cadena de consulta
+                                                $data = http_build_query($data);
+                                            
+                                                // Crear un nuevo cliente Guzzle
+                                                $client = new Client();
+                                            
+                                                // Hacer la solicitud GET con los parámetros en la URL
+                                                $response = $client->request("GET", "http://tudominio.com/". $_ENV["BASE_URL"]."/api/usuario?" . $data);
+                                            
+                                                $result = $response->getBody()->getContents();
+                                                print_r($result);
+                                            }
+                                        }
                         
                                     ?&gt;
                                 </pre>

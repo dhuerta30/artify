@@ -1381,3 +1381,9 @@
 2024-09-27 20:00:26 Operación realizada con éxito
 2024-09-27 20:00:27 Operación realizada con éxito
 2024-09-27 20:00:28 Operación realizada con éxito
+2024-09-27 20:02:26 No tienes permitido acceder a este recurso.
+2024-09-27 20:02:51 No tienes permitido acceder a este recurso.
+2024-09-27 20:04:48 Operación realizada con éxito
+2024-09-27 20:04:51 Operación realizada con éxito
+2024-09-27 20:05:15 Operación realizada con éxito
+2024-09-27 20:05:27 Operación realizada con éxito
