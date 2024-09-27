@@ -287,9 +287,9 @@ class CrudService
 
             public function index()
             {
-                \$pdocrud = DB::PDOCrud();
-                \$pdomodel = \$pdocrud->getQueryfyObj();
-                \$columnDB = \$pdomodel->columnNames('{$tableName}');
+                \$artify = DB::ArtifyCrud();
+                \$queryfy = \$artify->getQueryfyObj();
+                \$columnDB = \$queryfy->columnNames('{$tableName}');
                 \$id = strtoupper(\$columnDB[0]);
 
                 \$html_template = '<div class=\"form\">
@@ -313,51 +313,51 @@ class CrudService
                 \$html_template .= '
                 </div>'; // Cierre del div de formulario
 
-                \$pdocrud->set_template(\$html_template);
-                \$tabla = \$pdocrud->getLangData('{$tableName}');
-                \$pk = \$pdocrud->getLangData(\$id);
-                \$columnVal = \$pdocrud->getLangData(\$pk);
+                \$artify->set_template(\$html_template);
+                \$tabla = \$artify->getLangData('{$tableName}');
+                \$pk = \$artify->getLangData(\$id);
+                \$columnVal = \$artify->getLangData(\$pk);
 
-                \$pdocrud->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", \$_ENV['BASE_URL'].'{$controllerName}/agregar', array(), 'btn-report');
+                \$artify->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", \$_ENV['BASE_URL'].'{$controllerName}/agregar', array(), 'btn-report');
 
                 \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{{$idTable}}';
                 \$text = '<i class=\"fa fa-edit\"></i>';
                 \$attr = array('title'=> 'Editar');
-                \$pdocrud->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
+                \$artify->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
 
-                \$pdocrud->setSettings('encryption', false);
-                \$pdocrud->setSettings('pagination', true);
-                \$pdocrud->setSettings('searchbox', true);
-                \$pdocrud->setSettings('clonebtn', true);
-                \$pdocrud->setSettings('deleteMultipleBtn', true);
-                \$pdocrud->setSettings('checkboxCol', true);
-                \$pdocrud->setSettings('recordsPerPageDropdown', true);
-                \$pdocrud->setSettings('totalRecordsInfo', true);
-                \$pdocrud->setSettings('addbtn', false);
-                \$pdocrud->setSettings('editbtn', false);
-                \$pdocrud->setSettings('delbtn', true);
-                \$pdocrud->setSettings('actionbtn', true);
-                \$pdocrud->setSettings('refresh', false);
-                \$pdocrud->setSettings('numberCol', true);
-                \$pdocrud->setSettings('printBtn', true);
-                \$pdocrud->setSettings('pdfBtn', true);
-                \$pdocrud->setSettings('csvBtn', true);
-                \$pdocrud->setSettings('excelBtn', true);
-                \$pdocrud->setSettings('clonebtn', false);
-                \$pdocrud->setSettings('template', 'template_{$nameview}');
-                \$pdocrud->setLangData('no_data', 'Sin Resultados');
+                \$artify->setSettings('encryption', false);
+                \$artify->setSettings('pagination', true);
+                \$artify->setSettings('searchbox', true);
+                \$artify->setSettings('clonebtn', true);
+                \$artify->setSettings('deleteMultipleBtn', true);
+                \$artify->setSettings('checkboxCol', true);
+                \$artify->setSettings('recordsPerPageDropdown', true);
+                \$artify->setSettings('totalRecordsInfo', true);
+                \$artify->setSettings('addbtn', false);
+                \$artify->setSettings('editbtn', false);
+                \$artify->setSettings('delbtn', true);
+                \$artify->setSettings('actionbtn', true);
+                \$artify->setSettings('refresh', false);
+                \$artify->setSettings('numberCol', true);
+                \$artify->setSettings('printBtn', true);
+                \$artify->setSettings('pdfBtn', true);
+                \$artify->setSettings('csvBtn', true);
+                \$artify->setSettings('excelBtn', true);
+                \$artify->setSettings('clonebtn', false);
+                \$artify->setSettings('template', 'template_{$nameview}');
+                \$artify->setLangData('no_data', 'Sin Resultados');
             
-                \$pdocrud->setLangData('tabla', '{$tableName}')
+                \$artify->setLangData('tabla', '{$tableName}')
                     ->setLangData('pk', \$pk)
                     ->setLangData('columnVal', \$columnVal);
-                \$pdocrud->tableHeading('{$tableName}');
-                \$pdocrud->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
-                \$pdocrud->addCallback('before_sql_data', 'buscador_tabla', array(\$columnDB));
-                \$pdocrud->addCallback('before_delete', 'eliminar_tabla');
+                \$artify->tableHeading('{$tableName}');
+                \$artify->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
+                \$artify->addCallback('before_sql_data', 'buscador_tabla', array(\$columnDB));
+                \$artify->addCallback('before_delete', 'eliminar_tabla');
 
-                \$pdocrud->setSettings('viewbtn', false);
-                \$pdocrud->addCallback('format_sql_col', 'format_sql_col_tabla', array(\$columnDB));
-                \$render = \$pdocrud->setQuery('{$query}')->render('SQL');
+                \$artify->setSettings('viewbtn', false);
+                \$artify->addCallback('format_sql_col', 'format_sql_col_tabla', array(\$columnDB));
+                \$render = \$artify->setQuery('{$query}')->render('SQL');
 
                 View::render(
                     '{$nameview}', 
