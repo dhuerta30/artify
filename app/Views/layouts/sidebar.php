@@ -192,6 +192,9 @@
                         // Para Ocultar el botón de exportación excel de la grilla use
                         $artify->setSettings("excelBtn", false);
 
+                        // Para usar una Plantilla Personalizada use 
+                        $artify->setSettings("template", "nombre_plantilla");
+
                         // Para Ocultar una o mas columnas de la grilla use
                         $artify->crudRemoveCol(array("user_id"));
 
