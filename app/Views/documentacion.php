@@ -217,8 +217,6 @@
                                 <pre class="brush: php;">
                                     &lt;?php
 
-                                        // Para seleccionar los datos en formato json Api use
-
                                         namespace App\Controllers;
 
                                         use App\core\SessionManager;
@@ -232,6 +230,7 @@
 
                                         class EjemploController
                                         {
+                                            // Para obtener datos en formato json
                                             public function obtener_datos_usuario(){
                                                 try {
                                                     $client = new Client();
@@ -246,6 +245,7 @@
                                                 }
                                             }
 
+                                            // Para generar Token JWT
                                             public function generarToken(){
                                                 try {
                                                     $data = array("data" => array("usuario" => "admin", "password" => "123"));
