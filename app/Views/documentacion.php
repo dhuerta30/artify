@@ -195,7 +195,12 @@
 
                                         // Para inicializar Docufy use
                                         $docufy = DB::Docufy();
+
+                                        // Renderizar el Documento como PDF
                                         echo $docufy->render();
+
+                                        // Renderizar el Documento como HTML
+                                        echo $docufy->render("HTML");
                                     ?&gt;
                                 </pre>
 
