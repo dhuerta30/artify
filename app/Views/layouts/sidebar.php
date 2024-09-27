@@ -121,11 +121,11 @@
             <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="columns_search" role="tabpanel" aria-labelledby="columns_search-tab">
 
-                <section class="code-section">
-                    <pre class="brush: php;"> 
+                <pre class="brush: php;"> 
+                    &lt;?php 
                         $pdocrud->setSearchCols(array("id","first_name"));
-                    </pre>
-                </section>
+                    ?&gt;
+                </pre>
                                     
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
