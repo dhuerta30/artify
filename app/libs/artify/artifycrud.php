@@ -1181,7 +1181,7 @@ function eliminar_modulos($data, $obj)
         return rmdir($dir);
     }
 
-    $templaesCrudDirPath = dirname(__DIR__, 3) . '/app/libs/script/classes/templates/template_' . $nameview . '/';
+    $templaesCrudDirPath = dirname(__DIR__, 3) . '/app/libs/artify/classes/templates/template_' . $nameview . '/';
     if (file_exists($templaesCrudDirPath) && is_dir($templaesCrudDirPath)) {
         try {
             if (eliminar_directorio_completo($templaesCrudDirPath)) {

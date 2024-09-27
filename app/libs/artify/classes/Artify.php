@@ -1899,7 +1899,7 @@ Class Artify {
     }
 
     private function initializeHTMLContent() {
-        $this->HTMLContent[] = $this->getAjaxLoaderImage($this->settings["script_url"] . "script/images/ajax-loader.gif");
+        $this->HTMLContent[] = $this->getAjaxLoaderImage($this->settings["script_url"] . "artify/images/ajax-loader.gif");
         return $this;
     }
 
@@ -1941,7 +1941,7 @@ Class Artify {
     }
 
     private function enqueuePlugin() {
-        $pluginPath = $this->settings["script_url"] . "script/plugins/";
+        $pluginPath = $this->settings["script_url"] . "artify/plugins/";
 
         if (isset($this->plugins["js"])) {
             foreach ($this->plugins["js"] as $jsPluginName => $jsPlugins) {
@@ -2171,12 +2171,12 @@ Class Artify {
         $loadInitialJs = $this->settings["loadJs"];
 
         foreach ($loadInitialJs as $js) {
-            $jsLists[$js] = $scripturl . "script/js/$js";
+            $jsLists[$js] = $scripturl . "artify/js/$js";
         }
         if (!isset($this->settings["includeTemplateJS"]) || (isset($this->settings["includeTemplateJS"]) && $this->settings["includeTemplateJS"])) {
-            $jsLists["template-script"] = $scripturl . "script/classes/templates/" . $templateName . "/js/script.js";
+            $jsLists["template-script"] = $scripturl . "artify/classes/templates/" . $templateName . "/js/script.js";
         } 
-        $jsLists["pdocrud-script"] = $scripturl . "script/js/comman.js";
+        $jsLists["pdocrud-script"] = $scripturl . "artify/js/comman.js";
 
         foreach ($jsLists as $jsName => $jsPath) {
             $this->enqueueJs($jsName, $jsPath);
@@ -2193,11 +2193,11 @@ Class Artify {
         $scripturl = $this->settings["script_url"];
         if (is_array($skin)) {
             foreach ($skin as $sk) {
-                $cssPath = $scripturl . "script/skin/" . $sk . ".css";
+                $cssPath = $scripturl . "artify/skin/" . $sk . ".css";
                 $this->enqueueCss($sk, $cssPath);
             }
         } else {
-            $cssPath = $scripturl . "script/skin/" . $skin . ".css";
+            $cssPath = $scripturl . "artify/skin/" . $skin . ".css";
             $this->enqueueCss("skin", $cssPath);
         }
         return $this;
@@ -2246,18 +2246,18 @@ Class Artify {
         $loadInitialCss = $this->settings["loadCss"];
 
         foreach ($loadInitialCss as $css) {
-            $cssLists[$css] = $this->settings["script_url"] . "script/css/$css";
+            $cssLists[$css] = $this->settings["script_url"] . "artify/css/$css";
         }
         
         if (!isset($this->settings["includeTemplateCSS"]) || (isset($this->settings["includeTemplateCSS"]) && $this->settings["includeTemplateCSS"])) {
-            $cssLists["template-css"] = $scripturl . "script/classes/templates/" . $templateName . "/css/style.css";
+            $cssLists["template-css"] = $scripturl . "artify/classes/templates/" . $templateName . "/css/style.css";
         }
         foreach ($cssLists as $cssName => $cssPath) {
             $this->enqueueCss($cssName, $cssPath);
         }
 
         $skin = strtolower($this->settings["skin"]);
-        $cssPath = $scripturl . "script/skin/" . $skin . ".css";
+        $cssPath = $scripturl . "artify/skin/" . $skin . ".css";
         $this->enqueueCss("skin", $cssPath);
     }
 
@@ -2319,7 +2319,7 @@ Class Artify {
      */
     public function setFormSkin($skin) {
         $scripturl = $this->settings["script_url"];
-        $cssPath = $scripturl . "script/skin/" . $skin . ".css";
+        $cssPath = $scripturl . "artify/skin/" . $skin . ".css";
         $this->enqueueCss("skin", $cssPath);
         return $this;
     }
@@ -5919,7 +5919,7 @@ Class Artify {
 
     public function getCaptcha($fieldName) {
 
-        $imageSrc = $this->settings["script_url"] . "script/classes/library/captchamath/CaptchaMath.php?objId=$this->formId";
+        $imageSrc = $this->settings["script_url"] . "artify/classes/library/captchamath/CaptchaMath.php?objId=$this->formId";
         $captchaId = "captcha_" . $this->formId;
         $captchaImage = $this->getImageField($imageSrc, array(
             "id" => $captchaId
