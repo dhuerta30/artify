@@ -109,13 +109,13 @@
        
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="columns_search-tab" data-toggle="tab" href="#columns_search" role="tab" aria-controls="columns_search" aria-selected="true">Codigos del ArtifyCrud</a>
+                <a class="nav-link active" id="columns_search-tab" data-toggle="tab" href="#columns_search" role="tab" aria-controls="columns_search" aria-selected="true">ArtifyCrud</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Queryfy</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Docufy</a>
             </li>
         </ul>
             <div class="tab-content" id="myTabContent">
