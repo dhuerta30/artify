@@ -83,8 +83,10 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
 
             if(val == "Si"){
                 $(".autenticate_jwt_token").removeAttr("disabled", "disabled");
+                $(".generar_token_api").removeClass("d-none");
             } else {
                 $(".autenticate_jwt_token").attr("disabled", "disabled");
+                $(".generar_token_api").addClass("d-none");
             }
         });
 

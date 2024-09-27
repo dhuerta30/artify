@@ -990,7 +990,7 @@ class HomeController
 							<label class="form-label">Generar JWT Token Api:</label>
 							{generate_token_jwt}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
-							<button class="btn btn-info generar_token_api d-none">Generar Token</button>
+							<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
 						</div>
 					</div>
 					<div class="col-md-4">
