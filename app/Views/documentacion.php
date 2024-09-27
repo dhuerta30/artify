@@ -19,6 +19,9 @@
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="docufy-tab" data-toggle="tab" href="#docufy" role="tab" aria-controls="docufy" aria-selected="false"><i class="far fa-file"></i> Docufy</a>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="api-tab" data-toggle="tab" href="#api" role="tab" aria-controls="api" aria-selected="false"><i class="fa fa-key"></i> Apify</a>
+                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade p-4 show active" id="artify" role="tabpanel" aria-labelledby="artify-tab">
@@ -204,6 +207,18 @@
 
                                         // Renderizar el Documento como HTML
                                         echo $docufy->render("HTML");
+                                    ?&gt;
+                                </pre>
+
+                            </div>
+                            <div class="tab-pane fade p-4" id="api" role="tabpanel" aria-labelledby="api-tab">
+
+                                <h5>Generador de Api</h5>
+                                <pre class="brush: php;">
+                                    &lt;?php
+
+                                        // Para inicializar Apify use
+                                        
                                     ?&gt;
                                 </pre>
 
