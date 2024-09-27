@@ -183,7 +183,13 @@
                                 </pre>
 
                             </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                                    &lt;?php 
+                                        $docufy = new Docufy();
+                                    ?&gt;
+
+                            </div>
                         </div>
 
                     
