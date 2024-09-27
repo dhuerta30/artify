@@ -196,6 +196,9 @@
                                         // Para inicializar Docufy use
                                         $docufy = DB::Docufy();
 
+                                        // Para usar una plantilla de Documento use
+                                        $docufy->setTemplateName("invoice/invoice_2.php");
+
                                         // Renderizar el Documento como PDF
                                         echo $docufy->render();
 
