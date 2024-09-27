@@ -130,6 +130,23 @@
                         $artify->joinTable("user_meta", "user_meta.user_id = users.user_id", "LEFT JOIN");
                         $artify->joinTable("user_meta", "user_meta.user_id = users.user_id", "INNER JOIN");
                         $artify->relatedData('class_id','class','class_id','class_name');
+                        $artify->setSettings("pagination", false);
+                        $artify->setSettings("searchbox", false);
+                        $artify->setSettings("deleteMultipleBtn", false);
+                        $artify->setSettings("recordsPerPageDropdown", false);
+                        $artify->setSettings("recordsPerPageDropdown", false);
+                        $artify->setSettings("totalRecordsInfo", false);
+                        $artify->setSettings("addbtn", false);
+                        $artify->setSettings("editbtn", false);
+                        $artify->setSettings("viewbtn", false);
+                        $artify->setSettings("delbtn", false);
+                        $artify->setSettings("actionbtn", false);
+                        $artify->setSettings("checkboxCol", false);
+                        $artify->setSettings("numberCol", false);
+                        $artify->setSettings("printBtn", false);
+                        $artify->setSettings("pdfBtn", false);
+                        $artify->setSettings("csvBtn", false);
+                        $artify->setSettings("excelBtn", false);
                     ?&gt;
                 </pre>
                                     
