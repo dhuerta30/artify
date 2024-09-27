@@ -1347,3 +1347,27 @@
 2024-09-27 19:33:29 No tienes permitido acceder a este recurso.
 2024-09-27 19:34:53 Operación realizada con éxito
 2024-09-27 19:39:19 Operación realizada con éxito
+2024-09-27 19:43:09 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:44:11 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:44:31 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:44:33 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:45:16 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:47:00 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:47:20 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:50:22 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:50:43 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:51:27 Error: Los datos para eliminar no están presentes.
+2024-09-27 19:52:29 Operación realizada con éxito
+2024-09-27 19:54:03 Operación realizada con éxito
+2024-09-27 19:54:08 Operación realizada con éxito
+2024-09-27 19:54:10 [
+    null
+]
+2024-09-27 19:54:32 [
+    null
+]
+2024-09-27 19:54:33 Operación realizada con éxito
+2024-09-27 19:54:38 [
+    null
+]
+2024-09-27 19:54:52 Operación realizada con éxito

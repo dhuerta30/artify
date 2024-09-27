@@ -306,6 +306,29 @@
                                                     }
                                                 }
                                             }
+
+                                            // Para eliminar Datos en la Base de Datos
+                                            public function eliminar_datos(){
+                                                try {
+
+                                                    $data = array("data" => array("id_creador_de_panel" => 3));
+                                                    $data = json_encode($data);
+                                                    
+                                                    $client = new Client();
+                                                    $response = $client->delete("http://localhost/". $_ENV["BASE_URL"]."/api/creador_de_panel/", [
+                                                        'headers' => ['Content-Type' => 'application/json'],
+                                                        'body' => $data
+                                                    ]);
+
+                                                    $result = $response->getBody()->getContents();
+                                                    print_r($result);
+
+                                                } catch (ServerException $e) {
+                                                    if ($e->getResponse()->getStatusCode() == 500) {
+                                                        echo $e->getResponse()->getBody()->getContents() . PHP_EOL;
+                                                    }
+                                                }
+                                            }
                                         }
                         
                                     ?&gt;
@@ -329,6 +352,11 @@
                                 <h5>Forma de uso actualizar_datos</h5>
                                 <pre class="brush: xml;">
                                     url: http://tudominio.com/artify/Ejemplo/actualizar_datos
+                                </pre>
+
+                                <h5>Forma de uso eliminar_datos</h5>
+                                <pre class="brush: xml;">
+                                    url: http://tudominio.com/artify/Ejemplo/eliminar_datos
                                 </pre>
                             </div>
                         </div>

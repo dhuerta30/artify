@@ -10,6 +10,7 @@ use App\core\Redirect;
 use App\core\DB;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 
 class DocumentacionController
 {
@@ -77,14 +78,36 @@ class DocumentacionController
             $data = json_encode($data);
 
             $client = new Client();
-            $response = $client->put("http://localhost/". $_ENV["BASE_URL"]."/api/creador_de_panel/3", [
+            $response = $client->put("http://localhost/". $_ENV["BASE_URL"]."/api/creador_de_panel/5", [
                 'body' => $data,
             ]);
 
             $result = $response->getBody()->getContents();
             print_r($result);
 
-        } catch (ClientException $e) {
+        } catch (ServerException $e) {
+            if ($e->getResponse()->getStatusCode() == 500) {
+                echo $e->getResponse()->getBody()->getContents() . PHP_EOL;
+            }
+        }
+    }
+
+    public function eliminar_datos(){
+        try {
+
+            $data = array("data" => array("id_creador_de_panel" => 3));
+            $data = json_encode($data);
+            
+            $client = new Client();
+            $response = $client->delete("http://localhost/". $_ENV["BASE_URL"]."/api/creador_de_panel/", [
+                'headers' => ['Content-Type' => 'application/json'],
+                'body' => $data
+            ]);
+
+            $result = $response->getBody()->getContents();
+            print_r($result);
+
+        } catch (ServerException $e) {
             if ($e->getResponse()->getStatusCode() == 500) {
                 echo $e->getResponse()->getBody()->getContents() . PHP_EOL;
             }
