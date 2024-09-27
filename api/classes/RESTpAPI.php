@@ -1,6 +1,6 @@
 <?php
 require RESTpAPIABSPATH . '/classes/library/vendor/autoload.php';
-require dirname(__FILE__, 3) . '/app/libs/script/classes/PDOModel.php';
+require dirname(__FILE__, 3) . '/app/libs/artify/classes/Queryfy.php';
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\JWK;
@@ -410,8 +410,8 @@ Class RESTpAPI {
             $where = array($key, $val, $op);
             $data["where"] = array(implode(",", $where));
         } else if (isset($param[$paramIndex]) && !empty($param[$paramIndex]) && !isset($param[$paramIndex + 1])) {
-            $pdoModelObj = $this->getPDOModelObj();
-            $pk = $pdoModelObj->primaryKey($data["table"]);
+            $queryfy = $this->getQueryfyObj();
+            $pk = $queryfy->primaryKey($data["table"]);
             if ($pk) {
                 $key = $pk;
                 $val = $param[$paramIndex];
@@ -473,16 +473,16 @@ Class RESTpAPI {
         }
 
         $data = $this->handleCallback('before_insert', $data);
-        $pdoModelObj = $this->getPDOModelObj();
-        $pdoModelObj->insert($data["table"], $data["data"]);
-        $lastInsertId = $pdoModelObj->lastInsertId;
-        if ($pdoModelObj->rowsChanged > 0) {
+        $queryfy = $this->getQueryfyObj();
+        $queryfy->insert($data["table"], $data["data"]);
+        $lastInsertId = $queryfy->lastInsertId;
+        if ($queryfy->rowsChanged > 0) {
             $this->statusCode = 201;
             $this->message = $this->getLangData("success");
         } else {
             $this->statusCode = 500;
             $this->message = $this->getLangData("error");
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
         }
         $response = $this->getResponse($lastInsertId);
         $response = $this->handleCallback('after_insert', $response);
@@ -499,18 +499,18 @@ Class RESTpAPI {
         }
 
         $data = $this->handleCallback('before_update', $data);
-        $pdoModelObj = $this->getPDOModelObj();
-        $pdoModelObj = $this->applyParameter($pdoModelObj, $data);
-        $pdoModelObj->update($data["table"], $data["data"]);
-        if ($pdoModelObj->rowsChanged > 0) {
+        $queryfy = $this->getQueryfyObj();
+        $queryfy = $this->applyParameter($queryfy, $data);
+        $queryfy->update($data["table"], $data["data"]);
+        if ($queryfy->rowsChanged > 0) {
             $this->statusCode = 200;
             $this->message = $this->getLangData("success");
         } else {
             $this->statusCode = 500;
             $this->message = $this->getLangData("error");
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
         }
-        $response = $this->getResponse($pdoModelObj->rowsChanged);
+        $response = $this->getResponse($queryfy->rowsChanged);
         $response = $this->handleCallback('after_update', $response);
         return $response;
     }
@@ -526,16 +526,16 @@ Class RESTpAPI {
         }
         
         $data = $this->handleCallback('before_select', $data);
-        $pdoModelObj = $this->getPDOModelObj();
-        $pdoModelObj = $this->applyParameter($pdoModelObj, $data);
-        $result = $pdoModelObj->select($data["table"]);
-        if ($pdoModelObj->totalRows > 0) {
+        $queryfy = $this->getQueryfyObj();
+        $queryfy = $this->applyParameter($queryfy, $data);
+        $result = $queryfy->select($data["table"]);
+        if ($queryfy->totalRows > 0) {
             $this->message = $this->getLangData("success");
             $this->statusCode = 200;
         } else {
             $this->message = $this->getLangData("no_data");
             $this->statusCode = 404;
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
             $this->setHttpHeaders($this->responseContentType, $this->statusCode);
         }
         $response = $this->getResponse($result);
@@ -553,18 +553,18 @@ Class RESTpAPI {
         }
 
         $data = $this->handleCallback('before_delete', $data);
-        $pdoModelObj = $this->getPDOModelObj();
-        $pdoModelObj = $this->applyParameter($pdoModelObj, $data);
-        $pdoModelObj->delete($data["table"]);
-        if ($pdoModelObj->rowsChanged > 0) {
+        $queryfy = $this->getQueryfyObj();
+        $queryfy = $this->applyParameter($queryfy, $data);
+        $queryfy->delete($data["table"]);
+        if ($queryfy->rowsChanged > 0) {
             $this->statusCode = 200;
             $this->message = $this->getLangData("success");
         } else {
             $this->statusCode = 500;
             $this->message = $this->getLangData("error");
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
         }
-        $response = $this->getResponse($pdoModelObj->rowsChanged);
+        $response = $this->getResponse($queryfy->rowsChanged);
         $response = $this->handleCallback('after_delete', $response);
         return $response;
     }
@@ -572,27 +572,27 @@ Class RESTpAPI {
     public function dbQuery($data) {
         if ($this->settings["allowQueryExecution"]) {
             $data = $this->handleCallback('before_query', $data);
-            $pdoModelObj = $this->getPDOModelObj();
-            $pdoModelObj = $this->applyParameter($pdoModelObj, $data);
+            $queryfy = $this->getQueryfyObj();
+            $queryfy = $this->applyParameter($queryfy, $data);
             if (isset($data["values"]) && is_array($data["values"]) && count($data["values"]))
-                $result = $pdoModelObj->executeQuery($data["sql"], $data["values"]);
+                $result = $queryfy->executeQuery($data["sql"], $data["values"]);
             else
-                $result = $pdoModelObj->executeQuery($data["sql"]);
+                $result = $queryfy->executeQuery($data["sql"]);
 
-            if ($pdoModelObj->totalRows > 0) {
+            if ($queryfy->totalRows > 0) {
                 $this->message = $this->getLangData("success");
                 $this->statusCode = 200;
             } else {
                 $this->message = $this->getLangData("no_data");
                 $this->statusCode = 404;
                 $this->setHttpHeaders($this->responseContentType, $this->statusCode);
-                $this->addError($pdoModelObj->error);
+                $this->addError($queryfy->error);
             }
         } else {
             $this->message = $this->getLangData("access_not_allowed");
             $this->statusCode = "500";
             $this->setHttpHeaders($this->responseContentType, $this->statusCode);
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
         }
         $response = $this->getResponse($result);
         $response = $this->handleCallback('after_query', $response);
@@ -600,34 +600,34 @@ Class RESTpAPI {
     }
 
     public function dbDropTable($data) {
-        $pdoModelObj = $this->getPDOModelObj();
-        if ($pdoModelObj->dropTable($data["table"]) > 0) {
+        $queryfy = $this->getQueryfyObj();
+        if ($queryfy->dropTable($data["table"]) > 0) {
             $this->statusCode = 200;
             $this->message = $this->getLangData("success");
         } else {
             $this->statusCode = 500;
             $this->message = $this->getLangData("error");
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
         }
         return $this->getResponse();
     }
 
     public function dbRenameTable($data) {
-        $pdoModelObj = $this->getPDOModelObj();
-        if ($pdoModelObj->renameTable($data["table"], $data["newtable"]) > 0) {
+        $queryfy = $this->getQueryfyObj();
+        if ($queryfy->renameTable($data["table"], $data["newtable"]) > 0) {
             $this->statusCode = 200;
             $this->message = $this->getLangData("success");
         } else {
             $this->statusCode = 500;
             $this->message = $this->getLangData("error");
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
         }
         return $this->getResponse();
     }
 
     public function dbTruncateTable($data) {
-        $pdoModelObj = $this->getPDOModelObj();
-        if ($pdoModelObj->truncateTable($data["table"]) > 0) {
+        $queryfy = $this->getQueryfyObj();
+        if ($queryfy->truncateTable($data["table"]) > 0) {
             $this->statusCode = 200;
             $this->message = $this->getLangData("success");
         } else {
@@ -638,24 +638,24 @@ Class RESTpAPI {
     }
 
     public function dbPrimaryKey($data) {
-        $pdoModelObj = $this->getPDOModelObj();
-        $primaryKey = $pdoModelObj->primaryKey($data["table"]);
+        $queryfy = $this->getQueryfyObj();
+        $primaryKey = $queryfy->primaryKey($data["table"]);
         if (!empty($primaryKey)) {
             $this->statusCode = 200;
             $this->message = $this->getLangData("success");
         } else {
             $this->statusCode = 500;
             $this->message = $this->getLangData("error");
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
         }
         return $this->getResponse($primaryKey);
     }
 
     public function dbAllDBTables($data) {
         $data = $this->handleCallback('before_dbtable', $data);
-        $pdoModelObj = $this->getPDOModelObj();
-        $pdoModelObj = $this->applyParameter($pdoModelObj, $data);
-        $result = $pdoModelObj->getAllTables();
+        $queryfy = $this->getQueryfyObj();
+        $queryfy = $this->applyParameter($queryfy, $data);
+        $result = $queryfy->getAllTables();
         if (is_array($result) && count($result) > 0) {
             $this->message = $this->getLangData("success");
             $this->statusCode = 200;
@@ -672,9 +672,9 @@ Class RESTpAPI {
 
     public function dbGetColumns($data) {
         $data = $this->handleCallback('before_getcol', $data);
-        $pdoModelObj = $this->getPDOModelObj();
-        $pdoModelObj = $this->applyParameter($pdoModelObj, $data);
-        $result = $pdoModelObj->columnNames($data["table"]);
+        $queryfy = $this->getQueryfyObj();
+        $queryfy = $this->applyParameter($queryfy, $data);
+        $result = $queryfy->columnNames($data["table"]);
         if (is_array($result) && count($result) > 0) {
             $this->message = $this->getLangData("success");
             $this->statusCode = 200;
@@ -682,7 +682,7 @@ Class RESTpAPI {
             $this->message = $this->getLangData("no_data");
             $this->statusCode = 404;
             $this->setHttpHeaders($this->responseContentType, $this->statusCode);
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
         }
         $response = $this->getResponse($result);
         $response = $this->handleCallback('after_getcol', $response);
@@ -691,8 +691,8 @@ Class RESTpAPI {
     
     public function dbJWTAuth($data) {
         $data = $this->handleCallback('before_jwt_auth', $data);
-        $pdoModelObj = $this->getPDOModelObj();
-        $pdoModelObj = $this->applyParameter($pdoModelObj, $data);
+        $queryfy = $this->getQueryfyObj();
+        $queryfy = $this->applyParameter($queryfy, $data);
         $userPassword = "";
         if (isset($data["data"])) {
             foreach ($data["data"] as $col => $val) {
@@ -704,10 +704,10 @@ Class RESTpAPI {
                     }
                 }
 
-                $pdoModelObj->where($col, $val);
+                $queryfy->where($col, $val);
             }
         }
-        $result = $pdoModelObj->select($data["table"]);
+        $result = $queryfy->select($data["table"]);
         $encoded = "";
         $verifyPassword = true;
         if (isset($this->settings["encryptPassword"]) && strtolower($this->settings["encryptPassword"]) === "bcrypt") {
@@ -719,7 +719,7 @@ Class RESTpAPI {
                 $verifyPassword = false; // O cualquier lógica que necesites para manejar este caso
             }
         }
-        if ($pdoModelObj->totalRows > 0 && $verifyPassword) {
+        if ($queryfy->totalRows > 0 && $verifyPassword) {
             require_once RESTpAPIABSPATH . 'library/php-jwt-master/src/JWT.php';
             try {
                 $payload = [
@@ -739,7 +739,7 @@ Class RESTpAPI {
         } else {
             $this->message = $this->getLangData("no_data");
             $this->statusCode = 404;
-            $this->addError($pdoModelObj->error);
+            $this->addError($queryfy->error);
             $this->setHttpHeaders($this->responseContentType, $this->statusCode);
         }
         $response = $this->getResponse($encoded);
@@ -758,17 +758,17 @@ Class RESTpAPI {
         return $val;
     }
 
-    public function getPDOModelObj() {
-        $pdoModelObj = new PDOModel();
-        if ($pdoModelObj->connect($this->settings["hostname"], $this->settings["username"], $this->settings["password"], $this->settings["database"], $this->settings["dbtype"], $this->settings["characterset"])) {
-            return $pdoModelObj;
+    public function getQueryfyObj() {
+        $queryfy = new Queryfy();
+        if ($queryfy->connect($this->settings["hostname"], $this->settings["username"], $this->settings["password"], $this->settings["database"], $this->settings["dbtype"], $this->settings["characterset"])) {
+            return $queryfy;
         } else {
             $this->addError($this->getLangData("db_connection_error"));
             die();
         }
     }
 
-    protected function applyParameter($pdoModelObj, $data) {
+    protected function applyParameter($queryfy, $data) {
         if (isset($data["where"])) {
             if (is_string($data["where"]))
                 $data["where"] = array($data["where"]);
@@ -782,17 +782,17 @@ Class RESTpAPI {
                     if ($op === "IN" || $op === "NOT IN" || $op === "BETWEEN") {
                         $val = explode($this->settings["valueSeparator"], $wh[1]);
                     }
-                    $pdoModelObj->where($col, $val, $op);
+                    $queryfy->where($col, $val, $op);
                 }
                 if (isset($wh[3]) && !empty($wh[3])) {
-                    $pdoModelObj->andOrOperator = $wh[3];
+                    $queryfy->andOrOperator = $wh[3];
                 }
                 if (isset($wh[4]) && !empty($wh[4])) {
                     if (strtolower($wh[4]) === "ob" || strtolower($wh[4]) === "(") {
-                        $pdoModelObj->openBrackets = "(";
+                        $queryfy->openBrackets = "(";
                     }
                     if (strtolower($wh[4]) === "cb" || strtolower($wh[4]) === ")") {
-                        $pdoModelObj->closedBrackets = ")";
+                        $queryfy->closedBrackets = ")";
                     }
                 }
             }
@@ -800,37 +800,37 @@ Class RESTpAPI {
 
         if (isset($data["columns"])) {
             if (is_array($data["columns"]) && count($data["columns"]))
-                $pdoModelObj->columns = $data["columns"];
+                $queryfy->columns = $data["columns"];
             else if (is_string($data["columns"]))
-                $pdoModelObj->columns = explode(",", $data["columns"]);
+                $queryfy->columns = explode(",", $data["columns"]);
         }
 
         if (isset($data["orderby"])) {
             if (is_array($data["orderby"]) && count($data["orderby"]))
-                $pdoModelObj->orderByCols = $data["orderby"];
+                $queryfy->orderByCols = $data["orderby"];
             else if (is_string($data["orderby"]))
-                $pdoModelObj->orderByCols = explode(",", $data["orderby"]);
+                $queryfy->orderByCols = explode(",", $data["orderby"]);
         }
 
         if (isset($data["groupby"])) {
             if (is_array($data["groupby"]) && count($data["groupby"]))
-                $pdoModelObj->groupByCols = $data["groupby"];
+                $queryfy->groupByCols = $data["groupby"];
             else if (is_string($data["groupby"]))
-                $pdoModelObj->groupByCols = explode(",", $data["groupby"]);
+                $queryfy->groupByCols = explode(",", $data["groupby"]);
         }
 
         if (isset($data["having"]) && is_array($data["having"]) && count($data["groupby"])) {
             if (is_array($data["having"]) && count($data["having"]))
-                $pdoModelObj->havingCondition = $data["having"];
+                $queryfy->havingCondition = $data["having"];
             else if (is_string($data["having"]))
-                $pdoModelObj->havingCondition = explode(",", $data["having"]);
+                $queryfy->havingCondition = explode(",", $data["having"]);
         }
 
         if (isset($data["limit"])) {
-            $pdoModelObj->limit = $data["limit"];
+            $queryfy->limit = $data["limit"];
         }
 
-        return $pdoModelObj;
+        return $queryfy;
     }
 
     protected function getOperator($op) {
