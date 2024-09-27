@@ -1,6 +1,6 @@
 <style>
     #oopss {
-        background: #ccc;
+        background: #fff;
         position: fixed;
         left: 0px;
         top: 0;
@@ -21,7 +21,7 @@
     }
 
     #oopss #error-text img {
-        margin: 85px auto 20px;
+        margin: 85px auto 58px;
         height: 200px;
     }
 
@@ -29,7 +29,7 @@
         position: relative;
         font-size: 3.3em;
         font-weight: 900;
-        margin-bottom: 50px;
+        margin-bottom: 0px;
     }
 
     #oopss #error-text p.p-a {
@@ -76,7 +76,7 @@
 </style>
 <div id='oopss'>
     <div id='error-text'>
-        <img src="https://cdn.rawgit.com/ahmedhosna95/upload/1731955f/sad404.svg" alt="404">
+        <img src="<?=$_ENV["BASE_URL"]?>theme/img/logo.png" alt="404">
         <span>404</span>
         <p class="p-a">
             La página que estabas buscando no se pudo encontrar</p>
