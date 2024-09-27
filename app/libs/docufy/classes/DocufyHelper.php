@@ -1,10 +1,10 @@
 <?php
 
-Class XinvoiceHelper {
+Class DocufyHelper {
 
     private $errorCollector;
 
-    public function __construct(XinvoiceErrorCtrl $errorCollector) {
+    public function __construct(DocufyErrorCtrl $errorCollector) {
         $this->errorCollector = $errorCollector;
     }
     

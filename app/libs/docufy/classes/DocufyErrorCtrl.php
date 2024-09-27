@@ -1,6 +1,6 @@
 <?php
 
-Class XinvoiceErrorCtrl {
+Class DocufyErrorCtrl {
 
     private $errors = array();
     private $settings;
