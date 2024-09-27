@@ -188,6 +188,7 @@
                                 <pre class="brush: php;">
                                     &lt;?php 
                                         $docufy = DB::Docufy();
+                                        echo $docufy->render();
                                     ?&gt;
                                 </pre>
 
