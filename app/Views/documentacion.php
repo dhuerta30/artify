@@ -381,6 +381,21 @@
                                                 $result = $response->getBody()->getContents();
                                                 print_r($result);
                                             }
+
+                                            // Para mostrar la clave primaria de la tabla
+                                            public function mostrar_clave_primaria_tabla(){
+                                                $client = new Client();
+                                                $response = $client->get("http://tudominio.com/". $_ENV["BASE_URL"]."/api/usuario", [
+                                                    'query' => [
+                                                        'op' => 'primarykey',
+                                                    ],
+                                                    'headers' => [
+                                                        'Content-Type' => 'application/json',
+                                                    ],
+                                                ]);
+                                                $result = $response->getBody()->getContents();
+                                                print_r($result);
+                                            }
                                         }
                         
                                     ?&gt;

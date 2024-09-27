@@ -162,4 +162,18 @@ class DocumentacionController
         $result = $response->getBody()->getContents();
         print_r($result);
     }
+
+    public function mostrar_clave_primaria_tabla(){
+        $client = new Client();
+        $response = $client->get("http://localhost/". $_ENV["BASE_URL"]."/api/usuario", [
+            'query' => [
+                'op' => 'primarykey',
+            ],
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+        ]);
+        $result = $response->getBody()->getContents();
+        print_r($result);
+    }
 }
