@@ -1,6 +1,6 @@
 <?php
 
-class Xinvoice
+class Docufy
 {
     protected $view;
     protected $errCtrl;
