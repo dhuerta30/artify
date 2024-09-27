@@ -11,17 +11,17 @@
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="columns_search-tab" data-toggle="tab" href="#columns_search" role="tab" aria-controls="columns_search" aria-selected="true"><i class="fa fa-table"></i> ArtifyCrud</a>
+                                <a class="nav-link active" id="artify-tab" data-toggle="tab" href="#artify" role="tab" aria-controls="artify" aria-selected="true"><i class="fa fa-table"></i> ArtifyCrud</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-database"></i> Queryfy</a>
+                                <a class="nav-link" id="queryfy-tab" data-toggle="tab" href="#queryfy" role="tab" aria-controls="queryfy" aria-selected="false"><i class="fa fa-database"></i> Queryfy</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><i class="far fa-file"></i> Docufy</a>
+                                <a class="nav-link" id="docufy-tab" data-toggle="tab" href="#docufy" role="tab" aria-controls="docufy" aria-selected="false"><i class="far fa-file"></i> Docufy</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade p-4 show active" id="columns_search" role="tabpanel" aria-labelledby="columns_search-tab">
+                            <div class="tab-pane fade p-4 show active" id="artify" role="tabpanel" aria-labelledby="artify-tab">
 
                                 <h5>Generador de Mantendores Crud</h5>
                                 <pre class="brush: php;">
@@ -161,7 +161,7 @@
                                 </pre>
                                                     
                             </div>
-                            <div class="tab-pane fade p-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-pane fade p-4" id="queryfy" role="tabpanel" aria-labelledby="queryfy-tab">
 
                                 <h5>Generador de Consultas de Base de Datos</h5>
                                 <pre class="brush: php;">
@@ -187,7 +187,7 @@
                                 </pre>
 
                             </div>
-                            <div class="tab-pane fade p-4" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="tab-pane fade p-4" id="docufy" role="tabpanel" aria-labelledby="docufy-tab">
 
                                 <h5>Generador de Documentos HTML y PDF</h5>
                                 <pre class="brush: php;">
