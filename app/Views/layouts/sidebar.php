@@ -121,9 +121,13 @@
             <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="columns_search" role="tabpanel" aria-labelledby="columns_search-tab">
 
-                <pre class="brush: php;"> 
+                <pre class="brush: php;">
                     &lt;?php 
-                        $pdocrud->setSearchCols(array("id","first_name"));
+                        $artify = DB::ArtifyCrud();
+                        $artify->setSearchCols(array("id","first_name"));
+                        $artify->crudTableCol(array("first_name","last_name","user_name","gender"));
+                        $artify->joinTable("user_meta", "user_meta.user_id = users.user_id", "LEFT JOIN");
+                        $artify->relatedData('class_id','class','class_id','class_name');
                     ?&gt;
                 </pre>
                                     
