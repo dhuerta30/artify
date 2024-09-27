@@ -76,6 +76,12 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
                     $("#pdocrud-ajax-loader").hide();
                     let token = data["data"];
                     $(".autenticate_jwt_token").val(token);
+                    Swal.fire({
+                        title: "Genial!",
+                        text: "Token Generado con éxito",
+                        icon: "success",
+                        confirmButtonText: "Aceptar"
+                    });
                 }
             });
         });
