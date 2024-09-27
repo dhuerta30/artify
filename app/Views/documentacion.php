@@ -66,7 +66,7 @@
                                         &lt;/div&gt;';
                                         $artify->set_template($html_template);
 
-                                        // Para ocultar realizar logica de visualizacion en un boton de ver, editar o eliminar use
+                                        // Para ocultar realizar logica de visualización en un boton de ver, editar o eliminar use
                                         $artify->addWhereConditionActionButtons("edit", $colname_where,"!=", array(76778));
 
                                         // Para renombrar una columna de la grilla use
