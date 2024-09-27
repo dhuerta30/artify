@@ -63,6 +63,21 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
         $(".modificar_tabla_col").hide();
         $(".campos_view_tabla").hide();
 
+
+        $(".activate_api").change(function() {
+            var val = $(this).val();
+
+            if(val == "Si"){
+                $(".api_type").removeAttr("disabled", "disabled");
+                $(".consulta_api").removeAttr("disabled", "disabled");
+                $(".generate_token_jwt").removeAttr("disabled", "disabled");
+            } else {
+                $(".api_type").attr("disabled", "disabled");
+                $(".consulta_api").attr("disabled", "disabled");
+                $(".generate_token_jwt").attr("disabled", "disabled");
+            }
+        });
+
         $(".activate_nested_table").change(function() {
             var val = $(this).val();
 
