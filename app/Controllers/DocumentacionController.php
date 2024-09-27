@@ -70,4 +70,24 @@ class DocumentacionController
             }
         }
     }
+
+    public function actualizar_datos(){
+        try {
+            $data = array("data" => array("cantidad_columnas" => 9));
+            $data = json_encode($data);
+
+            $client = new Client();
+            $response = $client->put("http://localhost/". $_ENV["BASE_URL"]."/api/creador_de_panel/3", [
+                'body' => $data,
+            ]);
+
+            $result = $response->getBody()->getContents();
+            print_r($result);
+
+        } catch (ClientException $e) {
+            if ($e->getResponse()->getStatusCode() == 500) {
+                echo $e->getResponse()->getBody()->getContents() . PHP_EOL;
+            }
+        }
+    }
 }
