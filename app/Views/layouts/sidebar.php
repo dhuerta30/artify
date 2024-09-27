@@ -126,6 +126,92 @@
                         // Para inicializar Artify Crud use
                         $artify = DB::ArtifyCrud();
 
+                        // Para usar una Plantilla personalizada para las vistas de formulario use
+                        $html_template = '<div class="order-form">
+                            <h2>Proucts</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Product Id:</label>
+                                        {product_id}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Product Name:</label>
+                                        {product_name}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Product Price:</label>
+                                        {product_price}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Product Sell Price:</label>
+                                        {product_sell_price}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Discount:</label>
+                                        {discount}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Product Description:</label>
+                                        {product_description}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Product Image:</label>
+                                        {product_image}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Qty Available:</label>
+                                        {qty_available}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Added Date:</label>
+                                        {added_date}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Product Rating:</label>
+                                        {product_rating}
+                                        <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                        $pdocrud->set_template($html_template);
+
                         // Para renombrar una columna de la grilla use
                         $artify->colRename("campo_BD", "nuevo nombre");
 
