@@ -21,11 +21,11 @@ class Docufy
     public function __construct($settings = array())
     {
         $this->loadSettings($settings);
-        $this->errCtrl = new XinvoiceErrorCtrl($this->settings);
-        $this->helper = new XinvoiceHelper($this->errCtrl);
+        $this->errCtrl = new DocufyErrorCtrl($this->settings);
+        $this->helper = new DocufyHelper($this->errCtrl);
         $this->loadLangData();
         $this->loadDefaultData();
-        $this->view = new XinvoiceView();
+        $this->view = new DocufyView();
     }
 
     protected function loadSettings($settings)
