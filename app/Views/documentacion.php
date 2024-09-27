@@ -144,6 +144,16 @@
                                         // Para Ocultar una o mas columnas de la grilla use
                                         $artify->crudRemoveCol(array("user_id"));
 
+                                        // Para usar Filtros de Buqueda use
+                                        $artify->addFilter("product_cat_filter", "Product Category", "product_cat", "radio");
+                                        $artify->setFilterSource("product_cat_filter", array("Electronic" => "Electronic", "Fashion" => "Fashion"), "", "", "array");
+                                        
+                                        $artify->addFilter("ProductLineFilter", "Product Line", "product_line", "dropdown");
+                                        $artify->setFilterSource("ProductLineFilter", "products", "product_line", "product_line as pl", "db");
+                                        
+                                        $artify->addFilter("ProductVendorFilter", "Vendor", "ProductVendor", "text");
+                                        $artify->setFilterSource("ProductVendorFilter", "", "", "", "");
+
                                         // Para renderizar la grilla y pasar el nombre de la tabla use
                                         echo $artify->dbTable("users")->render();
                                     ?&gt;
