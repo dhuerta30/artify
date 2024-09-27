@@ -21,7 +21,7 @@ class DB {
         return $artify;
     }
 
-    public static function Docufy(){
+    public static function Docufy($settings = array()){
         $docufy = new Docufy();
         return $docufy;
     }
