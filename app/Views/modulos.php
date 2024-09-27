@@ -95,6 +95,7 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
                 $(".autenticate_jwt_token").attr("disabled", "disabled");
                 $(".generar_token_api").addClass("d-none");
                 $(".generate_token_jwt").val("No");
+                $(".autenticate_jwt_token").val("");
             }
         });
 

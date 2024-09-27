@@ -1078,7 +1078,7 @@ class HomeController
 		$artify->fieldTypes("actions_buttons_grid", "checkbox");
 		$artify->fieldDataBinding("actions_buttons_grid", array("Imprimir" => "Imprimir", "PDF" => "PDF", "CSV" => "CSV", "Excel" => "Excel"), "", "", "array");
 
-		$artify->fieldTypes("api_type", "select");
+		$artify->fieldTypes("api_type", "checkbox");
 		$artify->fieldDataBinding("api_type", array("Obtener" => "Obtener", "Insertar" => "Insertar", "Actualizar" => "Actualizar", "Eliminar" => "Eliminar"), "", "", "array");
 
 		$artify->fieldTypes("activate_nested_table", "select");
