@@ -124,6 +124,7 @@
                 <pre class="brush: php;">
                     &lt;?php 
                         $artify = DB::ArtifyCrud();
+                        $artify->colRename("campo_BD", "nuevo nombre");
                         $artify->setSearchCols(array("id","first_name"));
                         $artify->crudTableCol(array("first_name","last_name","user_name","gender"));
                         $artify->joinTable("user_meta", "user_meta.user_id = users.user_id", "LEFT JOIN");
@@ -132,7 +133,29 @@
                 </pre>
                                     
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                <pre class="brush: php;">
+                    &lt;?php 
+                        $queryfy = DB::Queryfy();
+                        $queryfy->columns = array("empId", "firstName", "lastName");
+                        $result =  $queryfy->select("emp");
+
+                        $queryfy->where("age",30,">=");
+                        $result = $queryfy->select("emp");
+
+                        $queryfy->where("status", 1);
+                        $queryfy->where("age",30,">=");
+                        $queryfy->openBrackets = "(";
+                        $queryfy->where("firstName", 'John');
+                        $queryfy->andOrOperator = "OR";
+                        $queryfy->where("firstName", 'bob');
+                        $queryfy->closedBrackets = ")";
+                        $result =  $queryfy->select("emp");
+                    ?&gt;
+                </pre>
+
+            </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
 
