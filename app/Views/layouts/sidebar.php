@@ -162,7 +162,7 @@
                                 &lt;/div&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;';
-                        $pdocrud->set_template($html_template);
+                        $artify->set_template($html_template);
 
                         // Para renombrar una columna de la grilla use
                         $artify->colRename("campo_BD", "nuevo nombre");
