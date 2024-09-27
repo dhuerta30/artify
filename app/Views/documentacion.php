@@ -293,7 +293,7 @@
                                                     $data = json_encode($data);
 
                                                     $client = new Client();
-                                                    $response = $client->put("http://localhost/". $_ENV["BASE_URL"]."/api/creador_de_panel/3", [
+                                                    $response = $client->put("http://tudominio.com/". $_ENV["BASE_URL"]."/api/creador_de_panel/3", [
                                                         'body' => $data,
                                                     ]);
 
@@ -315,7 +315,7 @@
                                                     $data = json_encode($data);
                                                     
                                                     $client = new Client();
-                                                    $response = $client->delete("http://localhost/". $_ENV["BASE_URL"]."/api/creador_de_panel/", [
+                                                    $response = $client->delete("http://tudominio.com/". $_ENV["BASE_URL"]."/api/creador_de_panel/", [
                                                         'headers' => ['Content-Type' => 'application/json'],
                                                         'body' => $data
                                                     ]);
@@ -329,7 +329,27 @@
                                                     }
                                                 }
                                             }
-                                        }
+
+                                            // Para autenticar con token
+                                            public function autenticar_con_token(){
+                                                try {
+                                                    $client = new Client();
+                                                    $response = $client->get("http://tudominio.com/". $_ENV["BASE_URL"]."/api/usuario/", [
+                                                        'headers' => [
+                                                            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3Mjc0NjAwMTEsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTcyNzQ2MDA3MSwidXNlcklkIjoiMSJ9.PmAue48gybbNw2IO9Jg3yfTd6IYNkVV2c5MB2zkjSsU',
+                                                            'Content-Type' => 'application/json',
+                                                        ],
+                                                    ]);
+                                                    $result = $response->getBody()->getContents();
+                                                    print_r($result);
+
+                                                } catch (ClientException $e) {
+                                                    if ($e->getResponse()->getStatusCode() == 401) {
+                                                        echo $e->getResponse()->getBody()->getContents() . PHP_EOL;
+                                                    }
+                                                }
+                                            }
+                                                                                }
                         
                                     ?&gt;
                                 </pre>

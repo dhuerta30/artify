@@ -1371,3 +1371,13 @@
     null
 ]
 2024-09-27 19:54:52 Operación realizada con éxito
+2024-09-27 19:57:38 Token Generado con éxito
+2024-09-27 19:59:09 No tienes permitido acceder a este recurso.
+2024-09-27 20:00:06 No tienes permitido acceder a este recurso.
+2024-09-27 20:00:07 No tienes permitido acceder a este recurso.
+2024-09-27 20:00:10 Token Generado con éxito
+2024-09-27 20:00:11 Token Generado con éxito
+2024-09-27 20:00:21 Operación realizada con éxito
+2024-09-27 20:00:26 Operación realizada con éxito
+2024-09-27 20:00:27 Operación realizada con éxito
+2024-09-27 20:00:28 Operación realizada con éxito
