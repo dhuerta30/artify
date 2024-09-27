@@ -128,6 +128,7 @@
                         $artify->setSearchCols(array("id","first_name"));
                         $artify->crudTableCol(array("first_name","last_name","user_name","gender"));
                         $artify->joinTable("user_meta", "user_meta.user_id = users.user_id", "LEFT JOIN");
+                        $artify->joinTable("user_meta", "user_meta.user_id = users.user_id", "INNER JOIN");
                         $artify->relatedData('class_id','class','class_id','class_name');
                     ?&gt;
                 </pre>
