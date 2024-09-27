@@ -291,7 +291,7 @@ class HomeController
 		$artify->colRename("idrol", "Rol");
 		$artify->colRename("id", "ID");
 		$artify->relatedData('idrol','rol','idrol','nombre_rol');
-		$artify->tableColFormatting("avatar", "html",array("type" =>"html","str"=>'<img width="50" src="'.$_ENV["BASE_URL"].'app/libs/script/uploads/{col-name}">'));
+		$artify->tableColFormatting("avatar", "html",array("type" =>"html","str"=>'<img width="50" src="'.$_ENV["BASE_URL"].'app/libs/artify/uploads/{col-name}">'));
 		$artify->crudRemoveCol(array("rol","estatus","password", "token", "token_api", "expiration_token"));
 		$artify->setSearchCols(array("id","nombre","email", "usuario", "idrol"));
 		$artify->setSettings("addbtn", false);
@@ -322,7 +322,7 @@ class HomeController
 			$artify->fieldCssClass("id", array("d-none"));
 			$artify->tableHeading("Lista de usuarios");
             $artify->formStaticFields("token_form", "html", "<input type='hidden' name='auth_token' value='" . $token . "' />");
-			$artify->tableColFormatting("avatar", "html",array("type" =>"html","str"=>'<img width="80" src="'.$_ENV["BASE_URL"].'app/libs/script/uploads/{col-name}">'));
+			$artify->tableColFormatting("avatar", "html",array("type" =>"html","str"=>'<img width="80" src="'.$_ENV["BASE_URL"].'app/libs/artify/uploads/{col-name}">'));
 			$artify->fieldDataAttr("password", array("value"=>"", "placeholder" => "*****", "autocomplete" => "new-password"));
 			$artify->formDisplayInPopup();
 			$artify->fieldGroups("Name",array("nombre","email"));
@@ -439,7 +439,7 @@ class HomeController
         $respaldos->dbOrderBy("hora desc");
 		$respaldos->tableColFormatting("fecha", "date",array("format" =>"d/m/Y"));
 		$respaldos->setSearchCols(array("usuario", "fecha", "hora"));
-        $respaldos->tableColFormatting("archivo", "html", array("type" => "html", "str" => "<a class='btn btn-success btn-sm' href=\"".$_ENV["BASE_URL"]."app/libs/script/uploads/{col-name}\" data-attribute=\"abc-{col-name}\"><i class=\"fa fa-download\"></i> Descargar Respaldo</a>"));
+        $respaldos->tableColFormatting("archivo", "html", array("type" => "html", "str" => "<a class='btn btn-success btn-sm' href=\"".$_ENV["BASE_URL"]."app/libs/artify/uploads/{col-name}\" data-attribute=\"abc-{col-name}\"><i class=\"fa fa-download\"></i> Descargar Respaldo</a>"));
         $respaldos->setSettings("addbtn", false);
 		$respaldos->setSettings('editbtn', true);    
 		$respaldos->setSettings('delbtn', true);
@@ -481,7 +481,7 @@ class HomeController
 			$pdomodel = $artify->getQueryfyObj();
 			$id = $pdomodel->select("backup");
 
-			$exportDirectory = realpath(__DIR__ . '/../libs/script/uploads');
+			$exportDirectory = realpath(__DIR__ . '/../libs/artify/uploads');
 
 			// Verificar si el directorio existe y, si no, intentar crearlo
 			if (!is_dir($exportDirectory) && !mkdir($exportDirectory, 0777, true)) {
