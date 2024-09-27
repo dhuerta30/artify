@@ -164,6 +164,8 @@
 
                                 <pre class="brush: php;">
                                     &lt;?php 
+
+                                        // Para inicializar Queryfy use
                                         $queryfy = DB::Queryfy();
                                         $queryfy->columns = array("empId", "firstName", "lastName");
                                         $result =  $queryfy->select("emp");
@@ -187,6 +189,8 @@
 
                                 <pre class="brush: php;">
                                     &lt;?php 
+
+                                        // Para inicializar Docufy use
                                         $docufy = DB::Docufy();
                                         echo $docufy->render();
                                     ?&gt;
