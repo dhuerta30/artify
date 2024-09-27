@@ -2743,7 +2743,7 @@ Class Artify {
         $updateData = $this->handleCallback('after_switch_update', $updateData);
     }
 
-    private function dbSaveJoinData(PDOModel $pdoModelObj, $data, $lastInsertId, $operation = "insert") {
+    private function dbSaveJoinData(Queryfy $pdoModelObj, $data, $lastInsertId, $operation = "insert") {
         if (is_array($this->joinTable) && count($this->joinTable) > 0) {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) === "LEFT JOIN") {
@@ -2789,7 +2789,7 @@ Class Artify {
         }
     }
     
-    private function dbDelJoinData(PDOModel $pdoModelObj, $data, $lastInsertId, $operation = "delete") {
+    private function dbDelJoinData(Queryfy $pdoModelObj, $data, $lastInsertId, $operation = "delete") {
         if (is_array($this->joinTable) && count($this->joinTable) > 0 && $this->delJoinTableData) {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) === "LEFT JOIN") {
