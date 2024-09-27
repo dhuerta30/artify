@@ -6,7 +6,7 @@
         <div class="card mt-4">
             <div class="card-body">
 
-                <div class="row procedimiento">
+                <div class="row">
                     <div class="col-md-12">
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">

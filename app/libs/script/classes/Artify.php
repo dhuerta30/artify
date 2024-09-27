@@ -5409,7 +5409,7 @@ Class Artify {
         return $pdoModelObj;
     }
 
-    private function applySubQueryWhere($col, $text, PDOModel $pdoModelObj){
+    private function applySubQueryWhere($col, $text, Queryfy $pdoModelObj){
       $where = "(". $this->parseSubQuery($this->subSelectQuery[$this->decrypt($col)], $pdoModelObj->columns) . ")";
       $pdoModelObj->where($where, $text, $this->searchOperator);
       return $pdoModelObj;
