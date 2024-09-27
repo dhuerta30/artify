@@ -8,7 +8,7 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use App\Models\UserModel;
 
-class ApiController
+class ApiRestController
 {
     private $secretKey;
 

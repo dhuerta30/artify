@@ -8,11 +8,27 @@ use App\core\Request;
 use App\core\View;
 use App\core\Redirect;
 use App\core\DB;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 class DocumentacionController
 {
     public function index()
     {
         View::render("documentacion");
+    }
+
+    public function ejemplo(){
+        try {
+            $client = new Client();
+            $response = $client->get("http://localhost/". $_ENV["BASE_URL"].'/api/usuario/');
+            $result = $response->getBody()->getContents();
+            print_r($result);
+
+        } catch (ClientException $e) {
+            if ($e->getResponse()->getStatusCode() == 401) {
+                echo $e->getResponse()->getBody()->getContents() . PHP_EOL;
+            }
+        }
     }
 }
