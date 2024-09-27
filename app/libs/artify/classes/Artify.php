@@ -836,8 +836,8 @@ Class Artify {
             );
         }
         if ($bind == "sql") {
-            $pdomodelObj = $this->getQueryfyObj();
-            $dataSource = $pdomodelObj->executeQuery($dataSource);
+            $queryfy = $this->getQueryfyObj();
+            $dataSource = $queryfy->executeQuery($dataSource);
             $this->fieldDataBind[$fieldName] = array(
                 "dataSource" => $dataSource,
                 "bind" => $bind
