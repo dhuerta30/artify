@@ -78,6 +78,16 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
             }
         });
 
+        $(".generate_token_jwt").change(function() {
+            var val = $(this).val();
+
+            if(val == "Si"){
+                $(".autenticate_jwt_token").removeAttr("disabled", "disabled");
+            } else {
+                $(".autenticate_jwt_token").attr("disabled", "disabled");
+            }
+        });
+
         $(".activate_nested_table").change(function() {
             var val = $(this).val();
 
