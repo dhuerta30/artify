@@ -39,6 +39,7 @@ class MakeControllerCommand extends Command
             public function index()
             {
                 // Implementa la lógica del controlador aquí
+                View::render('nombre_vista');
             }
         }";
 
