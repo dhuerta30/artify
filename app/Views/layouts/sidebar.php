@@ -170,13 +170,29 @@
 
                         // Para Ocultar el botón de eliminar use
                         $artify->setSettings("delbtn", false);
+
+                        // Para Ocultar la columna Acciones de la grilla use
                         $artify->setSettings("actionbtn", false);
+
+                        // Para ocultar los checkbox de la eliminación masiva use
                         $artify->setSettings("checkboxCol", false);
+
+                        // Para Ocultar la columna # use
                         $artify->setSettings("numberCol", false);
+
+                        // Para Ocultar el botón de exportación imprimir de la grilla use
                         $artify->setSettings("printBtn", false);
+
+                        // Para Ocultar el botón de exportación pdf de la grilla use
                         $artify->setSettings("pdfBtn", false);
+
+                        // Para Ocultar el botón de exportación csv de la grilla use
                         $artify->setSettings("csvBtn", false);
+
+                        // Para Ocultar el botón de exportación excel de la grilla use
                         $artify->setSettings("excelBtn", false);
+
+                        // Para Ocultar una o mas columnas de la grilla use
                         $artify->crudRemoveCol(array("user_id"));
 
                         // Para renderizar la grilla y pasar el nombre de la tabla use
