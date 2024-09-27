@@ -21,8 +21,9 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="columns_search" role="tabpanel" aria-labelledby="columns_search-tab">
+                            <div class="tab-pane fade p-4 show active" id="columns_search" role="tabpanel" aria-labelledby="columns_search-tab">
 
+                                <h5>Generador de Mantendores Crud</h5>
                                 <pre class="brush: php;">
                                     &lt;?php 
                                         // Para inicializar Artify Crud use
@@ -160,8 +161,9 @@
                                 </pre>
                                                     
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-pane fade p-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
+                                <h5>Generador de Consultas de Base de Datos</h5>
                                 <pre class="brush: php;">
                                     &lt;?php 
 
@@ -185,8 +187,9 @@
                                 </pre>
 
                             </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="tab-pane fade p-4" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
+                                <h5>Generador de Documentos HTML y PDF</h5>
                                 <pre class="brush: php;">
                                     &lt;?php 
 
