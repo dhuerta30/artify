@@ -96,6 +96,9 @@
                                         // Para ocultar el boton de eliminación masiva use
                                         $artify->setSettings("deleteMultipleBtn", false);
 
+                                        // Para ocultar el boton de refrescar use
+                                        $artify->setSettings("refresh", false);
+
                                         // Para Ocultar los registros por Página use
                                         $artify->setSettings("recordsPerPageDropdown", false);
 
