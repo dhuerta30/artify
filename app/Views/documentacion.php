@@ -187,7 +187,7 @@
 
                                 <pre class="brush: php;">
                                     &lt;?php 
-                                        $docufy = new Docufy();
+                                        $docufy = DB::Docufy();
                                     ?&gt;
                                 </pre>
 
