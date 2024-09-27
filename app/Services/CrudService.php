@@ -433,7 +433,7 @@ class CrudService
         use App\core\DB;
         use App\core\View;
         use App\core\Redirect;
-        use Xinvoice;
+        use Docufy;
 
         class {$controllerName}Controller
         {
@@ -636,21 +636,21 @@ class CrudService
             if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
                     public function invoice_pdf(){
-                        \$xinvoice = new Xinvoice();
-                        \$xinvoice->setInvoiceDisplaySettings(\"header\","", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"to\","", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"from\","", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"footer\", "", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"payment\", "", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"message\", "", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"total\", \"subtotal\", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"total"\, \"discount\", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"total\", \"tax\", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"total\", \"shipping\", false);
-                        \$xinvoice->setInvoiceDisplaySettings(\"total\", \"grandtotal\", false);
-                        \$xinvoice->setSettings(\"filename\", \"invoice.pdf\");
-				        \$xinvoice->setSettings(\"output\", \"F\");
-				        echo \$xinvoice->render();
+                        \$docufy = new Docufy();
+                        \$docufy->setInvoiceDisplaySettings(\"header\","", false);
+                        \$docufy->setInvoiceDisplaySettings(\"to\","", false);
+                        \$docufy->setInvoiceDisplaySettings(\"from\","", false);
+                        \$docufy->setInvoiceDisplaySettings(\"footer\", "", false);
+                        \$docufy->setInvoiceDisplaySettings(\"payment\", "", false);
+                        \$docufy->setInvoiceDisplaySettings(\"message\", "", false);
+                        \$docufy->setInvoiceDisplaySettings(\"total\", \"subtotal\", false);
+                        \$docufy->setInvoiceDisplaySettings(\"total"\, \"discount\", false);
+                        \$docufy->setInvoiceDisplaySettings(\"total\", \"tax\", false);
+                        \$docufy->setInvoiceDisplaySettings(\"total\", \"shipping\", false);
+                        \$docufy->setInvoiceDisplaySettings(\"total\", \"grandtotal\", false);
+                        \$docufy->setSettings(\"filename\", \"invoice.pdf\");
+				        \$docufy->setSettings(\"output\", \"F\");
+				        echo \$docufy->render();
                     }
                 ";
             }
