@@ -123,11 +123,22 @@
 
                 <pre class="brush: php;">
                     &lt;?php 
+                        // Para inicializar Artify Crud use
                         $artify = DB::ArtifyCrud();
+
+                        // Para renombrar una columna de la grilla use
                         $artify->colRename("campo_BD", "nuevo nombre");
+
+                        // Para definir que campos usar en el buscador use
                         $artify->setSearchCols(array("id","first_name"));
+
+                        // Para definir que columnas se mostraran en la grilla use
                         $artify->crudTableCol(array("first_name","last_name","user_name","gender"));
+
+                        // Para realizar LEFT JOIN use
                         $artify->joinTable("user_meta", "user_meta.user_id = users.user_id", "LEFT JOIN");
+
+                        // Para realizar INNER JOIN use
                         $artify->joinTable("user_meta", "user_meta.user_id = users.user_id", "INNER JOIN");
                         $artify->relatedData('class_id','class','class_id','class_name');
                         $artify->setSettings("pagination", false);
@@ -147,6 +158,10 @@
                         $artify->setSettings("pdfBtn", false);
                         $artify->setSettings("csvBtn", false);
                         $artify->setSettings("excelBtn", false);
+                        $artify->crudRemoveCol(array("user_id"));
+
+                        // Para renderizar la grilla y pasar el nombre de la tabla use
+                        echo $artify->dbTable("users")->render();
                     ?&gt;
                 </pre>
                                     
