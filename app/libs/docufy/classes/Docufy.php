@@ -41,10 +41,10 @@ class Docufy
 
     protected function loadLangData()
     {
-        $file = XInvoiceABSPATH . '/languages/' . $this->currentLang . '.ini';
+        $file = DocufyABSPATH . '/languages/' . $this->currentLang . '.ini';
         if (!file_exists($file)) {
             $this->currentLang = "en";
-            $file = XInvoiceABSPATH . '/languages/' . $this->currentLang . '.ini';
+            $file = DocufyABSPATH . '/languages/' . $this->currentLang . '.ini';
         } else {
             $this->errCtrl->addError($this->getLangData("valid_data_file_name"));
         }
@@ -56,9 +56,9 @@ class Docufy
     protected function loadDefaultData()
     {
         if (isset($this->settings["datafile"]) && isset($this->settings["defaultData"]) && $this->settings["defaultData"]) {
-            $file = XInvoiceABSPATH . "config/data-files/" . $this->settings["datafile"] . ".php";
+            $file = DocufyABSPATH . "config/data-files/" . $this->settings["datafile"] . ".php";
             if (file_exists($file)) {
-                require_once XInvoiceABSPATH . "config/data-files/" . $this->settings["datafile"] . ".php";
+                require_once DocufyABSPATH . "config/data-files/" . $this->settings["datafile"] . ".php";
                 global $xData;
                 $this->data = $xData;
             } else {
@@ -831,7 +831,7 @@ class Docufy
     public function getMPDFObj($param = array())
     {
         if (!isset($this->mpdf)) {
-            require_once XInvoiceABSPATH . 'classes/library/vendor/autoload.php';
+            require_once DocufyABSPATH . 'classes/library/vendor/autoload.php';
 
             if (isset($this->settings["mpdfversion"]) && $this->settings["mpdfversion"] === "6") {
                 $this->mpdf = new mPDF($this->settings["mode"], $this->settings["format"], $this->settings["default_font_size"], $this->settings["default_font"], $this->settings["mgl"], $this->settings["mgr"], $this->settings["mgt"], $this->settings["mgb"], $this->settings["mgh"], $this->settings["mgf"], $this->settings["orientation"]);

@@ -4,13 +4,13 @@
 //ini_set('display_errors', 1);
 //error_reporting(0);
 date_default_timezone_set(@date_default_timezone_get());
-define('XInvoiceABSPATH', dirname(__FILE__) . '/');
-require_once XInvoiceABSPATH . "config/settings.php";
+define('DocufyABSPATH', dirname(__FILE__) . '/');
+require_once DocufyABSPATH . "config/settings.php";
 spl_autoload_register('xinvoiceAutoLoad');
 
 function xinvoiceAutoLoad($class) {
-    if (file_exists(XInvoiceABSPATH . "classes/" . $class . ".php"))
-        require_once XInvoiceABSPATH . "classes/" . $class . ".php";
+    if (file_exists(DocufyABSPATH . "classes/" . $class . ".php"))
+        require_once DocufyABSPATH . "classes/" . $class . ".php";
 }
 //example callback function
 //function beforeHTMLFormatting( $data, $obj){
