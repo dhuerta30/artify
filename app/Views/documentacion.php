@@ -233,5 +233,5 @@
         </div>
     </section>
 </div>
-<script src="<?=$_ENV["BASE_URL"]?>app/libs/script/js/jquery.min.js"></script>
+<script src="<?=$_ENV["BASE_URL"]?>app/libs/artify/js/jquery.min.js"></script>
 <?php require "layouts/footer.php"; ?>

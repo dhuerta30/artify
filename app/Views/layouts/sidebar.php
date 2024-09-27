@@ -14,7 +14,7 @@
                  <?php if(!isset($_SESSION["usuario"][0]["avatar"])): ?>
                     <img src="<?=$_ENV["BASE_URL"]?>theme/img/avatar.jpg" class="img-circle avatar elevation-2">
                  <?php else: ?>
-                    <img src="<?=$_ENV["BASE_URL"]?>app/libs/script/uploads/<?=$_SESSION["usuario"][0]["avatar"]?>" class="img-circle avatar elevation-2">
+                    <img src="<?=$_ENV["BASE_URL"]?>app/libs/artify/uploads/<?=$_SESSION["usuario"][0]["avatar"]?>" class="img-circle avatar elevation-2">
                  <?php endif; ?>
              </div>
              <div class="info">

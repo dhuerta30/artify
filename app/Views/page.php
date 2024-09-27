@@ -11,7 +11,7 @@
     </section>
 </div>
 <div id="pdocrud-ajax-loader">
-    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
 </div>
 <script>
     let $_ENV["BASE_URL"] = <?=$_ENV["BASE_URL"]?>;

@@ -78,5 +78,5 @@
 		</nav>
 
 		<div id="loader">
-			<img  width="100" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="ajax-loader"/>
+			<img  width="100" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="ajax-loader"/>
 		</div>

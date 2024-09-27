@@ -11,7 +11,7 @@
                             <?php if(!isset($_SESSION["usuario"][0]["avatar"])): ?>
                                 <img class="w-100 avatar" src="<?=$_ENV["BASE_URL"]?>theme/img/avatar.jpg" class="card-img-top">
                             <?php else: ?>
-                                <img class="w-100 avatar" src="<?=$_ENV["BASE_URL"]?>app/libs/script/uploads/<?=$_SESSION["usuario"][0]["avatar"]?>" class="card-img-top">
+                                <img class="w-100 avatar" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/uploads/<?=$_SESSION["usuario"][0]["avatar"]?>" class="card-img-top">
                             <?php endif; ?>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
     </section>
 </div>
 <div id="pdocrud-ajax-loader">
-    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/script/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
 </div>
 <script>
     $(document).on("pdocrud_after_submission", function(event, obj, data) {
@@ -37,7 +37,7 @@
         success: function(response) {
           console.log(response);
           $('.nombre_usuario').text(response['usuario'][0]["nombre"]);
-          $(".avatar").attr('src', "<?=$_ENV["BASE_URL"]?>app/libs/script/uploads/" + response['usuario'][0]['avatar']);
+          $(".avatar").attr('src', "<?=$_ENV["BASE_URL"]?>app/libs/artify/uploads/" + response['usuario'][0]['avatar']);
         }
       });
     });
