@@ -366,6 +366,21 @@
                                                 $result = $response->getBody()->getContents();
                                                 print_r($result);
                                             }
+
+                                            // Para mostrar columnas de la tabla
+                                            public function mostrar_columnas_tabla(){
+                                                $client = new Client();
+                                                $response = $client->get("http://tudominio.com/". $_ENV["BASE_URL"]."/api/usuario", [
+                                                    'query' => [
+                                                        'op' => 'columns',
+                                                    ],
+                                                    'headers' => [
+                                                        'Content-Type' => 'application/json',
+                                                    ],
+                                                ]);
+                                                $result = $response->getBody()->getContents();
+                                                print_r($result);
+                                            }
                                         }
                         
                                     ?&gt;
