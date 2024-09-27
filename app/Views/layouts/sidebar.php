@@ -140,16 +140,35 @@
 
                         // Para realizar INNER JOIN use
                         $artify->joinTable("user_meta", "user_meta.user_id = users.user_id", "INNER JOIN");
+
+                        // Para crear un combobox use
                         $artify->relatedData('class_id','class','class_id','class_name');
+
+                        // Para Ocultar La Paginación use
                         $artify->setSettings("pagination", false);
+
+                        // Para Ocultar la busqueda use
                         $artify->setSettings("searchbox", false);
+
+                        // Para ocultar el boton de eliminación masiva use
                         $artify->setSettings("deleteMultipleBtn", false);
+
+                        // Para Ocultar los registros por Página use
                         $artify->setSettings("recordsPerPageDropdown", false);
-                        $artify->setSettings("recordsPerPageDropdown", false);
+
+                        // Para Ocultar la información de cantidad de registros totales use
                         $artify->setSettings("totalRecordsInfo", false);
+
+                        // Para Ocultar el botón de agregar use
                         $artify->setSettings("addbtn", false);
+
+                        // Para Ocultar el botón de editar use
                         $artify->setSettings("editbtn", false);
+
+                        // Para Ocultar el Botón de ver use
                         $artify->setSettings("viewbtn", false);
+
+                        // Para Ocultar el botón de eliminar use
                         $artify->setSettings("delbtn", false);
                         $artify->setSettings("actionbtn", false);
                         $artify->setSettings("checkboxCol", false);
