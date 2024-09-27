@@ -230,14 +230,9 @@
                                         use GuzzleHttp\Client;
                                         use GuzzleHttp\Exception\ClientException;
 
-                                        class DocumentacionController
+                                        class EjemploController
                                         {
-                                            public function index()
-                                            {
-                                                View::render("documentacion");
-                                            }
-
-                                            public function ejemplo(){
+                                            public function obtener_datos_usuario(){
                                                 try {
                                                     $client = new Client();
                                                     $response = $client->get("http://tudominio.com/". $_ENV["BASE_URL"].'/api/usuario/');
