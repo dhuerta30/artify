@@ -8,7 +8,6 @@ use App\core\Request;
 use App\core\View;
 use App\core\Redirect;
 use App\core\DB;
-use Docufy;
 use Coderatio\SimpleBackup\SimpleBackup;
 use App\Models\DatosPacienteModel;
 use App\Models\PageModel;

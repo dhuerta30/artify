@@ -2,6 +2,7 @@
 
 namespace App\core;
 use Artify;
+use Docufy;
 
 class DB {
     public static function ArtifyCrud($multi = false, $template = "", $skin = "", $settings = array())
@@ -18,6 +19,11 @@ class DB {
 
         $artify = new Artify($multi, $template, $skin, $settings);
         return $artify;
+    }
+
+    public static function Docufy(){
+        $docufy = new Docufy();
+        return $docufy;
     }
 
 	public static function evalBool($value)

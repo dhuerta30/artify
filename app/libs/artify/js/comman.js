@@ -770,7 +770,7 @@ $(document).ready(function(){
                         data.search_text = request.term;
                         data.search_col = $(".pdocrud_search_cols").val();
                         $.ajax({
-                            url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
+                            url: pdocrud_js.pdocrudurl + "artify/artifycrud.php",
                             dataType: "jsonp",
                             type: "post",
                             data: {
@@ -795,7 +795,7 @@ $(document).ready(function(){
                 type: "post",
                 dataType: "html",
                 cache: false,
-                url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
+                url: pdocrud_js.pdocrudurl + "artify/artifycrud.php",
                 beforeSend: function () {
                     $("#pdocrud-ajax-loader").show();
                 },
@@ -817,7 +817,7 @@ $(document).ready(function(){
                 type: "post",
                 dataType: "html",
                 cache: false,
-                url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
+                url: pdocrud_js.pdocrudurl + "artify/artifycrud.php",
                 beforeSend: function () {
                     $("#pdocrud-ajax-loader").show();
                 },
@@ -834,7 +834,7 @@ $(document).ready(function(){
                             let json = JSON.parse(response);
                             let url = json.downloadUrl;
                             let fileName = url.substring(url.lastIndexOf('/')+1);
-                            window.location.href = pdocrud_js.pdocrudurl + 'script/downloads/' + fileName;
+                            window.location.href = pdocrud_js.pdocrudurl + 'artify/downloads/' + fileName;
                         } else {
                             window.location.href = response;
                             console.log(response);
@@ -945,7 +945,7 @@ $(document).ready(function(){
                 type: "post",
                 dataType: "html",
                 cache: false,
-                url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
+                url: pdocrud_js.pdocrudurl + "artify/artifycrud.php",
                 data: {
                     "pdocrud_data": data,
                     "artify_instance": instance,
@@ -984,7 +984,7 @@ $(document).ready(function(){
                     type: "post",
                     dataType: "html",
                     cache: false,
-                    url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
+                    url: pdocrud_js.pdocrudurl + "artify/artifycrud.php",
                     beforeSend: function () {
                         $("#pdocrud-ajax-loader").show();
                     },
@@ -1010,7 +1010,7 @@ $(document).ready(function(){
                 type: "post",
                 dataType: "html",
                 cache: false,
-                url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
+                url: pdocrud_js.pdocrudurl + "artify/artifycrud.php",
                 data: {
                     "pdocrud_data": data,
                     "artify_instance": instance,
@@ -1033,7 +1033,7 @@ $(document).ready(function(){
             var options = {
                 type: "post",
                 dataType: "html",
-                url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
+                url: pdocrud_js.pdocrudurl + "artify/artifycrud.php",
                 beforeSubmit: showRequest, // pre-submit callback 
                 success: showResponse,  // post-submit callback 
                 resetForm: pdocrud_js.reset_form
@@ -1324,7 +1324,7 @@ $(document).ready(function(){
                     type: "post",
                     dataType: "html",
                     cache: false,
-                    url: pdocrud_js.pdocrudurl + "script/artifycrud.php",
+                    url: pdocrud_js.pdocrudurl + "artify/artifycrud.php",
                     beforeSend: function () {
                         $("#pdocrud-ajax-loader").show();
                     },

@@ -185,9 +185,11 @@
                             </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
+                                <pre class="brush: php;">
                                     &lt;?php 
                                         $docufy = new Docufy();
                                     ?&gt;
+                                </pre>
 
                             </div>
                         </div>
