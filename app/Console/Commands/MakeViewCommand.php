@@ -31,7 +31,7 @@ class MakeViewCommand extends Command
                 <div class="card mt-4">
                     <div class="card-body">
 
-                        <div class="row procedimiento">
+                        <div class="row">
                             <div class="col-md-12">
                                 <h5>titulo</h5>
                                 <hr>
