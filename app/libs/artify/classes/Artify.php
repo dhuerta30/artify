@@ -2546,7 +2546,7 @@ Class Artify {
 
     private function dbSelect($data) {
         $this->message = "";
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $selectData = $this->formatFormData($data);
 
         if ($this->isRecaptchaConfigured()) {
@@ -2555,11 +2555,11 @@ Class Artify {
         
         $selectData = $this->handleCallback('before_select', $selectData);
         foreach ($selectData[$this->tableName] as $column => $value) {
-            $pdoModelObj->where($column, $value);
+            $queryfy->where($column, $value);
         }
-        $result = $pdoModelObj->select($this->tableName);
+        $result = $queryfy->select($this->tableName);
 
-        if ($pdoModelObj->totalRows > 0)
+        if ($queryfy->totalRows > 0)
             $this->message = $this->getLangData("success");
         else{
             $this->message = $this->getLangData("no_data");
@@ -2606,7 +2606,7 @@ Class Artify {
 
     private function dbInsert($data) {
         $this->message = "";
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $insertData = $this->formatFormData($data);
 
         if ($this->isRecaptchaConfigured()) {
@@ -2620,28 +2620,28 @@ Class Artify {
                 return $this->getResponse($insertData);
             }
         }
-        $pdoModelObj->insert($this->tableName, $insertData[$this->tableName]);
-        $lastInsertId = $pdoModelObj->lastInsertId;
-        $this->dbSaveJoinData($pdoModelObj, $insertData, $lastInsertId);
+        $queryfy->insert($this->tableName, $insertData[$this->tableName]);
+        $lastInsertId = $queryfy->lastInsertId;
+        $this->dbSaveJoinData($queryfy, $insertData, $lastInsertId);
         $this->handleCallback('after_insert', $lastInsertId);
-        if ($pdoModelObj->rowsChanged > 0)
+        if ($queryfy->rowsChanged > 0)
             $this->message = $this->getLangData("success");
         return $this->getResponse($lastInsertId);
     }
     
     private function checkDuplicateData($fields, $data) {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         foreach ($fields as $field) {
-            $pdoModelObj->where($field, $data[$this->tableName][$field]);
+            $queryfy->where($field, $data[$this->tableName][$field]);
         }
-        $selectData = $pdoModelObj->select($this->tableName);
+        $selectData = $queryfy->select($this->tableName);
         if (count($selectData))
             return true;
         return false;
     }
 
     private function dbUpdate($data) {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $updateData = $this->formatFormData($data);
 
         if ($this->isRecaptchaConfigured()) {
@@ -2649,28 +2649,28 @@ Class Artify {
         }
 
         $updateData = $this->handleCallback('before_update', $updateData);
-        $pdoModelObj->where($this->pk, $this->pkVal);
-        $pdoModelObj->update($this->tableName, $updateData[$this->tableName]);
+        $queryfy->where($this->pk, $this->pkVal);
+        $queryfy->update($this->tableName, $updateData[$this->tableName]);
         $lastInsertId = $this->pkVal;
-        $this->dbSaveJoinData($pdoModelObj, $updateData, $lastInsertId, "update");
+        $this->dbSaveJoinData($queryfy, $updateData, $lastInsertId, "update");
         $this->handleCallback('after_update', $lastInsertId);
-        if ($pdoModelObj->rowsChanged > 0)
+        if ($queryfy->rowsChanged > 0)
             $this->message = $this->getLangData("success");
-        return $this->getResponse($pdoModelObj->rowsChanged);
+        return $this->getResponse($queryfy->rowsChanged);
     }
 
     private function dbSaveCrudData($data) {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $updateData = json_decode($data["updateData"]);
         $rowsUpdate = 0;
         foreach ($updateData as $update) {
             $col = $update->col;
             $pk_val = $update->id;
             $val = $update->val;
-            $pdoModelObj->where($this->pk, $pk_val);
-            $pdoModelObj->update($this->tableName, array($col => $val));
-            $pdoModelObj->resetWhere();
-            $rowsUpdate+= $pdoModelObj->rowsChanged;
+            $queryfy->where($this->pk, $pk_val);
+            $queryfy->update($this->tableName, array($col => $val));
+            $queryfy->resetWhere();
+            $rowsUpdate+= $queryfy->rowsChanged;
         }
         if ($rowsUpdate > 0)
             $this->message = $this->getLangData("success");
@@ -2686,14 +2686,14 @@ Class Artify {
             return;
         }
         
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $this->pkVal = $data["id"];
 
-        $pdoModelObj->where($this->pk, $this->pkVal);
-        $pdoModelObj->delete($this->tableName);
+        $queryfy->where($this->pk, $this->pkVal);
+        $queryfy->delete($this->tableName);
 
         $this->handleCallback('after_delete', $this->pkVal);
-        $this->dbDelJoinData($pdoModelObj, $data, $this->pkVal);
+        $this->dbDelJoinData($queryfy, $data, $this->pkVal);
     }
 
     private function dbDeleteSelected($data) {
@@ -2703,18 +2703,18 @@ Class Artify {
             return;
         }
 
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $values = $data["selected_ids"];
         foreach ($values as $value) {
-            $pdoModelObj->where($this->pk, $value);
-            $pdoModelObj->delete($this->tableName);
-            $pdoModelObj->resetAll();
-            $this->dbDelJoinData($pdoModelObj, $data, $value);
+            $queryfy->where($this->pk, $value);
+            $queryfy->delete($this->tableName);
+            $queryfy->resetAll();
+            $this->dbDelJoinData($queryfy, $data, $value);
         }
     }
 
     private function dbBtnSwitch($data) {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $uniqueId = $data["uniqueId"];
         foreach ($this->btnActions as $btnActions) {
             if ($btnActions[0] === $uniqueId) {
@@ -2723,36 +2723,36 @@ Class Artify {
                 $colVal = $actions[$data["columnVal"]];
                 $updateData = array($colName => $colVal);
                 $updateData = $this->handleCallback('before_btn_switch_update', $updateData);
-                $pdoModelObj->where($this->pk, $data["id"]);
-                $pdoModelObj->update($this->tableName, $updateData);
+                $queryfy->where($this->pk, $data["id"]);
+                $queryfy->update($this->tableName, $updateData);
                 $updateData = $this->handleCallback('after_btn_switch_update', $updateData);
             }
         }
     }
 
     private function dbSwitch($data) {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $uniqueId = $data["uniqueId"];
         $colName = $this->actions[$uniqueId][0];
         $actions = $this->actions[$uniqueId][1];
         $colVal = $actions[$data["columnVal"]];
         $updateData = array($colName => $colVal);
         $updateData = $this->handleCallback('before_switch_update', $updateData);
-        $pdoModelObj->where($this->pk, $data["id"]);
-        $pdoModelObj->update($this->tableName, $updateData);
+        $queryfy->where($this->pk, $data["id"]);
+        $queryfy->update($this->tableName, $updateData);
         $updateData = $this->handleCallback('after_switch_update', $updateData);
     }
 
-    private function dbSaveJoinData(Queryfy $pdoModelObj, $data, $lastInsertId, $operation = "insert") {
+    private function dbSaveJoinData(Queryfy $queryfy, $data, $lastInsertId, $operation = "insert") {
         if (is_array($this->joinTable) && count($this->joinTable) > 0) {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) === "LEFT JOIN") {
                     $keyName = $this->getJoinKeyName($join["condition"]);
                     if ($operation === "update" || $operation === "delete") {
-                        $pdoModelObj->resetWhere();
-                        $pdoModelObj->resetValues();
-                        $pdoModelObj->where($keyName, $this->pkVal);
-                        $pdoModelObj->delete($join["table"]);
+                        $queryfy->resetWhere();
+                        $queryfy->resetValues();
+                        $queryfy->where($keyName, $this->pkVal);
+                        $queryfy->delete($join["table"]);
                     }
     
                     if (isset($data[$join["table"]]) && is_array($data[$join["table"]])) {
@@ -2765,7 +2765,7 @@ Class Artify {
                                 }
     
                                 $joinData[$keyName] = $lastInsertId;
-                                $pdoModelObj->insert($join["table"], $joinData);
+                                $queryfy->insert($join["table"], $joinData);
                             }
                         }
                     }
@@ -2773,15 +2773,15 @@ Class Artify {
                     $keyName = $this->getJoinKeyName($join["condition"]);
                     if (isset($data[$join["table"]]) && is_array($data[$join["table"]])) {
                         $data[$join["table"]][$keyName] = $lastInsertId;
-                        $pdoModelObj->resetWhere();
-                        $pdoModelObj->resetValues();
+                        $queryfy->resetWhere();
+                        $queryfy->resetValues();
                         if ($operation === "update") {
                             $keyVal = $this->getJoinKeyValue($keyName, $data);
                             $data[$join["table"]][$keyName] = $keyVal;
-                            $pdoModelObj->where($keyName, $keyVal);
-                            $pdoModelObj->update($join["table"], $data[$join["table"]]);
+                            $queryfy->where($keyName, $keyVal);
+                            $queryfy->update($join["table"], $data[$join["table"]]);
                         } else {
-                            $pdoModelObj->insert($join["table"], $data[$join["table"]]);
+                            $queryfy->insert($join["table"], $data[$join["table"]]);
                         }
                     }
                 }
@@ -2789,23 +2789,23 @@ Class Artify {
         }
     }
     
-    private function dbDelJoinData(Queryfy $pdoModelObj, $data, $lastInsertId, $operation = "delete") {
+    private function dbDelJoinData(Queryfy $queryfy, $data, $lastInsertId, $operation = "delete") {
         if (is_array($this->joinTable) && count($this->joinTable) > 0 && $this->delJoinTableData) {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) === "LEFT JOIN") {
                     $keyName = $this->getJoinKeyName($join["condition"]);
                     if ($operation === "delete") {
-                        $pdoModelObj->resetWhere();
-                        $pdoModelObj->resetValues();
-                        $pdoModelObj->where($keyName, $this->pkVal);
-                        $pdoModelObj->delete($join["table"]);
+                        $queryfy->resetWhere();
+                        $queryfy->resetValues();
+                        $queryfy->where($keyName, $this->pkVal);
+                        $queryfy->delete($join["table"]);
                     }
                 } else if (strtoupper($join["type"]) === "INNER JOIN") {
                     $keyName = $this->getJoinKeyName($join["condition"]);
-                    $pdoModelObj->resetWhere();
-                    $pdoModelObj->resetValues();
-                    $pdoModelObj->where($keyName, $this->pkVal);
-                    $pdoModelObj->delete($join["table"]);
+                    $queryfy->resetWhere();
+                    $queryfy->resetValues();
+                    $queryfy->where($keyName, $this->pkVal);
+                    $queryfy->delete($join["table"]);
                 }
             }
         }
@@ -3028,9 +3028,9 @@ Class Artify {
     private function dbRelatedTableView($data){
         if (isset($data["id"]))
             $this->pkVal = $data["id"];
-        $pdoModelObj = $this->getQueryfyObj();
-        $pdoModelObj->where($this->pk, $this->pkVal);
-        $result = $pdoModelObj->select($this->tableName);
+        $queryfy = $this->getQueryfyObj();
+        $queryfy->where($this->pk, $this->pkVal);
+        $result = $queryfy->select($this->tableName);
         if (!count($result)) {
             $this->addError($this->getLangData("Edit_Form_No_Data_Found"));
             exit();
@@ -3069,16 +3069,16 @@ Class Artify {
             return $this->dbSQL($data);
         }
 
-        $pdoModelObj = $this->getQueryfyObj();
-        $pdoModelObj = $this->addWhereCondition($pdoModelObj, $data);
+        $queryfy = $this->getQueryfyObj();
+        $queryfy = $this->addWhereCondition($queryfy, $data);
 
-        $pdoModelObj = $this->addJoinCondtion($pdoModelObj, false);
+        $queryfy = $this->addJoinCondtion($queryfy, false);
         $modal = "";
         $cols = array();
-        $pdoModelObj->columns = array(
+        $queryfy->columns = array(
             "count(*) as totalrecords"
         );
-        $result = $pdoModelObj->select($this->tableName);
+        $result = $queryfy->select($this->tableName);
 
         $totalRecords = $result[0]["totalrecords"];
         $recordPerPage = $this->settings["recordsPerPage"];
@@ -3102,16 +3102,16 @@ Class Artify {
             $recordPerPage = $totalRecords;
 
         $pagination = $this->ArtifyHelper->pagination($this->currentpage, $totalRecords, $recordPerPage, $this->settings["adjacents"], $this->langData);
-        $this->setTableColumns($pdoModelObj);
+        $this->setTableColumns($queryfy);
 
         if ($totalRecords > 0) {
-            $pdoModelObj = $this->addJoinCondtion($pdoModelObj, false);
-            $pdoModelObj = $this->addWhereCondition($pdoModelObj, $data);
-            $pdoModelObj = $this->addLimitOrderBy($pdoModelObj, $data, $recordPerPage);
-            $pdoModelObj = $this->addGroupBy($pdoModelObj, $data, $recordPerPage);
-            $result = $pdoModelObj->select($this->tableName);
+            $queryfy = $this->addJoinCondtion($queryfy, false);
+            $queryfy = $this->addWhereCondition($queryfy, $data);
+            $queryfy = $this->addLimitOrderBy($queryfy, $data, $recordPerPage);
+            $queryfy = $this->addGroupBy($queryfy, $data, $recordPerPage);
+            $result = $queryfy->select($this->tableName);
 
-            //echo $pdoModelObj->getLastQuery();
+            //echo $queryfy->getLastQuery();
             //die();
 
             $result = $this->reorderColumn($result);
@@ -3127,11 +3127,11 @@ Class Artify {
             $this->langData["dispaly_records_info"] = $this->langData["showing"] . " " . $from . " " . $this->langData["to"] . " " . $to . " " . $this->langData["of"] . " " . $totalRecords . " " . $this->langData["entries"];
             $this->settings["row_no"] = ($this->currentpage - 1) * $recordPerPage;
         } else {
-            $cols = $pdoModelObj->columnNames($this->tableName);
+            $cols = $queryfy->columnNames($this->tableName);
             if (isset($this->columns))
                 $cols = $this->columns;
             $pk = $this->getPrimaryKey($this->tableName, $cols[0]);
-            $cols = $this->getColFromJoinTables($cols, $pdoModelObj);
+            $cols = $this->getColFromJoinTables($cols, $queryfy);
             $this->searchCols = $cols;
             $cols = $this->getColumnNames($cols);
             $result = array();
@@ -3188,12 +3188,12 @@ Class Artify {
         $data = $this->handleCallback('before_sql_data', $data);
     
         // Obtén la conexión PDO
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
 
         $countSql = empty($this->countSql) ? "SELECT COUNT(*) AS totalrecords FROM (". $this->sql .") AS countTable" : $this->countSql;
 
         // Ejecuta la consulta para contar los registros
-        $countResult = $pdoModelObj->executeQuery($countSql, $data);
+        $countResult = $queryfy->executeQuery($countSql, $data);
 
         $totalRecords = $countResult[0]["totalrecords"];
     
@@ -3224,7 +3224,7 @@ Class Artify {
         $limitSql = $this->sql . " LIMIT " . $offset . ", " . $recordPerPage;
     
         // Ejecuta la consulta con LIMIT
-        $result = $pdoModelObj->executeQuery($limitSql, $data);
+        $result = $queryfy->executeQuery($limitSql, $data);
 
         // Genera la paginación
         $pagination = $this->ArtifyHelper->paginationSQL($this->currentpage, $totalRecords, $recordPerPage, $this->settings["adjacents"], $this->langData);
@@ -3290,7 +3290,7 @@ Class Artify {
             $this->langData["tableSubHeading"] = $this->tableSubHeading;
     }
 
-    private function setTableColumns($pdoModelObj) {
+    private function setTableColumns($queryfy) {
         if (isset($this->columns)) {
             $pk = $this->getPrimaryKey($this->tableName);
             if (!in_array($pk, $this->columns)) {
@@ -3302,35 +3302,35 @@ Class Artify {
                     array_unshift($this->colsRemove, $pk);
                 }
             }
-            $pdoModelObj->columns = $this->columns;
+            $queryfy->columns = $this->columns;
         }
 
         if(isset($this->subSelectQuery)){
-          $pdoModelObj = $this->getSubQuery($pdoModelObj);
+          $queryfy = $this->getSubQuery($queryfy);
         }
 
         if (isset($this->relData)) {
             if(!isset($this->columns)){
-                $pdoModelObj->columns  = $this->getQueryfyObj()->columnNames($this->tableName);
+                $queryfy->columns  = $this->getQueryfyObj()->columnNames($this->tableName);
             }
             foreach ($this->relData as $relData) {
-                $key = array_search($relData["mainTableCol"], $pdoModelObj->columns);
-                $pdoModelObj->columns[$key] = $this->getRelatedColumn($relData);
+                $key = array_search($relData["mainTableCol"], $queryfy->columns);
+                $queryfy->columns[$key] = $this->getRelatedColumn($relData);
             }
         }
     }
 
-    private function getSubQuery($pdoModelObj){
-      if(!isset($pdoModelObj->columns)){
-            $pdoModelObj->columns  = $this->getQueryfyObj()->columnNames($this->tableName);
+    private function getSubQuery($queryfy){
+      if(!isset($queryfy->columns)){
+            $queryfy->columns  = $this->getQueryfyObj()->columnNames($this->tableName);
        }
       foreach($this->subSelectQuery as $col => $query){
-        $query = $this->parseSubQuery($query, $pdoModelObj->columns);
+        $query = $this->parseSubQuery($query, $queryfy->columns);
         $query = "(". $query. " )  as $col";
 
-        array_push($pdoModelObj->columns, $query);
+        array_push($queryfy->columns, $query);
         } 
-        return  $pdoModelObj;
+        return  $queryfy;
     }
     
     private function parseSubQuery($query, $cols){
@@ -3354,36 +3354,36 @@ Class Artify {
         return $subquery;
     }
 
-    private function addLimitOrderBy(Queryfy $pdoModelObj, $data = array(), $recordPerPage = 10) {
-        $pdoModelObj->limit = $this->getSelectPageLimit($recordPerPage);
+    private function addLimitOrderBy(Queryfy $queryfy, $data = array(), $recordPerPage = 10) {
+        $queryfy->limit = $this->getSelectPageLimit($recordPerPage);
         if (isset($data["sortkey"])) {
             $fieldName = $this->decrypt($data["sortkey"]);
             $this->sortOrder[$fieldName] = $data["action"];
-            $pdoModelObj->orderByCols = array(
+            $queryfy->orderByCols = array(
                 $fieldName . " " . $data["action"]
             );
         } else if (isset($this->orderByCols)) {
-            $pdoModelObj->orderByCols = array(
+            $queryfy->orderByCols = array(
                 $this->orderByCols
             );
         } else if ($this->settings["dbtype"] === "sqlserver") {
             $pk = $this->getPrimaryKey($this->tableName);
-            $pdoModelObj->orderByCols = array(
+            $queryfy->orderByCols = array(
                 $pk
             );
         }
-        return $pdoModelObj;
+        return $queryfy;
     }
 
 
-    private function addGroupBy(Queryfy $pdoModelObj, $data = array(), $recordPerPage = 10) {
-        $pdoModelObj->limit = $this->getSelectPageLimit($recordPerPage);
+    private function addGroupBy(Queryfy $queryfy, $data = array(), $recordPerPage = 10) {
+        $queryfy->limit = $this->getSelectPageLimit($recordPerPage);
         if (isset($data["groupby"])) {
             $fieldName = $this->decrypt($data["groupby"]);
-            $pdoModelObj->groupByCols = array($groupByField);
+            $queryfy->groupByCols = array($groupByField);
         }
     
-        return $pdoModelObj;
+        return $queryfy;
     }  
 
 
@@ -3401,16 +3401,16 @@ Class Artify {
         return $limit;
     }
 
-    private function addJoinCondtion(Queryfy $pdoModelObj, $showLeftJoinCol = false) {
+    private function addJoinCondtion(Queryfy $queryfy, $showLeftJoinCol = false) {
         if (is_array($this->joinTable) && count($this->joinTable) > 0) {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) == "INNER JOIN")
-                    $pdoModelObj->joinTables($join["table"], $join["condition"], $join["type"]);
+                    $queryfy->joinTables($join["table"], $join["condition"], $join["type"]);
                 else if (strtoupper($join["type"]) == "LEFT JOIN" && $showLeftJoinCol)
-                    $pdoModelObj->joinTables($join["table"], $join["condition"], $join["type"]);
+                    $queryfy->joinTables($join["table"], $join["condition"], $join["type"]);
             }
         }
-        return $pdoModelObj;
+        return $queryfy;
     }
 
     private function getColumnNames($cols, $encrypt = true) {
@@ -3478,11 +3478,11 @@ Class Artify {
 
     private function crudTableColDataSource() {
         if (isset($this->tableColDatasource)) {
-            $pdoModelObj = $this->getQueryfyObj();
+            $queryfy = $this->getQueryfyObj();
             foreach ($this->tableColDatasource as $source) {
                 if ($source["dataSource"] === "db") {
-                    $pdoModelObj->columns = array($source["joinColName"], $source["dataCol"]);
-                    $data = $pdoModelObj->select($source["tableName"]);
+                    $queryfy->columns = array($source["joinColName"], $source["dataCol"]);
+                    $data = $queryfy->select($source["tableName"]);
                 } else if ($source["dataSource"] === "array") {
                     $data = $source["tableName"];
                 }
@@ -3570,12 +3570,12 @@ Class Artify {
     private function getSearchFieldData($fieldName) {
         if (isset($this->advSearchDataSource[$fieldName])) {
             if ($this->advSearchDataSource[$fieldName]["bind"] === "db") {
-                $pdoModelObj = $this->getQueryfyObj();
-                $pdoModelObj->columns = array(
+                $queryfy = $this->getQueryfyObj();
+                $queryfy->columns = array(
                     $this->advSearchDataSource[$fieldName]["key"],
                     $this->advSearchDataSource[$fieldName]["val"]
                 );
-                $data = $pdoModelObj->select($this->advSearchDataSource[$fieldName]["dataSource"]);
+                $data = $queryfy->select($this->advSearchDataSource[$fieldName]["dataSource"]);
                 return $data;
             } else {
                 return $this->formatDatasource($this->advSearchDataSource[$fieldName]["dataSource"]);
@@ -3591,13 +3591,13 @@ Class Artify {
             return;
         }
 
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $this->pk = $this->getPrimaryKey($this->tableName);
-        $fields = $pdoModelObj->tableFieldInfo($this->tableName);
+        $fields = $queryfy->tableFieldInfo($this->tableName);
         $fields = $this->getStaticFields($fields);
         $formTag = $this->getFormTag();
         $data = $this->getHTMLData($fields, $this->tableName);
-        $data = $this->getJoinFormData($pdoModelObj, $data);
+        $data = $this->getJoinFormData($queryfy, $data);
         $data = $this->getSortedData($data);
         $output = $this->renderFormData($data);
         $output = $this->handleCallback('before_insert_form', $output);
@@ -3622,20 +3622,20 @@ Class Artify {
             return;
         }
 
-        $pdoModelObj = $this->getQueryfyObj();
-        $pdoModelObj->where($this->pk, $this->pkVal);
-        $result = $pdoModelObj->select($this->tableName);
+        $queryfy = $this->getQueryfyObj();
+        $queryfy->where($this->pk, $this->pkVal);
+        $result = $queryfy->select($this->tableName);
 
         if (!count($result)) {
             $this->addError($this->getLangData("Edit_Form_No_Data_Found"));
             exit();
         }
-        $pdoModelObj->resetWhere();
-        $fields = $pdoModelObj->tableFieldInfo($this->tableName);
+        $queryfy->resetWhere();
+        $fields = $queryfy->tableFieldInfo($this->tableName);
         $fields = $this->getStaticFields($fields);
         $formTag = $this->getFormTag();
         $data = $this->getHTMLData($fields, $this->tableName, $result[0]);
-        $data = $this->getJoinFormData($pdoModelObj, $data, $result, true);
+        $data = $this->getJoinFormData($queryfy, $data, $result, true);
         $data = $this->getSortedData($data);
         $submitType = "update";
         if ($this->inlineEdit)
@@ -3671,31 +3671,31 @@ Class Artify {
             return;
         }
 
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $leftJoinData = array();
         if (isset($this->viewColumns)) {
-            $pdoModelObj->columns = $this->viewColumns;
+            $queryfy->columns = $this->viewColumns;
             $cols = $this->viewColumns;
         } else if (isset($this->columns)) {
-            $pdoModelObj->columns = $this->columns;
+            $queryfy->columns = $this->columns;
             $cols = $this->columns;
         } 
         if (isset($this->relData)) {
             if(!isset($this->columns) && !isset($this->viewColumns)){
-                $pdoModelObj->columns  = $this->getQueryfyObj()->columnNames($this->tableName);
-                $cols = $pdoModelObj->columns;
+                $queryfy->columns  = $this->getQueryfyObj()->columnNames($this->tableName);
+                $cols = $queryfy->columns;
             }
             foreach ($this->relData as $relData) {
-                $key = array_search($relData["mainTableCol"], $pdoModelObj->columns);
-                $pdoModelObj->columns[$key] = $this->getRelatedColumn($relData);
-                $cols = $pdoModelObj->columns;
+                $key = array_search($relData["mainTableCol"], $queryfy->columns);
+                $queryfy->columns[$key] = $this->getRelatedColumn($relData);
+                $cols = $queryfy->columns;
             }
         }else {
-            $cols = $pdoModelObj->columnNames($this->tableName);
+            $cols = $queryfy->columnNames($this->tableName);
         }
-        $pdoModelObj->where($this->tableName . "." . $this->pk, $this->pkVal);
-        $pdoModelObj = $this->addJoinCondtion($pdoModelObj, false);
-        $result = $queryData = $pdoModelObj->select($this->tableName);
+        $queryfy->where($this->tableName . "." . $this->pk, $this->pkVal);
+        $queryfy = $this->addJoinCondtion($queryfy, false);
+        $result = $queryData = $queryfy->select($this->tableName);
 
         if (!count($result)) {
             $this->addError($this->getLangData("View_Form_No_Data_Found"));
@@ -3723,13 +3723,13 @@ Class Artify {
     }
 
     private function getSelectForm() {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $this->pk = $this->getPrimaryKey($this->tableName);
-        $fields = $pdoModelObj->tableFieldInfo($this->tableName);
+        $fields = $queryfy->tableFieldInfo($this->tableName);
         $fields = $this->getStaticFields($fields);
         $formTag = $this->getFormTag();
         $data = $this->getHTMLData($fields, $this->tableName);
-        $data = $this->getJoinFormData($pdoModelObj, $data);
+        $data = $this->getJoinFormData($queryfy, $data);
         $data = $this->getSortedData($data);
         $output = $this->renderFormData($data);
         $submitData = $this->getSubmitData("selectform", $this->submitbtnClass);
@@ -3744,9 +3744,9 @@ Class Artify {
     }
 
     private function getEmailForm() {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $this->pk = $this->getPrimaryKey($this->tableName);
-        $fields = $pdoModelObj->tableFieldInfo($this->tableName);
+        $fields = $queryfy->tableFieldInfo($this->tableName);
         $fields = $this->getStaticFields($fields);
         $formTag = $this->getFormTag();
         $data = $this->getHTMLData($fields, $this->tableName);
@@ -3762,13 +3762,13 @@ Class Artify {
     }
     
     private function getAutoSuggestData($data) {
-        $pdoModelObj = $this->getQueryfyObj();
-        $pdoModelObj->columns = array("DISTINCT(".$this->decrypt($data["search_col"]).")");
+        $queryfy = $this->getQueryfyObj();
+        $queryfy->columns = array("DISTINCT(".$this->decrypt($data["search_col"]).")");
         if ($data["search_col"] !== "all") {
             $data["search_text"] = "%" . $data["search_text"] . "%";
-            $pdoModelObj->where($this->decrypt($data["search_col"]), $data["search_text"], $this->searchOperator);
+            $queryfy->where($this->decrypt($data["search_col"]), $data["search_text"], $this->searchOperator);
         }
-        $result = $pdoModelObj->select($this->tableName);
+        $result = $queryfy->select($this->tableName);
         $output = array();
         foreach($result as $row){
             $val = $row[$this->decrypt($data["search_col"])];
@@ -3807,19 +3807,19 @@ Class Artify {
             return;
         }
         
-        $pdoModelObj = $this->getQueryfyObj();
-        $pdoModelObj->where($this->pk, $this->pkVal);
-        $result = $pdoModelObj->select($this->tableName);
+        $queryfy = $this->getQueryfyObj();
+        $queryfy->where($this->pk, $this->pkVal);
+        $result = $queryfy->select($this->tableName);
         if (!count($result)) {
             $this->addError($this->getLangData("Edit_Form_No_Data_Found"));
             exit();
         }
-        $pdoModelObj->resetWhere();
-        $fields = $pdoModelObj->tableFieldInfo($this->tableName);
+        $queryfy->resetWhere();
+        $fields = $queryfy->tableFieldInfo($this->tableName);
         $fields = $this->getStaticFields($fields);
         $formTag = $this->getFormTag();
         $data = $this->getHTMLData($fields, $this->tableName, $result[0]);
-        $data = $this->getJoinFormData($pdoModelObj, $data, array(), true);
+        $data = $this->getJoinFormData($queryfy, $data, array(), true);
         $data = $this->getSortedData($data);
         $submitType = "insert";
         $submitData = $this->getSubmitData($submitType);
@@ -3934,14 +3934,14 @@ Class Artify {
     private function getLeftJoinData() {
         $data = array();
         $output = array();
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         if (is_array($this->joinTable) && count($this->joinTable) > 0) {          
             foreach ($this->joinTable as $join) {
-              $fields = $pdoModelObj->tableFieldInfo($join["table"]);
+              $fields = $queryfy->tableFieldInfo($join["table"]);
                 if ($join["type"] == "LEFT JOIN") {
                     $keyName = $this->getJoinKeyName($join["condition"]);
-                    $pdoModelObj->where($keyName, $this->pkVal);
-                    $leftJoinData[$keyName] = $pdoModelObj->select($join["table"]);   
+                    $queryfy->where($keyName, $this->pkVal);
+                    $leftJoinData[$keyName] = $queryfy->select($join["table"]);   
                     foreach ($leftJoinData as $rows) {
                       foreach ($rows as $key => $value) {
                         $results = array();
@@ -3961,25 +3961,25 @@ Class Artify {
 
     private function exportTableData($data) {
         $exportType = $data["exportType"];
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         if (isset($this->columns))
-            $pdoModelObj->columns = $this->columns;
+            $queryfy->columns = $this->columns;
         if (isset($this->colsRemove) && count($this->colsRemove)) {
             if (isset($this->columns))
-                $pdoModelObj->columns = array_diff($this->columns, $this->colsRemove);
+                $queryfy->columns = array_diff($this->columns, $this->colsRemove);
             else {
-                $cols = $pdoModelObj->columnNames($this->tableName);
-                $pdoModelObj->columns = array_diff($cols, $this->colsRemove);
+                $cols = $queryfy->columnNames($this->tableName);
+                $queryfy->columns = array_diff($cols, $this->colsRemove);
             }
         }
         if (isset($this->search))
-            $pdoModelObj = $this->addWhereCondition($pdoModelObj, $this->search);
-        $pdoModelObj = $this->addJoinCondtion($pdoModelObj, false);
-        $this->setTableColumns($pdoModelObj);
+            $queryfy = $this->addWhereCondition($queryfy, $this->search);
+        $queryfy = $this->addJoinCondtion($queryfy, false);
+        $this->setTableColumns($queryfy);
         if (isset($this->tableName))
-            $result = $pdoModelObj->select($this->tableName);
+            $result = $queryfy->select($this->tableName);
         else if (isset($this->sql))
-            $result = $pdoModelObj->executeQuery($this->sql);
+            $result = $queryfy->executeQuery($this->sql);
         if (is_array($result) && count($result)) {
             $colHeadings = array_map(function($v) {
                 if (isset($this->exportColName[$v]))
@@ -4013,17 +4013,17 @@ Class Artify {
         }
     }
 
-    private function getJoinFormData(Queryfy $pdoModelObj, $data, $result = array(), $edit = false) {
+    private function getJoinFormData(Queryfy $queryfy, $data, $result = array(), $edit = false) {
         if (is_array($this->joinTable) && count($this->joinTable) > 0) {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) === "LEFT JOIN") {
-                    $fields = $pdoModelObj->tableFieldInfo($join["table"]);
+                    $fields = $queryfy->tableFieldInfo($join["table"]);
                     if ($edit) {
                         $leftJoindata = array();
                         $keyName = $this->getJoinKeyName($join["condition"]);
                         $keyVal = $this->getJoinKeyValue($keyName, $result);
-                        $pdoModelObj->where($keyName, $keyVal);
-                        $joinData = $pdoModelObj->select($join["table"]);
+                        $queryfy->where($keyName, $keyVal);
+                        $joinData = $queryfy->select($join["table"]);
                         foreach ($joinData as $joins) {
                             $leftJoindata[] = $this->getHTMLData($fields, $join["table"], $joins, true);
                         }
@@ -4036,12 +4036,12 @@ Class Artify {
                     if ($edit) {
                         $keyName = $this->getJoinKeyName($join["condition"]);
                         $keyVal = $this->getJoinKeyValue($keyName, $result);
-                        $pdoModelObj->where($keyName, $keyVal);
-                        $joinData = $pdoModelObj->select($join["table"]);
+                        $queryfy->where($keyName, $keyVal);
+                        $joinData = $queryfy->select($join["table"]);
                         if ( is_array($joinData) && count($joinData))
                             $result = $joinData[0];
                     }
-                    $fields = $pdoModelObj->tableFieldInfo($join["table"]);
+                    $fields = $queryfy->tableFieldInfo($join["table"]);
                     $innerJoindata = $this->getHTMLData($fields, $join["table"], $result, false, true);
                     $data = array_merge_recursive($data, $innerJoindata);
                 }
@@ -4121,16 +4121,16 @@ Class Artify {
     }
 
     private function getColSum($data) {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $colsum = array();
         foreach ($this->colSumTotals as $cols) {
             $colsum[] = "SUM(" . $cols . ") as " . $cols;
         }
-        $pdoModelObj->columns = $colsum;
+        $queryfy->columns = $colsum;
         if (isset($this->search))
-            $pdoModelObj = $this->addWhereCondition($pdoModelObj, $this->search);
-        $pdoModelObj = $this->addJoinCondtion($pdoModelObj, false);
-        $sumresult = $pdoModelObj->select($this->tableName);
+            $queryfy = $this->addWhereCondition($queryfy, $this->search);
+        $queryfy = $this->addJoinCondtion($queryfy, false);
+        $sumresult = $queryfy->select($this->tableName);
         $count = count($data);
         foreach ($data as $rows) {
             foreach ($rows as $col => $row) {
@@ -4217,19 +4217,19 @@ Class Artify {
 
     private function getPrimaryKey($tableName, $cols = array()) {
         if (!isset($this->pk)) {
-            $pdoModelObj = $this->getQueryfyObj();
-            $this->pk = $pdoModelObj->primaryKey($this->tableName);
+            $queryfy = $this->getQueryfyObj();
+            $this->pk = $queryfy->primaryKey($this->tableName);
             if (empty($this->pk) && isset($cols[0]))
                 $this->pk = $cols[0];
         }
         return $this->pk;
     }
 
-    private function getColFromJoinTables($cols, $pdoModelObj) {
+    private function getColFromJoinTables($cols, $queryfy) {
         if (is_array($this->joinTable) && count($this->joinTable) > 0) {
             foreach ($this->joinTable as $join) {
                 if (strtoupper($join["type"]) !== "LEFT JOIN") {
-                    $cols = array_merge($cols, $pdoModelObj->columnNames($join["table"]));
+                    $cols = array_merge($cols, $queryfy->columnNames($join["table"]));
                 }
             }
         }
@@ -4530,24 +4530,24 @@ Class Artify {
     private function getFieldData($fieldName) {
         if (isset($this->fieldDataBind[$fieldName])) {
             if ($this->fieldDataBind[$fieldName]["bind"] === "db") {
-                $pdoModelObj = $this->getQueryfyObj();
+                $queryfy = $this->getQueryfyObj();
 
                 if (isset($this->fieldDataBind[$fieldName]["groupby"])) {
                     $groupByCols = is_array($this->fieldDataBind[$fieldName]["groupby"])
                         ? $this->fieldDataBind[$fieldName]["groupby"]
                         : array($this->fieldDataBind[$fieldName]["groupby"]);
     
-                    $pdoModelObj->groupByCols = $groupByCols;
+                    $queryfy->groupByCols = $groupByCols;
                 }
 
                 if (is_array($this->fieldDataBind[$fieldName]["val"])) {
                     $valColumn = "CONCAT_WS('".$this->fieldDataBind[$fieldName]["separator"]."',".implode(",",$this->fieldDataBind[$fieldName]["val"]).")";
-                    $pdoModelObj->columns = array(
+                    $queryfy->columns = array(
                         $this->fieldDataBind[$fieldName]["key"],
                         $valColumn
                     );
                 } else {
-                    $pdoModelObj->columns = array(
+                    $queryfy->columns = array(
                         $this->fieldDataBind[$fieldName]["key"],
                         $this->fieldDataBind[$fieldName]["val"]
                     );
@@ -4556,16 +4556,16 @@ Class Artify {
                 if (is_array($this->fieldDataBind[$fieldName]["where"]) && count($this->fieldDataBind[$fieldName]["where"]) > 0) {
                     foreach($this->fieldDataBind[$fieldName]["where"] as $where){
                         if(isset($where[0]) && isset($where[1]) && isset($where[2]))
-                            $pdoModelObj->where($where[0], $where[1], $where[2]);
+                            $queryfy->where($where[0], $where[1], $where[2]);
                     }
                 }
                 //apply order by condition
                 if (is_array($this->fieldDataBind[$fieldName]["orderby"]) && count($this->fieldDataBind[$fieldName]["orderby"]) > 0) {
                     $orderByCols = implode(",", $this->fieldDataBind[$fieldName]["orderby"]);
-                    $pdoModelObj->orderByCols = array($orderByCols);
+                    $queryfy->orderByCols = array($orderByCols);
                 }
 
-                $data = $pdoModelObj->select($this->fieldDataBind[$fieldName]["tableName"]);
+                $data = $queryfy->select($this->fieldDataBind[$fieldName]["tableName"]);
                 return $data;
             } else {
                 return $this->fieldDataBind[$fieldName]["dataSource"];
@@ -4583,19 +4583,19 @@ Class Artify {
 
                 if ($ds && isset($ds["bind"])) {
                     if ($ds["bind"] === "db") {
-                        $pdoModelObj = $this->getQueryfyObj();
-                        $pdoModelObj->backtick = "";
-                        $pdoModelObj->columns = array(
+                        $queryfy = $this->getQueryfyObj();
+                        $queryfy->backtick = "";
+                        $queryfy->columns = array(
                             " distinct (" . $ds["key"] . ")",
                             $ds["val"]
                         );
 
                         if (isset($ds["whereCondition"]) && is_array($ds["whereCondition"]) && count($ds["whereCondition"]) > 0) {
                             list($value, $operator) = $ds["whereCondition"];
-                            $pdoModelObj->where($value, $operator);
+                            $queryfy->where($value, $operator);
                         }
 
-                        $fieldData = $pdoModelObj->select($ds["dataSource"]);
+                        $fieldData = $queryfy->select($ds["dataSource"]);
                     } else if ($ds["bind"] === "array") {
                         $dataSource = $this->formatDatasource($ds["dataSource"]);
                         $fieldData = $dataSource;
@@ -4634,13 +4634,13 @@ Class Artify {
         if (isset($this->crudFilter)) {
             foreach ($this->crudFilter as $key => $filter) {
                 if ($filter["bind"] === "db") {
-                    $pdoModelObj = $this->getQueryfyObj();
-                    $pdoModelObj->columns = array(
+                    $queryfy = $this->getQueryfyObj();
+                    $queryfy->columns = array(
                         $filter["key"],
                         $filter["val"]
                     );
 
-                    $fieldData = $pdoModelObj->select($filter["tableName"]);
+                    $fieldData = $queryfy->select($filter["tableName"]);
                     if (is_array($fieldData))
                         array_unshift($fieldData, array("key" => -1, "value" => $this->langData["select"] . " " . $filter["fieldName"]));
                 } else {
@@ -5227,7 +5227,7 @@ Class Artify {
         return $this->settings["function_filter_and_search"] ?? false;
     }
     
-    private function addWhereCondition(Queryfy $pdoModelObj, $data = array()) {
+    private function addWhereCondition(Queryfy $queryfy, $data = array()) {
         if ($this->isFilterAndSearchEnabled()) {
             if (!isset($this->searchOperator))
             $this->searchOperator = $this->settings["searchOperator"];
@@ -5235,45 +5235,45 @@ Class Artify {
                 $this->searchCols = $this->searchBoxCols;
             
             $this->isRelData = false;
-            $pdoModelObj = $this->searchRelData($pdoModelObj, $data);
+            $queryfy = $this->searchRelData($queryfy, $data);
 
             if (isset($data["search_col"]) && isset($data["search_text"]) && !$this->isRelData) {
                 if (isset($data["search_text2"])) {
-                    $pdoModelObj->where($this->decrypt($data["search_col"]), array($data["search_text"], $data["search_text2"]), "BETWEEN");
-                    return $pdoModelObj;
+                    $queryfy->where($this->decrypt($data["search_col"]), array($data["search_text"], $data["search_text2"]), "BETWEEN");
+                    return $queryfy;
                 }
                 if (strtolower($this->searchOperator) === "like")
                     $data["search_text"] = "%" . $data["search_text"] . "%";
 
                 if ($data["search_col"] === "all") {
-                    $pdoModelObj->openBrackets = "(";
+                    $queryfy->openBrackets = "(";
                     $colCount = count($this->searchCols);
                     $loopCol = 0;
                     foreach ($this->searchCols as $key => $col) {
                         if(isset($this->subSelectQuery[$col])) {
-                        $col = "(". $this->parseSubQuery($this->subSelectQuery[$col], $pdoModelObj->columns) . ")";
+                        $col = "(". $this->parseSubQuery($this->subSelectQuery[$col], $queryfy->columns) . ")";
                         }
                         if(isset($this->joinTable))
                         $col = $this->getJoinColFullName($col);
                         if(++$loopCol ===  $colCount)
-                            $pdoModelObj->closedBrackets = ")";
-                        $pdoModelObj = $this->searchRelData($pdoModelObj, $data, $col);
+                            $queryfy->closedBrackets = ")";
+                        $queryfy = $this->searchRelData($queryfy, $data, $col);
                         if(!$this->isRelData)
-                            $pdoModelObj->where($col, $data["search_text"], $this->searchOperator);
+                            $queryfy->where($col, $data["search_text"], $this->searchOperator);
                         else
                             $this->isRelData = true;
-                        $pdoModelObj->andOrOperator = "or";
+                        $queryfy->andOrOperator = "or";
                     }
-                    $pdoModelObj->andOrOperator = "and";
+                    $queryfy->andOrOperator = "and";
                 } else {
                     $col = $this->decrypt($data["search_col"]);                
                     if(isset($this->joinTable))
                         $col = $this->getJoinColFullName($this->decrypt($data["search_col"]));
 
                     if(isset($this->subSelectQuery[$col])) {
-                    $pdoModelObj = $this->applySubQueryWhere($data["search_col"], $data["search_text"], $pdoModelObj);
+                    $queryfy = $this->applySubQueryWhere($data["search_col"], $data["search_text"], $queryfy);
                     } else {
-                    $pdoModelObj->where($col, $data["search_text"], $this->searchOperator);
+                    $queryfy->where($col, $data["search_text"], $this->searchOperator);
                     }
                 }
             } else if (isset($this->search["search_col"]) && isset($this->search["search_text"]) && !$this->isRelData) {
@@ -5281,42 +5281,42 @@ Class Artify {
                 $data["search_text"] = $this->search["search_text"];
 
                 if (isset($this->search["search_text2"])) {
-                    $pdoModelObj->where($this->decrypt($data["search_col"]), array($data["search_text"], $this->search["search_text2"]), "BETWEEN");
-                    return $pdoModelObj;
+                    $queryfy->where($this->decrypt($data["search_col"]), array($data["search_text"], $this->search["search_text2"]), "BETWEEN");
+                    return $queryfy;
                 }
 
                 if (strtolower($this->searchOperator) === "like")
                     $data["search_text"] = "%" . $data["search_text"] . "%";
 
                 if ($data["search_col"] === "all") {
-                    $pdoModelObj->openBrackets = "(";
+                    $queryfy->openBrackets = "(";
                     $colCount = count($this->searchCols);
                     $loopCol = 0;
                     foreach ($this->searchCols as $col) {
                         if(isset($this->subSelectQuery[$col])) {
-                        $col = "(". $this->parseSubQuery($this->subSelectQuery[$col], $pdoModelObj->columns) . ")";
+                        $col = "(". $this->parseSubQuery($this->subSelectQuery[$col], $queryfy->columns) . ")";
                         }
                         if(isset($this->joinTable))
                         $col = $this->getJoinColFullName($col);
                         if(++$loopCol ===  $colCount)
-                            $pdoModelObj->closedBrackets = ")";
-                        $pdoModelObj = $this->searchRelData($pdoModelObj, $data, $col);
+                            $queryfy->closedBrackets = ")";
+                        $queryfy = $this->searchRelData($queryfy, $data, $col);
                         if(!$this->isRelData)
-                            $pdoModelObj->where($col, $data["search_text"], $this->searchOperator);
+                            $queryfy->where($col, $data["search_text"], $this->searchOperator);
                         else
                             $this->isRelData = true;
-                        $pdoModelObj->andOrOperator = "or";
+                        $queryfy->andOrOperator = "or";
                     }
-                    $pdoModelObj->andOrOperator = "and";
+                    $queryfy->andOrOperator = "and";
                 } else {
                     $col = $this->decrypt($data["search_col"]);
                     if(isset($this->joinTable))
                         $col = $this->getJoinColFullName($this->decrypt($data["search_col"]));
                     
                 if(isset($this->search["search_col"]) && isset($this->subSelectQuery[$this->decrypt($this->search["search_col"])])){
-                    $pdoModelObj = $this->applySubQueryWhere($this->search["search_col"], $this->search["search_text"], $pdoModelObj);
+                    $queryfy = $this->applySubQueryWhere($this->search["search_col"], $this->search["search_text"], $queryfy);
                     } else {
-                    $pdoModelObj->where($col, $data["search_text"], $this->searchOperator);
+                    $queryfy->where($col, $data["search_text"], $this->searchOperator);
                     }
                 }
             }
@@ -5329,26 +5329,26 @@ Class Artify {
                 foreach ($data["filter_data"] as $filter) {
                     if (strtolower($this->searchOperator) === "like")
                         $filter["value"] = "%" . $filter["value"] . "%";
-                    $pdoModelObj->where($this->crudFilter[$filter["key"]]["matchingCol"], $filter["value"], $this->searchOperator);
+                    $queryfy->where($this->crudFilter[$filter["key"]]["matchingCol"], $filter["value"], $this->searchOperator);
                 }
                 $this->filterData = $data;
             } else if (isset($this->filterData["filter_data"]) && is_array($this->filterData["filter_data"]) && count($this->filterData["filter_data"])) {
                 foreach ($this->filterData["filter_data"] as $filter) {
                     if (strtolower($this->searchOperator) === "like")
                         $filter["value"] = "%" . $filter["value"] . "%";
-                    $pdoModelObj->where($this->crudFilter[$filter["key"]]["matchingCol"], $filter["value"], $this->searchOperator);
+                    $queryfy->where($this->crudFilter[$filter["key"]]["matchingCol"], $filter["value"], $this->searchOperator);
                 }
             }
 
             if (isset($data["actionId"])) {
                 $currentDate = date('Y-m-d H:i:s');
                 $fromDate = $this->getDateRangeFromDate($this->dateRangeReport[$data["actionId"]]["type"]);
-                $pdoModelObj->where($this->dateRangeReport[$data["actionId"]]["dateField"], array($fromDate, $currentDate), "BETWEEN");
+                $queryfy->where($this->dateRangeReport[$data["actionId"]]["dateField"], array($fromDate, $currentDate), "BETWEEN");
                 $this->dateRangeData = $data;
             } else if (isset($this->dateRangeData["actionId"])) {
                 $currentDate = date('Y-m-d H:i:s');
                 $fromDate = $this->getDateRangeFromDate($this->dateRangeReport[$this->dateRangeData["actionId"]]["type"]);
-                $pdoModelObj->where($this->dateRangeReport[$this->dateRangeData["actionId"]]["dateField"], array($fromDate, $currentDate), "BETWEEN");
+                $queryfy->where($this->dateRangeReport[$this->dateRangeData["actionId"]]["dateField"], array($fromDate, $currentDate), "BETWEEN");
             }
             
             if (isset($data["form_data"])) {
@@ -5357,7 +5357,7 @@ Class Artify {
                     $col = explode($this->tableFieldJoin, $this->decrypt($field));
                     $trimVal = trim($val);
                     if(!empty($trimVal))
-                        $pdoModelObj->where($col[1], $val);
+                        $queryfy->where($col[1], $val);
                 }
                 $this->advSearchData = $data;
             } else if (isset($this->advSearchData["form_data"])) {
@@ -5366,7 +5366,7 @@ Class Artify {
                     $col = explode($this->tableFieldJoin, $this->decrypt($field));
                     $trimVal = trim($val);
                     if(!empty($trimVal))
-                        $pdoModelObj->where($col[1], $val);
+                        $queryfy->where($col[1], $val);
                 }
             }
             
@@ -5382,40 +5382,40 @@ Class Artify {
         if (isset($this->whereCondition)) {
             foreach ($this->whereCondition as $colWhere => $where) {
                 if(isset($where["bracket"]) && $where["bracket"] === "(") {
-                    $pdoModelObj->openBrackets = "(";
+                    $queryfy->openBrackets = "(";
                 }
                 
                 if(isset($where["andOroperator"]) && !empty($where["andOroperator"])) {
-                    $pdoModelObj->andOrOperator = $where["andOroperator"];
+                    $queryfy->andOrOperator = $where["andOroperator"];
                 }
                 
                 // Verifica si existe una subconsulta para la columna
                 if(isset($this->subSelectQuery[$where["colName"]])) {
-                    $subQuery = $this->parseSubQuery($this->subSelectQuery[$where["colName"]], $pdoModelObj->columns);
+                    $subQuery = $this->parseSubQuery($this->subSelectQuery[$where["colName"]], $queryfy->columns);
                     $colName = "(" . $subQuery . ")";
-                    $pdoModelObj->where($colName, $where["val"], $where["operator"]);
+                    $queryfy->where($colName, $where["val"], $where["operator"]);
                 } else {
-                    $pdoModelObj->where($where["colName"], $where["val"], $where["operator"]);
+                    $queryfy->where($where["colName"], $where["val"], $where["operator"]);
                 }
         
                 if(isset($where["bracket"]) && $where["bracket"] === ")") {
-                    $pdoModelObj->closedBrackets = ")";
+                    $queryfy->closedBrackets = ")";
                 }
             }
             
-            $pdoModelObj->andOrOperator = "AND";
+            $queryfy->andOrOperator = "AND";
         }        
         
-        return $pdoModelObj;
+        return $queryfy;
     }
 
-    private function applySubQueryWhere($col, $text, Queryfy $pdoModelObj){
-      $where = "(". $this->parseSubQuery($this->subSelectQuery[$this->decrypt($col)], $pdoModelObj->columns) . ")";
-      $pdoModelObj->where($where, $text, $this->searchOperator);
-      return $pdoModelObj;
+    private function applySubQueryWhere($col, $text, Queryfy $queryfy){
+      $where = "(". $this->parseSubQuery($this->subSelectQuery[$this->decrypt($col)], $queryfy->columns) . ")";
+      $queryfy->where($where, $text, $this->searchOperator);
+      return $queryfy;
     }
     
-    private function searchRelData($pdoModelObj, $data, $column = ""){
+    private function searchRelData($queryfy, $data, $column = ""){
         if (isset($this->relData) && (isset($data["search_col"]) || isset($this->search["search_col"]))) {
             if (!isset($data["search_col"]) && isset($this->search["search_col"])) {
                 $data["search_col"] = $this->search["search_col"];
@@ -5427,12 +5427,12 @@ Class Artify {
                     $col = $this->getRelatedColumn($relData, false);
                     if (strtolower($this->searchOperator) === "like")
                         $data["search_text"] = "%" . $data["search_text"] . "%";
-                    $pdoModelObj->where($col, $data["search_text"], $this->searchOperator);
+                    $queryfy->where($col, $data["search_text"], $this->searchOperator);
                     $this->isRelData = true;
                 }
             }
         }
-        return $pdoModelObj;
+        return $queryfy;
     }
 
     private function formatDatasource($dataSource) {
@@ -5486,36 +5486,36 @@ Class Artify {
     }
 
     private function getDependentData($data) {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $dependent = explode($this->tableFieldJoin, $this->decrypt($data["pdocrud_dependent_name"]));
         $dependentFieldName = $dependent[1];
         if (isset($this->fieldDataBind[$dependentFieldName])) {
-            $pdoModelObj->columns = array(
+            $queryfy->columns = array(
                 $this->fieldDataBind[$dependentFieldName]["key"],
                 $this->fieldDataBind[$dependentFieldName]["val"]
             );
             $tablename = $this->fieldDataBind[$dependentFieldName]["tableName"];
             $dependOnFieldName = $this->fieldDepend[$dependentFieldName]["colName"];
-            $pdoModelObj->where($dependOnFieldName, $data["pdocrud_field_val"]);
-            $fieldData = $pdoModelObj->select($tablename);
+            $queryfy->where($dependOnFieldName, $data["pdocrud_field_val"]);
+            $fieldData = $queryfy->select($tablename);
         } else if (isset($this->advSearchDataSource[$dependentFieldName])) {
-            $pdoModelObj->columns = array(
+            $queryfy->columns = array(
                 $this->advSearchDataSource[$dependentFieldName]["key"],
                 $this->advSearchDataSource[$dependentFieldName]["val"]
             );
             $tablename = $this->advSearchDataSource[$dependentFieldName]["dataSource"];
             $dependOnFieldName = $this->fieldDepend[$dependentFieldName]["colName"];
-            $pdoModelObj->where($dependOnFieldName, $data["pdocrud_field_val"]);
-            $fieldData = $pdoModelObj->select($tablename);
+            $queryfy->where($dependOnFieldName, $data["pdocrud_field_val"]);
+            $fieldData = $queryfy->select($tablename);
         }
         echo $this->getHTMLElement($data["pdocrud_dependent_name"], "SELECT", array(), array(), $fieldData);
     }
 
     public function getQueryfyObj() {
-        $pdoModelObj = new Queryfy();
-        $pdoModelObj->setErrorCtrl($this->ArtifyErrorCtrl);
-        if ($pdoModelObj->connect($this->settings["hostname"], $this->settings["username"], $this->settings["password"], $this->settings["database"], $this->settings["dbtype"], $this->settings["characterset"])) {
-            return $pdoModelObj;
+        $queryfy = new Queryfy();
+        $queryfy->setErrorCtrl($this->ArtifyErrorCtrl);
+        if ($queryfy->connect($this->settings["hostname"], $this->settings["username"], $this->settings["password"], $this->settings["database"], $this->settings["dbtype"], $this->settings["characterset"])) {
+            return $queryfy;
         } else {
             $this->addError($this->getLangData("db_connection_error"));
             die();
@@ -5554,15 +5554,15 @@ Class Artify {
         if ($bind === "array") {
             $data = $this->formatDatasource($dataSource);
         } else if ($bind === "db") {
-            $pdoModelObj = $this->getQueryfyObj();
-            $pdoModelObj->columns = array(
+            $queryfy = $this->getQueryfyObj();
+            $queryfy->columns = array(
                 $key,
                 $val
             );
-            $data = $pdoModelObj->select($dataSource);
+            $data = $queryfy->select($dataSource);
         } else if ($bind === "sql") {
-            $pdoModelObj = $this->getQueryfyObj();
-            $data = $pdoModelObj->executeQuery($dataSource);
+            $queryfy = $this->getQueryfyObj();
+            $data = $queryfy->executeQuery($dataSource);
             if($chartType === "google-chart" && is_array($data) && count($data)){
               $headings = array_keys($data[0]);
               $data[] = $headings;
@@ -5600,16 +5600,16 @@ Class Artify {
     public function callbackTriggerOperation($data, $obj) {
         foreach ($this->triggerOperation as $dbTableName => $operation) {
             extract($operation);
-            $pdoModelObj = $this->getQueryfyObj();
+            $queryfy = $this->getQueryfyObj();
             $triggerData = $this->getTriggerFormatedData($colVal, $data);
             $whereData = $this->getTriggerFormatedData($where, $data);
             if (is_array($triggerData) && count($triggerData) > 0) {
                 if ($operationType === "insert") {
-                    $pdoModelObj->insert($dbTableName, $triggerData);
+                    $queryfy->insert($dbTableName, $triggerData);
                 } else if ($operationType === "update") {
-                    $pdoModelObj->update($dbTableName, $triggerData, $whereData);
+                    $queryfy->update($dbTableName, $triggerData, $whereData);
                 } else if ($operationType === "delete") {
-                    $pdoModelObj->delete($dbTableName, $whereData);
+                    $queryfy->delete($dbTableName, $whereData);
                 }
             }
         }
@@ -5635,10 +5635,10 @@ Class Artify {
             $subject = $obj->forgotPass["subject"];
             $message = trim($obj->forgotPass["message"]);
             $newPassword = $this->getRandomKey(true);
-            $pdoModelObj = $this->getQueryfyObj();
+            $queryfy = $this->getQueryfyObj();
             $updateData = array($obj->forgotPass["password"] => $newPassword);
-            $pdoModelObj->where($obj->forgotPass["email"], $to);
-            $pdoModelObj->update($this->tableName, $updateData);
+            $queryfy->where($obj->forgotPass["email"], $to);
+            $queryfy->update($this->tableName, $updateData);
             if (empty($message))
                 $message = "Your password has been reseted successfully. Your new password is " . $newPassword;
             $from = $obj->forgotPass["from"];
@@ -6754,7 +6754,7 @@ Class Artify {
      *
      */
     public function bulkImport($fileName, $tableName) {
-        $pdoModelObj = $this->getQueryfyObj();
+        $queryfy = $this->getQueryfyObj();
         $filext = $this->getFileExtension($fileName);
         $records = array();
 
@@ -6765,8 +6765,8 @@ Class Artify {
         else if ($filext === "xml")
             $records = $this->xmlToArray($fileName);
 
-        $pdoModelObj->insertBatch($tableName, $records);
-        return $pdoModelObj->rowsChanged;
+        $queryfy->insertBatch($tableName, $records);
+        return $queryfy->rowsChanged;
     }
 
     /**
