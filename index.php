@@ -3,7 +3,7 @@ require('vendor/autoload.php');
 $dotenv = DotenvVault\DotenvVault::createImmutable(__DIR__);
 $dotenv->safeLoad();
 require __DIR__ . '/app/libs/script/artifycrud.php';
-require __DIR__ . '/app/libs/xinvoice/xinvoice.php';
+require __DIR__ . '/app/libs/docufy/docufy.php';
 
 // Enrutador simple
 $requestUri = $_SERVER['REQUEST_URI'];
