@@ -20,7 +20,7 @@
                                 <a class="nav-link" id="docufy-tab" data-toggle="tab" href="#docufy" role="tab" aria-controls="docufy" aria-selected="false"><i class="far fa-file"></i> Docufy</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="api-tab" data-toggle="tab" href="#api" role="tab" aria-controls="api" aria-selected="false"><i class="fa fa-key"></i> Apify</a>
+                                <a class="nav-link" id="api-tab" data-toggle="tab" href="#api" role="tab" aria-controls="api" aria-selected="false"><i class="fa fa-key"></i> Api</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -217,7 +217,7 @@
                                 <pre class="brush: php;">
                                     &lt;?php
 
-                                        // Para seleccionar los datos en formato json Apify use
+                                        // Para seleccionar los datos en formato json Api use
 
                                         namespace App\Controllers;
 
