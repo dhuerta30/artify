@@ -173,7 +173,7 @@
                                         // Para inicializar Queryfy use
                                         $queryfy = DB::Queryfy();
                                         $queryfy->columns = array("empId", "firstName", "lastName");
-                                        $result =  $queryfy->select("emp");
+                                        $result = $queryfy->select("emp");
 
                                         $queryfy->where("age",30,">=");
                                         $result = $queryfy->select("emp");

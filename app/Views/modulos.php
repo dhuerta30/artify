@@ -75,6 +75,9 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
                 $(".api_type").attr("disabled", "disabled");
                 $(".consulta_api").attr("disabled", "disabled");
                 $(".generate_token_jwt").attr("disabled", "disabled");
+                $(".autenticate_jwt_token").attr("disabled", "disabled");
+                $(".generar_token_api").addClass("d-none");
+                $(".generate_token_jwt").val("No");
             }
         });
 
