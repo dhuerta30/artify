@@ -23,6 +23,20 @@
 label:not(.form-check-label):not(.custom-file-label) {
     display: flex;
 }
+
+.bootstrap-switch.bootstrap-switch-focused {
+    border-color: #ccc!important;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
+    color: white!important;
+    background: green!important;
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default {
+    color: white!important;
+    background: red!important;
+}
 </style>
 <div class="content-wrapper">
 	<section class="content">
