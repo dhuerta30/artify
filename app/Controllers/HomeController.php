@@ -1060,8 +1060,8 @@ class HomeController
 		$artify->formFieldValue("selected_skin", "fair");
 
 		$artify->fieldNotMandatory("modify_query");
-		$artify->fieldTypes("logo_pdf", "FILE_NEW");
-		$artify->fieldTypes("marca_de_agua_pdf", "FILE_NEW");
+		$artify->fieldTypes("logo_pdf", "select");
+		$artify->fieldTypes("marca_de_agua_pdf", "select");
 
 		$artify->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
@@ -1238,9 +1238,19 @@ class HomeController
 		//$artify->joinTable("anidada", "anidada.id_modulos = modulos.id_modulos", "LEFT JOIN");
 		$render = $artify->dbTable("modulos")->render();
 
+
+		$config = DB::ArtifyCrud(true);
+		$config->formDisplayInPopup();
+		$config->setSettings("refresh", false);
+		$config->fieldTypes("logo_pdf", "FILE_NEW");
+		$config->fieldTypes("marca_agua_pdf", "FILE_NEW");
+		$config->buttonHide("submitBtnSaveBack");
+		$config->buttonHide("cancel");
+		$render_conf = $config->dbTable("configuraciones_modulos")->render();
+
 		View::render(
 			"modulos",
-			['render' => $render]
+			['render' => $render, 'render_conf' => $render_conf]
 		);
 	}
 

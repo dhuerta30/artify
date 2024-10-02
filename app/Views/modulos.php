@@ -29,6 +29,8 @@ label:not(.form-check-label):not(.custom-file-label) {
 		<div class="card mt-4">
 			<div class="card-body">
 				<?=$render?>
+                <br>
+                <?=$render_conf?>
 				<div class="emergente"></div>
 			</div>
 		</div>
