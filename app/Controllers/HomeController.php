@@ -1217,10 +1217,7 @@ class HomeController
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
 		$artify->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
-		
-		//$artify->joinTable("anidada", "anidada.id_modulos = modulos.id_modulos", "LEFT JOIN");
 		$render = $artify->dbTable("modulos")->render();
-
 
 		$config = DB::ArtifyCrud(true);
 		$html_template_config = '
