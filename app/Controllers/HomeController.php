@@ -1229,10 +1229,10 @@ class HomeController
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
-					<a class="nav-link active" id="PDFconfig-tab" data-toggle="tab" href="#PDFconfig" role="tab" aria-controls="PDFconfig" aria-selected="true">Home</a>
+					<a class="nav-link active" id="PDFconfig-tab" data-toggle="tab" href="#PDFconfig" role="tab" aria-controls="PDFconfig" aria-selected="true">PDF</a>
 				</li>
 				<li class="nav-item" role="presentation">
-					<a class="nav-link" id="Apiconfig-tab" data-toggle="tab" href="#Apiconfig" role="tab" aria-controls="Apiconfig" aria-selected="false">Profile</a>
+					<a class="nav-link" id="Apiconfig-tab" data-toggle="tab" href="#Apiconfig" role="tab" aria-controls="Apiconfig" aria-selected="false">API</a>
 				</li>
 			</ul>
 
