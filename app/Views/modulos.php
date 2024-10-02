@@ -97,15 +97,8 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
-        $('.query_get').inputmask({
-            mask: "[A{1,20}]/[A{1,20}]",
-            definitions: {
-                'A': {
-                    validator: "[a-zA-Z0-9_-]",  // Solo letras, números, guiones bajos y guiones
-                }
-            },
-            placeholder: "nombre_controlador_api/nombre_metodo_api",
-            autoUnmask: true
+        $('.query_get, .query_delete').inputmask({
+            mask: "A/A"
         });
 
         $('.siguiente_1').click(function() {
