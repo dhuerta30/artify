@@ -1117,10 +1117,10 @@ class HomeController
 
 		$artify->fieldTypes("api_type", "checkbox");
 		$artify->fieldDataBinding("api_type", array(
-			"Mostrar" => "Mostrar",
-			"Insertar" => "Insertar",
-			"Actualizar" => "Actualizar",
-			"Eliminar" => "Eliminar",
+			"Mostrar" => "Consulta de Base de Datos Mostrar",
+			"Insertar" => "Consulta de Base de Datos Insertar",
+			"Actualizar" => "Consulta de Base de Datos Actualizar",
+			"Eliminar" => "Consulta de Base de Datos Eliminar",
 			"Consulta Base de Datos" => "Consulta Base de Datos"
 		), "", "", "array");
 
