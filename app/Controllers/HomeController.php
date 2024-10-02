@@ -1263,7 +1263,7 @@ class HomeController
   				<div class="tab-pane fade" id="Apiconfig" role="tabpanel" aria-labelledby="Apiconfig-tab">
 				
 					<div class="row mt-4">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label">Generar JWT Token Api:</label>
 								{generar_jwt_token}
@@ -1271,10 +1271,17 @@ class HomeController
 								<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label">Autenticar JWT Token Api:</label>
 								{autenticar_jwt_token}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="form-label">Tiempo de Caducidad token:</label>
+								{tiempo_caducidad_token}
 								<p class="pdocrud_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
@@ -1291,7 +1298,8 @@ class HomeController
 		$config->set_template($html_template_config);
 		$config->fieldCssClass("generar_jwt_token", array("generar_jwt_token"));
 		$config->fieldCssClass("autenticar_jwt_token", array("autenticar_jwt_token"));
-		$config->formFields(array("logo_pdf","marca_agua_pdf","generar_jwt_token", "autenticar_jwt_token"));
+		$config->fieldCssClass("tiempo_caducidad_token", array("tiempo_caducidad_token"));
+		$config->formFields(array("logo_pdf","marca_agua_pdf","generar_jwt_token", "autenticar_jwt_token", "tiempo_caducidad_token"));
 		$config->formFieldValue("generar_jwt_token", "No");
 		$config->setSettings("required", false);
 		$config->setSettings("refresh", false);
