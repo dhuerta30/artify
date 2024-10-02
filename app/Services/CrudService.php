@@ -550,7 +550,7 @@ class CrudService
                     \$action = \$_ENV['BASE_URL'].'{$controllerName}/invoice_pdf/id/{{$idTable}}';
                     \$text = \"<i class=\"fa fa-file-pdf-o\"></i>\';
                     \$attr = array(\"title\"=>\"Ver PDF\", \"target\"=> \"_blank\");
-                    \$artify->enqueueBtnActions(\"artify-button-url\", \$action, \"url\", \$text, \"booking_status\", \$attr);
+                    \$artify->enqueueBtnActions(\"artify-button-url\", \$action, \"url\", \$text, \"\", \$attr);
                 ";
             }
         }
