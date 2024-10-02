@@ -1227,38 +1227,57 @@ class HomeController
 		</div>
 		<div class="card-body bg-light">
 
-			<div class="row mt-4">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label class="form-label">Subir Logo PDF:</label>
-						{logo_pdf}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item" role="presentation">
+					<a class="nav-link active" id="PDFconfig-tab" data-toggle="tab" href="#PDFconfig" role="tab" aria-controls="PDFconfig" aria-selected="true">Home</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a class="nav-link" id="Apiconfig-tab" data-toggle="tab" href="#Apiconfig" role="tab" aria-controls="Apiconfig" aria-selected="false">Profile</a>
+				</li>
+			</ul>
+
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="PDFconfig" role="tabpanel" aria-labelledby="PDFconfig-tab">
+					
+					<div class="row mt-4">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Subir Logo PDF:</label>
+								{logo_pdf}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Subir Marca de agua PDF:</label>
+								{marca_agua_pdf}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
 					</div>
+
 				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label class="form-label">Subir Marca de agua PDF:</label>
-						{marca_agua_pdf}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+  				<div class="tab-pane fade" id="Apiconfig" role="tabpanel" aria-labelledby="Apiconfig-tab">
+				
+					<div class="row mt-4">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Generar JWT Token Api:</label>
+								{generar_jwt_token}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Autenticar JWT Token Api:</label>
+								{autenticar_jwt_token}
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row mt-4">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label class="form-label">Generar JWT Token Api:</label>
-						{generar_jwt_token}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label class="form-label">Autenticar JWT Token Api:</label>
-						{autenticar_jwt_token}
-						<p class="pdocrud_help_block help-block form-text with-errors"></p>
-					</div>
+
+
 				</div>
 			</div>
 
@@ -1267,6 +1286,7 @@ class HomeController
 		';
 		$config->setPK("id_configuraciones_modulos");
 		$config->set_template($html_template_config);
+		$config->fieldCssClass("generar_jwt_token", array("generar_jwt_token"));
 		$config->fieldCssClass("autenticar_jwt_token", array("autenticar_jwt_token"));
 		$config->formFields(array("logo_pdf","marca_agua_pdf","generar_jwt_token", "autenticar_jwt_token"));
 		$config->formFieldValue("generar_jwt_token", "No");

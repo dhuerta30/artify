@@ -41,6 +41,42 @@ label:not(.form-check-label):not(.custom-file-label) {
 </div>
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
 <script>
+
+$(document).on("change", ".generar_jwt_token", function() {
+    var val = $(this).val();
+
+    if(val == "Si"){
+        $(".autenticar_jwt_token").removeAttr("disabled", "disabled");
+        $(".generar_token_api").removeClass("d-none");
+    } else {
+        $(".generar_token_api").addClass("d-none");
+        $(".autenticar_jwt_token").attr("disabled", "disabled");
+        $(".autenticar_jwt_token").val("");
+    }
+});
+
+$(document).on("click", ".generar_token_api", function(){
+    $.ajax({
+        type: "POST",
+        url: "<?=$_ENV["BASE_URL"]?>Home/generarToken",
+        dataType: 'json',
+        beforeSend: function() {
+            $("#pdocrud-ajax-loader").show();
+        },
+        success: function(data){
+            $("#pdocrud-ajax-loader").hide();
+            let token = data["data"];
+            $(".autenticar_jwt_token").val(token);
+            Swal.fire({
+                title: "Genial!",
+                text: "Token Generado con éxito",
+                icon: "success",
+                confirmButtonText: "Aceptar"
+            });
+        }
+    });
+});
+
 $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
     var dataAction = obj.getAttribute('data-action');
 
@@ -64,60 +100,6 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
 
         $(".modificar_tabla_col").hide();
         $(".campos_view_tabla").hide();
-
-
-        $(".generar_token_api").click(function(){
-            $.ajax({
-                type: "POST",
-                url: "<?=$_ENV["BASE_URL"]?>Home/generarToken",
-                dataType: 'json',
-                beforeSend: function() {
-                    $("#pdocrud-ajax-loader").show();
-                },
-                success: function(data){
-                    $("#pdocrud-ajax-loader").hide();
-                    let token = data["data"];
-                    $(".autenticate_jwt_token").val(token);
-                    Swal.fire({
-                        title: "Genial!",
-                        text: "Token Generado con éxito",
-                        icon: "success",
-                        confirmButtonText: "Aceptar"
-                    });
-                }
-            });
-        });
-
-
-        $(".activate_api").change(function() {
-            var val = $(this).val();
-
-            if(val == "Si"){
-                $(".api_type").removeAttr("disabled", "disabled");
-                $(".consulta_api").removeAttr("disabled", "disabled");
-                $(".generate_token_jwt").removeAttr("disabled", "disabled");
-            } else {
-                $(".api_type").attr("disabled", "disabled");
-                $(".consulta_api").attr("disabled", "disabled");
-                $(".generate_token_jwt").attr("disabled", "disabled");
-                $(".autenticate_jwt_token").attr("disabled", "disabled");
-                $(".generar_token_api").addClass("d-none");
-                $(".generate_token_jwt").val("No");
-                $(".autenticate_jwt_token").val("");
-            }
-        });
-
-        $(".generate_token_jwt").change(function() {
-            var val = $(this).val();
-
-            if(val == "Si"){
-                $(".autenticate_jwt_token").removeAttr("disabled", "disabled");
-                $(".generar_token_api").removeClass("d-none");
-            } else {
-                $(".autenticate_jwt_token").attr("disabled", "disabled");
-                $(".generar_token_api").addClass("d-none");
-            }
-        });
 
         $(".activate_nested_table").change(function() {
             var val = $(this).val();
