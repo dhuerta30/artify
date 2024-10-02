@@ -568,13 +568,13 @@ class HomeController
 
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<li class="nav-item" role="presentation">
-				<a class="nav-link active" id="modulos-tab" data-toggle="tab" href="#modulos" role="tab" aria-controls="modulos" aria-selected="true">Configuración de Módulos</a>
+				<a class="nav-link active" id="modulos-tab" data-toggle="tab" href="#modulos" role="tab" aria-controls="modulos" aria-selected="true">Generador de Módulos</a>
 			</li>
 			<li class="nav-item" role="presentation">
-				<a class="nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="pdf" aria-selected="false">Configuración de PDF</a>
+				<a class="nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="pdf" aria-selected="false">Generador de PDF</a>
 			</li>
 			 <li class="nav-item" role="presentation">
-				<a class="nav-link" id="Api-tab" data-toggle="tab" href="#Api" role="tab" aria-controls="Api" aria-selected="false">Configuración Api</a>
+				<a class="nav-link" id="Api-tab" data-toggle="tab" href="#Api" role="tab" aria-controls="Api" aria-selected="false">Generador Api</a>
 			</li>
 		</ul>
 
@@ -1226,16 +1226,16 @@ class HomeController
 		$html_template_config = '
 		<div class="card">
 		<div class="card-body bg-dark">
-			<h5 class="card-title mb-0">Configuración Módulos</h5>
+			<h5 class="card-title mb-0">Configuración de Módulos</h5>
 		</div>
 		<div class="card-body bg-light">
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
-					<a class="nav-link active" id="PDFconfig-tab" data-toggle="tab" href="#PDFconfig" role="tab" aria-controls="PDFconfig" aria-selected="true">PDF</a>
+					<a class="nav-link active" id="PDFconfig-tab" data-toggle="tab" href="#PDFconfig" role="tab" aria-controls="PDFconfig" aria-selected="true">Configuración de PDF</a>
 				</li>
 				<li class="nav-item" role="presentation">
-					<a class="nav-link" id="Apiconfig-tab" data-toggle="tab" href="#Apiconfig" role="tab" aria-controls="Apiconfig" aria-selected="false">API</a>
+					<a class="nav-link" id="Apiconfig-tab" data-toggle="tab" href="#Apiconfig" role="tab" aria-controls="Apiconfig" aria-selected="false">Configuración de API</a>
 				</li>
 			</ul>
 
