@@ -559,6 +559,7 @@ class HomeController
 		$id_sesion_usuario = $_SESSION['usuario'][0]["id"];
 
 		$artify = DB::ArtifyCrud();
+		$artify->addPlugin("bootstrap-switch-master");
 		$html_template = '
 		<div class="card">
 		<div class="card-body bg-dark">
@@ -1229,6 +1230,7 @@ class HomeController
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
 		$artify->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
 		$render = $artify->dbTable("modulos")->render();
+		$switch = $artify->loadPluginJsCode("bootstrap-switch-master",".pdocrud-checkbox");
 
 		$config = DB::ArtifyCrud(true);
 		$html_template_config = '
@@ -1302,6 +1304,16 @@ class HomeController
 		</div>
 		</div>
 		';
+
+		$queryfy = $config->getQueryfyObj();
+		$configuraciones_modulos = $queryfy->select("configuraciones_modulos");
+
+		if($configuraciones_modulos[0]["generar_jwt_token"] == "Si"){
+			$_ENV["ENABLE_JWTAUTH"] = true;
+		} else {
+			$_ENV["ENABLE_JWTAUTH"] = false;
+		}
+
 		$config->setPK("id_configuraciones_modulos");
 		$config->set_template($html_template_config);
 		$config->fieldCssClass("generar_jwt_token", array("generar_jwt_token"));
@@ -1328,7 +1340,7 @@ class HomeController
 
 		View::render(
 			"modulos",
-			['render' => $render, 'render_conf' => $render_conf]
+			['render' => $render, 'render_conf' => $render_conf, 'switch' => $switch]
 		);
 	}
 
