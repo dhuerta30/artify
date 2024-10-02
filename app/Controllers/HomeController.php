@@ -1003,35 +1003,35 @@ class HomeController
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
-					<div class="col-md-12">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Consulta de Base de Datos Mostrar Api:</label>
 							{query_get}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
-					<div class="col-md-12">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Consulta de Base de Datos Insertar Api:</label>
 							{query_post}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
-					<div class="col-md-12">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Consulta de Base de Datos Actualizar Api:</label>
 							{query_put}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
-					<div class="col-md-12">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Consulta de Base de Datos Eliminar Api:</label>
 							{query_delete}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
-					<div class="col-md-12">
+					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Consulta de Base de Datos Api:</label>
 							{consulta_api}
@@ -1083,6 +1083,12 @@ class HomeController
 		$artify->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
 
 		$artify->fieldDataAttr("api_type", array("disabled"=>"disabled"));
+		
+		$artify->fieldDataAttr("query_get", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("query_post", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("query_put", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("query_delete", array("disabled"=>"disabled"));
+		
 		$artify->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
 
