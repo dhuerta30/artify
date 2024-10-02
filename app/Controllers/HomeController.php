@@ -954,14 +954,14 @@ class HomeController
 						</div>	
 					<div class="col-md-6">
 						<div class="form-group">
-							<label class="form-label">Subir Logo PDF:</label>
+							<label class="form-label">Logo PDF:</label>
 							{logo_pdf}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label class="form-label">Subir Marca de Agua PDF:</label>
+							<label class="form-label">Marca de Agua PDF:</label>
 							{marca_de_agua_pdf}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
@@ -1002,21 +1002,6 @@ class HomeController
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="form-label">Generar JWT Token Api:</label>
-							{generate_token_jwt}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
-							<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="form-label">Autenticar JWT Token Api:</label>
-							{autenticate_jwt_token}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						</div>
-					</div>
 					<div class="col-md-12">
 						<div class="form-group">
 							<label class="form-label">Consulta de Base de Datos Api:</label>
@@ -1054,7 +1039,6 @@ class HomeController
 		$artify->formFieldValue("activate_nested_table", "No");
 		$artify->formFieldValue("activate_pdf", "No");
 		$artify->formFieldValue("activate_api", "No");
-		$artify->formFieldValue("generate_token_jwt", "No");
 		$artify->formFieldValue("refrescar_grilla", "No");
 		$artify->formFieldValue("selected_theme", "bootstrap4");
 		$artify->formFieldValue("selected_skin", "fair");
@@ -1066,17 +1050,12 @@ class HomeController
 		$artify->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
 
-		$artify->fieldDataAttr("generate_token_jwt", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("api_type", array("disabled"=>"disabled"));
-		$artify->fieldDataAttr("autenticate_jwt_token", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
 
 		$artify->fieldTypes("refrescar_grilla", "select");
 		$artify->fieldDataBinding("refrescar_grilla", array("Si" => "Si", "No" => "No"), "", "", "array");
-
-		$artify->fieldTypes("generate_token_jwt", "select");
-		$artify->fieldDataBinding("generate_token_jwt", array("Si" => "Si", "No" => "No"), "", "", "array");
 
 		$artify->fieldTypes("selected_theme", "select");
 		$artify->fieldDataBinding("selected_theme", array("bootstrap4" => "bootstrap4", "bootstrap" => "bootstrap", "pure" => "pure"), "", "", "array");
@@ -1142,9 +1121,7 @@ class HomeController
 		$artify->fieldCssClass("consulta_pdf", array("consulta_pdf"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
-		$artify->fieldCssClass("generate_token_jwt", array("generate_token_jwt"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
-		$artify->fieldCssClass("autenticate_jwt_token", array("autenticate_jwt_token"));
 
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 		$artify->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1155,9 +1132,9 @@ class HomeController
 		$artify->fieldGroups("Name2",array("name_view","add_menu"));
 		$artify->tableHeading("Generador de Módulos");
 		
-		$artify->setSearchCols(array("selected_theme", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->formFields(array("selected_theme", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->editFormFields(array("selected_theme", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "autenticate_jwt_token", "logo_pdf", "activate_api", "api_type", "generate_token_jwt", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$artify->setSearchCols(array("selected_theme", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->formFields(array("selected_theme", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->editFormFields(array("selected_theme", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$artify->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$artify->colRename("tabla", "Nombre Tabla Base de Datos");
@@ -1287,6 +1264,7 @@ class HomeController
 		';
 		$config->set_template($html_template_config);
 		$config->formDisplayInPopup();
+		$config->fieldCssClass("autenticar_jwt_token", array("autenticar_jwt_token"));
 		$config->formFields(array("logo_pdf","marca_agua_pdf","generar_jwt_token", "autenticar_jwt_token"));
 		$config->formFieldValue("generar_jwt_token", "No");
 		$config->setSettings("refresh", false);
