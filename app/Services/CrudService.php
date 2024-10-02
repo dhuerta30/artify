@@ -553,7 +553,6 @@ class CrudService
                     \$artify->enqueueBtnActions(\"artify-button-url\", \$action, \"url\", \$text, \"booking_status\", \$attr);
                 ";
             }
-            
         }
 
 
