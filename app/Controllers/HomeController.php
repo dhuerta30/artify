@@ -1122,6 +1122,9 @@ class HomeController
 		$artify->fieldCssClass("activate_nested_table", array("activate_nested_table"));
 		$artify->fieldCssClass("consulta_api", array("consulta_api"));
 		$artify->fieldCssClass("consulta_pdf", array("consulta_pdf"));
+		$artify->fieldCssClass("activate_pdf", array("activate_pdf"));
+		$artify->fieldCssClass("logo_pdf", array("logo_pdf"));
+		$artify->fieldCssClass("marca_de_agua_pdf", array("marca_de_agua_pdf"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
