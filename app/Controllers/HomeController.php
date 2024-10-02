@@ -560,6 +560,13 @@ class HomeController
 
 		$artify = DB::ArtifyCrud();
 		$artify->addPlugin("bootstrap-switch-master");
+		
+		$scheme = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+
+		$host = $_SERVER['HTTP_HOST'];
+
+		$currentUrl = $scheme . '://' . $host . "/artify/{nombre_controlador}/{nombre_metodo}";
+
 		$html_template = '
 		<div class="card">
 		<div class="card-body bg-dark">
@@ -987,37 +994,47 @@ class HomeController
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-8">
 						<div class="form-group">
-							<label class="form-label">Consulta de Base de Datos Mostrar Api:</label>
-							{query_get}
+							<label class="form-label">Mostrar</label>
+							<div class="input-group-append">
+								<span class="input-group-text" id="basic-addon1">'.$currentUrl . '/{parametro}' .'</span>
+								{query_get}
+							</div>
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+
+							<div class="form-group">
+								<label class="form-label">Insertar</label>
+								<div class="input-group-append">
+									<span class="input-group-text" id="basic-addon1">'.$currentUrl.'</span>
+									{query_post}
+								</div>
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label">Actualizar</label>
+								<div class="input-group-append">
+									<span class="input-group-text" id="basic-addon1">'.$currentUrl.'</span>
+									{query_put}
+								</div>
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label">Eliminar</label>
+								<div class="input-group-append">
+									<span class="input-group-text" id="basic-addon1">'.$currentUrl.'</span>
+									{query_delete}
+								</div>
+								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							</div>
+
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-12">
 						<div class="form-group">
-							<label class="form-label">Consulta de Base de Datos Insertar Api:</label>
-							{query_post}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="form-label">Consulta de Base de Datos Actualizar Api:</label>
-							{query_put}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="form-label">Consulta de Base de Datos Eliminar Api:</label>
-							{query_delete}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="form-label">Consulta de Base de Datos Api:</label>
+							<label class="form-label">Consulta de Base de Datos</label>
 							{consulta_api}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 						</div>
@@ -1037,6 +1054,7 @@ class HomeController
 		</div>
 		</div>
 		';
+		$artify->addPlugin("bootstrap-inputmask");
 		$artify->set_template($html_template);
 		$artify->setLangData("no_data", "No Hay Módulos creados");
 		$artify->formFieldValue("active_popup", "No");
@@ -1063,7 +1081,7 @@ class HomeController
 		$artify->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("api_type", array("disabled"=>"disabled"));
-		$artify->fieldDataAttr("query_get", array("disabled"=>"disabled"));
+		//$artify->fieldDataAttr("query_get", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("query_post", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("query_put", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("query_delete", array("disabled"=>"disabled"));
@@ -1095,10 +1113,10 @@ class HomeController
 
 		$artify->fieldTypes("api_type", "checkbox");
 		$artify->fieldDataBinding("api_type", array(
-			"Mostrar" => "Consulta de Base de Datos Mostrar",
-			"Insertar" => "Consulta de Base de Datos Insertar",
-			"Actualizar" => "Consulta de Base de Datos Actualizar",
-			"Eliminar" => "Consulta de Base de Datos Eliminar",
+			"Mostrar" => "Mostrar",
+			"Insertar" => "Insertar",
+			"Actualizar" => "Actualizar",
+			"Eliminar" => "Eliminar",
 			"Consulta Base de Datos" => "Consulta Base de Datos"
 		), "", "", "array");
 
@@ -1152,11 +1170,6 @@ class HomeController
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
-
-		$artify->fieldAttributes("query_get", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
-		$artify->fieldAttributes("query_post", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
-		$artify->fieldAttributes("query_put", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
-		$artify->fieldAttributes("query_delete", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 		$artify->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1245,6 +1258,7 @@ class HomeController
 		$text = '<i class="fa fa-table" aria-hidden="true"></i>';
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
 		$artify->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
+		//$artify->formFieldValue("query_get", "http://localhost/artify/nombre_controlador_api/nombre_metodo_api");
 		$render = $artify->dbTable("modulos")->render();
 		$switch = $artify->loadPluginJsCode("bootstrap-switch-master",".actions_buttons_grid, .buttons_actions, .api_type, .actions_buttons_grid_db, .buttons_actions_db");
 
