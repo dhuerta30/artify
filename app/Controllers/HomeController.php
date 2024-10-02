@@ -726,7 +726,7 @@ class HomeController
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
-								<label class="form-label">Refrescar Grilla:</label>
+								<label class="form-label">Botón Refrescar Grilla:</label>
 								{refrescar_grilla}
 								<p class="pdocrud_help_block help-block form-text with-errors"></p>
 							</div>
