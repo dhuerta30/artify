@@ -1005,6 +1005,34 @@ class HomeController
 					</div>
 					<div class="col-md-12">
 						<div class="form-group">
+							<label class="form-label">Consulta de Base de Datos Mostrar Api:</label>
+							{query_get}
+							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="form-label">Consulta de Base de Datos Insertar Api:</label>
+							{query_post}
+							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="form-label">Consulta de Base de Datos Actualizar Api:</label>
+							{query_put}
+							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="form-label">Consulta de Base de Datos Eliminar Api:</label>
+							{query_delete}
+							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
 							<label class="form-label">Consulta de Base de Datos Api:</label>
 							{consulta_api}
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
@@ -1137,9 +1165,18 @@ class HomeController
 		$artify->fieldCssClass("activate_pdf", array("activate_pdf"));
 		$artify->fieldCssClass("logo_pdf", array("logo_pdf"));
 		$artify->fieldCssClass("marca_de_agua_pdf", array("marca_de_agua_pdf"));
+		$artify->fieldCssClass("query_get", array("query_get"));
+		$artify->fieldCssClass("query_post", array("query_post"));
+		$artify->fieldCssClass("query_put", array("query_put"));
+		$artify->fieldCssClass("query_delete", array("query_delete"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
+
+		$artify->fieldAttributes("query_get", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
+		$artify->fieldAttributes("query_post", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
+		$artify->fieldAttributes("query_put", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
+		$artify->fieldAttributes("query_delete", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 		$artify->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1150,9 +1187,9 @@ class HomeController
 		$artify->fieldGroups("Name2",array("name_view","add_menu"));
 		$artify->tableHeading("Generador de Módulos");
 		
-		$artify->setSearchCols(array("selected_theme", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->formFields(array("selected_theme", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->editFormFields(array("selected_theme", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$artify->setSearchCols(array("selected_theme", "query_get", "query_post", "query_put", "query_delete", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->formFields(array("selected_theme", "query_get", "query_post", "query_put", "query_delete", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->editFormFields(array("selected_theme", "query_get", "query_post", "query_put", "query_delete", "selected_skin", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$artify->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$artify->colRename("tabla", "Nombre Tabla Base de Datos");

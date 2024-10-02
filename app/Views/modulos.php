@@ -136,11 +136,11 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
 
             if(val == "Si"){
                 $(".api_type").removeAttr("disabled", "disabled");
-                $(".consulta_api").removeAttr("disabled", "disabled");
+                //$(".consulta_api").removeAttr("disabled", "disabled");
                 $(".api_type").bootstrapSwitch('disabled', false);
             } else {
                 $(".api_type").attr("disabled", "disabled");
-                $(".consulta_api").attr("disabled", "disabled");
+                //$(".consulta_api").attr("disabled", "disabled");
                 $(".generar_token_api").addClass("d-none");
                 $(".api_type").bootstrapSwitch('disabled', true);
             }
