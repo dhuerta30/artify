@@ -1047,6 +1047,9 @@ class HomeController
 		$artify->fieldTypes("logo_pdf", "select");
 		$artify->fieldTypes("marca_de_agua_pdf", "select");
 
+		$artify->fieldDataBinding("logo_pdf", "configuracion_modulos", "logo_pdf as configuracion_modulos", "logo_pdf", "db");
+		$artify->fieldDataBinding("marca_de_agua_pdf", "configuracion_modulos", "marca_agua_pdf as configuracion_modulos", "marca_agua_pdf", "db");
+
 		$artify->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
 
