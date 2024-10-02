@@ -1241,11 +1241,17 @@ class HomeController
 
 		$config = DB::ArtifyCrud(true);
 		$config->formDisplayInPopup();
+		$config->formFieldValue("generar_jwt_token", "No");
 		$config->setSettings("refresh", false);
 		$config->fieldTypes("logo_pdf", "FILE_NEW");
 		$config->fieldTypes("marca_agua_pdf", "FILE_NEW");
+		$config->fieldTypes("generar_jwt_token", "select");
+		$config->fieldDataBinding("generar_jwt_token", array("Si" => "Si", "No" => "No"), "", "", "array");
 		$config->buttonHide("submitBtnSaveBack");
 		$config->buttonHide("cancel");
+		$config->fieldDataAttr("autenticar_jwt_token", array("disabled"=>"disabled"));
+		$config->fieldGroups("Name1",array("logo_pdf","marca_agua_pdf"));
+		$config->fieldGroups("Name2",array("generar_jwt_token","autenticar_jwt_token"));
 		$render_conf = $config->dbTable("configuraciones_modulos")->render();
 
 		View::render(
