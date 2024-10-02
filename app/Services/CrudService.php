@@ -531,19 +531,19 @@ class CrudService
                 ";
             } else if ($Btnaction === 'Guardar') {
                 $controllerContent .= "
-                  
+                    \$pdocrud->buttonHide(\"submitBtn\");
                 ";
             } else if ($Btnaction === 'Guardar y regresar') {
                 $controllerContent .= "
-                  
+                    \$pdocrud->buttonHide(\"submitBtnSaveBack\");
                 ";
             } else if ($Btnaction === 'Regresar') {
                 $controllerContent .= "
-                  
+                    \$pdocrud->buttonHide(\"submitBtnBack\");
                 ";
             } else if ($Btnaction === 'Cancelar') {
                 $controllerContent .= "
-                  
+                    \$pdocrud->buttonHide(\"cancel\");
                 ";
             } else if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "

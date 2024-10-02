@@ -1066,7 +1066,7 @@ class HomeController
 			"Editar" => "Mostrar botón Editar",
 			"Eliminar" => "Mostrar botón Eliminar",
 			"Guardar" => "Ocultar botón Guardar",
-			"Guardar y regresar" => "Ocultar botón Guardar y regresar", 
+			"Guardar y regresar" => "Ocultar botón Guardar y regresar",
 			"Regresar" => "Ocultar botón Regresar", 
 			"Cancelar" => "Ocultar botón Cancelar", 
 			"Personalizado PDF" => "Mostrar botón Personalizado PDF"
