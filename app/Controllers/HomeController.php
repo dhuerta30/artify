@@ -1301,6 +1301,7 @@ class HomeController
 		$config->fieldNotMandatory("logo_pdf");
 		$config->fieldNotMandatory("marca_agua_pdf");
 		$config->fieldNotMandatory("autenticar_jwt_token");
+		$config->fieldValidationType("tiempo_caducidad_token", "required", "", "Ingrese un tiempo de Caducidad para el token");
 		$config->setSettings("refresh", false);
 		$config->fieldTypes("logo_pdf", "FILE_NEW");
 		$config->fieldTypes("marca_agua_pdf", "FILE_NEW");
