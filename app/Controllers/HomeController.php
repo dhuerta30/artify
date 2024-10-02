@@ -1040,7 +1040,6 @@ class HomeController
 					</div>
 				</div>
 
-
 				<div class="form-group mt-4 text-center">
 					<a href="javascript:;" class="btn btn-primary mb-3 atras"><i class="fa fa-arrow-left"></i> Anterior</a>
                 	<input type="submit" class="btn btn-primary pdocrud-form-control pdocrud-submit mb-3" name="pdocrud_submit_19MsSO3Edq" data-action="insert" value="Guardar"> 
