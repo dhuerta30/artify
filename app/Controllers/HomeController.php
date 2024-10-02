@@ -1240,7 +1240,54 @@ class HomeController
 
 
 		$config = DB::ArtifyCrud(true);
+		$html_template_config = '
+		<div class="card">
+		<div class="card-body bg-dark">
+			<h5 class="card-title mb-0">Configuración Módulos</h5>
+		</div>
+		<div class="card-body bg-light">
+
+			<div class="row mt-4">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Subir Logo PDF:</label>
+						{logo_pdf}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Subir Marca de agua PDF:</label>
+						{marca_agua_pdf}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-4">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Generar JWT Token Api:</label>
+						{generar_jwt_token}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+						<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="form-label">Autenticar JWT Token Api:</label>
+						{autenticar_jwt_token}
+						<p class="pdocrud_help_block help-block form-text with-errors"></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		</div>
+		';
+		$config->set_template($html_template_config);
 		$config->formDisplayInPopup();
+		$config->formFields(array("logo_pdf","marca_agua_pdf","generar_jwt_token", "autenticar_jwt_token"));
 		$config->formFieldValue("generar_jwt_token", "No");
 		$config->setSettings("refresh", false);
 		$config->fieldTypes("logo_pdf", "FILE_NEW");
