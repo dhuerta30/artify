@@ -889,23 +889,21 @@ class HomeController
 										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_13">
 											<div class="checkbox pdocrud-checkbox-group">
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Ver">Ver</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Ver">Mostrar botón Ver</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Editar">Editar</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Editar">Mostrar botón Editar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Eliminar">Eliminar</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Eliminar">Mostrar botón Eliminar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar">Guardar</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar">Ocultar botón Guardar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar y regresar">Guardar y regresar</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar y regresar">Ocultar botón Guardar y regresar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Regresar">Regresar</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Regresar">Ocultar botón Regresar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Cancelar">Cancelar</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Cancelar">Ocultar botón Cancelar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado PDF">Personalizado PDF</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado URL">Personalizado URL</label>
+													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado PDF">Mostrar botón Personalizado PDF</label>
 											</div>
 										</td>
 										<td>
@@ -1064,15 +1062,14 @@ class HomeController
 
 		$artify->fieldTypes("buttons_actions", "checkbox");
 		$artify->fieldDataBinding("buttons_actions", array(
-			"Ver" => "Ver",
-			"Editar" => "Editar",
-			"Eliminar" => "Eliminar",
-			"Guardar" => "Guardar",
-			"Guardar y regresar" => "Guardar y regresar", 
-			"Regresar" => "Regresar", 
-			"Cancelar" => "Cancelar", 
-			"Personalizado PDF" => "Personalizado PDF",
-			"Personalizado URL" => "Personalizado URL"
+			"Ver" => "Mostrar botón Ver",
+			"Editar" => "Mostrar botón Editar",
+			"Eliminar" => "Mostrar botón Eliminar",
+			"Guardar" => "Ocultar botón Guardar",
+			"Guardar y regresar" => "Ocultar botón Guardar y regresar", 
+			"Regresar" => "Ocultar botón Regresar", 
+			"Cancelar" => "Ocultar botón Cancelar", 
+			"Personalizado PDF" => "Mostrar botón Personalizado PDF"
 		), "", "", "array");
 
 		$artify->fieldTypes("actions_buttons_grid", "checkbox");
