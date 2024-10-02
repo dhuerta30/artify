@@ -102,6 +102,20 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
         $(".campos_view_tabla").hide();
 
 
+        $(".activate_pdf").change(function() {
+            var val = $(this).val();
+
+            if(val == "Si"){
+                $(".logo_pdf").removeAttr("disabled", "disabled");
+                $(".marca_de_agua_pdf").removeAttr("disabled", "disabled");
+                $(".consulta_pdf").removeAttr("disabled", "disabled");
+            } else {
+                $(".logo_pdf").attr("disabled", "disabled");
+                $(".marca_de_agua_pdf").attr("disabled", "disabled");
+                $(".consulta_pdf").attr("disabled", "disabled");
+            }
+        });
+
         $(".activate_api").change(function() {
             var val = $(this).val();
 
