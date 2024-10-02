@@ -1309,6 +1309,7 @@ class HomeController
 		$config->fieldDataBinding("generar_jwt_token", array("Si" => "Si", "No" => "No"), "", "", "array");
 		$config->buttonHide("submitBtnSaveBack");
 		$config->addCallback("before_insert", "insertar_configuracion_modulos");
+		$config->addCallback("before_update", "actualizar_configuracion_modulos");
 		$config->fieldDataAttr("autenticar_jwt_token", array("disabled"=>"disabled"));
 		$config->fieldGroups("Name1",array("logo_pdf","marca_agua_pdf"));
 		$config->fieldGroups("Name2",array("generar_jwt_token","autenticar_jwt_token"));
