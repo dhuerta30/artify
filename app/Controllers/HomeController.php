@@ -1175,6 +1175,8 @@ class HomeController
 		$artify->fieldCssClass("query_post", array("query_post"));
 		$artify->fieldCssClass("query_put", array("query_put"));
 		$artify->fieldCssClass("query_delete", array("query_delete"));
+		$artify->fieldCssClass("actions_buttons_grid", array("actions_buttons_grid"));
+		$artify->fieldCssClass("buttons_actions", array("buttons_actions"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
@@ -1273,7 +1275,7 @@ class HomeController
 		$attr = array("title" => "Ver módulo", "target"=> "_blank");
 		$artify->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
 		$render = $artify->dbTable("modulos")->render();
-		$switch = $artify->loadPluginJsCode("bootstrap-switch-master",".pdocrud-checkbox");
+		$switch = $artify->loadPluginJsCode("bootstrap-switch-master",".actions_buttons_grid, .buttons_actions, .api_type, .actions_buttons_grid_db, .buttons_actions_db");
 
 		$config = DB::ArtifyCrud(true);
 		$html_template_config = '
