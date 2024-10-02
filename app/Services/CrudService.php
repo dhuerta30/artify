@@ -529,6 +529,22 @@ class CrudService
                 $controllerContent .= "
                     \$artify->setSettings('delbtn', true);
                 ";
+            } else if ($Btnaction === 'Guardar') {
+                $controllerContent .= "
+                  
+                ";
+            } else if ($Btnaction === 'Guardar y regresar') {
+                $controllerContent .= "
+                  
+                ";
+            } else if ($Btnaction === 'Regresar') {
+                $controllerContent .= "
+                  
+                ";
+            } else if ($Btnaction === 'Cancelar') {
+                $controllerContent .= "
+                  
+                ";
             } else if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
                     \$action = \$_ENV['BASE_URL'].'{$controllerName}/invoice_pdf/id/{{$idTable}}';
