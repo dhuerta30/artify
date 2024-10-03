@@ -235,12 +235,16 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 $(".name_view").val("Inventario");
                 $(".controller_name").val("Inventario");
             } else {
-                $(".id_tabla").removeAttr("disabled").attr("required", "required").val("");
+                $(".id_tabla").val("id_personas");
                 $(".query").attr("required", "required").removeAttr("disabled");
-                $(".columns_table").val("");
-                $(".tabla").val("");
-                $(".name_view").val("");
-                $(".controller_name").val("");
+                $(".columns_table").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
+                "nombre VARCHAR(255) NOT NULL,\n" +
+                "apellido VARCHAR(255) NOT NULL,\n" +
+                "categoria INT(11) NOT NULL,\n" +
+                "producto VARCHAR(100) NOT NULL");
+                $(".tabla").val("personas");
+                $(".name_view").val("personas");
+                $(".controller_name").val("Personas");
             }
         });
     }
