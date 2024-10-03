@@ -713,6 +713,23 @@ class HomeController
 						</div>
 					</div>
 					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Campos a Mostrar en el buscador:</label>
+								{mostrar_campos_busqueda}
+								<span>Escriba y presione espacio para avanzar al siguiente</span>
+								<p class="artify_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Encriptar Campos del Formulario:</label>
+								{encryption}
+								<p class="artify_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Botones de Exportación Grilla:</label>
@@ -738,23 +755,6 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Botón Refrescar Grilla:</label>
 								{refrescar_grilla}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class="form-label">Campos a Mostrar en el buscador:</label>
-								{mostrar_campos_busqueda}
-								<span>Escriba y presione espacio para avanzar al siguiente</span>
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class="form-label">Encriptar Campos del Formulario:</label>
-								{encryption}
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>

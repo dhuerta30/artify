@@ -1022,7 +1022,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         return !empty(trim($value)) && $value !== '_'; // Asegúrate de que no esté vacío o sea solo '_'
     });
     
-    // Imprime los valores capturados
     print_r($values);
     die();
 
