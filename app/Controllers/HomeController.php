@@ -1109,6 +1109,7 @@ class HomeController
 		$artify->fieldDataAttr("query_delete", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("mostrar_campos_busqueda", array("placeholder" => "campo1/campo2/campo3/etc"));
 
 		$artify->fieldTypes("encryption", "select");
 		$artify->fieldDataBinding("encryption", array("Si" => "Si", "No" => "No"), "", "", "array");
