@@ -1157,8 +1157,8 @@ function actualizar_modulos($data, $obj){
     if ($crud_type == "SQL") {
         $crudService = new App\Services\CrudService();
         $crudService->createCrud(
-            $tabla, 
-            $id_tabla, 
+            $tabla,
+            $id_tabla,
             $crud_type, 
             $query_db, 
             $controller_name, 
@@ -1177,7 +1177,7 @@ function actualizar_modulos($data, $obj){
             $buttons_actions,
             $refrescar_grilla
         );
-    } 
+    }
     
     if ($crud_type == "CRUD") {
         $crudService = new App\Services\CrudService();
