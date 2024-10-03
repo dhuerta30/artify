@@ -473,16 +473,20 @@ class CrudService
             ";
         }
 
-        preg_match_all('/([^\/]+)/', $mostrar_campos_busqueda, $matches);
+        if(isset($mostrar_campos_busqueda)){
+            preg_match_all('/([^\/]+)/', $mostrar_campos_busqueda, $matches);
 
-        $values = array_filter($matches[0], function ($value) {
-            return !empty(trim($value)) && $value !== '_';
-        });
-        
-        $setsearch = ['campos' => $values];
-
-        foreach($setsearch as $buscar){
-
+            $values = array_filter($matches[0], function ($value) {
+                return !empty(trim($value)) && $value !== '_';
+            });
+            
+            $setsearch = ['campos' => $values];
+    
+            foreach($setsearch as $buscar){
+                $controllerContent .= "
+                    \$artify->setSearchCols(\$buscar);
+                ";
+            }
         }
 
         $buttons_actions_array = explode(',', $buttons_actions);
