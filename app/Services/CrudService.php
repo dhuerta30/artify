@@ -512,7 +512,6 @@ class CrudService
             }
         }
 
-
         $actions_buttons_grid_array = explode(',', $actions_buttons_grid);
        
         foreach ($actions_buttons_grid_array as $action) {
@@ -534,7 +533,6 @@ class CrudService
                 ";
             }
         }
-    
         
         if($active_popup == 'Si'){
             $controllerContent .= "
@@ -612,7 +610,6 @@ class CrudService
             \$artify->setSettings('totalRecordsInfo', true);
             \$artify->setSettings('actionbtn', true);
             \$artify->setSettings('numberCol', true);
-            \$artify->buttonHide('submitBtnSaveBack');
             \$artify->setSettings('template', 'template_{$nameview}');
             \$render = \$artify->dbTable('{$tableName}')->render();
 
