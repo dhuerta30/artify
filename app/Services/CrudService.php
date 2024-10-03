@@ -377,7 +377,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla)
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -595,8 +595,17 @@ class CrudService
             ";
         }
 
+        if($encryption == "Si"){
+            $controllerContent .= "
+                \$artify->setSettings('encryption', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings('encryption', false);
+            ";
+        }
+
         $controllerContent .= "
-            \$artify->setSettings('encryption', true);
             \$artify->setSettings('pagination', true);
             \$artify->setSettings('function_filter_and_search', true);
             \$artify->setSettings('recordsPerPageDropdown', true);
