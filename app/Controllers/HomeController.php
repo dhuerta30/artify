@@ -1262,6 +1262,7 @@ class HomeController
 
 		$artify->buttonHide("submitBtnSaveBack");
 		$artify->setSettings("template", "modulos");
+		$artify->setSettings("searchbox", true);
 		$artify->setSettings("viewbtn", false);
 		$artify->setSettings("refresh", false);
 		$artify->setSettings("printBtn", false);
