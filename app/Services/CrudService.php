@@ -195,8 +195,42 @@ class CrudService
                 \$text = '<i class=\"fa fa-edit\"></i>';
                 \$attr = array('title'=> 'Editar');
                 \$artify->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
+                ";
 
-                \$artify->setSettings('encryption', false);
+                if ($active_filter == "Si") {
+                    $controllerContent .= "
+                        foreach (\$columnDB as \$column) {
+                            \$columnName = ucfirst(str_replace('_', ' ', \$column));
+                            
+                            \$artify->addFilter('filterAdd'.\$column, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
+                            \$artify->setFilterSource('filterAdd'.\$column, '{$tableName}', \$column, \$column.' as pl', 'db');
+                        }
+                        ";
+                }
+        
+                $actions_buttons_grid_array = explode(',', $actions_buttons_grid);
+       
+                foreach ($actions_buttons_grid_array as $action) {
+                    if ($action === 'Imprimir') {
+                            $controllerContent .= "
+                            \$artify->setSettings('printBtn', true);
+                        ";
+                    } else if ($action === 'PDF') {
+                            $controllerContent .= "
+                            \$artify->setSettings('pdfBtn', true);
+                        ";
+                    } else if ($action === 'CSV') {
+                            $controllerContent .= "
+                            \$artify->setSettings('csvBtn', true);
+                        ";
+                    } else if ($action === 'Excel') {
+                            $controllerContent .= "
+                            \$artify->setSettings('excelBtn', true);
+                        ";
+                    }
+                }
+
+                $controllerContent .= "\$artify->setSettings('encryption', false);
                 \$artify->setSettings('pagination', true);
                 \$artify->setSettings('searchbox', true);
                 \$artify->setSettings('clonebtn', true);
@@ -210,10 +244,6 @@ class CrudService
                 \$artify->setSettings('actionbtn', true);
                 \$artify->setSettings('refresh', false);
                 \$artify->setSettings('numberCol', true);
-                \$artify->setSettings('printBtn', true);
-                \$artify->setSettings('pdfBtn', true);
-                \$artify->setSettings('csvBtn', true);
-                \$artify->setSettings('excelBtn', true);
                 \$artify->setSettings('clonebtn', false);
                 \$artify->setSettings('template', 'template_{$nameview}');
                 \$artify->setLangData('no_data', 'Sin Resultados');
