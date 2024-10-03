@@ -210,7 +210,7 @@ class CrudService
                 \$artify->setSettings('template', 'template_{$nameview}');
                 \$artify->formStaticFields('botones', 'html', '
                     <div class=\"col-md-12 text-center\">
-                        <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
+                        <input type=\"submit\" class=\"btn btn-primary artify-form-control artify-submit\" data-action=\"insert\" value=\"Guardar\"> 
                         <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
                     </div>
                 ');
@@ -239,7 +239,7 @@ class CrudService
                 \$artify->buttonHide('cancel');
                 \$artify->formStaticFields('botones', 'html', '
                     <div class=\"col-md-12 text-center\">
-                        <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
+                        <input type=\"submit\" class=\"btn btn-primary artify-form-control artify-submit\" data-action=\"insert\" value=\"Guardar\"> 
                         <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
                     </div>
                 ');
@@ -304,7 +304,7 @@ class CrudService
                             <div class=\"form-group\">
                                 <label class=\"form-label\">' . \$columnName . ':</label>
                                 {' . \$column . '}
-                                <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
+                                <p class=\"artify_help_block help-block form-text with-errors\"></p>
                             </div>
                         </div>
                     </div>';
@@ -374,7 +374,7 @@ class CrudService
                 \$artify->setSettings('template', 'template_{$nameview}');
                 \$artify->formStaticFields('botones', 'html', '
                     <div class=\"col-md-12 text-center\">
-                        <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
+                        <input type=\"submit\" class=\"btn btn-primary artify-form-control artify-submit\" data-action=\"insert\" value=\"Guardar\"> 
                         <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
                     </div>
                 ');
@@ -403,7 +403,7 @@ class CrudService
                 \$artify->buttonHide('cancel');
                 \$artify->formStaticFields('botones', 'html', '
                     <div class=\"col-md-12 text-center\">
-                        <input type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit\" data-action=\"insert\" value=\"Guardar\"> 
+                        <input type=\"submit\" class=\"btn btn-primary artify-form-control artify-submit\" data-action=\"insert\" value=\"Guardar\"> 
                         <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
                     </div>
                 ');
@@ -484,7 +484,7 @@ class CrudService
                         <div class=\"form-group\">
                             <label class=\"form-label\">' . \$columnName . ':</label>
                             {' . \$column . '}
-                            <p class=\"pdocrud_help_block help-block form-text with-errors\"></p>
+                            <p class=\"artify_help_block help-block form-text with-errors\"></p>
                         </div>
                     </div>';
 
@@ -695,13 +695,13 @@ class CrudService
                 </div>
             </section>
         </div>
-        <div id="pdocrud-ajax-loader">
-            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+        <div id="artify-ajax-loader">
+            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
         </div>
         <?php require "layouts/footer.php"; ?>
         <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
         <script>
-            $(document).on("pdocrud_after_submission", function(event, obj, data) {
+            $(document).on("artify_after_submission", function(event, obj, data) {
                 let json = JSON.parse(data);
 
                 if (json.message) {
@@ -712,7 +712,7 @@ class CrudService
                         allowOutsideClick: false
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            $(".pdocrud-back").click();
+                            $(".artify-back").click();
                         }
                     });
                 }
@@ -744,8 +744,8 @@ class CrudService
                 </div>
             </section>
         </div>
-        <div id="pdocrud-ajax-loader">
-            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+        <div id="artify-ajax-loader">
+            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
         </div>
         <?php require "layouts/footer.php"; ?>';
 
