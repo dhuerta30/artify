@@ -1209,9 +1209,6 @@ class HomeController
 
 		$artify->fieldConditionalLogic("crud_type", "Modulo de Inventario", "=", "query", "hide");
 
-		$artify->fieldConditionalLogic("crud_type", "CRUD", "=", "id_tabla", "hide");
-		$artify->fieldConditionalLogic("crud_type", "CRUD", "!=", "id_tabla", "show");
-
 		$artify->fieldConditionalLogic("crud_type", "Modulo de Inventario", "=", "id_tabla", "hide");
 		
 		$artify->formFieldValue("template_fields", "No");

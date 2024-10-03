@@ -196,9 +196,10 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             var val = $(this).val();
 
             if (val == "CRUD") {
-                $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
+                //$(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
+                $(".id_tabla").val("id_personas");
                 $(".query").removeAttr("required").attr("disabled", "disabled");
-                $(".columns_table").val("id INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
+                $(".columns_table").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
                 "nombre VARCHAR(255) NOT NULL,\n" +
                 "apellido VARCHAR(255) NOT NULL,\n" +
                 "categoria INT(11) NOT NULL,\n" +
