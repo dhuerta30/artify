@@ -22,7 +22,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda)
     {
         $this->createTable($tableName, $columns);
         $this->modifyTable($tableName, $modify_query);
@@ -45,7 +45,8 @@ class CrudService
                 $activate_nested_table,
                 $buttons_actions,
                 $refrescar_grilla,
-                $encryption
+                $encryption,
+                $mostrar_campos_busqueda
             );
         }
 
@@ -67,7 +68,8 @@ class CrudService
                 $activate_nested_table,
                 $buttons_actions,
                 $refrescar_grilla,
-                $encryption
+                $encryption,
+                $mostrar_campos_busqueda
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -130,7 +132,7 @@ class CrudService
         }
     }
 
-    private function generateCrudControllerSQL($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla)
+    private function generateCrudControllerSQL($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -377,7 +379,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption)
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
