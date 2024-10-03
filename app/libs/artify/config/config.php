@@ -213,7 +213,7 @@ $config["leftJoinData"] = true;
 //by default single step form
 $config["formtype"] = "singlestep";
 //whether to encrypt or decrypt fields - version 1.2
-$config["encryption"] = true;
+$config["encryption"] = false;
 //whether to remove js from input data to prevent XSS attack
 $config["preventXSS"] = true;
 //whether to show uploaded image on edit form. - version 4.0
