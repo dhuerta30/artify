@@ -123,6 +123,16 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
         $(".campos_view_tabla").hide();
 
 
+        $('.mostrar_campos_busqueda').inputmask({
+            mask: "*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}",
+            definitions: {
+                '*': {
+                    validator: "[a-zA-Z_]"
+                }
+            }
+        });
+
+
         $(".activate_pdf").change(function() {
             var val = $(this).val();
 

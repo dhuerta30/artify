@@ -747,6 +747,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Campos a Mostrar en el buscador:</label>
 								{mostrar_campos_busqueda}
+								<span>Escriba y presione espacio para avanzar al siguiente</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
@@ -1180,6 +1181,7 @@ class HomeController
 		$artify->fieldCssClass("query_delete", array("query_delete"));
 		$artify->fieldCssClass("actions_buttons_grid", array("actions_buttons_grid"));
 		$artify->fieldCssClass("buttons_actions", array("buttons_actions"));
+		$artify->fieldCssClass("mostrar_campos_busqueda", array("mostrar_campos_busqueda"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
