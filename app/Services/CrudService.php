@@ -416,6 +416,20 @@ class CrudService
 
                 ";
 
+                 if(isset($mostrar_campos_busqueda)){
+
+                    preg_match_all('/([^\/]+)/', $mostrar_campos_busqueda, $matches);
+
+                    // Filtra los resultados para eliminar los valores que no sean cadenas
+                    $values = array_filter($matches[0], function ($value) {
+                        return !empty(trim($value)) && $value !== '_';
+                    });
+
+                    $controllerContent .= "
+                        \$artify->setSearchCols({$values});
+                    ";
+                }
+
         if ($template_html == "Si") {
             $controllerContent .= "
                 \$html_template = '<div class=\"form\">
@@ -471,22 +485,6 @@ class CrudService
             $controllerContent .= "
 
             ";
-        }
-
-        if(isset($mostrar_campos_busqueda)){
-            preg_match_all('/([^\/]+)/', $mostrar_campos_busqueda, $matches);
-
-            $values = array_filter($matches[0], function ($value) {
-                return !empty(trim($value)) && $value !== '_';
-            });
-            
-            $setsearch = ['campos' => $values];
-    
-            foreach($setsearch as $buscar){
-                $controllerContent .= "
-                    \$artify->setSearchCols(\$buscar);
-                ";
-            }
         }
 
         $buttons_actions_array = explode(',', $buttons_actions);
@@ -632,6 +630,12 @@ class CrudService
             \$render = \$artify->dbTable('{$tableName}')->render();
 
             View::render('{$nameview}', ['render' => \$render]);";
+
+        if(empty($buttons_actions_array)){
+            $controllerContent .= "
+                }
+            }";
+        }
         
         foreach ($buttons_actions_array as $Btnaction) {
             if ($Btnaction === 'Personalizado PDF') {
