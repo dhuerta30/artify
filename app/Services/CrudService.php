@@ -22,7 +22,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla)
     {
         $this->createTable($tableName, $columns);
         $this->modifyTable($tableName, $modify_query);
@@ -51,7 +51,8 @@ class CrudService
                 $button_add,
                 $actions_buttons_grid,
                 $activate_nested_table,
-                $buttons_actions
+                $buttons_actions,
+                $refrescar_grilla
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -420,7 +421,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions)
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -618,6 +619,16 @@ class CrudService
             ";
         }
 
+        if($refrescar_grilla == "Si"){
+            $controllerContent .= "
+                \$artify->setSettings('refresh', true);
+            ";
+        } else {
+            $controllerContent .= "
+            \$artify->setSettings('refresh', false);
+        ";
+        }
+
         if($button_add == 'Si'){
             $controllerContent .= "
                 \$artify->setSettings('addbtn', true);
@@ -635,7 +646,6 @@ class CrudService
             \$artify->setSettings('recordsPerPageDropdown', true);
             \$artify->setSettings('totalRecordsInfo', true);
             \$artify->setSettings('actionbtn', true);
-            \$artify->setSettings('refresh', false);
             \$artify->setSettings('numberCol', true);
             \$artify->buttonHide('submitBtnSaveBack');
             \$artify->setSettings('template', 'template_{$nameview}');
