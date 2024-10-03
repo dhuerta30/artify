@@ -585,7 +585,7 @@ class HomeController
 				<a class="nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="pdf" aria-selected="false">Generador de PDF</a>
 			</li>
 			 <li class="nav-item" role="presentation">
-				<a class="nav-link" id="Api-tab" data-toggle="tab" href="#Api" role="tab" aria-controls="Api" aria-selected="false">Generador Api</a>
+				<a class="nav-link" id="Api-tab" data-toggle="tab" href="#Api" role="tab" aria-controls="Api" aria-selected="false">Generador de Api</a>
 			</li>
 		</ul>
 
