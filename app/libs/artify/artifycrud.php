@@ -1013,6 +1013,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = isset($data["modulos"]["buttons_actions"]) ? $data["modulos"]["buttons_actions"] : null;
     $refrescar_grilla = $data["modulos"]["refrescar_grilla"];
+    $encryption = $data["modulos"]["encryption"];
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1030,16 +1031,43 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
 
     if ($crud_type == "SQL") {
         $crudService = new App\Services\CrudService();
-        $crudService->createCrud($tabla, $id_tabla, $crud_type, $query_db, $controller_name, $columns_table, $name_view, $template_fields, $active_filter, $clone_row);
+        $crudService->createCrud(
+            $tabla, 
+            $id_tabla, 
+            $crud_type, 
+            $query_db, 
+            $controller_name, 
+            $columns_table, 
+            $name_view, 
+            $template_fields, 
+            $active_filter, 
+            $clone_row
+        );
     } 
     
     if ($crud_type == "CRUD") {
         $crudService = new App\Services\CrudService();
         $crudService->createCrud(
-            $tabla, $id_tabla, $crud_type, null, $controller_name, $columns_table, $name_view, $template_fields,
-            $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, null, $activate_nested_table,
+            $tabla, 
+            $id_tabla, 
+            $crud_type, 
+            null, 
+            $controller_name,
+            $columns_table, 
+            $name_view, 
+            $template_fields,
+            $active_filter, 
+            $clone_row, 
+            $active_popup, 
+            $active_search, 
+            $activate_deleteMultipleBtn, 
+            $button_add, 
+            $actions_buttons_grid, 
+            null, 
+            $activate_nested_table,
             $buttons_actions,
-            $refrescar_grilla
+            $refrescar_grilla,
+            $encryption
         );
     }
 
@@ -1090,6 +1118,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["logo_pdf"] = $logo_pdf;
     $newdata["modulos"]["marca_de_agua_pdf"] = $marca_de_agua_pdf;
     $newdata["modulos"]["consulta_pdf"] = $consulta_pdf;
+    $newdata["modulos"]["encryption"] = $encryption;
 
     return $newdata;
 }
@@ -1146,8 +1175,8 @@ function actualizar_modulos($data, $obj){
     $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = $data["modulos"]["buttons_actions"];
-
     $refrescar_grilla = $data["modulos"]["refrescar_grilla"];
+    $encryption = $data["modulos"]["encryption"];
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
