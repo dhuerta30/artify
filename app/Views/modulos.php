@@ -236,6 +236,23 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
     }
 
     if(dataAction == "edit"){
+
+        $('.siguiente_1').click(function() {
+            $('#pdf-tab').tab('show');
+        });
+
+        $('.siguiente_2').click(function() {
+            $('#Api-tab').tab('show');
+        });
+
+        $('.anterior').click(function() {
+            $('#modulos-tab').tab('show');
+        });
+
+        $('.atras').click(function() {
+            $('#pdf-tab').tab('show');
+        });
+
         $(".columns_table").attr("disabled", "disabled").removeAttr("required");
         $(".tabla").attr("readonly", "true");
         $(".controller_name").attr("readonly", "true");
