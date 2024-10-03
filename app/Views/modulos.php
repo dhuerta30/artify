@@ -103,7 +103,16 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
     if(dataAction == "add"){
 
         $('.query_get, .query_delete').inputmask({
-            mask: "A/A"
+            mask: "*{1,}/*{1,}/[9]{1,}",
+            definitions: {
+                '*': {
+                    validator: "[a-zA-Z_]", // Permitir solo letras (mayúsculas o minúsculas)
+                    casing: "lower" // Convertir automáticamente las letras a minúsculas (opcional)
+                },
+                '9': {
+                    validator: "[0-9]" // Permitir solo números
+                }
+            }
         });
 
         $('.siguiente_1').click(function() {
@@ -146,10 +155,22 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
             if(val == "Si"){
                 $(".api_type").removeAttr("disabled", "disabled");
                 $(".api_type").bootstrapSwitch('disabled', false);
+
+                $(".query_get").removeAttr("disabled", "disabled");
+                $(".query_post").removeAttr("disabled", "disabled");
+                $(".query_put").removeAttr("disabled", "disabled");
+                $(".query_delete").removeAttr("disabled", "disabled");
+                $(".consulta_api").removeAttr("disabled", "disabled");
             } else {
                 $(".api_type").attr("disabled", "disabled");
                 $(".generar_token_api").addClass("d-none");
                 $(".api_type").bootstrapSwitch('disabled', true);
+
+                $(".query_get").attr("disabled", "disabled");
+                $(".query_post").attr("disabled", "disabled");
+                $(".query_put").attr("disabled", "disabled");
+                $(".query_delete").attr("disabled", "disabled");
+                $(".consulta_api").attr("disabled", "disabled");
             }
         });
 
