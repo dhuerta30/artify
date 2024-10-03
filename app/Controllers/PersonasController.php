@@ -120,19 +120,8 @@
                    }
                     public function personas_pdf(){
                         
-                        /*$docufy = DB::Docufy();
-                        $docufy->setInvoiceDisplaySettings("header", "", false);
-                        $docufy->setInvoiceDisplaySettings("to", "", false);
-                        $docufy->setInvoiceDisplaySettings("from", "", false);
-                        $docufy->setInvoiceDisplaySettings("footer",  "", false);
-                        $docufy->setInvoiceDisplaySettings("payment", "", false);
-                        $docufy->setInvoiceDisplaySettings("message", "", false);
-                        $docufy->setInvoiceDisplaySettings("total", "subtotal", false);
-                        $docufy->setInvoiceDisplaySettings("total", "discount", false);
-                        $docufy->setInvoiceDisplaySettings("total", "tax", false);
-                        $docufy->setInvoiceDisplaySettings("total", "shipping", false);
-                        $docufy->setInvoiceDisplaySettings("total", "grandtotal", false);*/
-                        echo "1";
+                        $docufy = DB::Docufy();
+                        echo $docufy->render();
                     }
                 }
                 

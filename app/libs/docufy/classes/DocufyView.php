@@ -5,7 +5,7 @@ Class DocufyView {
     private $template_path;
 
     function __construct() {
-        $this->template_path = XInvoiceABSPATH . "/templates/";
+        $this->template_path = DocufyABSPATH . "/templates/";
     }
 
     public function renderHTML($templateName, $data) {
