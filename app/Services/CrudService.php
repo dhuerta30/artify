@@ -22,7 +22,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption)
     {
         $this->createTable($tableName, $columns);
         $this->modifyTable($tableName, $modify_query);
@@ -44,7 +44,8 @@ class CrudService
                 $actions_buttons_grid,
                 $activate_nested_table,
                 $buttons_actions,
-                $refrescar_grilla
+                $refrescar_grilla,
+                $encryption
             );
         }
 
@@ -65,7 +66,8 @@ class CrudService
                 $actions_buttons_grid,
                 $activate_nested_table,
                 $buttons_actions,
-                $refrescar_grilla
+                $refrescar_grilla,
+                $encryption
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
