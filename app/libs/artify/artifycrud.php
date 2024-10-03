@@ -1036,7 +1036,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     if ($crud_type == "CRUD") {
         $crudService = new App\Services\CrudService();
         $crudService->createCrud(
-            $tabla, null, $crud_type, null, $controller_name, $columns_table, $name_view, $template_fields,
+            $tabla, $id_tabla, $crud_type, null, $controller_name, $columns_table, $name_view, $template_fields,
             $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, null, $activate_nested_table,
             $buttons_actions,
             $refrescar_grilla

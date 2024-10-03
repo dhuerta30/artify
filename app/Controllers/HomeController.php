@@ -297,6 +297,7 @@ class HomeController
 		$artify->tableColFormatting("avatar", "html",array("type" =>"html","str"=>'<img width="50" src="'.$_ENV["BASE_URL"].'app/libs/artify/uploads/{col-name}">'));
 		$artify->crudRemoveCol(array("rol","estatus","password", "token", "token_api", "expiration_token"));
 		$artify->setSearchCols(array("id","nombre","email", "usuario", "idrol"));
+		$artify->setSettings("searchbox", true);
 		$artify->setSettings("addbtn", false);
 		$artify->setSettings("viewbtn", false);
 		$artify->setSettings('editbtn', true);    
@@ -331,6 +332,7 @@ class HomeController
 			$artify->fieldGroups("Name",array("nombre","email"));
 			$artify->fieldGroups("Name2",array("usuario","password"));
 			$artify->fieldGroups("Name3",array("idrol","avatar"));
+			$artify->setSettings("searchbox", true);
 			$artify->setSettings("required", false);
 			$artify->setSettings("checkboxCol", false);
 			$artify->setSettings("refresh", false);
@@ -443,7 +445,8 @@ class HomeController
 		$respaldos->tableColFormatting("fecha", "date",array("format" =>"d/m/Y"));
 		$respaldos->setSearchCols(array("usuario", "fecha", "hora"));
         $respaldos->tableColFormatting("archivo", "html", array("type" => "html", "str" => "<a class='btn btn-success btn-sm' href=\"".$_ENV["BASE_URL"]."app/libs/artify/uploads/{col-name}\" data-attribute=\"abc-{col-name}\"><i class=\"fa fa-download\"></i> Descargar Respaldo</a>"));
-        $respaldos->setSettings("addbtn", false);
+        $respaldos->setSettings("searchbox", true);
+		$respaldos->setSettings("addbtn", false);
 		$respaldos->setSettings('editbtn', true);    
 		$respaldos->setSettings('delbtn', true);
         $respaldos->setSettings("viewbtn", false);
@@ -1543,6 +1546,7 @@ class HomeController
 		$artify->fieldCssClass("submenu", array("submenu"));
 		$artify->fieldGroups("Name", array("nombre_menu", "url_menu"));
 		$artify->crudRemoveCol(array("id_menu"));
+		$artify->setSettings("searchbox", true);
 		$artify->setSettings("printBtn", false);
 		$artify->setSettings("pdfBtn", false);
 		$artify->setSettings("csvBtn", false);

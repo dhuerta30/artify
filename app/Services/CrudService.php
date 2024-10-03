@@ -651,16 +651,13 @@ class CrudService
             \$artify->setSettings('template', 'template_{$nameview}');
             \$render = \$artify->dbTable('{$tableName}')->render();
 
-            View::render(
-                '{$nameview}', ['render' => \$render]
-                );
-            }
-        }";
+            View::render('{$nameview}', ['render' => \$render]);";
         
         foreach ($buttons_actions_array as $Btnaction) {
             if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
-                    public function {$tableName}_invoice_pdf(){
+                   }
+                    public function {$tableName}_pdf(){
                         
                         \$docufy = DB::Docufy();
                         \$docufy->setInvoiceDisplaySettings(\"header\", \"\", false);
@@ -675,6 +672,7 @@ class CrudService
                         \$docufy->setInvoiceDisplaySettings(\"total\", \"shipping\", false);
                         \$docufy->setInvoiceDisplaySettings(\"total\", \"grandtotal\", false);
                     }
+                }
                 ";
             }
         }
