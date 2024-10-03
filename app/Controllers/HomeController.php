@@ -998,35 +998,35 @@ class HomeController
 						<div class="form-group">
 							<label class="form-label">Mostrar</label>
 							<div class="input-group-append">
-								<span class="input-group-text" id="basic-addon1">'.$currentUrl.'</span>
 								{query_get}
 							</div>
+							<span>'.$currentUrl.'{nombre_controlador}/{nombre_metodo}/{parametro}</span>
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 
 							<div class="form-group">
 								<label class="form-label">Insertar</label>
 								<div class="input-group-append">
-									<span class="input-group-text" id="basic-addon1">'.$currentUrl.'</span>
 									{query_post}
 								</div>
+								<span>'.$currentUrl.'{nombre_controlador}/{nombre_metodo}/{parametro}</span>
 								<p class="pdocrud_help_block help-block form-text with-errors"></p>
 							</div>
 
 							<div class="form-group">
 								<label class="form-label">Actualizar</label>
 								<div class="input-group-append">
-									<span class="input-group-text" id="basic-addon1">'.$currentUrl.'</span>
 									{query_put}
 								</div>
+								<span>'.$currentUrl.'{nombre_controlador}/{nombre_metodo}/{parametro}</span>
 								<p class="pdocrud_help_block help-block form-text with-errors"></p>
 							</div>
 
 							<div class="form-group">
 								<label class="form-label">Eliminar</label>
 								<div class="input-group-append">
-									<span class="input-group-text" id="basic-addon1">'.$currentUrl.'</span>
 									{query_delete}
 								</div>
+								<span>'.$currentUrl.'{nombre_controlador}/{nombre_metodo}/{parametro}</span>
 								<p class="pdocrud_help_block help-block form-text with-errors"></p>
 							</div>
 
@@ -1081,10 +1081,10 @@ class HomeController
 		$artify->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("api_type", array("disabled"=>"disabled"));
-		$artify->fieldDataAttr("query_get", array("disabled"=>"disabled", "placeholder" => "{nombre_controlador}/{nombre_metodo}/{parametro}"));
-		$artify->fieldDataAttr("query_post", array("disabled"=>"disabled", "placeholder" => "{nombre_controlador}/{nombre_metodo}/{parametro}"));
-		$artify->fieldDataAttr("query_put", array("disabled"=>"disabled", "placeholder" => "{nombre_controlador}/{nombre_metodo}/{parametro}"));
-		$artify->fieldDataAttr("query_delete", array("disabled"=>"disabled", "placeholder" => "{nombre_controlador}/{nombre_metodo}/{parametro}"));
+		$artify->fieldDataAttr("query_get", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("query_post", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("query_put", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("query_delete", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
 
