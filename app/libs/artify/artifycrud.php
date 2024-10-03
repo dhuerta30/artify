@@ -1147,6 +1147,13 @@ function actualizar_modulos($data, $obj){
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = $data["modulos"]["buttons_actions"];
 
+    $refrescar_grilla = $data["modulos"]["refrescar_grilla"];
+
+    $activate_pdf = $data["modulos"]["activate_pdf"];
+    $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
+    $marca_de_agua_pdf = isset($data["modulos"]["marca_de_agua_pdf"]) ? $data["modulos"]["marca_de_agua_pdf"] : null;
+    $consulta_pdf = isset($data["modulos"]["consulta_pdf"]) ? $data["modulos"]["consulta_pdf"] : null;
+
     if ($crud_type == "SQL") {
         $crudService = new App\Services\CrudService();
         $crudService->createCrud($tabla, $id_tabla, $crud_type, $query_db, $controller_name, $columns_table, $name_view, $template_fields, $active_filter, $clone_row);
@@ -1157,7 +1164,8 @@ function actualizar_modulos($data, $obj){
         $crudService->createCrud(
             $tabla, null, $crud_type, null, $controller_name, $columns_table, $name_view, $template_fields,
             $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, null, $activate_nested_table,
-            $buttons_actions
+            $buttons_actions,
+            $refrescar_grilla
         );
     }
 
