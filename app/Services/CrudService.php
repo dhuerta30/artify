@@ -671,6 +671,7 @@ class CrudService
                         \$docufy->setInvoiceDisplaySettings(\"total\", \"tax\", false);
                         \$docufy->setInvoiceDisplaySettings(\"total\", \"shipping\", false);
                         \$docufy->setInvoiceDisplaySettings(\"total\", \"grandtotal\", false);
+                        echo \$docufy->render();
                     }
                 }
                 ";
