@@ -31,9 +31,22 @@ class CrudService
             if ($template_html == 'No' && $active_filter == 'No' && $clone_row == 'No') {
                 $this->generateCrudControllerSQL($tableName, $idTable, $query, $controllerName, $nameview);
             } elseif ($template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si') {
-                $this->generateCrudControllerSQLTemplateFields($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
+                $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
             }
         }*/
+
+        if($crudType == 'SQL'){
+            $this->generateCrudControllerSQL(
+                $tableName,
+                $idTable,
+                $query,
+                $controllerName,
+                $nameview,
+                $template_html,
+                $active_filter,
+                $clone_row
+            );
+        }
 
         if ($crudType == 'CRUD') {
             $this->generateCrudControllerCRUD(
@@ -115,149 +128,7 @@ class CrudService
         }
     }
 
-    private function generateCrudControllerSQL($tableName, $idTable, $query = null, $controllerName, $nameview)
-    {
-        $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
-        $controllerContent = "<?php
-
-        namespace App\Controllers;
-
-        use App\core\SessionManager;
-        use App\core\Token;
-        use App\core\DB;
-        use App\core\Request;
-        use App\core\View;
-        use App\core\Redirect;
-
-        class {$controllerName}Controller
-        {
-            public \$token;
-
-            public function __construct()
-            {
-                SessionManager::startSession();
-                \$Sesusuario = SessionManager::get('usuario');
-                if (!isset(\$Sesusuario)) {
-                    Redirect::to('login/index');
-                }
-                \$this->token = Token::generateFormToken('send_message');
-            }
-
-            public function index()
-            {
-                \$artify = DB::ArtifyCrud();
-
-                \$queryfy = \$artify->getQueryfyObj();
-                \$columnDB = \$queryfy->columnNames('{$tableName}');
-                \$id = strtoupper(\$columnDB[0]);
-
-                \$tabla = \$artify->getLangData('{$tableName}');
-                \$pk = \$artify->getLangData(\$id);
-                \$columnVal = \$artify->getLangData(\$pk);
-
-                \$artify->enqueueBtnTopActions('Report',  \"<i class='fa fa-plus'></i> Agregar\", \$_ENV['BASE_URL'].'{$controllerName}/agregar', array(), 'btn-report');
-
-                \$action = \$_ENV['BASE_URL'].'{$controllerName}/editar/id/{{$idTable}}';
-                \$text = '<i class=\"fa fa-edit\"></i>';
-                \$attr = array('title'=> 'Editar');
-                \$artify->enqueueBtnActions('url', \$action, 'url', \$text, \$pk, \$attr, 'btn-warning', array(array()));
-
-                \$artify->setSettings('encryption', false);
-                \$artify->setSettings('pagination', true);
-                \$artify->setSettings('searchbox', true);
-                \$artify->setSettings('deleteMultipleBtn', true);
-                \$artify->setSettings('checkboxCol', true);
-                \$artify->setSettings('recordsPerPageDropdown', true);
-                \$artify->setSettings('totalRecordsInfo', true);
-                \$artify->setSettings('addbtn', false);
-                \$artify->setSettings('editbtn', false);
-                \$artify->setSettings('delbtn', true);
-                \$artify->setSettings('actionbtn', true);
-                \$artify->setSettings('refresh', false);
-                \$artify->setSettings('numberCol', true);
-                \$artify->setSettings('printBtn', true);
-                \$artify->setSettings('pdfBtn', true);
-                \$artify->setSettings('csvBtn', true);
-                \$artify->setSettings('excelBtn', true);
-                \$artify->setSettings('clonebtn', false);
-                \$artify->setSettings('template', 'template_{$nameview}');
-                \$artify->setLangData('no_data', 'Sin Resultados');
-            
-                \$artify->setLangData('tabla', '{$tableName}')
-                    ->setLangData('pk', \$pk)
-                    ->setLangData('columnVal', \$columnVal);
-                \$artify->tableHeading('{$tableName}');
-                \$artify->addCallback('before_delete_selected', 'eliminacion_masiva_tabla');
-                \$artify->addCallback('before_sql_data', 'buscador_tabla', array(\$columnDB));
-                \$artify->addCallback('before_delete', 'eliminar_tabla');
-
-                \$artify->setSettings('viewbtn', false);
-                \$artify->addCallback('format_sql_col', 'format_sql_col_tabla', array(\$columnDB));
-                \$render = \$artify->setQuery('{$query}')->render('SQL');
-
-                View::render(
-                    '{$nameview}', 
-                    [
-                        'render' => \$render
-                    ]
-                );
-            }
-
-            public function agregar(){
-                \$artify = DB::ArtifyCrud();
-                \$artify->buttonHide('submitBtn');
-                \$artify->buttonHide('cancel');
-                \$artify->setSettings('template', 'template_{$nameview}');
-                \$artify->formStaticFields('botones', 'html', '
-                    <div class=\"col-md-12 text-center\">
-                        <input type=\"submit\" class=\"btn btn-primary artify-form-control artify-submit\" data-action=\"insert\" value=\"Guardar\"> 
-                        <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
-                    </div>
-                ');
-                \$render = \$artify->dbTable('{$tableName}')->render('insertform');
-                View::render(
-                    'agregar_{$nameview}',
-                    [
-                        'render' => \$render
-                    ]
-                );
-            }
-
-            public function editar(){
-                \$request = new Request();
-                \$id = \$request->get('id');
-
-                \$artify = DB::ArtifyCrud();
-
-                \$queryfy = \$artify->getQueryfyObj();
-                \$columnDB = \$queryfy->columnNames('{$tableName}');
-                \$id_tabla = strtoupper(\$columnDB[0]);
-
-                \$artify->setPK(\$id_tabla);
-                \$artify->setSettings('template', 'template_{$nameview}');
-                \$artify->buttonHide('submitBtn');
-                \$artify->buttonHide('cancel');
-                \$artify->formStaticFields('botones', 'html', '
-                    <div class=\"col-md-12 text-center\">
-                        <input type=\"submit\" class=\"btn btn-primary artify-form-control artify-submit\" data-action=\"insert\" value=\"Guardar\"> 
-                        <a href=\"'.\$_ENV['BASE_URL'].'{$controllerName}/index\" class=\"btn btn-danger\">Regresar</a>
-                    </div>
-                ');
-                \$render = \$artify->dbTable('{$tableName}')->render('editform', array('id' => \$id));
-
-                View::render(
-                    'editar_{$nameview}',
-                    [
-                        'render' => \$render
-                    ]
-                );
-            }
-        }";
-     
-        file_put_contents($controllerPath, $controllerContent);
-    }
-
-    private function generateCrudControllerSQLTemplateFields($tableName, $idTable, $query = null, $controllerName, $nameview, $template_html, $active_filter = "Si", $clone_row = "Si")
+    private function generateCrudControllerSQL($tableName, $idTable, $query = null, $controllerName, $nameview, $template_html, $active_filter = "Si", $clone_row = "Si")
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
