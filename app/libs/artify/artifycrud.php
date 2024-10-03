@@ -1016,6 +1016,16 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $encryption = $data["modulos"]["encryption"];
     $mostrar_campos_busqueda = isset($data["modulos"]["mostrar_campos_busqueda"]) ? $data["modulos"]["mostrar_campos_busqueda"] : null;
 
+    preg_match_all('/([^\/]+)/', $mostrar_campos_busqueda, $matches);
+
+    $values = array_filter($matches[0], function ($value) {
+        return !empty(trim($value)) && $value !== '_'; // Asegúrate de que no esté vacío o sea solo '_'
+    });
+    
+    // Imprime los valores capturados
+    print_r($values);
+    die();
+
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
     $marca_de_agua_pdf = isset($data["modulos"]["marca_de_agua_pdf"]) ? $data["modulos"]["marca_de_agua_pdf"] : null;

@@ -751,6 +751,13 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Activar Encriptación:</label>
+								{encryption}
+								<p class="artify_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
 					</div>
 					<div class="row modificar_tabla_col">
 						<div class="col-md-6">
@@ -1101,6 +1108,9 @@ class HomeController
 		$artify->fieldDataAttr("query_delete", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
+
+		$artify->fieldTypes("encryption", "select");
+		$artify->fieldDataBinding("encryption", array("Si" => "Si", "No" => "No"), "", "", "array");
 
 		$artify->fieldTypes("refrescar_grilla", "select");
 		$artify->fieldDataBinding("refrescar_grilla", array("Si" => "Si", "No" => "No"), "", "", "array");
