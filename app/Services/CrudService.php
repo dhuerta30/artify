@@ -27,14 +27,6 @@ class CrudService
         $this->createTable($tableName, $columns);
         $this->modifyTable($tableName, $modify_query);
 
-        /*if ($crudType == 'SQL') {
-            if ($template_html == 'No' && $active_filter == 'No' && $clone_row == 'No') {
-                $this->generateCrudControllerSQL($tableName, $idTable, $query, $controllerName, $nameview);
-            } elseif ($template_html == 'Si' && $active_filter == 'Si' && $clone_row == 'Si') {
-                $this->generateCrudControllerCRUD($tableName, $idTable, $query, $controllerName, $nameview, $template_html, $active_filter, $clone_row);
-            }
-        }*/
-
         if($crudType == 'SQL'){
             $this->generateCrudControllerSQL(
                 $tableName,
