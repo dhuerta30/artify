@@ -230,21 +230,74 @@ class CrudService
                     }
                 }
 
+
+                if($active_popup == 'Si'){
+                    $controllerContent .= "
+                        \$artify->formDisplayInPopup();
+                    ";
+                }
+        
+                if($active_search == 'Si'){
+                    $controllerContent .= "
+                        \$artify->setSettings('searchbox', true);
+                    ";
+                } else {
+                    $controllerContent .= "
+                        \$artify->setSettings('searchbox', false);
+                    ";
+                }
+        
+                // Continue with the remaining settings
+                if ($clone_row == 'Si') {
+                $controllerContent .= "
+                        \$artify->setSettings('clonebtn', true);
+                    ";
+                } else {
+                    $controllerContent .= "
+                        \$artify->setSettings('clonebtn', false);
+                    ";
+                }
+        
+                if($activate_deleteMultipleBtn == 'Si'){
+                    $controllerContent .= "
+                        \$artify->setSettings('checkboxCol', true);
+                        \$artify->setSettings('deleteMultipleBtn', true);
+                    ";
+                } else {
+                    $controllerContent .= "
+                        \$artify->setSettings('checkboxCol', false);
+                        \$artify->setSettings('deleteMultipleBtn', false);
+                    ";
+                }
+        
+                if($refrescar_grilla == "Si"){
+                    $controllerContent .= "
+                        \$artify->setSettings('refresh', true);
+                    ";
+                } else {
+                    $controllerContent .= "
+                    \$artify->setSettings('refresh', false);
+                ";
+                }
+        
+                if($button_add == 'Si'){
+                    $controllerContent .= "
+                        \$artify->setSettings('addbtn', true);
+                    ";
+                } else {
+                    $controllerContent .= "
+                        \$artify->setSettings('addbtn', false);
+                    ";
+                }
+
                 $controllerContent .= "\$artify->setSettings('encryption', false);
                 \$artify->setSettings('pagination', true);
-                \$artify->setSettings('searchbox', true);
-                \$artify->setSettings('clonebtn', true);
-                \$artify->setSettings('deleteMultipleBtn', true);
-                \$artify->setSettings('checkboxCol', true);
                 \$artify->setSettings('recordsPerPageDropdown', true);
                 \$artify->setSettings('totalRecordsInfo', true);
-                \$artify->setSettings('addbtn', false);
                 \$artify->setSettings('editbtn', false);
                 \$artify->setSettings('delbtn', true);
                 \$artify->setSettings('actionbtn', true);
-                \$artify->setSettings('refresh', false);
                 \$artify->setSettings('numberCol', true);
-                \$artify->setSettings('clonebtn', false);
                 \$artify->setSettings('template', 'template_{$nameview}');
                 \$artify->setLangData('no_data', 'Sin Resultados');
             
