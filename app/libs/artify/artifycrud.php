@@ -1014,6 +1014,11 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $buttons_actions = isset($data["modulos"]["buttons_actions"]) ? $data["modulos"]["buttons_actions"] : null;
     $refrescar_grilla = $data["modulos"]["refrescar_grilla"];
 
+    $activate_pdf = $data["modulos"]["activate_pdf"];
+    $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
+    $marca_de_agua_pdf = isset($data["modulos"]["marca_de_agua_pdf"]) ? $data["modulos"]["marca_de_agua_pdf"] : null;
+    $consulta_pdf = isset($data["modulos"]["consulta_pdf"]) ? $data["modulos"]["consulta_pdf"] : null;
+
     $queryfy = $obj->getQueryfyObj();
     $queryfy->where("tabla", $tabla);
     $db_result = $queryfy->select("modulos");
@@ -1080,6 +1085,11 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["activate_nested_table"] = $activate_nested_table;
     $newdata["modulos"]["buttons_actions"] = $buttons_actions;
     $newdata["modulos"]["refrescar_grilla"] = $refrescar_grilla;
+
+    $newdata["modulos"]["activate_pdf"] = $activate_pdf;
+    $newdata["modulos"]["logo_pdf"] = $logo_pdf;
+    $newdata["modulos"]["marca_de_agua_pdf"] = $marca_de_agua_pdf;
+    $newdata["modulos"]["consulta_pdf"] = $consulta_pdf;
 
     return $newdata;
 }
