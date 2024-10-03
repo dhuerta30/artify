@@ -1012,6 +1012,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
     $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = isset($data["modulos"]["buttons_actions"]) ? $data["modulos"]["buttons_actions"] : null;
+    $refrescar_grilla = $data["modulos"]["refrescar_grilla"];
 
     $queryfy = $obj->getQueryfyObj();
     $queryfy->where("tabla", $tabla);
@@ -1032,7 +1033,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         $crudService->createCrud(
             $tabla, null, $crud_type, null, $controller_name, $columns_table, $name_view, $template_fields,
             $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, null, $activate_nested_table,
-            $buttons_actions
+            $buttons_actions,
+            $refrescar_grilla
         );
     }
 
@@ -1077,6 +1079,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["actions_buttons_grid"] = $actions_buttons_grid;
     $newdata["modulos"]["activate_nested_table"] = $activate_nested_table;
     $newdata["modulos"]["buttons_actions"] = $buttons_actions;
+    $newdata["modulos"]["refrescar_grilla"] = $refrescar_grilla;
 
     return $newdata;
 }
