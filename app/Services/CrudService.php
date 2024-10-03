@@ -548,7 +548,7 @@ class CrudService
                 ";
             } else if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
-                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/invoice_pdf/id/{{$idTable}}';
+                    \$action = \$_ENV['BASE_URL'].'{$controllerName}/{$tableName}_pdf/id/{{$idTable}}';
                     \$text = \"<i class='fa fa-file-pdf-o'></i>\";
                     \$attr = array('title'=> 'Ver PDF', 'target'=> '_blank');
                     \$artify->enqueueBtnActions('artify-button-url', \$action, 'url', \$text, '', \$attr);
