@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-09-2024 a las 20:32:17
+-- Tiempo de generación: 03-10-2024 a las 21:56:02
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -71,6 +71,28 @@ INSERT INTO `backup` (`id`, `usuario`, `archivo`, `fecha`, `hora`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `configuraciones_modulos`
+--
+
+CREATE TABLE `configuraciones_modulos` (
+  `id_configuraciones_modulos` int(11) NOT NULL,
+  `logo_pdf` varchar(300) DEFAULT NULL,
+  `marca_agua_pdf` varchar(300) DEFAULT NULL,
+  `generar_jwt_token` varchar(100) NOT NULL,
+  `autenticar_jwt_token` varchar(100) DEFAULT NULL,
+  `tiempo_caducidad_token` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `configuraciones_modulos`
+--
+
+INSERT INTO `configuraciones_modulos` (`id_configuraciones_modulos`, `logo_pdf`, `marca_agua_pdf`, `generar_jwt_token`, `autenticar_jwt_token`, `tiempo_caducidad_token`) VALUES
+(1, '', '', 'No', NULL, '60');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `creador_de_panel`
 --
 
@@ -120,14 +142,14 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id_menu`, `nombre_menu`, `url_menu`, `icono_menu`, `submenu`, `orden_menu`) VALUES
-(4, 'usuarios', '/home/usuarios', 'fas fa-users', 'No', 2),
-(5, 'Perfil', '/home/perfil', 'far fa-user', 'No', 3),
-(6, 'Respalda tus Datos', '/home/respaldos', 'fas fa-database', 'No', 4),
-(7, 'Salir', '/login/salir', 'fas fa-sign-out-alt', 'No', 8),
-(10, 'Mantenedor Menu', '/home/menu', 'fas fa-bars', 'No', 5),
-(12, 'Acceso Menus', '/home/acceso_menus', 'fas fa-outdent', 'No', 6),
+(4, 'usuarios', '/home/usuarios', 'fas fa-users', 'No', 3),
+(5, 'Perfil', '/home/perfil', 'far fa-user', 'No', 4),
+(6, 'Respalda tus Datos', '/home/respaldos', 'fas fa-database', 'No', 5),
+(7, 'Salir', '/login/salir', 'fas fa-sign-out-alt', 'No', 9),
+(10, 'Mantenedor Menu', '/home/menu', 'fas fa-bars', 'No', 6),
+(12, 'Acceso Menus', '/home/acceso_menus', 'fas fa-outdent', 'No', 7),
 (19, 'Generador de Módulos', '/home/modulos', 'fas fa-table', 'No', 1),
-(141, 'Documentación', '/Documentacion/index', 'fas fa-book', 'No', 7);
+(141, 'Documentación', '/Documentacion/index', 'fas fa-book', 'No', 8);
 
 -- --------------------------------------------------------
 
@@ -161,12 +183,17 @@ CREATE TABLE `modulos` (
   `marca_de_agua_pdf` varchar(300) DEFAULT NULL,
   `activate_pdf` varchar(100) NOT NULL,
   `api_type` varchar(100) NOT NULL,
-  `generate_token_jwt` varchar(100) NOT NULL,
   `activate_api` varchar(100) NOT NULL,
-  `consulta_api` text NOT NULL,
-  `autenticate_jwt_token` varchar(100) NOT NULL,
+  `consulta_api` text DEFAULT NULL,
   `refrescar_grilla` varchar(100) NOT NULL,
-  `consulta_pdf` text DEFAULT NULL
+  `consulta_pdf` text DEFAULT NULL,
+  `query_get` varchar(100) DEFAULT NULL,
+  `query_post` varchar(100) DEFAULT NULL,
+  `query_put` varchar(100) DEFAULT NULL,
+  `query_delete` varchar(100) DEFAULT NULL,
+  `id_campos_insertar` varchar(100) DEFAULT NULL,
+  `encryption` varchar(100) DEFAULT NULL,
+  `mostrar_campos_busqueda` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -296,6 +323,12 @@ ALTER TABLE `backup`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `configuraciones_modulos`
+--
+ALTER TABLE `configuraciones_modulos`
+  ADD PRIMARY KEY (`id_configuraciones_modulos`);
+
+--
 -- Indices de la tabla `creador_de_panel`
 --
 ALTER TABLE `creador_de_panel`
@@ -367,6 +400,12 @@ ALTER TABLE `backup`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
+-- AUTO_INCREMENT de la tabla `configuraciones_modulos`
+--
+ALTER TABLE `configuraciones_modulos`
+  MODIFY `id_configuraciones_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `creador_de_panel`
 --
 ALTER TABLE `creador_de_panel`
@@ -382,13 +421,13 @@ ALTER TABLE `custom_panel`
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT de la tabla `modulos`
 --
 ALTER TABLE `modulos`
-  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -412,7 +451,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario_menu`
 --
 ALTER TABLE `usuario_menu`
-  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1300;
+  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1319;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_submenu`
