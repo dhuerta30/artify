@@ -40,14 +40,14 @@
                                                     &lt;div class="form-group"&gt;
                                                         &lt;label class="form-label"&gt;Product Id:&lt;/label&gt;
                                                         {product_id}
-                                                        &lt;p class="pdocrud_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
+                                                        &lt;p class="artify_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
                                                     &lt;/div&gt;
                                                 &lt;/div&gt;
                                                 &lt;div class="col-md-6"&gt;
                                                     &lt;div class="form-group"&gt;
                                                         &lt;label class="form-label"&gt;Product Name:&lt;/label&gt;
                                                         {product_name}
-                                                        &lt;p class="pdocrud_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
+                                                        &lt;p class="artify_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
                                                     &lt;/div&gt;
                                                 &lt;/div&gt;
                                             &lt;/div&gt;
@@ -56,14 +56,14 @@
                                                     &lt;div class="form-group"&gt;
                                                         &lt;label class="form-label"&gt;Product Price:&lt;/label&gt;
                                                         {product_price}
-                                                        &lt;p class="pdocrud_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
+                                                        &lt;p class="artify_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
                                                     &lt;/div&gt;
                                                 &lt;/div&gt;
                                                 &lt;div class="col-md-6"&gt;
                                                     &lt;div class="form-group"&gt;
                                                         &lt;label class="form-label"&gt;Product Sell Price:&lt;/label&gt;
                                                         {product_sell_price}
-                                                        &lt;p class="pdocrud_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
+                                                        &lt;p class="artify_help_block help-block form-text with-errors"&gt;&lt;/p&gt;
                                                     &lt;/div&gt;
                                                 &lt;/div&gt;
                                             &lt;/div&gt;

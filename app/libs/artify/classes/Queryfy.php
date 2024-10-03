@@ -1359,8 +1359,8 @@ class Queryfy
     private function setErrors($error)
     {
 
-        if (isset($this->pdocrudErrCtrl)) {
-            $this->pdocrudErrCtrl->addError($error, TRUE);
+        if (isset($this->artifyErrCtrl)) {
+            $this->artifyErrCtrl->addError($error, TRUE);
         } else {
             $this->error[] = $error;
             if ($this->displayError)

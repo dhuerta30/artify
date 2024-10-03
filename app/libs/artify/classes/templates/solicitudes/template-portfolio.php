@@ -1,4 +1,4 @@
-<div class="pdocrud-table" data-obj-key="<?php echo $objKey; ?>">
+<div class="artify-table" data-obj-key="<?php echo $objKey; ?>">
     <input type="hidden" value="<?php echo $objKey; ?>" class="d-none pdoobj" />
     <?php
     $row_count = 0;
@@ -6,15 +6,15 @@
     if ($data)
         foreach ($data as $rows) {
             if( $row_count % $colPerRow === 0 )
-             echo "<div id=\"pdocrud_portfolio_$row_count\" class=\"row pdocrud-portfolio-row\">";
+             echo "<div id=\"artify_portfolio_$row_count\" class=\"row artify-portfolio-row\">";
             ?>
-                <div class="col-xs-<?php echo $bootstrap_col?> pdocrud-portfolio-col">
+                <div class="col-xs-<?php echo $bootstrap_col?> artify-portfolio-col">
                 <?php
                 foreach ($rows as $col => $row) {
                     if(!in_array($col, $colsRemove)){
                          if (is_array($row)) {
                              ?>
-                            <div class="pdocrud-portfolio-col-data <?php if(isset($row["class"])) echo $row["class"]; ?>"  <?php if(isset($row["style"])) echo $row["style"]; ?>>
+                            <div class="artify-portfolio-col-data <?php if(isset($row["class"])) echo $row["class"]; ?>"  <?php if(isset($row["style"])) echo $row["style"]; ?>>
                             <?php if(isset($row["sum_type"])) { echo $lang[$row["sum_type"]]; $sumrow = true; }?>
                             <?php echo $row["content"]; ?>
                             </div>
@@ -22,7 +22,7 @@
                          }
                          else{
                              ?>    
-                            <div class="pdocrud-portfolio-col-data">
+                            <div class="artify-portfolio-col-data">
                             <?php echo $row; ?>
                             </div>
                             <?php
@@ -32,7 +32,7 @@
                 }
                     if (is_array($btnActions) && count($btnActions)) {
                         ?>
-                       <div  class="pdocrud-row-actions">
+                       <div  class="artify-row-actions">
                         <?php foreach ($btnActions as  $action_name => $action) { 
                             list( $key, $colName, $action_val, $type, $text, $attr, $url) = $action;
                             $columnVal = isset($rows[$colName]) ? $rows[$colName] : "";
@@ -43,7 +43,7 @@
                                 $action_text = $text;
                             
                             ?>
-                           <a class="pdocrud-actions pdocrud-button pdocrud-button-<?php echo $action_name;?>"
+                           <a class="artify-actions artify-button artify-button-<?php echo $action_name;?>"
                              href="<?php echo $url;?>"
                              <?php
                             echo implode(', ', array_map(

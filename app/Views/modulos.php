@@ -12,7 +12,7 @@
 	}
 }
 
-.pdocrud_leftjoin_row_1 {
+.artify_leftjoin_row_1 {
     width: 7.692307692307692%;
 }
 
@@ -57,8 +57,8 @@ label.checkbox-inline {
 		</div>
 	</section>
 </div>
-<div id="pdocrud-ajax-loader">
-    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+<div id="artify-ajax-loader">
+    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
 </div>
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
 <script>
@@ -82,10 +82,10 @@ $(document).on("click", ".generar_token_api", function(){
         url: "<?=$_ENV["BASE_URL"]?>Home/generarToken",
         dataType: 'json',
         beforeSend: function() {
-            $("#pdocrud-ajax-loader").show();
+            $("#artify-ajax-loader").show();
         },
         success: function(data){
-            $("#pdocrud-ajax-loader").hide();
+            $("#artify-ajax-loader").hide();
             let token = data["data"];
             $(".autenticar_jwt_token").val(token);
             Swal.fire({
@@ -98,7 +98,7 @@ $(document).on("click", ".generar_token_api", function(){
     });
 });
 
-$(document).on("pdocrud_after_ajax_action",function(event, obj, data){
+$(document).on("artify_after_ajax_action",function(event, obj, data){
     var dataAction = obj.getAttribute('data-action');
 
     if(dataAction == "add"){
@@ -319,7 +319,7 @@ function refrechMenu(){
 	});
 }
 
-$(document).on("pdocrud_after_submission", function(event, obj, data){
+$(document).on("artify_after_submission", function(event, obj, data){
     let json = JSON.parse(data);
 
     if(json.message){
@@ -336,14 +336,14 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
                     icon: "success",
                     confirmButtonText: "Aceptar"
                 });
-                $('.pdocrud-back').click();
+                $('.artify-back').click();
             }
         });
     }
 });
 
 /*function construirFrase() {
-    $('.pdocrud-left-join').on("change", ".nombre, .tipo_de_campo, .nulo, .indice, .autoincrementable, .longitud", function() {
+    $('.artify-left-join').on("change", ".nombre, .tipo_de_campo, .nulo, .indice, .autoincrementable, .longitud", function() {
         var $row = $(this).closest('tr');
         
         // Obtener valores de los campos de la fila actual

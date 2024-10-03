@@ -1,6 +1,6 @@
 -- Generation time: Mon, 29 Jan 2024 13:07:34 +0100
 -- Host: localhost
--- DB name: pdocrud
+-- DB name: artify
 /*!40030 SET NAMES UTF8 */;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -931,21 +931,21 @@ CREATE TABLE `jm_users` (
   KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `jm_users` VALUES ('1','','test','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://pdocrud.com/script/uploads/1481931260_parte1.jpg'),
-('2','','sdsqDQ','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://pdocrud.com/script/uploads/1482153211_monte-melqonyani-ynt-na88597.1.jpg'),
+INSERT INTO `jm_users` VALUES ('1','','test','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://artify.com/script/uploads/1481931260_parte1.jpg'),
+('2','','sdsqDQ','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://artify.com/script/uploads/1482153211_monte-melqonyani-ynt-na88597.1.jpg'),
 ('3','','azerty','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','1472896582icone_site.png'),
 ('4','','111','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','1473306357a1.jpg'),
 ('5','','jj','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','1473706378aus.jpg'),
 ('6','','jj','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','1473706381aus.jpg'),
 ('7','','dddd','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','1473754742temp.jpg'),
 ('8','','Test','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0',''),
-('9','','Test','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://pdocrud.com/script/uploads/1481663564_Imatge_Breu Presentacio.jpg'),
-('10','','asdasdas','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://localhost:81/pdocrud/script/uploads/1556534188_aVqGmby_700b_v1.jpg'),
+('9','','Test','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://artify.com/script/uploads/1481663564_Imatge_Breu Presentacio.jpg'),
+('10','','asdasdas','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://localhost:81/artify/script/uploads/1556534188_aVqGmby_700b_v1.jpg'),
 ('11','','ssdfsdf','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0',''),
 ('12','','assd','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0',''),
-('13','','assd','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://pdocrud.com/script/uploads/1481797254_zebravett.png'),
-('14','','dsfsdf','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://pdocrud.com/script/uploads/1481890247_Untitled.jpg'),
-('15','','test','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://pdocrud.com/script/uploads/1482006408_2.png'); 
+('13','','assd','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://artify.com/script/uploads/1481797254_zebravett.png'),
+('14','','dsfsdf','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://artify.com/script/uploads/1481890247_Untitled.jpg'),
+('15','','test','','','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','','','0000-00-00 00:00:00','0','','','0','http://artify.com/script/uploads/1482006408_2.png'); 
 
 
 DROP TABLE IF EXISTS `job`;
@@ -1441,14 +1441,14 @@ CREATE TABLE `message` (
   `timestamp` longtext NOT NULL,
   `read_status` int(11) NOT NULL DEFAULT 0 COMMENT '0 unread 1 read',
   `message_date` date NOT NULL,
-  `message_url` varchar(255) NOT NULL DEFAULT 'http://pdocrud.com',
+  `message_url` varchar(255) NOT NULL DEFAULT 'http://artify.com',
   PRIMARY KEY (`message_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-INSERT INTO `message` VALUES ('1','x0001','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.','john','','0','2019-03-01','http://pdocrud.com'),
-('2','x0002','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.','john','','0','2019-03-02','http://pdocrud.com'),
-('3','x0003','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.','john','','0','2019-03-03','http://pdocrud.com'),
-('4','x0004','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.','john','','0','2019-03-04','http://pdocrud.com'); 
+INSERT INTO `message` VALUES ('1','x0001','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.','john','','0','2019-03-01','http://artify.com'),
+('2','x0002','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.','john','','0','2019-03-02','http://artify.com'),
+('3','x0003','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.','john','','0','2019-03-03','http://artify.com'),
+('4','x0004','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.','john','','0','2019-03-04','http://artify.com'); 
 
 
 DROP TABLE IF EXISTS `message_thread`;
@@ -1846,7 +1846,7 @@ CREATE TABLE `products` (
   KEY `productLine` (`product_line`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-INSERT INTO `products` VALUES ('S10_1678','1969 Harley Davidson Ultimate Chopper','Motorcycles','1:10','Min Lin Diecast','This replica features working kickstand, front suspension, gear-shift lever, footbrake lever, drive chain, wheels and steering. All parts are particularly delicate due to their precise scale and require special care and attention.','http://findicons.com/files/icons/590/motorola/128/razr_product_red.png','http://pdocrud.com/demo/pages','7933','48.81','95.70','0','5','2016-12-20','Electronics'),
+INSERT INTO `products` VALUES ('S10_1678','1969 Harley Davidson Ultimate Chopper','Motorcycles','1:10','Min Lin Diecast','This replica features working kickstand, front suspension, gear-shift lever, footbrake lever, drive chain, wheels and steering. All parts are particularly delicate due to their precise scale and require special care and attention.','http://findicons.com/files/icons/590/motorola/128/razr_product_red.png','http://artify.com/demo/pages','7933','48.81','95.70','0','5','2016-12-20','Electronics'),
 ('S10_1949','1952 Alpine Renault 1300','Classic Cars','1:10','Classic Metal Creations','Turnable front wheels; steering function; detailed interior; detailed engine; opening hood; opening trunk; opening doors; and detailed chassis.','http://findicons.com/files/icons/1673/diagram_part_2/96/diagram_v2_17.png','http://demo.digitaldreamstech.com/formdoid/script/documentation/formdoid/','7305','50.00','214.30','0','0','2016-12-20','Fashion'),
 ('S10_2016','1996 Moto Guzzi 1100i','Motorcycles','1:10','Highway 66 Mini Classics','Official Moto Guzzi logos and insignias, saddle bags located on side of motorcycle, detailed engine, working steering, working suspension, two leather seats, luggage rack, dual exhaust pipes, small saddle bag located on handle bars, two-tone paint with chrome accents, superior die-cast detail , rotating wheels , working kick stand, diecast metal with plastic parts and baked enamel finish.','http://findicons.com/files/icons/53/cats/128/drive_product_red_usb.png','https://codecanyon.net/user/ddeveloper/portfolio?ref=ddeveloper','6625','68.99','118.94','0','0','2016-12-20','Electronics'),
 ('S10_4698','2003 Harley-Davidson Eagle Drag Bike','Motorcycles','1:10','Red Start Diecast','Model features, official Harley Davidson logos and insignias, detachable rear wheelie bar, heavy diecast metal with resin parts, authentic multi-color tampo-printed graphics, separate engine drive belts, free-turning front fork, rotating tires and rear racing slick, certificate of authenticity, detailed engine, display stand\r\n, precision diecast replica, baked enamel finish, 1:10 scale model, removable fender, seat and tank cover piece for displaying the superior detail of the v-twin engine','http://findicons.com/files/icons/2738/pretty_office_icon_set_part_9/128/product_documentation.png','http://demo.digitaldreamstech.com/SimplifiedDB/documentation/PDO/pdo-transactions.php','5582','91.02','193.66','0','0','2016-12-20','Electronics'),

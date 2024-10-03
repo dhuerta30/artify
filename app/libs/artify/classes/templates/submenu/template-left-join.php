@@ -1,7 +1,7 @@
 <div class="component addrow float-right">
     <div class="control-group">
         <div class="controls">
-            <a class="pdocrud-actions pdocrud-button pdocrud-button-add-row btn btn-success" href="javascript:;" data-action="add_row">
+            <a class="artify-actions artify-button artify-button-add-row btn btn-success" href="javascript:;" data-action="add_row">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add"]; ?>
             </a>
         </div>
@@ -16,15 +16,15 @@ foreach ($data as $rows) {
     $colCount = 1;
     foreach ($rows as $row) {
         $header .= "<th>" . $row["lable"] . $row["tooltip"] . "</th>";
-        $body .= "<td class='pdocrud_leftjoin_row_$rowCount pdocrud_leftjoin_col_$colCount'>" . $row["element"] . "</td>";
+        $body .= "<td class='artify_leftjoin_row_$rowCount artify_leftjoin_col_$colCount'>" . $row["element"] . "</td>";
         $colCount++;
     }
-    $body .= ' <td class="text-right"><a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> ' . $lang["remove"] . '</a></td>';
+    $body .= ' <td class="text-right"><a href="javascript:;" class="artify-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> ' . $lang["remove"] . '</a></td>';
     $body .= "</tr>";
     $rowCount++;
 }
 ?>
-<table class="table pdocrud-left-join responsive">
+<table class="table artify-left-join responsive">
     <thead>
         <tr>
             <?php if (isset($header)) echo $header; ?>

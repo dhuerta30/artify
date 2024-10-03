@@ -1,17 +1,17 @@
 <?php @session_start();?>
 <?php if (isset($output)) { ?>
     <form <?php echo $form; ?> >
-        <div class="alert alert-danger hidden pdocrud_error" role="alert">
+        <div class="alert alert-danger hidden artify_error" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only"><?php echo $lang["error"]; ?> :</span>
             <span class="error_content"><?php if(isset($_SESSION["error"]) && count($_SESSION["error"])) print_r( $_SESSION["error"]);?></span>
         </div>
-        <div class="alert alert-success hidden pdocrud_message" role="alert">
+        <div class="alert alert-success hidden artify_message" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only"><?php echo $lang["message"]; ?> :</span>
             <span class="message_content"><?php if(isset($_SESSION["message"])) echo $_SESSION["message"];?></span>
         </div>
-        <div class="page-title clearfix card-header pdocrud-table-heading d-none">
+        <div class="page-title clearfix card-header artify-table-heading d-none">
             <h3 class="card-title">
                 <?php if(isset($lang["tableHeading"])){ echo $lang["tableHeading"]; ?>                 
                 <small>

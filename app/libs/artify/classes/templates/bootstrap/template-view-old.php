@@ -1,6 +1,6 @@
-<section class="pdocrud-table-container" data-objkey="<?php echo $objKey; ?>">
-    <div id="pdocrud-table-view table-responsive">
-        <table class="pdocrud-table pdocrud-table-view table table-bordered table-striped table-condensed">            
+<section class="artify-table-container" data-objkey="<?php echo $objKey; ?>">
+    <div id="artify-table-view table-responsive">
+        <table class="artify-table artify-table-view table table-bordered table-striped table-condensed">            
             <tbody>
                 <?php
                 foreach ($data as $row) {
@@ -68,22 +68,22 @@
             <tfoot>
                 <tr>
                     <td>                       
-                        <div class="pdocrud-action-buttons pdocrud-print-hide">
+                        <div class="artify-action-buttons artify-print-hide">
                              <?php if (isset($settings["viewPrintButton"]) && $settings["viewPrintButton"] === true) { ?>
-                            <button data-action="print" class="btn btn-info pdocrud-form-control pdocrud-button pdocrud-view-print" type="button"><?php echo $lang["print"] ?></button>
+                            <button data-action="print" class="btn btn-info artify-form-control artify-button artify-view-print" type="button"><?php echo $lang["print"] ?></button>
                             <?php } ?>
                             <?php if (isset($settings["viewDelButton"]) && $settings["viewDelButton"] === true) { ?>
-                            <button class="btn btn-info pdocrud-form-control pdocrud-button pdocrud-view-delete" data-id="<?php echo $id;?>" data-action="delete" type="button"><?php echo $lang["delete"] ?></button>
+                            <button class="btn btn-info artify-form-control artify-button artify-view-delete" data-id="<?php echo $id;?>" data-action="delete" type="button"><?php echo $lang["delete"] ?></button>
                              <?php } ?>
                         </div>                       
                     </td>
                     <td class="text-right">                        
-                        <div class="pdocrud-action-buttons pdocrud-button-delete">
+                        <div class="artify-action-buttons artify-button-delete">
                             <?php if (isset($settings["viewEditButton"]) && $settings["viewEditButton"] === true) { ?>
-                            <button class="btn btn-info pdocrud-form-control pdocrud-button pdocrud-view-edit" data-id="<?php echo $id;?>" data-action="edit" type="button"><?php echo $lang["edit"] ?></button>
+                            <button class="btn btn-info artify-form-control artify-button artify-view-edit" data-id="<?php echo $id;?>" data-action="edit" type="button"><?php echo $lang["edit"] ?></button>
                             <?php } ?>
                             <?php if (isset($settings["viewBackButton"]) && $settings["viewBackButton"] === true) { ?>
-                             <button data-action="back" data-dismiss="modal" class="btn btn-info pdocrud-form-control pdocrud-button pdocrud-back" type="button"><?php echo $lang["back"] ?></button>
+                             <button data-action="back" data-dismiss="modal" class="btn btn-info artify-form-control artify-button artify-back" type="button"><?php echo $lang["back"] ?></button>
                             <?php } ?>
                         </div>                         
                     </td>

@@ -23,7 +23,7 @@ foreach ($data as $key => $row) {
         <div class="form-group">
             <?php echo $row["lable"]; echo $row["tooltip"]; ?>
             <?php echo $row["element"]; ?>
-            <p class="pdocrud_help_block help-block form-text with-errors"></p>
+            <p class="artify_help_block help-block form-text with-errors"></p>
         </div>
         <?php
     } else {
@@ -43,7 +43,7 @@ foreach ($data as $key => $row) {
         <div class="form-group">
             <?php echo $row["lable"]; echo $row["tooltip"]; ?>
             <?php echo $row["element"]; ?>
-            <p class="pdocrud_help_block help-block form-text with-errors"></p>
+            <p class="artify_help_block help-block form-text with-errors"></p>
         </div>
         <?php
     }

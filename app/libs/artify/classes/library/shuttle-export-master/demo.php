@@ -6,7 +6,7 @@ try {
 		'host' => 'localhost',
 		'username' => 'root',
 		'password' => '',
-		'db_name' => 'pdocrud',
+		'db_name' => 'artify',
 	));
 
 	// dump the database to gzipped file

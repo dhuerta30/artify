@@ -1,41 +1,41 @@
-.pdocrud-table-container .page-title{
+.artify-table-container .page-title{
     background: #34495e;
     color: #f0e68c;
 }
-.pdocrud-table-container .pdocrud-table-heading h3 {
+.artify-table-container .artify-table-heading h3 {
     float: left;
     font-size: 20px;
     margin: 0;
 }
-.pdocrud-button-add{
+.artify-button-add{
     color: #fff !important;
 }
-.pdocrud-button-delete-all{
+.artify-button-delete-all{
     color: #000 !important;
 }
-.pdocrud-table th{
+.artify-table th{
     color: #f0e68c;
 }
-.pdocrud-table{
+.artify-table{
     background: #34495e;
     color: #fff;
 }
-.pdocrud-table tr:nth-child(odd),.pdocrud-table tr:nth-child(even){
+.artify-table tr:nth-child(odd),.artify-table tr:nth-child(even){
     background:#34495e !important;
 }
 
-.pdocrud-export-options ul li a{
+.artify-export-options ul li a{
     background: #34495e;
     color: #f0e68c;
 }
-.pdo-search-cols a,.pdocrud-button-delete-all{
+.pdo-search-cols a,.artify-button-delete-all{
     color: #fff !important;
 }
-.pdocrud-pagination .pagination>li>a{
+.artify-pagination .pagination>li>a{
     color:#000;
     cursor: pointer;
 }
-.pdocrud-pagination .pagination>.active>a{
+.artify-pagination .pagination>.active>a{
     background-color: #34495e;
     border-color: #34495e;
     color: #f0e68c;
@@ -43,20 +43,20 @@
 .panel-body{
         background-color: #C0C0C0;
 }
-.pdocrud-top-buttons p{
+.artify-top-buttons p{
     color: #632f1c;
 }
-.pdocrud-button-view{
+.artify-button-view{
     margin-right: 7px;
 }
-.pdocrud-button-edit{
+.artify-button-edit{
     margin-right: 7px;
 }
-.pdocrud-button-delete{
+.artify-button-delete{
     margin-right: 7px;
 }
 
-a.pdocrud-actions.pdocrud-button.pdocrud-button-export {
+a.artify-actions.artify-button.artify-button-export {
     color: #000;
 }
 .table>thead:first-child>tr:first-child>th{
@@ -64,7 +64,7 @@ a.pdocrud-actions.pdocrud-button.pdocrud-button-export {
     padding: 4px 25px;  
     white-space: nowrap;
 }
-.pdocrud-table-container .table tbody tr td {
+.artify-table-container .table tbody tr td {
     border-right: 1px solid #d5d5d5;
     white-space: nowrap;
     padding: 4px 10px;  
@@ -72,21 +72,21 @@ a.pdocrud-actions.pdocrud-button.pdocrud-button-export {
     text-align: center;
     width: 1552px;
 }
-.pdocrud-table-container table tr.pdocrud-header-row th{
+.artify-table-container table tr.artify-header-row th{
     padding: 4px 10px;    
 }
-.pdocrud-table-container table tr.pdocrud-header-row th {
+.artify-table-container table tr.artify-header-row th {
     border-right: 1px solid #d5d5d5;
 }
 
 /* Hover Buttons */
-.pdocrud-table-container table tr.pdocrud-header-row th {
+.artify-table-container table tr.artify-header-row th {
     padding: 9px 15px;    
 }
-.pdocrud-table tbody tr.pdocrud-data-row {
+.artify-table tbody tr.artify-data-row {
     height: 50px;
 }
-.pdocrud-table tbody tr.pdocrud-data-row:hover td.pdocrud-row-actions {
+.artify-table tbody tr.artify-data-row:hover td.artify-row-actions {
     position: sticky;
     right: 0;
     border-left: none;

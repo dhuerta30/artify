@@ -238,7 +238,7 @@ Class ArtifyTableFormat extends ArtifyHelper {
         if (isset($parameters["length"]) && strlen($val) > $parameters["length"]) {
             $readmoretext = "read more";
             $len = $parameters["length"];
-            $readmore = isset($parameters["showreadmore"]) ? "<a data-length=\"$len\" href=\"javascript:;\" class=\"pdocrud-actions\" data-hide=\"false\" data-action=\"read_more\" data-read-more=\"$val\">" . $readmoretext . "</a>" : "";
+            $readmore = isset($parameters["showreadmore"]) ? "<a data-length=\"$len\" href=\"javascript:;\" class=\"artify-actions\" data-hide=\"false\" data-action=\"read_more\" data-read-more=\"$val\">" . $readmoretext . "</a>" : "";
             return "<p>" . substr($val, 0, $parameters["length"]) . "...." . "</p>" . $readmore;
         }
         return $val;
@@ -247,7 +247,7 @@ Class ArtifyTableFormat extends ArtifyHelper {
     private function formatTableColDialog($val, $parameters = "") {
         $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
         $modal_id = substr(str_shuffle($alphabet), 0, 10);
-        return "<a href=\"javascript:;\" class=\"pdocrud-dialog\" data-toggle=\"modal\" data-target=\"#$modal_id\">
+        return "<a href=\"javascript:;\" class=\"artify-dialog\" data-toggle=\"modal\" data-target=\"#$modal_id\">
             Read More
                 </a>
                 <div class=\"modal fade\" id=\"$modal_id\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">
@@ -335,7 +335,7 @@ Class ArtifyTableFormat extends ArtifyHelper {
                 $field .= " $c=\"$v\" ";
             }
         } else {
-            $field .= " class=\"pdocrud-actions pdocrud-switch\" ";
+            $field .= " class=\"artify-actions artify-switch\" ";
         }
 
         $field .= " data-action=\"$type\"";

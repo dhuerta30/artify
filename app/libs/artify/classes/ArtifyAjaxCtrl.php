@@ -5,17 +5,17 @@ Class ArtifyAjaxCtrl {
     public function handleRequest() {
         $instanceKey = isset($_REQUEST["artify_instance"]) ? filter_var($_REQUEST["artify_instance"], FILTER_SANITIZE_STRING) : null;
         
-        if(!isset($_SESSION["pdocrud_sess"][$instanceKey])){
+        if(!isset($_SESSION["artify_sess"][$instanceKey])){
             die("La sesión ha caducado. Actualice su página para continuar.");
         }
 
-        $artify = @unserialize($_SESSION["pdocrud_sess"][$instanceKey]);
+        $artify = @unserialize($_SESSION["artify_sess"][$instanceKey]);
         if ($artify === false) {
             die("Ocurrió un error. Por favor, inténtelo de nuevo más tarde.");
         }
 
-        $action = isset($_POST["pdocrud_data"]["action"]) ? filter_var($_POST["pdocrud_data"]["action"], FILTER_SANITIZE_STRING) : null;
-        $data = isset($_POST["pdocrud_data"]) ? filter_var_array($_POST["pdocrud_data"], FILTER_SANITIZE_STRING) : [];
+        $action = isset($_POST["artify_data"]["action"]) ? filter_var($_POST["artify_data"]["action"], FILTER_SANITIZE_STRING) : null;
+        $data = isset($_POST["artify_data"]) ? filter_var_array($_POST["artify_data"], FILTER_SANITIZE_STRING) : [];
         $post = $_POST;
         if (isset($_FILES)) {
             $post = array_merge($_FILES, $post);

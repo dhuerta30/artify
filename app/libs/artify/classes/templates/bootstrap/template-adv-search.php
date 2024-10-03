@@ -1,6 +1,6 @@
 <?php if (isset($advSearch)) { ?>
-    <form class="pdocrud-adv-search-form">
-        <div class="pdocrud-adv-search-container" data-objkey="<?php echo $objKey; ?>" >
+    <form class="artify-adv-search-form">
+        <div class="artify-adv-search-container" data-objkey="<?php echo $objKey; ?>" >
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default">
@@ -32,5 +32,5 @@
         </div>
         <input type="hidden" class="pdoobj" value="<?php echo $objKey; ?>" />
     </form>
-    <div class="pdocrud-adv-search-result"></div>
+    <div class="artify-adv-search-result"></div>
 <?php } ?>

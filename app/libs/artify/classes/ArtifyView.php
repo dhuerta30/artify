@@ -26,7 +26,7 @@ class ArtifyView {
                     $options = json_encode($js["options"]);
                     $jsOutput .= "<script type='text/javascript'>";
                     $jsOutput .= "jQuery(document).on('" . $js["action"] . "', function(evt, obj, data) {";
-                    $jsOutput .= "jQuery(obj).parents('.pdocrud-table-container').children().find(\"[firstname='" . $js["applyOnVal"] . "']\")." . $js["functionName"] . "(" . $options . ");";
+                    $jsOutput .= "jQuery(obj).parents('.artify-table-container').children().find(\"[firstname='" . $js["applyOnVal"] . "']\")." . $js["functionName"] . "(" . $options . ");";
                     $jsOutput .= "})";
                     $jsOutput .= "</script>";
                 }
@@ -54,7 +54,7 @@ class ArtifyView {
         $jsOutput = "";
         $jsOutput .= "<script type='text/javascript'>";
         $jsOutput .= "jQuery(document).on('" . $event . "', '" . $eventFields. "', function(evt, obj, data) {";
-        $jsOutput .= "jQuery('table.pdocrud-left-join tbody tr').each(function(){";
+        $jsOutput .= "jQuery('table.artify-left-join tbody tr').each(function(){";
         $jsOutput .= "jQuery(this).find('$element').val($formula);";
         $jsOutput .= "})";
         $jsOutput .= "})";
@@ -75,7 +75,7 @@ class ArtifyView {
     public function outputJsSetting($jsSetting) {
         if (is_array($jsSetting) && count($jsSetting) > 0) {
             $jsOutput = "<script type='text/javascript'>";
-            $jsOutput .= "var pdocrud_js = " . json_encode($jsSetting);
+            $jsOutput .= "var artify_js = " . json_encode($jsSetting);
             $jsOutput .= "</script>";
             return $jsOutput;
         }

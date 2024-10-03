@@ -1,4 +1,4 @@
-.pdocrud-form .form-group input:not([type=submit]),.pdocrud-form .form-group textarea{
+.artify-form .form-group input:not([type=submit]),.artify-form .form-group textarea{
     display: block;
     background: transparent;
     border: none;
@@ -8,14 +8,14 @@
     -webkit-transition: all 0.28s ease;
     transition: all 0.28s ease;
 }
-.pdocrud-form .form-group select {
+.artify-form .form-group select {
     width: 100%;
     background: none;
     border: none;
     box-shadow: none;
     border-bottom: 1px solid #ccc;
 }
-.pdocrud-form .form-group .input-group-addon {
+.artify-form .form-group .input-group-addon {
     background: none;
     border: none;
     box-shadow: none;

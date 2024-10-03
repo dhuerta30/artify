@@ -23,12 +23,12 @@
 		</div>
 	</section>
 </div>
-<div id="pdocrud-ajax-loader">
-    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+<div id="artify-ajax-loader">
+    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
 </div>
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
 <script>
-$(document).on("pdocrud_after_ajax_action", function(event, obj, data){
+$(document).on("artify_after_ajax_action", function(event, obj, data){
 	let action = $(obj).attr('data-action');
 
 	sortable();
@@ -39,10 +39,10 @@ $(document).on("pdocrud_after_ajax_action", function(event, obj, data){
 			url: "<?=$_ENV["BASE_URL"]?>js/icons.json",
 			dataType: "json",
 			beforeSend: function() {
-				$("#pdocrud-ajax-loader").show();
+				$("#artify-ajax-loader").show();
 			},
 			success: function(data){
-				$("#pdocrud-ajax-loader").hide();
+				$("#artify-ajax-loader").hide();
 				$('.icono_menu, .icono_submenu').html(`<option>Seleccionar Icono</option>`);
 
 				// Recorre cada grupo de íconos
@@ -64,10 +64,10 @@ $(document).on("pdocrud_after_ajax_action", function(event, obj, data){
             dataType: "json",
             data: { id: id },
 			beforeSend: function() {
-				$("#pdocrud-ajax-loader").show();
+				$("#artify-ajax-loader").show();
 			},
             success: function(data){
-                $("#pdocrud-ajax-loader").hide();
+                $("#artify-ajax-loader").hide();
 				let icono_menu = data['data'][0]['icono_menu'];
 
                 $('.icono_menu').html(`<option>Seleccionar Icono</option>`);
@@ -90,10 +90,10 @@ $(document).on("pdocrud_after_ajax_action", function(event, obj, data){
             dataType: "json",
             data: { id: id },
 			beforeSend: function() {
-				$("#pdocrud-ajax-loader").show();
+				$("#artify-ajax-loader").show();
 			},
             success: function(data){
-                $("#pdocrud-ajax-loader").hide();
+                $("#artify-ajax-loader").hide();
 				let icono_submenu = data['data'][0]['icono_submenu'];
 
                 $('.icono_submenu').html(`<option>Seleccionar Icono</option>`);
@@ -125,14 +125,14 @@ function refrechMenu(){
 	});
 }
 
-$(document).on("pdocrud_after_submission", function(event, obj, data){
+$(document).on("artify_after_submission", function(event, obj, data){
     let json = JSON.parse(data);
 
     if(json.message){
 
 		refrechMenu();
 
-        $('.pdocrud-back').click();
+        $('.artify-back').click();
 		sortable();
 		sortableSubmenu();
         Swal.fire({
@@ -145,7 +145,7 @@ $(document).on("pdocrud_after_submission", function(event, obj, data){
 });
 
 function sortable(){
-	$(".pdocrud-table tbody").sortable({
+	$(".artify-table tbody").sortable({
 	  handle: '.reordenar_fila',
       helper: function(e, ui) {
         var clone = $(ui).clone();
@@ -160,7 +160,7 @@ function sortable(){
       },
 	  update: function(event, ui){
 		var newOrder = [];
-		$(".pdocrud-table tbody tr").each(function() {
+		$(".artify-table tbody tr").each(function() {
 			newOrder.push($(this).data("id"));
 		});
 
@@ -172,11 +172,11 @@ function sortable(){
 			dataType: "json",
 			data: { order: newOrder },
 			beforeSend: function() {
-				$("#pdocrud-ajax-loader").show();
+				$("#artify-ajax-loader").show();
 			},
 			success: function(response) {
-				$("#pdocrud-ajax-loader").hide();
-				$('#pdocrud_search_btn').click();
+				$("#artify-ajax-loader").hide();
+				$('#artify_search_btn').click();
 				refrechMenu();
 				Swal.fire({
 					title: "Genial!",
@@ -221,11 +221,11 @@ function sortableSubmenu(){
 			dataType: "json",
 			data: { order: newOrderSub },
 			beforeSend: function() {
-				$("#pdocrud-ajax-loader").show();
+				$("#artify-ajax-loader").show();
 			},
 			success: function(response) {
-				$("#pdocrud-ajax-loader").hide();
-				$('#pdocrud_search_btn').click();
+				$("#artify-ajax-loader").hide();
+				$('#artify_search_btn').click();
 				refrechMenu();
 				Swal.fire({
 					title: "Genial!",

@@ -532,19 +532,19 @@ class CrudService
                 ";
             } else if ($Btnaction === 'Guardar') {
                 $controllerContent .= "
-                    \$pdocrud->buttonHide(\"submitBtn\");
+                    \$artify->buttonHide(\"submitBtn\");
                 ";
             } else if ($Btnaction === 'Guardar y regresar') {
                 $controllerContent .= "
-                    \$pdocrud->buttonHide(\"submitBtnSaveBack\");
+                    \$artify->buttonHide(\"submitBtnSaveBack\");
                 ";
             } else if ($Btnaction === 'Regresar') {
                 $controllerContent .= "
-                    \$pdocrud->buttonHide(\"submitBtnBack\");
+                    \$artify->buttonHide(\"submitBtnBack\");
                 ";
             } else if ($Btnaction === 'Cancelar') {
                 $controllerContent .= "
-                    \$pdocrud->buttonHide(\"cancel\");
+                    \$artify->buttonHide(\"cancel\");
                 ";
             } else if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
@@ -661,21 +661,7 @@ class CrudService
             if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
                     public function invoice_pdf(){
-                        \$docufy = new Docufy();
-                        \$docufy->setInvoiceDisplaySettings(\"header\","", false);
-                        \$docufy->setInvoiceDisplaySettings(\"to\","", false);
-                        \$docufy->setInvoiceDisplaySettings(\"from\","", false);
-                        \$docufy->setInvoiceDisplaySettings(\"footer\", "", false);
-                        \$docufy->setInvoiceDisplaySettings(\"payment\", "", false);
-                        \$docufy->setInvoiceDisplaySettings(\"message\", "", false);
-                        \$docufy->setInvoiceDisplaySettings(\"total\", \"subtotal\", false);
-                        \$docufy->setInvoiceDisplaySettings(\"total"\, \"discount\", false);
-                        \$docufy->setInvoiceDisplaySettings(\"total\", \"tax\", false);
-                        \$docufy->setInvoiceDisplaySettings(\"total\", \"shipping\", false);
-                        \$docufy->setInvoiceDisplaySettings(\"total\", \"grandtotal\", false);
-                        \$docufy->setSettings(\"filename\", \"invoice.pdf\");
-				        \$docufy->setSettings(\"output\", \"F\");
-				        echo \$docufy->render();
+                        
                     }
                 ";
             }

@@ -40,8 +40,8 @@
         </div>
     </div>
 </div>
-<div id="pdocrud-ajax-loader">
-    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+<div id="artify-ajax-loader">
+    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
 </div>
 </body>
 </html>

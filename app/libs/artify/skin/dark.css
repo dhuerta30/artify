@@ -1,51 +1,51 @@
-.pdocrud-table-container .page-title{
+.artify-table-container .page-title{
     background: #000;
     color: #fff;
 }
-.pdocrud-table-container .pdocrud-table-heading h3 {
+.artify-table-container .artify-table-heading h3 {
     float: left;
     font-size: 20px;
     margin: 0;
 }
-.pdocrud-table-container a {
+.artify-table-container a {
     color: #000;
 }
-.pdocrud-button-add{
+.artify-button-add{
     color: #fff !important;
 }
-.pdocrud-table th{
+.artify-table th{
     background: #9e0000;
     color: #fff;
 }
-.pdocrud-table tr:nth-child(odd){
+.artify-table tr:nth-child(odd){
     background:#2a3542 !important;
     color: #fff;
 }
-.pdocrud-table tr:nth-child(even){
+.artify-table tr:nth-child(even){
     background:#000 !important;
     color: #fff;
 }
-.pdocrud-table tr:hover{
+.artify-table tr:hover{
     background: #424242 !important;
     color: #fff;
 }
 
-.pdocrud-table i{
+.artify-table i{
     color: #fff;
 }
-.pdocrud-export-options ul li a{
+.artify-export-options ul li a{
     background: #9e0000;
     color: #fff;
 }
-.pdo-search-cols a,.pdocrud-button-delete-all{
+.pdo-search-cols a,.artify-button-delete-all{
     background: #9e0000;
     color: #fff !important;
 }
 
-.pdocrud-pagination .pagination>li>a{
+.artify-pagination .pagination>li>a{
     color:#000;
 }
-.pdocrud-pagination .pagination>.active>a{
+.artify-pagination .pagination>.active>a{
     background-color: #9e0000;
     border-color: #9e0000;
     color: #fff;
@@ -57,10 +57,10 @@
     padding: 15px;
     background-color: #000;
 }
-.pdocrud-top-buttons p{
+.artify-top-buttons p{
     color: #fff;
 }
-.pdocrud-button-view{
+.artify-button-view{
     margin-left: 8px;
     padding: 1px 5px;
     font-size: 12px;
@@ -87,7 +87,7 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
 }
-.pdocrud-button-edit{
+.artify-button-edit{
     margin-left: 8px;
     padding: 1px 5px;
     font-size: 12px;
@@ -114,7 +114,7 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
 }
-.pdocrud-button-delete{
+.artify-button-delete{
     margin-left: 8px;
     padding: 1px 5px;
     font-size: 12px;

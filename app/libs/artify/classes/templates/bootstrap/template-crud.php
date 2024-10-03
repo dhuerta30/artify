@@ -1,13 +1,13 @@
 <?php if (!$settings["back_operation"]) { ?>
-    <section class="pdocrud-table-container" data-objkey="<?php echo $objKey; ?>" <?php if (!empty($modal)) { ?> data-modal="true"<?php } ?> >
+    <section class="artify-table-container" data-objkey="<?php echo $objKey; ?>" <?php if (!empty($modal)) { ?> data-modal="true"<?php } ?> >
     <?php } ?>
     <div class="panel panel-default">
-        <div class="alert alert-success hidden pdocrud_message" role="alert">
+        <div class="alert alert-success hidden artify_message" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only"><?php echo $lang["message"]; ?> :</span>
             <span class="message_content"><?php if(isset($_SESSION["message"])) echo $_SESSION["message"];?></span>
         </div>
-        <div class="page-title clearfix panel-heading pdocrud-table-heading">
+        <div class="page-title clearfix panel-heading artify-table-heading">
             <h3 class="panel-title">
                 <?php echo $lang["tableHeading"]; ?>                 
                 <small>
@@ -16,7 +16,7 @@
             </h3>
             <?php if ($settings["addbtn"]) { ?>
                 <div class="btn-group pull-right">
-                    <a title="<?php echo $lang["add"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-add green" href="javascript:;" data-action="add" data-obj-key="<?php echo $objKey; ?>">
+                    <a title="<?php echo $lang["add"]; ?>" class="artify-actions artify-button artify-button-add green" href="javascript:;" data-action="add" data-obj-key="<?php echo $objKey; ?>">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         <?php echo $lang["add"]; ?>
                     </a>                    
@@ -24,7 +24,7 @@
             <?php } ?>
             <?php if ($settings["savebtn"]) { ?>
                 <div class="btn-group pull-right">
-                    <a title="<?php echo $lang["save"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-save green" href="javascript:;" data-action="save_crud_table_data" data-obj-key="<?php echo $objKey; ?>">
+                    <a title="<?php echo $lang["save"]; ?>" class="artify-actions artify-button artify-button-save green" href="javascript:;" data-action="save_crud_table_data" data-obj-key="<?php echo $objKey; ?>">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                         <?php echo $lang["save"]; ?>
                     </a>                    
@@ -34,7 +34,7 @@
                     list( $key, $text, $attr, $url, $cssClass) = $action;
                      ?>
                     <div class="btn-group pull-right">
-                        <a  title="<?php echo $text; ?>" class="pdocrud-top-actions pdocrud-button <?php echo $cssClass; ?> pdocrud-button-<?php echo $action_name; ?>"  
+                        <a  title="<?php echo $text; ?>" class="artify-top-actions artify-button <?php echo $cssClass; ?> artify-button-<?php echo $action_name; ?>"  
                             href="<?php echo $url;?>"
                             data-action="<?php echo $action_name; ?>" data-obj-key="<?php echo $objKey; ?>">
                             <?php echo $text; ?>
@@ -45,7 +45,7 @@
             ?>
         </div><!-- /.panel-heading -->
 
-        <div class="panel-body pdocrudbox pdocrud-top-buttons">
+        <div class="panel-body artifybox artify-top-buttons">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <?php if ($settings["totalRecordsInfo"]) { ?>
@@ -53,13 +53,13 @@
                     <?php } ?>
                 </div>
                 <div class="col-md-6 col-sm-12">                    
-                    <div class="row pdocrud-search">
+                    <div class="row artify-search">
                         <?php if ($settings["searchbox"]) { ?>
                             <?php echo $searchbox; ?> 
                         <?php } ?>
                         <?php if ($settings["deleteMultipleBtn"]) { ?>
                             <div class="col-md-1 col-sm-1 col-xs-1 no-padding">
-                                <a title="<?php echo $lang["delete_selected"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-delete-all green" href="javascript:;" data-action="delete_selected" data-obj-key="<?php echo $objKey; ?>">
+                                <a title="<?php echo $lang["delete_selected"]; ?>" class="artify-actions artify-button artify-button-delete-all green" href="javascript:;" data-action="delete_selected" data-obj-key="<?php echo $objKey; ?>">
                                     <i class="fa fa-times" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -71,7 +71,7 @@
             <div class="row" style="padding-bottom: 5px">
                 <?php foreach($extraData["dateRangeReport"] as $key => $dateRange ) {?>
                         <div class="col-md-2 col-lg-2">
-                            <a title="<?php echo $dateRange["text"]; ?>" class="pdocrud-actions pdocrud-button btn btn-success pdocrud-date-range-report"
+                            <a title="<?php echo $dateRange["text"]; ?>" class="artify-actions artify-button btn btn-success artify-date-range-report"
                                href="javascript:;" data-action="date_range_report" data-action-id="<?php echo $key;?>" data-obj-key="<?php echo $objKey; ?>">
                                 <?php echo $dateRange["text"];?>
                             </a>
@@ -85,31 +85,31 @@
                     <?php echo $data; ?>
                 </div>
             </div>
-            <div class="row pdocrud-options-files">
+            <div class="row artify-options-files">
                 <div class="col-sm-6 col-md-6 col-xs-12">
-                    <ul class="pdocrud-export-options">
+                    <ul class="artify-export-options">
                         <?php if ($settings["printBtn"]) { ?>
-                            <li><a title="<?php echo $lang["print"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="print" data-objkey="<?php echo $objKey; ?>"><?php echo $lang["print"]; ?></a></li>
+                            <li><a title="<?php echo $lang["print"]; ?>" class="artify-actions artify-button artify-button-export" href="javascript:;" data-action="exporttable" data-export-type="print" data-objkey="<?php echo $objKey; ?>"><?php echo $lang["print"]; ?></a></li>
                         <?php
                         }
                         if ($settings["csvBtn"]) {
                             ?> 
-                            <li><a title="<?php echo $lang["csv"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="csv" data-objkey="<?php echo $objKey; ?>"><?php echo $lang["csv"]; ?></a></li>
+                            <li><a title="<?php echo $lang["csv"]; ?>" class="artify-actions artify-button artify-button-export" href="javascript:;" data-action="exporttable" data-export-type="csv" data-objkey="<?php echo $objKey; ?>"><?php echo $lang["csv"]; ?></a></li>
                         <?php
                         }
                         if ($settings["pdfBtn"]) {
                             ?>
-                            <li><a title="<?php echo $lang["pdf"]; ?>"class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="pdf" data-objkey="<?php echo $objKey; ?>"> <?php echo $lang["pdf"]; ?></a></li>                            
+                            <li><a title="<?php echo $lang["pdf"]; ?>"class="artify-actions artify-button artify-button-export" href="javascript:;" data-action="exporttable" data-export-type="pdf" data-objkey="<?php echo $objKey; ?>"> <?php echo $lang["pdf"]; ?></a></li>                            
                         <?php } 
                         if ($settings["excelBtn"]) { ?>
-                            <li><a title="<?php echo $lang["excel"]; ?>" class="pdocrud-actions pdocrud-button pdocrud-button-export" href="javascript:;" data-action="exporttable" data-export-type="excel" data-objkey="<?php echo $objKey; ?>"><?php echo $lang["excel"]; ?></a></li>
+                            <li><a title="<?php echo $lang["excel"]; ?>" class="artify-actions artify-button artify-button-export" href="javascript:;" data-action="exporttable" data-export-type="excel" data-objkey="<?php echo $objKey; ?>"><?php echo $lang["excel"]; ?></a></li>
                         <?php } ?>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-6 col-xs-12">
                     <div class="pull-right">
                         <?php if ($settings["pagination"]) { ?>
-                            <div class="btn-group pdocrud-pagination">
+                            <div class="btn-group artify-pagination">
                                 <?php echo $pagination; ?>
                             </div>
                         <?php } ?>      

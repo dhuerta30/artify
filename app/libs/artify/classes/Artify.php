@@ -47,7 +47,7 @@ Class Artify {
     private $ArtifyErrorCtrl;
     private $ArtifyHelper;
     private $ArtifyTableFormat;
-    private $pdocrudvalidate;
+    private $artifyvalidate;
     private $objKey;
     private $HTMLContent;
     private $pk;
@@ -196,7 +196,7 @@ Class Artify {
         $this->ArtifyHelper = new ArtifyHelper($this->ArtifyErrorCtrl);
         $this->ArtifyTableFormat = new ArtifyTableFormat($this->ArtifyErrorCtrl);
         $this->multi = $multi;
-        /*if(!$this->pdocrudhelper->verifyPurchaseCode($this->settings)){
+        /*if(!$this->artifyhelper->verifyPurchaseCode($this->settings)){
             die();
         }*/
         if (!empty($template))
@@ -781,12 +781,12 @@ Class Artify {
         }
 
         if (strtolower($fieldType) === "static" && $validation === "data-match")
-            $param = "#pdocrud" . $this->encrypt($param);
+            $param = "#artify" . $this->encrypt($param);
 
         $this->fieldValidation[$fieldName][] = array(
             "$validation" => $param,
             "data-error" => $errorMsg,
-            "data-pdocrud-validation" => true
+            "data-artify-validation" => true
         );
         return $this;
     }
@@ -1759,12 +1759,12 @@ Class Artify {
      * return   array                                         sesion set by user using setSession function
      */
     public function getUserSession($sessionKey = "") {
-        if (isset($_SESSION["pdocrud_user"]) && count($_SESSION["pdocrud_user"])) {
-            if (!empty($sessionKey) && isset($_SESSION["pdocrud_user"][$sessionKey])){
-                return $_SESSION["pdocrud_user"][$sessionKey];
+        if (isset($_SESSION["artify_user"]) && count($_SESSION["artify_user"])) {
+            if (!empty($sessionKey) && isset($_SESSION["artify_user"][$sessionKey])){
+                return $_SESSION["artify_user"][$sessionKey];
             }
             else{
-                return $_SESSION["pdocrud_user"];
+                return $_SESSION["artify_user"];
             }
         } else
             return array();
@@ -1776,13 +1776,13 @@ Class Artify {
      * @return   bool                                          If session is unset successfully, return true else return false
      */
     public function unsetUserSession($sessionKey = "") {
-        if (isset($_SESSION["pdocrud_user"]) && count($_SESSION["pdocrud_user"])) {
-            if (!empty($sessionKey) && isset($_SESSION["pdocrud_user"][$sessionKey])){
-                unset($_SESSION["pdocrud_user"][$sessionKey]);
+        if (isset($_SESSION["artify_user"]) && count($_SESSION["artify_user"])) {
+            if (!empty($sessionKey) && isset($_SESSION["artify_user"][$sessionKey])){
+                unset($_SESSION["artify_user"][$sessionKey]);
                 return true;
             }
             else{
-                unset($_SESSION["pdocrud_user"]);
+                unset($_SESSION["artify_user"]);
                 return true;
             }
         } else
@@ -1796,16 +1796,16 @@ Class Artify {
      * @return   bool                                         return true/false depending upon session set or not
      */
     public function checkUserSession($sessionKey = "", $val = array()) {
-        if (isset($_SESSION["pdocrud_user"]) && count($_SESSION["pdocrud_user"])) {
+        if (isset($_SESSION["artify_user"]) && count($_SESSION["artify_user"])) {
             if (!empty($sessionKey)) {
                 if (is_array($val) && count($val)) {
-                    if (isset($_SESSION["pdocrud_user"][$sessionKey]) && in_array($_SESSION["pdocrud_user"][$sessionKey], $val)) {
+                    if (isset($_SESSION["artify_user"][$sessionKey]) && in_array($_SESSION["artify_user"][$sessionKey], $val)) {
                         return true;
                     } else {
                         return false;
                     }
                 }
-                else if (!isset($_SESSION["pdocrud_user"][$sessionKey])) {
+                else if (!isset($_SESSION["artify_user"][$sessionKey])) {
                     return false;
                 }
             }
@@ -2007,7 +2007,7 @@ Class Artify {
      * Multi Table Relation (nested table) - Editing of related records in other table
      * @param   string   $field1                     field name of object to matched
      * @param   string   $field2                     field name of 2nd object to be matched
-     * @param   PDOCrud  $obj                        2nd table (object)
+     * @param   artify  $obj                        2nd table (object)
      * @param   string   $renderParam                render type, default is CRUD
      * @return   object                               Object of class
      */
@@ -2124,7 +2124,7 @@ Class Artify {
     }
 
     private function initializeJsSettings() {
-        $this->jsSettings["pdocrudurl"] = $this->settings["script_url"];
+        $this->jsSettings["artifyurl"] = $this->settings["script_url"];
         $this->jsSettings["date"]["time_format"] = $this->settings["timeformat"];
         $this->jsSettings["date"]["date_format"] = $this->settings["dateformat"];
         $this->jsSettings["date"]["change_month"] = $this->settings["changeMonth"];
@@ -2176,7 +2176,7 @@ Class Artify {
         if (!isset($this->settings["includeTemplateJS"]) || (isset($this->settings["includeTemplateJS"]) && $this->settings["includeTemplateJS"])) {
             $jsLists["template-script"] = $scripturl . "artify/classes/templates/" . $templateName . "/js/script.js";
         } 
-        $jsLists["pdocrud-script"] = $scripturl . "artify/js/comman.js";
+        $jsLists["artify-script"] = $scripturl . "artify/js/comman.js";
 
         foreach ($jsLists as $jsName => $jsPath) {
             $this->enqueueJs($jsName, $jsPath);
@@ -2341,17 +2341,17 @@ Class Artify {
         );
 
 
-        $this->fieldCssClass($elementName, array("pdocrud_ajax_action_".$elementName));// add css classes
+        $this->fieldCssClass($elementName, array("artify_ajax_action_".$elementName));// add css classes
         $this->fieldAttributes($elementName, array("data-action"=>"ajax_action"));
 
         if(is_array($otherElements) && count($otherElements)){
           foreach($otherElements as $elem){
-            $this->fieldCssClass($elem, array("pdocrud_ajax_action_other_".$elem));// add css classes
+            $this->fieldCssClass($elem, array("artify_ajax_action_other_".$elem));// add css classes
           }
         }
 
         if(trim($returnValueElement)){
-          $this->fieldCssClass($returnValueElement, array("pdocrud_ajax_action_return_".$returnValueElement));
+          $this->fieldCssClass($returnValueElement, array("artify_ajax_action_return_".$returnValueElement));
         }
 
         $this->jsSettings["ajax_actions"][] = array(
@@ -2359,7 +2359,7 @@ Class Artify {
             "event"=> $event,
             "callback_function" => $callbackFunc,
             "return_value_element"=> $returnValueElement,
-            "class"=> "pdocrud_ajax_action_" . $elementName, 
+            "class"=> "artify_ajax_action_" . $elementName, 
             "other_elements"=>$otherElements,
             "callback_params" => $callbackParams
         );
@@ -2399,13 +2399,13 @@ Class Artify {
      */
     public function setLeftJoinJsActions($element, $formula, $event, $eventFields) {
       for($colLoop = 0; $colLoop < 10; $colLoop++){
-        $element = str_replace("col$colLoop",".pdocrud_leftjoin_col_$colLoop input", $element);
-        $formula = str_replace("col$colLoop","parseFloat(jQuery(this).find('.pdocrud_leftjoin_col_$colLoop input').val())", $formula);
+        $element = str_replace("col$colLoop",".artify_leftjoin_col_$colLoop input", $element);
+        $formula = str_replace("col$colLoop","parseFloat(jQuery(this).find('.artify_leftjoin_col_$colLoop input').val())", $formula);
       }
 
       $field = "";
       foreach ($eventFields as $fields => $type) {
-        $field .= str_replace("col",".pdocrud_leftjoin_col_", $fields);
+        $field .= str_replace("col",".artify_leftjoin_col_", $fields);
         $field .= " $type, ";
       }
       $field = rtrim($field, ", ");
@@ -2414,15 +2414,15 @@ Class Artify {
       return $this;
     }
 
-    private function savePDOCrudObj() {
+    private function saveartifyobj() {
         @session_start();
         if (!$this->multi) {
-            if (isset($_SESSION["pdocrud_sess"][$this->objKey]))
-                unset($_SESSION["pdocrud_sess"][$this->objKey]);
+            if (isset($_SESSION["artify_sess"][$this->objKey]))
+                unset($_SESSION["artify_sess"][$this->objKey]);
         }
-        $_SESSION["pdocrud_sess"][$this->objKey] = serialize($this);
-        if (!isset($_SESSION["pdocrud_sess"][$this->objKey]))
-            $_SESSION["pdocrud_sess"][$this->objKey] = serialize($this);
+        $_SESSION["artify_sess"][$this->objKey] = serialize($this);
+        if (!isset($_SESSION["artify_sess"][$this->objKey]))
+            $_SESSION["artify_sess"][$this->objKey] = serialize($this);
     }
 
     public function render($operationType = "CRUD", $data = array()) {
@@ -2437,7 +2437,7 @@ Class Artify {
             $output .= $this->outputHTMLContent(false);
             $output .= $this->outputChartCode(false);
             $this->resetFields();
-            $this->savePDOCrudObj();
+            $this->saveartifyobj();
             return $output;
         }
     }
@@ -2569,12 +2569,12 @@ Class Artify {
 
         if (isset($this->session) && count($this->session) && count($result)) {
             @session_start();
-            unset($_SESSION["pdocrud_user"]);
+            unset($_SESSION["artify_user"]);
             foreach ($this->session as $key => $val) {
                 $value = $val;
                 if (isset($result[0][$val]))
                     $value = $result[0][$val];
-                $_SESSION["pdocrud_user"][$key] = $value;
+                $_SESSION["artify_user"][$key] = $value;
             }
         }
         $result = $this->handleCallback('after_select', $result);
@@ -2851,7 +2851,7 @@ Class Artify {
                 $val = $this->cleanInputData($val);
             }
             
-            if (strpos($field, 'pdocrud') === false) {
+            if (strpos($field, 'artify') === false) {
                 $encryptedFieldName = $field;
                 $fieldName = explode($this->tableFieldJoin, $this->decrypt($field));
                 if (isset($fieldName[0]) && isset($fieldName[1])) {
@@ -2873,8 +2873,8 @@ Class Artify {
                         if (in_array($this->fieldType[$field]["type"], array("IMAGE", "FILE", "FILE_NEW", "FILE_MULTI"))) {
                             $uploadPath = $this->uploadFormImage($val);
                             if (empty($uploadPath)) {
-                                if (isset($values[$encryptedFieldName . "_pdocrud_file_input"]) && !empty($values[$encryptedFieldName . "_pdocrud_file_input"]))
-                                    $uploadPath = $values[$encryptedFieldName . "_pdocrud_file_input"];
+                                if (isset($values[$encryptedFieldName . "_artify_file_input"]) && !empty($values[$encryptedFieldName . "_artify_file_input"]))
+                                    $uploadPath = $values[$encryptedFieldName . "_artify_file_input"];
                             }
                             $data[$tableName][$field] = $uploadPath;
                         }
@@ -2895,7 +2895,7 @@ Class Artify {
                     $data[$tableName][$field] = $val;
                 }
             }
-            else if (strpos($field, 'pdocruddb') !== false) {
+            else if (strpos($field, 'artifydb') !== false) {
                 $field = substr (  $field , 10 ,  strlen($field) - 1);
                 $fieldName = explode($this->tableFieldJoin, $this->decrypt($field));
                 if (isset($fieldName[0]) && isset($fieldName[1])) {
@@ -2914,8 +2914,8 @@ Class Artify {
                         if (in_array($this->fieldType[$field]["type"], array("IMAGE", "FILE", "FILE_NEW", "FILE_MULTI"))) {
                             $uploadPath = $this->uploadFormImage($val);
                             if (empty($uploadPath)) {
-                                if (isset($values[$encryptedFieldName . "_pdocrud_file_input"]) && !empty($values[$encryptedFieldName . "_pdocrud_file_input"]))
-                                    $uploadPath = $values[$encryptedFieldName . "_pdocrud_file_input"];
+                                if (isset($values[$encryptedFieldName . "_artify_file_input"]) && !empty($values[$encryptedFieldName . "_artify_file_input"]))
+                                    $uploadPath = $values[$encryptedFieldName . "_artify_file_input"];
                             }
                             $data[$tableName][$field] = $uploadPath;
                         }
@@ -2924,7 +2924,7 @@ Class Artify {
                         }
                     }
                 }
-            } else if (strpos($field, 'pdocrudcaptcha') !== false) {
+            } else if (strpos($field, 'artifycaptcha') !== false) {
                 $this->checkCaptchaField($val);
             }
         }
@@ -2955,7 +2955,7 @@ Class Artify {
 
     private function validateField($field, $val, $values = array()) {
         if ($this->settings["phpvalidation"]) {
-            $this->pdocrudvalidate = new PDOCrudPHPValidation();
+            $this->artifyvalidate = new artifyPHPValidation();
             if (isset($this->fieldValidation[$field])) {
                 $rules = array();
                 foreach ($this->fieldValidation[$field] as $validations) {
@@ -2965,7 +2965,7 @@ Class Artify {
                     }
                     $rules[] = $validations;
                 }
-                return $this->pdocrudvalidate->validateField($rules, $val, $param);
+                return $this->artifyvalidate->validateField($rules, $val, $param);
             }
         }
         return true;
@@ -2973,7 +2973,7 @@ Class Artify {
 
     private function checkCaptchaField($val) {
         $userInput = $val;
-        if ((int) $_SESSION["pdocrudcaptcha" . $this->formId] != (int) $userInput) {
+        if ((int) $_SESSION["artifycaptcha" . $this->formId] != (int) $userInput) {
             $this->addError($this->getLangData("invalid_captcha"));
             $this->getResponse("invalid_captcha");
             die();
@@ -3090,7 +3090,7 @@ Class Artify {
             unset($this->btnActions["edit"]);
         } 
         else if (isset($this->invoiceDetails) && count($this->invoiceDetails)){          
-          $this->enqueueBtnTopActions("add_invoice",  "Add Invoice", "javascript:;", array("data-action"=>"add_invoice"), "pdocrud-actions");
+          $this->enqueueBtnTopActions("add_invoice",  "Add Invoice", "javascript:;", array("data-action"=>"add_invoice"), "artify-actions");
           $this->btnActions["view"][3] = "view_invoice";
           $this->btnActions["edit"][3] = "edit_invoice";
           $this->btnActions["delete"][3] = "delete_invoice";
@@ -3207,7 +3207,7 @@ Class Artify {
             unset($this->btnActions["edit"]);
         } 
         else if (isset($this->invoiceDetails) && count($this->invoiceDetails)){          
-          $this->enqueueBtnTopActions("add_invoice",  "Add Invoice", "javascript:;", array("data-action"=>"add_invoice"), "pdocrud-actions");
+          $this->enqueueBtnTopActions("add_invoice",  "Add Invoice", "javascript:;", array("data-action"=>"add_invoice"), "artify-actions");
           $this->btnActions["view"][3] = "view_invoice";
           $this->btnActions["edit"][3] = "edit_invoice";
           $this->btnActions["delete"][3] = "delete_invoice";
@@ -3334,7 +3334,7 @@ Class Artify {
     }
     
     private function parseSubQuery($query, $cols){
-      $query = preg_replace_callback('/{[^}]+}/', "PDOCrud::replaceColumns", $query);
+      $query = preg_replace_callback('/{[^}]+}/', "artify::replaceColumns", $query);
       return $query;
     }
 
@@ -3557,12 +3557,12 @@ Class Artify {
                 if (isset($this->advSearchDataSource[$col]))
                     $fieldData = $this->getSearchFieldData($col);
 
-                $advSearch[$loop]["element"] = $this->getHTMLElement($fieldName, $htmlType, $attr, array(), $fieldData, array("pdocrud-adv-search"));
+                $advSearch[$loop]["element"] = $this->getHTMLElement($fieldName, $htmlType, $attr, array(), $fieldData, array("artify-adv-search"));
                 $loop++;
             }
             $advSearch[$loop]["lable"] = "";
             $attr = array("data-action" => "render_adv_search");
-            $advSearch[$loop]["element"] = $this->getAnchorField($this->getLangData("search"), "javascript:;", $attr, array("pdocrud-adv-search-btn"));
+            $advSearch[$loop]["element"] = $this->getAnchorField($this->getLangData("search"), "javascript:;", $attr, array("artify-adv-search-btn"));
         }
         return $advSearch;
     }
@@ -3792,7 +3792,7 @@ Class Artify {
     }
 
     private function ajaxAction($data){
-        $callback = isset($data["post"]["pdocrud_data"]["function"]) ? $data["post"]["pdocrud_data"]["function"] : "";
+        $callback = isset($data["post"]["artify_data"]["function"]) ? $data["post"]["artify_data"]["function"] : "";
         if (is_callable($callback))
               return call_user_func($callback, $data, $this);
       }
@@ -3920,10 +3920,10 @@ Class Artify {
         $output .= "<div class='row'>";
         $output .= "<div class='col-md-12 text-center'>";
         if (isset($this->settings["viewBackButton"]) && $this->settings["viewBackButton"] === true) {
-                $output .= '<button data-action="back" data-dismiss="modal" class="btn btn-info pdocrud-form-control pdocrud-button pdocrud-back" type="button">' . $this->langData["back"] . '</button>';
+                $output .= '<button data-action="back" data-dismiss="modal" class="btn btn-info artify-form-control artify-button artify-back" type="button">' . $this->langData["back"] . '</button>';
         }
         if (isset($this->settings["closeButton"]) && $this->settings["closeButton"] === true) {
-                $output .= '<button data-action="close" data-dismiss="modal" class="btn btn-info pdocrud-form-control pdocrud-button pdocrud-close" type="button">' . $this->langData["close"] . '</button>';
+                $output .= '<button data-action="close" data-dismiss="modal" class="btn btn-info artify-form-control artify-button artify-close" type="button">' . $this->langData["close"] . '</button>';
         }
         $output .= "</div>";
         $output .= "</div>";
@@ -4061,7 +4061,7 @@ Class Artify {
     private function getTabStepData($data, $viewData) {
         $stepHeader = "";
         $stepBody = "";
-        $stepstart = "<div id=\"tabs\" class=\"pdocrud_tabs\"><ul class=\"stepy-titles clearfix\">";
+        $stepstart = "<div id=\"tabs\" class=\"artify_tabs\"><ul class=\"stepy-titles clearfix\">";
         $stepend = "</ul>";
         $stepbodystart = "<div>";
         $stepbodyend = "</div>";
@@ -4267,7 +4267,7 @@ Class Artify {
 
     private function getFormTag($inlineform = false) {
         $form = "data-toggle=\"validator\" data-disable=\"false\"  method=\"post\" enctype=\"multipart/form-data\" novalidate=\"true\" ";
-        $class = "pdocrud-form";
+        $class = "artify-form";
 
         if (!isset($this->formId))
             $this->formId = $this->getRandomKey(false);
@@ -4315,11 +4315,11 @@ Class Artify {
                 }
 
                 if ($fieldExtra === "static")
-                    $encryptedFieldName = "pdocrud" . $this->encrypt($fieldName);
+                    $encryptedFieldName = "artify" . $this->encrypt($fieldName);
                 else if ($fieldExtra === "captcha")
-                    $encryptedFieldName = "pdocrudcaptcha" . $this->encrypt($fieldName);
+                    $encryptedFieldName = "artifycaptcha" . $this->encrypt($fieldName);
                 else if ($fieldExtra === "db"){
-                    $encryptedFieldName = "pdocruddb_" .$this->encrypt($table . $this->tableFieldJoin . $field["DbField"]);
+                    $encryptedFieldName = "artifydb_" .$this->encrypt($table . $this->tableFieldJoin . $field["DbField"]);
                 }
                 else
                     $encryptedFieldName = $this->encrypt($table . $this->tableFieldJoin . $fieldName);
@@ -4605,7 +4605,7 @@ Class Artify {
                 $fieldName = trim(str_replace(" ", "_", $key));
                 $data = array();
                 $attr = array("data-key" => $key, "data-action" => "filter");
-                $fieldClass = array("pdocrud-filter");
+                $fieldClass = array("artify-filter");
 
                 if ($filter["filterType"] === "dropdown")
                     $filterControl = $this->getSelectField($fieldName, $attr, $data, $fieldData, $fieldClass);
@@ -4648,7 +4648,7 @@ Class Artify {
                 }
                 $fieldName = $this->encrypt($filter["tableName"] . $this->tableFieldJoin . $filter["fieldName"]);
                 if (is_array($fieldData))
-                    $filterBox[] = $this->getSelectField($fieldName, array("data-unique-id" => $key, "data-action" => "filter"), $data, $fieldData, array("pdocrud-filter"));
+                    $filterBox[] = $this->getSelectField($fieldName, array("data-unique-id" => $key, "data-action" => "filter"), $data, $fieldData, array("artify-filter"));
             }
         }
         return $filterBox;
@@ -4864,7 +4864,7 @@ Class Artify {
                 return $this->getSelectField($fieldName, $attr, $data, $fieldData);
             case "DATE":
                 /*$fieldClass = array_merge($fieldClass, array(
-                    "pdocrud-date"
+                    "artify-date"
                 ));
                 $attr = array_merge($attr, array(
                     "data-type" => "date"
@@ -4872,7 +4872,7 @@ Class Artify {
                 return $this->getInputField($fieldName, $attr, $data, "date", $fieldClass, $fieldId);
             case "DATETIME":
                 /*$fieldClass = array_merge($fieldClass, array(
-                    "pdocrud-datetime"
+                    "artify-datetime"
                 ));
                 $attr = array_merge($attr, array(
                     "data-type" => "datetime"
@@ -4880,7 +4880,7 @@ Class Artify {
                 return $this->getInputField($fieldName, $attr, $data, "datetime-local", $fieldClass, $fieldId);
             case "TIME":
                 /*$fieldClass = array_merge($fieldClass, array(
-                    "pdocrud-time"
+                    "artify-time"
                 ));
                 $attr = array_merge($attr, array(
                     "data-type" => "time"
@@ -4891,12 +4891,12 @@ Class Artify {
                 return $slider . $this->getInputField($fieldName, $attr, $data, "hidden", $fieldClass);
             case "SPINNER":
                 $fieldClass = array_merge($fieldClass, array(
-                    "pdocrud-spinner"
+                    "artify-spinner"
                 ));
                 return $this->getInputField($fieldName, $attr, $data, "text", $fieldClass); 
             case "TAGS":
                 $fieldClass = array_merge($fieldClass, array(
-                    "pdocrud-input-tags"
+                    "artify-input-tags"
                 ));
                 return $this->getInputField($fieldName, $attr, $data, "text", $fieldClass);
             case "VOID": return $fieldName;
@@ -4920,12 +4920,12 @@ Class Artify {
                 "data-action" => "export",
                 "data-export-type" => $this->formExport
             );
-            $hiddenExportTypeData = $this->getInputField("pdocrud_data[exportType]", $attr, array(
+            $hiddenExportTypeData = $this->getInputField("artify_data[exportType]", $attr, array(
                 $this->formExport
                     ), "hidden", array(
-                "pdocrud-hidden-data",
-                "pdocrudobj",
-                "pdocrud_export_type"
+                "artify-hidden-data",
+                "artifyobj",
+                "artify_export_type"
             ));
         } else {
             $attr = array(
@@ -4933,8 +4933,8 @@ Class Artify {
             );
         }
 
-        $fieldName = "pdocrud_submit_" . $this->objKey;
-        $cancelFieldName = "pdocrud_cancel_" . $this->objKey;
+        $fieldName = "artify_submit_" . $this->objKey;
+        $cancelFieldName = "artify_cancel_" . $this->objKey;
         $submitBtn = $this->getSubmitField($fieldName, $attr, array(
             $this->getLangData("save")
                 ), array(
@@ -4945,7 +4945,7 @@ Class Artify {
             $cancelBtn = $this->getButtonField($cancelFieldName, array(), array(
                 $this->getLangData("cancel")
                     ), array(
-                "pdocrud-cancel-btn"
+                "artify-cancel-btn"
             ));
 
         if ($action === "insert") {
@@ -4967,17 +4967,17 @@ Class Artify {
                 $submitBtnBack = $this->getButtonField($fieldName . "_back", $attrBack, array(
                     $this->getLangData("back")
                         ), array(
-                    "pdocrud-back"
+                    "artify-back"
                 ));
             }
             if (isset($this->settings["saveCloseButton"]) && $this->settings["saveCloseButton"]) {
-                $saveClosefieldName = "pdocrud_submit_close_" . $this->objKey;
+                $saveClosefieldName = "artify_submit_close_" . $this->objKey;
                 $submitBtnSaveClose = $this->getSubmitField($saveClosefieldName, array(
                     "data-action" => "insert_close"
                         ), array(
                     $this->getLangData("save_and_close")
                         ), array(
-                    "pdocrud-save-close-btn"
+                    "artify-save-close-btn"
                 ));
             }
         } else if ($action === "update") {
@@ -4999,17 +4999,17 @@ Class Artify {
                 $submitBtnBack = $this->getButtonField($fieldName . "_back", $attrBack, array(
                     $this->getLangData("back")
                         ), array(
-                    "pdocrud-back"
+                    "artify-back"
                 ));
             }
             if (isset($this->settings["saveCloseButton"]) && $this->settings["saveCloseButton"]) {
-                $saveClosefieldName = "pdocrud_submit_close_" . $this->objKey;
+                $saveClosefieldName = "artify_submit_close_" . $this->objKey;
                 $submitBtnSaveClose = $this->getSubmitField($saveClosefieldName, array(
                     "data-action" => "update_close"
                         ), array(
                     $this->getLangData("save_and_close")
                         ), array(
-                    "pdocrud-save-close-btn"
+                    "artify-save-close-btn"
                 ));
             }
         } else if ($action === "inline_edit") {
@@ -5027,7 +5027,7 @@ Class Artify {
             $submitBtnBack = $this->getButtonField($fieldName . "_back", $attrBack, array(
                 $this->getLangData("back")
                     ), array(
-                "pdocrud-back"
+                "artify-back"
             ));
             $submitBtn = "";
             $cancelBtn = "";
@@ -5046,16 +5046,16 @@ Class Artify {
         $hiddenInstance = $this->getInputField("artify_instance", array(), array(
             $this->objKey
                 ), "hidden", array(
-            "pdocrud-hidden-data",
-            "pdocrudobj",
+            "artify-hidden-data",
+            "artifyobj",
             "pdoobj"
         ));
-        $hiddenActionData = $this->getInputField("pdocrud_data[action]", $attr, array(
+        $hiddenActionData = $this->getInputField("artify_data[action]", $attr, array(
             $action
                 ), "hidden", array(
-            "pdocrud-hidden-data",
-            "pdocrudobj",
-            "pdocrud_action_type",
+            "artify-hidden-data",
+            "artifyobj",
+            "artify_action_type",
         ));
 
         if (isset($this->hideButton["submitBtn"]))
@@ -5174,7 +5174,7 @@ Class Artify {
         $output = "";
         $stepHeader = "";
         $stepBody = "";
-        $stepstart = "<div id=\"tabs\" class=\"pdocrud_tabs\"><ul class=\"stepy-titles clearfix\">";
+        $stepstart = "<div id=\"tabs\" class=\"artify_tabs\"><ul class=\"stepy-titles clearfix\">";
         $stepend = "</ul>";
         $tabTitle = $this->tableName;
         if (isset($this->multiTableRelationDisplay["title"]) && !empty($this->multiTableRelationDisplay["title"]))
@@ -5215,7 +5215,7 @@ Class Artify {
 
     private function getSidebarData($data, $result) {
         $sidebar = $this->getSidebar($result[0]);
-        $data = $this->getDiv("pdocrud-main-content", array("class" => "col-sm-9 pdocrud-main-bar"), $data);
+        $data = $this->getDiv("artify-main-content", array("class" => "col-sm-9 artify-main-bar"), $data);
         if ($this->sidebar["position"] === "left")
             $output = $sidebar . $data;
         else
@@ -5487,7 +5487,7 @@ Class Artify {
 
     private function getDependentData($data) {
         $queryfy = $this->getQueryfyObj();
-        $dependent = explode($this->tableFieldJoin, $this->decrypt($data["pdocrud_dependent_name"]));
+        $dependent = explode($this->tableFieldJoin, $this->decrypt($data["artify_dependent_name"]));
         $dependentFieldName = $dependent[1];
         if (isset($this->fieldDataBind[$dependentFieldName])) {
             $queryfy->columns = array(
@@ -5496,7 +5496,7 @@ Class Artify {
             );
             $tablename = $this->fieldDataBind[$dependentFieldName]["tableName"];
             $dependOnFieldName = $this->fieldDepend[$dependentFieldName]["colName"];
-            $queryfy->where($dependOnFieldName, $data["pdocrud_field_val"]);
+            $queryfy->where($dependOnFieldName, $data["artify_field_val"]);
             $fieldData = $queryfy->select($tablename);
         } else if (isset($this->advSearchDataSource[$dependentFieldName])) {
             $queryfy->columns = array(
@@ -5505,10 +5505,10 @@ Class Artify {
             );
             $tablename = $this->advSearchDataSource[$dependentFieldName]["dataSource"];
             $dependOnFieldName = $this->fieldDepend[$dependentFieldName]["colName"];
-            $queryfy->where($dependOnFieldName, $data["pdocrud_field_val"]);
+            $queryfy->where($dependOnFieldName, $data["artify_field_val"]);
             $fieldData = $queryfy->select($tablename);
         }
-        echo $this->getHTMLElement($data["pdocrud_dependent_name"], "SELECT", array(), array(), $fieldData);
+        echo $this->getHTMLElement($data["artify_dependent_name"], "SELECT", array(), array(), $fieldData);
     }
 
     public function getQueryfyObj() {
@@ -5654,7 +5654,7 @@ Class Artify {
     public function getInputField($fieldName, $attr = array(), $data = array(), $type = "text", $fieldClass = array(), $fieldId = "") {
         $class = implode(" ", $fieldClass);
         $id = empty($fieldId) ?$fieldName: $fieldId;
-        $field = "<input type=\"$type\" class=\"form-control pdocrud-form-control pdocrud-$type $class\" id=\"$id\" name=\"$fieldName\" ";
+        $field = "<input type=\"$type\" class=\"form-control artify-form-control artify-$type $class\" id=\"$id\" name=\"$fieldName\" ";
         if (is_array($attr) && count($attr)) {
             foreach ($attr as $c => $v) {
                 $field .= " $c=\"$v\" ";
@@ -5671,7 +5671,7 @@ Class Artify {
     public function getSubmitField($fieldName, $attr = array(), $data = array(), $fieldClass = array()) {
         $class = implode(" ", $fieldClass);
         $formId = $this->formId;
-        $field = "<input data-form-id=\"$formId\" type=\"submit\" class=\"btn btn-primary pdocrud-form-control pdocrud-submit mb-3 $class\" id=\"$fieldName\" name=\"$fieldName\" ";
+        $field = "<input data-form-id=\"$formId\" type=\"submit\" class=\"btn btn-primary artify-form-control artify-submit mb-3 $class\" id=\"$fieldName\" name=\"$fieldName\" ";
         if (is_array($attr) && count($attr)) {
             foreach ($attr as $c => $v) {
                 $field .= " $c=\"$v\" ";
@@ -5688,7 +5688,7 @@ Class Artify {
     public function getButtonField($fieldName, $attr, $data = array(), $fieldClass = array()) {
         $class = implode(" ", $fieldClass);
         $formId = $this->formId;
-        $field = "<button data-form-id=\"$formId\" type=\"button\" class=\"btn btn-danger pdocrud-form-control pdocrud-button mb-3 $class\" id=\"$fieldName\" name=\"$fieldName\" ";
+        $field = "<button data-form-id=\"$formId\" type=\"button\" class=\"btn btn-danger artify-form-control artify-button mb-3 $class\" id=\"$fieldName\" name=\"$fieldName\" ";
         $buttonText = $this->langData["texto_boton"];
 
         if (is_array($attr) && count($attr)) {
@@ -5706,7 +5706,7 @@ Class Artify {
 
     public function getGoogleMap($fieldName, $attr, $data, $fieldClass = array()) {
         $class = implode(" ", $fieldClass);
-        $field = "<input type=\"text\" class=\"form-control pdocrud-form-control pdocrud-text $class\" id=\"$fieldName\" name=\"$fieldName\" ";
+        $field = "<input type=\"text\" class=\"form-control artify-form-control artify-text $class\" id=\"$fieldName\" name=\"$fieldName\" ";
 
         if (is_array($attr) && count($attr)) {
             foreach ($attr as $c => $v) {
@@ -5718,14 +5718,14 @@ Class Artify {
         }
         $field .= " />";
         $rand = $this->getRandomKey();
-        $field .= "<div id='pdocrud_gmap_$rand' class='pdocrud-gmap'></div>";
+        $field .= "<div id='artify_gmap_$rand' class='artify-gmap'></div>";
 
         return $field;
     }
 
     public function getTextareaField($fieldName, $attr, $data, $fieldClass = array()) {
         $class = implode(" ", $fieldClass);
-        $field = "<textarea class=\"form-control pdocrud-form-control  pdocrud-textarea $class\" id=\"$fieldName\" name=\"$fieldName\" ";
+        $field = "<textarea class=\"form-control artify-form-control  artify-textarea $class\" id=\"$fieldName\" name=\"$fieldName\" ";
 
         if (is_array($attr) && count($attr)) {
             foreach ($attr as $c => $v) {
@@ -5742,7 +5742,7 @@ Class Artify {
 
     public function getSelectField($fieldName, $attr, $data, $fieldData, $fieldClass = array()) {
         $class = implode(" ", $fieldClass);
-        $field = "<select class=\"form-control pdocrud-form-control pdocrud-select $class\" id=\"$fieldName\" name=\"$fieldName\"";
+        $field = "<select class=\"form-control artify-form-control artify-select $class\" id=\"$fieldName\" name=\"$fieldName\"";
         $multi = false;
         if (is_array($attr) && count($attr)) {
             foreach ($attr as $c => $v) {
@@ -5775,12 +5775,12 @@ Class Artify {
 
     public function getRadioButtonField4($fieldName, $attr, $data, $fieldData, $fieldClass = array()) {
         $class = implode(" ", $fieldClass);
-        $field = "<div class=\"radio pdocrud-radio-group\">";
+        $field = "<div class=\"radio artify-radio-group\">";
         if (is_array($fieldData) && count($fieldData)) {
             $loopFields = 0;
             foreach ($fieldData as $fieldsval) {
                 $field .= "<div class=\"form-check form-radio-inline\">";
-                $field .= "<input type=\"radio\" class=\"form-check-input pdocrud-form-control pdocrud-radio $class\" id=\"$fieldName.$loopFields\" name=\"$fieldName\" ";
+                $field .= "<input type=\"radio\" class=\"form-check-input artify-form-control artify-radio $class\" id=\"$fieldName.$loopFields\" name=\"$fieldName\" ";
 
                 if (is_array($attr) && count($attr)) {
                     foreach ($attr as $c => $v) {
@@ -5811,12 +5811,12 @@ Class Artify {
           return $this->getRadioButtonField4($fieldName, $attr, $data, $fieldData, $fieldClass);
 
         $class = implode(" ", $fieldClass);
-        $field = "<div class=\"radio pdocrud-radio-group\">";
+        $field = "<div class=\"radio artify-radio-group\">";
         if (is_array($fieldData) && count($fieldData)) {
             $loopFields = 0;
             foreach ($fieldData as $fieldsval) {
                 $field .= "<label class=\"radio-inline\">";
-                $field .= "<input type=\"radio\" class=\"pdocrud-form-control pdocrud-radio $class\" id=\"$fieldName.$loopFields\" name=\"$fieldName\" ";
+                $field .= "<input type=\"radio\" class=\"artify-form-control artify-radio $class\" id=\"$fieldName.$loopFields\" name=\"$fieldName\" ";
 
                 if (is_array($attr) && count($attr)) {
                     foreach ($attr as $c => $v) {
@@ -5842,12 +5842,12 @@ Class Artify {
 
     public function getCheckboxField4($fieldName, $attr, $data, $fieldData, $fieldClass = array()) {
         $class = implode(" ", $fieldClass);
-        $field = "<div class=\"checkbox pdocrud-checkbox-group\">";
+        $field = "<div class=\"checkbox artify-checkbox-group\">";
         if (is_array($fieldData) && count($fieldData)) {
             $loopFields = 0;
             foreach ($fieldData as $fieldsval) {
                 $field .= "<div class=\"form-check form-check-inline\">";
-                $field .= "<input type=\"checkbox\" class=\"form-check-input pdocrud-form-control pdocrud-checkbox $class\" id=\"$fieldName.$loopFields\" name=\"$fieldName\" ";
+                $field .= "<input type=\"checkbox\" class=\"form-check-input artify-form-control artify-checkbox $class\" id=\"$fieldName.$loopFields\" name=\"$fieldName\" ";
 
                 if (is_array($attr) && count($attr)) {
                     foreach ($attr as $c => $v) {
@@ -5883,12 +5883,12 @@ Class Artify {
           return $this->getCheckboxField4($fieldName, $attr, $data, $fieldData, $fieldClass);
 
         $class = implode(" ", $fieldClass);
-        $field = "<div class=\"checkbox pdocrud-checkbox-group\">";
+        $field = "<div class=\"checkbox artify-checkbox-group\">";
         if (is_array($fieldData) && count($fieldData)) {
             $loopFields = 0;
             foreach ($fieldData as $fieldsval) {
                 $field .= "<label class=\"checkbox-inline\">";
-                $field .= "<input type=\"checkbox\" class=\"pdocrud-form-control pdocrud-checkbox $class\" id=\"$fieldName.$loopFields\" name=\"$fieldName\" ";
+                $field .= "<input type=\"checkbox\" class=\"artify-form-control artify-checkbox $class\" id=\"$fieldName.$loopFields\" name=\"$fieldName\" ";
 
                 if (is_array($attr) && count($attr)) {
                     foreach ($attr as $c => $v) {
@@ -5970,7 +5970,7 @@ Class Artify {
 
     public function getSpanField($spanText, $spanClass = array()) {
         $class = implode(" ", $spanClass);
-        $class .= " pdocrud-span";
+        $class .= " artify-span";
         $span = "<span class=\"$class\">$spanText</span>";
         return $span;
     }
@@ -6000,25 +6000,25 @@ Class Artify {
     }
 
     public function getDescField($helpMsg = "") {
-        $desc = "<p class=\"pdocrud_help_block help-block form-text with-errors\">$helpMsg</p>";
+        $desc = "<p class=\"artify_help_block help-block form-text with-errors\">$helpMsg</p>";
         return $desc;
     }
 
     public function getAjaxLoaderImage($imagepath) {
-        $ajaximg = "<div id=\"pdocrud-ajax-loader\"><img src=\"$imagepath\" class=\"pdocrud-img-ajax-loader\"/></div>";
+        $ajaximg = "<div id=\"artify-ajax-loader\"><img src=\"$imagepath\" class=\"artify-img-ajax-loader\"/></div>";
         return $ajaximg;
     }
 
     public function getSlider($attr = array(), $fieldClass = array()) {
         $class = implode(" ", $fieldClass);
-        $field = "<div class=\"pdocrud-slider $class\"";
+        $field = "<div class=\"artify-slider $class\"";
         if (is_array($attr) && count($attr)) {
             foreach ($attr as $c => $v) {
                 $field .= " $c=\"$v\" ";
             }
         }
 
-        $field .= " ><div id=\"pdocrud-custom-handle\" class=\"ui-slider-handle\"></div></div>";
+        $field .= " ><div id=\"artify-custom-handle\" class=\"ui-slider-handle\"></div></div>";
         return $field;
     }
 
@@ -6052,8 +6052,8 @@ Class Artify {
     }
 
     public function getFileUploadField($fieldName, $attr, $data, $fieldData, $fieldClass = array()) {
-        $classAdd = array_merge($fieldClass, array("pdocrud_add_file"));
-        $classRemove = array_merge($fieldClass, array("pdocrud_remove_file"));
+        $classAdd = array_merge($fieldClass, array("artify_add_file"));
+        $classRemove = array_merge($fieldClass, array("artify_remove_file"));
         $textAdd = "<i class=\"fa fa-upload\" aria-hidden=\"true\"></i> " . $this->getLangData("add");
         $textRemove = "<i class=\"fa fa-times\" aria-hidden=\"true\"></i> " . $this->getLangData("remove");
         $fileAddBtn = $this->getButtonField($fieldName, $attr, array($textAdd), $classAdd);
@@ -6063,7 +6063,7 @@ Class Artify {
         $displayImage = "";
         if (isset($data[0]) && isset($this->settings["showUploadedImage"]) && $this->settings["showUploadedImage"]) {
             $imageAttr = array("title" => $this->getLangData("image_uploaded"));
-            $imageClass = array("pdocrud-image-upload-display");
+            $imageClass = array("artify-image-upload-display");
             $allowedFileTypes = array("jpg", "png", "gif");
             if (is_array($allowedFileTypes) && count($allowedFileTypes) > 0) {
                 $fileExtensionLowerCase = strtolower($this->getFileExtension($data[0]));
@@ -6073,10 +6073,10 @@ Class Artify {
             }
         }
         $fileControl = $this->getInputField($fieldName, $fileAttr, $data, "file", $fieldClass);
-        $fileControlDiv = $this->getDiv("", array("class" => "pdocrud-filecontrol-div"), $fileControl);
+        $fileControlDiv = $this->getDiv("", array("class" => "artify-filecontrol-div"), $fileControl);
         $attr = array_merge($attr, array("readonly" => "true"));
-        $fieldClass = array_merge($fieldClass, array("pdocrud-file-input-control"));
-        $inputControl = $this->getInputField($fieldName . "_pdocrud_file_input", $attr, $data, "text", $fieldClass);
+        $fieldClass = array_merge($fieldClass, array("artify-file-input-control"));
+        $inputControl = $this->getInputField($fieldName . "_artify_file_input", $attr, $data, "text", $fieldClass);
         $fileUpload = $displayImage . $inputControl . $fileAddBtn . $fileRemoveBtn . $fileControlDiv;
         return $fileUpload;
     }
@@ -6085,7 +6085,7 @@ Class Artify {
         $searchContent = "";
         $searchContent2 = "";
         $search = "<div class=\"col-md-5 col-sm-12 col-xs-12 pdo-search-cols form-group\">";
-        $search .= "<select class=\"form-control pdocrud-form-control pdocrud_search_cols\">";
+        $search .= "<select class=\"form-control artify-form-control artify_search_cols\">";
         if(isset($this->settings["showAllSearch"]) && $this->settings["showAllSearch"])
         $search .= "<option value=\"all\">" . $this->langData["all"] . "</option>";
         if (is_array($columns) && count($columns)) {
@@ -6106,22 +6106,22 @@ Class Artify {
             $searchContent = array(
                 $data["search_text"]
             );
-        $search .= $this->getInputField("pdocrud_search_box", array(
+        $search .= $this->getInputField("artify_search_box", array(
             "placeholder" => $this->getLangData("search"),
                 ), $searchContent, "text", array(
-            "pdocrud_search_input"
+            "artify_search_input"
         ));
-        $searchTextToClass = "pdocrud-hide";
+        $searchTextToClass = "artify-hide";
         if (isset($data["search_text2"])) {
             $searchContent2 = array(
                 $data["search_text2"]
             );
             $searchTextToClass = "";
         }
-        $search .= $this->getInputField("pdocrud_search_box_to", array(
+        $search .= $this->getInputField("artify_search_box_to", array(
             "placeholder" => $this->getLangData("to"),
                 ), $searchContent2, "text", array(
-            "pdocrud_search_input", $searchTextToClass
+            "artify_search_input", $searchTextToClass
         ));
 
         $class = "";
@@ -6130,7 +6130,7 @@ Class Artify {
 
         $search .= "</div>";
         $search .= "<div class=\"col-md-1 col-2 col-xs-1 pdo-search-cols no-padding\">";
-        $search .= "<a href=\"javascript:;\" id=\"pdocrud_search_btn\" name=\"pdocrud_search_btn\" class=\"pdocrud-form-control btn btn-primary pdocrud-actions $class\" data-action=\"search\" data-rendertype=\"CRUD\">";
+        $search .= "<a href=\"javascript:;\" id=\"artify_search_btn\" name=\"artify_search_btn\" class=\"artify-form-control btn btn-primary artify-actions $class\" data-action=\"search\" data-rendertype=\"CRUD\">";
         $search .= $this->langData["go"];
         $search .= "</a>";
         $search .= "</div>";
@@ -6141,7 +6141,7 @@ Class Artify {
         $searchContent = "";
         $searchContent2 = "";
         $search = "<div class=\"col-md-5 col-sm-12 col-xs-12 pdo-search-cols form-group\">";
-        $search .= "<select class=\"form-control pdocrud-form-control pdocrud_search_cols\">";
+        $search .= "<select class=\"form-control artify-form-control artify_search_cols\">";
         if(isset($this->settings["showAllSearch"]) && $this->settings["showAllSearch"])
             $search .= "<option value=\"all\">" . $this->langData["all"] . "</option>";
         if (is_array($columns) && count($columns)) {
@@ -6162,22 +6162,22 @@ Class Artify {
             $searchContent = array(
                 $data["search_text"]
             );
-        $search .= $this->getInputField("pdocrud_search_box", array(
+        $search .= $this->getInputField("artify_search_box", array(
             "placeholder" => $this->getLangData("search"),
         ), $searchContent, "text", array(
-            "pdocrud_search_input"
+            "artify_search_input"
         ));
-        $searchTextToClass = "pdocrud-hide";
+        $searchTextToClass = "artify-hide";
         if (isset($data["search_text2"])) {
             $searchContent2 = array(
                 $data["search_text2"]
             );
             $searchTextToClass = "";
         }
-        $search .= $this->getInputField("pdocrud_search_box_to", array(
+        $search .= $this->getInputField("artify_search_box_to", array(
             "placeholder" => $this->getLangData("to"),
         ), $searchContent2, "text", array(
-            "pdocrud_search_input", $searchTextToClass
+            "artify_search_input", $searchTextToClass
         ));
     
         $class = "";
@@ -6186,7 +6186,7 @@ Class Artify {
     
         $search .= "</div>";
         $search .= "<div class=\"col-md-1 col-2 col-xs-1 pdo-search-cols no-padding\">";
-        $search .= "<a href=\"javascript:;\" id=\"pdocrud_search_btn\" name=\"pdocrud_search_btn\" class=\"pdocrud-form-control btn btn-primary pdocrud-actions $class\" data-action=\"search\" data-rendertype=\"SQL\">";
+        $search .= "<a href=\"javascript:;\" id=\"artify_search_btn\" name=\"artify_search_btn\" class=\"artify-form-control btn btn-primary artify-actions $class\" data-action=\"search\" data-rendertype=\"SQL\">";
         $search .= $this->langData["go"];
         $search .= "</a>";
         $search .= "</div>";
@@ -6224,10 +6224,10 @@ Class Artify {
                 )
             );
         }
-        return $this->getSelectField("pdocrud_records_per_page", 
+        return $this->getSelectField("artify_records_per_page", 
             array("data-action" => "records_per_page", "data-rendertype" => "CRUD"), 
                 $data, $records,
-                array("pdocrud-records-per-page"));
+                array("artify-records-per-page"));
     }
 
     public function perPageRecordsSQL($totalRecords, $data = array()) {
@@ -6261,10 +6261,10 @@ Class Artify {
                 )
             );
         }
-        return $this->getSelectField("pdocrud_records_per_page", 
+        return $this->getSelectField("artify_records_per_page", 
             array("data-action" => "records_per_page", "data-rendertype" => "SQL"), 
                 $data, $records,
-                array("pdocrud-records-per-page"));
+                array("artify-records-per-page"));
     }
 
     public function getStepHeader($stepId, $stepName, $type = "tab") {

@@ -26,7 +26,7 @@ class CaptchaSVG {
         $captchaCode = $numberone . $operator . $numbertwo;
 
         // Store result in session
-        $_SESSION["pdocrudcaptcha" . $this->objId] = $output;
+        $_SESSION["artifycaptcha" . $this->objId] = $output;
 
         // Create SVG image
         $svg = <<<SVG

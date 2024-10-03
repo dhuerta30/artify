@@ -1,9 +1,9 @@
-<div class="row pdocrud-filters-container" data-objkey="<?php echo $objKey; ?>">
+<div class="row artify-filters-container" data-objkey="<?php echo $objKey; ?>">
     <div class="col-md-12">
         <?php if (isset($filters) && count($filters)) { ?>
-            <div class="pdocrud-filters-options text-center">
-                <div class="pdocrud-filter-selected text-center">
-                    <span class="pdocrud-filter-option-remove btn btn-success mb-3"><i class="fa fa-paint-brush"></i> <?php echo $lang["clear_all"] ?></span>
+            <div class="artify-filters-options text-center">
+                <div class="artify-filter-selected text-center">
+                    <span class="artify-filter-option-remove btn btn-success mb-3"><i class="fa fa-paint-brush"></i> <?php echo $lang["clear_all"] ?></span>
                 </div>
                 <?php
                 foreach ($filters as $filter) {

@@ -11,14 +11,14 @@ if ($settings["checkboxCol"]) {
 <?php
 foreach ($data as $row) {
     ?>
-    <td class="pdocrud-row-cols">
+    <td class="artify-row-cols">
         <?php echo $row["addOnBefore"]; ?>
         <?php echo $row["element"]; ?>
     <?php echo $row["addOnAfter"]; ?> 
     </td>
 <?php }
 ?>
-<td class="pdocrud-row-actions">
+<td class="artify-row-actions">
     <?php
     if (isset($submitData)) {
         foreach ($submitData as $submit) {

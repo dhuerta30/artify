@@ -1,11 +1,11 @@
-.pdocrud-form .form-group input[type="text"], .pdocrud-form .form-group input[type="range"], .pdocrud-form .form-group input[type="number"],
-.pdocrud-form .form-group input[type="tel"], .pdocrud-form .form-group input[type="date"],.pdocrud-form .form-group textarea{
+.artify-form .form-group input[type="text"], .artify-form .form-group input[type="range"], .artify-form .form-group input[type="number"],
+.artify-form .form-group input[type="tel"], .artify-form .form-group input[type="date"],.artify-form .form-group textarea{
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border: 2px solid #609;
 }
-.pdocrud-form .form-group select {
+.artify-form .form-group select {
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;

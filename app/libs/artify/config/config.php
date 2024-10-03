@@ -1,10 +1,10 @@
 <?php
 /*
- * PDOCrud - An Advance CRUD application generator.
+ * artify - An Advance CRUD application generator.
  * 
  * This page contains all the configuration settings.
  * 
- * By Pritesh Gupta - http://pdocrud.com/
+ * By Pritesh Gupta - http://artify.com/
  * 
  * Copyright (C) Pritesh Gupta
  */
@@ -40,9 +40,9 @@ $config["pagination"] = true;
 //show drop down list of records per page (true = show)
 $config["recordsPerPageDropdown"] = true;
 //show search box (true = show)
-$config["searchbox"] = true;
+$config["searchbox"] = false;
 //show delete mulitiple button (true = show)
-$config["deleteMultipleBtn"] = true;
+$config["deleteMultipleBtn"] = false;
 //show total records showing (true = show)
 $config["totalRecordsInfo"] = true;
 //show save button in crud table
@@ -52,7 +52,7 @@ $config["addbtn"] = true;
 //active filter and search logic (true = active)
 $config["function_filter_and_search"] = true;
 //show refresh button (true = show)
-$config["refresh"] = true;
+$config["refresh"] = false;
 //show edit button (true = show)
 $config["editbtn"] = false;
 //show view button (true = show)
@@ -78,7 +78,7 @@ $config["excelBtn"] = false;
 //show print button (true = show)
 $config["pdfBtn"] = false;
 //show multi select checkbox column (true = show)
-$config["checkboxCol"] = true;
+$config["checkboxCol"] = false;
 //show number column (true = show)
 $config["numberCol"] = false;
 //show footer row (true = show)
@@ -194,7 +194,7 @@ $config["required"] = true;
 $config["trimField"] = true;
 //submit whether using ajax or using simple post
 $config["submissionType"] = "ajax";
-//enable js validation, if you want to use some plugin for validation set value ="plugin_validator", if you want to use pdocrud validator, 
+//enable js validation, if you want to use some plugin for validation set value ="plugin_validator", if you want to use artify validator, 
 //set value = "script_validator", if you don't want to use any js validation, set this false.
 $config["jsvalidation"] = "plugin_validator";
 //enable php validation

@@ -25,11 +25,11 @@
         </div>
     </section>
 </div>
-<div id="pdocrud-ajax-loader">
-    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+<div id="artify-ajax-loader">
+    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
 </div>
 <script>
-    $(document).on("pdocrud_after_submission", function(event, obj, data) {
+    $(document).on("artify_after_submission", function(event, obj, data) {
       $.ajax({
         type: "POST",
         url: "<?=$_ENV["BASE_URL"]?>home/generar_datos_usuario",

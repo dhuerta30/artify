@@ -17,8 +17,8 @@
         </div>
     </section>
 </div>
-<div id="pdocrud-ajax-loader">
-    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+<div id="artify-ajax-loader">
+    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
 </div>
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
 <script>
@@ -30,11 +30,11 @@
         url: "<?=$_ENV["BASE_URL"]?>home/export_db",
         dataType: "json",
         beforeSend: function() {
-            $("#pdocrud-ajax-loader").show();
+            $("#artify-ajax-loader").show();
         },
         success: function(data) {
-          $("#pdocrud-ajax-loader").hide();
-          $('#pdocrud_search_btn').click();
+          $("#artify-ajax-loader").hide();
+          $('#artify_search_btn').click();
             Swal.fire({
                 title: "Genial!",
                 text: data['success'],
@@ -54,15 +54,15 @@
     });
   });
 
-  $(document).on("click", ".pdocrud-filter-option-remove, .pdocrud-filter-option", function() {
-    $(".pdocrud-filter").val('');
+  $(document).on("click", ".artify-filter-option-remove, .artify-filter-option", function() {
+    $(".artify-filter").val('');
   });
 
-  $(document).on("keyup", "#pdocrud_search_box", function(event) {
-    let busqueda = $("#pdocrud_search_box").val();
+  $(document).on("keyup", "#artify_search_box", function(event) {
+    let busqueda = $("#artify_search_box").val();
 
     if (busqueda == "") {
-      $('#pdocrud_search_btn').click();
+      $('#artify_search_btn').click();
     }
     
   });

@@ -14,9 +14,9 @@ $dotenv->safeLoad();
 date_default_timezone_set(@date_default_timezone_get());
 define('ArtifyABSPATH', dirname(__FILE__) . '/');
 require_once ArtifyABSPATH . "config/config.php";
-spl_autoload_register('pdocrudAutoLoad');
+spl_autoload_register('artifyAutoLoad');
 
-function pdocrudAutoLoad($class) {
+function artifyAutoLoad($class) {
     if (file_exists(ArtifyABSPATH . "classes/" . $class . ".php"))
         require_once ArtifyABSPATH . "classes/" . $class . ".php";
 }
@@ -313,7 +313,7 @@ function formatTableDataCallBack($data, $obj){
                     </a>';
         },
         'edicion' => function($row) {
-            return '<a class="pdocrud-actions btn btn-warning btn-sm pdocrud-button pdocrud-button-edit" href="javascript:;" title="Editar" data-id="'.$row['Idsolicitud'].'" data-action="edit">
+            return '<a class="artify-actions btn btn-warning btn-sm artify-button artify-button-edit" href="javascript:;" title="Editar" data-id="'.$row['Idsolicitud'].'" data-action="edit">
                         <i class="fa fa-pencil-square-o"></i>
                     </a>
                     <a class="btn btn-danger btn-sm eliminar_solicitudes" href="javascript:;" title="Eliminar" data-id="'.$row['Idsolicitud'].'">

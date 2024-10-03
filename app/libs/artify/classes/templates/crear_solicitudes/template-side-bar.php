@@ -1,7 +1,7 @@
-<aside class="pdocrud-side-bar col-sm-3" data-obj-key="<?php echo $objKey; ?>">
+<aside class="artify-side-bar col-sm-3" data-obj-key="<?php echo $objKey; ?>">
     <section class="panel">
         <?php if (!empty($sidebarImage) || !empty($sidebarHeading1) || !empty($sidebarHeading2)) { ?>
-        <div class="pdocrud-side-bar-heading rounded">
+        <div class="artify-side-bar-heading rounded">
             <?php if (!empty($sidebarImage)) { ?>
             <a href="javscript:;">
                 <img src="<?php echo $sidebarImage; ?>" alt="">

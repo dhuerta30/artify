@@ -17,7 +17,7 @@
 
                                         <ul class="list-none">
                                             <li>
-                                                <input type="checkbox" value="select-all" name="pdocrud_select_all" class="pdocrud-select-all">
+                                                <input type="checkbox" value="select-all" name="artify_select_all" class="artify-select-all">
                                                 <span>Marcar Todos / Desmarcar Todos</span>
                                             </li>
                                         </ul>
@@ -76,8 +76,8 @@
                 </div>
             </section>
         </div>
-        <div id="pdocrud-ajax-loader">
-            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+        <div id="artify-ajax-loader">
+            <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
         </div>
         <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
         <script src="https://unpkg.com/intro.js/intro.js"></script>
@@ -94,7 +94,7 @@
             }
 
             $(document).ready(function () {
-                $('.pdocrud-select-all').change(function () {
+                $('.artify-select-all').change(function () {
                     $('.menu-checkbox, .submenu-checkbox').prop('checked', $(this).prop('checked'));
                 });
 
@@ -153,12 +153,12 @@
                                 selectedMenus: allMenus
                             },
                             beforeSend: function() {
-                                $("#pdocrud-ajax-loader").show();
+                                $("#artify-ajax-loader").show();
                             },
                             success: function (response) {
-                                $("#pdocrud-ajax-loader").hide();
+                                $("#artify-ajax-loader").hide();
                                 if(response['success']){
-                                    $('.pdocrud-select-all').prop('checked', false);
+                                    $('.artify-select-all').prop('checked', false);
                                     $('.menu-checkbox').prop('checked', false);
                                     $('.submenu-checkbox').prop('checked', false);
                                     $('#menus').modal('hide');
@@ -199,10 +199,10 @@
                             userId: userId
                         },
                         beforeSend: function() {
-                            $("#pdocrud-ajax-loader").show();
+                            $("#artify-ajax-loader").show();
                         },
                         success: function(data){
-                            $("#pdocrud-ajax-loader").hide();
+                            $("#artify-ajax-loader").hide();
                             $('.cargar_modal').html(data);
                             $('#menus').modal('show');
                         }

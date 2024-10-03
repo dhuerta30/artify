@@ -1,6 +1,6 @@
 <?php
 
-class PDOCrudPHPValidation {
+class artifyPHPValidation {
 
     public function __construct() {
         

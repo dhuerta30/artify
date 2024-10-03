@@ -29,8 +29,8 @@
         </div>
     </section>
 </div>
-<div id="pdocrud-ajax-loader">
-    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="pdocrud-img-ajax-loader"/>
+<div id="artify-ajax-loader">
+    <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
 </div>
 <?php require "layouts/footer.php"; ?>
 <script>
@@ -39,13 +39,13 @@ $(document).on("change", ".cantidad_columnas", function(){
     var cantidad_columnas = $(".cantidad_columnas").val();
 
         if(cantidad_columnas == "" || cantidad_columnas == 1){
-            $('.pdocrud-button-add-row').hide();
+            $('.artify-button-add-row').hide();
         } else {
-            $('.pdocrud-button-add-row').show();
+            $('.artify-button-add-row').show();
         }
 });
 
-$(document).on("pdocrud_after_ajax_action", function(event, obj, data){
+$(document).on("artify_after_ajax_action", function(event, obj, data){
 	let action = $(obj).attr('data-action');
 
 	if(action == "add"){
@@ -53,17 +53,17 @@ $(document).on("pdocrud_after_ajax_action", function(event, obj, data){
         var cantidad_columnas = $(".cantidad_columnas").val();
 
         if(cantidad_columnas == ""){
-            $('.pdocrud-button-add-row').hide();
+            $('.artify-button-add-row').hide();
         }
 
 		$.ajax({
 			url: "<?=$_ENV["BASE_URL"]?>js/icons.json",
 			dataType: "json",
 			beforeSend: function() {
-				$("#pdocrud-ajax-loader").show();
+				$("#artify-ajax-loader").show();
 			},
 			success: function(data){
-				$("#pdocrud-ajax-loader").hide();
+				$("#artify-ajax-loader").hide();
 				$('.icono').html(`<option value="">Seleccionar Icono</option>`);
 
 				// Recorre cada grupo de íconos
@@ -85,10 +85,10 @@ $(document).on("pdocrud_after_ajax_action", function(event, obj, data){
             dataType: "json",
             data: { id: id },
 			beforeSend: function() {
-				$("#pdocrud-ajax-loader").show();
+				$("#artify-ajax-loader").show();
 			},
             success: function(data){
-                $("#pdocrud-ajax-loader").hide();
+                $("#artify-ajax-loader").hide();
 				let icono = data['data'][0]['icono'];
 
                 $('.icono').html(`<option value="">Seleccionar Icono</option>`);

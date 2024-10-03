@@ -1,7 +1,7 @@
-.pdocrud-table {
+.artify-table {
     table-layout:auto !important;
 }
-#pdocrud-ajax-loader {  
+#artify-ajax-loader {  
     position:fixed;
     top:0;
     left:0;
@@ -11,7 +11,7 @@
     background-color:#fff;
     display: none;
 }
-.pdocrud-img-ajax-loader {
+.artify-img-ajax-loader {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -20,14 +20,14 @@
     display: block;  
     width: 90px;   
 }
-.pdocrud-gmap{
+.artify-gmap{
     min-height: 400px;
     min-width: 400px;
 }
-.pdocrud-hide{
+.artify-hide{
     display: none !important;
 }
-.pdocrud-show{
+.artify-show{
     display: none !important;
 }
 span.field-validation-error {
@@ -93,23 +93,23 @@ span.field-validation-error {
 }
 .datepicker{z-index:1151 !important;}
 /*********/
-.pdocrud-pagination .pagination{
+.artify-pagination .pagination{
     margin: 0px;
     margin-right: 7px;
 }
-.pdocrud-options{                               
+.artify-options{                               
     background: #fff;
     border: 1px solid #cbcbcb;
 }
-.pdocrud-options ul{
+.artify-options ul{
     list-style: none;
     padding: 0px;
     margin-bottom: 0px;
 }
-.pdocrud-options ul i{
+.artify-options ul i{
     font-size: 20px;
 }
-.pdocrud-options ul li{
+.artify-options ul li{
     display: inline-block;
     padding: 5px;
     border-right: 1px solid #cbcbcb;
@@ -117,80 +117,80 @@ span.field-validation-error {
     height: 31px;
 }
 
-.pdocrud-options ul li img{
+.artify-options ul li img{
     width: 100%;
 }
-.pdocrud-table-container table{
+.artify-table-container table{
     margin-bottom: 0px;
 }
-.pdocrud-table-container table tr.pdocrud-header-row {
+.artify-table-container table tr.artify-header-row {
     color: #fff;
     background-color: #4375e5;
 }
-.pdocrud-table-container table tr.pdocrud-header-row th {
+.artify-table-container table tr.artify-header-row th {
     border: 1px solid #f2f2f2;
 }
-.pdocrud-table-container table tr.pdocrud-header-row th,.pdocrud-table-container .table tbody tr td{
+.artify-table-container table tr.artify-header-row th,.artify-table-container .table tbody tr td{
     white-space: nowrap;
 }
-.pdocrud-actions-sorting{
+.artify-actions-sorting{
     cursor: pointer;
 }
-.pdocrud-button-export{
+.artify-button-export{
     border-color: #e2e7f1 !important;
     text-decoration: none;
 }
-ul.pdocrud-export-options {
+ul.artify-export-options {
     list-style: none;
     margin: 0px;
     padding: 0px;    
 }
-ul.pdocrud-export-options li {
+ul.artify-export-options li {
     float: left;
     border: 1px solid #ccc;
     padding: 6px 10px;
     margin-bottom: 2px;
 }
-ul.pdocrud-export-options li a {
+ul.artify-export-options li a {
     box-shadow: none !important;
     font-size: 14px;
 }
-.pdocrud-options-files{
+.artify-options-files{
     margin-top: 15px;
 }
 .w1{
     width:30px;
 }
-.pdocrud-left-join th{
+.artify-left-join th{
     border-bottom: 2px solid transparent !important;
 }
-.pdocrud-left-join td{
+.artify-left-join td{
     border-right: 1px solid transparent !important;
     border-top: 1px solid transparent !important;
 }
-.pdocrud-sort{
+.artify-sort{
     background:url('images/sort_both.png') no-repeat center right;
 }
-.pdocrud-desc{
+.artify-desc{
     background:url('images/sort_desc.png') no-repeat center right;
 }
-.pdocrud-asc{
+.artify-asc{
     background:url('images/sort_asc.png') no-repeat center right;
 }
-.pdo-search-cols a,.pdocrud-button-delete-all{
+.pdo-search-cols a,.artify-button-delete-all{
     padding: 7px 10px;
     display: inline-block;
 }
-.pdocrud-pagination .pagination>li>a{
+.artify-pagination .pagination>li>a{
     cursor: pointer;
 }
-.pdocrud-table-container table tr.pdocrud-header-row th span{
+.artify-table-container table tr.artify-header-row th span{
     padding-right: 2px;    
 }
-.pdocrud-filter-selected{
+.artify-filter-selected{
     box-shadow: 0 2px 4px 0 hsla(0,0%,100%,.5);
 }
-.pdocrud-filter-option{
+.artify-filter-option{
     cursor: pointer;
     font-size: 12px;
     background-color: #e0e0e0;
@@ -202,10 +202,10 @@ ul.pdocrud-export-options li a {
     max-width: 200px;
     padding: 8px;
 }
-.pdocrud-filter-option-remove{
+.artify-filter-option-remove{
     cursor: pointer;
 }
-#pdocrud-custom-handle {
+#artify-custom-handle {
     width: 3em;
     height: 1.6em;
     top: 50%;
@@ -213,20 +213,20 @@ ul.pdocrud-export-options li a {
     text-align: center;
     line-height: 1.6em;
 }
-.pdocrud-portfolio-col-data{
+.artify-portfolio-col-data{
     width: 100%;
 }
-.pdocrud-portfolio-col-data-horizontle{
+.artify-portfolio-col-data-horizontle{
     width: 50%;
     float: left;
 }
-.pdocrud_add_file{
+.artify_add_file{
     margin: 2px 5px 0 0;
 }
-.pdocrud_remove_file{
+.artify_remove_file{
     margin: 2px 5px 0 0;
 }
-.pdocrud-filecontrol-div{
+.artify-filecontrol-div{
     margin: 0;
     opacity: 0;
     position: absolute;
@@ -236,7 +236,7 @@ ul.pdocrud-export-options li a {
     overflow: hidden;
 }
 /*Sidebar css*/
-.pdocrud-side-bar-heading{
+.artify-side-bar-heading{
     color: #fff;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
@@ -244,24 +244,24 @@ ul.pdocrud-export-options li a {
     text-align: center;
     background: #5F9EA0;
 }
-.pdocrud-side-bar-heading a {
+.artify-side-bar-heading a {
     border-radius: 50%;
     -webkit-border-radius: 50%;
     border: 10px solid rgba(256,256,256,0.3);
     display: inline-block;
 }
-.pdocrud-side-bar-heading a img {
+.artify-side-bar-heading a img {
     width: 115px;
     height: 115px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
 }
-.pdocrud-side-bar-heading h1 {
+.artify-side-bar-heading h1 {
     font-size: 22px;
     font-weight: 300;
     margin-bottom: 5px;
 }
-.pdocrud-date-range-report {
+.artify-date-range-report {
     font: bold 11px Arial;
     text-decoration: none;
     color: #fff !important;
@@ -273,10 +273,10 @@ ul.pdocrud-export-options li a {
     appearance: button;
     cursor: pointer;
 }
-.pdocrud-date-range-report:hover{
+.artify-date-range-report:hover{
     text-decoration: none;
 }
-.pdocrud-row-selected{
+.artify-row-selected{
     background: #5bc0de !important;
     color: #fff;
 }
@@ -286,7 +286,7 @@ ul.pdocrud-export-options li a {
 .no-padding-right{
     padding-right: 0 !important;
 }
-.pdocrud-adv-search-btn{
+.artify-adv-search-btn{
     width: 100px;
     height: 40px;
     padding: 8px;
@@ -298,11 +298,11 @@ ul.pdocrud-export-options li a {
 .hidden{
     display: none;
 }
-.pdocrud-image-upload-display{
+.artify-image-upload-display{
     width: 100px;
     height: 100px;
 }
-table.pdocrud-table-view tr td:nth-child(2){
+table.artify-table-view tr td:nth-child(2){
     border-right: 1px solid #d5d5d5;
     white-space: normal !important;
     padding: 9px 15px;
