@@ -44,7 +44,15 @@ class CrudService
                 $nameview,
                 $template_html,
                 $active_filter,
-                $clone_row
+                $clone_row,
+                $active_popup,
+                $active_search, 
+                $activate_deleteMultipleBtn,
+                $button_add,
+                $actions_buttons_grid,
+                $activate_nested_table,
+                $buttons_actions,
+                $refrescar_grilla
             );
         }
 
