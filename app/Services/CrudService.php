@@ -128,7 +128,7 @@ class CrudService
         }
     }
 
-    private function generateCrudControllerSQL($tableName, $idTable, $query = null, $controllerName, $nameview, $template_html, $active_filter = "Si", $clone_row = "Si")
+    private function generateCrudControllerSQL($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
