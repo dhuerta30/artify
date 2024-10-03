@@ -191,7 +191,7 @@ class HomeController
 
 			if (is_array($selectedMenus)) {
 				$artify = DB::ArtifyCrud();
-				$pdomodel = $artify->getQueryfyObj();
+				$queryfy = $artify->getQueryfyObj();
 
 				$menuMarcado = false;
 				$menuDesmarcado = false;
@@ -202,21 +202,21 @@ class HomeController
 					$checked = $menu["checked"];
 
 					// Procesar el menú principal
-					$existMenu = $pdomodel->where('id_menu', $menuId)
+					$existMenu = $queryfy->where('id_menu', $menuId)
 						->where('id_usuario', $userId)
 						->select('usuario_menu');
 
 					switch ($checked) {
 						case "true":
 							if (!$existMenu) {
-								$pdomodel->insert('usuario_menu', array(
+								$queryfy->insert('usuario_menu', array(
 									"id_usuario" => $userId,
 									"id_menu" => $menuId,
 									"visibilidad_menu" => "Mostrar"
 								));
 								$menuMarcado = true;
 							} else {
-								$pdomodel->where('id_usuario', $userId)
+								$queryfy->where('id_usuario', $userId)
 									->where('id_menu', $menuId)
 									->update('usuario_menu', array("visibilidad_menu" => "Mostrar"));
 								$menuMarcado = true;
@@ -224,7 +224,7 @@ class HomeController
 							break;
 
 						case "false":
-							$pdomodel->where('id_usuario', $userId)
+							$queryfy->where('id_usuario', $userId)
 								->where('id_menu', $menuId)
 								->update('usuario_menu', array("visibilidad_menu" => "Ocultar"));
 							$menuDesmarcado = true;
@@ -236,21 +236,21 @@ class HomeController
 						$id_submenu = $submenuId['id'];
 						$checked = $submenuId["checked"];
 
-						$existSubmenu = $pdomodel->where('id_submenu', $id_submenu)
+						$existSubmenu = $queryfy->where('id_submenu', $id_submenu)
 							->where('id_usuario', $userId)
 							->select('usuario_submenu');
 
 						switch ($checked) {
 							case "true":
 								if (!$existSubmenu) {
-									$pdomodel->insert('usuario_submenu', array(
+									$queryfy->insert('usuario_submenu', array(
 										"id_usuario" => $userId,
 										"id_submenu" => $id_submenu,
 										"id_menu" => $menuId,
 										"visibilidad_submenu" => "Mostrar"
 									));
 								} else {
-									$pdomodel->where('id_usuario', $userId)
+									$queryfy->where('id_usuario', $userId)
 										->where('id_submenu', $id_submenu)
 										->where('id_menu', $menuId)
 										->update('usuario_submenu', array("visibilidad_submenu" => "Mostrar"));
@@ -258,7 +258,7 @@ class HomeController
 								break;
 
 							case "false":
-								$pdomodel->where('id_usuario', $userId)
+								$queryfy->where('id_usuario', $userId)
 									->where('id_submenu', $id_submenu)
 									->where('id_menu', $menuId)
 									->update('usuario_submenu', array("visibilidad_submenu" => "Ocultar"));
@@ -481,8 +481,8 @@ class HomeController
 			$user = $_SESSION['usuario'][0]["usuario"];
 
 			$artify = DB::ArtifyCrud();
-			$pdomodel = $artify->getQueryfyObj();
-			$id = $pdomodel->select("backup");
+			$queryfy = $artify->getQueryfyObj();
+			$id = $queryfy->select("backup");
 
 			$exportDirectory = realpath(__DIR__ . '/../libs/artify/uploads');
 
@@ -500,7 +500,7 @@ class HomeController
 
 			$file = $_ENV["BASE_URL"] . $_ENV['UPLOAD_URL'] . $simpleBackup->getExportedName();
 
-			$pdomodel->insert("backup", array("archivo" => basename($file), "fecha" => $date, "hora" => $hour, "usuario" => $user));
+			$queryfy->insert("backup", array("archivo" => basename($file), "fecha" => $date, "hora" => $hour, "usuario" => $user));
 
 			echo json_encode(['file' => $file, 'success' => 'Tus datos se han respaldado con éxito ']);
 		}
@@ -539,18 +539,18 @@ class HomeController
 
 	public static function menuDB(){
 		$artify = DB::ArtifyCrud();
-		$pdomodel = $artify->getQueryfyObj();
-		$pdomodel->orderBy(array("orden_menu asc"));
-		$data = $pdomodel->select("menu");
+		$queryfy = $artify->getQueryfyObj();
+		$queryfy->orderBy(array("orden_menu asc"));
+		$data = $queryfy->select("menu");
 		return $data;
 	}
 
 	public static function submenuDB($idMenu){
 		$artify = DB::ArtifyCrud();
-		$pdomodel = $artify->getQueryfyObj();
-		$pdomodel->where("id_menu", $idMenu, "=");
-		$pdomodel->orderBy(array("orden_submenu asc")); // Ajusta el nombre de la columna de ordenación si es diferente
-		$data = $pdomodel->select("submenu");
+		$queryfy = $artify->getQueryfyObj();
+		$queryfy->where("id_menu", $idMenu, "=");
+		$queryfy->orderBy(array("orden_submenu asc")); // Ajusta el nombre de la columna de ordenación si es diferente
+		$data = $queryfy->select("submenu");
 		return $data;
 	}	
 
@@ -595,14 +595,14 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Tipo de Módulo:</label>
 								{crud_type}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
 								<label class="form-label">Nombre Tabla Base de Datos:</label>
 								{tabla}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 								<p>Cambie por su tabla o utilice la actual</p>
 							</div>
 						</div>
@@ -612,14 +612,14 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">ID Tabla Base de Datos:</label>
 								{id_tabla}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
 								<label class="form-label">Nombre del Controlador:</label>
 								{controller_name}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 								<p>Cambie por su controlador o utilice el actual</p>
 							</div>
 						</div>
@@ -627,7 +627,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Consulta DB:</label>
 								{query}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 								<p>Cambie por su consulta o utilice la actual</p>
 							</div>
 						</div>
@@ -637,7 +637,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Columnas de La Tabla:</label>
 								{columns_table}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 					</div>
@@ -646,7 +646,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Nombre de La Vista:</label>
 								{name_view}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 								<p>Cambie por su vista o utilice la actual</p>
 							</div>
 						</div>
@@ -654,28 +654,28 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Agregar Al Menú Principal:</label>
 								{add_menu}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Usar Plantilla Formulario HTML:</label>
 								{template_fields}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Activar Filtro de Busqueda:</label>
 								{active_filter}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Clonar Filas:</label>
 								{clone_row}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 					</div>
@@ -684,28 +684,28 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Activar Popup:</label>
 								{active_popup}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Activar Búsqueda:</label>
 								{active_search}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Activar Eliminación Masiva:</label>
 								{activate_deleteMultipleBtn}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Botón Agregar:</label>
 								{button_add}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 					</div>
@@ -714,28 +714,28 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Botones de Exportación Grilla:</label>
 								{actions_buttons_grid}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Activar Tabla Anidada:</label>
 								{activate_nested_table}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Botones de Acción:</label>
 								{buttons_actions}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Botón Refrescar Grilla:</label>
 								{refrescar_grilla}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 					</div>
@@ -744,7 +744,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Modificar Tabla:</label>
 								{modify_query}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-6 campos_view_tabla">
@@ -759,14 +759,14 @@ class HomeController
 							<div class="component addrow float-right">
 								<div class="control-group">
 									<div class="controls">
-										<a class="pdocrud-actions pdocrud-button pdocrud-button-add-row btn btn-success agregar_muestras d-none" href="javascript:;" data-action="add_row_module">
+										<a class="artify-actions artify-button artify-button-add-row btn btn-success agregar_muestras d-none" href="javascript:;" data-action="add_row_module">
 											<i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar       
 										</a>
 									</div>
 								</div>
 							</div>
 							<div class="table-responsive leftjoin_grilla d-none">
-							<table class="table pdocrud-left-join responsive">
+							<table class="table artify-left-join responsive">
 								<thead>
 									<tr>
 										<th>
@@ -812,110 +812,110 @@ class HomeController
 								</thead>
 								<tbody>
 									<tr>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_1">
-											<select class="form-control pdocrud-form-control pdocrud-select nivel" name="nivel_db[]" disabled="disabled" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_1">
+											<select class="form-control artify-form-control artify-select nivel" name="nivel_db[]" disabled="disabled" required="1">
 												<option value="">Seleccionar</option>
 												<option selected="selected" value="2">2</option>
 												<option value="3">3</option>
 												<option value="4">4</option>
 											</select>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_2">
-											<input type="text" class="form-control pdocrud-form-control pdocrud-text tabla_db" name="tabla_db[]" disabled="disabled" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_2">
+											<input type="text" class="form-control artify-form-control artify-text tabla_db" name="tabla_db[]" disabled="disabled" required="1">
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_3">
-											<textarea class="form-control pdocrud-form-control  pdocrud-textarea consulta_crear_tabla" name="consulta_crear_tabla[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_3">
+											<textarea class="form-control artify-form-control  artify-textarea consulta_crear_tabla" name="consulta_crear_tabla[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_4">
-											<select class="form-control pdocrud-form-control pdocrud-select template_fields_db" disabled="disabled" name="template_fields_db[]" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_4">
+											<select class="form-control artify-form-control artify-select template_fields_db" disabled="disabled" name="template_fields_db[]" required="1">
 												<option value="">Seleccionar</option>
 												<option value="Si">Si</option>
 												<option selected="selected" value="No">No</option>
 											</select>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_5">
-											<select class="form-control pdocrud-form-control pdocrud-select active_filter_db" disabled="disabled" name="active_filter_db[]" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_5">
+											<select class="form-control artify-form-control artify-select active_filter_db" disabled="disabled" name="active_filter_db[]" required="1">
 												<option value="">Seleccionar</option>
 												<option value="Si">Si</option>
 												<option selected="selected" value="No">No</option>
 											</select>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_6">
-											<select class="form-control pdocrud-form-control pdocrud-select clone_row_db" disabled="disabled" name="clone_row_db[]" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_6">
+											<select class="form-control artify-form-control artify-select clone_row_db" disabled="disabled" name="clone_row_db[]" required="1">
 												<option value="">Seleccionar</option>
 												<option value="Si">Si</option>
 												<option selected="selected" value="No">No</option>
 											</select>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_7">
-											<select class="form-control pdocrud-form-control pdocrud-select active_popup_db" disabled="disabled" name="active_popup_db[]" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_7">
+											<select class="form-control artify-form-control artify-select active_popup_db" disabled="disabled" name="active_popup_db[]" required="1">
 												<option value="">Seleccionar</option>
 												<option value="Si">Si</option>
 												<option selected="selected" value="No">No</option>
 											</select>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_8">
-											<select class="form-control pdocrud-form-control pdocrud-select " id="active_search_db" disabled="disabled" name="active_search_db[]" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_8">
+											<select class="form-control artify-form-control artify-select " id="active_search_db" disabled="disabled" name="active_search_db[]" required="1">
 												<option value="">Seleccionar</option>
 												<option value="Si">Si</option>
 												<option selected="selected" value="No">No</option>
 											</select>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_9">
-											<select class="form-control pdocrud-form-control pdocrud-select activate_deleteMultipleBtn_db" disabled="disabled" name="activate_deleteMultipleBtn_db[]" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_9">
+											<select class="form-control artify-form-control artify-select activate_deleteMultipleBtn_db" disabled="disabled" name="activate_deleteMultipleBtn_db[]" required="1">
 												<option value="">Seleccionar</option>
 												<option value="Si">Si</option>
 												<option selected="selected" value="No">No</option>
 											</select>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_10">
-											<select class="form-control pdocrud-form-control pdocrud-select button_add_db" disabled="disabled" name="button_add_db[]" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_10">
+											<select class="form-control artify-form-control artify-select button_add_db" disabled="disabled" name="button_add_db[]" required="1">
 												<option value="">Seleccionar</option>
 												<option value="Si">Si</option>
 												<option selected="selected" value="No">No</option>
 											</select>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_11">
-											<div class="checkbox pdocrud-checkbox-group">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_11">
+											<div class="checkbox artify-checkbox-group">
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Imprimir">Imprimir</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Imprimir">Imprimir</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="PDF">PDF</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="PDF">PDF</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="CSV">CSV</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="CSV">CSV</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Excel">Excel</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Excel">Excel</label>
 											</div>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_12">
-											<select class="form-control pdocrud-form-control pdocrud-select activate_nested_table_db" disabled="disabled" name="activate_nested_table_db[]" required="1">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_12">
+											<select class="form-control artify-form-control artify-select activate_nested_table_db" disabled="disabled" name="activate_nested_table_db[]" required="1">
 												<option value="">Seleccionar</option>
 												<option value="Si">Si</option>
 												<option selected="selected" value="No">No</option>
 											</select>
 										</td>
-										<td class="pdocrud_leftjoin_row_1 pdocrud_leftjoin_col_13">
-											<div class="checkbox pdocrud-checkbox-group">
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_13">
+											<div class="checkbox artify-checkbox-group">
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Ver">Mostrar botón Ver</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Ver">Mostrar botón Ver</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Editar">Mostrar botón Editar</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Editar">Mostrar botón Editar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Eliminar">Mostrar botón Eliminar</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Eliminar">Mostrar botón Eliminar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar">Ocultar botón Guardar</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar">Ocultar botón Guardar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar y regresar">Ocultar botón Guardar y regresar</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar y regresar">Ocultar botón Guardar y regresar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Regresar">Ocultar botón Regresar</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Regresar">Ocultar botón Regresar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Cancelar">Ocultar botón Cancelar</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Cancelar">Ocultar botón Cancelar</label>
 												<label class="checkbox-inline">
-													<input type="checkbox" class="pdocrud-form-control pdocrud-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado PDF">Mostrar botón Personalizado PDF</label>
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado PDF">Mostrar botón Personalizado PDF</label>
 											</div>
 										</td>
 										<td>
-											<a href="javascript:;" class="pdocrud-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a>
+											<a href="javascript:;" class="artify-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a>
 										</td>
 									</tr>
 								</tbody>
@@ -924,7 +924,7 @@ class HomeController
 
 							<div class="row mt-4">
 								<div class="col-md-12 text-center">
-									<button type="button" class="btn btn-danger pdocrud-form-control pdocrud-button pdocrud-back" name="pdocrud_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
+									<button type="button" class="btn btn-danger artify-form-control artify-button artify-back" name="artify_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
 									<a href="javascript:;" class="btn btn-primary siguiente_1">Siguiente <i class="fa fa-arrow-right"></i></a>
 								</div>
 							</div>
@@ -941,35 +941,35 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Activar PDF:</label>
 								{activate_pdf}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>	
 					<div class="col-md-6">
 						<div class="form-group">
 							<label class="form-label">Logo PDF:</label>
 							{logo_pdf}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							<p class="artify_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label class="form-label">Marca de Agua PDF:</label>
 							{marca_de_agua_pdf}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							<p class="artify_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
 					<div class="col-md-12">
 						<div class="form-group">
 							<label class="form-label">Consulta de Base de Datos PDF:</label>
 							{consulta_pdf}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							<p class="artify_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>	
 				</div>
 
 				<div class="row mt-4">
 					<div class="col-md-12 text-center">
-						<button type="button" class="btn btn-danger pdocrud-form-control pdocrud-button pdocrud-back" name="pdocrud_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
+						<button type="button" class="btn btn-danger artify-form-control artify-button artify-back" name="artify_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
 						<a href="javascript:;" class="btn btn-primary anterior"><i class="fa fa-arrow-left"></i> Anterior</a>
 						<a href="javascript:;" class="btn btn-primary siguiente_2">Siguiente <i class="fa fa-arrow-right"></i></a>
 					</div>
@@ -984,14 +984,14 @@ class HomeController
 						<div class="form-group">
 							<label class="form-label">Activar Api:</label>
 							{activate_api}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							<p class="artify_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>	
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Tipo de APi:</label>
 							{api_type}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							<p class="artify_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
 					<div class="col-md-8">
@@ -1001,7 +1001,7 @@ class HomeController
 								<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
 								{query_get}
 							</div>
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							<p class="artify_help_block help-block form-text with-errors"></p>
 
 							<div class="form-group mt-4">
 								<label class="form-label">Insertar</label>
@@ -1009,7 +1009,7 @@ class HomeController
 									<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
 									{query_post}
 								</div>
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
 							<div class="form-group mt-4">
@@ -1018,7 +1018,7 @@ class HomeController
 									<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
 									{query_put}
 								</div>
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
 							<div class="form-group mt-4">
@@ -1027,7 +1027,7 @@ class HomeController
 									<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
 									{query_delete}
 								</div>
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
 						</div>
@@ -1036,16 +1036,16 @@ class HomeController
 						<div class="form-group">
 							<label class="form-label">Consulta de Base de Datos</label>
 							{consulta_api}
-							<p class="pdocrud_help_block help-block form-text with-errors"></p>
+							<p class="artify_help_block help-block form-text with-errors"></p>
 						</div>
 					</div>
 				</div>
 
 				<div class="form-group mt-4 text-center">
 					<a href="javascript:;" class="btn btn-primary mb-3 atras"><i class="fa fa-arrow-left"></i> Anterior</a>
-                	<input type="submit" class="btn btn-primary pdocrud-form-control pdocrud-submit mb-3" name="pdocrud_submit_19MsSO3Edq" data-action="insert" value="Guardar"> 
-					<button type="button" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-back" name="pdocrud_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
-					<button type="reset" class="btn btn-danger pdocrud-form-control pdocrud-button mb-3 pdocrud-cancel-btn" name="pdocrud_cancel_19MsSO3Edq">Cancelar</button>
+                	<input type="submit" class="btn btn-primary artify-form-control artify-submit mb-3" name="artify_submit_19MsSO3Edq" data-action="insert" value="Guardar"> 
+					<button type="button" class="btn btn-danger artify-form-control artify-button mb-3 artify-back" name="artify_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
+					<button type="reset" class="btn btn-danger artify-form-control artify-button mb-3 artify-cancel-btn" name="artify_cancel_19MsSO3Edq">Cancelar</button>
 				</div>
 
 			</div>
@@ -1288,14 +1288,14 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Subir Logo PDF:</label>
 								{logo_pdf}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label class="form-label">Subir Marca de agua PDF:</label>
 								{marca_agua_pdf}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 					</div>
@@ -1308,7 +1308,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Generar JWT Token Api:</label>
 								{generar_jwt_token}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 								<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
 							</div>
 						</div>
@@ -1316,14 +1316,14 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Autenticar JWT Token Api:</label>
 								{autenticar_jwt_token}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label">Tiempo de Caducidad token:</label>
 								{tiempo_caducidad_token}
-								<p class="pdocrud_help_block help-block form-text with-errors"></p>
+								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
 					</div>
@@ -1408,8 +1408,8 @@ class HomeController
 			$tabla = $request->post('tabla');
 
 			$artify = DB::ArtifyCrud();
-			$pdomodel = $artify->getQueryfyObj();
-			$columnDB = $pdomodel->tableFieldInfo($tabla);
+			$queryfy = $artify->getQueryfyObj();
+			$columnDB = $queryfy->tableFieldInfo($tabla);
 
 			echo json_encode(['columnas_tabla' => $columnDB]);
 		}
@@ -1428,9 +1428,9 @@ class HomeController
 				foreach ($newOrder as $position => $itemId) {
 					$position++;
 					$artify = DB::ArtifyCrud();
-					$pdomodel = $artify->getQueryfyObj();
-					$pdomodel->where("id_menu", $itemId);
-					$pdomodel->update("menu", array("orden_menu" => $position));
+					$queryfy = $artify->getQueryfyObj();
+					$queryfy->where("id_menu", $itemId);
+					$queryfy->update("menu", array("orden_menu" => $position));
 				}
 
 				echo json_encode(['success' => 'Orden del menu actualizado correctamente']);
@@ -1451,9 +1451,9 @@ class HomeController
 				foreach ($newOrder as $position => $itemId) {
 					$position++;
 					$artify = DB::ArtifyCrud();
-					$pdomodel = $artify->getQueryfyObj();
-					$pdomodel->where("id_submenu", $itemId);
-					$pdomodel->update("submenu", array("orden_submenu" => $position));
+					$queryfy = $artify->getQueryfyObj();
+					$queryfy->where("id_submenu", $itemId);
+					$queryfy->update("submenu", array("orden_submenu" => $position));
 				}
 
 				echo json_encode(['success' => 'Orden del submenu actualizado correctamente']);
@@ -1469,10 +1469,10 @@ class HomeController
 			$id = $request->post('id');
 
 			$artify = DB::ArtifyCrud();
-			$pdomodel = $artify->getQueryfyObj();
-			$pdomodel->columns = array("icono_menu");
-			$pdomodel->where("id_menu", $id);
-			$data = $pdomodel->select("menu");
+			$queryfy = $artify->getQueryfyObj();
+			$queryfy->columns = array("icono_menu");
+			$queryfy->where("id_menu", $id);
+			$data = $queryfy->select("menu");
 
 			$ruta_json = "http://" . $_SERVER['HTTP_HOST'] .$_ENV["BASE_URL"] . "js/icons.json";
 
@@ -1494,10 +1494,10 @@ class HomeController
 			$id = $request->post('id');
 
 			$artify = DB::ArtifyCrud();
-			$pdomodel = $artify->getQueryfyObj();
-			$pdomodel->columns = array("icono_submenu");
-			$pdomodel->where("id_submenu", $id);
-			$data = $pdomodel->select("submenu");
+			$queryfy = $artify->getQueryfyObj();
+			$queryfy->columns = array("icono_submenu");
+			$queryfy->where("id_submenu", $id);
+			$data = $queryfy->select("submenu");
 
 			$ruta_json = "http://" . $_SERVER['HTTP_HOST'] .$_ENV["BASE_URL"] . "js/icons.json";
 
@@ -1514,11 +1514,11 @@ class HomeController
 	public function menu(){
 		$artify = DB::ArtifyCrud();
 
-		$pdomodel = $artify->getQueryfyObj();
-		$datamenu = $pdomodel->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
+		$queryfy = $artify->getQueryfyObj();
+		$datamenu = $queryfy->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
 		$newOrdenMenu = $datamenu[0]["orden"] + 1;
 
-		$datasubmenu = $pdomodel->DBQuery("SELECT MAX(orden_submenu) as orden_submenu FROM submenu");
+		$datasubmenu = $queryfy->DBQuery("SELECT MAX(orden_submenu) as orden_submenu FROM submenu");
 		$newOrdenSubMenu = $datasubmenu[0]["orden_submenu"] + 1;
 
 		$artify->addWhereConditionActionButtons("delete", "id_menu", "!=", array(4,5,6,7,10,12,19, 141));

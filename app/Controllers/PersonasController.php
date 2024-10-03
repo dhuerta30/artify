@@ -55,7 +55,7 @@
                         <div class="form-group">
                             <label class="form-label">' . $columnName . ':</label>
                             {' . $column . '}
-                            <p class="pdocrud_help_block help-block form-text with-errors"></p>
+                            <p class="artify_help_block help-block form-text with-errors"></p>
                         </div>
                     </div>';
 
