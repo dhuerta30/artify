@@ -998,33 +998,33 @@ class HomeController
 						<div class="form-group">
 							<label class="form-label">Mostrar</label>
 							<div class="input-group-append">
-								<span class="input-group-text" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
+								<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
 								{query_get}
 							</div>
 							<p class="pdocrud_help_block help-block form-text with-errors"></p>
 
-							<div class="form-group">
+							<div class="form-group mt-4">
 								<label class="form-label">Insertar</label>
 								<div class="input-group-append">
-									<span class="input-group-text" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
+									<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
 									{query_post}
 								</div>
 								<p class="pdocrud_help_block help-block form-text with-errors"></p>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group mt-4">
 								<label class="form-label">Actualizar</label>
 								<div class="input-group-append">
-									<span class="input-group-text" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
+									<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
 									{query_put}
 								</div>
 								<p class="pdocrud_help_block help-block form-text with-errors"></p>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group mt-4">
 								<label class="form-label">Eliminar</label>
 								<div class="input-group-append">
-									<span class="input-group-text" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
+									<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
 									{query_delete}
 								</div>
 								<p class="pdocrud_help_block help-block form-text with-errors"></p>
@@ -1066,6 +1066,7 @@ class HomeController
 		$artify->formFieldValue("active_search", "No");
 		$artify->fieldNotMandatory("actions_buttons_grid");
 		$artify->fieldNotMandatory("buttons_actions");
+		$artify->fieldNotMandatory("api_type");
 		$artify->formFieldValue("activate_nested_table", "No");
 		$artify->formFieldValue("activate_pdf", "No");
 		$artify->formFieldValue("activate_api", "No");

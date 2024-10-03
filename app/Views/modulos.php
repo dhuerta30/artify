@@ -26,6 +26,7 @@ label:not(.form-check-label):not(.custom-file-label) {
 
 .bootstrap-switch.bootstrap-switch-focused {
     border-color: #ccc!important;
+    box-shadow: none!important;
 }
 
 label.checkbox-inline {
@@ -101,19 +102,6 @@ $(document).on("pdocrud_after_ajax_action",function(event, obj, data){
     var dataAction = obj.getAttribute('data-action');
 
     if(dataAction == "add"){
-
-        $('.query_get, .query_delete').inputmask({
-            mask: "*{1,}/*{1,}/[9]{1,}",
-            definitions: {
-                '*': {
-                    validator: "[a-zA-Z_]", // Permitir solo letras (mayúsculas o minúsculas)
-                    casing: "lower" // Convertir automáticamente las letras a minúsculas (opcional)
-                },
-                '9': {
-                    validator: "[0-9]" // Permitir solo números
-                }
-            }
-        });
 
         $('.siguiente_1').click(function() {
             $('#pdf-tab').tab('show');
