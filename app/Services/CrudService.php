@@ -473,6 +473,18 @@ class CrudService
             ";
         }
 
+        preg_match_all('/([^\/]+)/', $mostrar_campos_busqueda, $matches);
+
+        $values = array_filter($matches[0], function ($value) {
+            return !empty(trim($value)) && $value !== '_';
+        });
+        
+        $setsearch = ['campos' => $values];
+
+        foreach($setsearch as $buscar){
+
+        }
+
         $buttons_actions_array = explode(',', $buttons_actions);
        
         foreach ($buttons_actions_array as $Btnaction) {
