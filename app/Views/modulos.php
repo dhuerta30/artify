@@ -219,9 +219,8 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 $(".controller_name").val("Personas");
             } else if (val == "Modulo de Inventario") {
                 $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
-                $(".query").removeAttr("required").attr("disabled", "disabled");
                 $(".columns_table").val('id_inventario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,\n' +
-                'nombre_producto VARCHAR(255) NOT NULL,\n' +
+                'nombre_producto as ,\n' +
                 'tipo VARCHAR(200) NOT NULL,\n' +
                 'cantidad VARCHAR(100) NOT NULL,\n' +
                 'cantidad_vendida VARCHAR(100) NOT NULL,\n' +
@@ -237,6 +236,12 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             } else {
                 $(".id_tabla").val("id_personas");
                 $(".query").attr("required", "required").removeAttr("disabled");
+                $(".query").val("SELECT\n" +
+                "nombre as nombre,\n" +
+                "apellido as apellido,\n" +
+                "categoria as categoria\n" +
+                "producto as producto FROM personas");
+                
                 $(".columns_table").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
                 "nombre VARCHAR(255) NOT NULL,\n" +
                 "apellido VARCHAR(255) NOT NULL,\n" +
