@@ -636,15 +636,6 @@ class HomeController
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label class="form-label">Columnas de La Tabla:</label>
-								{columns_table}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-					</div>
-					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Nombre de La Vista:</label>
