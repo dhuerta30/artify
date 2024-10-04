@@ -12,6 +12,17 @@
 	}
 }
 
+.select2-container .select2-selection--single {
+    height: 38px!important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 7px!important;
+}
+
+.select2-container {
+    width:100%!important;
+}
+
 .artify_leftjoin_row_1 {
     width: 7.692307692307692%;
 }
@@ -114,13 +125,24 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             },
             success: function(data){
                 $("#artify-ajax-loader").hide();
+                
+                // Limpiar opciones anteriores del select
+                $(".tabla").empty();
+                $(".tabla").html(`<option value>Seleccionar</option>`);
+                // Añadir nuevas opciones desde el resultado del ajax
                 $.each(data["tablas"], function(index, obj){
                     $(".tabla").append(`
                         <option value="${obj.nombre_tabla}">${obj.nombre_tabla}</option>
                     `);
                 });
+                
+                // Actualizar select2 para que reconozca los nuevos valores
+                $(".tabla").trigger('change'); 
             }
         });
+
+        // Inicializar select2
+        $(".tabla").select2();
 
         $(".nombre_tabla").val("personas");
         $(".query_tabla").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +

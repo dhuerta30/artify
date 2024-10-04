@@ -1109,6 +1109,7 @@ class HomeController
 		</div>
 		</div>
 		';
+		$artify->addPlugin("select2");
 		$artify->addPlugin("bootstrap-inputmask");
 		$artify->set_template($html_template);
 		$artify->setLangData("no_data", "No Hay Módulos creados");
