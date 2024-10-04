@@ -1454,7 +1454,7 @@ class HomeController
 			$queryfy = $artify->getQueryfyObj();
 			$result = $queryfy->select("configuraciones_modulos");
 
-			echo json_encode([$result]);
+			echo json_encode(["tablas" => $result]);
 		}
 	}
 

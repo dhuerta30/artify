@@ -110,7 +110,11 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             url: "<?=$_ENV["BASE_URL"]?>Home/obtener_tablas",
             dataType: "json",
             success: function(data){
-                console.log(data);
+                $.each(data["tablas"], function(index, obj){
+                    $(".tabla").append(`
+                        <option value="${obj.nombre_tabla}">${obj.nombre_tabla}</option>
+                    `);
+                });
             }
         });
 

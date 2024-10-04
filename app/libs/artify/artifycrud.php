@@ -973,9 +973,9 @@ function insertar_configuraciones_modulos($data, $obj){
     $resultado = $queryfy->create_table($nombre_tabla, $query_tabla);
     
     if ($resultado) {
-        echo "Tabla creada exitosamente.";
+        $obj->setLangData("success", "Tabla creada exitosamente");
     } else {
-        echo "Error al crear la tabla.";
+         $obj->setLangData("no_data", "Error al crear la tabla");
     }
     
     return $data;
