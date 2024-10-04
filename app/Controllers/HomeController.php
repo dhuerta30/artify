@@ -1439,6 +1439,19 @@ class HomeController
 		);
 	}
 
+	public function obtener_id_tabla(){
+		$request = new Request();
+
+		if ($request->getMethod() === 'POST') {
+			$tabla = $request->post('val');
+			$artify = DB::ArtifyCrud();
+			$queryfy = $artify->getQueryfyObj();
+			$primaryKey = $queryfy->primaryKey($tabla);
+
+			echo json_encode(["id_tablas" => $primaryKey]);
+		}
+	}
+
 	public function obtener_tablas(){
 		$request = new Request();
 

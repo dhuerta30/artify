@@ -89,6 +89,32 @@ $(document).on("change", ".generar_jwt_token", function() {
     }
 });
 
+$(document).on("change", ".tabla", function(){
+    let val = $(this).val();
+
+    $.ajax({
+        type: "POST",
+        url: "<?=$_ENV["BASE_URL"]?>Home/obtener_id_tabla",
+        dataType: 'json',
+        data: {
+            val: val
+        },
+        beforeSend: function() {
+            $("#artify-ajax-loader").show();
+        },
+        success: function(data){
+            $("#artify-ajax-loader").hide();
+            console.log(data);
+
+            if(val != ""){
+                $(".id_tabla").val(data["id_tablas"]);
+            } else {
+                $(".id_tabla").val("");
+            }
+        }
+    });
+});
+
 $(document).on("click", ".generar_token_api", function(){
     $.ajax({
         type: "POST",
