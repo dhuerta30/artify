@@ -1144,6 +1144,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["mostrar_campos_busqueda"] = $mostrar_campos_busqueda;
     $newdata["modulos"]["mostrar_columnas_grilla"] = $mostrar_columnas_grilla;
     $newdata["modulos"]["mostrar_campos_formulario"] = $mostrar_campos_formulario;
+    $newdata["modulos"]["activar_recaptcha"] = $activar_recaptcha;
+    $newdata["modulos"]["sitekey_recaptcha"] = $sitekey_recaptcha;
+    $newdata["modulos"]["sitesecret_repatcha"] = $sitesecret_repatcha;
 
     return $newdata;
 }
