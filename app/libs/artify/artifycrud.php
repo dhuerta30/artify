@@ -1017,6 +1017,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $mostrar_campos_busqueda = isset($data["modulos"]["mostrar_campos_busqueda"]) ? $data["modulos"]["mostrar_campos_busqueda"] : null;
     $mostrar_columnas_grilla = isset($data["modulos"]["mostrar_columnas_grilla"]) ? $data["modulos"]["mostrar_columnas_grilla"] : null;
     $mostrar_campos_formulario = isset($data["modulos"]["mostrar_campos_formulario"]) ? $data["modulos"]["mostrar_campos_formulario"] : null;
+    $activar_recaptcha = $data["modulos"]["activar_recaptcha"];
+    $sitekey_recaptcha = isset($data["modulos"]["sitekey_recaptcha"]) ? $data["modulos"]["sitekey_recaptcha"] : null;
+    $sitesecret_repatcha = isset($data["modulos"]["sitesecret_repatcha"]) ? $data["modulos"]["sitesecret_repatcha"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
