@@ -51,6 +51,8 @@ label.checkbox-inline {
 				<?=$render?>
                 <?=$switch?>
                 <br>
+                <?=$render_modulos?>
+                <br>
                 <?=$render_conf?>
 				<div class="emergente"></div>
 			</div>

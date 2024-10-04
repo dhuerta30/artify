@@ -1341,41 +1341,17 @@ class HomeController
 		$html_template_config = '
 		<div class="card">
 		<div class="card-body bg-dark">
-			<h5 class="card-title mb-0">Configuración de Módulos</h5>
+			<h5 class="card-title mb-0">Configuración de Api</h5>
 		</div>
 		<div class="card-body bg-light">
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item" role="presentation">
-					<a class="nav-link active" id="PDFconfig-tab" data-toggle="tab" href="#PDFconfig" role="tab" aria-controls="PDFconfig" aria-selected="true">Configuración de PDF</a>
-				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" id="Apiconfig-tab" data-toggle="tab" href="#Apiconfig" role="tab" aria-controls="Apiconfig" aria-selected="false">Configuración de API</a>
+					<a class="nav-link active" id="Apiconfig-tab" data-toggle="tab" href="#Apiconfig" role="tab" aria-controls="Apiconfig" aria-selected="false">Configuración de API</a>
 				</li>
 			</ul>
 
-			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="PDFconfig" role="tabpanel" aria-labelledby="PDFconfig-tab">
-					
-					<div class="row mt-4">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class="form-label">Subir Logo PDF:</label>
-								{logo_pdf}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class="form-label">Subir Marca de agua PDF:</label>
-								{marca_agua_pdf}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-					</div>
-
-				</div>
-  				<div class="tab-pane fade" id="Apiconfig" role="tabpanel" aria-labelledby="Apiconfig-tab">
+  				<div class="tab-pane fade show active" id="Apiconfig" role="tabpanel" aria-labelledby="Apiconfig-tab">
 				
 					<div class="row mt-4">
 						<div class="col-md-4">
@@ -1411,9 +1387,9 @@ class HomeController
 		';
 
 		$queryfy = $config->getQueryfyObj();
-		$configuraciones_modulos = $queryfy->select("configuraciones_modulos");
+		$configuraciones_api = $queryfy->select("configuraciones_api");
 
-		if($configuraciones_modulos[0]["generar_jwt_token"] == "Si"){
+		if($configuraciones_api[0]["generar_jwt_token"] == "Si"){
 			$_ENV["ENABLE_JWTAUTH"] = true;
 		} else {
 			$_ENV["ENABLE_JWTAUTH"] = false;
@@ -1424,17 +1400,13 @@ class HomeController
 		$config->fieldCssClass("generar_jwt_token", array("generar_jwt_token"));
 		$config->fieldCssClass("autenticar_jwt_token", array("autenticar_jwt_token"));
 		$config->fieldCssClass("tiempo_caducidad_token", array("tiempo_caducidad_token"));
-		$config->formFields(array("logo_pdf","marca_agua_pdf","generar_jwt_token", "autenticar_jwt_token", "tiempo_caducidad_token"));
+		$config->formFields(array("generar_jwt_token", "autenticar_jwt_token", "tiempo_caducidad_token"));
 		$config->formFieldValue("generar_jwt_token", "No");
-		$config->fieldNotMandatory("logo_pdf");
-		$config->fieldNotMandatory("marca_agua_pdf");
 		$config->fieldNotMandatory("autenticar_jwt_token");
 		$config->fieldValidationType("tiempo_caducidad_token", "required", "", "Ingrese un tiempo de Caducidad para el token");
 		$config->setSettings("refresh", false);
 		$config->setSettings("editbtn", true);
 		$config->setSettings("delbtn", true);
-		$config->fieldTypes("logo_pdf", "FILE_NEW");
-		$config->fieldTypes("marca_agua_pdf", "FILE_NEW");
 		$config->fieldTypes("generar_jwt_token", "select");
 		$config->fieldDataBinding("generar_jwt_token", array("Si" => "Si", "No" => "No"), "", "", "array");
 		$config->buttonHide("submitBtnSaveBack");
@@ -1445,9 +1417,17 @@ class HomeController
 		$config->fieldGroups("Name2",array("generar_jwt_token","autenticar_jwt_token"));
 		$render_conf = $config->dbTable("configuraciones_api")->render("editform", array("id" => "1"));
 
+		$modulos = DB::ArtifyCrud(true);
+		$modulos->formDisplayInPopup();
+		$modulos->fieldTypes("logo_pdf", "FILE_NEW");
+		$modulos->fieldTypes("marca_agua_pdf", "FILE_NEW");
+		$modulos->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
+		$modulos->colRename("query_tabla", "Consulta BD para crear Tabla");
+		$render_modulos = $modulos->dbTable("configuraciones_modulos")->render();
+
 		View::render(
 			"modulos",
-			['render' => $render, 'render_conf' => $render_conf, 'switch' => $switch]
+			['render' => $render, 'render_conf' => $render_conf, 'switch' => $switch, 'render_modulos' => $render_modulos]
 		);
 	}
 
