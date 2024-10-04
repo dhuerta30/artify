@@ -68,7 +68,7 @@ a.artify-actions.artify-button.artify-button-export {
 }
 .table>thead:first-child>tr:first-child>th{
     border-top: 0;
-    padding: 4px 25px;  
+    padding: 10px 25px;  
     white-space: nowrap;
     text-align: center;
     font-size: 12px;
