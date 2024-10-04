@@ -1365,8 +1365,6 @@ function eliminar_modulos($data, $obj)
         echo "El directorio no existe: $templaesCrudDirPath";
     }
 
-    //$queryfy->dropTable($tabla);
-
     return $data;
 }
 
