@@ -1060,7 +1060,10 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $encryption,
             $mostrar_campos_busqueda,
             $mostrar_columnas_grilla,
-            $mostrar_campos_formulario
+            $mostrar_campos_formulario,
+            $activar_recaptcha,
+            $sitekey_recaptcha,
+            $sitesecret_repatcha
         );
     } 
     
@@ -1089,7 +1092,10 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $encryption,
             $mostrar_campos_busqueda,
             $mostrar_columnas_grilla,
-            $mostrar_campos_formulario
+            $mostrar_campos_formulario,
+            $activar_recaptcha,
+            $sitekey_recaptcha,
+            $sitesecret_repatcha
         );
     }
 
