@@ -1144,6 +1144,9 @@ class HomeController
 		$artify->fieldDataAttr("mostrar_columnas_grilla", array("placeholder" => "columna1/columna2/columna3/etc"));
 		$artify->fieldDataAttr("mostrar_campos_formulario", array("placeholder" => "campo1/campo2/campo3/etc"));
 
+		$artify->fieldTypes("mostrar_campos_busqueda", "multiselect");
+		$artify->fieldTypes("mostrar_campos_formulario", "multiselect");
+
 		$artify->fieldTypes("encryption", "select");
 		$artify->fieldDataBinding("encryption", array("Si" => "Si", "No" => "No"), "", "", "array");
 

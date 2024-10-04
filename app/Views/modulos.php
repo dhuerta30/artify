@@ -199,17 +199,6 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
         $(".modificar_tabla_col").hide();
         $(".campos_view_tabla").hide();
 
-
-        $('.mostrar_campos_busqueda, .mostrar_columnas_grilla, .mostrar_campos_formulario').inputmask({
-            mask: "*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}/*{1,}",
-            definitions: {
-                '*': {
-                    validator: "[a-zA-Z_]"
-                }
-            }
-        });
-
-
         $(".activate_pdf").change(function() {
             var val = $(this).val();
 

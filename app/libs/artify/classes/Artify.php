@@ -4861,7 +4861,7 @@ Class Artify {
                 $attr = array_merge($attr, array(
                     "multiple" => "multiple"
                 ));
-                return $this->getSelectField($fieldName, $attr, $data, $fieldData);
+                return $this->getSelectField($fieldName, $attr, $data, $fieldData, $fieldClass);
             case "DATE":
                 /*$fieldClass = array_merge($fieldClass, array(
                     "artify-date"
