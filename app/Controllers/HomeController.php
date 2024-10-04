@@ -708,7 +708,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Campos a Mostrar en el buscador:</label>
 								{mostrar_campos_busqueda}
-								<span>Escriba y presione espacio para avanzar al siguiente</span>
+								<span>seleccione la tabla para cargar estos campos</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
@@ -716,7 +716,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Campos a Mostrar en el formulario:</label>
 								{mostrar_campos_formulario}
-								<span>Escriba y presione espacio para avanzar al siguiente</span>
+								<span>seleccione la tabla para cargar estos campos</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
@@ -724,7 +724,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Columnas a Mostrar en la Grilla:</label>
 								{mostrar_columnas_grilla}
-								<span>Escriba y presione espacio para avanzar al siguiente</span>
+								<span>seleccione la tabla para cargar estos campos</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
@@ -1146,6 +1146,7 @@ class HomeController
 
 		$artify->fieldTypes("mostrar_campos_busqueda", "multiselect");
 		$artify->fieldTypes("mostrar_campos_formulario", "multiselect");
+		$artify->fieldTypes("mostrar_columnas_grilla", "multiselect");
 
 		$artify->fieldTypes("encryption", "select");
 		$artify->fieldDataBinding("encryption", array("Si" => "Si", "No" => "No"), "", "", "array");
