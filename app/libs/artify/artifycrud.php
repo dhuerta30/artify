@@ -1021,7 +1021,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $crud_type = $data["modulos"]["crud_type"];
     $query_db = isset($data["modulos"]["query"]) ? $data["modulos"]["query"] : null;
     $controller_name = $data["modulos"]["controller_name"];
-    $columns_table = $data["modulos"]["columns_table"];
     $name_view = $data["modulos"]["name_view"];
     $add_menu = $data["modulos"]["add_menu"];
     $template_fields = $data["modulos"]["template_fields"];
@@ -1037,6 +1036,10 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $refrescar_grilla = $data["modulos"]["refrescar_grilla"];
     $encryption = $data["modulos"]["encryption"];
     $mostrar_campos_busqueda = isset($data["modulos"]["mostrar_campos_busqueda"]) ? $data["modulos"]["mostrar_campos_busqueda"] : null;
+
+    print_r($mostrar_campos_busqueda);
+    die();
+
     $mostrar_columnas_grilla = isset($data["modulos"]["mostrar_columnas_grilla"]) ? $data["modulos"]["mostrar_columnas_grilla"] : null;
     $mostrar_campos_formulario = isset($data["modulos"]["mostrar_campos_formulario"]) ? $data["modulos"]["mostrar_campos_formulario"] : null;
     $activar_recaptcha = $data["modulos"]["activar_recaptcha"];
@@ -1065,7 +1068,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $crud_type, 
             null, 
             $controller_name,
-            $columns_table, 
             $name_view, 
             $template_fields,
             $active_filter, 
@@ -1097,7 +1099,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $crud_type, 
             null, 
             $controller_name,
-            $columns_table, 
             $name_view, 
             $template_fields,
             $active_filter, 
@@ -1148,7 +1149,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["crud_type"] = $crud_type;
     $newdata["modulos"]["query"] = $query_db;
     $newdata["modulos"]["controller_name"] = ucfirst($controller_name);
-    $newdata["modulos"]["columns_table"] = $columns_table;
     $newdata["modulos"]["name_view"] = $name_view;
     $newdata["modulos"]["add_menu"] = $add_menu;
     $newdata["modulos"]["template_fields"] = $template_fields;

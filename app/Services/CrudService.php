@@ -25,7 +25,7 @@ class CrudService
     public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda, $mostrar_columnas_grilla, $mostrar_campos_formulario, $activar_recaptcha,  $sitekey_recaptcha, $sitesecret_repatcha)
     {
         //$this->createTable($tableName, $columns);
-        $this->modifyTable($tableName, $modify_query);
+        //$this->modifyTable($tableName, $modify_query);
 
         if($crudType == 'SQL'){
             $this->generateCrudControllerSQL(
@@ -131,7 +131,7 @@ class CrudService
         }
     }*/
 
-    private function modifyTable($tableName, $modify_query)
+    /*private function modifyTable($tableName, $modify_query)
     {
         $sql = "ALTER TABLE {$tableName} {$modify_query}";
         try {
@@ -139,7 +139,7 @@ class CrudService
         } catch (\PDOException $e) {
             throw new \Exception("Error al modificar la tabla: {$e->getMessage()}");
         }
-    }
+    }*/
 
     private function generateCrudControllerSQL($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda)
     {

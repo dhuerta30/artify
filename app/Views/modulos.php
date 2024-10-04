@@ -202,7 +202,6 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
         // Inicializar select2
         $(".tabla").select2();
 
-        $(".nombre_tabla").val("personas");
         $(".query_tabla").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
                 "nombre VARCHAR(255) NOT NULL,\n" +
                 "apellido VARCHAR(255) NOT NULL,\n" +
@@ -315,8 +314,6 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
             if (val == "CRUD") {
                 $(".query").removeAttr("required").attr("disabled", "disabled");
-                $(".name_view").val("personas");
-                $(".controller_name").val("Personas");
             } else if (val == "Modulo de Inventario") {
                 $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
                 $(".tabla").val("Inventario");
@@ -329,9 +326,6 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 "apellido as apellido,\n" +
                 "categoria as categoria\n" +
                 "producto as producto FROM personas");
-                
-                $(".name_view").val("personas");
-                $(".controller_name").val("Personas");
             }
         });
     }
@@ -385,17 +379,13 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
         var val = $(".crud_type").val();
 
         if (val == "CRUD") {
-            $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
             $(".query").removeAttr("required").attr("disabled", "disabled");
             $(".columns_table").val("id INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
             "nombre VARCHAR(255) NOT NULL,\n" +
             "apellido VARCHAR(255) NOT NULL,\n" +
             "categoria INT(11) NOT NULL,\n" +
             "producto VARCHAR(100) NOT NULL");
-            $(".name_view").val("personas");
-            $(".controller_name").val("Personas");
         } else if (val == "Modulo de Inventario") {
-            $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
             $(".query").removeAttr("required").attr("disabled", "disabled");
             $(".columns_table").val('id_inventario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,\n' +
             'nombre_producto VARCHAR(255) NOT NULL,\n' +
