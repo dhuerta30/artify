@@ -155,7 +155,7 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 $(".sitekey_recaptcha").removeAttr("disabled", "disabled");
                 $(".sitesecret_repatcha").removeAttr("disabled", "disabled");
             } else {
-                $(".query_get").attr("disabled", "disabled");
+                $(".sitekey_recaptcha").attr("disabled", "disabled");
                 $(".sitesecret_repatcha").attr("disabled", "disabled");
             }
         });
