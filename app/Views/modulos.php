@@ -341,6 +341,28 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "edit"){
 
+        var val = $(".activar_recaptcha").val();
+
+        if(val == "Si"){
+            $(".sitekey_recaptcha").removeAttr("disabled", "disabled");
+            $(".sitesecret_repatcha").removeAttr("disabled", "disabled");
+        } else {
+            $(".sitekey_recaptcha").attr("disabled", "disabled");
+            $(".sitesecret_repatcha").attr("disabled", "disabled");
+        }
+
+        $(".activar_recaptcha").change(function() {
+            var val = $(this).val();
+
+            if(val == "Si"){
+                $(".sitekey_recaptcha").removeAttr("disabled", "disabled");
+                $(".sitesecret_repatcha").removeAttr("disabled", "disabled");
+            } else {
+                $(".sitekey_recaptcha").attr("disabled", "disabled");
+                $(".sitesecret_repatcha").attr("disabled", "disabled");
+            }
+        });
+
         $(".titulo_modulo").text("Editar");
         $('.siguiente_1').click(function() {
             $('#pdf-tab').tab('show');
