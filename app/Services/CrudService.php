@@ -388,7 +388,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda, $mostrar_columnas_grilla, $mostrar_campos_formulario)
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda, $mostrar_columnas_grilla, $mostrar_campos_formulario, $activar_recaptcha, $sitekey_recaptcha, $sitesecret_repatcha)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -440,6 +440,11 @@ class CrudService
                     ";
                 }
 
+                if($activar_recaptcha == "Si"){
+                    $controllerContent .= "
+                        \$artify->recaptcha(\"{$sitekey_recaptcha}\", \"{$sitesecret_repatcha}\");
+                    ";
+                }
 
                 if(isset($mostrar_columnas_grilla)){
 
