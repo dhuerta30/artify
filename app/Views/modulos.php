@@ -105,6 +105,13 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
+        $(".nombre_tabla").val("personas");
+        $(".query_tabla").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
+                "nombre VARCHAR(255) NOT NULL,\n" +
+                "apellido VARCHAR(255) NOT NULL,\n" +
+                "categoria INT(11) NOT NULL,\n" +
+                "producto VARCHAR(100) NOT NULL");
+
         $(".titulo_modulo").text("Agregar");
         $('.siguiente_1').click(function() {
             $('#pdf-tab').tab('show');
@@ -224,27 +231,11 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 //$(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
                 $(".id_tabla").val("id_personas");
                 $(".query").removeAttr("required").attr("disabled", "disabled");
-                $(".columns_table").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
-                "nombre VARCHAR(255) NOT NULL,\n" +
-                "apellido VARCHAR(255) NOT NULL,\n" +
-                "categoria INT(11) NOT NULL,\n" +
-                "producto VARCHAR(100) NOT NULL");
                 $(".tabla").val("personas");
                 $(".name_view").val("personas");
                 $(".controller_name").val("Personas");
             } else if (val == "Modulo de Inventario") {
                 $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
-                $(".columns_table").val('id_inventario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,\n' +
-                'nombre_producto as ,\n' +
-                'tipo VARCHAR(200) NOT NULL,\n' +
-                'cantidad VARCHAR(100) NOT NULL,\n' +
-                'cantidad_vendida VARCHAR(100) NOT NULL,\n' +
-                'nuevos_ingresos VARCHAR(100) NOT NULL,\n' +
-                'stock_actual VARCHAR(100) NOT NULL,\n' +
-                'ubicacion VARCHAR(255) DEFAULT NULL,\n' +
-                'precio INT(11) NOT NULL,\n' +
-                'observacion TEXT');
-
                 $(".tabla").val("Inventario");
                 $(".name_view").val("Inventario");
                 $(".controller_name").val("Inventario");
@@ -257,11 +248,6 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 "categoria as categoria\n" +
                 "producto as producto FROM personas");
                 
-                $(".columns_table").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
-                "nombre VARCHAR(255) NOT NULL,\n" +
-                "apellido VARCHAR(255) NOT NULL,\n" +
-                "categoria INT(11) NOT NULL,\n" +
-                "producto VARCHAR(100) NOT NULL");
                 $(".tabla").val("personas");
                 $(".name_view").val("personas");
                 $(".controller_name").val("Personas");

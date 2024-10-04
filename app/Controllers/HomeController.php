@@ -1422,6 +1422,11 @@ class HomeController
 
 		$modulos = DB::ArtifyCrud(true);
 		$modulos->formDisplayInPopup();
+		$modulos->setSearchCols(array("nombre_tabla"));
+		$modulos->setSettings("searchbox", true);
+		$modulos->crudRemoveCol(array("id_configuraciones_modulos", "query_tabla"));
+		$modulos->fieldCssClass("nombre_tabla", array("nombre_tabla"));
+		$modulos->fieldCssClass("query_tabla", array("query_tabla"));
 		$modulos->fieldNotMandatory("logo_pdf");
 		$modulos->fieldNotMandatory("marca_agua_pdf");
 		$modulos->fieldGroups("group1",array("logo_pdf","marca_agua_pdf"));
