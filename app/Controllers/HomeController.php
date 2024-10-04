@@ -712,7 +712,7 @@ class HomeController
 							</div>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row mt-3">
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Campos a Mostrar en el buscador:</label>
@@ -745,7 +745,7 @@ class HomeController
 							</div>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row mt-3">
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Botones de Exportación Grilla:</label>
