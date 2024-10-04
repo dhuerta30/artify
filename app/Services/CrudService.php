@@ -22,9 +22,9 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda, $mostrar_columnas_grilla, $mostrar_campos_formulario, $activar_recaptcha,  $sitekey_recaptcha, $sitesecret_repatcha)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda, $mostrar_columnas_grilla, $mostrar_campos_formulario, $activar_recaptcha,  $sitekey_recaptcha, $sitesecret_repatcha)
     {
-        $this->createTable($tableName, $columns);
+        //$this->createTable($tableName, $columns);
         $this->modifyTable($tableName, $modify_query);
 
         if($crudType == 'SQL'){
@@ -121,7 +121,7 @@ class CrudService
         closedir($dir);
     }
 
-    private function createTable($tableName, $columns)
+    /*private function createTable($tableName, $columns)
     {
         $sql = "CREATE TABLE IF NOT EXISTS {$tableName} ({$columns})";
         try {
@@ -129,7 +129,7 @@ class CrudService
         } catch (\PDOException $e) {
             throw new \Exception("Error al crear la tabla: {$e->getMessage()}");
         }
-    }
+    }*/
 
     private function modifyTable($tableName, $modify_query)
     {
