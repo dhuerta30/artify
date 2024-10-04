@@ -965,31 +965,31 @@ function formatTable_buscar_examenes($data, $obj){
     return $data;
 }
 
-function insertar_configuracion_modulos($data, $obj){
-    $logo_pdf = isset($data["configuraciones_modulos"]["logo_pdf"]) ? $data["configuraciones_modulos"]["logo_pdf"] : null;
-    $marca_agua_pdf = isset($data["configuraciones_modulos"]["marca_agua_pdf"]) ? $data["configuraciones_modulos"]["marca_agua_pdf"] : null;
-    $generar_jwt_token = isset($data["configuraciones_modulos"]["generar_jwt_token"]) ? $data["configuraciones_modulos"]["generar_jwt_token"] : null;
-    $autenticar_jwt_token = isset($data["configuraciones_modulos"]["autenticar_jwt_token"]) ? $data["configuraciones_modulos"]["autenticar_jwt_token"] : null;
+function insertar_configuracion_api($data, $obj){
+    $logo_pdf = isset($data["configuraciones_api"]["logo_pdf"]) ? $data["configuraciones_api"]["logo_pdf"] : null;
+    $marca_agua_pdf = isset($data["configuraciones_api"]["marca_agua_pdf"]) ? $data["configuraciones_api"]["marca_agua_pdf"] : null;
+    $generar_jwt_token = isset($data["configuraciones_api"]["generar_jwt_token"]) ? $data["configuraciones_api"]["generar_jwt_token"] : null;
+    $autenticar_jwt_token = isset($data["configuraciones_api"]["autenticar_jwt_token"]) ? $data["configuraciones_api"]["autenticar_jwt_token"] : null;
    
     $newdata = array();
-    $newdata["configuraciones_modulos"]["logo_pdf"] = $logo_pdf;
-    $newdata["configuraciones_modulos"]["marca_agua_pdf"] = $marca_agua_pdf;
-    $newdata["configuraciones_modulos"]["generar_jwt_token"] = $generar_jwt_token;
-    $newdata["configuraciones_modulos"]["autenticar_jwt_token"] = $autenticar_jwt_token;
+    $newdata["configuraciones_api"]["logo_pdf"] = $logo_pdf;
+    $newdata["configuraciones_api"]["marca_agua_pdf"] = $marca_agua_pdf;
+    $newdata["configuraciones_api"]["generar_jwt_token"] = $generar_jwt_token;
+    $newdata["configuraciones_api"]["autenticar_jwt_token"] = $autenticar_jwt_token;
     return $newdata;
 }
 
-function actualizar_configuracion_modulos($data, $obj){
-    $logo_pdf = isset($data["configuraciones_modulos"]["logo_pdf"]) ? $data["configuraciones_modulos"]["logo_pdf"] : null;
-    $marca_agua_pdf = isset($data["configuraciones_modulos"]["marca_agua_pdf"]) ? $data["configuraciones_modulos"]["marca_agua_pdf"] : null;
-    $generar_jwt_token = isset($data["configuraciones_modulos"]["generar_jwt_token"]) ? $data["configuraciones_modulos"]["generar_jwt_token"] : null;
-    $autenticar_jwt_token = isset($data["configuraciones_modulos"]["autenticar_jwt_token"]) ? $data["configuraciones_modulos"]["autenticar_jwt_token"] : null;
+function actualizar_configuracion_api($data, $obj){
+    $logo_pdf = isset($data["configuraciones_api"]["logo_pdf"]) ? $data["configuraciones_api"]["logo_pdf"] : null;
+    $marca_agua_pdf = isset($data["configuraciones_api"]["marca_agua_pdf"]) ? $data["configuraciones_api"]["marca_agua_pdf"] : null;
+    $generar_jwt_token = isset($data["configuraciones_api"]["generar_jwt_token"]) ? $data["configuraciones_api"]["generar_jwt_token"] : null;
+    $autenticar_jwt_token = isset($data["configuraciones_api"]["autenticar_jwt_token"]) ? $data["configuraciones_api"]["autenticar_jwt_token"] : null;
    
     $newdata = array();
-    $newdata["configuraciones_modulos"]["logo_pdf"] = $logo_pdf;
-    $newdata["configuraciones_modulos"]["marca_agua_pdf"] = $marca_agua_pdf;
-    $newdata["configuraciones_modulos"]["generar_jwt_token"] = $generar_jwt_token;
-    $newdata["configuraciones_modulos"]["autenticar_jwt_token"] = $autenticar_jwt_token;
+    $newdata["configuraciones_api"]["logo_pdf"] = $logo_pdf;
+    $newdata["configuraciones_api"]["marca_agua_pdf"] = $marca_agua_pdf;
+    $newdata["configuraciones_api"]["generar_jwt_token"] = $generar_jwt_token;
+    $newdata["configuraciones_api"]["autenticar_jwt_token"] = $autenticar_jwt_token;
     return $newdata;
 }
 

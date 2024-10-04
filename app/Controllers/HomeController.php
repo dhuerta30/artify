@@ -1419,7 +1419,7 @@ class HomeController
 			$_ENV["ENABLE_JWTAUTH"] = false;
 		}
 
-		//$config->setPK("id_configuraciones_modulos");
+		$config->setPK("id_configuraciones_api");
 		$config->set_template($html_template_config);
 		$config->fieldCssClass("generar_jwt_token", array("generar_jwt_token"));
 		$config->fieldCssClass("autenticar_jwt_token", array("autenticar_jwt_token"));
@@ -1438,12 +1438,12 @@ class HomeController
 		$config->fieldTypes("generar_jwt_token", "select");
 		$config->fieldDataBinding("generar_jwt_token", array("Si" => "Si", "No" => "No"), "", "", "array");
 		$config->buttonHide("submitBtnSaveBack");
-		$config->addCallback("before_insert", "insertar_configuracion_modulos");
-		$config->addCallback("before_update", "actualizar_configuracion_modulos");
+		$config->addCallback("before_insert", "insertar_configuracion_api");
+		$config->addCallback("before_update", "actualizar_configuracion_api");
 		$config->fieldDataAttr("autenticar_jwt_token", array("disabled"=>"disabled"));
 		$config->fieldGroups("Name1",array("logo_pdf","marca_agua_pdf"));
 		$config->fieldGroups("Name2",array("generar_jwt_token","autenticar_jwt_token"));
-		$render_conf = $config->dbTable("configuraciones_modulos")->render();
+		$render_conf = $config->dbTable("configuraciones_api")->render("editform", array("id" => "1"));
 
 		View::render(
 			"modulos",
