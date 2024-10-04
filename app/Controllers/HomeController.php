@@ -1438,6 +1438,7 @@ class HomeController
 		$modulos->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
 		$modulos->colRename("query_tabla", "Consulta BD para crear Tabla");
 		$modulos->addCallback("before_insert", "insertar_configuraciones_modulos");
+		$modulos->addCallback("before_delete", "eliminar_configuraciones_modulos");
 		$render_modulos = $modulos->dbTable("configuraciones_modulos")->render();
 
 		View::render(

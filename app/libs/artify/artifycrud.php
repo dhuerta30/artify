@@ -981,6 +981,10 @@ function insertar_configuraciones_modulos($data, $obj){
     return $data;
 }
 
+function eliminar_configuraciones_modulos($data, $obj){
+
+}
+
 function insertar_configuracion_api($data, $obj){
     $generar_jwt_token = isset($data["configuraciones_api"]["generar_jwt_token"]) ? $data["configuraciones_api"]["generar_jwt_token"] : null;
     $autenticar_jwt_token = isset($data["configuraciones_api"]["autenticar_jwt_token"]) ? $data["configuraciones_api"]["autenticar_jwt_token"] : null;

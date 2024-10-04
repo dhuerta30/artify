@@ -109,7 +109,11 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             type: "POST",
             url: "<?=$_ENV["BASE_URL"]?>Home/obtener_tablas",
             dataType: "json",
+            beforeSend: function() {
+                $("#artify-ajax-loader").show();
+            },
             success: function(data){
+                $("#artify-ajax-loader").hide();
                 $.each(data["tablas"], function(index, obj){
                     $(".tabla").append(`
                         <option value="${obj.nombre_tabla}">${obj.nombre_tabla}</option>
