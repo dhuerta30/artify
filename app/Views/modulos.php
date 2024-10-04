@@ -148,6 +148,18 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             }
         });
 
+        $(".activar_recaptcha").change(function() {
+            var val = $(this).val();
+
+            if(val == "Si"){
+                $(".sitekey_recaptcha").removeAttr("disabled", "disabled");
+                $(".sitesecret_repatcha").removeAttr("disabled", "disabled");
+            } else {
+                $(".query_get").attr("disabled", "disabled");
+                $(".sitesecret_repatcha").attr("disabled", "disabled");
+            }
+        });
+
         $(".activate_api").change(function() {
             var val = $(this).val();
 
