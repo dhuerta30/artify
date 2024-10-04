@@ -1436,6 +1436,7 @@ class HomeController
 		$modulos->fieldTypes("marca_agua_pdf", "FILE_NEW");
 		$modulos->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
 		$modulos->colRename("query_tabla", "Consulta BD para crear Tabla");
+		$modulos->addCallback("before_insert", "insertar_configuraciones_modulos");
 		$render_modulos = $modulos->dbTable("configuraciones_modulos")->render();
 
 		View::render(

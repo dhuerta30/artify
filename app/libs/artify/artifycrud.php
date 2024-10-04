@@ -965,6 +965,22 @@ function formatTable_buscar_examenes($data, $obj){
     return $data;
 }
 
+function insertar_configuraciones_modulos($data, $obj){
+    $nombre_tabla = $data["configuraciones_modulos"]["nombre_tabla"];
+    $query_tabla = $data["configuraciones_modulos"]["query_tabla"];
+
+    $queryfy = $obj->getQueryfyObj();
+    $resultado = $queryfy->create_table($nombre_tabla, $query_tabla);
+    
+    if ($resultado) {
+        echo "Tabla creada exitosamente.";
+    } else {
+        echo "Error al crear la tabla.";
+    }
+    
+    return $data;
+}
+
 function insertar_configuracion_api($data, $obj){
     $generar_jwt_token = isset($data["configuraciones_api"]["generar_jwt_token"]) ? $data["configuraciones_api"]["generar_jwt_token"] : null;
     $autenticar_jwt_token = isset($data["configuraciones_api"]["autenticar_jwt_token"]) ? $data["configuraciones_api"]["autenticar_jwt_token"] : null;
