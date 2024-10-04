@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-10-2024 a las 21:56:02
+-- Tiempo de generación: 04-10-2024 a las 20:41:59
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -71,24 +71,43 @@ INSERT INTO `backup` (`id`, `usuario`, `archivo`, `fecha`, `hora`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `configuraciones_modulos`
+-- Estructura de tabla para la tabla `configuraciones_api`
 --
 
-CREATE TABLE `configuraciones_modulos` (
-  `id_configuraciones_modulos` int(11) NOT NULL,
-  `logo_pdf` varchar(300) DEFAULT NULL,
-  `marca_agua_pdf` varchar(300) DEFAULT NULL,
+CREATE TABLE `configuraciones_api` (
+  `id_configuraciones_api` int(11) NOT NULL,
   `generar_jwt_token` varchar(100) NOT NULL,
   `autenticar_jwt_token` varchar(100) DEFAULT NULL,
   `tiempo_caducidad_token` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Volcado de datos para la tabla `configuraciones_api`
+--
+
+INSERT INTO `configuraciones_api` (`id_configuraciones_api`, `generar_jwt_token`, `autenticar_jwt_token`, `tiempo_caducidad_token`) VALUES
+(1, 'No', NULL, '60');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `configuraciones_modulos`
+--
+
+CREATE TABLE `configuraciones_modulos` (
+  `id_configuraciones_modulos` int(11) NOT NULL,
+  `logo_pdf` varchar(300) NOT NULL,
+  `marca_agua_pdf` varchar(300) NOT NULL,
+  `nombre_tabla` varchar(100) NOT NULL,
+  `query_tabla` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- Volcado de datos para la tabla `configuraciones_modulos`
 --
 
-INSERT INTO `configuraciones_modulos` (`id_configuraciones_modulos`, `logo_pdf`, `marca_agua_pdf`, `generar_jwt_token`, `autenticar_jwt_token`, `tiempo_caducidad_token`) VALUES
-(1, '', '', 'No', NULL, '60');
+INSERT INTO `configuraciones_modulos` (`id_configuraciones_modulos`, `logo_pdf`, `marca_agua_pdf`, `nombre_tabla`, `query_tabla`) VALUES
+(7, '', '', 'personas', 'id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\r\nnombre VARCHAR(255) NOT NULL,\r\napellido VARCHAR(255) NOT NULL,\r\ncategoria INT(11) NOT NULL,\r\nproducto VARCHAR(100) NOT NULL');
 
 -- --------------------------------------------------------
 
@@ -149,7 +168,8 @@ INSERT INTO `menu` (`id_menu`, `nombre_menu`, `url_menu`, `icono_menu`, `submenu
 (10, 'Mantenedor Menu', '/home/menu', 'fas fa-bars', 'No', 6),
 (12, 'Acceso Menus', '/home/acceso_menus', 'fas fa-outdent', 'No', 7),
 (19, 'Generador de Módulos', '/home/modulos', 'fas fa-table', 'No', 1),
-(141, 'Documentación', '/Documentacion/index', 'fas fa-book', 'No', 8);
+(141, 'Documentación', '/Documentacion/index', 'fas fa-book', 'No', 8),
+(164, 'Personas', '/Personas/index', 'far fa-circle', 'No', 10);
 
 -- --------------------------------------------------------
 
@@ -193,8 +213,41 @@ CREATE TABLE `modulos` (
   `query_delete` varchar(100) DEFAULT NULL,
   `id_campos_insertar` varchar(100) DEFAULT NULL,
   `encryption` varchar(100) DEFAULT NULL,
-  `mostrar_campos_busqueda` varchar(300) NOT NULL
+  `mostrar_campos_busqueda` varchar(300) NOT NULL,
+  `mostrar_columnas_grilla` varchar(300) DEFAULT NULL,
+  `mostrar_campos_formulario` varchar(300) DEFAULT NULL,
+  `activar_recaptcha` varchar(100) NOT NULL,
+  `sitekey_recaptcha` varchar(500) DEFAULT NULL,
+  `sitesecret_repatcha` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `modulos`
+--
+
+INSERT INTO `modulos` (`id_modulos`, `tabla`, `id_tabla`, `crud_type`, `query`, `controller_name`, `columns_table`, `name_view`, `add_menu`, `template_fields`, `id_menu`, `active_filter`, `clone_row`, `active_popup`, `active_search`, `activate_deleteMultipleBtn`, `button_add`, `actions_buttons_grid`, `modify_query`, `activate_nested_table`, `buttons_actions`, `logo_pdf`, `marca_de_agua_pdf`, `activate_pdf`, `api_type`, `activate_api`, `consulta_api`, `refrescar_grilla`, `consulta_pdf`, `query_get`, `query_post`, `query_put`, `query_delete`, `id_campos_insertar`, `encryption`, `mostrar_campos_busqueda`, `mostrar_columnas_grilla`, `mostrar_campos_formulario`, `activar_recaptcha`, `sitekey_recaptcha`, `sitesecret_repatcha`) VALUES
+(246, 'personas', 'id_personas', 'CRUD', NULL, 'Personas', NULL, 'personas', 'Si', 'No', 164, 'Si', 'Si', 'Si', 'Si', 'Si', 'Si', 'Imprimir,PDF,CSV,Excel', NULL, 'No', 'Editar,Eliminar,Guardar y regresar,Personalizado PDF', NULL, NULL, 'No', '', '', NULL, 'Si', NULL, NULL, NULL, NULL, NULL, NULL, 'No', 'nombre,apellido,categoria,producto', 'id_personas,nombre,apellido,categoria,producto', 'nombre,apellido,categoria,producto', 'Si', '6LdYUwgUAAAAAMvuaWvL6esSCd-9TvjVD3NIWcF6', '6LdYUwgUAAAAAEBHn34n37p2qM44Ppj-fCUqB5wg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `personas`
+--
+
+CREATE TABLE `personas` (
+  `id_personas` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `apellido` varchar(255) NOT NULL,
+  `categoria` int(11) NOT NULL,
+  `producto` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `personas`
+--
+
+INSERT INTO `personas` (`id_personas`, `nombre`, `apellido`, `categoria`, `producto`) VALUES
+(1, 'manuel', 'rojas', 23, 'ejemplo');
 
 -- --------------------------------------------------------
 
@@ -290,7 +343,8 @@ INSERT INTO `usuario_menu` (`id_usuario_menu`, `id_usuario`, `id_menu`, `visibil
 (1175, 20, 10, 'Mostrar'),
 (1176, 1, 12, 'Mostrar'),
 (1179, 1, 19, 'Mostrar'),
-(1299, 1, 141, 'Mostrar');
+(1299, 1, 141, 'Mostrar'),
+(1322, 1, 164, 'Mostrar');
 
 -- --------------------------------------------------------
 
@@ -323,6 +377,12 @@ ALTER TABLE `backup`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `configuraciones_api`
+--
+ALTER TABLE `configuraciones_api`
+  ADD PRIMARY KEY (`id_configuraciones_api`);
+
+--
 -- Indices de la tabla `configuraciones_modulos`
 --
 ALTER TABLE `configuraciones_modulos`
@@ -351,6 +411,12 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `modulos`
   ADD PRIMARY KEY (`id_modulos`);
+
+--
+-- Indices de la tabla `personas`
+--
+ALTER TABLE `personas`
+  ADD PRIMARY KEY (`id_personas`);
 
 --
 -- Indices de la tabla `rol`
@@ -400,10 +466,16 @@ ALTER TABLE `backup`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
+-- AUTO_INCREMENT de la tabla `configuraciones_api`
+--
+ALTER TABLE `configuraciones_api`
+  MODIFY `id_configuraciones_api` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `configuraciones_modulos`
 --
 ALTER TABLE `configuraciones_modulos`
-  MODIFY `id_configuraciones_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_configuraciones_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `creador_de_panel`
@@ -421,13 +493,19 @@ ALTER TABLE `custom_panel`
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT de la tabla `modulos`
 --
 ALTER TABLE `modulos`
-  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
+  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+
+--
+-- AUTO_INCREMENT de la tabla `personas`
+--
+ALTER TABLE `personas`
+  MODIFY `id_personas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -451,7 +529,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario_menu`
 --
 ALTER TABLE `usuario_menu`
-  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1319;
+  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1323;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_submenu`
