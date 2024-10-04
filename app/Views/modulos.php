@@ -122,6 +122,9 @@ $(document).on("change", ".tabla", function(){
 
                 $(".name_view").val(val);
 
+                let controllerName = val.charAt(0).toUpperCase() + val.slice(1);
+                $(".controller_name").val(controllerName);
+
                 // Limpiar los selectores de campos y añadir la opción "Seleccionar"
                 $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").empty().append(`<option value>Seleccionar</option>`);
                 
@@ -143,6 +146,8 @@ $(document).on("change", ".tabla", function(){
                 $(".id_tabla").val("");
 
                 $(".name_view").val("");
+
+                $(".controller_name").val("");
 
                 // Inicializar select2 en los nuevos elementos
                 $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").select2();
