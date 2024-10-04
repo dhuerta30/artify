@@ -105,6 +105,15 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
+        $.ajax({
+            type: "POST",
+            url: "<?=$_ENV["BASE_URL"]?>Home/obtener_tablas",
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+            }
+        });
+
         $(".nombre_tabla").val("personas");
         $(".query_tabla").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
                 "nombre VARCHAR(255) NOT NULL,\n" +

@@ -1218,8 +1218,7 @@ class HomeController
 		$artify->fieldDataBinding("clone_row", array("Si" => "Si", "No" => "No"), "", "", "array");
 
 		$artify->fieldTypes("tabla", "select");
-		$artify->fieldDataBinding("tabla", "configuraciones_modulos", "nombre_tabla as configuraciones_modulos", "nombre_tabla", "db");
-
+		
 		$artify->fieldCssClass("crud_type", array("crud_type"));
 		$artify->fieldCssClass("tabla", array("tabla"));
 		$artify->fieldCssClass("id_tabla", array("id_tabla"));
@@ -1445,6 +1444,17 @@ class HomeController
 		);
 	}
 
+	public function obtener_tablas(){
+		$request = new Request();
+
+		if ($request->getMethod() === 'POST') {
+			$artify = DB::ArtifyCrud();
+			$queryfy = $artify->getQueryfyObj();
+			$result = $queryfy->select("configuraciones_modulos");
+
+			echo json_encode([$result]);
+		}
+	}
 
 	public function generarToken(){
 		$request = new Request();
