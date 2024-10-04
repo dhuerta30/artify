@@ -982,7 +982,8 @@ function insertar_configuraciones_modulos($data, $obj){
 }
 
 function eliminar_configuraciones_modulos($data, $obj){
-
+    $queryfy = $obj->getQueryfyObj();
+    $queryfy->dropTable($tabla);
 }
 
 function insertar_configuracion_api($data, $obj){
