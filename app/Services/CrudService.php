@@ -427,11 +427,10 @@ class CrudService
 
                  if(isset($mostrar_campos_busqueda)){
 
-                    preg_match_all('/([^\/]+)/', $mostrar_campos_busqueda, $matches);
+                    $values = explode(',', $mostrar_campos_busqueda);
 
-                    // Filtra los resultados para eliminar los valores que no sean cadenas
-                    $values = array_filter($matches[0], function ($value) {
-                        return !empty(trim($value)) && $value !== '_';
+                    $values = array_filter($values, function ($value) {
+                        return !empty(trim($value));
                     });
 
                     $valuesString = '"' . implode('", "', $values) . '"';
@@ -444,13 +443,12 @@ class CrudService
 
                 if(isset($mostrar_columnas_grilla)){
 
-                    preg_match_all('/([^\/]+)/', $mostrar_columnas_grilla, $matches);
+                    $values = explode(',', $mostrar_columnas_grilla);
 
-                    // Filtra los resultados para eliminar los valores que no sean cadenas
-                    $values = array_filter($matches[0], function ($value) {
-                        return !empty(trim($value)) && $value !== '_';
+                    $values = array_filter($values, function ($value) {
+                        return !empty(trim($value));
                     });
-
+                    
                     $valuesString = '"' . implode('", "', $values) . '"';
 
                     $controllerContent .= "
@@ -460,13 +458,12 @@ class CrudService
 
                 if(isset($mostrar_campos_formulario)){
 
-                    preg_match_all('/([^\/]+)/', $mostrar_campos_formulario, $matches);
+                    $values = explode(',', $mostrar_campos_formulario);
 
-                    // Filtra los resultados para eliminar los valores que no sean cadenas
-                    $values = array_filter($matches[0], function ($value) {
-                        return !empty(trim($value)) && $value !== '_';
+                    $values = array_filter($values, function ($value) {
+                        return !empty(trim($value));
                     });
-
+                    
                     $valuesString = '"' . implode('", "', $values) . '"';
 
                     $controllerContent .= "
