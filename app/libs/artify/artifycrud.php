@@ -982,8 +982,13 @@ function insertar_configuraciones_modulos($data, $obj){
 }
 
 function eliminar_configuraciones_modulos($data, $obj){
+    $id = $data["id"];
     $queryfy = $obj->getQueryfyObj();
-    $queryfy->dropTable($tabla);
+    $queryfy->where("id_configuraciones_modulos", $id);
+    $tabla = $queryfy->select("configuraciones_modulos");
+
+    $queryfy->dropTable($tabla[0]["nombre_tabla"]);
+    return $data;
 }
 
 function insertar_configuracion_api($data, $obj){
