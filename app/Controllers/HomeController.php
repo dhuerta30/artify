@@ -1479,7 +1479,6 @@ class HomeController
 		}
 	}
 
-
 	/*public function obtenerTablaActual(){
 		$request = new Request();
 
