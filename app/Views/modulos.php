@@ -106,16 +106,38 @@ $(document).on("change", ".tabla", function(){
         },
         success: function(data){
             $("#artify-ajax-loader").hide();
-            console.log(data);
 
-            if(val != ""){
+            if (val != "") {
+                // Asignar el valor del ID
                 $(".id_tabla").val(data["id_tablas"]);
+
+                // Limpiar los selectores de campos
+                $(".mostrar_campos_busqueda, .mostrar_campos_formulario").empty().append(`<option value>Seleccionar</option>`);
+                
+                // Añadir nuevas opciones desde el resultado del ajax
+                $.each(data["columnas_tablas"], function(index, obj){
+                    $(".mostrar_campos_busqueda, .mostrar_campos_formulario").append(`
+                        <option value="${obj}">${obj}</option>
+                    `);
+                });
+
+                // Refrescar el select2
+                $(".mostrar_campos_busqueda, .mostrar_campos_formulario").trigger('change');
+
             } else {
+                // Limpiar los campos si val está vacío
+                $(".mostrar_campos_busqueda, .mostrar_campos_formulario").empty().append(`<option value>Seleccionar</option>`);
+                
+                // Vaciar el valor de id_tabla
                 $(".id_tabla").val("");
+
+                // Refrescar el select2
+                $(".mostrar_campos_busqueda, .mostrar_campos_formulario").trigger('change');
             }
         }
     });
 });
+
 
 $(document).on("click", ".generar_token_api", function(){
     $.ajax({

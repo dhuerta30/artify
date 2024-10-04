@@ -1451,8 +1451,9 @@ class HomeController
 			$artify = DB::ArtifyCrud();
 			$queryfy = $artify->getQueryfyObj();
 			$primaryKey = $queryfy->primaryKey($tabla);
+			$columnNames = $queryfy->columnNames($tabla);
 
-			echo json_encode(["id_tablas" => $primaryKey]);
+			echo json_encode(["columnas_tablas" => $columnNames, "id_tablas" => $primaryKey]);
 		}
 	}
 
