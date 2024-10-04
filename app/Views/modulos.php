@@ -111,7 +111,7 @@ $(document).on("change", ".tabla", function(){
                 // Asignar el valor del ID
                 $(".id_tabla").val(data["id_tablas"]);
 
-                // Limpiar los selectores de campos
+                // Limpiar los selectores de campos y añadir la opción "Seleccionar"
                 $(".mostrar_campos_busqueda, .mostrar_campos_formulario").empty().append(`<option value>Seleccionar</option>`);
                 
                 // Añadir nuevas opciones desde el resultado del ajax
@@ -121,23 +121,22 @@ $(document).on("change", ".tabla", function(){
                     `);
                 });
 
-                // Refrescar el select2
-                $(".mostrar_campos_busqueda, .mostrar_campos_formulario").trigger('change');
+                // Inicializar select2 en los nuevos elementos
+                $(".mostrar_campos_busqueda, .mostrar_campos_formulario").select2();
 
             } else {
-                // Limpiar los campos si val está vacío
+                // Limpiar los campos si val está vacío y añadir la opción "Seleccionar"
                 $(".mostrar_campos_busqueda, .mostrar_campos_formulario").empty().append(`<option value>Seleccionar</option>`);
                 
                 // Vaciar el valor de id_tabla
                 $(".id_tabla").val("");
 
-                // Refrescar el select2
-                $(".mostrar_campos_busqueda, .mostrar_campos_formulario").trigger('change');
+                // Inicializar select2 en los nuevos elementos
+                $(".mostrar_campos_busqueda, .mostrar_campos_formulario").select2();
             }
         }
     });
 });
-
 
 $(document).on("click", ".generar_token_api", function(){
     $.ajax({
