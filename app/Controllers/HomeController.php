@@ -1423,6 +1423,8 @@ class HomeController
 		$modulos->formDisplayInPopup();
 		$modulos->setSearchCols(array("nombre_tabla"));
 		$modulos->setSettings("searchbox", true);
+		$modulos->setSettings("editbtn", true);
+		$modulos->setSettings("delbtn", true);
 		$modulos->crudRemoveCol(array("id_configuraciones_modulos", "query_tabla"));
 		$modulos->fieldCssClass("nombre_tabla", array("nombre_tabla"));
 		$modulos->fieldCssClass("query_tabla", array("query_tabla"));

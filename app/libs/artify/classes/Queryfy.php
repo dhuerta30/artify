@@ -1046,25 +1046,12 @@ class Queryfy
     {
         try {
             if ($this->dbType === "mysql") {
-                // Verifica que $values sea un array
-                if (!is_array($values) || empty($values)) {
-                    throw new InvalidArgumentException("Values must be a non-empty array to create a table.");
-                }
-
-                $this->sql = "CREATE TABLE " . $this->parseTable($dbTableName);
-                $this->sql .= " (";
-                foreach ($values as $key) {
-                    $this->sql .= $key . ",";
-                }
-                $this->sql = rtrim($this->sql, ",");
-                $this->sql .= ") ";
+                $this->sql = "CREATE TABLE IF NOT EXISTS {$dbTableName} ({$values})";
                 $stmt = $this->dbObj->prepare($this->sql);
                 $stmt->execute();
             }
             return true;
         } catch (PDOException $e) {
-            $this->setErrors($e->getMessage());
-        } catch (InvalidArgumentException $e) {
             $this->setErrors($e->getMessage());
         }
     }
