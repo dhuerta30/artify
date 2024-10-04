@@ -305,10 +305,7 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             var val = $(this).val();
 
             if (val == "CRUD") {
-                //$(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
-                $(".id_tabla").val("id_personas");
                 $(".query").removeAttr("required").attr("disabled", "disabled");
-                $(".tabla").val("personas");
                 $(".name_view").val("personas");
                 $(".controller_name").val("Personas");
             } else if (val == "Modulo de Inventario") {
@@ -317,7 +314,6 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 $(".name_view").val("Inventario");
                 $(".controller_name").val("Inventario");
             } else {
-                $(".id_tabla").val("id_personas");
                 $(".query").attr("required", "required").removeAttr("disabled");
                 $(".query").val("SELECT\n" +
                 "nombre as nombre,\n" +
@@ -325,7 +321,6 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 "categoria as categoria\n" +
                 "producto as producto FROM personas");
                 
-                $(".tabla").val("personas");
                 $(".name_view").val("personas");
                 $(".controller_name").val("Personas");
             }
@@ -388,7 +383,6 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             "apellido VARCHAR(255) NOT NULL,\n" +
             "categoria INT(11) NOT NULL,\n" +
             "producto VARCHAR(100) NOT NULL");
-            $(".tabla").val("personas");
             $(".name_view").val("personas");
             $(".controller_name").val("Personas");
         } else if (val == "Modulo de Inventario") {
@@ -412,7 +406,6 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             $(".id_tabla").removeAttr("disabled").attr("required", "required").val("");
             $(".query").attr("required", "required").removeAttr("disabled");
             $(".columns_table").val("");
-            $(".tabla").val("");
             $(".name_view").val("");
             $(".controller_name").val("");
         }
