@@ -81,10 +81,12 @@ $(document).on("change", ".generar_jwt_token", function() {
 
     if(val == "Si"){
         $(".autenticar_jwt_token").removeAttr("disabled", "disabled");
+        $(".tiempo_caducidad_token").removeAttr("disabled", "disabled");
         $(".generar_token_api").removeClass("d-none");
     } else {
         $(".generar_token_api").addClass("d-none");
         $(".autenticar_jwt_token").attr("disabled", "disabled");
+        $(".tiempo_caducidad_token").attr("disabled", "disabled");
         $(".autenticar_jwt_token").val("");
     }
 });
