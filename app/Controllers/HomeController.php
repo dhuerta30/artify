@@ -573,7 +573,7 @@ class HomeController
 		$html_template = '
 		<div class="card">
 		<div class="card-body bg-dark">
-			<h5 class="card-title mb-0">Generador de Módulos</h5>
+			<h5 class="card-title mb-0"><span class="titulo_modulo"></span> Generador de Módulos</h5>
 		</div>
 		<div class="card-body bg-light">
 

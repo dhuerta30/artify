@@ -103,6 +103,7 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
+        $(".titulo_modulo").text("Agregar");
         $('.siguiente_1').click(function() {
             $('#pdf-tab').tab('show');
         });
@@ -256,6 +257,7 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "edit"){
 
+        $(".titulo_modulo").text("Editar");
         $('.siguiente_1').click(function() {
             $('#pdf-tab').tab('show');
         });
