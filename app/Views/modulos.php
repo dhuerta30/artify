@@ -120,6 +120,8 @@ $(document).on("change", ".tabla", function(){
                 // Asignar el valor del ID
                 $(".id_tabla").val(data["id_tablas"]);
 
+                $(".name_view").val(val);
+
                 // Limpiar los selectores de campos y añadir la opción "Seleccionar"
                 $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").empty().append(`<option value>Seleccionar</option>`);
                 
@@ -139,6 +141,8 @@ $(document).on("change", ".tabla", function(){
                 
                 // Vaciar el valor de id_tabla
                 $(".id_tabla").val("");
+
+                $(".name_view").val("");
 
                 // Inicializar select2 en los nuevos elementos
                 $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").select2();
