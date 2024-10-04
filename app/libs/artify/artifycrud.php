@@ -1016,6 +1016,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $encryption = $data["modulos"]["encryption"];
     $mostrar_campos_busqueda = isset($data["modulos"]["mostrar_campos_busqueda"]) ? $data["modulos"]["mostrar_campos_busqueda"] : null;
     $mostrar_columnas_grilla = isset($data["modulos"]["mostrar_columnas_grilla"]) ? $data["modulos"]["mostrar_columnas_grilla"] : null;
+    $mostrar_campos_formulario = isset($data["modulos"]["mostrar_campos_formulario"]) ? $data["modulos"]["mostrar_campos_formulario"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1055,7 +1056,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $refrescar_grilla,
             $encryption,
             $mostrar_campos_busqueda,
-            $mostrar_columnas_grilla
+            $mostrar_columnas_grilla,
+            $mostrar_campos_formulario
         );
     } 
     
@@ -1063,7 +1065,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         $crudService = new App\Services\CrudService();
         $crudService->createCrud(
             $tabla, 
-            $id_tabla, 
+            $id_tabla,
             $crud_type, 
             null, 
             $controller_name,
@@ -1083,7 +1085,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $refrescar_grilla,
             $encryption,
             $mostrar_campos_busqueda,
-            $mostrar_columnas_grilla
+            $mostrar_columnas_grilla,
+            $mostrar_campos_formulario
         );
     }
 
@@ -1137,6 +1140,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["encryption"] = $encryption;
     $newdata["modulos"]["mostrar_campos_busqueda"] = $mostrar_campos_busqueda;
     $newdata["modulos"]["mostrar_columnas_grilla"] = $mostrar_columnas_grilla;
+    $newdata["modulos"]["mostrar_campos_formulario"] = $mostrar_campos_formulario;
 
     return $newdata;
 }
