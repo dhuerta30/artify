@@ -713,7 +713,7 @@ class HomeController
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label">Campos a Mostrar en el buscador:</label>
 								{mostrar_campos_busqueda}
@@ -721,7 +721,15 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label class="form-label">Columnas a Mostrar en la Grilla:</label>
+								{mostrar_columnas_grilla}
+								<span>Escriba y presione espacio para avanzar al siguiente</span>
+								<p class="artify_help_block help-block form-text with-errors"></p>
+							</div>
+						</div>
+						<div class="col-md-4">
 							<div class="form-group">
 								<label class="form-label">Encriptar Campos del Formulario:</label>
 								{encryption}
@@ -1110,6 +1118,7 @@ class HomeController
 		$artify->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("mostrar_campos_busqueda", array("placeholder" => "campo1/campo2/campo3/etc"));
+		$artify->fieldDataAttr("mostrar_columnas_grilla", array("placeholder" => "columna1/columna2/columna3/etc"));
 
 		$artify->fieldTypes("encryption", "select");
 		$artify->fieldDataBinding("encryption", array("Si" => "Si", "No" => "No"), "", "", "array");
@@ -1194,6 +1203,7 @@ class HomeController
 		$artify->fieldCssClass("actions_buttons_grid", array("actions_buttons_grid"));
 		$artify->fieldCssClass("buttons_actions", array("buttons_actions"));
 		$artify->fieldCssClass("mostrar_campos_busqueda", array("mostrar_campos_busqueda"));
+		$artify->fieldCssClass("mostrar_columnas_grilla", array("mostrar_columnas_grilla"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
@@ -1207,9 +1217,9 @@ class HomeController
 		$artify->fieldGroups("Name2",array("name_view","add_menu"));
 		$artify->tableHeading("Generador de Módulos");
 		
-		$artify->setSearchCols(array("query_get", "encryption", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->formFields(array("query_get", "encryption", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->editFormFields(array("query_get", "encryption", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$artify->setSearchCols(array("query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->formFields(array("query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->editFormFields(array("query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "columns_table", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$artify->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$artify->colRename("tabla", "Nombre Tabla Base de Datos");
