@@ -22,7 +22,7 @@ class CrudService
         $this->pdo = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUser, $databasePassword);
     }
 
-    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda)
+    public function createCrud($tableName, $idTable = null, $crudType, $query = null, $controllerName, $columns = null, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $modify_query = null, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda, $mostrar_columnas_grilla)
     {
         $this->createTable($tableName, $columns);
         $this->modifyTable($tableName, $modify_query);
@@ -57,7 +57,7 @@ class CrudService
                 $query, 
                 $controllerName, 
                 $nameview, 
-                $template_html, 
+                $template_html,
                 $active_filter, 
                 $clone_row,
                 $active_popup,
@@ -69,7 +69,8 @@ class CrudService
                 $buttons_actions,
                 $refrescar_grilla,
                 $encryption,
-                $mostrar_campos_busqueda
+                $mostrar_campos_busqueda,
+                $mostrar_columnas_grilla
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -379,7 +380,7 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda)
+    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda, $mostrar_columnas_grilla)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
@@ -429,6 +430,23 @@ class CrudService
 
                     $controllerContent .= "
                         \$artify->setSearchCols(array({$valuesString}));
+                    ";
+                }
+
+
+                if(isset($mostrar_columnas_grilla)){
+
+                    preg_match_all('/([^\/]+)/', $mostrar_columnas_grilla, $matches);
+
+                    // Filtra los resultados para eliminar los valores que no sean cadenas
+                    $values = array_filter($matches[0], function ($value) {
+                        return !empty(trim($value)) && $value !== '_';
+                    });
+
+                    $valuesString = '"' . implode('", "', $values) . '"';
+
+                    $controllerContent .= "
+                        \$artify->crudTableCol(array({$valuesString}));
                     ";
                 }
 

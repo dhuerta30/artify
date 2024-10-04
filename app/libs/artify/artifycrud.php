@@ -1015,6 +1015,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $refrescar_grilla = $data["modulos"]["refrescar_grilla"];
     $encryption = $data["modulos"]["encryption"];
     $mostrar_campos_busqueda = isset($data["modulos"]["mostrar_campos_busqueda"]) ? $data["modulos"]["mostrar_campos_busqueda"] : null;
+    $mostrar_columnas_grilla = isset($data["modulos"]["mostrar_columnas_grilla"]) ? $data["modulos"]["mostrar_columnas_grilla"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1053,7 +1054,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $buttons_actions,
             $refrescar_grilla,
             $encryption,
-            $mostrar_campos_busqueda
+            $mostrar_campos_busqueda,
+            $mostrar_columnas_grilla
         );
     } 
     
@@ -1080,7 +1082,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $buttons_actions,
             $refrescar_grilla,
             $encryption,
-            $mostrar_campos_busqueda
+            $mostrar_campos_busqueda,
+            $mostrar_columnas_grilla
         );
     }
 
@@ -1133,6 +1136,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["consulta_pdf"] = $consulta_pdf;
     $newdata["modulos"]["encryption"] = $encryption;
     $newdata["modulos"]["mostrar_campos_busqueda"] = $mostrar_campos_busqueda;
+    $newdata["modulos"]["mostrar_columnas_grilla"] = $mostrar_columnas_grilla;
 
     return $newdata;
 }
