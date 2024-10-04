@@ -350,31 +350,8 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
         });
 
         $(".columns_table").attr("disabled", "disabled").removeAttr("required");
-        $(".tabla").attr("readonly", "true");
         $(".controller_name").attr("readonly", "true");
         $(".modificar_tabla_col").show();
-
-        var tabla = $(".tabla").val();
-        $.ajax({
-            type: "POST",
-            url: "<?=$_ENV["BASE_URL"]?>Home/obtenerTablaActual",
-            data: {
-                tabla: tabla
-            },
-            dataType: "json",
-            success: function(data){
-                console.log(data);
-                $.each(data["columnas_tabla"], function(index, obj) {
-                    // Acceder al nombre del campo y su tipo
-                    var campo = obj.Field;
-                    var tipo = obj.Type;
-
-                    $(".vista_previa_campos_tabla").append(`
-                        <li class="list-group-item bg-light">${campo}: ${tipo}</li>
-                    `);
-                });
-            }
-        });
 
         var val = $(".crud_type").val();
 

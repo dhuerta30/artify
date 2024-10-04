@@ -785,21 +785,6 @@ class HomeController
 							</div>
 						</div>
 					</div>
-					<div class="row modificar_tabla_col">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label class="form-label">Modificar Tabla:</label>
-								{modify_query}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-6 campos_view_tabla">
-							<div class="form-group">
-								<label class="form-label">Vista Previa Campos Tabla Actual:</label>
-								<ul class="list-group vista_previa_campos_tabla"></ul>
-							</div>
-						</div>
-					</div>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="component addrow float-right">
@@ -1495,7 +1480,7 @@ class HomeController
 	}
 
 
-	public function obtenerTablaActual(){
+	/*public function obtenerTablaActual(){
 		$request = new Request();
 
 		if ($request->getMethod() === 'POST') {
@@ -1507,7 +1492,7 @@ class HomeController
 
 			echo json_encode(['columnas_tabla' => $columnDB]);
 		}
-	}
+	}*/
 
 	public function actualizar_orden_menu(){
 
