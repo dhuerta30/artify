@@ -606,7 +606,7 @@ class HomeController
 								<label class="form-label">Nombre Tabla Base de Datos:</label>
 								{tabla}
 								<p class="artify_help_block help-block form-text with-errors"></p>
-								<p>Si No posee tablas creela en Configuraciones modulos y luego seleccionela acá</p>
+								<p>Si No posee tablas creelas en Configuraciones modulos y luego seleccionela acá</p>
 							</div>
 						</div>
 					</div>
