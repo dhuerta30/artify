@@ -1213,6 +1213,7 @@ class HomeController
 		$artify->fieldCssClass("buttons_actions", array("buttons_actions"));
 		$artify->fieldCssClass("mostrar_campos_busqueda", array("mostrar_campos_busqueda"));
 		$artify->fieldCssClass("mostrar_columnas_grilla", array("mostrar_columnas_grilla"));
+		$artify->fieldCssClass("mostrar_campos_formulario", array("mostrar_campos_formulario"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
