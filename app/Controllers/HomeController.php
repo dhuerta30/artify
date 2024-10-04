@@ -724,7 +724,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Columnas a Mostrar en la Grilla:</label>
 								{mostrar_columnas_grilla}
-								<span>seleccione la tabla para cargar estos campos</span>
+								<span>seleccione la tabla para cargar estas columnas</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
