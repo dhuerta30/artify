@@ -100,62 +100,6 @@ $(document).on("change", ".generar_jwt_token", function() {
     }
 });
 
-$(document).on("change", ".tabla", function(){
-    let val = $(this).val();
-
-    $.ajax({
-        type: "POST",
-        url: "<?=$_ENV["BASE_URL"]?>Home/obtener_id_tabla",
-        dataType: 'json',
-        data: {
-            val: val
-        },
-        beforeSend: function() {
-            $("#artify-ajax-loader").show();
-        },
-        success: function(data){
-            $("#artify-ajax-loader").hide();
-
-            if (val != "") {
-                // Asignar el valor del ID
-                $(".id_tabla").val(data["id_tablas"]);
-
-                $(".name_view").val(val);
-
-                let controllerName = val.charAt(0).toUpperCase() + val.slice(1);
-                $(".controller_name").val(controllerName);
-
-                // Limpiar los selectores de campos y añadir la opción "Seleccionar"
-                $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").empty().append(`<option value>Seleccionar</option>`);
-                
-                // Añadir nuevas opciones desde el resultado del ajax
-                $.each(data["columnas_tablas"], function(index, obj){
-                    $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").append(`
-                        <option value="${obj}">${obj}</option>
-                    `);
-                });
-
-                // Inicializar select2 en los nuevos elementos
-                $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").select2();
-
-            } else {
-                // Limpiar los campos si val está vacío y añadir la opción "Seleccionar"
-                $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").empty().append(`<option value>Seleccionar</option>`);
-                
-                // Vaciar el valor de id_tabla
-                $(".id_tabla").val("");
-
-                $(".name_view").val("");
-
-                $(".controller_name").val("");
-
-                // Inicializar select2 en los nuevos elementos
-                $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").select2();
-            }
-        }
-    });
-});
-
 $(document).on("click", ".generar_token_api", function(){
     $.ajax({
         type: "POST",
@@ -182,6 +126,62 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
     var dataAction = obj.getAttribute('data-action');
 
     if(dataAction == "add"){
+
+        $(".tabla").change(function(){
+            let val = $(this).val();
+
+            $.ajax({
+                type: "POST",
+                url: "<?=$_ENV["BASE_URL"]?>Home/obtener_id_tabla",
+                dataType: 'json',
+                data: {
+                    val: val
+                },
+                beforeSend: function() {
+                    $("#artify-ajax-loader").show();
+                },
+                success: function(data){
+                    $("#artify-ajax-loader").hide();
+
+                    if (val != "") {
+                        // Asignar el valor del ID
+                        $(".id_tabla").val(data["id_tablas"]);
+
+                        $(".name_view").val(val);
+
+                        let controllerName = val.charAt(0).toUpperCase() + val.slice(1);
+                        $(".controller_name").val(controllerName);
+
+                        // Limpiar los selectores de campos y añadir la opción "Seleccionar"
+                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").empty().append(`<option value>Seleccionar</option>`);
+                        
+                        // Añadir nuevas opciones desde el resultado del ajax
+                        $.each(data["columnas_tablas"], function(index, obj){
+                            $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").append(`
+                                <option value="${obj}">${obj}</option>
+                            `);
+                        });
+
+                        // Inicializar select2 en los nuevos elementos
+                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").select2();
+
+                    } else {
+                        // Limpiar los campos si val está vacío y añadir la opción "Seleccionar"
+                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").empty().append(`<option value>Seleccionar</option>`);
+                        
+                        // Vaciar el valor de id_tabla
+                        $(".id_tabla").val("");
+
+                        $(".name_view").val("");
+
+                        $(".controller_name").val("");
+
+                        // Inicializar select2 en los nuevos elementos
+                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla").select2();
+                    }
+                }
+            });
+        });
 
         $.ajax({
             type: "POST",
@@ -341,6 +341,34 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "edit"){
 
+        $.ajax({
+            type: "POST",
+            url: "<?=$_ENV["BASE_URL"]?>Home/obtener_tablas",
+            dataType: "json",
+            beforeSend: function() {
+                $("#artify-ajax-loader").show();
+            },
+            success: function(data){
+                $("#artify-ajax-loader").hide();
+                
+                // Limpiar opciones anteriores del select
+                $(".tabla").empty();
+                $(".tabla").html(`<option value>Seleccionar</option>`);
+                // Añadir nuevas opciones desde el resultado del ajax
+                $.each(data["tablas"], function(index, obj){
+                    $(".tabla").append(`
+                        <option value="${obj.nombre_tabla}">${obj.nombre_tabla}</option>
+                    `);
+                });
+                
+                // Actualizar select2 para que reconozca los nuevos valores
+                $(".tabla").trigger('change'); 
+            }
+        });
+
+        // Inicializar select2
+        $(".tabla").select2();
+
         var val = $(".activar_recaptcha").val();
 
         if(val == "Si"){
@@ -380,41 +408,20 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
             $('#pdf-tab').tab('show');
         });
 
-        $(".columns_table").attr("disabled", "disabled").removeAttr("required");
-        $(".controller_name").attr("readonly", "true");
         $(".modificar_tabla_col").show();
 
         var val = $(".crud_type").val();
 
         if (val == "CRUD") {
             $(".query").removeAttr("required").attr("disabled", "disabled");
-            $(".columns_table").val("id INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
-            "nombre VARCHAR(255) NOT NULL,\n" +
-            "apellido VARCHAR(255) NOT NULL,\n" +
-            "categoria INT(11) NOT NULL,\n" +
-            "producto VARCHAR(100) NOT NULL");
         } else if (val == "Modulo de Inventario") {
             $(".query").removeAttr("required").attr("disabled", "disabled");
-            $(".columns_table").val('id_inventario INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,\n' +
-            'nombre_producto VARCHAR(255) NOT NULL,\n' +
-            'tipo VARCHAR(200) NOT NULL,\n' +
-            'cantidad VARCHAR(100) NOT NULL,\n' +
-            'cantidad_vendida VARCHAR(100) NOT NULL,\n' +
-            'nuevos_ingresos VARCHAR(100) NOT NULL,\n' +
-            'stock_actual VARCHAR(100) NOT NULL,\n' +
-            'ubicacion VARCHAR(255) DEFAULT NULL,\n' +
-            'precio INT(11) NOT NULL,\n' +
-            'observacion TEXT');
-
             $(".tabla").val("Inventario");
             $(".name_view").val("Inventario");
             $(".controller_name").val("Inventario");
         } else {
             $(".id_tabla").removeAttr("disabled").attr("required", "required").val("");
             $(".query").attr("required", "required").removeAttr("disabled");
-            $(".columns_table").val("");
-            $(".name_view").val("");
-            $(".controller_name").val("");
         }
     }
 
