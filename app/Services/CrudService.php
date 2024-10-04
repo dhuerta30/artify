@@ -425,8 +425,10 @@ class CrudService
                         return !empty(trim($value)) && $value !== '_';
                     });
 
+                    $valuesString = '"' . implode('", "', $values) . '"';
+
                     $controllerContent .= "
-                        \$artify->setSearchCols({$values});
+                        \$artify->setSearchCols(array({$valuesString}));
                     ";
                 }
 
