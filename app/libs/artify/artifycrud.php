@@ -1013,6 +1013,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $add_menu = $data["modulos"]["add_menu"];
     $template_fields = $data["modulos"]["template_fields"];
     $active_filter = $data["modulos"]["active_filter"];
+    $mostrar_campos_filtro = isset($data["modulos"]["mostrar_campos_filtro"]) ? $data["modulos"]["mostrar_campos_filtro"] : null;
     $clone_row = $data["modulos"]["clone_row"];
     $active_popup = $data["modulos"]["active_popup"];
     $active_search = $data["modulos"]["active_search"];
@@ -1024,15 +1025,13 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $refrescar_grilla = $data["modulos"]["refrescar_grilla"];
     $encryption = $data["modulos"]["encryption"];
     $mostrar_campos_busqueda = isset($data["modulos"]["mostrar_campos_busqueda"]) ? $data["modulos"]["mostrar_campos_busqueda"] : null;
-
-    //print_r($mostrar_campos_busqueda);
-    //die();
-
     $mostrar_columnas_grilla = isset($data["modulos"]["mostrar_columnas_grilla"]) ? $data["modulos"]["mostrar_columnas_grilla"] : null;
     $mostrar_campos_formulario = isset($data["modulos"]["mostrar_campos_formulario"]) ? $data["modulos"]["mostrar_campos_formulario"] : null;
     $activar_recaptcha = $data["modulos"]["activar_recaptcha"];
     $sitekey_recaptcha = isset($data["modulos"]["sitekey_recaptcha"]) ? $data["modulos"]["sitekey_recaptcha"] : null;
     $sitesecret_repatcha = isset($data["modulos"]["sitesecret_repatcha"]) ? $data["modulos"]["sitesecret_repatcha"] : null;
+    $function_filter_and_search = $data["modulos"]["function_filter_and_search"];
+
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1142,6 +1141,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["template_fields"] = $template_fields;
     $newdata["modulos"]["id_menu"] = $id_menu ?? null;
     $newdata["modulos"]["active_filter"] = $active_filter;
+    $newdata["modulos"]["mostrar_campos_filtro"] = $mostrar_campos_filtro;
     $newdata["modulos"]["clone_row"] = $clone_row;
     $newdata["modulos"]["active_popup"] = $active_popup;
     $newdata["modulos"]["active_search"] = $active_search;
@@ -1163,6 +1163,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["activar_recaptcha"] = $activar_recaptcha;
     $newdata["modulos"]["sitekey_recaptcha"] = $sitekey_recaptcha;
     $newdata["modulos"]["sitesecret_repatcha"] = $sitesecret_repatcha;
+    $newdata["modulos"]["function_filter_and_search"] = $function_filter_and_search;
 
     return $newdata;
 }
