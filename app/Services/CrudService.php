@@ -52,6 +52,7 @@ class CrudService
         $function_filter_and_search,
         $activar_union_interna,
         $mostrar_campos_formulario_editar,
+        $posicion_botones_accion_grilla,
         $mostrar_columna_acciones_grilla,
         $campos_requeridos,
         $mostrar_paginacion
@@ -84,6 +85,7 @@ class CrudService
                 $sitesecret_repatcha,
                 $function_filter_and_search,
                 $mostrar_campos_formulario_editar,
+                $posicion_botones_accion_grilla,
                 $mostrar_columna_acciones_grilla,
                 $campos_requeridos
             );
@@ -118,6 +120,7 @@ class CrudService
                 $function_filter_and_search,
                 $activar_union_interna,
                 $mostrar_campos_formulario_editar,
+                $posicion_botones_accion_grilla,
                 $mostrar_columna_acciones_grilla,
                 $campos_requeridos,
                 $mostrar_paginacion
@@ -458,6 +461,7 @@ class CrudService
         $function_filter_and_search,
         $activar_union_interna,
         $mostrar_campos_formulario_editar,
+        $posicion_botones_accion_grilla,
         $mostrar_columna_acciones_grilla,
         $campos_requeridos,
         $mostrar_paginacion
