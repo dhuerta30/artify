@@ -744,6 +744,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Campos a Mostrar en el formulario Editar:</label>
 								{mostrar_campos_formulario_editar}
+								<span>seleccione la tabla para cargar estos campos</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
