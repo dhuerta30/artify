@@ -793,6 +793,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Activar funciones de Filtro y Búsqueda:</label>
 								{function_filter_and_search}
+								<span>Si Escoje no Deberá utilizar su propia lógica de Filtro y Búsqueda</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						
