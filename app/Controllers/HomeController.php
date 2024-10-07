@@ -1143,6 +1143,8 @@ class HomeController
 		$artify->formFieldValue("function_filter_and_search", "Si");
 		$artify->formFieldValue("activar_union_interna", "No");
 
+		$artify->setLangData("add", "Agregar Módulo");
+
 		$artify->fieldNotMandatory("modify_query");
 		$artify->fieldTypes("logo_pdf", "select");
 		$artify->fieldTypes("marca_de_agua_pdf", "select");
@@ -1457,6 +1459,7 @@ class HomeController
 		$render_conf = $config->dbTable("configuraciones_api")->render("editform", array("id" => "1"));
 
 		$tablas = DB::ArtifyCrud(true);
+		$tablas->setLangData("add", "Agregar Tabla");
 		$tablas->formDisplayInPopup();
 		$tablas->formFields(array("nombre_tabla", "query_tabla"));
 		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada"));
