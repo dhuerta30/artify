@@ -1117,6 +1117,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $sitekey_recaptcha,
             $sitesecret_repatcha,
             $function_filter_and_search,
+            $activar_union_interna,
             $mostrar_campos_formulario_editar,
             $mostrar_columna_acciones_grilla,
             $campos_requeridos,

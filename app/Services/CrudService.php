@@ -49,7 +49,12 @@ class CrudService
         $activar_recaptcha,  
         $sitekey_recaptcha, 
         $sitesecret_repatcha,
-        $function_filter_and_search
+        $function_filter_and_search,
+        $activar_union_interna,
+        $mostrar_campos_formulario_editar,
+        $mostrar_columna_acciones_grilla,
+        $campos_requeridos,
+        $mostrar_paginacion
         )
     {
         if($crudType == 'SQL'){
@@ -111,6 +116,7 @@ class CrudService
                 $sitekey_recaptcha,
                 $sitesecret_repatcha,
                 $function_filter_and_search,
+                $activar_union_interna,
                 $mostrar_campos_formulario_editar,
                 $mostrar_columna_acciones_grilla,
                 $campos_requeridos,
