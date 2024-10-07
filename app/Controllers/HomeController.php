@@ -1487,7 +1487,7 @@ class HomeController
 		if ($request->getMethod() === 'POST') {
 			$artify = DB::ArtifyCrud();
 			$queryfy = $artify->getQueryfyObj();
-			$result = $queryfy->select("configuraciones_modulos");
+			$result = $queryfy->select("crear_tablas");
 
 			echo json_encode(["tablas" => $result]);
 		}
