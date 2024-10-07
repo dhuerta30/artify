@@ -441,7 +441,7 @@ class CrudService
         $actions_buttons_grid, 
         $activate_nested_table, 
         $buttons_actions, 
-        $refrescar_grilla, 
+        $refrescar_grilla,
         $encryption, 
         $mostrar_campos_busqueda, 
         $mostrar_columnas_grilla, 
@@ -542,6 +542,27 @@ class CrudService
                     ";
                 }
 
+
+                if ($active_filter == "Si") {
+
+                    $values = explode(',', $mostrar_campos_filtro);
+
+                    $values = array_filter($values, function ($value) {
+                        return !empty(trim($value));
+                    });
+                    
+                    $valuesString = '"' . implode('", "', $values) . '"';
+                    
+                    $controllerContent .= "
+                        foreach (\$columnDB as \$column) {
+                            \$columnName = ucfirst(str_replace('_', ' ', \$column));
+                            
+                            \$artify->addFilter('filterAdd'.\$column, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
+                            \$artify->setFilterSource('filterAdd'.\$column, '{$tableName}', \$column, \$column.' as pl', 'db');
+                        }
+                    ";
+                }
+
         if ($template_html == "Si") {
             $controllerContent .= "
                 \$html_template = '<div class=\"form\">
@@ -578,18 +599,6 @@ class CrudService
                 \$html_template .= '</div></div>';
 
                 \$artify->set_template(\$html_template);
-                ";
-        }
-
-        // Check if active_filter is "Si"
-        if ($active_filter == "Si") {
-            $controllerContent .= "
-                foreach (\$columnDB as \$column) {
-                    \$columnName = ucfirst(str_replace('_', ' ', \$column));
-                    
-                    \$artify->addFilter('filterAdd'.\$column, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
-                    \$artify->setFilterSource('filterAdd'.\$column, '{$tableName}', \$column, \$column.' as pl', 'db');
-                }
                 ";
         }
 
