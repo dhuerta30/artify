@@ -1442,11 +1442,11 @@ class HomeController
 
 		$tablas = DB::ArtifyCrud(true);
 		$tablas->formDisplayInPopup();
-		$tablas->setSearchCols(array("nombre_tabla"));
+		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
 		$tablas->setSettings("delbtn", true);
-		$tablas->crudRemoveCol(array("id_crear_tablas", "query_tabla"));
+		$tablas->crudRemoveCol(array("id_crear_tablas", "query_tabla", "modificar_tabla"));
 		$tablas->fieldCssClass("nombre_tabla", array("nombre_tabla"));
 		$tablas->fieldCssClass("query_tabla", array("query_tabla"));
 		$tablas->buttonHide("submitBtnSaveBack");
