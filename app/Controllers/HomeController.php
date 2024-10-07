@@ -1446,7 +1446,6 @@ class HomeController
 		$tablas->setSettings("editbtn", true);
 		$tablas->setSettings("delbtn", true);
 		$tablas->fieldHideLable("tabla_modificada");
-		$tablas->fieldDataAttr("nombre_tabla", array("readonly"=>"true"));
 		$tablas->fieldDataAttr("tabla_modificada", array("style"=>"display:none", "value"=>"Si"));
 		$tablas->crudRemoveCol(array("id_crear_tablas", "query_tabla", "modificar_tabla"));
 		$tablas->fieldCssClass("nombre_tabla", array("nombre_tabla"));

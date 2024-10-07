@@ -371,6 +371,8 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "edit"){
 
+        $(".nombre_tabla").attr("readonly", true);
+        
         $.ajax({
             type: "POST",
             url: "<?=$_ENV["BASE_URL"]?>Home/obtener_tablas",
