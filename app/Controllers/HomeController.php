@@ -1394,6 +1394,8 @@ class HomeController
 		$artify->fieldDataBinding("crud_type", array(
 			"CRUD"=> "CRUD (Mantenedor a base de una tabla)",
 			"SQL"=> "SQL (Mantenedor a base de una consulta)",
+			"Formulario de inserción" => "Formulario de inserción",
+			"Formulario de edición" => "Formulario de edición",
 			"Modulo de Inventario" => "Modulo de Inventario"
 		), "", "","array");
 
