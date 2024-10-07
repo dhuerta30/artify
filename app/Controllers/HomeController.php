@@ -1436,8 +1436,6 @@ class HomeController
 		$config->addCallback("before_update", "actualizar_configuracion_api");
 		$config->fieldDataAttr("autenticar_jwt_token", array("disabled"=>"disabled"));
 		$config->fieldDataAttr("tiempo_caducidad_token", array("disabled"=>"disabled"));
-		$config->fieldGroups("Name1",array("logo_pdf","marca_agua_pdf"));
-		$config->fieldGroups("Name2",array("generar_jwt_token","autenticar_jwt_token"));
 		$render_conf = $config->dbTable("configuraciones_api")->render("editform", array("id" => "1"));
 
 		$tablas = DB::ArtifyCrud(true);
