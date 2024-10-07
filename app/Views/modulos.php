@@ -147,6 +147,10 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
+        $("#create-tablas-tab").click(function(){
+            $(".regresar_modulos").click();
+        });
+
         $(".active_filter").change(function(){
             let valor = $(this).val();
 
@@ -372,7 +376,7 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
     if(dataAction == "edit"){
 
         $(".nombre_tabla").attr("readonly", true);
-        
+
         $.ajax({
             type: "POST",
             url: "<?=$_ENV["BASE_URL"]?>Home/obtener_tablas",
