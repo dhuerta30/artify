@@ -1094,9 +1094,9 @@ class HomeController
 
 				<div class="form-group mt-4 text-center">
 					<a href="javascript:;" class="btn btn-primary mb-3 atras"><i class="fa fa-arrow-left"></i> Anterior</a>
-                	<input type="submit" class="btn btn-primary artify-form-control artify-submit mb-3" name="artify_submit_19MsSO3Edq" data-action="insert" value="Guardar"> 
-					<button type="button" class="btn btn-danger artify-form-control artify-button mb-3 artify-back" name="artify_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
-					<button type="reset" class="btn btn-danger artify-form-control artify-button mb-3 artify-cancel-btn" name="artify_cancel_19MsSO3Edq">Cancelar</button>
+                	<input type="submit" class="btn btn-primary artify-form-control artify-submit mb-3" data-action="insert" value="Guardar">
+					<button type="button" class="btn btn-danger artify-form-control artify-button mb-3 artify-back regresar_modulos" data-action="back">Regresar</button> 
+					<button type="reset" class="btn btn-danger artify-form-control artify-button mb-3 artify-cancel-btn">Cancelar</button>
 				</div>
 
 			</div>
