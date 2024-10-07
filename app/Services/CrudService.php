@@ -57,7 +57,8 @@ class CrudService
         $campos_requeridos,
         $mostrar_paginacion,
         $activar_numeracion_columnas,
-        $activar_registros_por_pagina
+        $activar_registros_por_pagina,
+        $cantidad_de_registros_por_pagina
         )
     {
         if($crudType == 'SQL'){
@@ -129,7 +130,8 @@ class CrudService
                 $campos_requeridos,
                 $mostrar_paginacion,
                 $activar_numeracion_columnas,
-                $activar_registros_por_pagina
+                $activar_registros_por_pagina,
+                $cantidad_de_registros_por_pagina
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -472,7 +474,8 @@ class CrudService
         $campos_requeridos,
         $mostrar_paginacion,
         $activar_numeracion_columnas,
-        $activar_registros_por_pagina
+        $activar_registros_por_pagina,
+        $cantidad_de_registros_por_pagina
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
@@ -847,6 +850,10 @@ class CrudService
                 \$artify->setSettings('recordsPerPageDropdown', false);
             "; 
         }
+
+        $controllerContent .= "
+                \$artify->recordsPerPage({$cantidad_de_registros_por_pagina});
+            "; 
 
         $controllerContent .= "
             \$artify->setSettings('totalRecordsInfo', true);
