@@ -542,6 +542,21 @@ class CrudService
                     ";
                 }
 
+                if(isset($mostrar_campos_formulario_editar)){
+
+                    $values = explode(',', $mostrar_campos_formulario_editar);
+
+                    $values = array_filter($values, function ($value) {
+                        return !empty(trim($value));
+                    });
+                    
+                    $valuesString = '"' . implode('", "', $values) . '"';
+
+                    $controllerContent .= "
+                        \$artify->editFormFields(array({$valuesString}));
+                    ";
+                }
+
 
                 if ($active_filter == "Si") {
 
