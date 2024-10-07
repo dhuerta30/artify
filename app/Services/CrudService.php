@@ -77,7 +77,10 @@ class CrudService
                 $activar_recaptcha,
                 $sitekey_recaptcha,
                 $sitesecret_repatcha,
-                $function_filter_and_search
+                $function_filter_and_search,
+                $mostrar_campos_formulario_editar,
+                $mostrar_columna_acciones_grilla,
+                $campos_requeridos
             );
         }
 
@@ -107,7 +110,11 @@ class CrudService
                 $activar_recaptcha,
                 $sitekey_recaptcha,
                 $sitesecret_repatcha,
-                $function_filter_and_search
+                $function_filter_and_search,
+                $mostrar_campos_formulario_editar,
+                $mostrar_columna_acciones_grilla,
+                $campos_requeridos,
+                $mostrar_paginacion
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
