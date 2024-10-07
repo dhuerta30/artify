@@ -628,6 +628,12 @@ class CrudService
             ";
         }
 
+        if($activar_union_interna == "Si"){
+            $controllerContent .= "
+
+            ";
+        }
+
         $buttons_actions_array = explode(',', $buttons_actions);
        
         foreach ($buttons_actions_array as $Btnaction) {
