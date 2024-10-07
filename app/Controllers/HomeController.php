@@ -300,12 +300,13 @@ class HomeController
 		$artify->setSettings("searchbox", true);
 		$artify->setSettings("addbtn", false);
 		$artify->setSettings("viewbtn", false);
-		$artify->setSettings('editbtn', true);    
+		$artify->setSettings('editbtn', true);
 		$artify->setSettings('delbtn', true);
 		$artify->setSettings("printBtn", false);
 		$artify->setSettings("pdfBtn", false);
 		$artify->setSettings("csvBtn", false);
 		$artify->setSettings("excelBtn", false);
+		$artify->setSettings("function_filter_and_search", true);
 		$artify->setSettings("template", "acceso_usuarios_menus");
 		$artify->setSettings("deleteMultipleBtn", false);
 		$artify->setSettings("checkboxCol", false);
@@ -336,6 +337,7 @@ class HomeController
 			$artify->setSettings("required", false);
 			$artify->setSettings("checkboxCol", false);
 			$artify->setSettings("refresh", false);
+			$artify->setSettings("function_filter_and_search", true);
 			$artify->setSettings('editbtn', true);    
             $artify->setSettings('delbtn', true);
 			$artify->setSettings("deleteMultipleBtn", false);
@@ -450,6 +452,7 @@ class HomeController
 		$respaldos->setSettings('editbtn', true);    
 		$respaldos->setSettings('delbtn', true);
         $respaldos->setSettings("viewbtn", false);
+		$respaldos->setSettings("function_filter_and_search", true);
         $respaldos->setSettings("printBtn", false);
         $respaldos->setSettings("pdfBtn", false);
         $respaldos->setSettings("csvBtn", false);
@@ -1673,6 +1676,7 @@ class HomeController
 		$artify->setSettings("refresh", false);
 		$artify->setSettings('editbtn', true);    
 		$artify->setSettings('delbtn', true);
+		$artify->setSettings("function_filter_and_search", true);
 		$artify->buttonHide("submitBtnSaveBack");
 
 		$submenu = DB::ArtifyCrud(true);
