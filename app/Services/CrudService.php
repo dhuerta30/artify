@@ -773,12 +773,29 @@ class CrudService
             ";
         }
 
+        if($campos_requeridos == "Si"){
+            $controllerContent .= "
+                \$artify->setSettings('required', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings('required', false);
+            ";
+        }
+
+        if($mostrar_paginacion == "Si"){
+            $controllerContent .= "
+                \$artify->setSettings('pagination', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings('pagination', false);
+            ";
+        }
+
         $controllerContent .= "
-            \$artify->setSettings('pagination', true);
-            \$artify->setSettings('function_filter_and_search', true);
             \$artify->setSettings('recordsPerPageDropdown', true);
             \$artify->setSettings('totalRecordsInfo', true);
-            \$artify->setSettings('actionbtn', true);
             \$artify->setSettings('numberCol', true);
             \$artify->setSettings('template', 'template_{$nameview}');
             \$render = \$artify->dbTable('{$tableName}')->render();
