@@ -1032,6 +1032,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $sitesecret_repatcha = isset($data["modulos"]["sitesecret_repatcha"]) ? $data["modulos"]["sitesecret_repatcha"] : null;
     $function_filter_and_search = $data["modulos"]["function_filter_and_search"];
     $mostrar_campos_formulario_editar = isset($data["modulos"]["mostrar_campos_formulario_editar"]) ? $data["modulos"]["mostrar_campos_formulario_editar"] : null;
+    $mostrar_columna_acciones_grilla = $data["modulos"]["mostrar_columna_acciones_grilla"];
 
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
@@ -1078,7 +1079,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $sitekey_recaptcha,
             $sitesecret_repatcha,
             $function_filter_and_search,
-            $mostrar_campos_formulario_editar
+            $mostrar_campos_formulario_editar,
+            $mostrar_columna_acciones_grilla
         );
     } 
     
@@ -1112,7 +1114,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $sitekey_recaptcha,
             $sitesecret_repatcha,
             $function_filter_and_search,
-            $mostrar_campos_formulario_editar
+            $mostrar_campos_formulario_editar,
+            $mostrar_columna_acciones_grilla
         );
     }
 
@@ -1158,7 +1161,6 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["activate_nested_table"] = $activate_nested_table;
     $newdata["modulos"]["buttons_actions"] = $buttons_actions;
     $newdata["modulos"]["refrescar_grilla"] = $refrescar_grilla;
-
     $newdata["modulos"]["activate_pdf"] = $activate_pdf;
     $newdata["modulos"]["logo_pdf"] = $logo_pdf;
     $newdata["modulos"]["marca_de_agua_pdf"] = $marca_de_agua_pdf;
@@ -1172,6 +1174,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["sitesecret_repatcha"] = $sitesecret_repatcha;
     $newdata["modulos"]["function_filter_and_search"] = $function_filter_and_search;
     $newdata["modulos"]["mostrar_campos_formulario_editar"] = $mostrar_campos_formulario_editar;
+    $newdata["modulos"]["mostrar_columna_acciones_grilla"] = $mostrar_columna_acciones_grilla;
 
     return $newdata;
 }
