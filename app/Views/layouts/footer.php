@@ -1,8 +1,6 @@
-<footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; <?php echo date('Y')?></strong> Todos los derechos reservados.
+<footer class="main-footer text-dark text-center">
+    <strong>Copyright &copy; <?php echo date('Y')?></strong> Todos los derechos reservados. 
+    <span>Creado con <i class="fas fa-heart" style="color: red;"></i> por Artify framework</span>
 </footer>
 
 <!-- Control Sidebar -->
