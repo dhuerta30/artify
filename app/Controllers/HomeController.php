@@ -1439,6 +1439,7 @@ class HomeController
 
 		$tablas = DB::ArtifyCrud(true);
 		$tablas->formDisplayInPopup();
+		$tablas->formFields(array("nombre_tabla", "query_tabla"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
