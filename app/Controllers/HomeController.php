@@ -1432,7 +1432,6 @@ class HomeController
 		$config->fieldTypes("generar_jwt_token", "select");
 		$config->fieldDataBinding("generar_jwt_token", array("Si" => "Si", "No" => "No"), "", "", "array");
 		$config->buttonHide("submitBtnSaveBack");
-		$config->addCallback("before_insert", "insertar_configuracion_api");
 		$config->addCallback("before_update", "actualizar_configuracion_api");
 		$config->fieldDataAttr("autenticar_jwt_token", array("disabled"=>"disabled"));
 		$config->fieldDataAttr("tiempo_caducidad_token", array("disabled"=>"disabled"));

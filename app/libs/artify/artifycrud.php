@@ -991,22 +991,10 @@ function eliminar_configuraciones_modulos($data, $obj){
     return $data;
 }
 
-function insertar_configuracion_api($data, $obj){
-    $generar_jwt_token = isset($data["configuraciones_api"]["generar_jwt_token"]) ? $data["configuraciones_api"]["generar_jwt_token"] : null;
-    $autenticar_jwt_token = isset($data["configuraciones_api"]["autenticar_jwt_token"]) ? $data["configuraciones_api"]["autenticar_jwt_token"] : null;
-    $tiempo_caducidad_token = $data["configuraciones_api"]["tiempo_caducidad_token"];
-   
-    $newdata = array();
-    $newdata["configuraciones_api"]["generar_jwt_token"] = $generar_jwt_token;
-    $newdata["configuraciones_api"]["autenticar_jwt_token"] = $autenticar_jwt_token;
-    $newdata["configuraciones_api"]["tiempo_caducidad_token"] = $tiempo_caducidad_token;
-    return $newdata;
-}
-
 function actualizar_configuracion_api($data, $obj){
     $generar_jwt_token = isset($data["configuraciones_api"]["generar_jwt_token"]) ? $data["configuraciones_api"]["generar_jwt_token"] : null;
     $autenticar_jwt_token = isset($data["configuraciones_api"]["autenticar_jwt_token"]) ? $data["configuraciones_api"]["autenticar_jwt_token"] : null;
-    $tiempo_caducidad_token = $data["configuraciones_api"]["tiempo_caducidad_token"];
+    $tiempo_caducidad_token = isset($data["configuraciones_api"]["tiempo_caducidad_token"]) ? $data["configuraciones_api"]["tiempo_caducidad_token"] : null;
    
     $newdata = array();
     $newdata["configuraciones_api"]["generar_jwt_token"] = $generar_jwt_token;
