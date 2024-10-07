@@ -606,7 +606,7 @@ class HomeController
 								<label class="form-label">Nombre Tabla Base de Datos:</label>
 								{tabla}
 								<p class="artify_help_block help-block form-text with-errors"></p>
-								<p>Si No posee tablas creelas en Configuraciones modulos y luego seleccionela acá</p>
+								<p>Si No posee tablas creelas en la Pestaña Crear Tablas y luego seleccionela acá</p>
 							</div>
 						</div>
 					</div>
@@ -1440,12 +1440,13 @@ class HomeController
 		$tablas = DB::ArtifyCrud(true);
 		$tablas->formDisplayInPopup();
 		$tablas->formFields(array("nombre_tabla", "query_tabla"));
-		$tablas->editFormFields(array("modificar_tabla", "tabla_modificada"));
+		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
 		$tablas->setSettings("delbtn", true);
 		$tablas->fieldHideLable("tabla_modificada");
+		$tablas->fieldDataAttr("nombre_tabla", array("readonly"=>"true"));
 		$tablas->fieldDataAttr("tabla_modificada", array("style"=>"display:none", "value"=>"Si"));
 		$tablas->crudRemoveCol(array("id_crear_tablas", "query_tabla", "modificar_tabla"));
 		$tablas->fieldCssClass("nombre_tabla", array("nombre_tabla"));
