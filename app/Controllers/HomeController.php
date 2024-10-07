@@ -989,6 +989,7 @@ class HomeController
 							<div class="row mt-4">
 								<div class="col-md-12 text-center">
 									<button type="button" class="btn btn-danger artify-form-control artify-button artify-back" name="artify_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
+									<input type="submit" class="btn btn-primary artify-form-control artify-submit" data-action="insert" value="Guardar">
 									<a href="javascript:;" class="btn btn-primary siguiente_1">Siguiente <i class="fa fa-arrow-right"></i></a>
 								</div>
 							</div>
@@ -1034,6 +1035,7 @@ class HomeController
 				<div class="row mt-4">
 					<div class="col-md-12 text-center">
 						<button type="button" class="btn btn-danger artify-form-control artify-button artify-back" name="artify_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
+						<input type="submit" class="btn btn-primary artify-form-control artify-submit" data-action="insert" value="Guardar">
 						<a href="javascript:;" class="btn btn-primary anterior"><i class="fa fa-arrow-left"></i> Anterior</a>
 						<a href="javascript:;" class="btn btn-primary siguiente_2">Siguiente <i class="fa fa-arrow-right"></i></a>
 					</div>
