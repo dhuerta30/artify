@@ -77,7 +77,7 @@ label.checkbox-inline {
                         <a class="nav-link" id="create-modulos-tab" data-toggle="tab" href="#create-modulos" role="tab" aria-controls="create-modulos" aria-selected="false">Generador de Módulos</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="config-api-tab" data-toggle="tab" href="#config-api" role="tab" aria-controls="config-api" aria-selected="false">Generador de Módulos</a>
+                        <a class="nav-link" id="config-api-tab" data-toggle="tab" href="#config-api" role="tab" aria-controls="config-api" aria-selected="false">Configuración de Api</a>
                     </li>
                 </ul>
             

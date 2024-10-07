@@ -1424,6 +1424,8 @@ class HomeController
 		$config->setSettings("refresh", false);
 		$config->setSettings("editbtn", true);
 		$config->setSettings("delbtn", true);
+		$config->buttonHide("submitBtn");
+		$config->buttonHide("cancel");
 		$config->fieldTypes("generar_jwt_token", "select");
 		$config->fieldDataBinding("generar_jwt_token", array("Si" => "Si", "No" => "No"), "", "", "array");
 		$config->buttonHide("submitBtnSaveBack");
