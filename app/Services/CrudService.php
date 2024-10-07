@@ -55,7 +55,8 @@ class CrudService
         $posicion_botones_accion_grilla,
         $mostrar_columna_acciones_grilla,
         $campos_requeridos,
-        $mostrar_paginacion
+        $mostrar_paginacion,
+        $activar_numeracion_columnas
         )
     {
         if($crudType == 'SQL'){
@@ -87,7 +88,8 @@ class CrudService
                 $mostrar_campos_formulario_editar,
                 $posicion_botones_accion_grilla,
                 $mostrar_columna_acciones_grilla,
-                $campos_requeridos
+                $campos_requeridos,
+                $activar_numeracion_columnas
             );
         }
 
@@ -123,7 +125,8 @@ class CrudService
                 $posicion_botones_accion_grilla,
                 $mostrar_columna_acciones_grilla,
                 $campos_requeridos,
-                $mostrar_paginacion
+                $mostrar_paginacion,
+                $activar_numeracion_columnas
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -464,7 +467,8 @@ class CrudService
         $posicion_botones_accion_grilla,
         $mostrar_columna_acciones_grilla,
         $campos_requeridos,
-        $mostrar_paginacion
+        $mostrar_paginacion,
+        $activar_numeracion_columnas
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
@@ -820,10 +824,19 @@ class CrudService
             ";
         }
 
+        if($activar_numeracion_columnas == "Si"){
+            $controllerContent .= "
+                \$artify->setSettings('numberCol', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings('numberCol', false);
+            ";
+        }
+
         $controllerContent .= "
             \$artify->setSettings('recordsPerPageDropdown', true);
             \$artify->setSettings('totalRecordsInfo', true);
-            \$artify->setSettings('numberCol', true);
             \$artify->setSettings('template', 'template_{$nameview}');
             \$render = \$artify->dbTable('{$tableName}')->render();
 

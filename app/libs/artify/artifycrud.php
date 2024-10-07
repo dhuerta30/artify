@@ -1033,9 +1033,11 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $function_filter_and_search = $data["modulos"]["function_filter_and_search"];
     $activar_union_interna = $data["modulos"]["activar_union_interna"];
     $mostrar_campos_formulario_editar = isset($data["modulos"]["mostrar_campos_formulario_editar"]) ? $data["modulos"]["mostrar_campos_formulario_editar"] : null;
+    $posicion_botones_accion_grilla = $data["modulos"]["posicion_botones_accion_grilla"];
     $mostrar_columna_acciones_grilla = $data["modulos"]["mostrar_columna_acciones_grilla"];
     $campos_requeridos = $data["modulos"]["campos_requeridos"];
     $mostrar_paginacion = $data["modulos"]["mostrar_paginacion"];
+    $activar_numeracion_columnas = $data["modulos"]["activar_numeracion_columnas"];
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1084,7 +1086,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $mostrar_campos_formulario_editar,
             $posicion_botones_accion_grilla,
             $mostrar_columna_acciones_grilla,
-            $campos_requeridos
+            $campos_requeridos,
+            $activar_numeracion_columnas
         );
     } 
     
@@ -1123,7 +1126,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $posicion_botones_accion_grilla,
             $mostrar_columna_acciones_grilla,
             $campos_requeridos,
-            $mostrar_paginacion
+            $mostrar_paginacion,
+            $activar_numeracion_columnas
         );
     }
 
@@ -1187,6 +1191,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["mostrar_columna_acciones_grilla"] = $mostrar_columna_acciones_grilla;
     $newdata["modulos"]["campos_requeridos"] = $campos_requeridos;
     $newdata["modulos"]["mostrar_paginacion"] = $mostrar_paginacion;
+    $newdata["modulos"]["activar_numeracion_columnas"] = $activar_numeracion_columnas;
 
     return $newdata;
 }
