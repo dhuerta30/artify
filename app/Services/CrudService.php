@@ -31,6 +31,7 @@ class CrudService
         $nameview, 
         $template_html, 
         $active_filter, 
+        $mostrar_campos_filtro,
         $clone_row, 
         $active_popup, 
         $active_search, 
@@ -47,7 +48,8 @@ class CrudService
         $mostrar_campos_formulario, 
         $activar_recaptcha,  
         $sitekey_recaptcha, 
-        $sitesecret_repatcha
+        $sitesecret_repatcha,
+        $function_filter_and_search
         )
     {
         if($crudType == 'SQL'){
@@ -59,6 +61,7 @@ class CrudService
                 $nameview,
                 $template_html,
                 $active_filter,
+                $mostrar_campos_filtro,
                 $clone_row,
                 $active_popup,
                 $active_search, 
@@ -73,7 +76,8 @@ class CrudService
                 $mostrar_campos_formulario,
                 $activar_recaptcha,
                 $sitekey_recaptcha,
-                $sitesecret_repatcha
+                $sitesecret_repatcha,
+                $function_filter_and_search
             );
         }
 
@@ -86,6 +90,7 @@ class CrudService
                 $nameview, 
                 $template_html,
                 $active_filter, 
+                $mostrar_campos_filtro,
                 $clone_row,
                 $active_popup,
                 $active_search, 
@@ -101,7 +106,8 @@ class CrudService
                 $mostrar_campos_formulario,
                 $activar_recaptcha,
                 $sitekey_recaptcha,
-                $sitesecret_repatcha
+                $sitesecret_repatcha,
+                $function_filter_and_search
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
