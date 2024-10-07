@@ -752,7 +752,6 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Posición Botones de Acción Grilla:</label>
 								{posicion_botones_accion_grilla}
-								<span>seleccione la tabla para cargar estos campos</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
@@ -760,7 +759,6 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Campos Requeridos de formulario:</label>
 								{campos_requeridos}
-								<span>seleccione la tabla para cargar estos campos</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
