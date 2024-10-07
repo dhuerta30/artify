@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-10-2024 a las 20:41:59
+-- Tiempo de generación: 07-10-2024 a las 21:55:01
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -78,7 +78,7 @@ CREATE TABLE `configuraciones_api` (
   `id_configuraciones_api` int(11) NOT NULL,
   `generar_jwt_token` varchar(100) NOT NULL,
   `autenticar_jwt_token` varchar(100) DEFAULT NULL,
-  `tiempo_caducidad_token` varchar(100) NOT NULL
+  `tiempo_caducidad_token` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -86,28 +86,7 @@ CREATE TABLE `configuraciones_api` (
 --
 
 INSERT INTO `configuraciones_api` (`id_configuraciones_api`, `generar_jwt_token`, `autenticar_jwt_token`, `tiempo_caducidad_token`) VALUES
-(1, 'No', NULL, '60');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `configuraciones_modulos`
---
-
-CREATE TABLE `configuraciones_modulos` (
-  `id_configuraciones_modulos` int(11) NOT NULL,
-  `logo_pdf` varchar(300) NOT NULL,
-  `marca_agua_pdf` varchar(300) NOT NULL,
-  `nombre_tabla` varchar(100) NOT NULL,
-  `query_tabla` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `configuraciones_modulos`
---
-
-INSERT INTO `configuraciones_modulos` (`id_configuraciones_modulos`, `logo_pdf`, `marca_agua_pdf`, `nombre_tabla`, `query_tabla`) VALUES
-(7, '', '', 'personas', 'id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\r\nnombre VARCHAR(255) NOT NULL,\r\napellido VARCHAR(255) NOT NULL,\r\ncategoria INT(11) NOT NULL,\r\nproducto VARCHAR(100) NOT NULL');
+(1, 'No', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -130,6 +109,28 @@ INSERT INTO `creador_de_panel` (`id_creador_de_panel`, `cantidad_columnas`) VALU
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `crear_tablas`
+--
+
+CREATE TABLE `crear_tablas` (
+  `id_crear_tablas` int(11) NOT NULL,
+  `nombre_tabla` varchar(100) NOT NULL,
+  `query_tabla` text NOT NULL,
+  `modificar_tabla` text DEFAULT NULL,
+  `tabla_modificada` varchar(100) NOT NULL DEFAULT 'No'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `crear_tablas`
+--
+
+INSERT INTO `crear_tablas` (`id_crear_tablas`, `nombre_tabla`, `query_tabla`, `modificar_tabla`, `tabla_modificada`) VALUES
+(7, 'personas', 'id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\nnombre VARCHAR(255) NOT NULL,\napellido VARCHAR(255) NOT NULL,\ncategoria INT(11) NOT NULL,\nproducto VARCHAR(100) NOT NULL', NULL, 'No'),
+(12, 'empleados', 'id_empleados INT(11) AUTO_INCREMENT PRIMARY KEY,\r\nnombre_empleado VARCHAR(255) NOT NULL,\r\napellido_empleado VARCHAR(255) NOT NULL,\r\nfecha_nacimiento_empleado DATE NOT NULL', NULL, 'No');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `custom_panel`
 --
 
@@ -139,6 +140,19 @@ CREATE TABLE `custom_panel` (
   `icono` varchar(100) NOT NULL,
   `url` varchar(300) NOT NULL,
   `id_creador_de_panel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleados`
+--
+
+CREATE TABLE `empleados` (
+  `id_empleados` int(11) NOT NULL,
+  `nombre_empleado` varchar(255) NOT NULL,
+  `apellido_empleado` varchar(255) NOT NULL,
+  `fecha_nacimiento_empleado` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -169,7 +183,7 @@ INSERT INTO `menu` (`id_menu`, `nombre_menu`, `url_menu`, `icono_menu`, `submenu
 (12, 'Acceso Menus', '/home/acceso_menus', 'fas fa-outdent', 'No', 7),
 (19, 'Generador de Módulos', '/home/modulos', 'fas fa-table', 'No', 1),
 (141, 'Documentación', '/Documentacion/index', 'fas fa-book', 'No', 8),
-(164, 'Personas', '/Personas/index', 'far fa-circle', 'No', 10);
+(173, 'Personas', '/Personas/index', 'far fa-circle', 'No', 2);
 
 -- --------------------------------------------------------
 
@@ -218,15 +232,28 @@ CREATE TABLE `modulos` (
   `mostrar_campos_formulario` varchar(300) DEFAULT NULL,
   `activar_recaptcha` varchar(100) NOT NULL,
   `sitekey_recaptcha` varchar(500) DEFAULT NULL,
-  `sitesecret_repatcha` varchar(500) DEFAULT NULL
+  `sitesecret_repatcha` varchar(500) DEFAULT NULL,
+  `mostrar_campos_filtro` varchar(300) DEFAULT NULL,
+  `function_filter_and_search` varchar(100) DEFAULT NULL,
+  `activar_union_interna` varchar(100) DEFAULT NULL,
+  `mostrar_campos_formulario_editar` varchar(300) DEFAULT NULL,
+  `posicion_botones_accion_grilla` varchar(100) NOT NULL,
+  `campos_requeridos` varchar(100) NOT NULL,
+  `mostrar_columna_acciones_grilla` varchar(100) NOT NULL,
+  `mostrar_paginacion` varchar(100) NOT NULL,
+  `activar_numeracion_columnas` varchar(100) NOT NULL,
+  `activar_registros_por_pagina` varchar(100) NOT NULL,
+  `cantidad_de_registros_por_pagina` varchar(100) NOT NULL,
+  `activar_edicion_en_linea` varchar(100) NOT NULL,
+  `nombre_modulo` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `modulos`
 --
 
-INSERT INTO `modulos` (`id_modulos`, `tabla`, `id_tabla`, `crud_type`, `query`, `controller_name`, `columns_table`, `name_view`, `add_menu`, `template_fields`, `id_menu`, `active_filter`, `clone_row`, `active_popup`, `active_search`, `activate_deleteMultipleBtn`, `button_add`, `actions_buttons_grid`, `modify_query`, `activate_nested_table`, `buttons_actions`, `logo_pdf`, `marca_de_agua_pdf`, `activate_pdf`, `api_type`, `activate_api`, `consulta_api`, `refrescar_grilla`, `consulta_pdf`, `query_get`, `query_post`, `query_put`, `query_delete`, `id_campos_insertar`, `encryption`, `mostrar_campos_busqueda`, `mostrar_columnas_grilla`, `mostrar_campos_formulario`, `activar_recaptcha`, `sitekey_recaptcha`, `sitesecret_repatcha`) VALUES
-(246, 'personas', 'id_personas', 'CRUD', NULL, 'Personas', NULL, 'personas', 'Si', 'No', 164, 'Si', 'Si', 'Si', 'Si', 'Si', 'Si', 'Imprimir,PDF,CSV,Excel', NULL, 'No', 'Editar,Eliminar,Guardar y regresar,Personalizado PDF', NULL, NULL, 'No', '', '', NULL, 'Si', NULL, NULL, NULL, NULL, NULL, NULL, 'No', 'nombre,apellido,categoria,producto', 'id_personas,nombre,apellido,categoria,producto', 'nombre,apellido,categoria,producto', 'Si', '6LdYUwgUAAAAAMvuaWvL6esSCd-9TvjVD3NIWcF6', '6LdYUwgUAAAAAEBHn34n37p2qM44Ppj-fCUqB5wg');
+INSERT INTO `modulos` (`id_modulos`, `tabla`, `id_tabla`, `crud_type`, `query`, `controller_name`, `columns_table`, `name_view`, `add_menu`, `template_fields`, `id_menu`, `active_filter`, `clone_row`, `active_popup`, `active_search`, `activate_deleteMultipleBtn`, `button_add`, `actions_buttons_grid`, `modify_query`, `activate_nested_table`, `buttons_actions`, `logo_pdf`, `marca_de_agua_pdf`, `activate_pdf`, `api_type`, `activate_api`, `consulta_api`, `refrescar_grilla`, `consulta_pdf`, `query_get`, `query_post`, `query_put`, `query_delete`, `id_campos_insertar`, `encryption`, `mostrar_campos_busqueda`, `mostrar_columnas_grilla`, `mostrar_campos_formulario`, `activar_recaptcha`, `sitekey_recaptcha`, `sitesecret_repatcha`, `mostrar_campos_filtro`, `function_filter_and_search`, `activar_union_interna`, `mostrar_campos_formulario_editar`, `posicion_botones_accion_grilla`, `campos_requeridos`, `mostrar_columna_acciones_grilla`, `mostrar_paginacion`, `activar_numeracion_columnas`, `activar_registros_por_pagina`, `cantidad_de_registros_por_pagina`, `activar_edicion_en_linea`, `nombre_modulo`) VALUES
+(254, 'personas', 'id_personas', 'CRUD', NULL, 'Personas', NULL, 'personas', 'Si', 'Si', 173, 'No', 'Si', 'No', 'Si', 'Si', 'Si', 'CSV,Excel', NULL, 'No', 'Ver,Editar,Eliminar', NULL, NULL, 'No', '', '', NULL, 'Si', NULL, NULL, NULL, NULL, NULL, NULL, 'Si', 'id_personas,nombre,apellido,categoria,producto', 'id_personas,nombre,apellido,categoria,producto', 'nombre,apellido,categoria,producto', 'No', NULL, NULL, NULL, 'Si', 'No', 'nombre,apellido,categoria,producto', 'Derecha', 'Si', 'Si', 'Si', 'No', 'Si', '10', 'Si', 'Módulo de Personas');
 
 -- --------------------------------------------------------
 
@@ -247,7 +274,7 @@ CREATE TABLE `personas` (
 --
 
 INSERT INTO `personas` (`id_personas`, `nombre`, `apellido`, `categoria`, `producto`) VALUES
-(1, 'manuel', 'rojas', 23, 'ejemplo');
+(2, 'pedro', 'rojas', 3, 'sdsadsad');
 
 -- --------------------------------------------------------
 
@@ -344,7 +371,7 @@ INSERT INTO `usuario_menu` (`id_usuario_menu`, `id_usuario`, `id_menu`, `visibil
 (1176, 1, 12, 'Mostrar'),
 (1179, 1, 19, 'Mostrar'),
 (1299, 1, 141, 'Mostrar'),
-(1322, 1, 164, 'Mostrar');
+(1331, 1, 173, 'Mostrar');
 
 -- --------------------------------------------------------
 
@@ -383,22 +410,28 @@ ALTER TABLE `configuraciones_api`
   ADD PRIMARY KEY (`id_configuraciones_api`);
 
 --
--- Indices de la tabla `configuraciones_modulos`
---
-ALTER TABLE `configuraciones_modulos`
-  ADD PRIMARY KEY (`id_configuraciones_modulos`);
-
---
 -- Indices de la tabla `creador_de_panel`
 --
 ALTER TABLE `creador_de_panel`
   ADD PRIMARY KEY (`id_creador_de_panel`);
 
 --
+-- Indices de la tabla `crear_tablas`
+--
+ALTER TABLE `crear_tablas`
+  ADD PRIMARY KEY (`id_crear_tablas`);
+
+--
 -- Indices de la tabla `custom_panel`
 --
 ALTER TABLE `custom_panel`
   ADD PRIMARY KEY (`id_custom_panel`);
+
+--
+-- Indices de la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  ADD PRIMARY KEY (`id_empleados`);
 
 --
 -- Indices de la tabla `menu`
@@ -472,16 +505,16 @@ ALTER TABLE `configuraciones_api`
   MODIFY `id_configuraciones_api` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `configuraciones_modulos`
---
-ALTER TABLE `configuraciones_modulos`
-  MODIFY `id_configuraciones_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT de la tabla `creador_de_panel`
 --
 ALTER TABLE `creador_de_panel`
   MODIFY `id_creador_de_panel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `crear_tablas`
+--
+ALTER TABLE `crear_tablas`
+  MODIFY `id_crear_tablas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `custom_panel`
@@ -490,22 +523,28 @@ ALTER TABLE `custom_panel`
   MODIFY `id_custom_panel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  MODIFY `id_empleados` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT de la tabla `modulos`
 --
 ALTER TABLE `modulos`
-  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+  MODIFY `id_modulos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id_personas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_personas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -529,7 +568,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario_menu`
 --
 ALTER TABLE `usuario_menu`
-  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1323;
+  MODIFY `id_usuario_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1332;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_submenu`
