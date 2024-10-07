@@ -1435,31 +1435,26 @@ class HomeController
 		$config->fieldGroups("Name2",array("generar_jwt_token","autenticar_jwt_token"));
 		$render_conf = $config->dbTable("configuraciones_api")->render("editform", array("id" => "1"));
 
-		$modulos = DB::ArtifyCrud(true);
-		$modulos->formDisplayInPopup();
-		$modulos->setSearchCols(array("nombre_tabla"));
-		$modulos->setSettings("searchbox", true);
-		$modulos->setSettings("editbtn", true);
-		$modulos->setSettings("delbtn", true);
-		$modulos->crudRemoveCol(array("id_configuraciones_modulos", "query_tabla"));
-		$modulos->fieldCssClass("nombre_tabla", array("nombre_tabla"));
-		$modulos->fieldCssClass("query_tabla", array("query_tabla"));
-		$modulos->fieldNotMandatory("logo_pdf");
-		$modulos->fieldNotMandatory("marca_agua_pdf");
-		$modulos->fieldGroups("group1",array("logo_pdf","marca_agua_pdf"));
-		$modulos->buttonHide("submitBtnSaveBack");
-		$modulos->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
-		$modulos->fieldTypes("logo_pdf", "FILE_NEW");
-		$modulos->fieldTypes("marca_agua_pdf", "FILE_NEW");
-		$modulos->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
-		$modulos->colRename("query_tabla", "Consulta BD para crear Tabla");
-		$modulos->addCallback("before_insert", "insertar_configuraciones_modulos");
-		$modulos->addCallback("before_delete", "eliminar_configuraciones_modulos");
-		$render_modulos = $modulos->dbTable("configuraciones_modulos")->render();
+		$tablas = DB::ArtifyCrud(true);
+		$tablas->formDisplayInPopup();
+		$tablas->setSearchCols(array("nombre_tabla"));
+		$tablas->setSettings("searchbox", true);
+		$tablas->setSettings("editbtn", true);
+		$tablas->setSettings("delbtn", true);
+		$tablas->crudRemoveCol(array("id_crear_tablas", "query_tabla"));
+		$tablas->fieldCssClass("nombre_tabla", array("nombre_tabla"));
+		$tablas->fieldCssClass("query_tabla", array("query_tabla"));
+		$tablas->buttonHide("submitBtnSaveBack");
+		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
+		$tablas->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
+		$tablas->colRename("query_tabla", "Consulta BD para crear Tabla");
+		$tablas->addCallback("before_insert", "insertar_configuraciones_modulos");
+		$tablas->addCallback("before_delete", "eliminar_configuraciones_modulos");
+		$render_tablas = $tablas->dbTable("crear_tablas")->render();
 
 		View::render(
 			"modulos",
-			['render' => $render, 'render_conf' => $render_conf, 'switch' => $switch, 'render_modulos' => $render_modulos]
+			['render' => $render, 'render_conf' => $render_conf, 'switch' => $switch, 'render_tablas' => $render_tablas]
 		);
 	}
 

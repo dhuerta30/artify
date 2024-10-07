@@ -68,13 +68,33 @@ label.checkbox-inline {
 	<section class="content">
 		<div class="card mt-4">
 			<div class="card-body">
-				<?=$render?>
-                <?=$switch?>
-                <br>
-                <?=$render_modulos?>
-                <br>
-                <?=$render_conf?>
-				<div class="emergente"></div>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="create-tablas-tab" data-toggle="tab" href="#create-tablas" role="tab" aria-controls="create-tablas" aria-selected="true">Crear Tablas</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="create-modulos-tab" data-toggle="tab" href="#create-modulos" role="tab" aria-controls="create-modulos" aria-selected="false">Generador de Módulos</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="config-api-tab" data-toggle="tab" href="#config-api" role="tab" aria-controls="config-api" aria-selected="false">Generador de Módulos</a>
+                    </li>
+                </ul>
+            
+                <div class="tab-content p-3" id="myTabContent">
+                    <div class="tab-pane fade show active" id="create-tablas" role="tabpanel" aria-labelledby="create-tablas-tab">
+                        <?=$render_tablas?>
+                    </div>
+                    <div class="tab-pane fade" id="create-modulos" role="tabpanel" aria-labelledby="create-modulos-tab">
+                        <?=$render?>
+                        <?=$switch?>
+                    </div>
+                    <div class="tab-pane fade" id="config-api" role="tabpanel" aria-labelledby="config-api-tab">
+                        <?=$render_conf?>
+                    </div>
+                </div>
+
+
 			</div>
 		</div>
 	</section>
