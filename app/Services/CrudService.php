@@ -675,18 +675,12 @@ class CrudService
             \$artify->setSettings('template', 'template_{$nameview}');
             \$render = \$artify->dbTable('{$tableName}')->render();
 
-            View::render('{$nameview}', ['render' => \$render]);";
+            View::render('{$nameview}', ['render' => \$render]);
+        }";
 
-        if(empty($buttons_actions_array)){
-            $controllerContent .= "
-                }
-            }";
-        }
-        
         foreach ($buttons_actions_array as $Btnaction) {
             if ($Btnaction === 'Personalizado PDF') {
                 $controllerContent .= "
-                   }
                     public function {$tableName}_pdf(){
                         
                         \$docufy = DB::Docufy();
@@ -703,10 +697,12 @@ class CrudService
                         \$docufy->setInvoiceDisplaySettings(\"total\", \"grandtotal\", false);
                         echo \$docufy->render();
                     }
-                }
                 ";
             }
         }
+
+        $controllerContent .= 
+        "}";
 
         // Save the generated controller content to a file
         file_put_contents($controllerPath, $controllerContent);
