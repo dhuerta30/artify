@@ -1501,8 +1501,8 @@ class HomeController
 		$tablas->fieldRenameLable("modificar_tabla", "Modificar Campos de la tabla");
 		$tablas->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
 		$tablas->colRename("query_tabla", "Consulta BD para crear Tabla");
-		$tablas->addCallback("before_insert", "insertar_configuraciones_modulos");
-		$tablas->addCallback("before_delete", "eliminar_configuraciones_modulos");
+		$tablas->addCallback("before_insert", "insertar_crear_tablas");
+		$tablas->addCallback("before_delete", "eliminar_crear_tablas");
 		$render_tablas = $tablas->dbTable("crear_tablas")->render();
 
 		View::render(

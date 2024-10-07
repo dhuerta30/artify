@@ -965,9 +965,9 @@ function formatTable_buscar_examenes($data, $obj){
     return $data;
 }
 
-function insertar_configuraciones_modulos($data, $obj){
-    $nombre_tabla = $data["configuraciones_modulos"]["nombre_tabla"];
-    $query_tabla = $data["configuraciones_modulos"]["query_tabla"];
+function insertar_crear_tablas($data, $obj){
+    $nombre_tabla = $data["crear_tablas"]["nombre_tabla"];
+    $query_tabla = $data["crear_tablas"]["query_tabla"];
 
     $queryfy = $obj->getQueryfyObj();
     $resultado = $queryfy->create_table($nombre_tabla, $query_tabla);
@@ -981,11 +981,11 @@ function insertar_configuraciones_modulos($data, $obj){
     return $data;
 }
 
-function eliminar_configuraciones_modulos($data, $obj){
+function eliminar_crear_tablas($data, $obj){
     $id = $data["id"];
     $queryfy = $obj->getQueryfyObj();
-    $queryfy->where("id_configuraciones_modulos", $id);
-    $tabla = $queryfy->select("configuraciones_modulos");
+    $queryfy->where("id_crear_tablas", $id);
+    $tabla = $queryfy->select("crear_tablas");
 
     $queryfy->dropTable($tabla[0]["nombre_tabla"]);
     return $data;
