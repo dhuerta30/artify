@@ -772,11 +772,6 @@ class HomeController
 					</div>
 					<div class="row mt-3">
 						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Botones de Exportación Grilla:</label>
-								{actions_buttons_grid}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
 
 							<div class="form-group">
 								<label class="form-label">Mostrar Paginación:</label>
@@ -793,6 +788,12 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Cantidad de Registros por Página:</label>
 								{cantidad_de_registros_por_pagina}
+								<p class="artify_help_block help-block form-text with-errors"></p>
+							</div>
+
+							<div class="form-group">
+								<label class="form-label">Botones de Exportación Grilla:</label>
+								{actions_buttons_grid}
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
