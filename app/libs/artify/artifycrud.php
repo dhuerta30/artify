@@ -1033,7 +1033,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $function_filter_and_search = $data["modulos"]["function_filter_and_search"];
     $mostrar_campos_formulario_editar = isset($data["modulos"]["mostrar_campos_formulario_editar"]) ? $data["modulos"]["mostrar_campos_formulario_editar"] : null;
     $mostrar_columna_acciones_grilla = $data["modulos"]["mostrar_columna_acciones_grilla"];
-
+    $campos_requeridos = $data["modulos"]["campos_requeridos"];
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1080,7 +1080,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $sitesecret_repatcha,
             $function_filter_and_search,
             $mostrar_campos_formulario_editar,
-            $mostrar_columna_acciones_grilla
+            $mostrar_columna_acciones_grilla,
+            $campos_requeridos
         );
     } 
     
@@ -1115,7 +1116,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $sitesecret_repatcha,
             $function_filter_and_search,
             $mostrar_campos_formulario_editar,
-            $mostrar_columna_acciones_grilla
+            $mostrar_columna_acciones_grilla,
+            $campos_requeridos
         );
     }
 
@@ -1175,6 +1177,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["function_filter_and_search"] = $function_filter_and_search;
     $newdata["modulos"]["mostrar_campos_formulario_editar"] = $mostrar_campos_formulario_editar;
     $newdata["modulos"]["mostrar_columna_acciones_grilla"] = $mostrar_columna_acciones_grilla;
+    $newdata["modulos"]["campos_requeridos"] = $campos_requeridos;
 
     return $newdata;
 }
