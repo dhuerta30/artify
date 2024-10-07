@@ -1041,6 +1041,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $activar_registros_por_pagina = $data["modulos"]["activar_registros_por_pagina"];
     $cantidad_de_registros_por_pagina = isset($data["modulos"]["cantidad_de_registros_por_pagina"]) ? $data["modulos"]["cantidad_de_registros_por_pagina"] : null;
     $activar_edicion_en_linea = isset($data["modulos"]["activar_edicion_en_linea"]) ? $data["modulos"]["activar_edicion_en_linea"] : null;
+    $nombre_modulo = isset($data["modulos"]["nombre_modulo"]) ? $data["modulos"]["nombre_modulo"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1091,7 +1092,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $mostrar_columna_acciones_grilla,
             $campos_requeridos,
             $activar_numeracion_columnas,
-            $activar_registros_por_pagina
+            $activar_registros_por_pagina,
+            $nombre_modulo
         );
     } 
     
@@ -1134,7 +1136,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $activar_numeracion_columnas,
             $activar_registros_por_pagina,
             $cantidad_de_registros_por_pagina,
-            $activar_edicion_en_linea
+            $activar_edicion_en_linea,
+            $nombre_modulo
         );
     }
 
@@ -1202,6 +1205,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["activar_registros_por_pagina"] = $activar_registros_por_pagina;
     $newdata["modulos"]["cantidad_de_registros_por_pagina"] = $cantidad_de_registros_por_pagina;
     $newdata["modulos"]["activar_edicion_en_linea"] = $activar_edicion_en_linea;
+    $newdata["modulos"]["nombre_modulo"] = $nombre_modulo;
 
     return $newdata;
 }

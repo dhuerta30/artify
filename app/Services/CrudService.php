@@ -59,7 +59,8 @@ class CrudService
         $activar_numeracion_columnas,
         $activar_registros_por_pagina,
         $cantidad_de_registros_por_pagina,
-        $activar_edicion_en_linea
+        $activar_edicion_en_linea,
+        $nombre_modulo
         )
     {
         if($crudType == 'SQL'){
@@ -93,7 +94,8 @@ class CrudService
                 $mostrar_columna_acciones_grilla,
                 $campos_requeridos,
                 $activar_numeracion_columnas,
-                $activar_registros_por_pagina
+                $activar_registros_por_pagina,
+                $nombre_modulo
             );
         }
 
@@ -133,7 +135,8 @@ class CrudService
                 $activar_numeracion_columnas,
                 $activar_registros_por_pagina,
                 $cantidad_de_registros_por_pagina,
-                $activar_edicion_en_linea
+                $activar_edicion_en_linea,
+                $nombre_modulo
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -478,7 +481,8 @@ class CrudService
         $activar_numeracion_columnas,
         $activar_registros_por_pagina,
         $cantidad_de_registros_por_pagina,
-        $activar_edicion_en_linea
+        $activar_edicion_en_linea,
+        $nombre_modulo
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
@@ -642,7 +646,13 @@ class CrudService
 
         if($activate_nested_table == "Si"){
             $controllerContent .= "
+               
+            ";
+        }
 
+        if(isset($nombre_modulo)){
+            $controllerContent .= "
+                \$artify->tableHeading('{$nombre_modulo}');
             ";
         }
 
