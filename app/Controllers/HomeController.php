@@ -667,8 +667,8 @@ class HomeController
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
-								<label class="form-label">Clonar Filas:</label>
-								{clone_row}
+								<label class="form-label">Campos a Mostrar Filtro:</label>
+								{mostrar_campos_filtro}
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
@@ -783,6 +783,13 @@ class HomeController
 								{refrescar_grilla}
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
+
+							<div class="form-group">
+								<label class="form-label">Clonar Filas:</label>
+								{clone_row}
+								<p class="artify_help_block help-block form-text with-errors"></p>
+							</div>
+						
 						</div>
 					</div>
 					<div class="row">
@@ -1124,6 +1131,7 @@ class HomeController
 		$artify->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("sitekey_recaptcha", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("sitesecret_repatcha", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("mostrar_campos_filtro", array("disabled"=>"disabled"));
 		
 		$artify->fieldDataAttr("mostrar_campos_busqueda", array("placeholder" => "campo1/campo2/campo3/etc"));
 		$artify->fieldDataAttr("mostrar_columnas_grilla", array("placeholder" => "columna1/columna2/columna3/etc"));
