@@ -424,7 +424,37 @@ class CrudService
         file_put_contents($controllerPath, $controllerContent);
     }
 
-    private function generateCrudControllerCRUD($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda, $mostrar_columnas_grilla, $mostrar_campos_formulario, $activar_recaptcha, $sitekey_recaptcha, $sitesecret_repatcha)
+    private function generateCrudControllerCRUD(
+        $tableName, 
+        $idTable = null, 
+        $query = null, 
+        $controllerName, 
+        $nameview, 
+        $template_html, 
+        $active_filter, 
+        $mostrar_campos_filtro, 
+        $clone_row, 
+        $active_popup, 
+        $active_search, 
+        $activate_deleteMultipleBtn, 
+        $button_add, 
+        $actions_buttons_grid, 
+        $activate_nested_table, 
+        $buttons_actions, 
+        $refrescar_grilla, 
+        $encryption, 
+        $mostrar_campos_busqueda, 
+        $mostrar_columnas_grilla, 
+        $mostrar_campos_formulario, 
+        $activar_recaptcha, 
+        $sitekey_recaptcha, 
+        $sitesecret_repatcha,
+        $function_filter_and_search,
+        $mostrar_campos_formulario_editar,
+        $mostrar_columna_acciones_grilla,
+        $campos_requeridos,
+        $mostrar_paginacion
+        )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
         $controllerContent = "<?php
