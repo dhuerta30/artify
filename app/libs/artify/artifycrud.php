@@ -1031,6 +1031,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $sitekey_recaptcha = isset($data["modulos"]["sitekey_recaptcha"]) ? $data["modulos"]["sitekey_recaptcha"] : null;
     $sitesecret_repatcha = isset($data["modulos"]["sitesecret_repatcha"]) ? $data["modulos"]["sitesecret_repatcha"] : null;
     $function_filter_and_search = $data["modulos"]["function_filter_and_search"];
+    $mostrar_campos_formulario_editar = isset($data["modulos"]["mostrar_campos_formulario_editar"]) ? $data["modulos"]["mostrar_campos_formulario_editar"] : null;
 
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
@@ -1168,6 +1169,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["sitekey_recaptcha"] = $sitekey_recaptcha;
     $newdata["modulos"]["sitesecret_repatcha"] = $sitesecret_repatcha;
     $newdata["modulos"]["function_filter_and_search"] = $function_filter_and_search;
+    $newdata["modulos"]["mostrar_campos_formulario_editar"] = $mostrar_campos_formulario_editar;
 
     return $newdata;
 }
