@@ -1077,7 +1077,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $activar_recaptcha,
             $sitekey_recaptcha,
             $sitesecret_repatcha,
-            $function_filter_and_search
+            $function_filter_and_search,
+            $mostrar_campos_formulario_editar
         );
     } 
     
@@ -1097,7 +1098,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $active_popup, 
             $active_search, 
             $activate_deleteMultipleBtn, 
-            $button_add, 
+            $button_add,
             $actions_buttons_grid, 
             null, 
             $activate_nested_table,
@@ -1110,7 +1111,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $activar_recaptcha,
             $sitekey_recaptcha,
             $sitesecret_repatcha,
-            $function_filter_and_search
+            $function_filter_and_search,
+            $mostrar_campos_formulario_editar
         );
     }
 
