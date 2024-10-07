@@ -638,6 +638,16 @@ class CrudService
             ";
         }
 
+        if($posicion_botones_accion_grilla == "Izquierda"){
+            $controllerContent .= "
+                \$artify->setSettings(\"actionBtnPosition\", \"left\");
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings(\"actionBtnPosition\", \"right\");
+            ";
+        }
+
         $buttons_actions_array = explode(',', $buttons_actions);
        
         foreach ($buttons_actions_array as $Btnaction) {
