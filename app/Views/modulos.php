@@ -146,6 +146,7 @@ $(document).on("click", ".generar_token_api", function(){
 
 $(document).on("artify_after_ajax_action",function(event, obj, data){
     var dataAction = obj.getAttribute('data-action');
+    var dataId = obj.getAttribute('data-id');
 
     if(dataAction == "add"){
 
@@ -376,7 +377,7 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
     }
 
     if(dataAction == "edit"){
-
+        
         $(".nombre_tabla").attr("readonly", true);
 
         $("#create-tablas-tab").click(function(){
@@ -385,23 +386,20 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
         $.ajax({
             type: "POST",
-            url: "<?=$_ENV["BASE_URL"]?>Home/obtener_tablas",
+            url: "<?=$_ENV["BASE_URL"]?>Home/obtener_tabla_id",
             dataType: "json",
+            data: {
+                dataId: dataId
+            },
             beforeSend: function() {
                 $("#artify-ajax-loader").show();
             },
             success: function(data){
                 $("#artify-ajax-loader").hide();
                 
-                // Limpiar opciones anteriores del select
-                $(".tabla").empty();
-                $(".tabla").html(`<option value>Seleccionar</option>`);
-                // Añadir nuevas opciones desde el resultado del ajax
-                $.each(data["tablas"], function(index, obj){
-                    $(".tabla").append(`
-                        <option value="${obj.nombre_tabla}">${obj.nombre_tabla}</option>
-                    `);
-                });
+                $(".tabla").append(`
+                    <option selected value="${data["modulos"][0].tabla}">${data["modulos"][0].tabla}</option>
+                `);
                 
                 // Actualizar select2 para que reconozca los nuevos valores
                 $(".tabla").trigger('change'); 

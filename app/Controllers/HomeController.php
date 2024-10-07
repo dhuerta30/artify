@@ -1590,6 +1590,21 @@ class HomeController
 		}
 	}
 
+	public function obtener_tabla_id(){
+		$request = new Request();
+
+		if ($request->getMethod() === 'POST') {
+			$dataId = $request->post('dataId');
+			$artify = DB::ArtifyCrud();
+			$queryfy = $artify->getQueryfyObj();
+
+			$queryfy->where("id_modulos", $dataId);
+			$modulos = $queryfy->select("modulos");
+
+			echo json_encode(["modulos" => $modulos]);
+		}
+	}
+
 	public function obtener_tablas(){
 		$request = new Request();
 
