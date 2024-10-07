@@ -58,7 +58,8 @@ class CrudService
         $mostrar_paginacion,
         $activar_numeracion_columnas,
         $activar_registros_por_pagina,
-        $cantidad_de_registros_por_pagina
+        $cantidad_de_registros_por_pagina,
+        $activar_edicion_en_linea
         )
     {
         if($crudType == 'SQL'){
@@ -131,7 +132,8 @@ class CrudService
                 $mostrar_paginacion,
                 $activar_numeracion_columnas,
                 $activar_registros_por_pagina,
-                $cantidad_de_registros_por_pagina
+                $cantidad_de_registros_por_pagina,
+                $activar_edicion_en_linea
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -475,7 +477,8 @@ class CrudService
         $mostrar_paginacion,
         $activar_numeracion_columnas,
         $activar_registros_por_pagina,
-        $cantidad_de_registros_por_pagina
+        $cantidad_de_registros_por_pagina,
+        $activar_edicion_en_linea
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
@@ -727,6 +730,17 @@ class CrudService
                 \$artify->formDisplayInPopup();
             ";
         }
+
+        if($activar_edicion_en_linea == 'Si'){
+            $controllerContent .= "
+                \$artify->setSettings('inlineEditbtn', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings('inlineEditbtn', false);
+            ";
+        }
+
 
         if($mostrar_columna_acciones_grilla == 'Si'){
             $controllerContent .= "
