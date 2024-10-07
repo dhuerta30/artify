@@ -1399,9 +1399,7 @@ class HomeController
 				</div>
 			</div>
 
-		</div>
-		</div>
-		';
+		</div>';
 
 		$queryfy = $config->getQueryfyObj();
 		$configuraciones_api = $queryfy->select("configuraciones_api");

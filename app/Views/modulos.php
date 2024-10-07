@@ -71,13 +71,13 @@ label.checkbox-inline {
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="create-tablas-tab" data-toggle="tab" href="#create-tablas" role="tab" aria-controls="create-tablas" aria-selected="true">Crear Tablas</a>
+                        <a class="nav-link active" id="create-tablas-tab" data-toggle="tab" href="#create-tablas" role="tab" aria-controls="create-tablas" aria-selected="true">1.- Crear Tablas</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="create-modulos-tab" data-toggle="tab" href="#create-modulos" role="tab" aria-controls="create-modulos" aria-selected="false">Generador de Módulos</a>
+                        <a class="nav-link" id="create-modulos-tab" data-toggle="tab" href="#create-modulos" role="tab" aria-controls="create-modulos" aria-selected="false">2.- Generador de Módulos</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="config-api-tab" data-toggle="tab" href="#config-api" role="tab" aria-controls="config-api" aria-selected="false">Configuración de Api</a>
+                        <a class="nav-link" id="config-api-tab" data-toggle="tab" href="#config-api" role="tab" aria-controls="config-api" aria-selected="false">3.- Configuración de Api</a>
                     </li>
                 </ul>
             
