@@ -49,11 +49,6 @@ label:not(.form-check-label):not(.custom-file-label) {
     box-shadow: none!important;
 }
 
-label.checkbox-inline {
-    margin-bottom: 50px;
-    margin-top: 25px;
-}
-
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
     color: white!important;
     background: green!important;

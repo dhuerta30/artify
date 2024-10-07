@@ -863,7 +863,7 @@ class HomeController
 							<div class="component addrow float-right">
 								<div class="control-group">
 									<div class="controls">
-										<a class="artify-actions artify-button artify-button-add-row btn btn-success agregar_muestras d-none" href="javascript:;" data-action="add_row_module">
+										<a class="artify-actions artify-button artify-button-add-row btn btn-success agregar_muestras d-none" href="javascript:;" data-action="add_row_lubricentro">
 											<i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar       
 										</a>
 									</div>
@@ -878,10 +878,7 @@ class HomeController
 										</th>
 										<th>
 											<label class=" control-label col-form-label">Nombre Tabla Base de Datos</label>
-										</th>
-										<th>
-											<label class=" control-label col-form-label">Columnas de la Tabla</label>
-										</th>  
+										</th> 
 										<th>
 											<label class=" control-label col-form-label">Usar Plantilla Formulario HTML</label>
 										</th>  
@@ -926,9 +923,6 @@ class HomeController
 										</td>
 										<td class="artify_leftjoin_row_1 artify_leftjoin_col_2">
 											<input type="text" class="form-control artify-form-control artify-text tabla_db" name="tabla_db[]" disabled="disabled" required="1">
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_3">
-											<textarea class="form-control artify-form-control  artify-textarea consulta_crear_tabla" name="consulta_crear_tabla[]" disabled="disabled" placeholder="Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)" style="min-height: 200px; max-height: 200px;" required="1"></textarea>
 										</td>
 										<td class="artify_leftjoin_row_1 artify_leftjoin_col_4">
 											<select class="form-control artify-form-control artify-select template_fields_db" disabled="disabled" name="template_fields_db[]" required="1">
