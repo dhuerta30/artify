@@ -1082,6 +1082,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $sitesecret_repatcha,
             $function_filter_and_search,
             $mostrar_campos_formulario_editar,
+            $posicion_botones_accion_grilla,
             $mostrar_columna_acciones_grilla,
             $campos_requeridos
         );
@@ -1119,6 +1120,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $function_filter_and_search,
             $activar_union_interna,
             $mostrar_campos_formulario_editar,
+            $posicion_botones_accion_grilla,
             $mostrar_columna_acciones_grilla,
             $campos_requeridos,
             $mostrar_paginacion
@@ -1181,6 +1183,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["function_filter_and_search"] = $function_filter_and_search;
     $newdata["modulos"]["activar_union_interna"] = $activar_union_interna;
     $newdata["modulos"]["mostrar_campos_formulario_editar"] = $mostrar_campos_formulario_editar;
+    $newdata["modulos"]["posicion_botones_accion_grilla"] = $posicion_botones_accion_grilla;
     $newdata["modulos"]["mostrar_columna_acciones_grilla"] = $mostrar_columna_acciones_grilla;
     $newdata["modulos"]["campos_requeridos"] = $campos_requeridos;
     $newdata["modulos"]["mostrar_paginacion"] = $mostrar_paginacion;
