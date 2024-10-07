@@ -675,6 +675,16 @@ class CrudService
             ";
         }
 
+        if( $function_filter_and_search == 'Si'){
+            $controllerContent .= "
+                \$artify->setSettings('function_filter_and_search', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings('function_filter_and_search', false);
+            ";
+        }
+
         if($active_search == 'Si'){
             $controllerContent .= "
                 \$artify->setSettings('searchbox', true);
