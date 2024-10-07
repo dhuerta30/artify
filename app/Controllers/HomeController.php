@@ -717,7 +717,7 @@ class HomeController
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
-								<label class="form-label">Campos a Mostrar en el formulario:</label>
+								<label class="form-label">Campos a Mostrar en el formulario Insertar:</label>
 								{mostrar_campos_formulario}
 								<span>seleccione la tabla para cargar estos campos</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
