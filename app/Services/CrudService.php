@@ -690,6 +690,16 @@ class CrudService
             ";
         }
 
+        if($mostrar_columna_acciones_grilla == 'Si'){
+            $controllerContent .= "
+                \$artify->setSettings('actionbtn', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings('actionbtn', false);
+            ";
+        }
+
         if( $function_filter_and_search == 'Si'){
             $controllerContent .= "
                 \$artify->setSettings('function_filter_and_search', true);
