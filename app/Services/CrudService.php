@@ -551,10 +551,8 @@ class CrudService
                         return !empty(trim($value));
                     });
                     
-                    $valuesString = '"' . implode('", "', $values) . '"';
-                    
                     $controllerContent .= "
-                        foreach (\$columnDB as \$column) {
+                        foreach (\$values as \$column) {
                             \$columnName = ucfirst(str_replace('_', ' ', \$column));
                             
                             \$artify->addFilter('filterAdd'.\$column, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
