@@ -1337,6 +1337,7 @@ class HomeController
 		$artify->setSettings("pdfBtn", false);
 		$artify->setSettings("csvBtn", false);
 		$artify->setSettings("excelBtn", false);
+		$artify->setSettings("function_filter_and_search", true);
 		$artify->addCallback("before_insert", "insertar_modulos", array($id_sesion_usuario));
 		$artify->addCallback("after_insert", "despues_de_insertar_modulos");
 		$artify->addCallback("before_update", "actualizar_modulos");
@@ -1427,6 +1428,7 @@ class HomeController
 		$config->setSettings("refresh", false);
 		$config->setSettings("editbtn", true);
 		$config->setSettings("delbtn", true);
+		$config->setSettings("function_filter_and_search", false);
 		$config->buttonHide("submitBtn");
 		$config->buttonHide("cancel");
 		$config->fieldTypes("generar_jwt_token", "select");
@@ -1445,6 +1447,7 @@ class HomeController
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
 		$tablas->setSettings("delbtn", true);
+		$tablas->setSettings("function_filter_and_search", true);
 		$tablas->fieldHideLable("tabla_modificada");
 		$tablas->fieldDataAttr("tabla_modificada", array("style"=>"display:none", "value"=>"Si"));
 		$tablas->crudRemoveCol(array("id_crear_tablas", "query_tabla", "modificar_tabla"));
