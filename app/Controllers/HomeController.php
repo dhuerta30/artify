@@ -1395,6 +1395,11 @@ class HomeController
 						</div>
 					</div>
 
+					<div class="form-group mt-4 text-center">
+						<input type="submit" class="btn btn-primary artify-form-control artify-submit mb-3" data-action="insert" value="Guardar">
+						<button type="reset" class="btn btn-danger artify-form-control artify-button mb-3 artify-cancel-btn">Cancelar</button>
+					</div>
+
 
 				</div>
 			</div>
