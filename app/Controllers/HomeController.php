@@ -1451,7 +1451,9 @@ class HomeController
 		$tablas->fieldCssClass("nombre_tabla", array("nombre_tabla"));
 		$tablas->fieldCssClass("query_tabla", array("query_tabla"));
 		$tablas->buttonHide("submitBtnSaveBack");
+		$tablas->fieldAttributes("modificar_tabla", array("placeholder"=> "Alter Table ", "style"=> "min-height: 200px; max-height: 200px;"));
 		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
+		$tablas->fieldRenameLable("modificar_tabla", "Modificar Campos de la tabla");
 		$tablas->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
 		$tablas->colRename("query_tabla", "Consulta BD para crear Tabla");
 		$tablas->addCallback("before_insert", "insertar_configuraciones_modulos");
