@@ -127,6 +127,16 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
+        $(".active_filter").change(function(){
+            let valor = $(this).val();
+
+            if(valor == "Si"){
+                $(".mostrar_campos_filtro").removeAttr("disabled", "disabled");
+            } else {
+                $(".mostrar_campos_filtro").attr("disabled", "disabled");
+            }
+        });
+
         $(".tabla").change(function(){
             let val = $(this).val();
 

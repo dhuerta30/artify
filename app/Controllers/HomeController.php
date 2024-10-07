@@ -1237,6 +1237,7 @@ class HomeController
 		$artify->fieldCssClass("activar_recaptcha", array("activar_recaptcha"));
 		$artify->fieldCssClass("sitekey_recaptcha", array("sitekey_recaptcha"));
 		$artify->fieldCssClass("sitesecret_repatcha", array("sitesecret_repatcha"));
+		$artify->fieldCssClass("active_filter", array("active_filter"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
