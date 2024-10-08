@@ -1596,19 +1596,54 @@ class HomeController
 
 		$tablas = DB::ArtifyCrud(true);
 		$tablas->setLangData("add", "Agregar Tabla");
-		$tablas->formDisplayInPopup();
-		$tablas->formFields(array("nombre_tabla", "query_tabla"));
+		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autonincremental", "indice", "valor_nulo"));
 		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
 		$tablas->setSettings("delbtn", true);
+		$tablas->fieldTypes("tipo", "select");
+		$tablas->fieldDataBinding("tipo", array(
+			"Entero" => "Un número sin decimales",
+			"Caracteres" => "Una cadena de letras o caracteres",
+			"Texto" => "Un bloque de texto más largo",
+			"Fecha" => "Una fecha en formato de calendario",
+			"Número Decimal" => "Un número con decimales",
+			"Hora" => "Una hora del día",
+			"Booleano" => "Verdadero o falso",
+			"Datos JSON" => "Un conjunto estructurado de datos"
+		), "", "","array");
+
+		$tablas->fieldTypes("indice", "select");
+		$tablas->fieldDataBinding("indice", array(
+			"Primario" => "Es el identificador principal de cada fila. No puede haber duplicados y no puede ser nulo.",
+			"Único" => "Asegura que los valores en esta columna sean únicos, no se pueden repetir.",
+			"Índice" => "Permite búsquedas rápidas en esta columna, pero no garantiza valores únicos.",
+			"Texto completo" => "Permite búsquedas avanzadas en columnas de texto largo, útil para motores de búsqueda.",
+			"Espacial" => "Se utiliza para indexar datos geográficos, como puntos o polígonos en mapas."
+		), "", "","array");
+
+		$tablas->fieldTypes("valor_nulo", "select");
+		$tablas->fieldDataBinding("valor_nulo", array(
+			"Si" => "Si",
+			"No" => "No"
+		), "", "","array");
+
+		$tablas->setSettings("template", "crear_tablas");
 		$tablas->setSettings("function_filter_and_search", true);
 		$tablas->fieldHideLable("tabla_modificada");
 		$tablas->fieldDataAttr("tabla_modificada", array("style"=>"display:none", "value"=>"Si"));
 		$tablas->crudRemoveCol(array("id_crear_tablas", "query_tabla", "modificar_tabla"));
 		$tablas->fieldCssClass("nombre_tabla", array("nombre_tabla"));
 		$tablas->fieldCssClass("query_tabla", array("query_tabla"));
+
+		$tablas->fieldCssClass("nombre_campo", array("nombre"));
+		$tablas->fieldCssClass("tipo", array("tipo_de_campo"));
+		$tablas->fieldCssClass("caracteres", array("longitud"));
+		$tablas->fieldCssClass("indice", array("indice"));
+		$tablas->fieldCssClass("valor_nulo", array("nulo"));
+		$tablas->fieldCssClass("autonincremental", array("autoincrementable"));
+
 		$tablas->buttonHide("submitBtnSaveBack");
 		$tablas->fieldAttributes("modificar_tabla", array("placeholder"=> "Alter Table ", "style"=> "min-height: 200px; max-height: 200px;"));
 		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1617,6 +1652,7 @@ class HomeController
 		$tablas->colRename("query_tabla", "Consulta BD para crear Tabla");
 		$tablas->addCallback("before_insert", "insertar_crear_tablas");
 		$tablas->addCallback("before_delete", "eliminar_crear_tablas");
+		$tablas->joinTable("estructura_tabla", "estructura_tabla.id_crear_tablas = crear_tablas.id_crear_tablas", "LEFT JOIN");
 		$render_tablas = $tablas->dbTable("crear_tablas")->render();
 
 		$pdf = DB::ArtifyCrud(true);

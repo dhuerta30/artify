@@ -1,7 +1,7 @@
 <div class="component addrow float-right">
     <div class="control-group">
         <div class="controls">
-            <a class="artify-actions artify-button artify-button-add-row btn btn-success agregar_muestras" href="javascript:;" data-action="add_row_module">
+            <a class="artify-actions artify-button artify-button-add-row btn btn-success" href="javascript:;" data-action="add_row_lubricentro">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add"]; ?>
             </a>
         </div>
@@ -25,7 +25,7 @@ foreach ($data as $rows) {
     $rowCount++;
 }
 ?>
-<div class="table-responsive">
+<div class="table-responsive mb-4">
 <table class="table artify-left-join responsive">
     <thead>
         <tr>
