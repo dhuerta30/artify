@@ -1603,6 +1603,10 @@ class HomeController
 		$pdf->crudRemoveCol(array("id_configuraciones_pdf"));
 		$pdf->fieldTypes("logo_pdf", "FILE_NEW");
 		$pdf->fieldTypes("marca_agua_pdf", "FILE_NEW");
+		$pdf->buttonHide("submitBtnSaveBack");
+		$pdf->fieldNotMandatory("logo_pdf");
+		$pdf->fieldNotMandatory("marca_agua_pdf");
+		$pdf->fieldGroups("group1",array("logo_pdf","marca_agua_pdf"));
 		$render_pdf = $pdf->dbTable("configuraciones_pdf")->render();
 
 		View::render("modulos", 
