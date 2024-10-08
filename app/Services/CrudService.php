@@ -678,9 +678,9 @@ class CrudService
         }
 
 
-        if(isset($posicionarse_en_la_pagina)){
+        if(!empty($posicionarse_en_la_pagina)){
             $controllerContent .= "
-                \$artify->currentPage('{$posicionarse_en_la_pagina}');
+                \$artify->currentPage({$posicionarse_en_la_pagina});
             ";
         }
 

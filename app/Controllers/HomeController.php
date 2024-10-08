@@ -1228,6 +1228,7 @@ class HomeController
 		$artify->formFieldValue("activar_registros_por_pagina", "Si");
 		$artify->formFieldValue("cantidad_de_registros_por_pagina", 10);
 		$artify->formFieldValue("activar_edicion_en_linea", "No");
+		$artify->formFieldValue("posicionarse_en_la_pagina", 1);
 
 		$artify->setLangData("add", "Agregar Módulo");
 
