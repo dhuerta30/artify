@@ -1605,6 +1605,7 @@ class HomeController
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
 		$tablas->setSettings("delbtn", true);
+		$tablas->formFieldValue("valor_nulo", "No");
 		$tablas->fieldTypes("tipo", "select");
 		$tablas->fieldDataBinding("tipo", array(
 			"Entero" => "Entero (Un número sin decimales)",
