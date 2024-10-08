@@ -520,7 +520,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         $(".eliminar_filas").removeClass("d-none");
 
         document.getElementById("generateSQL").addEventListener("click", function() {
-            let sqlStatements = `\n`;
+            let sqlStatements = "";
 
             const rows = document.querySelectorAll(".artify-left-join tbody tr");
             let columnDefinitions = []; // Arreglo para almacenar las definiciones de columnas
@@ -570,7 +570,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             document.querySelector(".modificar_tabla").value = sqlStatements;
         });
         
-        $(".nombre_tabla").attr("readonly", true);
+        //$(".nombre_tabla").attr("readonly", true);
 
         $("#create-tablas-tab, #create-pdf-tab").click(function(){
             $(".regresar_modulos").click();

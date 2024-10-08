@@ -988,13 +988,14 @@ function editar_crear_tablas($data, $obj){
     $queryfy = $obj->getQueryfyObj();
     $resultado = $queryfy->alter_table($nombre_tabla, $modificar_tabla);
     
-    if ($result) {
+    if ($resultado) {
         $obj->setLangData("success", "La tabla se ha modificado correctamente");
     } else {
         $obj->setLangData("no_data", "Hubo un error al modificar la tabla");
     }
 
     return $data;
+}
 
 function eliminar_crear_tablas($data, $obj){
     $id = $data["id"];

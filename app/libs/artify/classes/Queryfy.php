@@ -1060,17 +1060,10 @@ class Queryfy
     {
         try {
             if ($this->dbType === "mysql") {
-                $this->sql = "ALTER TABLE " . $this->parseTable($dbTableName);
-
-                foreach ($modifications as $modification) {
-                    $this->sql .= " " . $modification . ",";
-                }
-
-                $this->sql = rtrim($this->sql, ",");
+                $this->sql = "ALTER TABLE {$dbTableName} ({$modifications})";
                 $stmt = $this->dbObj->prepare($this->sql);
                 $stmt->execute();
             }
-
             return true;
         } catch (PDOException $e) {
             $this->setErrors($e->getMessage());
