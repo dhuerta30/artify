@@ -1410,6 +1410,7 @@ class HomeController
 		$artify->fieldCssClass("active_popup", array("active_popup"));
 		$artify->fieldCssClass("active_search", array("active_search"));
 		$artify->fieldCssClass("button_add", array("button_add"));
+		$artify->fieldCssClass("tipo_orden", array("tipo_orden"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
@@ -1453,6 +1454,8 @@ class HomeController
 		$artify->fieldConditionalLogic("crud_type", "Modulo de Inventario", "=", "query", "hide");
 
 		$artify->fieldConditionalLogic("crud_type", "Modulo de Inventario", "=", "id_tabla", "hide");
+
+		$artify->fieldConditionalLogic("crud_type", "Formulario de inserción", "=", "query", "hide");
 		
 		$artify->formFieldValue("template_fields", "No");
 

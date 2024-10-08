@@ -393,6 +393,8 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 $(".button_add").removeAttr("disabled", "disabled");
                 $(".active_filter").removeAttr("disabled", "disabled");
                 $(".function_filter_and_search").removeAttr("disabled", "disabled");
+                $(".ordenar_grilla_por").removeAttr("disabled", "disabled");
+                $(".tipo_orden").removeAttr("disabled", "disabled");
 
             } else if (val == "Modulo de Inventario") {
                 $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
@@ -424,6 +426,8 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
                 $(".button_add").attr("disabled", "disabled");
                 $(".active_filter").attr("disabled", "disabled");
                 $(".function_filter_and_search").attr("disabled", "disabled");
+                $(".ordenar_grilla_por").attr("disabled", "disabled");
+                $(".tipo_orden").attr("disabled", "disabled");
             } else {
                 $(".query").attr("required", "required").removeAttr("disabled");
                 $(".query").val("SELECT\n" +
