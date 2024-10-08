@@ -370,11 +370,23 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
             if (val == "CRUD") {
                 $(".query").removeAttr("required").attr("disabled", "disabled");
+                $(".mostrar_columnas_grilla").removeAttr("disabled", "disabled");
+                $(".mostrar_campos_busqueda").removeAttr("disabled", "disabled");
+                $(".mostrar_columna_acciones_grilla").removeAttr("disabled", "disabled");
+                $(".mostrar_campos_formulario_editar").removeAttr("disabled", "disabled");
+                $(".posicion_botones_accion_grilla").removeAttr("disabled", "disabled");
             } else if (val == "Modulo de Inventario") {
                 $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
                 $(".tabla").val("Inventario");
                 $(".name_view").val("Inventario");
                 $(".controller_name").val("Inventario");
+            } else if(val == "Formulario de inserción"){
+                $(".query").attr("disabled", "disabled").val("");
+                $(".mostrar_columnas_grilla").attr("disabled", "disabled");
+                $(".mostrar_campos_busqueda").attr("disabled", "disabled");
+                $(".mostrar_columna_acciones_grilla").attr("disabled", "disabled");
+                $(".mostrar_campos_formulario_editar").attr("disabled", "disabled");
+                $(".posicion_botones_accion_grilla").attr("disabled", "disabled");
             } else {
                 $(".query").attr("required", "required").removeAttr("disabled");
                 $(".query").val("SELECT\n" +

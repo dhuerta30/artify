@@ -1396,6 +1396,8 @@ class HomeController
 		$artify->fieldCssClass("function_filter_and_search", array("function_filter_and_search"));
 		$artify->fieldCssClass("mostrar_campos_formulario_editar", array("mostrar_campos_formulario_editar"));
 		$artify->fieldCssClass("ordenar_grilla_por", array("ordenar_grilla_por"));
+		$artify->fieldCssClass("mostrar_columna_acciones_grilla", array("mostrar_columna_acciones_grilla"));
+		$artify->fieldCssClass("posicion_botones_accion_grilla", array("posicion_botones_accion_grilla"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
