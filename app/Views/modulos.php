@@ -398,6 +398,20 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 $(".ordenar_grilla_por").removeAttr("disabled", "disabled");
                 $(".tipo_orden").removeAttr("disabled", "disabled");
 
+                $("input[value='Ver']").prop('disabled', false);
+                $("input[value='Editar']").prop('disabled', false);
+                $("input[value='Eliminar']").prop('disabled', false);
+                $("input[value='Guardar y regresar']").prop('disabled', false);
+                $("input[value='Regresar']").prop('disabled', false);
+                $("input[value='Personalizado PDF']").prop('disabled', false);
+
+                $("input[value='Ver']").bootstrapSwitch('disabled', false);
+                $("input[value='Editar']").bootstrapSwitch('disabled', false);
+                $("input[value='Eliminar']").bootstrapSwitch('disabled', false);
+                $("input[value='Guardar y regresar']").bootstrapSwitch('disabled', false);
+                $("input[value='Regresar']").bootstrapSwitch('disabled', false);
+                $("input[value='Personalizado PDF']").bootstrapSwitch('disabled', false);
+
             } else if (val == "Modulo de Inventario") {
                 $(".id_tabla").attr("disabled", "disabled").removeAttr("required").val("");
                 $(".tabla").val("Inventario");
