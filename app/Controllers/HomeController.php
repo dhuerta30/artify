@@ -1600,6 +1600,9 @@ class HomeController
 		$render_tablas = $tablas->dbTable("crear_tablas")->render();
 
 		$pdf = DB::ArtifyCrud(true);
+		$pdf->crudRemoveCol(array("id_configuraciones_pdf"));
+		$pdf->fieldTypes("logo_pdf", "FILE_NEW");
+		$pdf->fieldTypes("marca_agua_pdf", "FILE_NEW");
 		$render_pdf = $pdf->dbTable("configuraciones_pdf")->render();
 
 		View::render("modulos", 
