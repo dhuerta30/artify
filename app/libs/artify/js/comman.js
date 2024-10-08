@@ -502,35 +502,19 @@ $(document).ready(function(){
                     return;                   
                 }
 
-                if (data.action === "add_row_lubricentro") {
+                if (data.action === "add_row_artify") {
                    $(".artify-left-join").each(function () {
-                        $('.producto').select2("destroy");
                         var tds = '<tr>';
-                        jQuery.each($('tr:last td', this), function () {
+                        $(this).find('tr:last td').slice(0, 6).each(function () {
                             tds += '<td>' + $(this).html() + '</td>';
-                            $('.agregar_pro_vent').removeClass('artify-actions');
-                            $('.agregar_pro_vent').removeAttr("data-action","add_row_vent");
                         });
+                        tds += '<td><a href="javascript:;" class="artify-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a></td>';
                         tds += '</tr>';
                         if ($('tbody', this).length > 0) {
                             $('tbody', this).append(tds);
                         } else {
                             $(this).append(tds);
                         }
-                        $('.producto:last').val("");
-                        $('.precio_vehiculo:last').val("");
-                        $('.cantidad_vehiculo:last').val("");
-                        $('.total_vehiculo:last').val("");
-
-                        $('.producto').select2({
-                            placeholder: 'Escribe el nombre del producto',
-                            allowClear: true,
-                            language: {
-                                noResults: function() {
-                                    return "No hay resultados";
-                                }
-                            }
-                        });
                     });
                     return;
                 }
