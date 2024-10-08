@@ -1398,6 +1398,18 @@ class HomeController
 		$artify->fieldCssClass("ordenar_grilla_por", array("ordenar_grilla_por"));
 		$artify->fieldCssClass("mostrar_columna_acciones_grilla", array("mostrar_columna_acciones_grilla"));
 		$artify->fieldCssClass("posicion_botones_accion_grilla", array("posicion_botones_accion_grilla"));
+		$artify->fieldCssClass("refrescar_grilla", array("refrescar_grilla"));
+		$artify->fieldCssClass("clone_row", array("clone_row"));
+		$artify->fieldCssClass("activar_numeracion_columnas", array("activar_numeracion_columnas"));
+		$artify->fieldCssClass("mostrar_paginacion", array("mostrar_paginacion"));
+		$artify->fieldCssClass("cantidad_de_registros_por_pagina", array("cantidad_de_registros_por_pagina"));
+		$artify->fieldCssClass("activar_registros_por_pagina", array("activar_registros_por_pagina"));
+		$artify->fieldCssClass("posicionarse_en_la_pagina", array("posicionarse_en_la_pagina"));
+		$artify->fieldCssClass("activar_edicion_en_linea", array("activar_edicion_en_linea"));
+		$artify->fieldCssClass("activate_deleteMultipleBtn", array("activate_deleteMultipleBtn"));
+		$artify->fieldCssClass("active_popup", array("active_popup"));
+		$artify->fieldCssClass("active_search", array("active_search"));
+		$artify->fieldCssClass("button_add", array("button_add"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
