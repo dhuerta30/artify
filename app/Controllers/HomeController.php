@@ -1611,8 +1611,7 @@ class HomeController
 			"Fecha" => "Fecha (Una fecha en formato de calendario)",
 			"Número Decimal" => "Número Decimal (Un número con decimales)",
 			"Hora" => "Hora (Una hora del día)",
-			"Booleano" => "Booleano (Verdadero o falso)",
-			"Datos JSON" => "Datos JSON (Un conjunto estructurado de datos)"
+			"Booleano" => "Booleano (Verdadero o falso)"
 		), "", "","array");
 
 		$tablas->fieldTypes("indice", "select");
