@@ -1600,6 +1600,8 @@ class HomeController
 		$render_tablas = $tablas->dbTable("crear_tablas")->render();
 
 		$pdf = DB::ArtifyCrud(true);
+		$pdf->tableHeading("Configuraciones de PDF");
+		$pdf->setLangData("add", "Agregar PDF");
 		$pdf->crudRemoveCol(array("id_configuraciones_pdf"));
 		$pdf->fieldTypes("logo_pdf", "FILE_NEW");
 		$pdf->fieldTypes("marca_agua_pdf", "FILE_NEW");
