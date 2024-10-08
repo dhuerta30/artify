@@ -60,7 +60,9 @@ class CrudService
         $activar_registros_por_pagina,
         $cantidad_de_registros_por_pagina,
         $activar_edicion_en_linea,
-        $nombre_modulo
+        $nombre_modulo,
+        $ordenar_grilla_por,
+        $tipo_orden
         )
     {
         if($crudType == 'SQL'){
@@ -136,7 +138,9 @@ class CrudService
                 $activar_registros_por_pagina,
                 $cantidad_de_registros_por_pagina,
                 $activar_edicion_en_linea,
-                $nombre_modulo
+                $nombre_modulo,
+                $ordenar_grilla_por,
+                $tipo_orden
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -482,7 +486,9 @@ class CrudService
         $activar_registros_por_pagina,
         $cantidad_de_registros_por_pagina,
         $activar_edicion_en_linea,
-        $nombre_modulo
+        $nombre_modulo,
+        $ordenar_grilla_por,
+        $tipo_orden
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
