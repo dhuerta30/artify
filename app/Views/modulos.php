@@ -430,6 +430,21 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 $(".function_filter_and_search").attr("disabled", "disabled");
                 $(".ordenar_grilla_por").attr("disabled", "disabled");
                 $(".tipo_orden").attr("disabled", "disabled");
+
+                $("input[value='Ver']").prop('disabled', true);
+                $("input[value='Editar']").prop('disabled', true);
+                $("input[value='Eliminar']").prop('disabled', true);
+                $("input[value='Guardar y regresar']").prop('disabled', true);
+                $("input[value='Regresar']").prop('disabled', true);
+                $("input[value='Personalizado PDF']").prop('disabled', true);
+
+                $("input[value='Ver']").bootstrapSwitch('disabled', true);
+                $("input[value='Editar']").bootstrapSwitch('disabled', true);
+                $("input[value='Eliminar']").bootstrapSwitch('disabled', true);
+                $("input[value='Guardar y regresar']").bootstrapSwitch('disabled', true);
+                $("input[value='Regresar']").bootstrapSwitch('disabled', true);
+                $("input[value='Personalizado PDF']").bootstrapSwitch('disabled', true);
+
             } else {
                 $(".query").attr("required", "required").removeAttr("disabled");
                 $(".query").val("SELECT\n" +
