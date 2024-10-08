@@ -1595,6 +1595,8 @@ class HomeController
 		$render_conf = $config->dbTable("configuraciones_api")->render("editform", array("id" => "1"));
 
 		$tablas = DB::ArtifyCrud(true);
+		$tablas->fieldRenameLable("caracteres", "Caracteres");
+		$tablas->fieldRenameLable("valor_nulo", "Campo con valor vacio");
 		$tablas->setLangData("add", "Agregar Tabla");
 		$tablas->setLangData("add_row", "Agregar Campos");
 		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
