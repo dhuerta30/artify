@@ -1607,7 +1607,7 @@ class HomeController
 		$pdf->setSettings("delbtn", true);
 		$pdf->setSettings("function_filter_and_search", true);
 		$pdf->setLangData("no_data", "No se encontrarón Configuraciones");
-		$pdf->crudRemoveCol(array("id_configuraciones_pdf"));
+		$pdf->colRename("id_configuraciones_pdf", "ID");
 		$pdf->fieldTypes("logo_pdf", "FILE_NEW");
 		$pdf->fieldTypes("marca_agua_pdf", "FILE_NEW");
 		$pdf->buttonHide("submitBtnSaveBack");
