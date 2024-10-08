@@ -975,15 +975,26 @@ function insertar_crear_tablas($data, $obj){
     if ($resultado) {
         $obj->setLangData("success", "Tabla creada exitosamente");
     } else {
-         $obj->setLangData("no_data", "Error al crear la tabla");
+        $obj->setLangData("no_data", "Error al crear la tabla");
     }
     
     return $data;
 }
 
 function editar_crear_tablas($data, $obj){
+    $nombre_tabla = $data["crear_tablas"]["nombre_tabla"];
+    $modificar_tabla = $data["crear_tablas"]["modificar_tabla"];
 
-}
+    $queryfy = $obj->getQueryfyObj();
+    $resultado = $queryfy->alter_table($nombre_tabla, $modificar_tabla);
+    
+    if ($result) {
+        $obj->setLangData("success", "La tabla se ha modificado correctamente");
+    } else {
+        $obj->setLangData("no_data", "Hubo un error al modificar la tabla");
+    }
+
+    return $data;
 
 function eliminar_crear_tablas($data, $obj){
     $id = $data["id"];
