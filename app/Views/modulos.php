@@ -466,6 +466,46 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 "apellido as apellido,\n" +
                 "categoria as categoria\n" +
                 "producto as producto FROM personas");
+
+                $(".mostrar_columnas_grilla").attr("disabled", "disabled");
+                $(".mostrar_campos_busqueda").removeAttr("disabled", "disabled");
+                $(".mostrar_columna_acciones_grilla").removeAttr("disabled", "disabled");
+                $(".mostrar_campos_formulario_editar").removeAttr("disabled", "disabled");
+                $(".posicion_botones_accion_grilla").removeAttr("disabled", "disabled");
+                $(".refrescar_grilla").removeAttr("disabled", "disabled");
+
+                $(".actions_buttons_grid").removeAttr("disabled", "disabled");
+                $(".actions_buttons_grid").bootstrapSwitch('disabled', false);
+
+                $(".clone_row").removeAttr("disabled", "disabled");
+                $(".activar_numeracion_columnas").removeAttr("disabled", "disabled");
+                $(".mostrar_paginacion").removeAttr("disabled", "disabled");
+                $(".cantidad_de_registros_por_pagina").removeAttr("disabled", "disabled");
+                $(".activar_registros_por_pagina").removeAttr("disabled", "disabled");
+                $(".posicionarse_en_la_pagina").removeAttr("disabled", "disabled");
+                $(".activar_edicion_en_linea").removeAttr("disabled", "disabled");
+                $(".activate_deleteMultipleBtn").removeAttr("disabled", "disabled");
+                $(".active_popup").removeAttr("disabled", "disabled");
+                $(".active_search").removeAttr("disabled", "disabled");
+                $(".button_add").removeAttr("disabled", "disabled");
+                $(".active_filter").removeAttr("disabled", "disabled");
+                $(".function_filter_and_search").removeAttr("disabled", "disabled");
+                $(".ordenar_grilla_por").attr("disabled", "disabled");
+                $(".tipo_orden").attr("disabled", "disabled");
+
+                $("input[value='Ver']").prop('disabled', false);
+                $("input[value='Editar']").prop('disabled', false);
+                $("input[value='Eliminar']").prop('disabled', false);
+                $("input[value='Guardar y regresar']").prop('disabled', false);
+                $("input[value='Regresar']").prop('disabled', false);
+                $("input[value='Personalizado PDF']").prop('disabled', false);
+
+                $("input[value='Ver']").bootstrapSwitch('disabled', false);
+                $("input[value='Editar']").bootstrapSwitch('disabled', false);
+                $("input[value='Eliminar']").bootstrapSwitch('disabled', false);
+                $("input[value='Guardar y regresar']").bootstrapSwitch('disabled', false);
+                $("input[value='Regresar']").bootstrapSwitch('disabled', false);
+                $("input[value='Personalizado PDF']").bootstrapSwitch('disabled', false);
             }
         });
     }
