@@ -1042,6 +1042,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $cantidad_de_registros_por_pagina = isset($data["modulos"]["cantidad_de_registros_por_pagina"]) ? $data["modulos"]["cantidad_de_registros_por_pagina"] : null;
     $activar_edicion_en_linea = isset($data["modulos"]["activar_edicion_en_linea"]) ? $data["modulos"]["activar_edicion_en_linea"] : null;
     $nombre_modulo = isset($data["modulos"]["nombre_modulo"]) ? $data["modulos"]["nombre_modulo"] : null;
+    $ordenar_grilla_por = isset($data["modulos"]["ordenar_grilla_por"]) ? $data["modulos"]["ordenar_grilla_por"] : null;
+    $tipo_orden = isset($data["modulos"]["tipo_orden"]) ? $data["modulos"]["tipo_orden"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1137,7 +1139,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $activar_registros_por_pagina,
             $cantidad_de_registros_por_pagina,
             $activar_edicion_en_linea,
-            $nombre_modulo
+            $nombre_modulo,
+            $ordenar_grilla_por,
+            $tipo_orden
         );
     }
 
@@ -1206,6 +1210,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["cantidad_de_registros_por_pagina"] = $cantidad_de_registros_por_pagina;
     $newdata["modulos"]["activar_edicion_en_linea"] = $activar_edicion_en_linea;
     $newdata["modulos"]["nombre_modulo"] = $nombre_modulo;
+    $newdata["modulos"]["ordenar_grilla_por"] = $ordenar_grilla_por;
+    $newdata["modulos"]["tipo_orden"] = $tipo_orden;
 
     return $newdata;
 }
