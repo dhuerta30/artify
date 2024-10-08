@@ -487,6 +487,7 @@ function refrechMenu(){
 		url: "<?=$_ENV["BASE_URL"]?>home/refrescarMenu",
 		dataType: "json",
 		success: function(response){
+            console.log(response);
 			$('.menu_generator').html(response);
 		}
 	});

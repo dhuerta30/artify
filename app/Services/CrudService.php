@@ -659,7 +659,7 @@ class CrudService
             ";
         }
 
-        if(isset($nombre_modulo)){
+        if(!empty($nombre_modulo)){
             $controllerContent .= "
                 \$artify->tableHeading('{$nombre_modulo}');
             ";

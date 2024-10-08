@@ -861,6 +861,7 @@ class HomeController
 							</div>
 
 						</div>
+
 						<div class="col-md-3">
 							<div class="form-group">
 								<label class="form-label">Botones de Acción:</label>
@@ -902,6 +903,7 @@ class HomeController
 						
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="col-md-12">
 							<div class="component addrow float-right">
