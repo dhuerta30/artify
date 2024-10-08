@@ -599,8 +599,20 @@ function construirFrase() {
             campo2 = "TEXT";
         }
 
+        if(campo2 == "Número Decimal"){
+            campo2 = "DECIMAL";
+        }
+
         if (campo2 == "Fecha") {
             campo2 = "DATE";
+        }
+
+        if (campo2 == "Hora") {
+            campo2 = "TIME";
+        }
+
+        if(campo2 == "Booleano"){
+            campo2 = "BOOLEAN";
         }
 
         if (campo3 == "Si") {
