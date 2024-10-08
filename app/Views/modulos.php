@@ -160,7 +160,7 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
-        $("#create-tablas-tab").click(function(){
+        $("#create-tablas-tab, #create-pdf-tab").click(function(){
             $(".regresar_modulos").click();
         });
 
@@ -390,7 +390,7 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
         
         $(".nombre_tabla").attr("readonly", true);
 
-        $("#create-tablas-tab").click(function(){
+        $("#create-tablas-tab, #create-pdf-tab").click(function(){
             $(".regresar_modulos").click();
         });
 
