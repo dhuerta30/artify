@@ -844,14 +844,14 @@ class HomeController
 							</div>
 
 							<div class="row mt-5">
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="form-group">
 										<label class="form-label">Ordenar Grilla por:</label>
 										{ordenar_grilla_por}
 										<p class="artify_help_block help-block form-text with-errors"></p>
 									</div>
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="form-group">
 										<label class="form-label">Tipo de Orden Grilla:</label>
 										{tipo_orden}
@@ -1263,7 +1263,7 @@ class HomeController
 		$artify->fieldTypes("mostrar_columnas_grilla", "multiselect");
 		$artify->fieldTypes("mostrar_campos_filtro", "multiselect");
 		$artify->fieldTypes("mostrar_campos_formulario_editar", "multiselect");
-		$artify->fieldTypes("ordenar_grilla_por", "multiselect");
+		$artify->fieldTypes("ordenar_grilla_por", "select");
 
 		$artify->fieldTypes("tipo_orden", "select");
 		$artify->fieldDataBinding("tipo_orden", array("ASC" => "ASC", "DESC" => "DESC"), "", "", "array");

@@ -671,7 +671,6 @@ class CrudService
             ";
         }
 
-
         if(isset($ordenar_grilla_por) && isset($tipo_orden)){
             $controllerContent .= "
                 \$artify->dbOrderBy(\"{$ordenar_grilla_por}\", \"{$tipo_orden}\");
