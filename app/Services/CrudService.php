@@ -524,9 +524,6 @@ class CrudService
             {
                 \$artify = DB::ArtifyCrud();
                 \$queryfy = \$artify->getQueryfyObj();
-                \$columnDB = \$queryfy->columnNames('{$tableName}');
-                unset(\$columnDB[0]);
-
                 ";
 
                  if(isset($mostrar_campos_busqueda)){
@@ -596,7 +593,7 @@ class CrudService
                 }
 
 
-                if ($active_filter == "Si") {
+                if ($active_filter == "Si" && isset($mostrar_campos_filtro)) {
 
                     $values = explode(',', $mostrar_campos_filtro);
 
@@ -604,8 +601,13 @@ class CrudService
                         return !empty(trim($value));
                     });
                     
+                    $valuesString = '"' . implode('", "', $values) . '"';
+
                     $controllerContent .= "
-                        foreach (\$values as \$column) {
+
+                        \$valuesArray = array({$valuesString});
+
+                        foreach (\$valuesArray as \$column) {
                             \$columnName = ucfirst(str_replace('_', ' ', \$column));
                             
                             \$artify->addFilter('filterAdd'.\$column, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
