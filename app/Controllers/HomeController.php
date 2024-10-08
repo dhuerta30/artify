@@ -808,7 +808,6 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Posicionarse en la Página N°:</label>
 								{posicionarse_en_la_pagina}
-								<p>Si lo deja en Blanco queda desactivado</p>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
@@ -844,7 +843,7 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
-							<div class="row">
+							<div class="row mt-5">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="form-label">Ordenar Grilla por:</label>
@@ -903,9 +902,178 @@ class HomeController
 						
 						</div>
 					</div>
-					
-					<!-- Acá estaba el left Join -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="component addrow float-right">
+								<div class="control-group">
+									<div class="controls">
+										<a class="artify-actions artify-button artify-button-add-row btn btn-success agregar_muestras d-none" href="javascript:;" data-action="add_row_lubricentro">
+											<i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar       
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="table-responsive leftjoin_grilla d-none">
+							<table class="table artify-left-join responsive">
+								<thead>
+									<tr>
+										<th>
+											<label class=" control-label col-form-label">Número de módulo a crear</label>
+										</th>
+										<th>
+											<label class=" control-label col-form-label">Nombre Tabla Base de Datos</label>
+										</th> 
+										<th>
+											<label class=" control-label col-form-label">Usar Plantilla Formulario HTML</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Filtro de Busqueda</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Clonar Filas</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Popup</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Búsqueda</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Eliminación Masiva</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Botón Agregar</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Botones de Exportación Grilla</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Activar Tabla Anidada</label>
+										</th>  
+										<th>
+											<label class=" control-label col-form-label">Botones de Acción</label>
+										</th>    
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_1">
+											<select class="form-control artify-form-control artify-select nivel" name="nivel_db[]" disabled="disabled" required="1">
+												<option value="">Seleccionar</option>
+												<option selected="selected" value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+											</select>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_2">
+											<input type="text" class="form-control artify-form-control artify-text tabla_db" name="tabla_db[]" disabled="disabled" required="1">
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_4">
+											<select class="form-control artify-form-control artify-select template_fields_db" disabled="disabled" name="template_fields_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_5">
+											<select class="form-control artify-form-control artify-select active_filter_db" disabled="disabled" name="active_filter_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_6">
+											<select class="form-control artify-form-control artify-select clone_row_db" disabled="disabled" name="clone_row_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_7">
+											<select class="form-control artify-form-control artify-select active_popup_db" disabled="disabled" name="active_popup_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_8">
+											<select class="form-control artify-form-control artify-select " id="active_search_db" disabled="disabled" name="active_search_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_9">
+											<select class="form-control artify-form-control artify-select activate_deleteMultipleBtn_db" disabled="disabled" name="activate_deleteMultipleBtn_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_10">
+											<select class="form-control artify-form-control artify-select button_add_db" disabled="disabled" name="button_add_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_11">
+											<div class="checkbox artify-checkbox-group">
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Imprimir">Imprimir</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="PDF">PDF</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="CSV">CSV</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Excel">Excel</label>
+											</div>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_12">
+											<select class="form-control artify-form-control artify-select activate_nested_table_db" disabled="disabled" name="activate_nested_table_db[]" required="1">
+												<option value="">Seleccionar</option>
+												<option value="Si">Si</option>
+												<option selected="selected" value="No">No</option>
+											</select>
+										</td>
+										<td class="artify_leftjoin_row_1 artify_leftjoin_col_13">
+											<div class="checkbox artify-checkbox-group">
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Ver">Mostrar botón Ver</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Editar">Mostrar botón Editar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Eliminar">Mostrar botón Eliminar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar">Ocultar botón Guardar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar y regresar">Ocultar botón Guardar y regresar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Regresar">Ocultar botón Regresar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Cancelar">Ocultar botón Cancelar</label>
+												<label class="checkbox-inline">
+													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado PDF">Mostrar botón Personalizado PDF</label>
+											</div>
+										</td>
+										<td>
+											<a href="javascript:;" class="artify-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							</div>
 
+							<div class="row mt-4">
+								<div class="col-md-12 text-center">
+									<button type="button" class="btn btn-danger artify-form-control artify-button artify-back" name="artify_submit_19MsSO3Edq_back" data-action="back">Regresar</button> 
+									<input type="submit" class="btn btn-primary artify-form-control artify-submit" data-action="insert" value="Guardar">
+									<a href="javascript:;" class="btn btn-primary siguiente_1">Siguiente <i class="fa fa-arrow-right"></i></a>
+								</div>
+							</div>
+
+						</div>
+					</div>
 				</div>
 			
 			</div>
