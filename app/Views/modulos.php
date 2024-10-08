@@ -162,6 +162,10 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         construirFrase();
 
+        $(".artify-cancel-btn").click(function(){
+            $('a[data-action="delete_row"]').click();
+        });
+
         $("#create-tablas-tab, #create-pdf-tab").click(function(){
             $(".regresar_modulos").click();
         });
