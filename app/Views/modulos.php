@@ -595,6 +595,14 @@ function construirFrase() {
             campo2 = "VARCHAR()";
         }
 
+        if (campo2 == "Texto") {
+            campo2 = "TEXT";
+        }
+
+        if (campo2 == "Fecha") {
+            campo2 = "DATE";
+        }
+
         if (campo3 == "Si") {
             campo3 = "NULL";
         } else {

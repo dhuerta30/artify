@@ -2,7 +2,7 @@
     <div class="control-group">
         <div class="controls">
             <a class="artify-actions artify-button artify-button-add-row btn btn-success" href="javascript:;" data-action="add_row_lubricentro">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add"]; ?>
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add_row"]; ?>
             </a>
         </div>
     </div>

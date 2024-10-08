@@ -1596,6 +1596,7 @@ class HomeController
 
 		$tablas = DB::ArtifyCrud(true);
 		$tablas->setLangData("add", "Agregar Tabla");
+		$tablas->setLangData("add_row", "Agregar Campos");
 		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
 		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
@@ -1604,14 +1605,14 @@ class HomeController
 		$tablas->setSettings("delbtn", true);
 		$tablas->fieldTypes("tipo", "select");
 		$tablas->fieldDataBinding("tipo", array(
-			"Entero" => "Un número sin decimales",
-			"Caracteres" => "Una cadena de letras o caracteres",
-			"Texto" => "Un bloque de texto más largo",
-			"Fecha" => "Una fecha en formato de calendario",
-			"Número Decimal" => "Un número con decimales",
-			"Hora" => "Una hora del día",
-			"Booleano" => "Verdadero o falso",
-			"Datos JSON" => "Un conjunto estructurado de datos"
+			"Entero" => "Entero (Un número sin decimales)",
+			"Caracteres" => "Caracteres (Una cadena de letras o caracteres)",
+			"Texto" => "Texto (Un bloque de texto más largo)",
+			"Fecha" => "Fecha (Una fecha en formato de calendario)",
+			"Número Decimal" => "Número Decimal (Un número con decimales)",
+			"Hora" => "Hora (Una hora del día)",
+			"Booleano" => "Booleano (Verdadero o falso)",
+			"Datos JSON" => "Datos JSON (Un conjunto estructurado de datos)"
 		), "", "","array");
 
 		$tablas->fieldTypes("indice", "select");
