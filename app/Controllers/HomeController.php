@@ -1602,6 +1602,10 @@ class HomeController
 		$pdf = DB::ArtifyCrud(true);
 		$pdf->tableHeading("Configuraciones de PDF");
 		$pdf->setLangData("add", "Agregar PDF");
+		$pdf->setSettings("searchbox", true);
+		$pdf->setSettings("editbtn", true);
+		$pdf->setSettings("delbtn", true);
+		$pdf->setSettings("function_filter_and_search", true);
 		$pdf->setLangData("no_data", "No se encontrarón Configuraciones");
 		$pdf->crudRemoveCol(array("id_configuraciones_pdf"));
 		$pdf->fieldTypes("logo_pdf", "FILE_NEW");
