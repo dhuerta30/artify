@@ -671,6 +671,14 @@ class CrudService
             ";
         }
 
+
+        if(isset($ordenar_grilla_por) && isset($tipo_orden)){
+            $controllerContent .= "
+                \$artify->dbOrderBy(\"{$ordenar_grilla_por}\", \"{$tipo_orden}\");
+            ";
+        }
+
+
         if(isset($posicionarse_en_la_pagina)){
             $controllerContent .= "
                 \$artify->currentPage('{$posicionarse_en_la_pagina}');
