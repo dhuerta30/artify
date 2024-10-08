@@ -1599,9 +1599,17 @@ class HomeController
 		$tablas->addCallback("before_delete", "eliminar_crear_tablas");
 		$render_tablas = $tablas->dbTable("crear_tablas")->render();
 
-		View::render(
-			"modulos",
-			['render' => $render, 'render_conf' => $render_conf, 'switch' => $switch, 'render_tablas' => $render_tablas]
+		$pdf = DB::ArtifyCrud(true);
+		$render_pdf = $pdf->dbTable("configuraciones_pdf")->render();
+
+		View::render("modulos", 
+			[
+				'render' => $render, 
+				'render_conf' => $render_conf, 
+				'switch' => $switch, 
+				'render_tablas' => $render_tablas, 
+				'render_pdf' => $render_pdf
+			]
 		);
 	}
 

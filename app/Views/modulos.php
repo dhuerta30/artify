@@ -83,7 +83,10 @@ label:not(.form-check-label):not(.custom-file-label) {
                         <a class="nav-link" id="create-modulos-tab" data-toggle="tab" href="#create-modulos" role="tab" aria-controls="create-modulos" aria-selected="false"><span class="circle-number">2</span> Generador de Módulos</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="config-api-tab" data-toggle="tab" href="#config-api" role="tab" aria-controls="config-api" aria-selected="false"><span class="circle-number">3</span> Configuración de Api</a>
+                        <a class="nav-link" id="create-pdf-tab" data-toggle="tab" href="#create-pdf" role="tab" aria-controls="create-pdf" aria-selected="false"><span class="circle-number">3</span> Generador de PDF</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="config-api-tab" data-toggle="tab" href="#config-api" role="tab" aria-controls="config-api" aria-selected="false"><span class="circle-number">4</span> Configuración de Api</a>
                     </li>
                 </ul>
             
@@ -94,6 +97,9 @@ label:not(.form-check-label):not(.custom-file-label) {
                     <div class="tab-pane fade" id="create-modulos" role="tabpanel" aria-labelledby="create-modulos-tab">
                         <?=$render?>
                         <?=$switch?>
+                    </div>
+                    <div class="tab-pane fade" id="create-pdf" role="tabpanel" aria-labelledby="create-pdf-tab">
+                        <?=$render_pdf?>
                     </div>
                     <div class="tab-pane fade" id="config-api" role="tabpanel" aria-labelledby="config-api-tab">
                         <?=$render_conf?>
