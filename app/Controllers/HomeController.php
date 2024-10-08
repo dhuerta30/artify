@@ -1659,6 +1659,7 @@ class HomeController
 		$tablas->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
 		$tablas->colRename("query_tabla", "Consulta BD para crear Tabla");
 		$tablas->addCallback("before_insert", "insertar_crear_tablas");
+		$tablas->addCallback("before_update", "editar_crear_tablas");
 		$tablas->addCallback("before_delete", "eliminar_crear_tablas");
 		$tablas->joinTable("estructura_tabla", "estructura_tabla.id_crear_tablas = crear_tablas.id_crear_tablas", "LEFT JOIN");
 		$render_tablas = $tablas->dbTable("crear_tablas")->render();

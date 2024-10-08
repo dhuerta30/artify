@@ -981,6 +981,10 @@ function insertar_crear_tablas($data, $obj){
     return $data;
 }
 
+function editar_crear_tablas($data, $obj){
+
+}
+
 function eliminar_crear_tablas($data, $obj){
     $id = $data["id"];
     $queryfy = $obj->getQueryfyObj();
