@@ -837,6 +837,23 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="form-label">Ordenar Grilla por:</label>
+										{ordenar_grilla_por}
+										<p class="artify_help_block help-block form-text with-errors"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="form-label">Tipo de Orden Grilla:</label>
+										{tipo_orden}
+										<p class="artify_help_block help-block form-text with-errors"></p>
+									</div>
+								</div>
+							</div>
+
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
@@ -1239,7 +1256,11 @@ class HomeController
 		$artify->fieldTypes("mostrar_columnas_grilla", "multiselect");
 		$artify->fieldTypes("mostrar_campos_filtro", "multiselect");
 		$artify->fieldTypes("mostrar_campos_formulario_editar", "multiselect");
+		$artify->fieldTypes("ordenar_grilla_por", "multiselect");
 
+		$artify->fieldTypes("tipo_orden", "select");
+		$artify->fieldDataBinding("tipo_orden", array("ASC" => "ASC", "DESC" => "DESC"), "", "", "array");
+		
 		$artify->fieldTypes("posicion_botones_accion_grilla", "select");
 		$artify->fieldDataBinding("posicion_botones_accion_grilla", array("Derecha" => "Derecha", "Izquierda" => "Izquierda"), "", "", "array");
 		
@@ -1364,6 +1385,7 @@ class HomeController
 		$artify->fieldCssClass("active_filter", array("active_filter"));
 		$artify->fieldCssClass("function_filter_and_search", array("function_filter_and_search"));
 		$artify->fieldCssClass("mostrar_campos_formulario_editar", array("mostrar_campos_formulario_editar"));
+		$artify->fieldCssClass("ordenar_grilla_por", array("ordenar_grilla_por"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
