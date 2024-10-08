@@ -1596,7 +1596,7 @@ class HomeController
 
 		$tablas = DB::ArtifyCrud(true);
 		$tablas->setLangData("add", "Agregar Tabla");
-		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autonincremental", "indice", "valor_nulo"));
+		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
 		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
@@ -1629,6 +1629,12 @@ class HomeController
 			"No" => "No"
 		), "", "","array");
 
+		$tablas->fieldTypes("autoincremental", "select");
+		$tablas->fieldDataBinding("autoincremental", array(
+			"Si" => "Si",
+			"No" => "No"
+		), "", "","array");
+
 		$tablas->setSettings("template", "crear_tablas");
 		$tablas->setSettings("function_filter_and_search", true);
 		$tablas->fieldHideLable("tabla_modificada");
@@ -1642,7 +1648,7 @@ class HomeController
 		$tablas->fieldCssClass("caracteres", array("longitud"));
 		$tablas->fieldCssClass("indice", array("indice"));
 		$tablas->fieldCssClass("valor_nulo", array("nulo"));
-		$tablas->fieldCssClass("autonincremental", array("autoincrementable"));
+		$tablas->fieldCssClass("autoincremental", array("autoincrementable"));
 
 		$tablas->buttonHide("submitBtnSaveBack");
 		$tablas->fieldAttributes("modificar_tabla", array("placeholder"=> "Alter Table ", "style"=> "min-height: 200px; max-height: 200px;"));
