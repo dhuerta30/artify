@@ -160,6 +160,8 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
 
     if(dataAction == "add"){
 
+        construirFrase();
+
         $("#create-tablas-tab, #create-pdf-tab").click(function(){
             $(".regresar_modulos").click();
         });
@@ -258,11 +260,11 @@ $(document).on("artify_after_ajax_action",function(event, obj, data){
         // Inicializar select2
         $(".tabla").select2();
 
-        $(".query_tabla").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
+        /*$(".query_tabla").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
                 "nombre VARCHAR(255) NOT NULL,\n" +
                 "apellido VARCHAR(255) NOT NULL,\n" +
                 "categoria INT(11) NOT NULL,\n" +
-                "producto VARCHAR(100) NOT NULL");
+                "producto VARCHAR(100) NOT NULL");*/
 
         $(".titulo_modulo").text("Agregar");
         $('.siguiente_1').click(function() {
@@ -569,7 +571,7 @@ $(document).on("artify_after_submission", function(event, obj, data){
     }
 });
 
-/*function construirFrase() {
+function construirFrase() {
     $('.artify-left-join').on("change", ".nombre, .tipo_de_campo, .nulo, .indice, .autoincrementable, .longitud", function() {
         var $row = $(this).closest('tr');
         
@@ -582,7 +584,7 @@ $(document).on("artify_after_submission", function(event, obj, data){
         var campo6 = $row.find('.longitud').val().trim();
 
         // Convertir valores según reglas definidas
-        if (campo2 === "Numerico") {
+        if (campo2 === "Entero") {
             campo2 = campo6 ? `INT(${campo6})` : "INT";
             campo6 = ""; // Si es numérico, el campo6 no se usa
         } else if (campo2 === "Caracteres") {
@@ -615,7 +617,7 @@ $(document).on("artify_after_submission", function(event, obj, data){
         var nuevaFrase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5} `.trim();
 
         // Obtener el contenido actual del textarea
-        var currentContent = $('.columns_table').val();
+        var currentContent = $('.query_tabla').val();
 
         // Dividir el contenido en líneas y eliminar duplicados
         var frases = currentContent.split('\n').map(f => f.trim());
@@ -648,13 +650,10 @@ $(document).on("artify_after_submission", function(event, obj, data){
         var nuevasFrases = Array.from(frasesUnicas.values()).join('\n');
 
         // Actualizar el textarea con las frases únicas
-        $('.columns_table').val(nuevasFrases);
+        $('.query_tabla').val(nuevasFrases);
         
     });
 }
-
-
-construirFrase();*/
 
 </script>
 <?php require 'layouts/footer.php'; ?>

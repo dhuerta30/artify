@@ -1616,11 +1616,8 @@ class HomeController
 
 		$tablas->fieldTypes("indice", "select");
 		$tablas->fieldDataBinding("indice", array(
-			"Primario" => "Es el identificador principal de cada fila. No puede haber duplicados y no puede ser nulo.",
-			"Único" => "Asegura que los valores en esta columna sean únicos, no se pueden repetir.",
-			"Índice" => "Permite búsquedas rápidas en esta columna, pero no garantiza valores únicos.",
-			"Texto completo" => "Permite búsquedas avanzadas en columnas de texto largo, útil para motores de búsqueda.",
-			"Espacial" => "Se utiliza para indexar datos geográficos, como puntos o polígonos en mapas."
+			"Primario" => "Es el identificador Primario de cada fila. No puede haber duplicados y no puede ser nulo.",
+			"Sin Indice" => "Sin Indice"
 		), "", "","array");
 
 		$tablas->fieldTypes("valor_nulo", "select");
@@ -1652,7 +1649,7 @@ class HomeController
 
 		$tablas->buttonHide("submitBtnSaveBack");
 		$tablas->fieldAttributes("modificar_tabla", array("placeholder"=> "Alter Table ", "style"=> "min-height: 200px; max-height: 200px;"));
-		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;", "readonly" => "true"));
+		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$tablas->fieldRenameLable("modificar_tabla", "Modificar Campos de la tabla");
 		$tablas->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
 		$tablas->colRename("query_tabla", "Consulta BD para crear Tabla");
