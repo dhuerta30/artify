@@ -62,7 +62,8 @@ class CrudService
         $activar_edicion_en_linea,
         $nombre_modulo,
         $ordenar_grilla_por,
-        $tipo_orden
+        $tipo_orden,
+        $posicionarse_en_la_pagina
         )
     {
         if($crudType == 'SQL'){
@@ -140,7 +141,8 @@ class CrudService
                 $activar_edicion_en_linea,
                 $nombre_modulo,
                 $ordenar_grilla_por,
-                $tipo_orden
+                $tipo_orden,
+                $posicionarse_en_la_pagina
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -488,7 +490,8 @@ class CrudService
         $activar_edicion_en_linea,
         $nombre_modulo,
         $ordenar_grilla_por,
-        $tipo_orden
+        $tipo_orden,
+        $posicionarse_en_la_pagina
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
@@ -665,6 +668,12 @@ class CrudService
         if($activar_union_interna == "Si"){
             $controllerContent .= "
 
+            ";
+        }
+
+        if(isset($posicionarse_en_la_pagina)){
+            $controllerContent .= "
+                \$artify->currentPage('{$posicionarse_en_la_pagina}');
             ";
         }
 
