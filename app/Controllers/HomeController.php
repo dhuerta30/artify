@@ -1649,6 +1649,7 @@ class HomeController
 		$tablas->fieldCssClass("autoincremental", array("autoincrementable"));
 
 		$tablas->buttonHide("submitBtnSaveBack");
+		$tablas->fieldAttributes("nombre_tabla", array("placeholder"=> "Nombre de la tabla de la base de datos"));
 		$tablas->fieldAttributes("modificar_tabla", array("placeholder"=> "Alter Table ", "style"=> "min-height: 200px; max-height: 200px;"));
 		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$tablas->fieldRenameLable("modificar_tabla", "Modificar Campos de la tabla");
