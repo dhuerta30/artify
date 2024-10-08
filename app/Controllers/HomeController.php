@@ -1597,7 +1597,7 @@ class HomeController
 		$tablas = DB::ArtifyCrud(true);
 		$tablas->setLangData("add", "Agregar Tabla");
 		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
-		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada"));
+		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
@@ -1616,7 +1616,7 @@ class HomeController
 
 		$tablas->fieldTypes("indice", "select");
 		$tablas->fieldDataBinding("indice", array(
-			"Primario" => "Es el identificador Primario de cada fila. No puede haber duplicados y no puede ser nulo.",
+			"Primario" => "Primario (No puede haber duplicados y no puede ser nulo)",
 			"Sin Indice" => "Sin Indice"
 		), "", "","array");
 

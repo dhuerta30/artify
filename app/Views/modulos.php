@@ -154,7 +154,7 @@ $(document).on("click", ".generar_token_api", function(){
     });
 });
 
-$(document).on("artify_after_ajax_action",function(event, obj, data){
+$(document).on("artify_after_ajax_action", function(event, obj, data){
     var dataAction = obj.getAttribute('data-action');
     var dataId = obj.getAttribute('data-id');
 
