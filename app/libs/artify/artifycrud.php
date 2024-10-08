@@ -1044,6 +1044,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $nombre_modulo = isset($data["modulos"]["nombre_modulo"]) ? $data["modulos"]["nombre_modulo"] : null;
     $ordenar_grilla_por = isset($data["modulos"]["ordenar_grilla_por"]) ? $data["modulos"]["ordenar_grilla_por"] : null;
     $tipo_orden = isset($data["modulos"]["tipo_orden"]) ? $data["modulos"]["tipo_orden"] : null;
+    $posicionarse_en_la_pagina = isset($data["modulos"]["posicionarse_en_la_pagina"]) ? $data["modulos"]["posicionarse_en_la_pagina"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1141,7 +1142,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $activar_edicion_en_linea,
             $nombre_modulo,
             $ordenar_grilla_por,
-            $tipo_orden
+            $tipo_orden,
+            $posicionarse_en_la_pagina
         );
     }
 
@@ -1212,6 +1214,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["nombre_modulo"] = $nombre_modulo;
     $newdata["modulos"]["ordenar_grilla_por"] = $ordenar_grilla_por;
     $newdata["modulos"]["tipo_orden"] = $tipo_orden;
+    $newdata["modulos"]["posicionarse_en_la_pagina"] = $posicionarse_en_la_pagina;
 
     return $newdata;
 }
