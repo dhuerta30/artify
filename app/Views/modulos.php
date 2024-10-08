@@ -515,6 +515,60 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
     }
 
     if(dataAction == "edit"){
+
+        $("#generateSQL").removeClass("d-none");
+        $(".eliminar_filas").removeClass("d-none");
+
+        document.getElementById("generateSQL").addEventListener("click", function() {
+            let sqlStatements = `\n`;
+
+            const rows = document.querySelectorAll(".artify-left-join tbody tr");
+            let columnDefinitions = []; // Arreglo para almacenar las definiciones de columnas
+
+            rows.forEach((row, index) => {
+                const nombreCampo = row.querySelector("input[name='estructura_tabla#$nombre_campo[]']").value;
+                const tipoCampo = row.querySelector("select[name='estructura_tabla#$tipo[]']").value;
+                const caracteres = row.querySelector("input[name='estructura_tabla#$caracteres[]']").value;
+                const autoincremental = row.querySelector("select[name='estructura_tabla#$autoincremental[]']").value;
+                const indice = row.querySelector("select[name='estructura_tabla#$indice[]']").value;
+                const valorNulo = row.querySelector("select[name='estructura_tabla#$valor_nulo[]']").value;
+
+                // Construir el tipo de datos
+                let tipoSQL = "";
+                if (tipoCampo === "Caracteres") {
+                    tipoSQL += `VARCHAR(${caracteres})`;
+                } else if (tipoCampo === "Entero") {
+                    tipoSQL += `INT(${caracteres})`;
+                }
+
+                // Construir la columna
+                let columnSQL = `ADD COLUMN ${nombreCampo} ${tipoSQL}`;
+
+                // Verificar si es autoincremental
+                if (autoincremental === "Si") {
+                    columnSQL += " AUTO_INCREMENT";
+                }
+
+                // Verificar si tiene valor nulo
+                if (valorNulo === "No") {
+                    columnSQL += " NOT NULL";
+                }
+
+                // Añadir la definición de columna al arreglo
+                columnDefinitions.push(columnSQL);
+
+                // Añadir la clave primaria solo si corresponde
+                if (indice === "Primario") {
+                    columnDefinitions.push(`ADD PRIMARY KEY (${nombreCampo})`);
+                }
+            });
+
+            // Unir todas las definiciones de columnas en una sola línea
+            sqlStatements += columnDefinitions.join(",\n");
+
+            // Colocar el resultado en el textarea
+            document.querySelector(".modificar_tabla").value = sqlStatements;
+        });
         
         $(".nombre_tabla").attr("readonly", true);
 

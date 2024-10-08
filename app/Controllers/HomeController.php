@@ -1649,6 +1649,7 @@ class HomeController
 		$tablas->fieldCssClass("indice", array("indice"));
 		$tablas->fieldCssClass("valor_nulo", array("nulo"));
 		$tablas->fieldCssClass("autoincremental", array("autoincrementable"));
+		$tablas->fieldCssClass("modificar_tabla", array("modificar_tabla"));
 
 		$tablas->buttonHide("submitBtnSaveBack");
 		$tablas->fieldAttributes("nombre_tabla", array("placeholder"=> "Nombre de la tabla de la base de datos"));
