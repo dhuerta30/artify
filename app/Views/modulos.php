@@ -510,6 +510,8 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
     if(dataAction == "edit"){
 
+        $(".artify-button-add-row").attr("data-action", "edit_row_artify");
+
         $("input[name='estructura_tabla#$nombre_nuevo_campo[]']").on('input change', function() {
             checkInput();
         });
