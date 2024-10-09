@@ -484,14 +484,14 @@ $(document).ready(function(){
                 if (data.action === "add_row_module") {
                     $(".artify-left-join").each(function () {
                         var tds = '<tr>';
-                        jQuery.each($('tr:last td', this), function () {
+                        $.each($('tr:last td', this), function () {
                             tds += '<td>' + $(this).html() + '</td>';
                         });
                         tds += '</tr>';
                 
                         // Limpia los valores de los elementos de la última fila
                         var $lastRow = $(tds).appendTo('tbody', this);
-                        $lastRow.find('input, select, textarea').val('');
+                        $lastRow.find('input, select').val('');
                 
                         if ($('tbody', this).length > 0) {
                             $('tbody', this).append($lastRow);
@@ -499,26 +499,31 @@ $(document).ready(function(){
                             $(this).append($lastRow);
                         }
                     });
-                    return;                   
+                    return;
                 }
 
                 if (data.action === "add_row_artify") {
                    $(".artify-left-join").each(function () {
                         var tds = '<tr>';
-                        $(this).find('tr:last td').slice(0, 6).each(function () {
+                        $(this).find('tr:last td').slice(0, 8).each(function () {
                             tds += '<td>' + $(this).html() + '</td>';
                         });
+                        
                         tds += '<td><a href="javascript:;" class="artify-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a></td>';
                         tds += '</tr>';
+
+                        var $lastRow = $(tds).appendTo('tbody', this);
+                        $lastRow.find('input, select').val('');
+
                         if ($('tbody', this).length > 0) {
-                            $('tbody', this).append(tds);
+                            $('tbody', this).append(lastRow);
                         } else {
-                            $(this).append(tds);
+                            $(this).append(lastRow);
                         }
                     });
                     return;
                 }
-
+                    
                 if (data.action === "add_row") {
 
                     var cantidad_columnas = parseFloat($(".cantidad_columnas").val());
