@@ -21,7 +21,6 @@ foreach ($data as $rows) {
         $body .= "<td class='artify_leftjoin_row_$rowCount artify_leftjoin_col_$colCount'>" . $row["element"] . "</td>";
         $colCount++;
     }
-    $body .= '<td><input class="check_modificar d-none" type="checkbox" name="estructura_tabla#$modificado[]" /></td>';
     $body .= ' <td><a href="javascript:;" class="artify-actions btn btn-danger d-none eliminar_filas" data-action="delete_row"><i class="fa fa-remove"></i> ' . $lang["remove"] . '</a></td>';
     $body .= "</tr>";
     $rowCount++;
@@ -32,7 +31,6 @@ foreach ($data as $rows) {
     <thead>
         <tr>
             <?php if (isset($header)) echo $header; ?>
-            <th class="modificar_campo d-none">Modificar Campo</th>
         </tr>
     </thead>
     <tbody>

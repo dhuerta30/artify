@@ -1600,12 +1600,18 @@ class HomeController
 		$tablas->setLangData("add", "Agregar Tabla");
 		$tablas->setLangData("add_row", "Agregar Campos");
 		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
-		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "nombre_campo", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
+		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "nombre_campo", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
 		$tablas->setSettings("delbtn", true);
 		$tablas->formFieldValue("valor_nulo", "No");
+		$tablas->fieldTypes("modificar_campo", "select");
+		$tablas->fieldDataBinding("modificar_campo", array(
+			"Si" => "Si",
+			"No" => "No"
+		), "", "","array");
+		
 		$tablas->fieldTypes("tipo", "select");
 		$tablas->fieldDataBinding("tipo", array(
 			"Entero" => "Entero (Un número sin decimales)",
@@ -1654,7 +1660,7 @@ class HomeController
 		$tablas->buttonHide("submitBtnSaveBack");
 		$tablas->fieldAttributes("nombre_tabla", array("placeholder"=> "Nombre de la tabla de la base de datos"));
 		$tablas->fieldAttributes("modificar_tabla", array("placeholder"=> "CHANGE nombre_anterior_campo nombre_nuevo_campo VARCHAR(255) NOT NULL,", "style"=> "min-height: 200px; max-height: 200px;"));
-		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;", "readonly" => "true"));
+		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$tablas->fieldRenameLable("modificar_tabla", "Modificar Campos de la tabla");
 		$tablas->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
 		$tablas->colRename("query_tabla", "Consulta BD para crear Tabla");

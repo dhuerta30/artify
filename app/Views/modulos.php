@@ -12,6 +12,11 @@
 	}
 }
 
+label.checkbox-inline {
+    justify-content: center;
+    margin-top: 5px;
+}
+
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #000000!important;
     border: 1px solid #000000!important;
@@ -520,7 +525,6 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         $(".eliminar_filas").removeClass("d-none");
         $(".modificar_campo").removeClass("d-none");
         $(".agregar_campo").removeClass("d-none");
-        $(".check_modificar").removeClass("d-none");
 
         document.getElementById("generateSQL").addEventListener("click", function() {
             let sqlStatements = `\n`;
@@ -536,7 +540,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 const valorNulo = row.querySelector("select[name='estructura_tabla#$valor_nulo[]']").value;
 
                 // Verificar si el checkbox de modificado existe
-                const modificadoCheckbox = row.querySelector("input[name='estructura_tabla#$modificado[]']");
+                const modificadoCheckbox = row.querySelector("input[name='estructura_tabla#$modificar_campo[][]']");
                 
                 // Si existe, verificamos si está marcado como modificado
                 const modificado = modificadoCheckbox ? modificadoCheckbox.checked : false;
@@ -713,65 +717,104 @@ function construirFrase() {
         var $row = $(this).closest('tr');
         
         // Obtener valores de los campos de la fila actual
-        var campo1 = $row.find('.nombre').val().trim(); // Nombre del campo
-        var campo2 = $row.find('.tipo_de_campo').val().trim(); // Tipo de dato
-        var campo3 = $row.find('.nulo').val().trim(); // Permitir null
-        var campo4 = $row.find('.indice').val().trim(); // Índice
-        var campo5 = $row.find('.autoincrementable').val().trim(); // Autoincrement
-        var campo6 = $row.find('.longitud').val().trim(); // Longitud
+        var campo1 = $row.find('.nombre').val().trim();
+        var campo2 = $row.find('.tipo_de_campo').val().trim();
+        var campo3 = $row.find('.nulo').val().trim();
+        var campo4 = $row.find('.indice').val().trim();
+        var campo5 = $row.find('.autoincrementable').val().trim();
+        var campo6 = $row.find('.longitud').val().trim();
 
-        // Validaciones y conversiones de tipo
+        // Convertir valores según reglas definidas
         if (campo2 === "Entero") {
             campo2 = campo6 ? `INT(${campo6})` : "INT";
+            campo6 = ""; // Si es numérico, el campo6 no se usa
         } else if (campo2 === "Caracteres") {
-            campo2 = `VARCHAR(${campo6})`;
-        } else if (campo2 === "Texto") {
+            campo2 = `VARCHAR(${campo6})`; // Si es caracteres, usar VARCHAR con el valor de campo6
+        }
+
+        if (campo2 == "Caracteres") {
+            campo2 = "VARCHAR()";
+        }
+
+        if (campo2 == "Texto") {
             campo2 = "TEXT";
-        } else if (campo2 === "Número Decimal") {
+        }
+
+        if(campo2 == "Número Decimal"){
             campo2 = "DECIMAL";
-        } else if (campo2 === "Fecha") {
+        }
+
+        if (campo2 == "Fecha") {
             campo2 = "DATE";
-        } else if (campo2 === "Hora") {
+        }
+
+        if (campo2 == "Hora") {
             campo2 = "TIME";
-        } else if (campo2 === "Booleano") {
+        }
+
+        if(campo2 == "Booleano"){
             campo2 = "BOOLEAN";
         }
 
-        // Verificar si es nullable o no
-        campo3 = (campo3 === "Si") ? "NULL" : "NOT NULL";
+        if (campo3 == "Si") {
+            campo3 = "NULL";
+        } else {
+            campo3 = "NOT NULL";
+        }
 
-        // Verificar si es PRIMARY KEY
-        campo4 = (campo4 === "Primario") ? "PRIMARY KEY" : "";
+        if (campo4 == "Primario") {
+            campo4 = "PRIMARY KEY";
+        } else {
+            campo4 = "";
+        }
 
-        // Verificar si es autoincrementable
-        campo5 = (campo5 === "Si") ? "AUTO_INCREMENT" : "";
+        if (campo5 == "Si") {
+            campo5 = "AUTO_INCREMENT";
+        } else {
+            campo5 = "";
+        }
 
         // Construir la nueva frase
-        var nuevaFrase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5}`.trim();
+        var nuevaFrase = `${campo1} ${campo2} ${campo4} ${campo3} ${campo5} `.trim();
 
         // Obtener el contenido actual del textarea
         var currentContent = $('.query_tabla').val();
 
-        // Dividir el contenido en líneas y mapear usando nombre del campo como clave
-        var frases = currentContent.split('\n').filter(f => f.trim().length > 0); // Filtrar líneas vacías
+        // Dividir el contenido en líneas y eliminar duplicados
+        var frases = currentContent.split('\n').map(f => f.trim());
         var frasesUnicas = new Map();
 
-        // Añadir frases existentes al Map, usando el nombre del campo (campo1) como clave
+        // Añadir las frases únicas a un Map usando el campo1 como clave para evitar duplicados
         frases.forEach(frase => {
-            var key = frase.split(' ')[0].trim(); // Tomar el primer "campo" como clave
-            frasesUnicas.set(key, frase);
+            if (frase.length > 0) {
+                var key = frase.split(' ')[0]; // Usar el primer campo como clave para evitar duplicados
+                frasesUnicas.set(key, frase);
+            }
         });
 
-        frasesUnicas.set(campo1, nuevaFrase);
+        // Obtener la última frase del textarea
+        var ultimaFrase = Array.from(frasesUnicas.values()).pop();
 
-        // Convertir el Map de vuelta a una cadena de texto sin duplicados
+        // Si la última frase no termina con una coma, agregarla
+        if (ultimaFrase && !ultimaFrase.endsWith(',')) {
+            ultimaFrase += ',';
+            frasesUnicas.set(ultimaFrase.split(' ')[0], ultimaFrase); // Actualizar el Map con la última frase modificada
+        }
+
+        // Agregar la nueva frase al Map
+        if (nuevaFrase.length > 0) {
+            var key = nuevaFrase.split(' ')[0]; // Usar el primer campo como clave
+            frasesUnicas.set(key, nuevaFrase);
+        }
+
+        // Convertir el Map de vuelta a una cadena de texto
         var nuevasFrases = Array.from(frasesUnicas.values()).join('\n');
 
         // Actualizar el textarea con las frases únicas
         $('.query_tabla').val(nuevasFrases);
+        
     });
 }
-
 
 </script>
 <?php require 'layouts/footer.php'; ?>

@@ -993,7 +993,6 @@ function editar_crear_tablas($data, $obj){
     } else {
         $obj->setLangData("no_data", "Hubo un error al modificar la tabla");
     }
-
     return $data;
 }
 
