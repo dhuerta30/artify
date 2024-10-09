@@ -518,14 +518,16 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         $("#generateSQL").removeClass("d-none");
         $(".eliminar_filas").removeClass("d-none");
+        $(".modificar_campo").removeClass("d-none");
+        $(".agregar_campo").removeClass("d-none");
+        $(".check_modificar").removeClass("d-none");
+        $(".check_agregar").removeClass("d-none");
 
         document.getElementById("generateSQL").addEventListener("click", function() {
-            let sqlStatements = "";
-
+            let sqlStatements = `\n`;
             const rows = document.querySelectorAll(".artify-left-join tbody tr");
-            let columnDefinitions = []; // Arreglo para almacenar las definiciones de columnas
 
-            rows.forEach((row, index) => {
+            rows.forEach((row) => {
                 const nombreCampo = row.querySelector("input[name='estructura_tabla#$nombre_campo[]']").value;
                 const tipoCampo = row.querySelector("select[name='estructura_tabla#$tipo[]']").value;
                 const caracteres = row.querySelector("input[name='estructura_tabla#$caracteres[]']").value;
@@ -533,42 +535,55 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 const indice = row.querySelector("select[name='estructura_tabla#$indice[]']").value;
                 const valorNulo = row.querySelector("select[name='estructura_tabla#$valor_nulo[]']").value;
 
-                // Construir el tipo de datos
-                let tipoSQL = "";
-                if (tipoCampo === "Caracteres") {
-                    tipoSQL += `VARCHAR(${caracteres})`;
-                } else if (tipoCampo === "Entero") {
-                    tipoSQL += `INT(${caracteres})`;
-                }
+                // Verificar si el checkbox de modificado existe
+                const modificadoCheckbox = row.querySelector("input[name='estructura_tabla#$modificado[]']");
+                
+                // Si existe, verificamos si está marcado como modificado
+                const modificado = modificadoCheckbox ? modificadoCheckbox.checked : false;
 
-                // Construir la columna
-                let columnSQL = `ADD COLUMN ${nombreCampo} ${tipoSQL}`;
+                if (modificado) {
+                    // Construir el tipo de datos
+                    let tipoSQL = "";
+                    if (tipoCampo === "Caracteres") {
+                        tipoSQL += `VARCHAR(${caracteres})`;
+                    }
 
-                // Verificar si es autoincremental
-                if (autoincremental === "Si") {
-                    columnSQL += " AUTO_INCREMENT";
-                }
+                    if (tipoCampo === "Entero") {
+                        tipoSQL += `INT(${caracteres})`;
+                    }
 
-                // Verificar si tiene valor nulo
-                if (valorNulo === "No") {
-                    columnSQL += " NOT NULL";
-                }
+                    // Construir la columna
+                    let alterSQL = `CHANGE ${nombreCampo} ${tipoSQL}`;
 
-                // Añadir la definición de columna al arreglo
-                columnDefinitions.push(columnSQL);
+                    // Verificar si es autoincremental
+                    if (autoincremental === "Si") {
+                        alterSQL += " AUTO_INCREMENT";
+                    }
 
-                // Añadir la clave primaria solo si corresponde
-                if (indice === "Primario") {
-                    columnDefinitions.push(`ADD PRIMARY KEY (${nombreCampo})`);
+                    // Verificar si tiene valor nulo
+                    if (valorNulo === "No") {
+                        alterSQL += " NOT NULL";
+                    }
+
+                    // Verificar si es índice
+                    if (indice === "Primario") {
+                        alterSQL += ", ADD PRIMARY KEY (" + nombreCampo + ")";
+                    }
+
+                    // Añadir esta consulta al resultado final
+                    sqlStatements += alterSQL + ",\n";
                 }
             });
 
-            // Unir todas las definiciones de columnas en una sola línea
-            sqlStatements += columnDefinitions.join(",\n");
+            // Remover la última coma y salto de línea si hay campos modificados
+            if (sqlStatements.trim().length > 0) {
+                sqlStatements = sqlStatements.trim().slice(0, -1);
+            }
 
             // Colocar el resultado en el textarea
             document.querySelector(".modificar_tabla").value = sqlStatements;
         });
+
         
         //$(".nombre_tabla").attr("readonly", true);
 
