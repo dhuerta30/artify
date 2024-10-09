@@ -4,7 +4,7 @@
             <a class="artify-actions artify-button artify-button-add-row btn btn-success" href="javascript:;" data-action="add_row_artify">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add_row"]; ?>
             </a>
-            <a href="javascript:;" id="generateSQL" class="btn btn-primary d-none">Generar ALTER TABLE</a>
+            <a href="javascript:;" id="generateSQL" class="btn btn-primary d-none">Generar Modificación</a>
         </div>
     </div>
 </div>
@@ -22,7 +22,6 @@ foreach ($data as $rows) {
         $colCount++;
     }
     $body .= '<td><input class="check_modificar d-none" type="checkbox" name="estructura_tabla#$modificado[]" /></td>';
-    $body .= '<td><input class="check_agregar d-none" type="checkbox" name="estructura_tabla#$agregado[]" /></td>';
     $body .= ' <td><a href="javascript:;" class="artify-actions btn btn-danger d-none eliminar_filas" data-action="delete_row"><i class="fa fa-remove"></i> ' . $lang["remove"] . '</a></td>';
     $body .= "</tr>";
     $rowCount++;
@@ -34,7 +33,6 @@ foreach ($data as $rows) {
         <tr>
             <?php if (isset($header)) echo $header; ?>
             <th class="modificar_campo d-none">Modificar Campo</th>
-            <th class="agregar_campo d-none">Agregar Campo</th>
         </tr>
     </thead>
     <tbody>

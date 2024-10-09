@@ -521,7 +521,6 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         $(".modificar_campo").removeClass("d-none");
         $(".agregar_campo").removeClass("d-none");
         $(".check_modificar").removeClass("d-none");
-        $(".check_agregar").removeClass("d-none");
 
         document.getElementById("generateSQL").addEventListener("click", function() {
             let sqlStatements = `\n`;
