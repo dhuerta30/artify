@@ -528,6 +528,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
             rows.forEach((row) => {
                 const nombreCampo = row.querySelector("input[name='estructura_tabla#$nombre_campo[]']").value;
+                const nuevoNombreCampo = row.querySelector("input[name='estructura_tabla#$nombre_nuevo_campo[]']").value;
                 const tipoCampo = row.querySelector("select[name='estructura_tabla#$tipo[]']").value;
                 const caracteres = row.querySelector("input[name='estructura_tabla#$caracteres[]']").value;
                 const autoincremental = row.querySelector("select[name='estructura_tabla#$autoincremental[]']").value;
@@ -552,7 +553,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                     }
 
                     // Construir la columna
-                    let alterSQL = `CHANGE ${nombreCampo} ${tipoSQL}`;
+                    let alterSQL = `CHANGE ${nombreCampo} ${nuevoNombreCampo} ${tipoSQL}`;
 
                     // Verificar si es autoincremental
                     if (autoincremental === "Si" && indice === "Primario") {
