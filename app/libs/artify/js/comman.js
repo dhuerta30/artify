@@ -505,7 +505,7 @@ $(document).ready(function(){
                 if (data.action === "add_row_artify") {
                    $(".artify-left-join").each(function () {
                         var tds = '<tr>';
-                        $(this).find('tr:last td').slice(0, 8).each(function () {
+                        $(this).find('tr:last td').slice(0, 6).each(function () {
                             tds += '<td>' + $(this).html() + '</td>';
                         });
                         tds += '<td><a href="javascript:;" class="artify-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a></td>';

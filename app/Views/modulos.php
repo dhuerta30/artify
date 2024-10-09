@@ -264,12 +264,6 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         // Inicializar select2
         $(".tabla").select2();
 
-        /*$(".query_tabla").val("id_personas INT(11) AUTO_INCREMENT PRIMARY KEY,\n" +
-                "nombre VARCHAR(255) NOT NULL,\n" +
-                "apellido VARCHAR(255) NOT NULL,\n" +
-                "categoria INT(11) NOT NULL,\n" +
-                "producto VARCHAR(100) NOT NULL");*/
-
         $(".titulo_modulo").text("Agregar");
         $('.siguiente_1').click(function() {
             $('#pdf-tab').tab('show');
@@ -515,7 +509,6 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
     }
 
     if(dataAction == "edit"){
-
         $("#generateSQL").removeClass("d-none");
         $(".eliminar_filas").removeClass("d-none");
         $(".modificar_campo").removeClass("d-none");
@@ -557,7 +550,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         "MODIFY " + nuevoNombreCampo + " " + tipoSQL + " AUTO_INCREMENT PRIMARY KEY NOT NULL;";
                     } else {
                         // Construir la columna
-                        alterSQL = `ALTER TABLE CHANGE ${nombreCampo} ${nuevoNombreCampo} ${tipoSQL}`;
+                        alterSQL = `CHANGE ${nombreCampo} ${nuevoNombreCampo} ${tipoSQL}`;
                     }
 
                     // Añadir esta consulta al resultado final
@@ -574,8 +567,9 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             document.querySelector(".modificar_tabla").value = sqlStatements;
         });
 
+        $(".artify-actions.btn.btn-danger.eliminar_filas").first().remove();
         
-        //$(".nombre_tabla").attr("readonly", true);
+        $(".nombre_tabla").attr("readonly", true);
 
         $("#create-tablas-tab, #create-pdf-tab").click(function(){
             $(".regresar_modulos").click();
@@ -594,17 +588,23 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             success: function(data){
                 $("#artify-ajax-loader").hide();
                 
-                $(".tabla").append(`
-                    <option selected value="${data["modulos"][0].tabla}">${data["modulos"][0].tabla}</option>
-                `);
-                
-                // Actualizar select2 para que reconozca los nuevos valores
-                $(".tabla").trigger('change'); 
+                if (data && data.modulos && data.modulos.length > 0) {
+                    // Agregar la opción seleccionada al select
+                    $(".tabla").append(`
+                        <option selected value="${data.modulos[0].tabla}">${data.modulos[0].tabla}</option>
+                    `);
+                    
+                    // Actualizar select2 para que reconozca los nuevos valores
+                    $(".tabla").trigger('change'); 
+                } else {
+                    console.warn("No se encontraron módulos válidos en la respuesta.");
+                }
             }
         });
 
-        // Inicializar select2
-        $(".tabla").select2();
+        if (!$(".tabla").hasClass("select2-hidden-accessible")) {
+            $(".tabla").select2();
+        }
 
         var val = $(".activar_recaptcha").val();
 
@@ -698,6 +698,10 @@ $(document).on("artify_after_submission", function(event, obj, data){
                     confirmButtonText: "Aceptar"
                 });
                 $('.artify-back').click();
+
+                $("input[type='text'][id^='estructura_tabla#'][name^='estructura_tabla#']").each(function() {
+                    $(this).val(''); // Limpia el valor del campo de texto
+                });
             }
         });
     }
