@@ -172,11 +172,9 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         $("#create-tablas-tab, #create-pdf-tab").click(function(){
             $(".regresar_modulos").click();
-            $('.artify-back').click();
-            $('.leftjoin_tr').remove();
         });
 
-        $("#create-modulos-tab, #create-api-tab").click(function(){
+        $("#create-modulos-tab, #create-pdf-tab, #config-api-tab").click(function(){
             $('.leftjoin_tr').remove();
             $('.artify-back').click();
         });
