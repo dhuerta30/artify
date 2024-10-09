@@ -13,7 +13,7 @@ $body = "";
 $rowCount = 1;
 foreach ($data as $rows) {
     $header = "";
-    $body .= "<tr>";
+    $body .= "<tr class='leftjoin_tr'>";
     $body .= "";
     $colCount = 1;
     foreach ($rows as $row) {

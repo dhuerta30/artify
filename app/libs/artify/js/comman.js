@@ -504,7 +504,7 @@ $(document).ready(function(){
 
                 if (data.action === "add_row_artify") {
                    $(".artify-left-join").each(function () {
-                        var tds = '<tr>';
+                        var tds = '<tr class="leftjoin_tr">';
                         $(this).find('tr:last td').slice(0, 6).each(function () {
                             tds += '<td>' + $(this).html() + '</td>';
                         });
@@ -526,7 +526,7 @@ $(document).ready(function(){
 
                 if (data.action === "edit_row_artify") {
                     $(".artify-left-join").each(function () {
-                         var tds = '<tr>';
+                         var tds = '<tr class="leftjoin_tr">';
                          $(this).find('tr:last td').slice(0, 8).each(function () {
                              tds += '<td>' + $(this).html() + '</td>';
                          });

@@ -162,12 +162,23 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         construirFrase();
 
+        $(".artify-back").click(function(){
+            $('.leftjoin_tr').remove();
+        });
+
         $(".artify-cancel-btn").click(function(){
             $('a[data-action="delete_row"]').click();
         });
 
         $("#create-tablas-tab, #create-pdf-tab").click(function(){
             $(".regresar_modulos").click();
+            $('.artify-back').click();
+            $('.leftjoin_tr').remove();
+        });
+
+        $("#create-modulos-tab, #create-api-tab").click(function(){
+            $('.leftjoin_tr').remove();
+            $('.artify-back').click();
         });
 
         $(".active_filter").change(function(){
