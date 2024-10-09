@@ -565,6 +565,10 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
             // Colocar el resultado en el textarea
             document.querySelector(".modificar_tabla").value = sqlStatements;
+
+            $("input[type='text'][name='estructura_tabla#$nombre_nuevo_campo[]']").each(function() {
+                $(this).val(''); // Limpia el valor del campo de texto
+            });
         });
 
         $(".artify-actions.btn.btn-danger.eliminar_filas").first().remove();
@@ -698,10 +702,6 @@ $(document).on("artify_after_submission", function(event, obj, data){
                     confirmButtonText: "Aceptar"
                 });
                 $('.artify-back').click();
-
-                $("input[type='text'][id^='estructura_tabla#'][name^='estructura_tabla#']").each(function() {
-                    $(this).val(''); // Limpia el valor del campo de texto
-                });
             }
         });
     }
