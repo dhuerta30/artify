@@ -519,6 +519,23 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
     if(dataAction == "edit"){
 
+        $(".regresar_tablas").click(function(){
+            $('.leftjoin_tr').remove();
+        });
+
+        $(".artify-cancel-btn").click(function(){
+            $('a[data-action="delete_row"]').click();
+        });
+
+        $("#create-tablas-tab, #create-pdf-tab").click(function(){
+            $(".regresar_modulos").click();
+        });
+
+        $("#create-modulos-tab, #create-pdf-tab, #config-api-tab").click(function(){
+            $('.leftjoin_tr').remove();
+            $('.regresar_tablas').click();
+        });
+
         $(".artify-button-add-row").attr("data-action", "edit_row_artify");
 
         $("input[name='estructura_tabla#$nombre_nuevo_campo[]']").each(function() {
