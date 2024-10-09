@@ -540,12 +540,9 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 const valorNulo = row.querySelector("select[name='estructura_tabla#$valor_nulo[]']").value;
 
                 // Verificar si el checkbox de modificado existe
-                const modificadoCheckbox = row.querySelector("input[name='estructura_tabla#$modificar_campo[][]']");
-                
-                // Si existe, verificamos si está marcado como modificado
-                const modificado = modificadoCheckbox ? modificadoCheckbox.checked : false;
+                let modificado = row.querySelector("select[name='estructura_tabla#$modificar_campo[]']").value;
 
-                if (modificado) {
+                if (modificado == "Si") {
                     // Construir el tipo de datos
                     let tipoSQL = "";
                     if (tipoCampo === "Caracteres") {
@@ -556,17 +553,16 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         tipoSQL += `INT(${caracteres})`;
                     }
 
-                    // Construir la columna
-                    let alterSQL = `CHANGE ${nombreCampo} ${nuevoNombreCampo} ${tipoSQL}`;
-
+                    let alterSQL = "";
                     // Verificar si es autoincremental
-                    if (autoincremental === "Si" && indice === "Primario") {
-                        alterSQL += " AUTO_INCREMENT PRIMARY KEY";
-                    }
-
-                    // Verificar si tiene valor nulo
-                    if (valorNulo === "No") {
-                        alterSQL += " NOT NULL";
+                    if (autoincremental === "Si" && indice === "Primario" && valorNulo === "No") {
+                        alterSQL += "ALTER TABLE personas MODIFY "+ nombreCampo + " " + tipoSQL +" NOT NULL; \n" +
+                        "ALTER TABLE personas DROP PRIMARY KEY; \n" +
+                        "ALTER TABLE personas CHANGE " + nombreCampo + " " + nuevoNombreCampo + " " + tipoSQL + " NOT NULL; \n" +
+                        "ALTER TABLE personas MODIFY " + nuevoNombreCampo + " " + tipoSQL + " AUTO_INCREMENT PRIMARY KEY NOT NULL;";
+                    } else {
+                        // Construir la columna
+                        alterSQL = `ALTER TABLE CHANGE ${nombreCampo} ${nuevoNombreCampo} ${tipoSQL}`;
                     }
 
                     // Añadir esta consulta al resultado final

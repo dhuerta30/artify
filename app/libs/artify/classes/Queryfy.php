@@ -1060,7 +1060,7 @@ class Queryfy
     {
         try {
             if ($this->dbType === "mysql") {
-                $this->sql = "ALTER TABLE {$dbTableName} ({$modifications})";
+                $this->sql = " {$dbTableName} ({$modifications})";
                 $stmt = $this->dbObj->prepare($this->sql);
                 $stmt->execute();
             }
