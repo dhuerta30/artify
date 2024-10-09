@@ -1,5 +1,5 @@
 <div class="component addrow float-right">
-    <div class="control-group">
+    <div class="control-group mb-3">
         <div class="controls">
             <a class="artify-actions artify-button artify-button-add-row btn btn-success" href="javascript:;" data-action="add_row_artify">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add_row"]; ?>
