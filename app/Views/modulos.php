@@ -509,7 +509,27 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
     }
 
     if(dataAction == "edit"){
-        $("#generateSQL").removeClass("d-none");
+
+        $("input[name='estructura_tabla#$nombre_nuevo_campo[]']").on('input change', function() {
+            checkInput();
+        });
+
+        function checkInput() {
+            // Comprobar si el campo está vacío
+            if ($("input[name='estructura_tabla#$nombre_nuevo_campo[]']").val().trim() !== "") {
+                // Si está vacío, mostrar el botón
+                $("#generateSQL").removeClass("d-none");
+            } else {
+                // Si no está vacío, ocultar el botón
+                $("#generateSQL").addClass("d-none");
+            }
+        }
+
+        $(".artify-cancel-btn").click(function(){
+            $("#generateSQL").addClass("d-none");
+        });
+
+        //$("#generateSQL").removeClass("d-none");
         $(".eliminar_filas").removeClass("d-none");
         $(".modificar_campo").removeClass("d-none");
         $(".agregar_campo").removeClass("d-none");
