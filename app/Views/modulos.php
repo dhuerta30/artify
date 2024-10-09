@@ -521,18 +521,29 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         $(".artify-button-add-row").attr("data-action", "edit_row_artify");
 
-        $("input[name='estructura_tabla#$nombre_nuevo_campo[]']").on('input change', function() {
-            checkInput();
+        $("input[name='estructura_tabla#$nombre_nuevo_campo[]']").each(function() {
+            $(this).on('change', function() {
+                checkInput();
+            });
         });
 
         function checkInput() {
-            // Comprobar si el campo está vacío
-            if ($("input[name='estructura_tabla#$nombre_nuevo_campo[]']").val().trim() !== "") {
-                // Si está vacío, mostrar el botón
-                $("#generateSQL").removeClass("d-none");
+            let hasValue = false; // Variable para verificar si hay algún valor
+
+            // Itera sobre cada campo de entrada
+            $("input[name='estructura_tabla#$nombre_nuevo_campo[]']").each(function() {
+                // Comprobar si el campo actual no está vacío
+                if ($(this).val().trim() !== "") {
+                    hasValue = true; // Hay al menos un campo que tiene valor
+                    return false; // Rompe el bucle each
+                }
+            });
+
+            // Mostrar u ocultar el botón basado en si hay valores
+            if (hasValue) {
+                $(".generar_modificacion").removeClass("d-none"); // Mostrar el botón
             } else {
-                // Si no está vacío, ocultar el botón
-                $("#generateSQL").addClass("d-none");
+                $(".generar_modificacion").addClass("d-none"); // Ocultar el botón
             }
         }
 
