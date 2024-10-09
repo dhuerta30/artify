@@ -514,6 +514,10 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         $(".modificar_campo").removeClass("d-none");
         $(".agregar_campo").removeClass("d-none");
 
+        $("input[type='text'][name='estructura_tabla#$nombre_campo[]']").each(function() {
+            $(this).attr('readonly', true); // Limpia el valor del campo de texto
+        });
+
         document.getElementById("generateSQL").addEventListener("click", function() {
             let sqlStatements = `\n`;
             const rows = document.querySelectorAll(".artify-left-join tbody tr");
