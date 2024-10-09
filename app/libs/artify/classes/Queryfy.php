@@ -1060,13 +1060,33 @@ class Queryfy
     {
         try {
             if ($this->dbType === "mysql") {
-                $this->sql = " {$dbTableName} ({$modifications})";
-                $stmt = $this->dbObj->prepare($this->sql);
-                $stmt->execute();
+                // Separar las modificaciones en un arreglo
+                $modificationList = explode(';', trim($modifications));
+                // Filtrar modificaciones vacías
+                $modificationList = array_filter(array_map('trim', $modificationList));
+
+                // Verificar si hay modificaciones válidas
+                if (!empty($modificationList)) {
+                    // Iniciar la consulta ALTER TABLE
+                    $this->sql = "ALTER TABLE {$dbTableName} ";
+                    
+                    // Unir las modificaciones con una coma
+                    $this->sql .= implode(', ', $modificationList);
+                    
+                    // Preparar y ejecutar la consulta
+                    $stmt = $this->dbObj->prepare($this->sql);
+                    $stmt->execute();
+                } else {
+                    throw new Exception("No se proporcionaron modificaciones válidas.");
+                }
             }
             return true;
         } catch (PDOException $e) {
             $this->setErrors($e->getMessage());
+            return false; // Devolver falso si ocurre un error
+        } catch (Exception $e) {
+            $this->setErrors($e->getMessage());
+            return false; // Manejo de errores personalizado
         }
     }
 

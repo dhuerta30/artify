@@ -12,11 +12,6 @@
 	}
 }
 
-label.checkbox-inline {
-    justify-content: center;
-    margin-top: 5px;
-}
-
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #000000!important;
     border: 1px solid #000000!important;
@@ -556,10 +551,10 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                     let alterSQL = "";
                     // Verificar si es autoincremental
                     if (autoincremental === "Si" && indice === "Primario" && valorNulo === "No") {
-                        alterSQL += "ALTER TABLE personas MODIFY "+ nombreCampo + " " + tipoSQL +" NOT NULL; \n" +
-                        "ALTER TABLE personas DROP PRIMARY KEY; \n" +
-                        "ALTER TABLE personas CHANGE " + nombreCampo + " " + nuevoNombreCampo + " " + tipoSQL + " NOT NULL; \n" +
-                        "ALTER TABLE personas MODIFY " + nuevoNombreCampo + " " + tipoSQL + " AUTO_INCREMENT PRIMARY KEY NOT NULL;";
+                        alterSQL += "MODIFY "+ nombreCampo + " " + tipoSQL +" NOT NULL; \n" +
+                        "DROP PRIMARY KEY; \n" +
+                        "CHANGE " + nombreCampo + " " + nuevoNombreCampo + " " + tipoSQL + " NOT NULL; \n" +
+                        "MODIFY " + nuevoNombreCampo + " " + tipoSQL + " AUTO_INCREMENT PRIMARY KEY NOT NULL;";
                     } else {
                         // Construir la columna
                         alterSQL = `ALTER TABLE CHANGE ${nombreCampo} ${nuevoNombreCampo} ${tipoSQL}`;
