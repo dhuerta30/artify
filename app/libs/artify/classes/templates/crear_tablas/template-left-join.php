@@ -29,7 +29,7 @@ foreach ($data as $rows) {
 <div class="table-responsive mb-4">
 <table class="table artify-left-join responsive">
     <thead>
-        <tr>
+        <tr class="bg-dark">
             <?php if (isset($header)) echo $header; ?>
         </tr>
     </thead>
