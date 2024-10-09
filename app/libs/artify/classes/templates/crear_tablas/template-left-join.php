@@ -4,7 +4,7 @@
             <a class="artify-actions artify-button artify-button-add-row btn btn-success" href="javascript:;" data-action="add_row_artify">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add_row"]; ?>
             </a>
-            <a href="javascript:;" id="generateSQL" class="btn btn-primary d-none">Generar Modificación</a>
+            <a href="javascript:;" id="generateSQL" class="btn btn-primary generar_modificacion d-none">Generar Modificación</a>
         </div>
     </div>
 </div>

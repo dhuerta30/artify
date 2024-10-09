@@ -555,18 +555,13 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                     let alterSQL = `CHANGE ${nombreCampo} ${tipoSQL}`;
 
                     // Verificar si es autoincremental
-                    if (autoincremental === "Si") {
-                        alterSQL += " AUTO_INCREMENT";
+                    if (autoincremental === "Si" && indice === "Primario") {
+                        alterSQL += " AUTO_INCREMENT PRIMARY KEY";
                     }
 
                     // Verificar si tiene valor nulo
                     if (valorNulo === "No") {
                         alterSQL += " NOT NULL";
-                    }
-
-                    // Verificar si es índice
-                    if (indice === "Primario") {
-                        alterSQL += ", ADD PRIMARY KEY (" + nombreCampo + ")";
                     }
 
                     // Añadir esta consulta al resultado final
