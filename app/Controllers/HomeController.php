@@ -1657,6 +1657,10 @@ class HomeController
 		$tablas->fieldCssClass("autoincremental", array("autoincrementable"));
 		$tablas->fieldCssClass("modificar_tabla", array("modificar_tabla"));
 
+		$tablas->buttonHide("submitBtn");
+		$tablas->buttonHide("submitBtnBack");
+		$tablas->buttonHide("cancel");
+
 		$tablas->buttonHide("submitBtnSaveBack");
 		$tablas->fieldAttributes("nombre_tabla", array("placeholder"=> "Nombre de la tabla de la base de datos"));
 		$tablas->fieldAttributes("modificar_tabla", array("placeholder"=> "CHANGE nombre_anterior_campo nombre_nuevo_campo VARCHAR(255) NOT NULL,", "style"=> "min-height: 200px; max-height: 200px;"));

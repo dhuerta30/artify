@@ -162,7 +162,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         construirFrase();
 
-        $(".artify-back").click(function(){
+        $(".regresar_tablas").click(function(){
             $('.leftjoin_tr').remove();
         });
 
@@ -176,7 +176,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         $("#create-modulos-tab, #create-pdf-tab, #config-api-tab").click(function(){
             $('.leftjoin_tr').remove();
-            $('.artify-back').click();
+            $('.regresar_tablas').click();
         });
 
         $(".active_filter").change(function(){
