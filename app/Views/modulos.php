@@ -522,7 +522,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         $(".artify-button-add-row").attr("data-action", "edit_row_artify");
 
         $("input[name='estructura_tabla#$nombre_nuevo_campo[]']").each(function() {
-            $(this).on('change', function() {
+            $(this).on('keyup', function() {
                 checkInput();
             });
         });
