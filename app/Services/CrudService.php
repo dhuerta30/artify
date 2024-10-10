@@ -66,7 +66,9 @@ class CrudService
         $posicionarse_en_la_pagina,
         $ocultar_id_tabla,
         $nombre_columnas,
-        $nuevo_nombre_columnas
+        $nuevo_nombre_columnas,
+        $nombre_campos,
+        $nuevo_nombre_campos
         )
     {
         if($crudType == 'SQL'){
@@ -148,7 +150,9 @@ class CrudService
                 $posicionarse_en_la_pagina,
                 $ocultar_id_tabla,
                 $nombre_columnas,
-                $nuevo_nombre_columnas
+                $nuevo_nombre_columnas,
+                $nombre_campos,
+                $nuevo_nombre_campos
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -500,7 +504,9 @@ class CrudService
         $posicionarse_en_la_pagina,
         $ocultar_id_tabla,
         $nombre_columnas,
-        $nuevo_nombre_columnas
+        $nuevo_nombre_columnas,
+        $nombre_campos,
+        $nuevo_nombre_campos
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
