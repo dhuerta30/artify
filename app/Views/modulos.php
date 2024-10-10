@@ -12,8 +12,12 @@
 	}
 }
 
+.fwb {
+    font-weight: bold;
+}
+
 label:not(.form-check-label):not(.custom-file-label) {
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
