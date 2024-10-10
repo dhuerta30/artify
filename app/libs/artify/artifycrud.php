@@ -1063,6 +1063,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $ocultar_id_tabla = $data["modulos"]["ocultar_id_tabla"];
     $nombre_columnas = isset($data["modulos"]["nombre_columnas"]) ? $data["modulos"]["nombre_columnas"] : null;
     $nuevo_nombre_columnas = isset($data["modulos"]["nuevo_nombre_columnas"]) ? $data["modulos"]["nuevo_nombre_columnas"] : null;
+    $nombre_campos = isset($data["modulos"]["nombre_campos"]) ? $data["modulos"]["nombre_campos"] : null;
+    $nuevo_nombre_campos = isset($data["modulos"]["nuevo_nombre_campos"]) ? $data["modulos"]["nuevo_nombre_campos"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1164,7 +1166,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $posicionarse_en_la_pagina,
             $ocultar_id_tabla,
             $nombre_columnas,
-            $nuevo_nombre_columnas
+            $nuevo_nombre_columnas,
+            $nombre_campos,
+            $nuevo_nombre_campos
         );
     }
 
@@ -1239,6 +1243,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["ocultar_id_tabla"] = $ocultar_id_tabla;
     $newdata["modulos"]["nombre_columnas"] = $nombre_columnas;
     $newdata["modulos"]["nuevo_nombre_columnas"] = $nuevo_nombre_columnas;
+    $newdata["modulos"]["nombre_campos"] = $nombre_campos;
+    $newdata["modulos"]["nuevo_nombre_campos"] = $nuevo_nombre_campos;
 
     return $newdata;
 }
