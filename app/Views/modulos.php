@@ -641,6 +641,8 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
                     if (valorNulo === "No") {
                         valorSQL += `NOT NULL`;
+                    } else {
+                        valorSQL += `NULL`;
                     }
 
                     let alterSQL = "";
