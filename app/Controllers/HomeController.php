@@ -875,17 +875,18 @@ class HomeController
 										<p class="text-center fwb">Renombrar columnas Grilla</p>
 									</div>
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="form-group">
 										<label class="form-label">Nombre Columnas:</label>
 										{nombre_columnas}
 										<p class="artify_help_block help-block form-text with-errors"></p>
 									</div>
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="form-group">
 										<label class="form-label">Nuevo Nombre Columnas:</label>
 										{nuevo_nombre_columnas}
+										<p>Escriba y presione enter para agregar los nuevos nombres</p>
 										<p class="artify_help_block help-block form-text with-errors"></p>
 									</div>
 								</div>
@@ -1223,6 +1224,7 @@ class HomeController
 		</div>
 		</div>
 		';
+		$artify->addPlugin("bootstrap-tag-input");
 		$artify->addPlugin("select2");
 		$artify->addPlugin("bootstrap-inputmask");
 		$artify->set_template($html_template);
@@ -1290,6 +1292,11 @@ class HomeController
 		$artify->fieldTypes("mostrar_campos_filtro", "multiselect");
 		$artify->fieldTypes("mostrar_campos_formulario_editar", "multiselect");
 		$artify->fieldTypes("ordenar_grilla_por", "select");
+
+		$artify->fieldTypes("nombre_columnas", "multiselect");
+		$artify->fieldTypes("nuevo_nombre_columnas", "input");
+
+		$artify->fieldAttributes("nuevo_nombre_columnas", array("data-role"=>"tagsinput"));
 
 		$artify->fieldTypes("tipo_orden", "select");
 		$artify->fieldDataBinding("tipo_orden", array("ASC" => "ASC", "DESC" => "DESC"), "", "", "array");
@@ -1434,6 +1441,8 @@ class HomeController
 		$artify->fieldCssClass("active_search", array("active_search"));
 		$artify->fieldCssClass("button_add", array("button_add"));
 		$artify->fieldCssClass("tipo_orden", array("tipo_orden"));
+		$artify->fieldCssClass("nombre_columnas", array("nombre_columnas"));
+		$artify->fieldCssClass("nuevo_nombre_columnas", array("tagsinput"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
@@ -1532,6 +1541,7 @@ class HomeController
 		//$artify->formFieldValue("query_get", "http://localhost/artify/nombre_controlador_api/nombre_metodo_api");
 		$render = $artify->dbTable("modulos")->render();
 		$switch = $artify->loadPluginJsCode("bootstrap-switch-master",".actions_buttons_grid, .buttons_actions, .api_type, .actions_buttons_grid_db, .buttons_actions_db");
+		$tags = $artify->loadPluginJsCode("bootstrap-tag-input",".tagsinput");
 
 		$config = DB::ArtifyCrud(true);
 		$html_template_config = '
@@ -1717,6 +1727,7 @@ class HomeController
 		View::render("modulos", 
 			[
 				'render' => $render, 
+				'tags' => $tags,
 				'render_conf' => $render_conf, 
 				'switch' => $switch, 
 				'render_tablas' => $render_tablas, 

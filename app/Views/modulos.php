@@ -12,6 +12,21 @@
 	}
 }
 
+span, p {
+    font-size: 14px;
+}
+
+.tag {
+    background-color: #5cb85c;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
 .fwb {
     font-weight: bold;
 }
@@ -101,6 +116,7 @@ label:not(.form-check-label):not(.custom-file-label) {
                     <div class="tab-pane fade" id="create-modulos" role="tabpanel" aria-labelledby="create-modulos-tab">
                         <?=$render?>
                         <?=$switch?>
+                        <?=$tags?>
                     </div>
                     <div class="tab-pane fade" id="create-pdf" role="tabpanel" aria-labelledby="create-pdf-tab">
                         <?=$render_pdf?>
@@ -120,7 +136,6 @@ label:not(.form-check-label):not(.custom-file-label) {
 </div>
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
 <script>
-
 $(document).on("change", ".generar_jwt_token", function() {
     var val = $(this).val();
 
@@ -165,6 +180,13 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
     if(dataAction == "add"){
 
         construirFrase();
+
+        $("form").on("keypress", "input", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                return false;
+            }
+        });
 
         $(".regresar_tablas").click(function(){
             $('.leftjoin_tr').remove();
@@ -219,21 +241,21 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         $(".controller_name").val(controllerName);
 
                         // Limpiar los selectores de campos y añadir la opción "Seleccionar"
-                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por").empty().append(`<option value>Seleccionar</option>`);
+                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas").empty().append(`<option value>Seleccionar</option>`);
                         
                         // Añadir nuevas opciones desde el resultado del ajax
                         $.each(data["columnas_tablas"], function(index, obj){
-                            $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por").append(`
+                            $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas").append(`
                                 <option value="${obj}">${obj}</option>
                             `);
                         });
 
                         // Inicializar select2 en los nuevos elementos
-                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por").select2();
+                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas").select2();
 
                     } else {
                         // Limpiar los campos si val está vacío y añadir la opción "Seleccionar"
-                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por").empty().append(`<option value>Seleccionar</option>`);
+                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas").empty().append(`<option value>Seleccionar</option>`);
                         
                         // Vaciar el valor de id_tabla
                         $(".id_tabla").val("");
@@ -243,7 +265,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         $(".controller_name").val("");
 
                         // Inicializar select2 en los nuevos elementos
-                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por").select2();
+                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas").select2();
                     }
                 }
             });
