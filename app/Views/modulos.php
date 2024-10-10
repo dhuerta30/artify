@@ -12,8 +12,12 @@
 	}
 }
 
+.mt-customs {
+    margin-top: 55px;
+}
+
 .mt-custom {
-    margin-top: 38px;
+    margin-top: 44px;
 }
 
 span, p {
