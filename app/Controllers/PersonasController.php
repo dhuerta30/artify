@@ -34,7 +34,7 @@
                     
                         $artify->formFields(array("nombre", "apellido", "fecha_nacimiento", "descripcion"));
                     
-                        $artify->editFormFields(array("nombre", "apellido", "fecha_nacimiento", "descripcion"));
+                        $artify->editFormFields(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
                     
 
                         $valuesArray = array("nombre", "apellido");
@@ -47,6 +47,8 @@
                         }
                     
                                 $artify->colRename("id_personas", "id");
+                            
+                                $artify->colRename("fecha_nacimiento", "fecha");
                             
                 $artify->tableHeading('Módulo de Personas');
             
@@ -62,10 +64,6 @@
                 
                     $artify->buttonHide("submitBtnSaveBack");
                 
-                    $artify->setSettings('printBtn', true);
-                
-                    $artify->setSettings('excelBtn', true);
-                
                 $artify->setSettings('inlineEditbtn', false);
             
                 $artify->setSettings('hideAutoIncrement', false);
@@ -76,7 +74,7 @@
             
                 $artify->setSettings('searchbox', true);
             
-                $artify->setSettings('clonebtn', true);
+                $artify->setSettings('clonebtn', false);
             
                 $artify->setSettings('checkboxCol', true);
                 $artify->setSettings('deleteMultipleBtn', true);
