@@ -46,7 +46,7 @@
                             $artify->setFilterSource('filterAdd'.$column, 'personas', $column, $column.' as pl', 'db');
                         }
                     
-                                $artify->colRename("id_personas", "Id");
+                                $artify->colRename("id_personas", "id");
                             
                 $artify->tableHeading('Módulo de Personas');
             
@@ -76,7 +76,7 @@
             
                 $artify->setSettings('searchbox', true);
             
-                $artify->setSettings('clonebtn', false);
+                $artify->setSettings('clonebtn', true);
             
                 $artify->setSettings('checkboxCol', true);
                 $artify->setSettings('deleteMultipleBtn', true);
