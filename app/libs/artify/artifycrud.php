@@ -1065,6 +1065,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $nuevo_nombre_columnas = isset($data["modulos"]["nuevo_nombre_columnas"]) ? $data["modulos"]["nuevo_nombre_columnas"] : null;
     $nombre_campos = isset($data["modulos"]["nombre_campos"]) ? $data["modulos"]["nombre_campos"] : null;
     $nuevo_nombre_campos = isset($data["modulos"]["nuevo_nombre_campos"]) ? $data["modulos"]["nuevo_nombre_campos"] : null;
+    $tipo_de_filtro = isset($data["modulos"]["tipo_de_filtro"]) ? $data["modulos"]["tipo_de_filtro"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1092,6 +1093,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $template_fields,
             $active_filter, 
             $mostrar_campos_filtro,
+            $tipo_de_filtro,
             $clone_row, 
             $active_popup, 
             $active_search, 
@@ -1132,6 +1134,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $template_fields,
             $active_filter, 
             $mostrar_campos_filtro,
+            $tipo_de_filtro,
             $clone_row, 
             $active_popup, 
             $active_search, 
@@ -1205,6 +1208,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["id_menu"] = $id_menu ?? null;
     $newdata["modulos"]["active_filter"] = $active_filter;
     $newdata["modulos"]["mostrar_campos_filtro"] = $mostrar_campos_filtro;
+    $newdata["modulos"]["tipo_de_filtro"] = $tipo_de_filtro;
     $newdata["modulos"]["clone_row"] = $clone_row;
     $newdata["modulos"]["active_popup"] = $active_popup;
     $newdata["modulos"]["active_search"] = $active_search;
