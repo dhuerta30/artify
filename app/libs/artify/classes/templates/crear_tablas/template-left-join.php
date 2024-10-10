@@ -31,6 +31,7 @@ foreach ($data as $rows) {
     <thead>
         <tr class="bg-dark">
             <?php if (isset($header)) echo $header; ?>
+            <th><label class="control-label col-form-label">Acción</label></th>
         </tr>
     </thead>
     <tbody>
