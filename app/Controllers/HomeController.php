@@ -901,7 +901,7 @@ class HomeController
 									<div class="form-group">
 										<label class="form-label">Nuevo Nombre Columnas:</label>
 										{nuevo_nombre_columnas}
-										<p>Escriba y presione enter para agregar los nuevos nombres</p>
+										<p style="font-size: 14px;">Escriba y presione enter para agregar los nuevos nombres</p>
 										<p class="artify_help_block help-block form-text with-errors"></p>
 									</div>
 								</div>
@@ -924,7 +924,7 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Activar funciones de Filtro y Búsqueda:</label>
 								{function_filter_and_search}
-								<span>Si Escoje la Opción "No" Deberá utilizar su propia lógica de Filtro y Búsqueda</span>
+								<span style="font-size: 14px;">Si Escoje la Opción "No" Deberá utilizar su propia lógica de Filtro y Búsqueda</span>
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
@@ -951,7 +951,7 @@ class HomeController
 									<div class="form-group">
 										<label class="form-label">Nuevo Nombre Campos:</label>
 										{nuevo_nombre_campos}
-										<p>Escriba y presione enter para agregar los nuevos nombres</p>
+										<p style="font-size:14px;">Escriba y presione enter para agregar los nuevos nombres</p>
 										<p class="artify_help_block help-block form-text with-errors"></p>
 									</div>
 								</div>
