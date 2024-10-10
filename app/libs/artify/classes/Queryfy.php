@@ -1752,7 +1752,7 @@ class Queryfy
 
                 //previous button
                 if ($page > 1)
-                    $pagination .= "<li><a class='pdomodel-page' href=\"$base_url" . $prev . "\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>";
+                    $pagination .= "<li><a class='queryfy-page' href=\"$base_url" . $prev . "\" aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></a></li>";
                 else
                     $pagination .= "<li class=\"disabled\"><span aria-hidden=\"true\">&laquo;</span></li>";
 
@@ -1763,7 +1763,7 @@ class Queryfy
                         if ($counter == $page)
                             $pagination .= "<li class=\"active\"><span>$counter</span></li>";
                         else
-                            $pagination .= "<li><a class='pdomodel-page' href=\"$base_url" . $counter . "\">$counter</a></li>";
+                            $pagination .= "<li><a class='queryfy-page' href=\"$base_url" . $counter . "\">$counter</a></li>";
                     }
                 } elseif ($lastpage >= 7 + ($adjacents * 2)) {
                     //enough pages to hide some
@@ -1773,42 +1773,42 @@ class Queryfy
                             if ($counter == $page)
                                 $pagination .= "<li class=\"active\"><span>$counter</span></li>";
                             else
-                                $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $counter . "\">$counter</a></li>";
+                                $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $counter . "\">$counter</a></li>";
                         }
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $lpm1 . "\">...</a></li>";
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $lpm1 . "\">$lpm1</a></li>";
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $lastpage . "\">$lastpage</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $lpm1 . "\">...</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $lpm1 . "\">$lpm1</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $lastpage . "\">$lastpage</a></li>";
                     } elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
                         //in middle; hide some front and some back
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=1\">1</a></li>";
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=2\">2</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=1\">1</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=2\">2</a></li>";
                         $pagination .= "<li class=\"elipses\">...</li>";
                         for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
                             if ($counter == $page)
                                 $pagination .= "<li class=\"active\"><span>$counter</span></li>";
                             else
-                                $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $counter . "\">$counter</a></li>";
+                                $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $counter . "\">$counter</a></li>";
                         }
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $lpm1 . "\">...</a></li>";
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $lpm1 . "\">$lpm1</a></li>";
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $lastpage . "\">$lastpage</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $lpm1 . "\">...</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $lpm1 . "\">$lpm1</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $lastpage . "\">$lastpage</a></li>";
                     } else {
                         //close to end; only hide early pages
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=1\">1</a></li>";
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=2\">2</a></li>";
-                        $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $lpm1 . "\">...</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=1\">1</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=2\">2</a></li>";
+                        $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $lpm1 . "\">...</a></li>";
                         for ($counter = $lastpage - (1 + ($adjacents * 3)); $counter <= $lastpage; $counter++) {
                             if ($counter == $page)
                                 $pagination .= "<li class=\"active\"><span>$counter</span></li>";
                             else
-                                $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $counter . "\">$counter</a></li>";
+                                $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $counter . "\">$counter</a></li>";
                         }
                     }
                 }
 
                 //next button
                 if ($page < $counter - 1)
-                    $pagination .= "<li><a class='pdomodel-page' href=\"$base_url?page=" . $next . "\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
+                    $pagination .= "<li><a class='queryfy-page' href=\"$base_url?page=" . $next . "\" aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></a></li>";
                 else
                     $pagination .= "<li class=\"disabled\"><span aria-hidden=\"true\">&raquo;</span></li>";
 

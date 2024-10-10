@@ -36,23 +36,15 @@
                     
                         $artify->editFormFields(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
                     
-
-                        $valuesArray = array("nombre", "apellido");
-
-                        foreach ($valuesArray as $column) {
-                            $columnName = ucfirst(str_replace('_', ' ', $column));
+                                //$artify->addFilter('filterAddnombre', 'Filtrar por Nombre', '', 'radio');
+                                //$artify->setFilterSource('filterAddnombre', 'personas', 'nombre', 'nombre as pl', 'db');
                             
-                            $artify->addFilter('filterAdd'.$column, 'Filtrar por '.$columnName.' ', '', 'dropdown');
-                            $artify->setFilterSource('filterAdd'.$column, 'personas', $column, $column.' as pl', 'db');
-                        }
-                    
+                                $artify->addFilter('FilterApellido', 'Filtrar por Apellido', '', 'dropdown');
+                                $artify->setFilterSource('FilterApellido', 'personas', 'apellido', 'apellido as pl', 'db');
+                            
                                 $artify->colRename("id_personas", "id");
                             
-                                $artify->colRename("fecha_nacimiento", "fecha");
-                            
                                 $artify->fieldRenameLable("id_personas", "id");
-                            
-                                $artify->fieldRenameLable("fecha_nacimiento", "fecha");
                             
                 $artify->tableHeading('Módulo de Personas');
             
@@ -67,6 +59,8 @@
                     $artify->setSettings('delbtn', true);
                 
                     $artify->buttonHide("submitBtnSaveBack");
+                
+                    $artify->setSettings('printBtn', true);
                 
                     $artify->setSettings('excelBtn', true);
                 

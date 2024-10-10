@@ -3080,7 +3080,11 @@ Class Artify {
         );
         $result = $queryfy->select($this->tableName);
 
-        $totalRecords = $result[0]["totalrecords"];
+        if (empty($result) || !isset($result[0]['totalrecords'])) {
+            $totalRecords = 0; // O maneja esto como necesites
+        } else {
+            $totalRecords = $result[0]["totalrecords"];
+        }
         $recordPerPage = $this->settings["recordsPerPage"];
         if (isset($this->crudCall) && $this->crudCall === false) {
             $this->settings["addbtn"] = false;
