@@ -175,7 +175,7 @@
             } else {
             ?>
             <tr class="artify-data-row">
-                <td class="artify-row-count" colspan="<?php echo count($columns); ?>">
+                <td class="artify-row-count" colspan="100%">
                 <?php echo $lang["no_data"] ?>
                 </td>
             </tr>
