@@ -12,6 +12,10 @@
 	}
 }
 
+label:not(.form-check-label):not(.custom-file-label) {
+    font-size: 14px;
+}
+
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #000000!important;
     border: 1px solid #000000!important;

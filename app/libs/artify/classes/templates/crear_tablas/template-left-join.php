@@ -41,6 +41,12 @@ foreach ($data as $rows) {
 </div>
 
 
+<style>
+label:not(.form-check-label):not(.custom-file-label) {
+   justify-content: center;
+}
+</style>
+
 <div class="form-group mt-4 text-center">
     <input type="submit" class="btn btn-primary artify-form-control artify-submit mb-3" data-action="insert" value="Guardar">
     <button type="button" class="btn btn-danger artify-form-control artify-button mb-3 artify-back regresar_tablas" data-action="back">Regresar</button> 
