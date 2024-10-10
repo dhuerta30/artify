@@ -16,6 +16,10 @@ span, p {
     font-size: 14px;
 }
 
+label {
+    margin-bottom: 6px!important;
+}
+
 .tag {
     background-color: #5cb85c;
     color: #fff;
