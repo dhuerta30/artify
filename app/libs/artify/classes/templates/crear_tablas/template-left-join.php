@@ -40,12 +40,7 @@ foreach ($data as $rows) {
 </table>
 </div>
 
-
 <style>
-label:not(.form-check-label):not(.custom-file-label) {
-   justify-content: center;
-}
-
 .form-control {
     min-width: 200px;
 }
