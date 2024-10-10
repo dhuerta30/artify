@@ -784,6 +784,15 @@ class CrudService
             ";
         }
 
+        if($ocultar_id_tabla == "Si") {
+            $controllerContent .= "
+                \$artify->setSettings('hideAutoIncrement', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings('hideAutoIncrement', false);
+            ";
+        }
 
         if($mostrar_columna_acciones_grilla == 'Si'){
             $controllerContent .= "
