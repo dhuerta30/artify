@@ -45,6 +45,10 @@ foreach ($data as $rows) {
 label:not(.form-check-label):not(.custom-file-label) {
    justify-content: center;
 }
+
+.form-control {
+    min-width: 200px;
+}
 </style>
 
 <div class="form-group mt-4 text-center">

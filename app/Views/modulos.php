@@ -40,10 +40,6 @@ label:not(.form-check-label):not(.custom-file-label) {
     width: 7.692307692307692%;
 }
 
-/*.form-control {
-    min-width: 200px;
-}*/
-
 body {
     overflow-x: hidden;
 }
