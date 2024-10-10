@@ -171,7 +171,7 @@ $config["blockClass"] = array("col-xs-10", "col-sm-10", "col-lg-10");
 //block label settings
 $config["lableClass"] = array("col-xs-2", "col-sm-2", "col-lg-2");
 //hide auto increment field
-$config["hideAutoIncrement"] = false;
+$config["hideAutoIncrement"] = true;
 //hide all lables
 $config["hideLable"] = false;
 //hide lable of field type html
