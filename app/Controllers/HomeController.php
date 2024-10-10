@@ -869,7 +869,7 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
-							<div class="row no-gutters">
+							<div class="row mt-5 no-gutters">
 								<div class="col-md-12">
 									<div class="form-group">
 										<p class="text-center fwb">Renombrar columnas Grilla</p>
