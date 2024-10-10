@@ -1257,7 +1257,7 @@ class HomeController
 		$artify->formFieldValue("campos_requeridos", "Si");
 		$artify->formFieldValue("mostrar_columna_acciones_grilla", "Si");
 		$artify->formFieldValue("mostrar_paginacion", "Si");
-		$artify->formFieldValue("activar_numeracion_columnas", "Si");
+		$artify->formFieldValue("activar_numeracion_columnas", "No");
 		$artify->formFieldValue("activar_registros_por_pagina", "Si");
 		$artify->formFieldValue("cantidad_de_registros_por_pagina", 10);
 		$artify->formFieldValue("activar_edicion_en_linea", "No");
