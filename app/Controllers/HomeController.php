@@ -919,7 +919,13 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
-							<div class="row mt-5 no-gutters">
+							<div class="form-group">
+								<label class="form-label">Activar Union Interna:</label>
+								{activar_union_interna}
+								<p class="artify_help_block help-block form-text with-errors"></p>
+							</div>
+							
+							<div class="row mt-custom no-gutters">
 								<div class="col-md-12">
 									<div class="form-group">
 										<p class="text-center fwb">Renombrar Campos Formularios</p>
@@ -946,14 +952,6 @@ class HomeController
 					</div>
 
 					<div class="row mt-3">
-
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Activar Union Interna:</label>
-								{activar_union_interna}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
 
 						<div class="col-md-3">
 							<div class="form-group">

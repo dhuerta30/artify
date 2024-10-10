@@ -12,6 +12,10 @@
 	}
 }
 
+.mt-custom {
+    margin-top: 38px;
+}
+
 span, p {
     font-size: 14px;
 }
