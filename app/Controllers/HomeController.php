@@ -812,7 +812,7 @@ class HomeController
 							</div>
 
 							<div class="form-group">
-								<label class="form-label">Ocultar Id Tabla</label>
+								<label class="form-label">Ocultar Id Tabla en Formularios</label>
 								{ocultar_id_tabla}
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
