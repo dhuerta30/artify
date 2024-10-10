@@ -612,28 +612,39 @@ class CrudService
                 }
 
 
-                if ($active_filter == "Si" && isset($mostrar_campos_filtro)) {
+                if ($active_filter == "Si" && isset($mostrar_campos_filtro) && !empty($tipo_de_filtro)) {
 
-                        $values = explode(',', $mostrar_campos_filtro);
-
-                        $values = array_filter($values, function ($value) {
-                            return !empty(trim($value));
-                        });
-                        
-                        $valuesString = '"' . implode('", "', $values) . '"';
-
-                        $controllerContent .= "
-
-                        \$valuesArray = array({$valuesString});
-
-                        foreach (\$valuesArray as \$column) {
-                            \$columnName = ucfirst(str_replace('_', ' ', \$column));
-                            
-                            \$artify->addFilter('filterAdd'.\$column, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
-                            \$artify->setFilterSource('filterAdd'.\$column, '{$tableName}', \$column, \$column.' as pl', 'db');
+                    // Separar y limpiar los campos de filtro (mostrar_campos_filtro)
+                    $values_mostrar_campos_filtro = explode(',', $mostrar_campos_filtro);
+                    $values_mostrar_campos_filtro = array_filter($values_mostrar_campos_filtro, function ($value) {
+                        return !empty(trim($value));
+                    });
+                
+                    // Separar y limpiar los tipos de filtro (tipo_de_filtro)
+                    $values_tipo_de_filtro = explode(',', $tipo_de_filtro);
+                    $values_tipo_de_filtro = array_filter($values_tipo_de_filtro, function ($value) {
+                        return !empty(trim($value));
+                    });
+                
+                    // Asegurarse de que ambas matrices tengan la misma cantidad de elementos
+                    if (!empty($values_mostrar_campos_filtro) && count($values_mostrar_campos_filtro) === count($values_tipo_de_filtro)) {
+                
+                        foreach ($values_mostrar_campos_filtro as $index => $column) {
+                            // Formatear el nombre de la columna para que sea legible
+                            $columnName = ucfirst(str_replace('_', ' ', $column));
+                
+                            // Obtener el tipo de filtro correspondiente
+                            $columnTipoFiltro = $values_tipo_de_filtro[$index];
+                
+                            // Añadir el contenido para cada filtro usando el nombre formateado de la columna y el tipo de filtro
+                            $controllerContent .= "
+                                \$artify->addFilter('filterAdd{$column}', 'Filtrar por {$columnName}', '', '{$columnTipoFiltro}');
+                                \$artify->setFilterSource('filterAdd{$column}', '{$tableName}', '{$column}', '{$column} as pl', 'db');
+                            ";
                         }
-                    ";
+                    }
                 }
+                
 
                 if(!empty($nombre_columnas) && !empty($nuevo_nombre_columnas)){
 

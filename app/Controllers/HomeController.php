@@ -1335,7 +1335,10 @@ class HomeController
 		$artify->fieldTypes("mostrar_campos_formulario", "multiselect");
 		$artify->fieldTypes("mostrar_columnas_grilla", "multiselect");
 		$artify->fieldTypes("mostrar_campos_filtro", "multiselect");
+		
 		$artify->fieldTypes("tipo_de_filtro", "multiselect");
+		$artify->fieldDataBinding("tipo_de_filtro", array("radio" => "radio", "dropdown" => "dropdown"), "", "", "array");
+
 		$artify->fieldTypes("mostrar_campos_formulario_editar", "multiselect");
 		$artify->fieldTypes("ordenar_grilla_por", "select");
 
