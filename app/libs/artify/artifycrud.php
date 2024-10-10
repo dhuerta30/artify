@@ -1060,6 +1060,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $ordenar_grilla_por = isset($data["modulos"]["ordenar_grilla_por"]) ? $data["modulos"]["ordenar_grilla_por"] : null;
     $tipo_orden = isset($data["modulos"]["tipo_orden"]) ? $data["modulos"]["tipo_orden"] : null;
     $posicionarse_en_la_pagina = isset($data["modulos"]["posicionarse_en_la_pagina"]) ? $data["modulos"]["posicionarse_en_la_pagina"] : null;
+    $ocultar_id_tabla = $data["modulos"]["ocultar_id_tabla"];
+    $nombre_columnas = isset($data["modulos"]["nombre_columnas"]) ? $data["modulos"]["nombre_columnas"] : null;
+    $nuevo_nombre_columnas = isset($data["modulos"]["nuevo_nombre_columnas"]) ? $data["modulos"]["nuevo_nombre_columnas"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1158,7 +1161,10 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $nombre_modulo,
             $ordenar_grilla_por,
             $tipo_orden,
-            $posicionarse_en_la_pagina
+            $posicionarse_en_la_pagina,
+            $ocultar_id_tabla,
+            $nombre_columnas,
+            $nuevo_nombre_columnas
         );
     }
 
@@ -1230,6 +1236,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["ordenar_grilla_por"] = $ordenar_grilla_por;
     $newdata["modulos"]["tipo_orden"] = $tipo_orden;
     $newdata["modulos"]["posicionarse_en_la_pagina"] = $posicionarse_en_la_pagina;
+    $newdata["modulos"]["ocultar_id_tabla"] = $ocultar_id_tabla;
+    $newdata["modulos"]["nombre_columnas"] = $nombre_columnas;
+    $newdata["modulos"]["nuevo_nombre_columnas"] = $nuevo_nombre_columnas;
 
     return $newdata;
 }

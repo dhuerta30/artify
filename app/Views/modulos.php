@@ -553,10 +553,6 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             $('.leftjoin_tr').remove();
         });
 
-        $(".artify-cancel-btn").click(function(){
-            $('a[data-action="delete_row"]').click();
-        });
-
         $("#create-tablas-tab, #create-pdf-tab").click(function(){
             $(".regresar_modulos").click();
         });
