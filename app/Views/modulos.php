@@ -626,12 +626,21 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 if (modificado == "Si") {
                     // Construir el tipo de datos
                     let tipoSQL = "";
+                    let valorSQL = "";
                     if (tipoCampo === "Caracteres") {
                         tipoSQL += `VARCHAR(${caracteres})`;
                     }
 
                     if (tipoCampo === "Entero") {
                         tipoSQL += `INT(${caracteres})`;
+                    }
+
+                    if (tipoCampo === "Fecha") {
+                        tipoSQL += `DATE`;
+                    }
+
+                    if (valorNulo === "No") {
+                        valorSQL += `NOT NULL`;
                     }
 
                     let alterSQL = "";
@@ -643,7 +652,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         "MODIFY " + nuevoNombreCampo + " " + tipoSQL + " AUTO_INCREMENT PRIMARY KEY NOT NULL;";
                     } else {
                         // Construir la columna
-                        alterSQL = `CHANGE ${nombreCampo} ${nuevoNombreCampo} ${tipoSQL}`;
+                        alterSQL = `CHANGE ${nombreCampo} ${nuevoNombreCampo} ${tipoSQL} ${valorSQL}`;
                     }
 
                     // Añadir esta consulta al resultado final
