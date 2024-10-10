@@ -604,15 +604,15 @@ class CrudService
 
                 if ($active_filter == "Si" && isset($mostrar_campos_filtro)) {
 
-                    $values = explode(',', $mostrar_campos_filtro);
+                        $values = explode(',', $mostrar_campos_filtro);
 
-                    $values = array_filter($values, function ($value) {
-                        return !empty(trim($value));
-                    });
-                    
-                    $valuesString = '"' . implode('", "', $values) . '"';
+                        $values = array_filter($values, function ($value) {
+                            return !empty(trim($value));
+                        });
+                        
+                        $valuesString = '"' . implode('", "', $values) . '"';
 
-                    $controllerContent .= "
+                        $controllerContent .= "
 
                         \$valuesArray = array({$valuesString});
 
@@ -621,6 +621,37 @@ class CrudService
                             
                             \$artify->addFilter('filterAdd'.\$column, 'Filtrar por '.\$columnName.' ', '', 'dropdown');
                             \$artify->setFilterSource('filterAdd'.\$column, '{$tableName}', \$column, \$column.' as pl', 'db');
+                        }
+                    ";
+                }
+
+                if(!empty($nombre_columnas) && !empty($nuevo_nombre_columnas)){
+
+                        $values_nombre_columnas = explode(',', $nombre_columnas);
+                        $values_nombre_columnas = array_filter($values_nombre_columnas, function ($value) {
+                            return !empty(trim($value));
+                        });
+                        $valuesStringvalues_nombre_columnas = '"' . implode('", "', $values_nombre_columnas) . '"';
+
+
+                        $values_nuevo_nombre_columnas = explode(',', $nuevo_nombre_columnas);
+                        $values_nuevo_nombre_columnas = array_filter($values_nuevo_nombre_columnas, function ($value) {
+                            return !empty(trim($value));
+                        });
+                        $valuesStringvalues_nuevo_nombre_columnas = '"' . implode('", "', $values_nuevo_nombre_columnas) . '"';
+
+                        $controllerContent .= "
+                        \$valuesArrayNombreColumnas = array({$valuesStringvalues_nombre_columnas});
+                        \$valuesArrayNuevoNombreColumnas = array({$valuesStringvalues_nuevo_nombre_columnas});
+
+                        foreach (\$valuesArrayNombreColumnas as \$columnNombre) {
+                            \$columnNombreColumna = ucfirst(str_replace('_', ' ', \$columnNombre));
+
+                            foreach (\$valuesArrayNuevoNombreColumnas as \$columnNuevoNombre) {
+                                \$columnNuevoNombreColumna = ucfirst(str_replace('_', ' ', \$columnNuevoNombre));
+
+                                \$artify->colRename(\"{$columnNombreColumna}\", \"{$columnNuevoNombreColumna}\");
+                            }
                         }
                     ";
                 }
