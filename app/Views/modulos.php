@@ -20,10 +20,6 @@
     margin-top: 44px;
 }
 
-span, p {
-    font-size: 14px;
-}
-
 label {
     margin-bottom: 6px!important;
 }
