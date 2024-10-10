@@ -200,6 +200,8 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
+        $(".tipo_de_filtro").select2();
+
         $(".regresar_tablas").click(function(){
             $('.leftjoin_tr').remove();
         });

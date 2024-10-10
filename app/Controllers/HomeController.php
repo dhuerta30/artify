@@ -1502,6 +1502,7 @@ class HomeController
 		$artify->fieldCssClass("nombre_campos", array("nombre_campos"));
 		$artify->fieldCssClass("nuevo_nombre_campos", array("tagsinput"));
 		$artify->fieldCssClass("ocultar_id_tabla", array("ocultar_id_tabla"));
+		$artify->fieldCssClass("tipo_de_filtro", array("tipo_de_filtro"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
