@@ -196,7 +196,10 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
-        $(".tipo_de_filtro").select2();
+        //$(".tipo_de_filtro").select2();
+        $('.tipo_de_filtro').tagsinput({
+            allowDuplicates: true
+        });
 
         $(".regresar_tablas").click(function(){
             $('.leftjoin_tr').remove();
