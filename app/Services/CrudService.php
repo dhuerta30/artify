@@ -638,7 +638,7 @@ class CrudService
                 
                             // Añadir el contenido para cada filtro usando el nombre formateado de la columna y el tipo de filtro
                             $controllerContent .= "
-                                \$artify->addFilter('filterAdd{$column}', 'Filtrar por {$columnName}', '', '{$columnTipoFiltro}');
+                                \$artify->addFilter('filterAdd{$column}', 'Filtrar por {$columnName}', '{$column}', '{$columnTipoFiltro}');
                                 \$artify->setFilterSource('filterAdd{$column}', '{$tableName}', '{$column}', '{$column} as pl', 'db');
                             ";
                         }
