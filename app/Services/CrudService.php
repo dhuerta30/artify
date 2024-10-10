@@ -627,33 +627,32 @@ class CrudService
 
                 if(!empty($nombre_columnas) && !empty($nuevo_nombre_columnas)){
 
-                        $values_nombre_columnas = explode(',', $nombre_columnas);
-                        $values_nombre_columnas = array_filter($values_nombre_columnas, function ($value) {
-                            return !empty(trim($value));
-                        });
-                        $valuesStringvalues_nombre_columnas = '"' . implode('", "', $values_nombre_columnas) . '"';
+                    // Separar y limpiar las columnas originales
+                    $values_nombre_columnas = explode(',', $nombre_columnas);
+                    $values_nombre_columnas = array_filter($values_nombre_columnas, function ($value) {
+                        return !empty(trim($value));
+                    });
+                    
+                    // Separar y limpiar los nuevos nombres de columnas
+                    $values_nuevo_nombre_columnas = explode(',', $nuevo_nombre_columnas);
+                    $values_nuevo_nombre_columnas = array_filter($values_nuevo_nombre_columnas, function ($value) {
+                        return !empty(trim($value));
+                    });
 
+                    // Asegurarse de que ambas matrices tengan la misma cantidad de elementos
+                    if (count($values_nombre_columnas) === count($values_nuevo_nombre_columnas)) {
+                       
+                        foreach ($values_nombre_columnas as $index => $columnNombre) {
+                            $columnNuevoNombre = $values_nuevo_nombre_columnas[$index];
 
-                        $values_nuevo_nombre_columnas = explode(',', $nuevo_nombre_columnas);
-                        $values_nuevo_nombre_columnas = array_filter($values_nuevo_nombre_columnas, function ($value) {
-                            return !empty(trim($value));
-                        });
-                        $valuesStringvalues_nuevo_nombre_columnas = '"' . implode('", "', $values_nuevo_nombre_columnas) . '"';
+                            $columnNombreColumna = $columnNombre;
+                            $columnNuevoNombreColumna = $columnNuevoNombre;
 
-                        $controllerContent .= "
-                        \$valuesArrayNombreColumnas = array({$valuesStringvalues_nombre_columnas});
-                        \$valuesArrayNuevoNombreColumnas = array({$valuesStringvalues_nuevo_nombre_columnas});
-
-                        foreach (\$valuesArrayNombreColumnas as \$columnNombre) {
-                            \$columnNombreColumna = ucfirst(str_replace('_', ' ', \$columnNombre));
-
-                            foreach (\$valuesArrayNuevoNombreColumnas as \$columnNuevoNombre) {
-                                \$columnNuevoNombreColumna = ucfirst(str_replace('_', ' ', \$columnNuevoNombre));
-
+                            $controllerContent .= "
                                 \$artify->colRename(\"{$columnNombreColumna}\", \"{$columnNuevoNombreColumna}\");
-                            }
+                            ";
                         }
-                    ";
+                    }
                 }
 
         if ($template_html == "Si") {
