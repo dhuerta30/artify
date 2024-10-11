@@ -581,13 +581,13 @@ class HomeController
 		<div class="card-body bg-light">
 
 		<ul class="nav nav-pills flex-column flex-sm-row" id="myTab" role="tablist">
-			<li class="nav-item" role="presentation">
+			<li class="nav-item border-0" role="presentation">
 				<a class="nav-link active" id="modulos-tab" data-toggle="tab" href="#modulos" role="tab" aria-controls="modulos" aria-selected="true">Generador de Módulos</a>
 			</li>
-			<li class="nav-item" role="presentation">
+			<li class="nav-item border-0" role="presentation">
 				<a class="nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="pdf" aria-selected="false">Generador de PDF</a>
 			</li>
-			 <li class="nav-item" role="presentation">
+			 <li class="nav-item border-0" role="presentation">
 				<a class="nav-link" id="Api-tab" data-toggle="tab" href="#Api" role="tab" aria-controls="Api" aria-selected="false">Generador de Api</a>
 			</li>
 		</ul>
@@ -657,13 +657,13 @@ class HomeController
 					<div class="row">
 						<div class="col-md-12">
 							<ul class="nav nav-pills flex-column flex-sm-row" id="myTab" role="tablist">
-								<li class="nav-item" role="presentation">
+								<li class="nav-item border-0" role="presentation">
 									<a class="nav-link active" id="filtro-tab" data-toggle="tab" href="#filtro" role="tab" aria-controls="filtro" aria-selected="true">Filtro de Búsqueda</a>
 								</li>
-								<li class="nav-item" role="presentation">
+								<li class="nav-item border-0" role="presentation">
 									<a class="nav-link" id="accionesgrilla-tab" data-toggle="tab" href="#accionesgrilla" role="tab" aria-controls="accionesgrilla" aria-selected="false">Acciones Grilla</a>
 								</li>
-								<li class="nav-item" role="presentation">
+								<li class="nav-item border-0" role="presentation">
 									<a class="nav-link" id="camposformularios-tab" data-toggle="tab" href="#camposformularios" role="tab" aria-controls="camposformularios" aria-selected="false">Campos Formularios</a>
 								</li>
 							</ul>
@@ -1676,7 +1676,7 @@ class HomeController
 		<div class="card-body bg-light">
 
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item" role="presentation">
+				<li class="nav-item border-0" role="presentation">
 					<a class="nav-link active" id="Apiconfig-tab" data-toggle="tab" href="#Apiconfig" role="tab" aria-controls="Apiconfig" aria-selected="false">Configuración de API</a>
 				</li>
 			</ul>
