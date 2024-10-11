@@ -629,12 +629,20 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
-						<div class="col-md-12">
+						<div class="col-md-6">
 							<div class="form-group">
 								<label class="form-label">Nombre del Controlador:</label>
 								{controller_name}
 								<p class="artify_help_block help-block form-text with-errors"></p>
 								<p>Cambie por su controlador o utilice el actual</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="form-label">Nombre de La Vista:</label>
+								{name_view}
+								<p class="artify_help_block help-block form-text with-errors"></p>
+								<p>Cambie por su vista o utilice la actual</p>
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -848,6 +856,43 @@ class HomeController
 									</div>
 								</div>
 
+								<div class="row pt-4">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Activar Edición en Línea:</label>
+											{activar_edicion_en_linea}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<!--<div class="col-md-12">
+										<div class="form-group">
+											<p class="text-center fwb">Renombrar columnas Grilla</p>
+										</div>
+									</div>-->
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Nombre Columnas:</label>
+											{nombre_columnas}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Nuevo Nombre Columnas:</label>
+											{nuevo_nombre_columnas}
+											<p style="font-size: 14px;">Escriba y presione enter para agregar los nuevos nombres</p>
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Activar Union Interna:</label>
+											{activar_union_interna}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
 							</div>
 							<div class="tab-pane fade pb-3" id="camposformularios" role="tabpanel" aria-labelledby="camposformularios-tab">
 
@@ -923,20 +968,32 @@ class HomeController
 											<p class="artify_help_block help-block form-text with-errors"></p>
 										</div>
 									</div>
+									<!--<div class="col-md-12">
+										<div class="form-group">
+											<p class="text-center fwb">Renombrar Campos Formularios</p>
+										</div>
+									</div>-->
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Nombre Campos:</label>
+											{nombre_campos}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Nuevo Nombre Campos:</label>
+											{nuevo_nombre_campos}
+											<p style="font-size:14px;">Escriba y presione enter para agregar los nuevos nombres</p>
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
 								</div>
 
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Nombre de La Vista:</label>
-								{name_view}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-								<p>Cambie por su vista o utilice la actual</p>
-							</div>
-						</div>
 						<div class="col-md-12 d-none">
 							<div class="form-group">
 								<label class="form-label">Agregar Al Menú Principal:</label>
@@ -944,15 +1001,7 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
-						
 					</div>
-					<div class="row">
-						
-						
-			
-					</div>
-					
-					
 					<div class="row mt-3">
 						
 						<div class="col-md-3">
@@ -962,78 +1011,6 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
-
-						<div class="col-md-3">
-							
-
-							<div class="row mt-customs no-gutters">
-								<div class="col-md-12">
-									<div class="form-group">
-										<p class="text-center fwb">Renombrar columnas Grilla</p>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="form-label">Nombre Columnas:</label>
-										{nombre_columnas}
-										<p class="artify_help_block help-block form-text with-errors"></p>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="form-label">Nuevo Nombre Columnas:</label>
-										{nuevo_nombre_columnas}
-										<p style="font-size: 14px;">Escriba y presione enter para agregar los nuevos nombres</p>
-										<p class="artify_help_block help-block form-text with-errors"></p>
-									</div>
-								</div>
-							</div>
-
-						</div>
-						<div class="col-md-3">
-
-							<div class="form-group">
-								<label class="form-label">Activar Union Interna:</label>
-								{activar_union_interna}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-							
-							<div class="row mt-custom no-gutters">
-								<div class="col-md-12">
-									<div class="form-group">
-										<p class="text-center fwb">Renombrar Campos Formularios</p>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="form-label">Nombre Campos:</label>
-										{nombre_campos}
-										<p class="artify_help_block help-block form-text with-errors"></p>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="form-label">Nuevo Nombre Campos:</label>
-										{nuevo_nombre_campos}
-										<p style="font-size:14px;">Escriba y presione enter para agregar los nuevos nombres</p>
-										<p class="artify_help_block help-block form-text with-errors"></p>
-									</div>
-								</div>
-							</div>
-						
-						</div>
-					</div>
-
-					<div class="row mt-3">
-
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Activar Edición en Línea:</label>
-								{activar_edicion_en_linea}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-
 					</div>
 
 					<div class="row">
