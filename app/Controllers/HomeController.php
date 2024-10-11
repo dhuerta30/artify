@@ -734,7 +734,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Campos a Mostrar en el buscador:</label>
 												{mostrar_campos_busqueda}
-												<span>seleccione la tabla para cargar estos campos</span>
+												<span style="font-size: 14px;">seleccione la tabla para cargar estos campos</span>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -742,7 +742,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Columnas a Mostrar en la Grilla:</label>
 												{mostrar_columnas_grilla}
-												<span>seleccione la tabla para cargar estas columnas</span>
+												<span style="font-size: 14px;">seleccione la tabla para cargar estas columnas</span>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -901,7 +901,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Campos a Mostrar en el formulario Insertar:</label>
 												{mostrar_campos_formulario}
-												<span>seleccione la tabla para cargar estos campos</span>
+												<span style="font-size: 14px;">seleccione la tabla para cargar estos campos</span>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -916,7 +916,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Campos a Mostrar en el formulario Editar:</label>
 												{mostrar_campos_formulario_editar}
-												<span>seleccione la tabla para cargar estos campos</span>
+												<span style="font-size: 14px;">seleccione la tabla para cargar estos campos</span>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
