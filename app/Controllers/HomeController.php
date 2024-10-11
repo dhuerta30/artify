@@ -580,7 +580,7 @@ class HomeController
 		</div>
 		<div class="card-body bg-light">
 
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<ul class="nav nav-pills flex-column flex-sm-row" id="myTab" role="tablist">
 			<li class="nav-item" role="presentation">
 				<a class="nav-link active" id="modulos-tab" data-toggle="tab" href="#modulos" role="tab" aria-controls="modulos" aria-selected="true">Generador de Módulos</a>
 			</li>
@@ -656,7 +656,7 @@ class HomeController
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<ul class="nav nav-pills flex-column flex-sm-row" id="myTab" role="tablist">
 								<li class="nav-item" role="presentation">
 									<a class="nav-link active" id="filtro-tab" data-toggle="tab" href="#filtro" role="tab" aria-controls="filtro" aria-selected="true">Filtro de Búsqueda</a>
 								</li>
