@@ -1549,6 +1549,7 @@ class HomeController
 		$artify->fieldCssClass("ocultar_id_tabla", array("ocultar_id_tabla"));
 		$artify->fieldCssClass("tipo_de_filtro", array("tipo_de_filtro"));
 		$artify->fieldCssClass("cantidad_campos_a_mostrar_plantilla_html", array("cantidad_campos_a_mostrar_plantilla_html"));
+		$artify->fieldCssClass("template_fields", array("template_fields"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
