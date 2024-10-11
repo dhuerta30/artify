@@ -1770,18 +1770,18 @@ class HomeController
 		
 		$tablas->fieldTypes("tipo", "select");
 		$tablas->fieldDataBinding("tipo", array(
-			"Entero" => "Entero (Un número sin decimales)",
-			"Caracteres" => "Caracteres (Una cadena de letras o caracteres)",
-			"Texto" => "Texto (Un bloque de texto más largo)",
-			"Fecha" => "Fecha (Una fecha en formato de calendario)",
-			"Número Decimal" => "Número Decimal (Un número con decimales)",
-			"Hora" => "Hora (Una hora del día)",
-			"Booleano" => "Booleano (Verdadero o falso)"
+			"Entero" => "Entero",
+			"Caracteres" => "Caracteres",
+			"Texto" => "Texto",
+			"Fecha" => "Fecha",
+			"Número Decimal" => "Número Decimal",
+			"Hora" => "Hora",
+			"Booleano" => "Verdadero o falso"
 		), "", "","array");
 
 		$tablas->fieldTypes("indice", "select");
 		$tablas->fieldDataBinding("indice", array(
-			"Primario" => "Primario (No puede haber duplicados y no puede ser nulo)",
+			"Primario" => "Primario",
 			"Sin Indice" => "Sin Indice"
 		), "", "","array");
 
