@@ -42,7 +42,7 @@ foreach ($data as $rows) {
 
 <style>
 .form-control {
-    min-width: 200px;
+    min-width: 100px;
 }
 </style>
 
