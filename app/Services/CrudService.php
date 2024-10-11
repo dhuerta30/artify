@@ -1007,12 +1007,21 @@ class CrudService
             "; 
         }
 
+        if($totalRecordsInfo == "Si"){
+            $controllerContent .= "
+                \$artify->setSettings('totalRecordsInfo', true);
+            ";
+        } else {
+            $controllerContent .= "
+                \$artify->setSettings('totalRecordsInfo', false);
+            "; 
+        }
+
         $controllerContent .= "
                 \$artify->recordsPerPage({$cantidad_de_registros_por_pagina});
             "; 
 
         $controllerContent .= "
-            \$artify->setSettings('totalRecordsInfo', true);
             \$artify->setSettings('template', 'template_{$nameview}');
             \$render = \$artify->dbTable('{$tableName}')->render();
 
