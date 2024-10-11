@@ -645,6 +645,10 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         tipoSQL += `DATE`;
                     }
 
+                    if (tipoCampo === "Texto") {
+                        tipoSQL += `TEXT`;
+                    }
+
                     if (valorNulo === "No") {
                         valorSQL += `NOT NULL`;
                     } else {
