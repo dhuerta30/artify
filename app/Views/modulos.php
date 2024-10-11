@@ -16,6 +16,10 @@
     margin-top: 55px;
 }
 
+.bootstrap-tagsinput input {
+    width: 100%!important;
+}
+
 .mt-custom {
     margin-top: 44px;
 }
@@ -198,6 +202,23 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         $('.tipo_de_filtro').tagsinput({
             allowDuplicates: true
+        });
+
+        var textosPermitidos = ['radio', 'dropdown', 'date', 'text'];
+
+        $('.tipo_de_filtro').on('beforeItemAdd', function(event) {
+            var texto = event.item;
+
+            // Si el texto no está en la lista de permitidos, cancelamos la adición
+            if (textosPermitidos.indexOf(texto) === -1) {
+                event.cancel = true;
+                Swal.fire({
+                    title: "Lo siento",
+                    text: 'Este texto no está permitido.',
+                    confirmButtonText: "Aceptar",
+                    icon: "error"
+                });
+            }
         });
 
         $(".regresar_tablas").click(function(){
