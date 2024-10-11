@@ -1072,6 +1072,18 @@ class CrudService
         <?php require "layouts/footer.php"; ?>
         <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
         <script>
+            $(document).on("artify_after_ajax_action", function(event, obj, data){
+                var dataAction = obj.getAttribute(\'data-action\');
+                var dataId = obj.getAttribute(\'data-id\');
+
+                if(dataAction == "add"){
+                
+                }
+
+                if(dataAction == "edit"){
+                
+                }
+            });
             $(document).on("artify_after_submission", function(event, obj, data) {
                 let json = JSON.parse(data);
 
