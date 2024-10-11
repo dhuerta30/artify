@@ -366,6 +366,16 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
+        $(".template_fields").change(function() {
+            var template_fields = $(this).val();
+
+            if(template_fields == "Si"){
+                $(".cantidad_campos_a_mostrar_plantilla_html").removeAttr("disabled", "disabled");
+            } else {
+                $(".cantidad_campos_a_mostrar_plantilla_html").attr("disabled", "disabled");
+            }
+        });
+        
         $(".activar_recaptcha").change(function() {
             var val = $(this).val();
 
