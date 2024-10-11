@@ -609,7 +609,7 @@ class HomeController
 								<label class="form-label">Nombre Tabla Base de Datos:</label>
 								{tabla}
 								<p class="artify_help_block help-block form-text with-errors"></p>
-								<p>Si No posee tablas creelas en la Pestaña Crear Tablas y luego seleccionela acá</p>
+								<p style="font-size:14px;">Si No posee tablas creelas en la Pestaña Crear Tablas y luego seleccionela acá</p>
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -617,7 +617,7 @@ class HomeController
 								<label class="form-label">Nombre Módulo:</label>
 								{nombre_modulo}
 								<p class="artify_help_block help-block form-text with-errors"></p>
-								<p>Opcional si lo deja vacio tomará el nombre de la tabla de la base de datos</p>
+								<p style="font-size:14px;">Opcional si lo deja vacio tomará el nombre de la tabla de la base de datos</p>
 							</div>
 						</div>
 					</div>
@@ -634,7 +634,7 @@ class HomeController
 								<label class="form-label">Nombre del Controlador:</label>
 								{controller_name}
 								<p class="artify_help_block help-block form-text with-errors"></p>
-								<p>Cambie por su controlador o utilice el actual</p>
+								<p style="font-size:14px;">Cambie por su controlador o utilice el actual</p>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -642,7 +642,7 @@ class HomeController
 								<label class="form-label">Nombre de La Vista:</label>
 								{name_view}
 								<p class="artify_help_block help-block form-text with-errors"></p>
-								<p>Cambie por su vista o utilice la actual</p>
+								<p style="font-size:14px;">Cambie por su vista o utilice la actual</p>
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -650,7 +650,7 @@ class HomeController
 								<label class="form-label">Consulta DB:</label>
 								{query}
 								<p class="artify_help_block help-block form-text with-errors"></p>
-								<p>Cambie por su consulta o utilice la actual</p>
+								<p style="font-size:14px;">Cambie por su consulta o utilice la actual</p>
 							</div>
 						</div>
 					</div>
