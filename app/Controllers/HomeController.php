@@ -686,7 +686,7 @@ class HomeController
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-3 esconder_tipo_filtro d-none">
 											<div class="form-group">
 												<label class="form-label">Tipo de Filtro:</label>
 												{tipo_de_filtro}
