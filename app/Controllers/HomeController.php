@@ -1554,6 +1554,7 @@ class HomeController
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
 
+		$artify->fieldAttributes("id_tabla", array("readonly" => "true"));
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 		$artify->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 		$artify->fieldAttributes("consulta_crear_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
