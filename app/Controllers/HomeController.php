@@ -817,6 +817,37 @@ class HomeController
 									</div>
 								</div>
 
+								<div class="row pt-4">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Activar Numeración Columnas:</label>
+											{activar_numeracion_columnas}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Botones de Acción:</label>
+											{buttons_actions}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Ordenar Grilla por:</label>
+											{ordenar_grilla_por}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Tipo de Orden Grilla:</label>
+											{tipo_orden}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
 							</div>
 							<div class="tab-pane fade pb-3" id="camposformularios" role="tabpanel" aria-labelledby="camposformularios-tab">
 
@@ -884,6 +915,16 @@ class HomeController
 									</div>
 								</div>
 
+								<div class="row pt-4">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Usar Plantilla Formulario HTML:</label>
+											{template_fields}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
@@ -900,13 +941,6 @@ class HomeController
 							<div class="form-group">
 								<label class="form-label">Agregar Al Menú Principal:</label>
 								{add_menu}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Usar Plantilla Formulario HTML:</label>
-								{template_fields}
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
@@ -927,44 +961,10 @@ class HomeController
 								{activate_nested_table}
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
-
-							
-
-							
-
-							
-
-							<div class="form-group">
-								<label class="form-label">Activar Numeración Columnas:</label>
-								{activar_numeracion_columnas}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-							<div class="row mt-5">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="form-label">Ordenar Grilla por:</label>
-										{ordenar_grilla_por}
-										<p class="artify_help_block help-block form-text with-errors"></p>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="form-label">Tipo de Orden Grilla:</label>
-										{tipo_orden}
-										<p class="artify_help_block help-block form-text with-errors"></p>
-									</div>
-								</div>
-							</div>
-
 						</div>
 
 						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Botones de Acción:</label>
-								{buttons_actions}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
+							
 
 							<div class="row mt-customs no-gutters">
 								<div class="col-md-12">
