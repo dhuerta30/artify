@@ -786,10 +786,41 @@ class HomeController
 									</div>
 								</div>
 
+								<div class="row pt-4">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Mostrar Registros por Página:</label>
+											{activar_registros_por_pagina}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Cantidad de Registros por Página:</label>
+											{cantidad_de_registros_por_pagina}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Botones de Exportación Grilla:</label>
+											{actions_buttons_grid}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Posicionarse en la Página N°:</label>
+											{posicionarse_en_la_pagina}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
 							</div>
 							<div class="tab-pane fade pb-3" id="camposformularios" role="tabpanel" aria-labelledby="camposformularios-tab">
 
-								<div class="row">
+								<div class="row pt-4">
 									<div class="col-md-3">
 										<div class="form-group">
 											<label class="form-label">Campos a Mostrar en el formulario Insertar:</label>
@@ -802,6 +833,52 @@ class HomeController
 										<div class="form-group">
 											<label class="form-label">Encriptar Campos del Formulario:</label>
 											{encryption}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Campos a Mostrar en el formulario Editar:</label>
+											{mostrar_campos_formulario_editar}
+											<span>seleccione la tabla para cargar estos campos</span>
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Campos Requeridos de formulario:</label>
+											{campos_requeridos}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row pt-4">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Activar Recaptcha:</label>
+											{activar_recaptcha}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Site Key Recaptcha:</label>
+											{sitekey_recaptcha}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Site Secret Recaptcha:</label>
+											{sitesecret_repatcha}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Ocultar Id Tabla en Formularios</label>
+											{ocultar_id_tabla}
 											<p class="artify_help_block help-block form-text with-errors"></p>
 										</div>
 									</div>
@@ -841,59 +918,9 @@ class HomeController
 			
 					</div>
 					
+					
 					<div class="row mt-3">
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Campos a Mostrar en el formulario Editar:</label>
-								{mostrar_campos_formulario_editar}
-								<span>seleccione la tabla para cargar estos campos</span>
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Campos Requeridos de formulario:</label>
-								{campos_requeridos}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-					</div>
-					<div class="row mt-3">
-						<div class="col-md-3">
-
-				
-
-							<div class="form-group">
-								<label class="form-label">Mostrar Registros por Página:</label>
-								{activar_registros_por_pagina}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-							<div class="form-group">
-								<label class="form-label">Cantidad de Registros por Página:</label>
-								{cantidad_de_registros_por_pagina}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-							<div class="form-group">
-								<label class="form-label">Botones de Exportación Grilla:</label>
-								{actions_buttons_grid}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-							<div class="form-group">
-								<label class="form-label">Posicionarse en la Página N°:</label>
-								{posicionarse_en_la_pagina}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-							<div class="form-group">
-								<label class="form-label">Ocultar Id Tabla en Formularios</label>
-								{ocultar_id_tabla}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-						</div>
+						
 						<div class="col-md-3">
 							<div class="form-group tabla_anidada d-none">
 								<label class="form-label">Activar Tabla Anidada:</label>
@@ -901,23 +928,11 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 
-							<div class="form-group">
-								<label class="form-label">Activar Recaptcha:</label>
-								{activar_recaptcha}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
+							
 
-							<div class="form-group">
-								<label class="form-label">Site Key Recaptcha:</label>
-								{sitekey_recaptcha}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
+							
 
-							<div class="form-group">
-								<label class="form-label">Site Secret Recaptcha:</label>
-								{sitesecret_repatcha}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
+							
 
 							<div class="form-group">
 								<label class="form-label">Activar Numeración Columnas:</label>
