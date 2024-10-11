@@ -654,342 +654,343 @@ class HomeController
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<a class="nav-link active" id="filtro-tab" data-toggle="tab" href="#filtro" role="tab" aria-controls="filtro" aria-selected="true">Filtro de Búsqueda</a>
+								</li>
+								<li class="nav-item" role="presentation">
+									<a class="nav-link" id="accionesgrilla-tab" data-toggle="tab" href="#accionesgrilla" role="tab" aria-controls="accionesgrilla" aria-selected="false">Acciones Grilla</a>
+								</li>
+								<li class="nav-item" role="presentation">
+									<a class="nav-link" id="camposformularios-tab" data-toggle="tab" href="#camposformularios" role="tab" aria-controls="camposformularios" aria-selected="false">Campos Formularios</a>
+								</li>
+							</ul>
 
-					<div class="col-md-12">
-						<ul class="nav nav-tabs" id="myTab" role="tablist">
-							<li class="nav-item" role="presentation">
-								<a class="nav-link active" id="filtro-tab" data-toggle="tab" href="#filtro" role="tab" aria-controls="filtro" aria-selected="true">Filtro de Búsqueda</a>
-							</li>
-							<li class="nav-item" role="presentation">
-								<a class="nav-link" id="accionesgrilla-tab" data-toggle="tab" href="#accionesgrilla" role="tab" aria-controls="accionesgrilla" aria-selected="false">Acciones Grilla</a>
-							</li>
-							<li class="nav-item" role="presentation">
-								<a class="nav-link" id="camposformularios-tab" data-toggle="tab" href="#camposformularios" role="tab" aria-controls="camposformularios" aria-selected="false">Campos Formularios</a>
-							</li>
-						</ul>
-
-						<div class="tab-content" id="myTabContent">
-							<div class="tab-pane fade show active pb-3" id="filtro" role="tabpanel" aria-labelledby="filtro-tab">
-							
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Activar Filtro de Busqueda:</label>
-											{active_filter}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Campos a Mostrar Filtro:</label>
-											{mostrar_campos_filtro}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Tipo de Filtro:</label>
-											{tipo_de_filtro}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-								</div>
-
-							</div>
-							<div class="tab-pane fade" id="accionesgrilla" role="tabpanel" aria-labelledby="accionesgrilla-tab">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active pb-3" id="filtro" role="tabpanel" aria-labelledby="filtro-tab">
 								
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Activar Búsqueda:</label>
-											{active_search}
-											<p class="artify_help_block help-block form-text with-errors"></p>
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar Filtro de Busqueda:</label>
+												{active_filter}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Campos a Mostrar Filtro:</label>
+												{mostrar_campos_filtro}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Tipo de Filtro:</label>
+												{tipo_de_filtro}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Activar Popup:</label>
-											{active_popup}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Activar Eliminación Masiva:</label>
-											{activate_deleteMultipleBtn}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Botón Agregar:</label>
-											{button_add}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
+
 								</div>
+								<div class="tab-pane fade" id="accionesgrilla" role="tabpanel" aria-labelledby="accionesgrilla-tab">
+									
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar Búsqueda:</label>
+												{active_search}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar Popup:</label>
+												{active_popup}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar Eliminación Masiva:</label>
+												{activate_deleteMultipleBtn}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Botón Agregar:</label>
+												{button_add}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+									</div>
 
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Campos a Mostrar en el buscador:</label>
-											{mostrar_campos_busqueda}
-											<span>seleccione la tabla para cargar estos campos</span>
-											<p class="artify_help_block help-block form-text with-errors"></p>
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Campos a Mostrar en el buscador:</label>
+												{mostrar_campos_busqueda}
+												<span>seleccione la tabla para cargar estos campos</span>
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Columnas a Mostrar en la Grilla:</label>
+												{mostrar_columnas_grilla}
+												<span>seleccione la tabla para cargar estas columnas</span>
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Posición Botones de Acción Grilla:</label>
+												{posicion_botones_accion_grilla}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Mostrar Columna Acciones Grilla:</label>
+												{mostrar_columna_acciones_grilla}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Columnas a Mostrar en la Grilla:</label>
-											{mostrar_columnas_grilla}
-											<span>seleccione la tabla para cargar estas columnas</span>
-											<p class="artify_help_block help-block form-text with-errors"></p>
+
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Botón Refrescar Grilla:</label>
+												{refrescar_grilla}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Clonar Filas:</label>
+												{clone_row}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar funciones de Filtro y Búsqueda:</label>
+												{function_filter_and_search}
+												<span style="font-size: 14px;">Si Escoje la Opción "No" Deberá utilizar su propia lógica de Filtro y Búsqueda</span>
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Mostrar Paginación:</label>
+												{mostrar_paginacion}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Posición Botones de Acción Grilla:</label>
-											{posicion_botones_accion_grilla}
-											<p class="artify_help_block help-block form-text with-errors"></p>
+
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Mostrar Registros por Página:</label>
+												{activar_registros_por_pagina}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Cantidad de Registros por Página:</label>
+												{cantidad_de_registros_por_pagina}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Botones de Exportación Grilla:</label>
+												{actions_buttons_grid}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Posicionarse en la Página N°:</label>
+												{posicionarse_en_la_pagina}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Mostrar Columna Acciones Grilla:</label>
-											{mostrar_columna_acciones_grilla}
-											<p class="artify_help_block help-block form-text with-errors"></p>
+
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar Numeración Columnas:</label>
+												{activar_numeracion_columnas}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Botones de Acción:</label>
+												{buttons_actions}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Ordenar Grilla por:</label>
+												{ordenar_grilla_por}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Tipo de Orden Grilla:</label>
+												{tipo_orden}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
 										</div>
 									</div>
+
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar Edición en Línea:</label>
+												{activar_edicion_en_linea}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<!--<div class="col-md-12">
+											<div class="form-group">
+												<p class="text-center fwb">Renombrar columnas Grilla</p>
+											</div>
+										</div>-->
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Nombre Columnas:</label>
+												{nombre_columnas}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Nuevo Nombre Columnas:</label>
+												{nuevo_nombre_columnas}
+												<p style="font-size: 14px;">Escriba y presione enter para agregar los nuevos nombres</p>
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar Union Interna:</label>
+												{activar_union_interna}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+									</div>
+
 								</div>
+								<div class="tab-pane fade pb-3" id="camposformularios" role="tabpanel" aria-labelledby="camposformularios-tab">
 
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Botón Refrescar Grilla:</label>
-											{refrescar_grilla}
-											<p class="artify_help_block help-block form-text with-errors"></p>
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Campos a Mostrar en el formulario Insertar:</label>
+												{mostrar_campos_formulario}
+												<span>seleccione la tabla para cargar estos campos</span>
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Encriptar Campos del Formulario:</label>
+												{encryption}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Campos a Mostrar en el formulario Editar:</label>
+												{mostrar_campos_formulario_editar}
+												<span>seleccione la tabla para cargar estos campos</span>
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Campos Requeridos de formulario:</label>
+												{campos_requeridos}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Clonar Filas:</label>
-											{clone_row}
-											<p class="artify_help_block help-block form-text with-errors"></p>
+
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar Recaptcha:</label>
+												{activar_recaptcha}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Site Key Recaptcha:</label>
+												{sitekey_recaptcha}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Site Secret Recaptcha:</label>
+												{sitesecret_repatcha}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Ocultar Id Tabla en Formularios</label>
+												{ocultar_id_tabla}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Activar funciones de Filtro y Búsqueda:</label>
-											{function_filter_and_search}
-											<span style="font-size: 14px;">Si Escoje la Opción "No" Deberá utilizar su propia lógica de Filtro y Búsqueda</span>
-											<p class="artify_help_block help-block form-text with-errors"></p>
+
+									<div class="row pt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Usar Plantilla Formulario HTML:</label>
+												{template_fields}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<!--<div class="col-md-12">
+											<div class="form-group">
+												<p class="text-center fwb">Renombrar Campos Formularios</p>
+											</div>
+										</div>-->
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Nombre Campos:</label>
+												{nombre_campos}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Nuevo Nombre Campos:</label>
+												{nuevo_nombre_campos}
+												<p style="font-size:14px;">Escriba y presione enter para agregar los nuevos nombres</p>
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Mostrar Paginación:</label>
-											{mostrar_paginacion}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
+
 								</div>
-
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Mostrar Registros por Página:</label>
-											{activar_registros_por_pagina}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Cantidad de Registros por Página:</label>
-											{cantidad_de_registros_por_pagina}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Botones de Exportación Grilla:</label>
-											{actions_buttons_grid}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Posicionarse en la Página N°:</label>
-											{posicionarse_en_la_pagina}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-								</div>
-
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Activar Numeración Columnas:</label>
-											{activar_numeracion_columnas}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Botones de Acción:</label>
-											{buttons_actions}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Ordenar Grilla por:</label>
-											{ordenar_grilla_por}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Tipo de Orden Grilla:</label>
-											{tipo_orden}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-								</div>
-
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Activar Edición en Línea:</label>
-											{activar_edicion_en_linea}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<!--<div class="col-md-12">
-										<div class="form-group">
-											<p class="text-center fwb">Renombrar columnas Grilla</p>
-										</div>
-									</div>-->
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Nombre Columnas:</label>
-											{nombre_columnas}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Nuevo Nombre Columnas:</label>
-											{nuevo_nombre_columnas}
-											<p style="font-size: 14px;">Escriba y presione enter para agregar los nuevos nombres</p>
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Activar Union Interna:</label>
-											{activar_union_interna}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-								</div>
-
-							</div>
-							<div class="tab-pane fade pb-3" id="camposformularios" role="tabpanel" aria-labelledby="camposformularios-tab">
-
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Campos a Mostrar en el formulario Insertar:</label>
-											{mostrar_campos_formulario}
-											<span>seleccione la tabla para cargar estos campos</span>
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Encriptar Campos del Formulario:</label>
-											{encryption}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Campos a Mostrar en el formulario Editar:</label>
-											{mostrar_campos_formulario_editar}
-											<span>seleccione la tabla para cargar estos campos</span>
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Campos Requeridos de formulario:</label>
-											{campos_requeridos}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-								</div>
-
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Activar Recaptcha:</label>
-											{activar_recaptcha}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Site Key Recaptcha:</label>
-											{sitekey_recaptcha}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Site Secret Recaptcha:</label>
-											{sitesecret_repatcha}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Ocultar Id Tabla en Formularios</label>
-											{ocultar_id_tabla}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-								</div>
-
-								<div class="row pt-4">
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Usar Plantilla Formulario HTML:</label>
-											{template_fields}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<!--<div class="col-md-12">
-										<div class="form-group">
-											<p class="text-center fwb">Renombrar Campos Formularios</p>
-										</div>
-									</div>-->
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Nombre Campos:</label>
-											{nombre_campos}
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="form-label">Nuevo Nombre Campos:</label>
-											{nuevo_nombre_campos}
-											<p style="font-size:14px;">Escriba y presione enter para agregar los nuevos nombres</p>
-											<p class="artify_help_block help-block form-text with-errors"></p>
-										</div>
-									</div>
-								</div>
-
 							</div>
 						</div>
 					</div>
