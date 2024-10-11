@@ -691,6 +691,10 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         tipoSQL += `TEXT`;
                     }
 
+                    if (tipoCampo === "Hora") {
+                        tipoSQL += `TIME`;
+                    }
+
                     if (valorNulo === "No") {
                         valorSQL += `NOT NULL`;
                     } else {
