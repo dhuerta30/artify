@@ -893,7 +893,7 @@ class HomeController
 										</div>
 									</div>
 
-									<div class="row pt-3">
+									<div class="row pt-4">
 										<div class="col-md-3">
 											<div class="form-group">
 												<label class="form-label">Mostrar Información de Cantidad de Registros por Página:</label>
