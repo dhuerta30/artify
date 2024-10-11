@@ -690,6 +690,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Tipo de Filtro:</label>
 												{tipo_de_filtro}
+												<p style="font-size: 14px;">Filtros soportados: radio, dropdown, date, text</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -1406,7 +1407,7 @@ class HomeController
 
 		$artify->fieldAttributes("nuevo_nombre_columnas", array("data-role"=>"tagsinput"));
 		$artify->fieldAttributes("nuevo_nombre_campos", array("data-role"=>"tagsinput"));
-		$artify->fieldAttributes("tipo_de_filtro", array("placeholder" => "Filtros soportados radio, dropdown, date, text"));
+		//$artify->fieldAttributes("tipo_de_filtro", array("placeholder" => "Filtros soportados: radio, dropdown, date, text"));
 
 		$artify->fieldTypes("tipo_orden", "select");
 		$artify->fieldDataBinding("tipo_orden", array("ASC" => "ASC", "DESC" => "DESC"), "", "", "array");
