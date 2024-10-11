@@ -1406,7 +1406,7 @@ class HomeController
 
 		$artify->fieldAttributes("nuevo_nombre_columnas", array("data-role"=>"tagsinput"));
 		$artify->fieldAttributes("nuevo_nombre_campos", array("data-role"=>"tagsinput"));
-		$artify->fieldAttributes("tipo_de_filtro", array("placeholder" => "radio, dropdown, date, text"));
+		$artify->fieldAttributes("tipo_de_filtro", array("placeholder" => "Filtros soportados radio, dropdown, date, text"));
 
 		$artify->fieldTypes("tipo_orden", "select");
 		$artify->fieldDataBinding("tipo_orden", array("ASC" => "ASC", "DESC" => "DESC"), "", "", "array");
