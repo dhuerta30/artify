@@ -18,7 +18,7 @@ class UsuarioSubMenuModel
         $Queryfy = DB::Queryfy();
         $query = "SELECT * FROM {$this->table} 
             INNER JOIN submenu ON submenu.id_submenu = {$this->table}.id_submenu 
-            WHERE {$this->table}.id_menu = {$id_menu} AND id_usuario = {$id_usuario}";
+            WHERE {$this->table}.id_menu = {$id_menu} AND id_usuario = {$id_usuario} ORDER BY orden_submenu asc";
         $data = $Queryfy->DBQuery($query);
         return $data;
     }
