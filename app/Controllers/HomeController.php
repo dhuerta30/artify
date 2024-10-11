@@ -1369,6 +1369,7 @@ class HomeController
 		$artify->fieldDataAttr("sitekey_recaptcha", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("sitesecret_repatcha", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("mostrar_campos_filtro", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("cantidad_campos_a_mostrar_plantilla_html", array("disabled" => "disabled"));
 		
 		$artify->fieldDataAttr("mostrar_campos_busqueda", array("placeholder" => "campo1/campo2/campo3/etc"));
 		$artify->fieldDataAttr("mostrar_columnas_grilla", array("placeholder" => "columna1/columna2/columna3/etc"));
@@ -1547,6 +1548,7 @@ class HomeController
 		$artify->fieldCssClass("nuevo_nombre_campos", array("tagsinput"));
 		$artify->fieldCssClass("ocultar_id_tabla", array("ocultar_id_tabla"));
 		$artify->fieldCssClass("tipo_de_filtro", array("tipo_de_filtro"));
+		$artify->fieldCssClass("cantidad_campos_a_mostrar_plantilla_html", array("cantidad_campos_a_mostrar_plantilla_html"));
 
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
