@@ -646,6 +646,170 @@ class HomeController
 							</div>
 						</div>
 					</div>
+
+					<div class="col-md-12">
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item" role="presentation">
+								<a class="nav-link active" id="filtro-tab" data-toggle="tab" href="#filtro" role="tab" aria-controls="filtro" aria-selected="true">Filtro de Búsqueda</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" id="accionesgrilla-tab" data-toggle="tab" href="#accionesgrilla" role="tab" aria-controls="accionesgrilla" aria-selected="false">Acciones Grilla</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" id="camposformularios-tab" data-toggle="tab" href="#camposformularios" role="tab" aria-controls="camposformularios" aria-selected="false">Campos Formularios</a>
+							</li>
+						</ul>
+
+						<div class="tab-content" id="myTabContent">
+							<div class="tab-pane fade show active pb-3" id="filtro" role="tabpanel" aria-labelledby="filtro-tab">
+							
+								<div class="row pt-4">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Activar Filtro de Busqueda:</label>
+											{active_filter}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Campos a Mostrar Filtro:</label>
+											{mostrar_campos_filtro}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Tipo de Filtro:</label>
+											{tipo_de_filtro}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div class="tab-pane fade" id="accionesgrilla" role="tabpanel" aria-labelledby="accionesgrilla-tab">
+								
+								<div class="row pt-4">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Activar Búsqueda:</label>
+											{active_search}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Activar Popup:</label>
+											{active_popup}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Activar Eliminación Masiva:</label>
+											{activate_deleteMultipleBtn}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Botón Agregar:</label>
+											{button_add}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row pt-4">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Campos a Mostrar en el buscador:</label>
+											{mostrar_campos_busqueda}
+											<span>seleccione la tabla para cargar estos campos</span>
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Columnas a Mostrar en la Grilla:</label>
+											{mostrar_columnas_grilla}
+											<span>seleccione la tabla para cargar estas columnas</span>
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Posición Botones de Acción Grilla:</label>
+											{posicion_botones_accion_grilla}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Mostrar Columna Acciones Grilla:</label>
+											{mostrar_columna_acciones_grilla}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row pt-4">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Botón Refrescar Grilla:</label>
+											{refrescar_grilla}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Clonar Filas:</label>
+											{clone_row}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Activar funciones de Filtro y Búsqueda:</label>
+											{function_filter_and_search}
+											<span style="font-size: 14px;">Si Escoje la Opción "No" Deberá utilizar su propia lógica de Filtro y Búsqueda</span>
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Mostrar Paginación:</label>
+											{mostrar_paginacion}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div class="tab-pane fade pb-3" id="camposformularios" role="tabpanel" aria-labelledby="camposformularios-tab">
+
+								<div class="row">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Campos a Mostrar en el formulario Insertar:</label>
+											{mostrar_campos_formulario}
+											<span>seleccione la tabla para cargar estos campos</span>
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="form-label">Encriptar Campos del Formulario:</label>
+											{encryption}
+											<p class="artify_help_block help-block form-text with-errors"></p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col-md-3">
 							<div class="form-group">
@@ -669,93 +833,14 @@ class HomeController
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Activar Filtro de Busqueda:</label>
-								{active_filter}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Campos a Mostrar Filtro:</label>
-								{mostrar_campos_filtro}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
+						
 					</div>
 					<div class="row">
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Tipo de Filtro:</label>
-								{tipo_de_filtro}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
+						
+						
+			
 					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Activar Popup:</label>
-								{active_popup}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Activar Búsqueda:</label>
-								{active_search}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Activar Eliminación Masiva:</label>
-								{activate_deleteMultipleBtn}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Botón Agregar:</label>
-								{button_add}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-					</div>
-					<div class="row mt-3">
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Campos a Mostrar en el buscador:</label>
-								{mostrar_campos_busqueda}
-								<span>seleccione la tabla para cargar estos campos</span>
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Campos a Mostrar en el formulario Insertar:</label>
-								{mostrar_campos_formulario}
-								<span>seleccione la tabla para cargar estos campos</span>
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Columnas a Mostrar en la Grilla:</label>
-								{mostrar_columnas_grilla}
-								<span>seleccione la tabla para cargar estas columnas</span>
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Encriptar Campos del Formulario:</label>
-								{encryption}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-					</div>
+					
 					<div class="row mt-3">
 						<div class="col-md-3">
 							<div class="form-group">
@@ -767,22 +852,8 @@ class HomeController
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
-								<label class="form-label">Posición Botones de Acción Grilla:</label>
-								{posicion_botones_accion_grilla}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
 								<label class="form-label">Campos Requeridos de formulario:</label>
 								{campos_requeridos}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Mostrar Columna Acciones Grilla:</label>
-								{mostrar_columna_acciones_grilla}
 								<p class="artify_help_block help-block form-text with-errors"></p>
 							</div>
 						</div>
@@ -790,11 +861,7 @@ class HomeController
 					<div class="row mt-3">
 						<div class="col-md-3">
 
-							<div class="form-group">
-								<label class="form-label">Mostrar Paginación:</label>
-								{mostrar_paginacion}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
+				
 
 							<div class="form-group">
 								<label class="form-label">Mostrar Registros por Página:</label>
@@ -828,7 +895,7 @@ class HomeController
 
 						</div>
 						<div class="col-md-3">
-							<div class="form-group">
+							<div class="form-group tabla_anidada d-none">
 								<label class="form-label">Activar Tabla Anidada:</label>
 								{activate_nested_table}
 								<p class="artify_help_block help-block form-text with-errors"></p>
@@ -909,24 +976,6 @@ class HomeController
 
 						</div>
 						<div class="col-md-3">
-							<div class="form-group">
-								<label class="form-label">Botón Refrescar Grilla:</label>
-								{refrescar_grilla}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-							<div class="form-group">
-								<label class="form-label">Clonar Filas:</label>
-								{clone_row}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-							<div class="form-group">
-								<label class="form-label">Activar funciones de Filtro y Búsqueda:</label>
-								{function_filter_and_search}
-								<span style="font-size: 14px;">Si Escoje la Opción "No" Deberá utilizar su propia lógica de Filtro y Búsqueda</span>
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
 
 							<div class="form-group">
 								<label class="form-label">Activar Union Interna:</label>
@@ -1517,7 +1566,7 @@ class HomeController
 		$artify->tableHeading("Generador de Módulos");
 		
 		$artify->setSearchCols(array("posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->formFields(array("tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->formFields(array("activate_nested_table", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "buttons_actions"));
 		$artify->editFormFields(array("tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$artify->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));

@@ -557,6 +557,8 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
     if(dataAction == "edit"){
 
+        $(".tabla_anidada").removeClass("d-none");
+
         $(".regresar_tablas").click(function(){
             $('.leftjoin_tr').remove();
         });
