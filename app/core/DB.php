@@ -5,17 +5,27 @@ use Artify;
 use Docufy;
 
 class DB {
-    public static function ArtifyCrud($multi = false, $template = "", $skin = "", $settings = array())
+    public static function ArtifyCrud($multi = false, $template = "", $skin = "", $dbSettings = array(), $settings = array())
     {
         $settings["script_url"] = $_ENV['URL_ArtifyCrud'];
         $settings["uploadURL"] = $_ENV['UPLOAD_URL'];
-        $settings["downloadURL"] = $_ENV['DOWNLOAD_URL'];
-        $settings["hostname"] = $_ENV['DB_HOST'];
-        $settings["database"] = $_ENV['DB_NAME'];
-        $settings["username"] = $_ENV['DB_USER'];
-        $settings["password"] = $_ENV['DB_PASS'];
-        $settings["dbtype"] = $_ENV['DB_TYPE'];
-        $settings["characterset"] = $_ENV["CHARACTER_SET"];
+        if (!empty($dbSettings)) {
+            $settings["script_url"] = $dbSettings['script_url'];
+            $settings["hostname"] = $dbSettings['hostname'];
+            $settings["database"] = $dbSettings['database'];
+            $settings["username"] = $dbSettings['username'];
+            $settings["password"] = $dbSettings['password'];
+            $settings["dbtype"] = $dbSettings['dbtype'];
+            $settings["characterset"] = isset($dbSettings['characterset']) ? $dbSettings['characterset'] : $_ENV["CHARACTER_SET"];
+        } else {
+            $settings["downloadURL"] = $_ENV['DOWNLOAD_URL'];
+            $settings["hostname"] = $_ENV['DB_HOST'];
+            $settings["database"] = $_ENV['DB_NAME'];
+            $settings["username"] = $_ENV['DB_USER'];
+            $settings["password"] = $_ENV['DB_PASS'];
+            $settings["dbtype"] = $_ENV['DB_TYPE'];
+            $settings["characterset"] = $_ENV["CHARACTER_SET"];
+        }
 
         $artify = new Artify($multi, $template, $skin, $settings);
         return $artify;

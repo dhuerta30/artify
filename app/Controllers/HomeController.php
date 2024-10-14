@@ -1897,6 +1897,18 @@ class HomeController
 		);
 	}
 
+	public function obtener_todas_las_tablas(){
+		$request = new Request();
+
+		if ($request->getMethod() === 'POST') {
+			$artify = DB::ArtifyCrud();
+			$queryfy = $artify->getQueryfyObj();
+			$tablas = $queryfy->getAllTables();
+
+			echo json_encode(["tablas" => $tablas]);
+		}
+	}
+
 	public function obtener_columnas_tabla(){
 		$request = new Request();
 

@@ -250,6 +250,20 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
+        $(".tabla_principal_union").select2();
+        $(".tabla_secundaria_union").select2();
+
+
+        $.ajax({
+            type: "POST",
+            url: "<?=$_ENV["BASE_URL"]?>Home/obtener_todas_las_tablas",
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+            }
+        });
+
+
         $(".tabla").change(function(){
             let val = $(this).val();
 
