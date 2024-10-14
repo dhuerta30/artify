@@ -1068,6 +1068,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $tipo_de_filtro = isset($data["modulos"]["tipo_de_filtro"]) ? $data["modulos"]["tipo_de_filtro"] : null;
     $cantidad_campos_a_mostrar_plantilla_html = isset($data["modulos"]["cantidad_campos_a_mostrar_plantilla_html"]) ? $data["modulos"]["cantidad_campos_a_mostrar_plantilla_html"] : null;
     $totalRecordsInfo = $data["modulos"]["totalRecordsInfo"];
+    $area_protegida_por_login = $data["modulos"]["area_protegida_por_login"];
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1122,7 +1123,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $activar_registros_por_pagina,
             $nombre_modulo,
             $cantidad_campos_a_mostrar_plantilla_html,
-            $totalRecordsInfo
+            $totalRecordsInfo,
+            $area_protegida_por_login
         );
     } 
     
@@ -1177,7 +1179,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $nombre_campos,
             $nuevo_nombre_campos,
             $cantidad_campos_a_mostrar_plantilla_html,
-            $totalRecordsInfo
+            $totalRecordsInfo,
+            $area_protegida_por_login
         );
     }
 
@@ -1257,6 +1260,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["nuevo_nombre_campos"] = $nuevo_nombre_campos;
     $newdata["modulos"]["cantidad_campos_a_mostrar_plantilla_html"] = $cantidad_campos_a_mostrar_plantilla_html;
     $newdata["modulos"]["totalRecordsInfo"] = $totalRecordsInfo;
+    $newdata["modulos"]["area_protegida_por_login"] = $area_protegida_por_login;
 
     return $newdata;
 }

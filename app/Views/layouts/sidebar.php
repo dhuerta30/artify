@@ -26,7 +26,7 @@
 
          <?php
             $current_url = $_SERVER['REQUEST_URI'];
-            $id_sesion_usuario = $_SESSION["usuario"][0]["id"];
+            $id_sesion_usuario = isset($_SESSION["usuario"][0]["id"]) ? $_SESSION["usuario"][0]["id"] : null;
             $menu = App\Controllers\HomeController::obtener_menu_por_id_usuario($id_sesion_usuario);
             ?>
 

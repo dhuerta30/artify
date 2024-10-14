@@ -71,7 +71,8 @@ class CrudService
         $nombre_campos,
         $nuevo_nombre_campos,
         $cantidad_campos_a_mostrar_plantilla_html,
-        $totalRecordsInfo
+        $totalRecordsInfo,
+        $area_protegida_por_login
         )
     {
         if($crudType == 'SQL'){
@@ -109,7 +110,8 @@ class CrudService
                 $activar_registros_por_pagina,
                 $nombre_modulo,
                 $cantidad_campos_a_mostrar_plantilla_html,
-                $totalRecordsInfo
+                $totalRecordsInfo,
+                $area_protegida_por_login
             );
         }
 
@@ -161,7 +163,8 @@ class CrudService
                 $nombre_campos,
                 $nuevo_nombre_campos,
                 $cantidad_campos_a_mostrar_plantilla_html,
-                $totalRecordsInfo
+                $totalRecordsInfo,
+                $area_protegida_por_login
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -518,7 +521,8 @@ class CrudService
         $nombre_campos,
         $nuevo_nombre_campos,
         $cantidad_campos_a_mostrar_plantilla_html,
-        $totalRecordsInfo
+        $totalRecordsInfo,
+        $area_protegida_por_login
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
@@ -538,15 +542,21 @@ class CrudService
             public \$token;
 
             public function __construct()
-            {
-                SessionManager::startSession();
-                \$Sesusuario = SessionManager::get('usuario');
-                if (!isset(\$Sesusuario)) {
-                    Redirect::to('login/index');
-                }
-                \$this->token = Token::generateFormToken('send_message');
-            }
+            {";
 
+                if($area_protegida_por_login == "Si"){
+                    $controllerContent .= "
+                    SessionManager::startSession();
+                    \$Sesusuario = SessionManager::get('usuario');
+                    if (!isset(\$Sesusuario)) {
+                        Redirect::to('login/index');
+                    }
+                    \$this->token = Token::generateFormToken('send_message');
+                    ";
+                }
+                
+            $controllerContent .= "
+            }
             public function index()
             {
                 \$artify = DB::ArtifyCrud();
