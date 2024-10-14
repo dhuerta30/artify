@@ -1756,7 +1756,7 @@ class HomeController
 		$tablas->setLangData("add", "Agregar Tabla");
 		$tablas->setLangData("add_row", "Agregar Campos");
 		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
-		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "nombre_campo", "campo_anterior", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
+		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "campo_anterior", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);

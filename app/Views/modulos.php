@@ -662,7 +662,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             const rows = document.querySelectorAll(".artify-left-join tbody tr");
 
             rows.forEach((row) => {
-                const nombreCampo = row.querySelector("input[name='estructura_tabla#$nombre_campo[]']").value;
+                const nombreCampo = row.querySelector("estructura_tabla#$campo_anterior[]").value;
                 const nuevoNombreCampo = row.querySelector("input[name='estructura_tabla#$nombre_nuevo_campo[]']").value;
                 const tipoCampo = row.querySelector("select[name='estructura_tabla#$tipo[]']").value;
                 const caracteres = row.querySelector("input[name='estructura_tabla#$caracteres[]']").value;
