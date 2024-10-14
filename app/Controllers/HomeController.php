@@ -1566,7 +1566,6 @@ class HomeController
 		$artify->fieldCssClass("tipo_de_filtro", array("tipo_de_filtro"));
 		$artify->fieldCssClass("cantidad_campos_a_mostrar_plantilla_html", array("cantidad_campos_a_mostrar_plantilla_html"));
 		$artify->fieldCssClass("template_fields", array("template_fields"));
-
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
 
@@ -1813,6 +1812,7 @@ class HomeController
 		$tablas->fieldCssClass("valor_nulo", array("nulo"));
 		$tablas->fieldCssClass("autoincremental", array("autoincrementable"));
 		$tablas->fieldCssClass("modificar_tabla", array("modificar_tabla"));
+		$tablas->fieldCssClass("modificar_campo", array("modificar_campo"));
 
 		$tablas->buttonHide("submitBtn");
 		$tablas->buttonHide("submitBtnBack");

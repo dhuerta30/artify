@@ -618,8 +618,8 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         $(".artify-button-add-row").attr("data-action", "edit_row_artify");
 
-        $("input[name='estructura_tabla#$nombre_nuevo_campo[]']").each(function() {
-            $(this).on('keyup', function() {
+        $(".modificar_campo").each(function() {
+            $(this).on('change', function() {
                 checkInput();
             });
         });
@@ -628,9 +628,9 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             let hasValue = false; // Variable para verificar si hay algún valor
 
             // Itera sobre cada campo de entrada
-            $("input[name='estructura_tabla#$nombre_nuevo_campo[]']").each(function() {
+            $(".modificar_campo").each(function() {
                 // Comprobar si el campo actual no está vacío
-                if ($(this).val().trim() !== "") {
+                if ($(this).val().trim() === "Si") {
                     hasValue = true; // Hay al menos un campo que tiene valor
                     return false; // Rompe el bucle each
                 }
