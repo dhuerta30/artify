@@ -1813,6 +1813,7 @@ class HomeController
 		$tablas->fieldCssClass("autoincremental", array("autoincrementable"));
 		$tablas->fieldCssClass("modificar_tabla", array("modificar_tabla"));
 		$tablas->fieldCssClass("modificar_campo", array("modificar_campo"));
+		$tablas->fieldCssClass("nombre_nuevo_campo", array("nombre_nuevo_campo"));
 
 		$tablas->buttonHide("submitBtn");
 		$tablas->buttonHide("submitBtnBack");
