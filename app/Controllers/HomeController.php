@@ -1432,6 +1432,9 @@ class HomeController
 		$artify->fieldTypes("nombre_campos", "multiselect");
 		$artify->fieldTypes("nuevo_nombre_campos", "input");
 
+		$artify->fieldTypes("tabla_principal_union", "multiselect");
+		$artify->fieldTypes("tabla_secundaria_union", "multiselect");
+
 		$artify->fieldAttributes("nuevo_nombre_columnas", array("data-role"=>"tagsinput"));
 		$artify->fieldAttributes("nuevo_nombre_campos", array("data-role"=>"tagsinput"));
 		//$artify->fieldAttributes("tipo_de_filtro", array("placeholder" => "Filtros soportados: radio, dropdown, date, text"));
