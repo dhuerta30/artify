@@ -643,12 +643,18 @@ class CrudService
                 
                             // Obtener el tipo de filtro correspondiente
                             $columnTipoFiltro = $values_tipo_de_filtro[$index];
-                
-                            // Añadir el contenido para cada filtro usando el nombre formateado de la columna y el tipo de filtro
-                            $controllerContent .= "
-                                \$artify->addFilter('filterAdd{$column}', 'Filtrar por {$columnName}', '{$column}', '{$columnTipoFiltro}');
-                                \$artify->setFilterSource('filterAdd{$column}', '{$tableName}', '{$column}', '{$column} as pl', 'db');
-                            ";
+
+                            if($columnTipoFiltro == "text"){
+                                $controllerContent .= "
+                                    \$artify->addFilter('filterAdd{$column}', 'Filtrar por {$columnName}', '{$column}', 'text');
+                                    \$artify->setFilterSource('filterAdd{$column}', '', '', '', '');
+                                ";
+                            } else {
+                                $controllerContent .= "
+                                    \$artify->addFilter('filterAdd{$column}', 'Filtrar por {$columnName}', '{$column}', '{$columnTipoFiltro}');
+                                    \$artify->setFilterSource('filterAdd{$column}', '{$tableName}', '{$column}', '{$column} as pl', 'db');
+                                ";
+                            }
                         }
                     }
                 }
