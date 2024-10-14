@@ -731,6 +731,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             $("input[type='text'][name='estructura_tabla#$nombre_nuevo_campo[]']").each(function() {
                 $(this).val(''); // Limpia el valor del campo de texto
             });
+            $(".modificar_campo").val("");
         });
 
         $(".artify-actions.btn.btn-danger.eliminar_filas").first().remove();
