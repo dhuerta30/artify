@@ -1756,7 +1756,7 @@ class HomeController
 		$tablas->setLangData("add", "Agregar Tabla");
 		$tablas->setLangData("add_row", "Agregar Campos");
 		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
-		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "nombre_campo", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
+		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "nombre_campo", "campo_anterior", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
@@ -1814,6 +1814,7 @@ class HomeController
 		$tablas->fieldCssClass("modificar_tabla", array("modificar_tabla"));
 		$tablas->fieldCssClass("modificar_campo", array("modificar_campo"));
 		$tablas->fieldCssClass("nombre_nuevo_campo", array("nombre_nuevo_campo"));
+		$tablas->fieldCssClass("campo_anterior", array("campo_anterior"));
 
 		$tablas->buttonHide("submitBtn");
 		$tablas->buttonHide("submitBtnBack");
@@ -1859,6 +1860,19 @@ class HomeController
 				'render_pdf' => $render_pdf
 			]
 		);
+	}
+
+	public function obtener_columnas_tabla(){
+		$request = new Request();
+
+		if ($request->getMethod() === 'POST') {
+			$tabla = $request->post('tabla');
+			$artify = DB::ArtifyCrud();
+			$queryfy = $artify->getQueryfyObj();
+			$columnNames = $queryfy->columnNames($tabla);
+
+			echo json_encode(["columnas_tablas" => $columnNames]);
+		}
 	}
 
 	public function obtener_id_tabla(){

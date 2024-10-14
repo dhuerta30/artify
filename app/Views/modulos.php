@@ -741,6 +741,35 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             $(".regresar_modulos").click();
         });
 
+
+        let tabla = $(".nombre_tabla").val();
+
+        $.ajax({
+            type: "POST",
+            url: "<?=$_ENV["BASE_URL"]?>Home/obtener_columnas_tabla",
+            dataType: 'json',
+            data: {
+                tabla: tabla
+            },
+            beforeSend: function() {
+                $("#artify-ajax-loader").show();
+            },
+            success: function(data){
+                $("#artify-ajax-loader").hide();
+
+                $(".campo_anterior").each(function(index) {
+                    // If there are enough data items, set the value
+                    if (data["columnas_tablas"][index]) {
+                        $(this).attr('readonly', true);
+                        $(this).val(data["columnas_tablas"][index]);
+                    } else {
+                        // Clear the field if no corresponding data is available
+                        $(this).val('');
+                    }
+                });
+            }
+        });
+
         $.ajax({
             type: "POST",
             url: "<?=$_ENV["BASE_URL"]?>Home/obtener_tabla_id",
