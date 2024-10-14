@@ -1066,7 +1066,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $nombre_campos = isset($data["modulos"]["nombre_campos"]) ? $data["modulos"]["nombre_campos"] : null;
     $nuevo_nombre_campos = isset($data["modulos"]["nuevo_nombre_campos"]) ? $data["modulos"]["nuevo_nombre_campos"] : null;
     $tipo_de_filtro = isset($data["modulos"]["tipo_de_filtro"]) ? $data["modulos"]["tipo_de_filtro"] : null;
-    $cantidad_campos_a_mostrar_plantilla_html = $data["modulos"]["cantidad_campos_a_mostrar_plantilla_html"];
+    $cantidad_campos_a_mostrar_plantilla_html = isset($data["modulos"]["cantidad_campos_a_mostrar_plantilla_html"]) ? $data["modulos"]["cantidad_campos_a_mostrar_plantilla_html"] : null;
     $totalRecordsInfo = $data["modulos"]["totalRecordsInfo"];
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
