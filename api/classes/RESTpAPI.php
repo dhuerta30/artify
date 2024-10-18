@@ -691,57 +691,78 @@ Class RESTpAPI {
     
     public function dbJWTAuth($data) {
         $data = $this->handleCallback('before_jwt_auth', $data);
-        $queryfy = $this->getQueryfyObj();
-        $queryfy = $this->applyParameter($queryfy, $data);
+        $pdoModelObj = $this->getPDOModelObj();
+        $pdoModelObj = $this->applyParameter($pdoModelObj, $data);
         $userPassword = "";
+        $encryptPassword = isset($this->settings["encryptPassword"]) ? strtolower($this->settings["encryptPassword"]) : "";
+
         if (isset($data["data"])) {
             foreach ($data["data"] as $col => $val) {
                 if (isset($this->settings["passwordFieldName"]) && $col === $this->settings["passwordFieldName"]) {
-                    $val = $this->encryptPassword($val);
-                    if (isset($this->settings["encryptPassword"]) && strtolower($this->settings["encryptPassword"]) === "bcrypt") {
-                        $userPassword = $val;
-                        continue;
+                    // Solo encriptar si $encryptPassword no está vacío
+                    if (!empty($encryptPassword)) {
+                        $originalPassword = $val; // Guardar la contraseña original para verificarla después
+                        $val = $this->encryptPassword($val);
+                        if ($encryptPassword === "bcrypt") {
+                            continue; // Si es bcrypt, no agregar la contraseña encriptada al where
+                        }
                     }
                 }
 
-                $queryfy->where($col, $val);
+                $pdoModelObj->where($col, $val);
             }
         }
-        $result = $queryfy->select($data["table"]);
+
+        $result = $pdoModelObj->select($data["table"]);
         $encoded = "";
         $verifyPassword = true;
-        if (isset($this->settings["encryptPassword"]) && strtolower($this->settings["encryptPassword"]) === "bcrypt") {
-            // Verificar si $result no está vacío y si tiene al menos un elemento
-            if (!empty($result) && isset($result[0]) && isset($result[0][$this->settings["passwordFieldName"]])) {
-                $verifyPassword = password_verify($userPassword, $result[0][$this->settings["passwordFieldName"]]);
-            } else {
-                // Manejo del caso en que $result está vacío o no contiene la clave esperada
-                $verifyPassword = false; // O cualquier lógica que necesites para manejar este caso
-            }
+
+        // Verificar contraseña solo si se usa bcrypt y hay resultados
+        if ($encryptPassword === "bcrypt" && !empty($result) && isset($result[0][$this->settings["passwordFieldName"]])) {
+            $verifyPassword = password_verify($originalPassword, $result[0][$this->settings["passwordFieldName"]]);
         }
-        if ($queryfy->totalRows > 0 && $verifyPassword) {
+
+        if ($pdoModelObj->totalRows > 0 && $verifyPassword) {
             require_once RESTpAPIABSPATH . 'library/php-jwt-master/src/JWT.php';
+
+            // Verificar que los campos críticos existen en la configuración
+            $userIdFieldName = $this->settings["userIdFieldName"] ?? null;
+            $secretKey = $this->settings["secretkey"] ?? null;
+            $issuer = $this->settings["iss"] ?? null;
+            $expTime = $this->settings["expTime"] ?? 3600; // Valor predeterminado de 1 hora
+
+            if (!$userIdFieldName || !$secretKey || !$issuer) {
+                $this->message = $this->getLangData("invalid_configuration");
+                $this->statusCode = 500;
+                return false;
+            }
+
+            $userId = $result[0][$userIdFieldName] ?? null;
+
             try {
                 $payload = [
+                    'iss' => $issuer,
                     'iat' => time(),
-                    'iss' => $this->settings["iss"],
-                    'exp' => time() + ($this->settings["expTime"]),
-                    'userId' => $result[0][$this->settings["userIdFieldName"]]
+                    'nbf' => time(), // El token es válido inmediatamente
+                    'exp' => time() + $expTime, // El token expira después de expTime segundos
+                    'userId' => $userId
                 ];
                 
-                $key  = $this->settings["secretkey"];
-                $encoded = JWT::encode($payload, $key, 'HS256');
+                $encoded = JWT::encode($payload, $secretKey, 'HS256');
                 $this->message = $this->getLangData("success");
                 $this->statusCode = 200;
             } catch (Exception $e) {
+                $this->message = $this->getLangData("token_generation_failed");
+                $this->statusCode = 500;
                 return false;
             }
         } else {
             $this->message = $this->getLangData("no_data");
             $this->statusCode = 404;
-            $this->addError($queryfy->error);
+            $this->addError($pdoModelObj->error ?? "No matching records found.");
             $this->setHttpHeaders($this->responseContentType, $this->statusCode);
         }
+
         $response = $this->getResponse($encoded);
         $response = $this->handleCallback('after_jwt_auth', $response);
         return $response;
