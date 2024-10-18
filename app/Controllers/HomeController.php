@@ -1613,6 +1613,7 @@ class HomeController
 		$artify->fieldCssClass("tabla_principal_union", array("tabla_principal_union"));
 		$artify->fieldCssClass("tabla_secundaria_union", array("tabla_secundaria_union"));
 		$artify->fieldCssClass("activar_union_interna", array("activar_union_interna"));
+		$artify->fieldCssClass("nombre_modulo", array("nombre_modulo"));
 
 		$artify->fieldAttributes("id_tabla", array("readonly" => "true"));
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
