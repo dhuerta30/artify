@@ -201,25 +201,37 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
-        $('.tipo_de_filtro').tagsinput({
-            allowDuplicates: true
-        });
+        $(function() {
+            var textosPermitidos = ['radio', 'dropdown', 'date', 'text'];
 
-        var textosPermitidos = ['radio', 'dropdown', 'date', 'text'];
+            $('.tipo_de_filtro').tagsinput({
+                allowDuplicates: true,
+                typeaheadjs: {
+                    name: 'textosPermitidos',
+                    source: function(query, syncResults) {
+                        // Filtra los elementos de la lista permitida según el término de búsqueda
+                        var matches = textosPermitidos.filter(function(item) {
+                            return item.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+                        });
+                        syncResults(matches);
+                    }
+                }
+            });
 
-        $('.tipo_de_filtro').on('beforeItemAdd', function(event) {
-            var texto = event.item;
+            $('.tipo_de_filtro').on('beforeItemAdd', function(event) {
+                var texto = event.item;
 
-            // Si el texto no está en la lista de permitidos, cancelamos la adición
-            if (textosPermitidos.indexOf(texto) === -1) {
-                event.cancel = true;
-                Swal.fire({
-                    title: "Lo siento",
-                    text: 'Este texto no está permitido.',
-                    confirmButtonText: "Aceptar",
-                    icon: "error"
-                });
-            }
+                // Si el texto no está en la lista de permitidos, cancelamos la adición
+                if (textosPermitidos.indexOf(texto) === -1) {
+                    event.cancel = true;
+                    Swal.fire({
+                        title: "Lo siento",
+                        text: 'Este texto no está permitido.',
+                        confirmButtonText: "Aceptar",
+                        icon: "error"
+                    });
+                }
+            });
         });
 
         $(function() {
