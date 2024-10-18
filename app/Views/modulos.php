@@ -221,6 +221,27 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
+        $('.tipo_de_union').tagsinput({
+            allowDuplicates: true
+        });
+
+        var textosPermitidosUnion = ['interna', 'izquierda'];
+
+        $('.tipo_de_union').on('beforeItemAdd', function(event) {
+            var texto = event.item;
+
+            // Si el texto no está en la lista de permitidos, cancelamos la adición
+            if (textosPermitidosUnion.indexOf(texto) === -1) {
+                event.cancel = true;
+                Swal.fire({
+                    title: "Lo siento",
+                    text: 'Este texto no está permitido.',
+                    confirmButtonText: "Aceptar",
+                    icon: "error"
+                });
+            }
+        });
+
         $(".regresar_tablas").click(function(){
             $('.leftjoin_tr').remove();
         });
@@ -238,6 +259,20 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             $('.regresar_tablas').click();
         });
 
+        $(".activar_union_interna").change(function(){
+            let valor = $(this).val();
+
+            if(valor == "Si"){
+                $(".tabla_principal_union").removeAttr("disabled", "disabled");
+                $(".tabla_secundaria_union").removeAttr("disabled", "disabled");
+                $(".esconder_tipo_union").removeClass("d-none");
+            } else {
+                $(".tabla_principal_union").attr("disabled", "disabled");
+                $(".tabla_secundaria_union").attr("disabled", "disabled");
+                $(".esconder_tipo_union").addClass("d-none");
+            }
+        });
+
         $(".active_filter").change(function(){
             let valor = $(this).val();
 
@@ -249,20 +284,6 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 $(".esconder_tipo_filtro").addClass("d-none");
             }
         });
-
-        $(".tabla_principal_union").select2();
-        $(".tabla_secundaria_union").select2();
-
-
-        $.ajax({
-            type: "POST",
-            url: "<?=$_ENV["BASE_URL"]?>Home/obtener_todas_las_tablas",
-            dataType: "json",
-            success: function(data){
-                console.log(data);
-            }
-        });
-
 
         $(".tabla").change(function(){
             let val = $(this).val();
@@ -290,7 +311,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         $(".controller_name").val(controllerName);
 
                         // Limpiar los selectores de campos y añadir la opción "Seleccionar"
-                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").empty().append(`<option value>Seleccionar</option>`);
+                        $(".tabla_principal_union, .tabla_secundaria_union, .mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").empty().append(`<option value>Seleccionar</option>`);
                         
                         // Añadir nuevas opciones desde el resultado del ajax
                         $.each(data["columnas_tablas"], function(index, obj){
@@ -299,8 +320,15 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                             `);
                         });
 
+
+                        $.each(data["tablas"], function(index, obj){
+                            $(".tabla_principal_union, .tabla_secundaria_union").append(`
+                                <option value="${obj.nombre_tabla}">${obj.nombre_tabla}</option>
+                            `);
+                        });
+
                         // Inicializar select2 en los nuevos elementos
-                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").select2();
+                        $(".tabla_principal_union, .tabla_secundaria_union, .mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").select2();
 
                     } else {
                         // Limpiar los campos si val está vacío y añadir la opción "Seleccionar"
@@ -314,7 +342,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         $(".controller_name").val("");
 
                         // Inicializar select2 en los nuevos elementos
-                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").select2();
+                        $(".tabla_principal_union, .tabla_secundaria_union, .mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").select2();
                     }
                 }
             });

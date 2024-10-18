@@ -622,7 +622,7 @@ class HomeController
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-12 d-none">
 							<div class="form-group">
 								<label class="form-label">ID Tabla Base de Datos:</label>
 								{id_tabla}
@@ -899,6 +899,14 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Mostrar Información de Cantidad de Registros por Página:</label>
 												{totalRecordsInfo}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+										<div class="col-md-3 esconder_tipo_union d-none">
+											<div class="form-group">
+												<label class="form-label">Tipo de Union:</label>
+												{tipo_de_union}
+												<p style="font-size: 14px;">Tipos de union Soportados: interna, izquierda</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -1422,6 +1430,7 @@ class HomeController
 		$artify->fieldTypes("mostrar_campos_filtro", "multiselect");
 		
 		$artify->fieldTypes("tipo_de_filtro", "input");
+		$artify->fieldTypes("tipo_de_union", "input");
 
 		$artify->fieldTypes("mostrar_campos_formulario_editar", "multiselect");
 		$artify->fieldTypes("ordenar_grilla_por", "select");
@@ -1437,7 +1446,6 @@ class HomeController
 
 		$artify->fieldAttributes("nuevo_nombre_columnas", array("data-role"=>"tagsinput"));
 		$artify->fieldAttributes("nuevo_nombre_campos", array("data-role"=>"tagsinput"));
-		//$artify->fieldAttributes("tipo_de_filtro", array("placeholder" => "Filtros soportados: radio, dropdown, date, text"));
 
 		$artify->fieldTypes("area_protegida_por_login", "select");
 		$artify->fieldDataBinding("area_protegida_por_login", array("Si" => "Si", "No" => "No"), "", "", "array");
@@ -1597,12 +1605,14 @@ class HomeController
 		$artify->fieldCssClass("nuevo_nombre_campos", array("tagsinput"));
 		$artify->fieldCssClass("ocultar_id_tabla", array("ocultar_id_tabla"));
 		$artify->fieldCssClass("tipo_de_filtro", array("tipo_de_filtro"));
+		$artify->fieldCssClass("tipo_de_union", array("tipo_de_union"));
 		$artify->fieldCssClass("cantidad_campos_a_mostrar_plantilla_html", array("cantidad_campos_a_mostrar_plantilla_html"));
 		$artify->fieldCssClass("template_fields", array("template_fields"));
 		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("activate_api", array("activate_api"));
 		$artify->fieldCssClass("tabla_principal_union", array("tabla_principal_union"));
 		$artify->fieldCssClass("tabla_secundaria_union", array("tabla_secundaria_union"));
+		$artify->fieldCssClass("activar_union_interna", array("activar_union_interna"));
 
 		$artify->fieldAttributes("id_tabla", array("readonly" => "true"));
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1615,8 +1625,8 @@ class HomeController
 		$artify->tableHeading("Generador de Módulos");
 		
 		$artify->setSearchCols(array("posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->formFields(array("tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "cantidad_campos_a_mostrar_plantilla_html", "activate_nested_table", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "buttons_actions"));
-		$artify->editFormFields(array("tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "cantidad_campos_a_mostrar_plantilla_html", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$artify->formFields(array("tipo_de_union", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "cantidad_campos_a_mostrar_plantilla_html", "activate_nested_table", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "buttons_actions"));
+		$artify->editFormFields(array("tipo_de_union", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "cantidad_campos_a_mostrar_plantilla_html", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$artify->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$artify->colRename("tabla", "Nombre Tabla Base de Datos");
@@ -1897,18 +1907,6 @@ class HomeController
 		);
 	}
 
-	public function obtener_todas_las_tablas(){
-		$request = new Request();
-
-		if ($request->getMethod() === 'POST') {
-			$artify = DB::ArtifyCrud();
-			$queryfy = $artify->getQueryfyObj();
-			$tablas = $queryfy->getAllTables();
-
-			echo json_encode(["tablas" => $tablas]);
-		}
-	}
-
 	public function obtener_columnas_tabla(){
 		$request = new Request();
 
@@ -1931,8 +1929,9 @@ class HomeController
 			$queryfy = $artify->getQueryfyObj();
 			$primaryKey = $queryfy->primaryKey($tabla);
 			$columnNames = $queryfy->columnNames($tabla);
+			$tablas_all = $queryfy->select("crear_tablas");
 
-			echo json_encode(["columnas_tablas" => $columnNames, "id_tablas" => $primaryKey]);
+			echo json_encode(["columnas_tablas" => $columnNames, "id_tablas" => $primaryKey, 'tablas' => $tablas_all]);
 		}
 	}
 
