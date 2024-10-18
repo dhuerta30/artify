@@ -233,41 +233,10 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             });
         });
 
-        $(function() {
-            var textosPermitidosUnion = ['interna', 'izquierda'];
-
-            // Inicializa tagsinput con typeahead para las sugerencias automáticas
-            $('.tipo_de_union').tagsinput({
-                allowDuplicates: true,
-                typeaheadjs: {
-                    name: 'textosPermitidosUnion',
-                    source: function(query, syncResults) {
-                        // Filtra los elementos de la lista permitida según el término de búsqueda
-                        var matches = textosPermitidosUnion.filter(function(item) {
-                            return item.toLowerCase().indexOf(query.toLowerCase()) !== -1;
-                        });
-                        syncResults(matches);
-                    }
-                }
-            });
-
-            // Verificación antes de añadir un nuevo tag
-            $('.tipo_de_union').on('beforeItemAdd', function(event) {
-                var texto = event.item;
-
-                // Si el texto no está en la lista de permitidos, cancela la adición
-                if (textosPermitidosUnion.indexOf(texto) === -1) {
-                    event.cancel = true;
-                    Swal.fire({
-                        title: "Lo siento",
-                        text: 'Este texto no está permitido.',
-                        confirmButtonText: "Aceptar",
-                        icon: "error"
-                    });
-                }
-            });
+        $('.campos_relacion_union').tagsinput({
+            maxTags: 3,
+            allowDuplicates: true
         });
-
 
         $(".regresar_tablas").click(function(){
             $('.leftjoin_tr').remove();
