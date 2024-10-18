@@ -691,8 +691,8 @@ Class RESTpAPI {
     
     public function dbJWTAuth($data) {
         $data = $this->handleCallback('before_jwt_auth', $data);
-        $pdoModelObj = $this->getPDOModelObj();
-        $pdoModelObj = $this->applyParameter($pdoModelObj, $data);
+        $queryfyObj = $this->getQueryfyObj();
+        $queryfyObj = $this->applyParameter($queryfyObj, $data);
         $userPassword = "";
         $encryptPassword = isset($this->settings["encryptPassword"]) ? strtolower($this->settings["encryptPassword"]) : "";
 
@@ -709,11 +709,11 @@ Class RESTpAPI {
                     }
                 }
 
-                $pdoModelObj->where($col, $val);
+                $queryfyObj->where($col, $val);
             }
         }
 
-        $result = $pdoModelObj->select($data["table"]);
+        $result = $queryfyObj->select($data["table"]);
         $encoded = "";
         $verifyPassword = true;
 
@@ -722,7 +722,7 @@ Class RESTpAPI {
             $verifyPassword = password_verify($originalPassword, $result[0][$this->settings["passwordFieldName"]]);
         }
 
-        if ($pdoModelObj->totalRows > 0 && $verifyPassword) {
+        if ($queryfyObj->totalRows > 0 && $verifyPassword) {
             require_once RESTpAPIABSPATH . 'library/php-jwt-master/src/JWT.php';
 
             // Verificar que los campos críticos existen en la configuración
@@ -759,7 +759,7 @@ Class RESTpAPI {
         } else {
             $this->message = $this->getLangData("no_data");
             $this->statusCode = 404;
-            $this->addError($pdoModelObj->error ?? "No matching records found.");
+            $this->addError($queryfyObj->error ?? "No matching records found.");
             $this->setHttpHeaders($this->responseContentType, $this->statusCode);
         }
 
