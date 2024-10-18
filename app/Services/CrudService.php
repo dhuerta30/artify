@@ -70,7 +70,6 @@ class CrudService
         $nuevo_nombre_columnas,
         $nombre_campos,
         $nuevo_nombre_campos,
-        $cantidad_campos_a_mostrar_plantilla_html,
         $totalRecordsInfo,
         $area_protegida_por_login
         )
@@ -109,7 +108,6 @@ class CrudService
                 $activar_numeracion_columnas,
                 $activar_registros_por_pagina,
                 $nombre_modulo,
-                $cantidad_campos_a_mostrar_plantilla_html,
                 $totalRecordsInfo,
                 $area_protegida_por_login
             );
@@ -162,7 +160,6 @@ class CrudService
                 $nuevo_nombre_columnas,
                 $nombre_campos,
                 $nuevo_nombre_campos,
-                $cantidad_campos_a_mostrar_plantilla_html,
                 $totalRecordsInfo,
                 $area_protegida_por_login
             );
@@ -520,7 +517,6 @@ class CrudService
         $nuevo_nombre_columnas,
         $nombre_campos,
         $nuevo_nombre_campos,
-        $cantidad_campos_a_mostrar_plantilla_html,
         $totalRecordsInfo,
         $area_protegida_por_login
         )
