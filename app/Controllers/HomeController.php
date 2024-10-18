@@ -887,8 +887,8 @@ class HomeController
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="form-label">Activar Union Interna:</label>
-												{activar_union_interna}
+												<label class="form-label">Mostrar Información de Cantidad de Registros por Página:</label>
+												{totalRecordsInfo}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -897,8 +897,8 @@ class HomeController
 									<div class="row pt-4">
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="form-label">Mostrar Información de Cantidad de Registros por Página:</label>
-												{totalRecordsInfo}
+												<label class="form-label">Activar Union Interna:</label>
+												{activar_union_interna}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
