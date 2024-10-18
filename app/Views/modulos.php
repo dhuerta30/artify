@@ -147,7 +147,6 @@ label:not(.form-check-label):not(.custom-file-label) {
     <img width="300" src="<?=$_ENV["BASE_URL"]?>app/libs/artify/images/ajax-loader.gif" class="artify-img-ajax-loader"/>
 </div>
 <script src="<?=$_ENV["BASE_URL"]?>js/sweetalert2.all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 <script>
 $(document).on("change", ".generar_jwt_token", function() {
     var val = $(this).val();
