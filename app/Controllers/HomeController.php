@@ -913,7 +913,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Campos Relación Union Interna:</label>
 												{campos_relacion_union}
-												<p style="font-size: 14px;">Ejemplo de uso Tabla1.Campo1, igual, Tabla2.Campo2</p>
+												<p style="font-size: 14px;">Ejemplo de uso: Tabla1.Campo1, igual, Tabla2.Campo2</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -986,7 +986,7 @@ class HomeController
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="form-label">Ocultar Id Tabla en Formularios</label>
+												<label class="form-label">Ocultar Id de la Tabla en Formularios</label>
 												{ocultar_id_tabla}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
