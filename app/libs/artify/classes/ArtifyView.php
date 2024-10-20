@@ -241,7 +241,7 @@ class ArtifyView {
         $template = strtolower($settings["template"]);
         $action_filter = $settings["actionFilterPosition"];
         if($action_filter === "top")
-            require $this->template_path . "/$template/template-filter-display-top.php";
+            require $this->template_path . "/$template/template-filter-top.php";
         else 
             require $this->template_path . "/$template/template-filter.php";
         $output = ob_get_contents();
