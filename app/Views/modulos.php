@@ -197,6 +197,31 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
+
+        $('.tabla_principal_union, .tabla_secundaria_union').on('change', function () {
+            let principalValues = $('.tabla_principal_union').val() || [];
+
+            // Obtener los valores seleccionados del segundo multiselect
+            let secundariaValues = $('.tabla_secundaria_union').val() || [];
+
+            // Comprobar si alguno de los valores del segundo multiselect coincide con los del primero
+            let commonValues = secundariaValues.filter(value => principalValues.includes(value));
+
+            if (commonValues.length > 0) {
+                // Si hay valores comunes, eliminar esos valores del segundo multiselect
+                secundariaValues = secundariaValues.filter(value => !commonValues.includes(value));
+                $('.tabla_secundaria_union').val(secundariaValues).trigger('change');
+
+                // Mostrar la alerta con SweetAlert2
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Valores duplicados',
+                    text: 'No se permiten valores duplicados en ambos multiselect.',
+                    confirmButtonText: "Aceptar"
+                });
+            }
+        });
+
         $(function() {
             var textosPermitidos = ['radio', 'dropdown', 'date', 'text'];
 
@@ -231,7 +256,6 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         });
 
         $('.campos_relacion_union').tagsinput({
-            maxTags: 3,
             allowDuplicates: true
         });
 
@@ -308,7 +332,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                         $(".controller_name").val(controllerName);
 
                         // Limpiar los selectores de campos y añadir la opción "Seleccionar"
-                        $(".tabla_principal_union, .tabla_secundaria_union, .mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").empty().append(`<option value>Seleccionar</option>`);
+                        $(".tabla_principal_union, .tabla_secundaria_union, .mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").empty();
                         
                         // Añadir nuevas opciones desde el resultado del ajax
                         $.each(data["columnas_tablas"], function(index, obj){
@@ -329,7 +353,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
                     } else {
                         // Limpiar los campos si val está vacío y añadir la opción "Seleccionar"
-                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").empty().append(`<option value>Seleccionar</option>`);
+                        $(".mostrar_campos_busqueda, .mostrar_campos_formulario, .mostrar_columnas_grilla, .mostrar_campos_filtro, .mostrar_campos_formulario_editar, .campos_condicion, .ordenar_grilla_por, .nombre_columnas, .nombre_campos").empty();
                         
                         // Vaciar el valor de id_tabla
                         $(".id_tabla").val("");
