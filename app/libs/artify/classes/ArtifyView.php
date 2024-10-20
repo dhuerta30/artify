@@ -134,7 +134,13 @@ class ArtifyView {
     public function renderCrudFilter($filters, $data, $lang, $objKey, $settings) {
         ob_start();
         $template = strtolower($settings["template"]);
-        require $this->template_path . "/$template/template-filter-display.php";
+        $action_filter = $settings["actionFilterPosition"];
+        if($action_filter === "left")
+            require $this->template_path . "/$template/template-filter-display.php";
+        else if($action_filter === "right")
+            require $this->template_path . "/$template/template-filter-display-right.php";
+        else if($action_filter === "top")
+            require $this->template_path . "/$template/template-filter-display-top.php";
         $output = ob_get_contents();
         ob_end_clean();
         return $output;

@@ -107,6 +107,8 @@ $config["backButton"] = true;
 $config["saveCloseButton"] = false;
 //Position of the action buttons
 $config["actionBtnPosition"] = "right";
+//position filter search
+$config["actionFilterPosition"] = "left";
 //whether to show view form data in tabs or not - added in v 2.6
 $config["viewFormTabs"] = false; 
 //whether to reset search if search text box is empty - added in v 2.6

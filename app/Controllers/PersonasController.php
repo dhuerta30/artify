@@ -44,6 +44,8 @@
             
                 $artify->currentPage(1);
             
+                $artify->setSettings("actionFilterPosition", "right");
+
                 $artify->setSettings("actionBtnPosition", "right");
             
                     $artify->setSettings('editbtn', true);

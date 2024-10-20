@@ -491,6 +491,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 $(".mostrar_campos_formulario_editar").removeAttr("disabled", "disabled");
                 $(".posicion_botones_accion_grilla").removeAttr("disabled", "disabled");
                 $(".refrescar_grilla").removeAttr("disabled", "disabled");
+                $(".nombre_columnas").removeAttr("disabled", "disabled");
 
                 $(".actions_buttons_grid").removeAttr("disabled", "disabled");
                 $(".actions_buttons_grid").bootstrapSwitch('disabled', false);
@@ -538,6 +539,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 $(".mostrar_campos_formulario_editar").attr("disabled", "disabled");
                 $(".posicion_botones_accion_grilla").attr("disabled", "disabled");
                 $(".refrescar_grilla").attr("disabled", "disabled");
+                $(".nombre_columnas").attr("disabled", "disabled");
 
                 $(".actions_buttons_grid").attr("disabled", "disabled");
                 $(".actions_buttons_grid").bootstrapSwitch('disabled', true);
@@ -586,6 +588,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 $(".mostrar_campos_formulario_editar").removeAttr("disabled", "disabled");
                 $(".posicion_botones_accion_grilla").removeAttr("disabled", "disabled");
                 $(".refrescar_grilla").removeAttr("disabled", "disabled");
+                $(".nombre_columnas").removeAttr("disabled", "disabled");
 
                 $(".actions_buttons_grid").removeAttr("disabled", "disabled");
                 $(".actions_buttons_grid").bootstrapSwitch('disabled', false);
