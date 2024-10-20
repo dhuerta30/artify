@@ -39,6 +39,8 @@
                                     $artify->setFilterSource('filterAddfecha_nacimiento', 'personas', 'fecha_nacimiento', 'fecha_nacimiento as pl', 'db');
                                 
                 $artify->tableHeading('Módulo de Personas');
+
+                $artify->setSettings("placeholder", true);
             
                 $artify->dbOrderBy("id_personas", "ASC");
             

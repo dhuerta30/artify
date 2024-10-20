@@ -71,7 +71,8 @@ class CrudService
         $nombre_campos,
         $nuevo_nombre_campos,
         $totalRecordsInfo,
-        $area_protegida_por_login
+        $area_protegida_por_login,
+        $posicion_filtro
         )
     {
         if($crudType == 'SQL'){
@@ -109,7 +110,8 @@ class CrudService
                 $activar_registros_por_pagina,
                 $nombre_modulo,
                 $totalRecordsInfo,
-                $area_protegida_por_login
+                $area_protegida_por_login,
+                $posicion_filtro
             );
         }
 
@@ -161,7 +163,8 @@ class CrudService
                 $nombre_campos,
                 $nuevo_nombre_campos,
                 $totalRecordsInfo,
-                $area_protegida_por_login
+                $area_protegida_por_login,
+                $posicion_filtro
             );
             $this->generateView($nameview);
             //$this->generateViewAdd($nameview);
@@ -518,7 +521,8 @@ class CrudService
         $nombre_campos,
         $nuevo_nombre_campos,
         $totalRecordsInfo,
-        $area_protegida_por_login
+        $area_protegida_por_login,
+        $posicion_filtro
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
@@ -780,7 +784,21 @@ class CrudService
 
         if($activar_union_interna == "Si"){
             $controllerContent .= "
+s
+            ";
+        }
 
+        if(isset($posicion_filtro) && $posicion_filtro == "Izquierda"){
+            $controllerContent .= "
+                \$artify->setSettings(\"actionFilterPosition\", \"left\");
+            ";
+        } else if($posicion_filtro == "Derecha"){
+            $controllerContent .= "
+                \$artify->setSettings(\"actionFilterPosition\", \"right\");
+            ";
+        } else if($posicion_filtro == "Arriba"){
+            $controllerContent .= "
+                \$artify->setSettings(\"actionFilterPosition\", \"top\");
             ";
         }
 
