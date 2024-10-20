@@ -44,7 +44,7 @@
             
                 $artify->currentPage(1);
             
-                $artify->setSettings("actionFilterPosition", "right");
+                $artify->setSettings("actionFilterPosition", "top");
 
                 $artify->setSettings("actionBtnPosition", "right");
             
