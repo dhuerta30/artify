@@ -216,7 +216,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 Swal.fire({
                     icon: 'warning',
                     title: 'Valores duplicados',
-                    text: 'No se permiten valores duplicados en ambos multiselect.',
+                    text: 'No se permite la misma tabla en ambos Campos.',
                     confirmButtonText: "Aceptar"
                 });
             }
