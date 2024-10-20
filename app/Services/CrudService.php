@@ -784,7 +784,7 @@ class CrudService
 
         if($activar_union_interna == "Si"){
             $controllerContent .= "
-s
+
             ";
         }
 
