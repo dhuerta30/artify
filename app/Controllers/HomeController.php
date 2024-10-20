@@ -805,7 +805,7 @@ class HomeController
 									<div class="row pt-4">
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="form-label">Mostrar Cantidad de Registros por Página:</label>
+												<label class="form-label">Activar Lista Registros por Página:</label>
 												{activar_registros_por_pagina}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
@@ -894,12 +894,12 @@ class HomeController
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="form-label">Mostrar Cantidad de Registros por Página:</label>
+												<label class="form-label">Info Cantidad Registros por Página:</label>
 												{totalRecordsInfo}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
-									</div>
+									</div>s
 
 									<div class="row pt-4">
 										<div class="col-md-3">
