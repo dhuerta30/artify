@@ -899,7 +899,7 @@ class HomeController
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
-									</div>s
+									</div>
 
 									<div class="row pt-4">
 										<div class="col-md-3">
