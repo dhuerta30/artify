@@ -239,7 +239,11 @@ class ArtifyView {
     public function renderFilter($filterControl, $displayText, $settings) {
         ob_start();
         $template = strtolower($settings["template"]);
-        require $this->template_path . "/$template/template-filter.php";
+        $action_filter = $settings["actionFilterPosition"];
+        if($action_filter === "top")
+            require $this->template_path . "/$template/template-filter-display-top.php";
+        else 
+            require $this->template_path . "/$template/template-filter.php";
         $output = ob_get_contents();
         ob_end_clean();
         return $output;
