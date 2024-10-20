@@ -15,6 +15,13 @@
 
             public function __construct()
             {
+                    SessionManager::startSession();
+                    $Sesusuario = SessionManager::get('usuario');
+                    if (!isset($Sesusuario)) {
+                        Redirect::to('login/index');
+                    }
+                    $this->token = Token::generateFormToken('send_message');
+                    
             }
             public function index()
             {
@@ -29,8 +36,8 @@
                     
                         $artify->editFormFields(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
                     
-                                    $artify->addFilter('filterAddnombre', 'Filtrar por Nombre', 'nombre', 'text');
-                                    $artify->setFilterSource('filterAddnombre', '', '', '', '');
+                                    $artify->addFilter('filterAddnombre', 'Filtrar por Nombre', 'nombre', 'dropdown');
+                                    $artify->setFilterSource('filterAddnombre', 'personas', 'nombre', 'nombre as pl', 'db');
                                 
                                     $artify->addFilter('filterAddapellido', 'Filtrar por Apellido', 'apellido', 'dropdown');
                                     $artify->setFilterSource('filterAddapellido', 'personas', 'apellido', 'apellido as pl', 'db');
@@ -38,16 +45,16 @@
                                     $artify->addFilter('filterAddfecha_nacimiento', 'Filtrar por Fecha nacimiento', 'fecha_nacimiento', 'date');
                                     $artify->setFilterSource('filterAddfecha_nacimiento', 'personas', 'fecha_nacimiento', 'fecha_nacimiento as pl', 'db');
                                 
-                $artify->tableHeading('Módulo de Personas');
-
-                $artify->setSettings("placeholder", true);
+                                $artify->colRename("id_personas", "id");
+                            
+                                $artify->fieldRenameLable("id_personas", "id");
+                            
+                $artify->setSettings("actionFilterPosition", "top");
             
                 $artify->dbOrderBy("id_personas", "ASC");
             
                 $artify->currentPage(1);
             
-                $artify->setSettings("actionFilterPosition", "top");
-
                 $artify->setSettings("actionBtnPosition", "right");
             
                     $artify->setSettings('editbtn', true);
@@ -81,7 +88,7 @@
             
                 $artify->setSettings('addbtn', true);
             
-                $artify->setSettings('encryption', false);
+                $artify->setSettings('encryption', true);
             
                 $artify->setSettings('required', true);
             

@@ -258,10 +258,12 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             if(valor == "Si"){
                 $(".tabla_principal_union").removeAttr("disabled", "disabled");
                 $(".tabla_secundaria_union").removeAttr("disabled", "disabled");
+                $(".campos_relacion_union").removeAttr("disabled", "disabled");
                 $(".esconder_tipo_union").removeClass("d-none");
             } else {
                 $(".tabla_principal_union").attr("disabled", "disabled");
                 $(".tabla_secundaria_union").attr("disabled", "disabled");
+                $(".campos_relacion_union").attr("disabled", "disabled");
                 $(".esconder_tipo_union").addClass("d-none");
             }
         });
