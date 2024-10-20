@@ -788,7 +788,7 @@ s
             ";
         }
 
-        if(isset($posicion_filtro) && $posicion_filtro == "Izquierda"){
+        if(!empty($posicion_filtro) && $posicion_filtro == "Izquierda"){
             $controllerContent .= "
                 \$artify->setSettings(\"actionFilterPosition\", \"left\");
             ";
