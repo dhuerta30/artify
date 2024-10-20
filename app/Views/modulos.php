@@ -271,9 +271,11 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
             if(valor == "Si"){
                 $(".mostrar_campos_filtro").removeAttr("disabled", "disabled");
+                $(".posicion_filtro").removeAttr("disabled", "disabled");
                 $(".esconder_tipo_filtro").removeClass("d-none");
             } else {
                 $(".mostrar_campos_filtro").attr("disabled", "disabled");
+                $(".posicion_filtro").attr("disabled", "disabled");
                 $(".esconder_tipo_filtro").addClass("d-none");
             }
         });
