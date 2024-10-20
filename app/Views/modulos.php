@@ -45,6 +45,7 @@ label {
 
 label:not(.form-check-label):not(.custom-file-label) {
     font-size: 13px;
+    display:flex;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
@@ -73,10 +74,6 @@ label:not(.form-check-label):not(.custom-file-label) {
 
 body {
     overflow-x: hidden;
-}
-
-label:not(.form-check-label):not(.custom-file-label) {
-    display: flex;
 }
 
 .bootstrap-switch.bootstrap-switch-focused {
@@ -121,7 +118,7 @@ label:not(.form-check-label):not(.custom-file-label) {
                     </li>
                 </ul>
             
-                <div class="tab-content p-3" id="myTabContent">
+                <div class="tab-content pt-3" id="myTabContent">
                     <div class="tab-pane fade show active" id="create-tablas" role="tabpanel" aria-labelledby="create-tablas-tab">
                         <?=$render_tablas?>
                     </div>

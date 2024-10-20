@@ -5912,7 +5912,7 @@ Class Artify {
                 }
 
                 $field .= " />";
-                $field .= $fieldsval[1];
+                $field .= "<p class=\"checkbox-list-artify\">".$fieldsval[1]."</p>";
                 $field .= "</label>";
                 $loopFields++;
             }

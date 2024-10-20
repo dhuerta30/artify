@@ -827,33 +827,33 @@ class HomeController
 									</div>
 
 									<div class="row pt-4">
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<div class="form-group">
 												<label class="form-label">Activar Numeración Columnas:</label>
 												{activar_numeracion_columnas}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<div class="form-group">
 												<label class="form-label">Botones de Acción:</label>
 												{buttons_actions}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<div class="form-group">
 												<label class="form-label">Ordenar Grilla por:</label>
 												{ordenar_grilla_por}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
-										</div>
-										<div class="col-md-3">
+	
 											<div class="form-group">
 												<label class="form-label">Tipo de Orden Grilla:</label>
 												{tipo_orden}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
+										
 										</div>
 									</div>
 
@@ -887,7 +887,7 @@ class HomeController
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="form-label">Mostrar Información de Cantidad de Registros por Página:</label>
+												<label class="form-label">Mostrar Cantidad de Registros por Página:</label>
 												{totalRecordsInfo}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
