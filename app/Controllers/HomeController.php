@@ -1030,7 +1030,6 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Área Protegida por Login:</label>
 												{area_protegida_por_login}
-												<p style="font-size:14px;">Escriba y presione enter para agregar los nuevos nombres</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -1417,6 +1416,7 @@ class HomeController
 		$artify->fieldDataAttr("sitesecret_repatcha", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("mostrar_campos_filtro", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("tabla_principal_union", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("tabla_secundaria_union", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("posicion_filtro", array("disabled"=>"disabled"));
 				
 		$artify->fieldDataAttr("mostrar_campos_busqueda", array("placeholder" => "campo1/campo2/campo3/etc"));
