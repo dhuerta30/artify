@@ -36,16 +36,11 @@
                     
                         $artify->editFormFields(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
                     
-                                    $artify->addFilter('filterAddnombre', 'Filtrar por Nombre', 'nombre', 'dropdown');
-                                    $artify->setFilterSource('filterAddnombre', 'personas', 'nombre', 'nombre as pl', 'db');
-                                
                                 $artify->colRename("id_personas", "id");
                             
                                 $artify->fieldRenameLable("id_personas", "id");
                             
                 $artify->tableHeading('Módulo de Personas');
-            
-                $artify->setSettings("actionFilterPosition", "left");
             
                 $artify->dbOrderBy("id_personas", "ASC");
             
@@ -82,7 +77,7 @@
             
                 $artify->setSettings('addbtn', true);
             
-                $artify->setSettings('encryption', true);
+                $artify->setSettings('encryption', false);
             
                 $artify->setSettings('required', true);
             

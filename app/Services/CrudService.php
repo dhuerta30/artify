@@ -802,31 +802,29 @@ class CrudService
 
         if ($activar_union_interna == "Si") {
 
-            // Separar y limpiar los campos de la tabla principal
-            $values_tabla_principal_union = explode(',', $campos_relacion_union_tabla_principal);
+            /*$values_tabla_principal_union = explode(',', $campos_relacion_union_tabla_principal);
             $values_tabla_principal_union = array_filter($values_tabla_principal_union, function ($value) {
                 return !empty(trim($value));
             });
         
-            // Separar y limpiar los campos de la tabla secundaria
             $values_tabla_secundaria_union = explode(',', $campos_relacion_union_tabla_secundaria);
             $values_tabla_secundaria_union = array_filter($values_tabla_secundaria_union, function ($value) {
                 return !empty(trim($value));
             });
         
             foreach ($values_tabla_principal_union as $index => $campoPrincipal) {
-                // Obtener el campo correspondiente de la tabla secundaria
+
                 $campoSecundario = $values_tabla_secundaria_union[$index];
     
-                // Formatear el nombre de la columna para que sea legible
                 $columnName = ucfirst(str_replace('_', ' ', $campoPrincipal));
     
-                // Construir la unión interna
                 $controllerContent .= "
                     \$artify->joinTable(\"{$tabla_secundaria_union}\", \"{$tabla_secundaria_union}.{$campoSecundario} = {$tabla_principal_union}.{$campoPrincipal}\", \"INNER JOIN\");
                 ";
-            }
-            
+            }*/
+            $controllerContent .= "
+                
+            ";
         }        
 
         if(!empty($posicion_filtro) && $posicion_filtro == "Izquierda"){
