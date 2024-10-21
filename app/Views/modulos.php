@@ -208,7 +208,11 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 data: {
                     lastSelected: lastSelected
                 },
+                beforeSend: function() {
+                    $("#artify-ajax-loader").show();
+                },
                 success: function(data){
+                    $("#artify-ajax-loader").hide();
                     console.log(data);
                 }
             });
