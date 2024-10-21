@@ -30,7 +30,7 @@
                 
                         $artify->setSearchCols(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
                     
-                        $artify->crudTableCol(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
+                        $artify->crudTableCol(array("nombre", "apellido", "fecha_nacimiento", "descripcion"));
                     
                         $artify->formFields(array("nombre", "apellido", "fecha_nacimiento", "descripcion"));
                     
@@ -47,7 +47,7 @@
                                 
                                 $artify->colRename("id_personas", "id");
                             
-                                $artify->fieldRenameLable("id_personas", "id");
+                                $artify->fieldRenameLable("id_personas", "ID");
                             
                 $artify->tableHeading('Módulo de Personas');
             
@@ -90,7 +90,7 @@
             
                 $artify->setSettings('addbtn', true);
             
-                $artify->setSettings('encryption', true);
+                $artify->setSettings('encryption', false);
             
                 $artify->setSettings('required', true);
             

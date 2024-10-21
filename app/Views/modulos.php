@@ -198,7 +198,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         });
 
         $('.tabla_principal_union').change(function() {
-            let val = $(this).val(); // Obtenemos el array de valores seleccionados
+            let val = $('.tabla_principal_union').val(); // Obtenemos el array de valores seleccionados
             let lastSelected = val[val.length - 1]; // Obtenemos el último valor seleccionado
             
             $.ajax({
@@ -225,7 +225,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         });
 
         $('.tabla_secundaria_union').change(function() {
-            let val = $(this).val(); // Obtenemos el array de valores seleccionados
+            let val = $(".tabla_secundaria_union").val(); // Obtenemos el array de valores seleccionados
             let lastSelected = val[val.length - 1]; // Obtenemos el último valor seleccionado
             
             $.ajax({
