@@ -916,7 +916,7 @@ class HomeController
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-3 esconder_tipo_union d-none">
 											<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
