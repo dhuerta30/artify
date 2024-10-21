@@ -1210,7 +1210,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             "icono_menu" => "far fa-circle",
             "submenu" => "No",
             "orden_menu" => $newOrdenMenu,
-            "area_protegida_por_login" => $area_protegida_por_login
+            "area_protegida_menu" => $area_protegida_por_login
         ));
 
         $id_menu = $queryfy->lastInsertId;
