@@ -1194,11 +1194,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         );
     }
 
-    if($area_protegida_por_login == "Si"){
-        $area_protegida_por_login = "Si";
-    } else {
-        $area_protegida_por_login = "No";
-    }
+    $area_protegida_por_login = ($area_protegida_por_login == "Si") ? "Si" : "No";
 
     if ($add_menu == "Si") {
         $datamenu = $queryfy->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
