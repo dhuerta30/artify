@@ -2177,7 +2177,9 @@ class HomeController
 		$artify->fieldTypes("icono_menu", "select");
 		$artify->fieldCssClass("icono_menu", array("icono_menu"));
 		$artify->fieldCssClass("submenu", array("submenu"));
-		$artify->fieldGroups("Name", array("nombre_menu", "url_menu"));
+		$artify->fieldGroups("group1", array("nombre_menu", "url_menu"));
+		$artify->fieldGroups("group2", array("icono_menu", "area_protegida_menu"));
+		$artify->fieldDesc("area_protegida_menu", "Seleccione si este menu estará protegido por un login de acceso a usuarios o no");
 		$artify->crudRemoveCol(array("id_menu"));
 		$artify->setSettings("searchbox", true);
 		$artify->setSettings("printBtn", false);
@@ -2190,6 +2192,8 @@ class HomeController
 		$artify->setSettings('delbtn', true);
 		$artify->setSettings("function_filter_and_search", true);
 		$artify->buttonHide("submitBtnSaveBack");
+		$artify->fieldTypes("area_protegida_menu", "select");
+		$artify->fieldDataBinding("area_protegida_menu", array("Si" => "Si", "No" => "No"), "", "","array");
 
 		$submenu = DB::ArtifyCrud(true);
 		$submenu->multiTableRelationDisplay("tab", "SubMenu");
