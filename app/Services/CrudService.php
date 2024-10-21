@@ -166,7 +166,13 @@ class CrudService
                 $area_protegida_por_login,
                 $posicion_filtro
             );
-            $this->generateView($nameview);
+
+            if($area_protegida_por_login == "Si"){
+                $this->generateView($nameview);
+            } else {
+                $this->generateViewNotLogin($nameview);
+            }
+            
             //$this->generateViewAdd($nameview);
         }
 
