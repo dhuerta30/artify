@@ -1194,6 +1194,12 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         );
     }
 
+    if($area_protegida_por_login == "Si"){
+        $area_protegida_por_login = "Si";
+    } else {
+        $area_protegida_por_login = "No";
+    }
+
     if ($add_menu == "Si") {
         $datamenu = $queryfy->DBQuery("SELECT MAX(orden_menu) as orden FROM menu");
         $newOrdenMenu = $datamenu[0]["orden"] + 1;
@@ -1203,7 +1209,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             "url_menu" => "/" . $controller_name . "/index",
             "icono_menu" => "far fa-circle",
             "submenu" => "No",
-            "orden_menu" => $newOrdenMenu
+            "orden_menu" => $newOrdenMenu,
+            "area_protegida_por_login" => $area_protegida_por_login
         ));
 
         $id_menu = $queryfy->lastInsertId;
