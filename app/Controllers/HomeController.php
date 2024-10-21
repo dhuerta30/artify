@@ -1082,166 +1082,6 @@ class HomeController
 
 					<div class="row">
 						<div class="col-md-12">
-							<div class="component addrow float-right">
-								<div class="control-group">
-									<div class="controls">
-										<a class="artify-actions artify-button artify-button-add-row btn btn-success agregar_muestras d-none" href="javascript:;" data-action="add_row_lubricentro">
-											<i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar       
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="table-responsive leftjoin_grilla d-none">
-							<table class="table artify-left-join responsive">
-								<thead>
-									<tr>
-										<th>
-											<label class=" control-label col-form-label">Número de módulo a crear</label>
-										</th>
-										<th>
-											<label class=" control-label col-form-label">Nombre Tabla Base de Datos</label>
-										</th> 
-										<th>
-											<label class=" control-label col-form-label">Usar Plantilla Formulario HTML</label>
-										</th>  
-										<th>
-											<label class=" control-label col-form-label">Activar Filtro de Busqueda</label>
-										</th>  
-										<th>
-											<label class=" control-label col-form-label">Clonar Filas</label>
-										</th>  
-										<th>
-											<label class=" control-label col-form-label">Activar Popup</label>
-										</th>  
-										<th>
-											<label class=" control-label col-form-label">Activar Búsqueda</label>
-										</th>  
-										<th>
-											<label class=" control-label col-form-label">Activar Eliminación Masiva</label>
-										</th>  
-										<th>
-											<label class=" control-label col-form-label">Botón Agregar</label>
-										</th>  
-										<th>
-											<label class=" control-label col-form-label">Botones de Exportación Grilla</label>
-										</th>  
-										<th>
-											<label class=" control-label col-form-label">Activar Tabla Anidada</label>
-										</th>  
-										<th>
-											<label class=" control-label col-form-label">Botones de Acción</label>
-										</th>    
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_1">
-											<select class="form-control artify-form-control artify-select nivel" name="nivel_db[]" disabled="disabled" required="1">
-												<option value="">Seleccionar</option>
-												<option selected="selected" value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-											</select>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_2">
-											<input type="text" class="form-control artify-form-control artify-text tabla_db" name="tabla_db[]" disabled="disabled" required="1">
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_4">
-											<select class="form-control artify-form-control artify-select template_fields_db" disabled="disabled" name="template_fields_db[]" required="1">
-												<option value="">Seleccionar</option>
-												<option value="Si">Si</option>
-												<option selected="selected" value="No">No</option>
-											</select>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_5">
-											<select class="form-control artify-form-control artify-select active_filter_db" disabled="disabled" name="active_filter_db[]" required="1">
-												<option value="">Seleccionar</option>
-												<option value="Si">Si</option>
-												<option selected="selected" value="No">No</option>
-											</select>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_6">
-											<select class="form-control artify-form-control artify-select clone_row_db" disabled="disabled" name="clone_row_db[]" required="1">
-												<option value="">Seleccionar</option>
-												<option value="Si">Si</option>
-												<option selected="selected" value="No">No</option>
-											</select>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_7">
-											<select class="form-control artify-form-control artify-select active_popup_db" disabled="disabled" name="active_popup_db[]" required="1">
-												<option value="">Seleccionar</option>
-												<option value="Si">Si</option>
-												<option selected="selected" value="No">No</option>
-											</select>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_8">
-											<select class="form-control artify-form-control artify-select " id="active_search_db" disabled="disabled" name="active_search_db[]" required="1">
-												<option value="">Seleccionar</option>
-												<option value="Si">Si</option>
-												<option selected="selected" value="No">No</option>
-											</select>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_9">
-											<select class="form-control artify-form-control artify-select activate_deleteMultipleBtn_db" disabled="disabled" name="activate_deleteMultipleBtn_db[]" required="1">
-												<option value="">Seleccionar</option>
-												<option value="Si">Si</option>
-												<option selected="selected" value="No">No</option>
-											</select>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_10">
-											<select class="form-control artify-form-control artify-select button_add_db" disabled="disabled" name="button_add_db[]" required="1">
-												<option value="">Seleccionar</option>
-												<option value="Si">Si</option>
-												<option selected="selected" value="No">No</option>
-											</select>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_11">
-											<div class="checkbox artify-checkbox-group">
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Imprimir">Imprimir</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="PDF">PDF</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="CSV">CSV</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox actions_buttons_grid_db" disabled="disabled" name="actions_buttons_grid_db[]" value="Excel">Excel</label>
-											</div>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_12">
-											<select class="form-control artify-form-control artify-select activate_nested_table_db" disabled="disabled" name="activate_nested_table_db[]" required="1">
-												<option value="">Seleccionar</option>
-												<option value="Si">Si</option>
-												<option selected="selected" value="No">No</option>
-											</select>
-										</td>
-										<td class="artify_leftjoin_row_1 artify_leftjoin_col_13">
-											<div class="checkbox artify-checkbox-group">
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Ver">Mostrar botón Ver</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Editar">Mostrar botón Editar</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Eliminar">Mostrar botón Eliminar</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar">Ocultar botón Guardar</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Guardar y regresar">Ocultar botón Guardar y regresar</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Regresar">Ocultar botón Regresar</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Cancelar">Ocultar botón Cancelar</label>
-												<label class="checkbox-inline">
-													<input type="checkbox" class="artify-form-control artify-checkbox buttons_actions_db" disabled="disabled" name="buttons_actions_db[]" value="Personalizado PDF">Mostrar botón Personalizado PDF</label>
-											</div>
-										</td>
-										<td>
-											<a href="javascript:;" class="artify-actions btn btn-danger" data-action="delete_row"><i class="fa fa-remove"></i> Remover</a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							</div>
-
 							<div class="row mt-4">
 								<div class="col-md-12 text-center">
 									<button type="button" class="btn btn-danger artify-form-control artify-button artify-back regresar_modulos" data-action="back">Regresar</button> 
@@ -1249,7 +1089,6 @@ class HomeController
 									<a href="javascript:;" class="btn btn-primary siguiente_1">Siguiente <i class="fa fa-arrow-right"></i></a>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -1319,7 +1158,6 @@ class HomeController
 		$artify->formFieldValue("activar_recaptcha", "No");
 		$artify->fieldNotMandatory("actions_buttons_grid");
 		$artify->fieldNotMandatory("buttons_actions");
-		$artify->fieldNotMandatory("api_type");
 		$artify->formFieldValue("activate_nested_table", "No");
 		$artify->formFieldValue("activate_pdf", "No");
 		$artify->formFieldValue("refrescar_grilla", "No");
@@ -1352,7 +1190,6 @@ class HomeController
 
 		$artify->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
-		$artify->fieldDataAttr("api_type", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("query_get", array("disabled"=>"disabled", "placeholder" => "nombre_tabla/id_tabla/valor_id_tabla"));
 		$artify->fieldDataAttr("query_post", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("query_put", array("disabled"=>"disabled"));
@@ -1442,15 +1279,6 @@ class HomeController
 			"PDF" => "PDF", 
 			"CSV" => "CSV", 
 			"Excel" => "Excel"
-		), "", "", "array");
-
-		$artify->fieldTypes("api_type", "checkbox");
-		$artify->fieldDataBinding("api_type", array(
-			"Mostrar" => "Mostrar",
-			"Insertar" => "Insertar",
-			"Actualizar" => "Actualizar",
-			"Eliminar" => "Eliminar",
-			"Consulta Base de Datos" => "Consulta Base de Datos"
 		), "", "", "array");
 
 		$artify->fieldTypes("posicion_filtro", "select");
@@ -1552,7 +1380,6 @@ class HomeController
 		$artify->fieldCssClass("campos_relacion_union_tabla_principal", array("campos_relacion_union_tabla_principal"));
 		$artify->fieldCssClass("campos_relacion_union_tabla_secundaria", array("campos_relacion_union_tabla_secundaria"));
 		$artify->fieldCssClass("template_fields", array("template_fields"));
-		$artify->fieldCssClass("api_type", array("api_type"));
 		$artify->fieldCssClass("tabla_principal_union", array("tabla_principal_union"));
 		$artify->fieldCssClass("tabla_secundaria_union", array("tabla_secundaria_union"));
 		$artify->fieldCssClass("activar_union_interna", array("activar_union_interna"));
@@ -1569,9 +1396,9 @@ class HomeController
 		$artify->fieldGroups("Name2",array("name_view","add_menu"));
 		$artify->tableHeading("Generador de Módulos");
 		
-		$artify->setSearchCols(array("posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "consulta_pdf", "refrescar_grilla", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->formFields(array("posicion_filtro", "campos_relacion_union_tabla_principal", "campos_relacion_union_tabla_secundaria", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "activate_nested_table", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "consulta_pdf", "refrescar_grilla", "logo_pdf", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "buttons_actions"));
-		$artify->editFormFields(array("posicion_filtro", "campos_relacion_union_tabla_principal", "campos_relacion_union_tabla_secundaria", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "consulta_pdf", "refrescar_grilla", "logo_pdf", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$artify->setSearchCols(array("posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "consulta_pdf", "refrescar_grilla", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->formFields(array("posicion_filtro", "campos_relacion_union_tabla_principal", "campos_relacion_union_tabla_secundaria", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "activate_nested_table", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "consulta_pdf", "refrescar_grilla", "logo_pdf", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "buttons_actions"));
+		$artify->editFormFields(array("posicion_filtro", "campos_relacion_union_tabla_principal", "campos_relacion_union_tabla_secundaria", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "consulta_pdf", "refrescar_grilla", "logo_pdf", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$artify->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$artify->colRename("tabla", "Nombre Tabla Base de Datos");
@@ -1653,7 +1480,7 @@ class HomeController
 		$artify->enqueueBtnActions("url btn btn-default btn-sm ", $action, "url", $text, "", $attr);
 		//$artify->formFieldValue("query_get", "http://localhost/artify/nombre_controlador_api/nombre_metodo_api");
 		$render = $artify->dbTable("modulos")->render();
-		$switch = $artify->loadPluginJsCode("bootstrap-switch-master",".actions_buttons_grid, .buttons_actions, .api_type, .actions_buttons_grid_db, .buttons_actions_db");
+		$switch = $artify->loadPluginJsCode("bootstrap-switch-master",".actions_buttons_grid, .buttons_actions, .actions_buttons_grid_db, .buttons_actions_db");
 		$tags = $artify->loadPluginJsCode("bootstrap-tag-input",".tagsinput");
 
 		$config = DB::ArtifyCrud(true);

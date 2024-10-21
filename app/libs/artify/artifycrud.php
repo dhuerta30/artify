@@ -1194,7 +1194,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         );
     }
 
-    if ($add_menu == "Si") {
+    /*if ($add_menu == "Si") {
 
         if($area_protegida_por_login == "Si") {
             $area_protegida_por_login = "Si";
@@ -1221,7 +1221,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             "id_menu" => $id_menu,
             "visibilidad_menu" => "Mostrar"
         ));
-    }
+    }*/
 
     $newdata = array();
     $newdata["modulos"]["tabla"] = $tabla;

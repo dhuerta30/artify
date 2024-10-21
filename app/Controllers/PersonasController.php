@@ -39,19 +39,13 @@
                                     $artify->addFilter('filterAddnombre', 'Filtrar por Nombre', 'nombre', 'dropdown');
                                     $artify->setFilterSource('filterAddnombre', 'personas', 'nombre', 'nombre as pl', 'db');
                                 
-                                    $artify->addFilter('filterAddapellido', 'Filtrar por Apellido', 'apellido', 'dropdown');
-                                    $artify->setFilterSource('filterAddapellido', 'personas', 'apellido', 'apellido as pl', 'db');
-                                
-                                    $artify->addFilter('filterAddfecha_nacimiento', 'Filtrar por Fecha nacimiento', 'fecha_nacimiento', 'date');
-                                    $artify->setFilterSource('filterAddfecha_nacimiento', 'personas', 'fecha_nacimiento', 'fecha_nacimiento as pl', 'db');
-                                
                                 $artify->colRename("id_personas", "id");
                             
                                 $artify->fieldRenameLable("id_personas", "id");
                             
-                    $artify->joinTable("empleados", "empleados.id_personas = personas.id_personas", "INNER JOIN");
-                
-                $artify->setSettings("actionFilterPosition", "top");
+                $artify->tableHeading('Módulo de Personas');
+            
+                $artify->setSettings("actionFilterPosition", "left");
             
                 $artify->dbOrderBy("id_personas", "ASC");
             
@@ -88,7 +82,7 @@
             
                 $artify->setSettings('addbtn', true);
             
-                $artify->setSettings('encryption', false);
+                $artify->setSettings('encryption', true);
             
                 $artify->setSettings('required', true);
             
