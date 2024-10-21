@@ -33,10 +33,22 @@ class HomeController
         $this->token = Token::generateFormToken('send_message');
 	}
 
+	public static function Obtener_menus(){
+		$usuario_menu = new UsuarioMenuModel();
+		$data_usuario_menu = $usuario_menu->Obtener_menus();
+		return $data_usuario_menu;
+	}
+
 	public static function obtener_menu_por_id_usuario($id_usuario){
 		$usuario_menu = new UsuarioMenuModel();
 		$data_usuario_menu = $usuario_menu->Obtener_menu_por_id_usuario($id_usuario);
 		return $data_usuario_menu;
+	}
+
+	public static function Obtener_submenus($id_menu){
+		$usuario_submenu = new UsuarioSubMenuModel();
+		$data_usuario_submenu = $usuario_submenu->Obtener_submenus($id_menu);
+		return $data_usuario_submenu;
 	}
 
 	public static function Obtener_submenu_por_id_menu($id_menu, $id_usuario){

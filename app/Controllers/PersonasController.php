@@ -15,41 +15,36 @@
 
             public function __construct()
             {
-                    SessionManager::startSession();
-                    $Sesusuario = SessionManager::get('usuario');
-                    if (!isset($Sesusuario)) {
-                        Redirect::to('login/index');
-                    }
-                    $this->token = Token::generateFormToken('send_message');
-                    
             }
             public function index()
             {
                 $artify = DB::ArtifyCrud();
                 $queryfy = $artify->getQueryfyObj();
                 
-                $artify->setSearchCols(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
-            
-                $artify->crudTableCol(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
-            
-                $artify->formFields(array("nombre", "apellido", "fecha_nacimiento", "descripcion"));
-            
-                $artify->editFormFields(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
-            
-                $artify->addFilter('filterAddnombre', 'Filtrar por Nombre', 'nombre', 'dropdown');
-                $artify->setFilterSource('filterAddnombre', 'personas', 'nombre', 'nombre as pl', 'db');
-            
-                $artify->addFilter('filterAddapellido', 'Filtrar por Apellido', 'apellido', 'dropdown');
-                $artify->setFilterSource('filterAddapellido', 'personas', 'apellido', 'apellido as pl', 'db');
-            
-                $artify->addFilter('filterAddfecha_nacimiento', 'Filtrar por Fecha nacimiento', 'fecha_nacimiento', 'date');
-                $artify->setFilterSource('filterAddfecha_nacimiento', 'personas', 'fecha_nacimiento', 'fecha_nacimiento as pl', 'db');
+                        $artify->setSearchCols(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
                     
-                $artify->colRename("id_personas", "id");
-                
-                $artify->fieldRenameLable("id_personas", "id");
+                        $artify->crudTableCol(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
+                    
+                        $artify->formFields(array("nombre", "apellido", "fecha_nacimiento", "descripcion"));
+                    
+                        $artify->editFormFields(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "descripcion"));
+                    
+                                    $artify->addFilter('filterAddnombre', 'Filtrar por Nombre', 'nombre', 'dropdown');
+                                    $artify->setFilterSource('filterAddnombre', 'personas', 'nombre', 'nombre as pl', 'db');
+                                
+                                    $artify->addFilter('filterAddapellido', 'Filtrar por Apellido', 'apellido', 'dropdown');
+                                    $artify->setFilterSource('filterAddapellido', 'personas', 'apellido', 'apellido as pl', 'db');
+                                
+                                    $artify->addFilter('filterAddfecha_nacimiento', 'Filtrar por Fecha nacimiento', 'fecha_nacimiento', 'date');
+                                    $artify->setFilterSource('filterAddfecha_nacimiento', 'personas', 'fecha_nacimiento', 'fecha_nacimiento as pl', 'db');
+                                
+                                $artify->colRename("id_personas", "id");
                             
-                $artify->setSettings("actionFilterPosition", "top");
+                                $artify->fieldRenameLable("id_personas", "identificador");
+                            
+                $artify->tableHeading('Módulo de Personas');
+            
+                $artify->setSettings("actionFilterPosition", "left");
             
                 $artify->dbOrderBy("id_personas", "ASC");
             
@@ -67,9 +62,7 @@
                 
                     $artify->setSettings('excelBtn', true);
                 
-                $artify->formDisplayInPopup();
-            
-                $artify->setSettings('inlineEditbtn', false);
+                $artify->setSettings('inlineEditbtn', true);
             
                 $artify->setSettings('hideAutoIncrement', false);
             
@@ -84,8 +77,8 @@
                 $artify->setSettings('checkboxCol', true);
                 $artify->setSettings('deleteMultipleBtn', true);
             
-                $artify->setSettings('refresh', true);
-            
+            $artify->setSettings('refresh', false);
+        
                 $artify->setSettings('addbtn', true);
             
                 $artify->setSettings('encryption', true);

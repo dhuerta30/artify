@@ -1,6 +1,6 @@
 
         <?php require "layouts/header.php"; ?>
-        <?php require "layouts/sidebar.php"; ?>
+        <?php require "layouts/sidebarNotLogin.php"; ?>
         <link href="<?=$_ENV["BASE_URL"]?>css/sweetalert2.min.css" rel="stylesheet">
         <div class="content-wrapper">
             <section class="content">

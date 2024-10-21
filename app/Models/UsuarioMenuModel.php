@@ -15,6 +15,18 @@ class UsuarioMenuModel
         $this->id = 'id_usuario_menu';
     }
 
+    public function Obtener_menus()
+    {
+        $Queryfy = DB::Queryfy();
+		$query = "SELECT DISTINCT menu.id_menu, menu.nombre_menu, menu.url_menu, menu.icono_menu, menu.orden_menu, menu.submenu, usuario_menu.visibilidad_menu
+				FROM menu
+				INNER JOIN ".$this->table." ON menu.id_menu = {$this->table}.id_menu
+				INNER JOIN usuario ON {$this->table}.id_usuario = usuario.id ORDER BY orden_menu asc";
+
+		$data = $Queryfy->DBQuery($query);
+		return $data;
+    }
+
     public function Obtener_menu_por_id_usuario($id)
     {
         $Queryfy = DB::Queryfy();
