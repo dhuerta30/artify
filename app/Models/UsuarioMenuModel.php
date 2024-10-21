@@ -36,7 +36,8 @@ class UsuarioMenuModel
 				FROM menu
 				INNER JOIN ".$this->table." ON menu.id_menu = {$this->table}.id_menu
 				INNER JOIN usuario ON {$this->table}.id_usuario = usuario.id
-				WHERE {$this->table}.id_usuario = :userId ORDER BY orden_menu asc";
+				WHERE {$this->table}.id_usuario = :userId AND menu.area_protegida_menu != 'No' 
+                ORDER BY orden_menu asc";
 
 		$data = $Queryfy->DBQuery($query, [':userId' => $id]);
 		return $data;
