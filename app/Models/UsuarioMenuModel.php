@@ -21,7 +21,10 @@ class UsuarioMenuModel
 		$query = "SELECT DISTINCT menu.id_menu, menu.nombre_menu, menu.url_menu, menu.icono_menu, menu.orden_menu, menu.submenu, usuario_menu.visibilidad_menu
 				FROM menu
 				INNER JOIN ".$this->table." ON menu.id_menu = {$this->table}.id_menu
-				INNER JOIN usuario ON {$this->table}.id_usuario = usuario.id ORDER BY orden_menu asc";
+				INNER JOIN usuario ON {$this->table}.id_usuario = usuario.id
+                WHERE menu.id_menu != '4' AND menu.id_menu != '5' AND menu.id_menu != '6' AND menu.id_menu != '10' AND menu.id_menu != '12' AND menu.id_menu != '19'
+                AND menu.id_menu != '141'   
+                ORDER BY orden_menu asc";
 
 		$data = $Queryfy->DBQuery($query);
 		return $data;
