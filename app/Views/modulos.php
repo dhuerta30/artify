@@ -213,7 +213,13 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 },
                 success: function(data){
                     $("#artify-ajax-loader").hide();
-                    console.log(data);
+
+                    $(".campos_relacion_union_tabla_principal").empty();
+                    $.each(data["data"], function(index, obj){
+                        $(".campos_relacion_union_tabla_principal").append(`
+                            <option value="${obj}">${obj}</option>
+                        `);
+                    });
                 }
             });
 
