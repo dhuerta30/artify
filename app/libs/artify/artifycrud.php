@@ -1046,7 +1046,13 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $sitekey_recaptcha = isset($data["modulos"]["sitekey_recaptcha"]) ? $data["modulos"]["sitekey_recaptcha"] : null;
     $sitesecret_repatcha = isset($data["modulos"]["sitesecret_repatcha"]) ? $data["modulos"]["sitesecret_repatcha"] : null;
     $function_filter_and_search = $data["modulos"]["function_filter_and_search"];
+    
     $activar_union_interna = $data["modulos"]["activar_union_interna"];
+    $tabla_principal_union = isset($data["modulos"]["tabla_principal_union"]) ? $data["modulos"]["tabla_principal_union"] : null;
+    $tabla_secundaria_union = isset($data["modulos"]["tabla_secundaria_union"]) ? $data["modulos"]["tabla_secundaria_union"] : null;
+    $campos_relacion_union_tabla_principal = isset($data["modulos"]["campos_relacion_union_tabla_principal"]) ? $data["modulos"]["campos_relacion_union_tabla_principal"] : null;
+    $campos_relacion_union_tabla_secundaria = isset($data["modulos"]["campos_relacion_union_tabla_secundaria"]) ? $data["modulos"]["campos_relacion_union_tabla_secundaria"] : null;
+
     $mostrar_campos_formulario_editar = isset($data["modulos"]["mostrar_campos_formulario_editar"]) ? $data["modulos"]["mostrar_campos_formulario_editar"] : null;
     $posicion_botones_accion_grilla = $data["modulos"]["posicion_botones_accion_grilla"];
     $mostrar_columna_acciones_grilla = $data["modulos"]["mostrar_columna_acciones_grilla"];
