@@ -1166,6 +1166,10 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $sitesecret_repatcha,
             $function_filter_and_search,
             $activar_union_interna,
+            $tabla_principal_union,
+            $tabla_secundaria_union,
+            $campos_relacion_union_tabla_principal,
+            $campos_relacion_union_tabla_secundaria,
             $mostrar_campos_formulario_editar,
             $posicion_botones_accion_grilla,
             $mostrar_columna_acciones_grilla,
@@ -1246,6 +1250,10 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["sitesecret_repatcha"] = $sitesecret_repatcha;
     $newdata["modulos"]["function_filter_and_search"] = $function_filter_and_search;
     $newdata["modulos"]["activar_union_interna"] = $activar_union_interna;
+    $newdata["modulos"]["tabla_principal_union "] = $tabla_principal_union ;
+    $newdata["modulos"]["tabla_secundaria_union"] = $tabla_secundaria_union;
+    $newdata["modulos"]["campos_relacion_union_tabla_principal"] = $campos_relacion_union_tabla_principal;
+    $newdata["modulos"]["campos_relacion_union_tabla_secundaria"] = $campos_relacion_union_tabla_secundaria;
     $newdata["modulos"]["mostrar_campos_formulario_editar"] = $mostrar_campos_formulario_editar;
     $newdata["modulos"]["posicion_botones_accion_grilla"] = $posicion_botones_accion_grilla;
     $newdata["modulos"]["mostrar_columna_acciones_grilla"] = $mostrar_columna_acciones_grilla;
