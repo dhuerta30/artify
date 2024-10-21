@@ -1443,7 +1443,7 @@ class HomeController
 		
 		$artify->fieldTypes("tipo_de_filtro", "input");
 		$artify->fieldTypes("campos_relacion_union_tabla_principal", "multiselect");
-		$artify->fieldTypes("campos_relacion_union_tabla_secundaria", "multiselect");	
+		$artify->fieldTypes("campos_relacion_union_tabla_secundaria", "multiselect");
 
 		$artify->fieldTypes("mostrar_campos_formulario_editar", "multiselect");
 		$artify->fieldTypes("ordenar_grilla_por", "select");
@@ -1934,7 +1934,11 @@ class HomeController
 			$queryfy = $artify->getQueryfyObj();
 			$data = $queryfy->columnNames($lastSelected);
 
-			echo json_encode(["data" => $data]);
+			$filteredData = array_filter($data, function($column) {
+				return strpos($column, 'id_') === 0;
+			});
+
+			echo json_encode(["data" => $filteredData]);
 		}
 	}
 
