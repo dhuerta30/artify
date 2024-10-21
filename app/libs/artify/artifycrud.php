@@ -1082,8 +1082,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario) {
     $consulta_pdf = isset($data["modulos"]["consulta_pdf"]) ? $data["modulos"]["consulta_pdf"] : null;
 
     $queryfy = $obj->getQueryfyObj();
-    $queryfy->where("nombre_tabla", $tabla);
-    $db_result = $queryfy->select("crear_tabla");
+    $queryfy->where("tabla", $tabla);
+    $db_result = $queryfy->select("modulos");
 
     if ($db_result) {
         echo "Lo siento La Tabla Ingresada ya existe, pruebe con otra diferente";
