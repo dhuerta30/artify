@@ -2162,7 +2162,7 @@ class HomeController
 		$attr = array("title"=>"Arrastra para Reordenar Fila");
 		$artify->enqueueBtnActions("url btn btn-primary btn-sm reordenar_fila", $action, "url",$text,"orden_menu", $attr);
 		$artify->multiTableRelationDisplay("tab", "Menu");
-		$artify->setSearchCols(array("nombre_menu","url_menu", "icono_menu", "submenu", "orden_menu"));
+		$artify->setSearchCols(array("nombre_menu","url_menu", "icono_menu", "submenu", "orden_menu", "area_protegida_menu"));
 		$artify->fieldHideLable("orden_menu");
 		$artify->fieldDataAttr("orden_menu", array("style"=>"display:none"));
 		$artify->fieldHideLable("submenu");

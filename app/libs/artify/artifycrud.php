@@ -1711,6 +1711,12 @@ function formatTableMenu($data, $obj){
                 $data[$i]["submenu"] = "<div class='badge badge-success'>".$data[$i]["submenu"]."</div>";
             }
 
+            if($data[$i]["area_protegida_menu"] == "Si"){
+                $data[$i]["area_protegida_menu"] = "<div class='badge badge-success'>".$data[$i]["area_protegida_menu"]."</div>";
+            } else {
+                $data[$i]["area_protegida_menu"] = "<div class='badge badge-danger'>".$data[$i]["area_protegida_menu"]."</div>";
+            }
+
             $data[$i]["orden_menu"] = "<div class='badge badge-success'>".$data[$i]["orden_menu"]."</div>";
 
             $data[$i]["icono_menu"] = "<i style='font-size: 20px;' class='".$data[$i]["icono_menu"]."'></i>";
