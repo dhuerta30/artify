@@ -1197,6 +1197,7 @@ class HomeController
 		$artify->fieldDataAttr("tabla_principal_union", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("tabla_secundaria_union", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("posicion_filtro", array("disabled"=>"disabled"));
+		$artify->fieldDataAttr("tipo_de_filtro", array("disabled" => "disabled"));
 				
 		$artify->fieldDataAttr("mostrar_campos_busqueda", array("placeholder" => "campo1/campo2/campo3/etc"));
 		$artify->fieldDataAttr("mostrar_columnas_grilla", array("placeholder" => "columna1/columna2/columna3/etc"));
