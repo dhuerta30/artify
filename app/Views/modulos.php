@@ -352,12 +352,12 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 $(".mostrar_campos_filtro").removeAttr("disabled", "disabled");
                 $(".posicion_filtro").removeAttr("disabled", "disabled");
                 $(".esconder_tipo_filtro").removeClass("d-none");
-                $(".tipo_de_filtro").attr("readonly", false);
+                $(".tipo_de_filtro").removeAttr("disabled", "disabled");
             } else {
                 $(".mostrar_campos_filtro").attr("disabled", "disabled");
                 $(".posicion_filtro").attr("disabled", "disabled");
                 $(".esconder_tipo_filtro").addClass("d-none");
-                $(".tipo_de_filtro").attr("readonly", true);
+                $(".tipo_de_filtro").attr("disabled", "disabled");
             }
         });
 
