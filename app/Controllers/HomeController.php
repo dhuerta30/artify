@@ -1925,6 +1925,19 @@ class HomeController
 		);
 	}
 
+	public function obtener_campos_relacion_union_interna(){
+		$request = new Request();
+
+		if ($request->getMethod() === 'POST') {
+			$lastSelected = $request->post('lastSelected');
+			$artify = DB::ArtifyCrud();
+			$queryfy = $artify->getQueryfyObj();
+			$data = $queryfy->columnNames($lastSelected);
+
+			echo json_encode(["data" => $data]);
+		}
+	}
+
 	public function obtener_columnas_tabla(){
 		$request = new Request();
 

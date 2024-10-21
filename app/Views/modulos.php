@@ -197,6 +197,23 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
+        $('.tabla_principal_union').change(function() {
+            let val = $(this).val(); // Obtenemos el array de valores seleccionados
+            let lastSelected = val[val.length - 1]; // Obtenemos el último valor seleccionado
+            
+            $.ajax({
+                type: "POST",
+                url: "<?=$_ENV["BASE_URL"]?>Home/obtener_campos_relacion_union_interna",
+                dataType: "json",
+                data: {
+                    lastSelected: lastSelected
+                },
+                success: function(data){
+                    console.log(data);
+                }
+            });
+
+        });
 
         $('.tabla_principal_union, .tabla_secundaria_union').on('change', function () {
             let principalValues = $('.tabla_principal_union').val() || [];
