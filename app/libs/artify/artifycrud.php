@@ -1018,7 +1018,7 @@ function actualizar_configuracion_api($data, $obj){
     return $newdata;
 }
 
-function insertar_modulos($data, $obj, $id_sesion_usuario) {
+function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $tabla = $data["modulos"]["tabla"];
     $id_tabla = isset($data["modulos"]["id_tabla"]) ? $data["modulos"]["id_tabla"] : null;
     $crud_type = $data["modulos"]["crud_type"];
