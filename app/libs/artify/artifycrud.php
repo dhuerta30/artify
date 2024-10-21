@@ -1284,6 +1284,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["area_protegida_por_login"] = $area_protegida_por_login;
     $newdata["modulos"]["posicion_filtro"] = $posicion_filtro;
 
+    $obj->setLangData("no_data", "Operacion Realizada con éxito");
+
     return $newdata;
 }
 
