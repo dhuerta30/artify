@@ -282,9 +282,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             });
         });
 
-        $('.campos_relacion_union_tabla_principal, .campos_relacion_union_tabla_secundaria').tagsinput({
-            allowDuplicates: true
-        });
+        $('.campos_relacion_union_tabla_principal, .campos_relacion_union_tabla_secundaria').select2();
 
         $(".regresar_tablas").click(function(){
             $('.leftjoin_tr').remove();
