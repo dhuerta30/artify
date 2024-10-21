@@ -214,7 +214,6 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 success: function(data){
                     $("#artify-ajax-loader").hide();
 
-                    $(".campos_relacion_union_tabla_principal").empty();
                     $.each(data["data"], function(index, obj){
                         $(".campos_relacion_union_tabla_principal").append(`
                             <option value="${obj}">${obj}</option>
@@ -222,7 +221,32 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                     });
                 }
             });
+        });
 
+        $('.tabla_secundaria_union').change(function() {
+            let val = $(this).val(); // Obtenemos el array de valores seleccionados
+            let lastSelected = val[val.length - 1]; // Obtenemos el último valor seleccionado
+            
+            $.ajax({
+                type: "POST",
+                url: "<?=$_ENV["BASE_URL"]?>Home/obtener_campos_relacion_union_interna",
+                dataType: "json",
+                data: {
+                    lastSelected: lastSelected
+                },
+                beforeSend: function() {
+                    $("#artify-ajax-loader").show();
+                },
+                success: function(data){
+                    $("#artify-ajax-loader").hide();
+
+                    $.each(data["data"], function(index, obj){
+                        $(".campos_relacion_union_tabla_secundaria").append(`
+                            <option value="${obj}">${obj}</option>
+                        `);
+                    });
+                }
+            });
         });
 
         $('.tabla_principal_union, .tabla_secundaria_union').on('change', function () {
