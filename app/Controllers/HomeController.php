@@ -1921,22 +1921,27 @@ class HomeController
 		);
 	}
 
-	public function obtener_campos_relacion_union_interna(){
+	public function obtener_campos_relacion_union_interna() {
 		$request = new Request();
-
+	
 		if ($request->getMethod() === 'POST') {
 			$lastSelected = $request->post('lastSelected');
 			$artify = DB::ArtifyCrud();
 			$queryfy = $artify->getQueryfyObj();
 			$data = $queryfy->columnNames($lastSelected);
-
-			$filteredData = array_filter($data, function($column) {
-				return strpos($column, 'id_') === 0;
-			});
-
+	
+			// Verificar si $data es un array antes de filtrar
+			if (is_array($data)) {
+				$filteredData = array_filter($data, function($column) {
+					return strpos($column, 'id_') === 0;
+				});
+			} else {
+				$filteredData = []; // Si $data no es un array, establecer un array vacío
+			}
+	
 			echo json_encode(["data" => $filteredData]);
 		}
-	}
+	}	
 
 	public function obtener_columnas_tabla(){
 		$request = new Request();
