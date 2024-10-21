@@ -800,7 +800,7 @@ class CrudService
             ";
         }
 
-        if($activar_union_interna == "Si"){
+        if($activar_union_interna == "Si" && isset($tabla_principal_union) && !empty($campos_relacion_union_tabla_principal) && isset($tabla_secundaria_union) && !empty($campos_relacion_union_tabla_secundaria)){
             $controllerContent .= "
 
             ";
