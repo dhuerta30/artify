@@ -1440,23 +1440,19 @@ class HomeController
 		$artify->fieldTypes("mostrar_campos_formulario", "multiselect");
 		$artify->fieldTypes("mostrar_columnas_grilla", "multiselect");
 		$artify->fieldTypes("mostrar_campos_filtro", "multiselect");
-		
-		$artify->fieldTypes("tipo_de_filtro", "input");
 		$artify->fieldTypes("campos_relacion_union_tabla_principal", "multiselect");
 		$artify->fieldTypes("campos_relacion_union_tabla_secundaria", "multiselect");
-
 		$artify->fieldTypes("mostrar_campos_formulario_editar", "multiselect");
-		$artify->fieldTypes("ordenar_grilla_por", "select");
-
 		$artify->fieldTypes("nombre_columnas", "multiselect");
-		$artify->fieldTypes("nuevo_nombre_columnas", "input");
-
 		$artify->fieldTypes("nombre_campos", "multiselect");
-		$artify->fieldTypes("nuevo_nombre_campos", "input");
-
 		$artify->fieldTypes("tabla_principal_union", "multiselect");
 		$artify->fieldTypes("tabla_secundaria_union", "multiselect");
 
+		$artify->fieldTypes("tipo_de_filtro", "input");
+		$artify->fieldTypes("ordenar_grilla_por", "select");
+		$artify->fieldTypes("nuevo_nombre_columnas", "input");
+
+		$artify->fieldTypes("nuevo_nombre_campos", "input");
 		$artify->fieldAttributes("nuevo_nombre_columnas", array("data-role"=>"tagsinput"));
 		$artify->fieldAttributes("nuevo_nombre_campos", array("data-role"=>"tagsinput"));
 
