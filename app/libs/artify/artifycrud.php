@@ -1018,78 +1018,72 @@ function actualizar_configuracion_api($data, $obj){
     return $newdata;
 }
 
-function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
-
-    if (!isset($data["modulos"])) {
-        echo "Los datos proporcionados no son válidos.";
-        return;
-    }
-
-    $tabla = isset($data["modulos"]["tabla"]) ? $data["modulos"]["tabla"] : null;
+function insertar_modulos($data, $obj, $id_sesion_usuario) {
+    $tabla = $data["modulos"]["tabla"];
     $id_tabla = isset($data["modulos"]["id_tabla"]) ? $data["modulos"]["id_tabla"] : null;
-    $crud_type = isset($data["modulos"]["crud_type"]) ? $data["modulos"]["crud_type"] : null;
+    $crud_type = $data["modulos"]["crud_type"];
     $query_db = isset($data["modulos"]["query"]) ? $data["modulos"]["query"] : null;
-    $controller_name = isset($data["modulos"]["controller_name"]) ? $data["modulos"]["controller_name"] : null;
-    $name_view = isset($data["modulos"]["name_view"]) ? $data["modulos"]["name_view"] : null;
-    $add_menu = isset($data["modulos"]["add_menu"]) ? $data["modulos"]["add_menu"] : null;
-    $template_fields = isset($data["modulos"]["template_fields"]) ? $data["modulos"]["template_fields"] : null;
-    $active_filter = isset($data["modulos"]["active_filter"]) ? $data["modulos"]["active_filter"] : null;
+    $controller_name = $data["modulos"]["controller_name"];
+    $name_view = $data["modulos"]["name_view"];
+    $add_menu = $data["modulos"]["add_menu"];
+    $template_fields = $data["modulos"]["template_fields"];
+    $active_filter = $data["modulos"]["active_filter"];
     $mostrar_campos_filtro = isset($data["modulos"]["mostrar_campos_filtro"]) ? $data["modulos"]["mostrar_campos_filtro"] : null;
-    $clone_row = isset($data["modulos"]["clone_row"]) ? $data["modulos"]["clone_row"] : null;
-    $active_popup = isset($data["modulos"]["active_popup"]) ? $data["modulos"]["active_popup"] : null;
-    $active_search = isset($data["modulos"]["active_search"]) ? $data["modulos"]["active_search"] : null;
-    $activate_deleteMultipleBtn = isset($data["modulos"]["activate_deleteMultipleBtn"]) ? $data["modulos"]["activate_deleteMultipleBtn"] : null;
-    $button_add = isset($data["modulos"]["button_add"]) ? $data["modulos"]["button_add"] : null;
+    $clone_row = $data["modulos"]["clone_row"];
+    $active_popup = $data["modulos"]["active_popup"];
+    $active_search = $data["modulos"]["active_search"];
+    $activate_deleteMultipleBtn = $data["modulos"]["activate_deleteMultipleBtn"];
+    $button_add = $data["modulos"]["button_add"];
     $actions_buttons_grid = isset($data["modulos"]["actions_buttons_grid"]) ? $data["modulos"]["actions_buttons_grid"] : null;
-    $activate_nested_table = isset($data["modulos"]["activate_nested_table"]) ? $data["modulos"]["activate_nested_table"] : null;
+    $activate_nested_table = $data["modulos"]["activate_nested_table"];
     $buttons_actions = isset($data["modulos"]["buttons_actions"]) ? $data["modulos"]["buttons_actions"] : null;
-    $refrescar_grilla = isset($data["modulos"]["refrescar_grilla"]) ? $data["modulos"]["refrescar_grilla"] : null;
-    $encryption = isset($data["modulos"]["encryption"]) ? $data["modulos"]["encryption"] : null;
+    $refrescar_grilla = $data["modulos"]["refrescar_grilla"];
+    $encryption = $data["modulos"]["encryption"];
     $mostrar_campos_busqueda = isset($data["modulos"]["mostrar_campos_busqueda"]) ? $data["modulos"]["mostrar_campos_busqueda"] : null;
     $mostrar_columnas_grilla = isset($data["modulos"]["mostrar_columnas_grilla"]) ? $data["modulos"]["mostrar_columnas_grilla"] : null;
     $mostrar_campos_formulario = isset($data["modulos"]["mostrar_campos_formulario"]) ? $data["modulos"]["mostrar_campos_formulario"] : null;
-    $activar_recaptcha = isset($data["modulos"]["activar_recaptcha"]) ? $data["modulos"]["activar_recaptcha"] : null;
+    $activar_recaptcha = $data["modulos"]["activar_recaptcha"];
     $sitekey_recaptcha = isset($data["modulos"]["sitekey_recaptcha"]) ? $data["modulos"]["sitekey_recaptcha"] : null;
     $sitesecret_repatcha = isset($data["modulos"]["sitesecret_repatcha"]) ? $data["modulos"]["sitesecret_repatcha"] : null;
-    $function_filter_and_search = isset($data["modulos"]["function_filter_and_search"]) ? $data["modulos"]["function_filter_and_search"] : null;
-
-    $activar_union_interna = isset($data["modulos"]["activar_union_interna"]) ? $data["modulos"]["activar_union_interna"] : null;
-    $tabla_principal_union = isset($data["modulos"]["tabla_principal_union"]) ? $data["modulos"]["tabla_principal_union"] : null;
-    $tabla_secundaria_union = isset($data["modulos"]["tabla_secundaria_union"]) ? $data["modulos"]["tabla_secundaria_union"] : null;
-    $campos_relacion_union_tabla_principal = isset($data["modulos"]["campos_relacion_union_tabla_principal"]) ? $data["modulos"]["campos_relacion_union_tabla_principal"] : null;
-    $campos_relacion_union_tabla_secundaria = isset($data["modulos"]["campos_relacion_union_tabla_secundaria"]) ? $data["modulos"]["campos_relacion_union_tabla_secundaria"] : null;
+    $function_filter_and_search = $data["modulos"]["function_filter_and_search"];
+    
+    $activar_union_interna = $data["modulos"]["activar_union_interna"];
+    $tabla_principal_union = $data["modulos"]["tabla_principal_union"];
+    $tabla_secundaria_union = $data["modulos"]["tabla_secundaria_union"];
+    $campos_relacion_union_tabla_principal = $data["modulos"]["campos_relacion_union_tabla_principal"];
+    $campos_relacion_union_tabla_secundaria = $data["modulos"]["campos_relacion_union_tabla_secundaria"];
 
     $mostrar_campos_formulario_editar = isset($data["modulos"]["mostrar_campos_formulario_editar"]) ? $data["modulos"]["mostrar_campos_formulario_editar"] : null;
-    $posicion_botones_accion_grilla = isset($data["modulos"]["posicion_botones_accion_grilla"]) ? $data["modulos"]["posicion_botones_accion_grilla"] : null;
-    $mostrar_columna_acciones_grilla = isset($data["modulos"]["mostrar_columna_acciones_grilla"]) ? $data["modulos"]["mostrar_columna_acciones_grilla"] : null;
-    $campos_requeridos = isset($data["modulos"]["campos_requeridos"]) ? $data["modulos"]["campos_requeridos"] : null;
-    $mostrar_paginacion = isset($data["modulos"]["mostrar_paginacion"]) ? $data["modulos"]["mostrar_paginacion"] : null;
-    $activar_numeracion_columnas = isset($data["modulos"]["activar_numeracion_columnas"]) ? $data["modulos"]["activar_numeracion_columnas"] : null;
-    $activar_registros_por_pagina = isset($data["modulos"]["activar_registros_por_pagina"]) ? $data["modulos"]["activar_registros_por_pagina"] : null;
+    $posicion_botones_accion_grilla = $data["modulos"]["posicion_botones_accion_grilla"];
+    $mostrar_columna_acciones_grilla = $data["modulos"]["mostrar_columna_acciones_grilla"];
+    $campos_requeridos = $data["modulos"]["campos_requeridos"];
+    $mostrar_paginacion = $data["modulos"]["mostrar_paginacion"];
+    $activar_numeracion_columnas = $data["modulos"]["activar_numeracion_columnas"];
+    $activar_registros_por_pagina = $data["modulos"]["activar_registros_por_pagina"];
     $cantidad_de_registros_por_pagina = isset($data["modulos"]["cantidad_de_registros_por_pagina"]) ? $data["modulos"]["cantidad_de_registros_por_pagina"] : null;
     $activar_edicion_en_linea = isset($data["modulos"]["activar_edicion_en_linea"]) ? $data["modulos"]["activar_edicion_en_linea"] : null;
     $nombre_modulo = isset($data["modulos"]["nombre_modulo"]) ? $data["modulos"]["nombre_modulo"] : null;
     $ordenar_grilla_por = isset($data["modulos"]["ordenar_grilla_por"]) ? $data["modulos"]["ordenar_grilla_por"] : null;
     $tipo_orden = isset($data["modulos"]["tipo_orden"]) ? $data["modulos"]["tipo_orden"] : null;
     $posicionarse_en_la_pagina = isset($data["modulos"]["posicionarse_en_la_pagina"]) ? $data["modulos"]["posicionarse_en_la_pagina"] : null;
-    $ocultar_id_tabla = isset($data["modulos"]["ocultar_id_tabla"]) ? $data["modulos"]["ocultar_id_tabla"] : null;
+    $ocultar_id_tabla = $data["modulos"]["ocultar_id_tabla"];
     $nombre_columnas = isset($data["modulos"]["nombre_columnas"]) ? $data["modulos"]["nombre_columnas"] : null;
     $nuevo_nombre_columnas = isset($data["modulos"]["nuevo_nombre_columnas"]) ? $data["modulos"]["nuevo_nombre_columnas"] : null;
     $nombre_campos = isset($data["modulos"]["nombre_campos"]) ? $data["modulos"]["nombre_campos"] : null;
     $nuevo_nombre_campos = isset($data["modulos"]["nuevo_nombre_campos"]) ? $data["modulos"]["nuevo_nombre_campos"] : null;
     $tipo_de_filtro = isset($data["modulos"]["tipo_de_filtro"]) ? $data["modulos"]["tipo_de_filtro"] : null;
-    $totalRecordsInfo = isset($data["modulos"]["totalRecordsInfo"]) ? $data["modulos"]["totalRecordsInfo"] : null;
-    $area_protegida_por_login = isset($data["modulos"]["area_protegida_por_login"]) ? $data["modulos"]["area_protegida_por_login"] : null;
+    $totalRecordsInfo = $data["modulos"]["totalRecordsInfo"];
+    $area_protegida_por_login = $data["modulos"]["area_protegida_por_login"];
     $posicion_filtro = isset($data["modulos"]["posicion_filtro"]) ? $data["modulos"]["posicion_filtro"] : null;
 
-    $activate_pdf = isset($data["modulos"]["activate_pdf"]) ? $data["modulos"]["activate_pdf"] : null;
+    $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
     $marca_de_agua_pdf = isset($data["modulos"]["marca_de_agua_pdf"]) ? $data["modulos"]["marca_de_agua_pdf"] : null;
     $consulta_pdf = isset($data["modulos"]["consulta_pdf"]) ? $data["modulos"]["consulta_pdf"] : null;
 
     $queryfy = $obj->getQueryfyObj();
-    $queryfy->where("tabla", $tabla);
-    $db_result = $queryfy->select("modulos");
+    $queryfy->where("nombre_tabla", $tabla);
+    $db_result = $queryfy->select("crear_tabla");
 
     if ($db_result) {
         echo "Lo siento La Tabla Ingresada ya existe, pruebe con otra diferente";

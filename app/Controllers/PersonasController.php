@@ -40,8 +40,6 @@
                             
                                 $artify->fieldRenameLable("id_personas", "id");
                             
-                $artify->tableHeading('Módulo de Personas');
-            
                 $artify->dbOrderBy("id_personas", "ASC");
             
                 $artify->currentPage(1);
