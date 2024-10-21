@@ -2981,12 +2981,10 @@ Class Artify {
     }
 
     private function getResponse($data) {
-        $this->token = $this->getLangData("tokenApi");
         $response = array(
             "message" => $this->message,
             "error" => $this->getErrors(),
             "data" => $data,
-            "tokenApi" => $this->token,
             "redirectionurl" => ""
         );
         if (isset($this->formRedirection))
