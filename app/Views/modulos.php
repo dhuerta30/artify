@@ -506,7 +506,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
-        $(".activate_api").change(function() {
+        /*$(".activate_api").change(function() {
             var val = $(this).val();
 
             if(val == "Si"){
@@ -529,7 +529,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 $(".query_delete").attr("disabled", "disabled");
                 $(".consulta_api").attr("disabled", "disabled");
             }
-        });
+        });*/
 
         $(".activate_nested_table").change(function() {
             var val = $(this).val();

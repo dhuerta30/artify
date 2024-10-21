@@ -599,9 +599,6 @@ class HomeController
 			<li class="nav-item border-0" role="presentation">
 				<a class="nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="pdf" aria-selected="false">Generador de PDF</a>
 			</li>
-			 <li class="nav-item border-0" role="presentation">
-				<a class="nav-link" id="Api-tab" data-toggle="tab" href="#Api" role="tab" aria-controls="Api" aria-selected="false">Generador de Api</a>
-			</li>
 		</ul>
 
 		<div class="tab-content" id="myTabContent">
@@ -1301,79 +1298,6 @@ class HomeController
 				</div>
 		
 			</div>
-
-			<div class="tab-pane fade" id="Api" role="tabpanel" aria-labelledby="Api-tab">
-
-				<div class="row mt-4">
-					<div class="col-md-12">
-						<div class="form-group">
-							<label class="form-label">Activar Api:</label>
-							{activate_api}
-							<p class="artify_help_block help-block form-text with-errors"></p>
-						</div>
-					</div>	
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="form-label">Tipo de APi:</label>
-							{api_type}
-							<p class="artify_help_block help-block form-text with-errors"></p>
-						</div>
-					</div>
-					<div class="col-md-8">
-						<div class="form-group">
-							<label class="form-label">Mostrar</label>
-							<div class="input-group-append">
-								<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
-								{query_get}
-							</div>
-							<p class="artify_help_block help-block form-text with-errors"></p>
-
-							<div class="form-group mt-4">
-								<label class="form-label">Insertar</label>
-								<div class="input-group-append">
-									<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
-									{query_post}
-								</div>
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-							<div class="form-group mt-4">
-								<label class="form-label">Actualizar</label>
-								<div class="input-group-append">
-									<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
-									{query_put}
-								</div>
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-							<div class="form-group mt-4">
-								<label class="form-label">Eliminar</label>
-								<div class="input-group-append">
-									<span class="input-group-text bg-primary" id="basic-addon1">'.$currentUrl. 'api/'.'</span>
-									{query_delete}
-								</div>
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="form-group">
-							<label class="form-label">Consulta de Base de Datos</label>
-							{consulta_api}
-							<p class="artify_help_block help-block form-text with-errors"></p>
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group mt-4 text-center">
-					<a href="javascript:;" class="btn btn-primary mb-3 atras"><i class="fa fa-arrow-left"></i> Anterior</a>
-                	<input type="submit" class="btn btn-primary artify-form-control artify-submit mb-3" data-action="insert" value="Guardar">
-					<button type="button" class="btn btn-danger artify-form-control artify-button mb-3 artify-back regresar_modulos" data-action="back">Regresar</button> 
-					<button type="reset" class="btn btn-danger artify-form-control artify-button mb-3 artify-cancel-btn">Cancelar</button>
-				</div>
-
-			</div>
 		</div>
 
 		</div>
@@ -1398,7 +1322,6 @@ class HomeController
 		$artify->fieldNotMandatory("api_type");
 		$artify->formFieldValue("activate_nested_table", "No");
 		$artify->formFieldValue("activate_pdf", "No");
-		$artify->formFieldValue("activate_api", "No");
 		$artify->formFieldValue("refrescar_grilla", "No");
 		$artify->formFieldValue("function_filter_and_search", "Si");
 		$artify->formFieldValue("activar_union_interna", "No");
@@ -1554,9 +1477,6 @@ class HomeController
 		$artify->fieldTypes("activate_pdf", "select");
 		$artify->fieldDataBinding("activate_pdf", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$artify->fieldTypes("activate_api", "select");
-		$artify->fieldDataBinding("activate_api", array("Si" => "Si", "No" => "No"), "", "", "array");
-
 		$artify->fieldTypes("activate_deleteMultipleBtn", "select");
 		$artify->fieldDataBinding("activate_deleteMultipleBtn", array("Si" => "Si", "No" => "No"), "", "", "array");
 
@@ -1633,7 +1553,6 @@ class HomeController
 		$artify->fieldCssClass("campos_relacion_union_tabla_secundaria", array("campos_relacion_union_tabla_secundaria"));
 		$artify->fieldCssClass("template_fields", array("template_fields"));
 		$artify->fieldCssClass("api_type", array("api_type"));
-		$artify->fieldCssClass("activate_api", array("activate_api"));
 		$artify->fieldCssClass("tabla_principal_union", array("tabla_principal_union"));
 		$artify->fieldCssClass("tabla_secundaria_union", array("tabla_secundaria_union"));
 		$artify->fieldCssClass("activar_union_interna", array("activar_union_interna"));
@@ -1650,9 +1569,9 @@ class HomeController
 		$artify->fieldGroups("Name2",array("name_view","add_menu"));
 		$artify->tableHeading("Generador de Módulos");
 		
-		$artify->setSearchCols(array("posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
-		$artify->formFields(array("posicion_filtro", "campos_relacion_union_tabla_principal", "campos_relacion_union_tabla_secundaria", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "activate_nested_table", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "buttons_actions"));
-		$artify->editFormFields(array("posicion_filtro", "campos_relacion_union_tabla_principal", "campos_relacion_union_tabla_secundaria", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "activate_api", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
+		$artify->setSearchCols(array("posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "api_type", "marca_de_agua_pdf", "activate_pdf", "id_modulos", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
+		$artify->formFields(array("posicion_filtro", "campos_relacion_union_tabla_principal", "campos_relacion_union_tabla_secundaria", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "activate_nested_table", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "buttons_actions"));
+		$artify->editFormFields(array("posicion_filtro", "campos_relacion_union_tabla_principal", "campos_relacion_union_tabla_secundaria", "tabla_principal_union", "tabla_secundaria_union", "area_protegida_por_login", "totalRecordsInfo", "tipo_de_filtro", "ocultar_id_tabla", "nombre_campos", "nuevo_nombre_campos", "nombre_columnas", "nuevo_nombre_columnas", "posicionarse_en_la_pagina", "ordenar_grilla_por", "tipo_orden", "nombre_modulo", "activar_edicion_en_linea", "cantidad_de_registros_por_pagina", "activar_numeracion_columnas", "activar_registros_por_pagina", "mostrar_paginacion", "mostrar_columna_acciones_grilla", "campos_requeridos", "posicion_botones_accion_grilla", "mostrar_campos_formulario_editar", "activar_union_interna", "function_filter_and_search", "activar_recaptcha", "sitekey_recaptcha", "sitesecret_repatcha", "query_get", "encryption", "mostrar_columnas_grilla", "mostrar_campos_filtro", "mostrar_campos_formulario", "mostrar_campos_busqueda", "query_post", "query_put", "query_delete", "consulta_api", "consulta_pdf", "refrescar_grilla", "logo_pdf", "api_type", "marca_de_agua_pdf", "activate_pdf", "tabla", "id_tabla", "crud_type", "query", "controller_name", "name_view", "add_menu", "template_fields", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid","modify_query", "activate_nested_table", "buttons_actions"));
 
 		$artify->crudTableCol(array("crud_type","tabla","id_tabla", "controller_name", "name_view", "add_menu", "active_filter", "clone_row", "active_popup", "active_search", "activate_deleteMultipleBtn", "button_add", "actions_buttons_grid", "activate_nested_table", "buttons_actions"));
 		$artify->colRename("tabla", "Nombre Tabla Base de Datos");
