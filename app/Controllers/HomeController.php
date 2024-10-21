@@ -1190,11 +1190,6 @@ class HomeController
 
 		$artify->fieldDataAttr("logo_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("marca_de_agua_pdf", array("disabled"=>"disabled"));
-		$artify->fieldDataAttr("query_get", array("disabled"=>"disabled", "placeholder" => "nombre_tabla/id_tabla/valor_id_tabla"));
-		$artify->fieldDataAttr("query_post", array("disabled"=>"disabled"));
-		$artify->fieldDataAttr("query_put", array("disabled"=>"disabled"));
-		$artify->fieldDataAttr("query_delete", array("disabled"=>"disabled"));
-		$artify->fieldDataAttr("consulta_api", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("consulta_pdf", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("sitekey_recaptcha", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("sitesecret_repatcha", array("disabled"=>"disabled"));
@@ -1334,15 +1329,10 @@ class HomeController
 		$artify->fieldCssClass("columns_table", array("columns_table"));
 		$artify->fieldCssClass("modify_query", array("modify_query"));
 		$artify->fieldCssClass("activate_nested_table", array("activate_nested_table"));
-		$artify->fieldCssClass("consulta_api", array("consulta_api"));
 		$artify->fieldCssClass("consulta_pdf", array("consulta_pdf"));
 		$artify->fieldCssClass("activate_pdf", array("activate_pdf"));
 		$artify->fieldCssClass("logo_pdf", array("logo_pdf"));
 		$artify->fieldCssClass("marca_de_agua_pdf", array("marca_de_agua_pdf"));
-		$artify->fieldCssClass("query_get", array("query_get"));
-		$artify->fieldCssClass("query_post", array("query_post"));
-		$artify->fieldCssClass("query_put", array("query_put"));
-		$artify->fieldCssClass("query_delete", array("query_delete"));
 		$artify->fieldCssClass("actions_buttons_grid", array("actions_buttons_grid"));
 		$artify->fieldCssClass("buttons_actions", array("buttons_actions"));
 		$artify->fieldCssClass("mostrar_campos_busqueda", array("mostrar_campos_busqueda"));
@@ -1388,7 +1378,7 @@ class HomeController
 
 		$artify->fieldAttributes("id_tabla", array("readonly" => "true"));
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
-		$artify->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
+		//$artify->fieldAttributes("consulta_api", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
 		$artify->fieldAttributes("consulta_crear_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
 		$artify->fieldAttributes("query", array("placeholder"=> "Ejemplo: SELECT id as ID, name as Name FROM demo", "style"=> "min-height: 200px; max-height: 200px;"));
 		$artify->fieldAttributes("modify_query", array("placeholder"=> "Ejemplo: DROP COLUMN categoria, ADD COLUMN edad INT(3)", "style"=> "min-height: 200px; max-height: 200px;"));
