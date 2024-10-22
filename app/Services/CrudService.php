@@ -617,9 +617,23 @@ class CrudService
                         $controllerContent .= "
                             \$artify->addCallback(\"before_insert\", array({$valuesString}));
                         ";
-                    } else if($valuesString == "Despues de Insertar"){
+                    } 
+                    
+                    if($valuesString == "Despues de Insertar"){
                         $controllerContent .= "
                             \$artify->addCallback(\"after_insert\", array({$valuesString}));
+                        ";
+                    }
+
+                    if($valuesString == "Antes de Actualizar"){
+                        $controllerContent .= "
+                            \$artify->addCallback(\"before_update\", array({$valuesString}));
+                        ";
+                    }
+
+                    if($valuesString == "Despues de Actualizar"){
+                        $controllerContent .= "
+                            \$artify->addCallback(\"after_update\", array({$valuesString}));
                         ";
                     }
                 }
