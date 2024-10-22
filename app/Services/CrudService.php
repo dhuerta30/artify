@@ -602,6 +602,28 @@ class CrudService
                     \$artify = DB::ArtifyCrud(false, \"\", \"\",  \$settings);
                     \$queryfy = \$artify->getQueryfyObj();
                 ";
+
+                if(isset($type_callback)){
+
+                    $values = explode(',', $type_callback);
+
+                    $values = array_filter($values, function ($value) {
+                        return !empty(trim($value));
+                    });
+                    
+                    $valuesString = '"' . implode('", "', $values) . '"';
+
+                    if($valuesString == "Antes de Insertar"){
+                        $controllerContent .= "
+                            \$artify->addCallback(\"before_insert\", array({$valuesString}));
+                        ";
+                    } else if($valuesString == "Despues de Insertar"){
+                        $controllerContent .= "
+                            \$artify->addCallback(\"after_insert\", array({$valuesString}));
+                        ";
+                    }
+                }
+
             } else {
                 $controllerContent .= "
                     \$artify = DB::ArtifyCrud();
