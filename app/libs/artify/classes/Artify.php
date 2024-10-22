@@ -196,9 +196,6 @@ Class Artify {
         $this->ArtifyHelper = new ArtifyHelper($this->ArtifyErrorCtrl);
         $this->ArtifyTableFormat = new ArtifyTableFormat($this->ArtifyErrorCtrl);
         $this->multi = $multi;
-        /*if(!$this->artifyhelper->verifyPurchaseCode($this->settings)){
-            die();
-        }*/
         if (!empty($template))
             $this->settings["template"] = $template;
         if (!empty($skin))
@@ -209,7 +206,6 @@ Class Artify {
             $this->initializeJsSettings();
             $this->registerJs();
             $this->registerCss();
-            //$this->initializeHTMLContent();
             $this->initializePlugins();
         }
     }
@@ -1896,11 +1892,6 @@ Class Artify {
             else
                 return $html;
         }
-    }
-
-    private function initializeHTMLContent() {
-        $this->HTMLContent[] = $this->getAjaxLoaderImage($this->settings["script_url"] . "artify/images/ajax-loader.gif");
-        return $this;
     }
 
     /**
