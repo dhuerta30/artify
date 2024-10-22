@@ -190,7 +190,7 @@ class CrudService
             if(!empty($file_callback)){
                 $fileName = $file_callback . ".php";
                 $phpCode = 'echo "Este es un archivo PHP generado dinámicamente.";';
-                
+
                 // Llamar al método principal para crear el archivo y escribir el código
                 $this->generatePHPFile($fileName, $phpCode);
 
@@ -236,7 +236,7 @@ class CrudService
         closedir($dir);
     }
 
-    public function generatePHPFile($fileName, $phpCode) {
+    private function generatePHPFile($fileName, $phpCode) {
         $filePath = __DIR__ . '/../libs/artify/' . $fileName;
 
         if (!file_exists($filePath)) {
