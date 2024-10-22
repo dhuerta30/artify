@@ -1,4 +1,6 @@
 <?php
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 require_once dirname(__DIR__, 3) . "/vendor/autoload.php";
 
 // Cargar variables de entorno antes de iniciar la sesión
@@ -1668,26 +1670,58 @@ function editar_usuario($data, $obj){
 
 //example of how to add action function
 function beforeloginCallback($data, $obj) {
-
     $pass = $data['usuario']['password'];
     $user = $data['usuario']['usuario'];
+    $license_key = $data['usuario']['license_key']; // Obtener el código de licencia ingresado
 
+    // Clave secreta que usaste para generar el JWT (manténla segura)
+    $secret_key = $_ENV['CSRF_SECRET'];
+
+    // Paso 1: Validar usuario y contraseña
     $queryfy = $obj->getQueryfyObj();
     $queryfy->where("usuario", $user);
     $hash = $queryfy->select("usuario");
 
-    if($hash){
+    if ($hash) {
         if (password_verify($pass, $hash[0]['password'])) {
-            @session_start();
-            $_SESSION["data"] = $data;
-            $obj->setLangData("no_data", "Bienvenido");
-            $obj->formRedirection($_ENV['URL_ArtifyCrud']."home/datos_paciente");
+            // Usuario y contraseña son válidos
+            
+            // Paso 2: Validar la licencia JWT
+            try {
+                $decoded = JWT::decode($license_key, new Key($secret_key, 'HS256'));
+
+                // Verificar que el token JWT no haya expirado
+                if ($decoded->exp < time()) {
+                    echo "La licencia ha expirado.";
+                    die();
+                }
+
+                // Si la licencia es válida, iniciar la sesión
+                @session_start();
+                $_SESSION["data"] = $data;
+
+                // Redirigir al home/datos_paciente
+                $obj->setLangData("no_data", "Bienvenido");
+                $obj->formRedirection($_ENV['URL_ArtifyCrud']."home/datos_paciente");
+
+            } catch (Exception $e) {
+
+                $error = $e->getMessage();
+
+                if($error == "Wrong number of segments"){
+                    $error = "Número incorrecto de segmentos";
+                }
+                // Si la licencia no es válida o ocurre un error
+                echo "Licencia no válida: " . $error;
+                die();
+            }
+
         } else {
-            echo "El usuario o la contraseña ingresada no coinciden";
+            echo "El usuario o la contraseña ingresada no coinciden.";
             die();
         }
     } else {
-        echo "Datos erroneos";
+        echo "Datos erroneos.";
         die();
     }
 
