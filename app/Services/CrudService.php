@@ -188,13 +188,11 @@ class CrudService
             }
 
             if(!empty($file_callback)){
-                $fileGenerator = new CrudService();
-
                 $fileName = $file_callback . ".php";
                 $phpCode = 'echo "Este es un archivo PHP generado dinámicamente.";';
-
+                
                 // Llamar al método principal para crear el archivo y escribir el código
-                $fileGenerator->generatePHPFile($fileName, $phpCode);
+                $this->generatePHPFile($fileName, $phpCode);
 
             }
 
