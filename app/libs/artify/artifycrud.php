@@ -1709,7 +1709,7 @@ function beforeloginCallback($data, $obj) {
                 $error = $e->getMessage();
 
                 if($error == "Wrong number of segments"){
-                    $error = "Número incorrecto de segmentos";
+                    $error = "Debe ingresar 256 carácteres";
                 }
                 // Si la licencia no es válida o ocurre un error
                 echo "Licencia no válida: " . $error;

@@ -29,20 +29,27 @@ class ApiRestController
             $usuario = new UserModel();
             $data = $usuario->select_userBy_email($email);
 
-            if (password_verify($password, $data[0]["password"])) {
-                
-                $tokenData = [
-                    'id' => $data[0]["id"],
-                    'email' => $data[0]["email"],
-                    'timestamp' => time(),
-                ];
+            // Validar si se encontró algún usuario con ese email
+            if (!empty($data)) {
+                // Validar la contraseña
+                if (password_verify($password, $data[0]["password"])) {
+                    
+                    $tokenData = [
+                        'id' => $data[0]["id"],
+                        'email' => $data[0]["email"],
+                        'timestamp' => time(),
+                    ];
 
-                $token = JWT::encode($tokenData, $this->secretKey, 'HS256');
+                    $token = JWT::encode($tokenData, $this->secretKey, 'HS256');
 
-                $usuario->update_userBy_email($data[0]["email"], array("token_api" => $token));
-                echo json_encode(['token' => $token]);
+                    // Actualizar token en la base de datos
+                    $usuario->update_userBy_email($data[0]["email"], array("token_api" => $token));
+                    echo json_encode(['token' => $token]);
+                } else {
+                    echo json_encode(['error' => 'La contraseña no es válida']);
+                }
             } else {
-                echo json_encode(['error' => 'No tiene permisos para acceder a esta Api']);
+                echo json_encode(['error' => 'Usuario no encontrado']);
             }
         
         }
