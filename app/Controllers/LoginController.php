@@ -25,7 +25,7 @@ class LoginController {
 
 		$Sesusuario = SessionManager::get('usuario');
 		if (isset($Sesusuario)) {
-			Redirect::to("home/usuarios");
+			Redirect::to("home/modulos");
 		}
 	}
 
