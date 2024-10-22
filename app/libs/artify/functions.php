@@ -1,7 +1,4 @@
 <?php
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
-
 require_once dirname(__DIR__, 3) . "/vendor/autoload.php";
 
 // Cargar variables de entorno antes de iniciar la sesión
