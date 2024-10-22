@@ -27,9 +27,9 @@
             {
                 $settings["script_url"] = $_ENV['URL_ArtifyCrud'];
 
-                $_ENV["url_artify"] = "functions.php";
+                $_ENV["url_artify"] = "artify/functions.php";
                 $settings["url_artify"] = $_ENV["url_artify"];
-                
+
                 $settings["downloadURL"] = $_ENV['DOWNLOAD_URL'];
                 $settings["hostname"] = $_ENV['DB_HOST'];
                 $settings["database"] = $_ENV['DB_NAME'];
