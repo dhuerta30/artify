@@ -297,26 +297,6 @@ class CrudService
         return false;
     }
 
-    /*private function createTable($tableName, $columns)
-    {
-        $sql = "CREATE TABLE IF NOT EXISTS {$tableName} ({$columns})";
-        try {
-            $this->pdo->exec($sql);
-        } catch (\PDOException $e) {
-            throw new \Exception("Error al crear la tabla: {$e->getMessage()}");
-        }
-    }*/
-
-    /*private function modifyTable($tableName, $modify_query)
-    {
-        $sql = "ALTER TABLE {$tableName} {$modify_query}";
-        try {
-            $this->pdo->exec($sql);
-        } catch (\PDOException $e) {
-            throw new \Exception("Error al modificar la tabla: {$e->getMessage()}");
-        }
-    }*/
-
     private function generateCrudControllerSQL($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda)
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
