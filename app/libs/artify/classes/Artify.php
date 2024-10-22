@@ -2079,8 +2079,8 @@ Class Artify {
      * @param   string   $callback                        Name of callback function
      * @return   object                                    Object of class
      */
-    public function addCallback($eventName, $callback, $params = array(), $ajaxPath = 'artifycrud.php') {
-        $this->callback[$eventName][] = ['callback' => $callback, 'params' => $params, 'ajaxPath' => $ajaxPath];
+    public function addCallback($eventName, $callback, $params = array()) {
+        $this->callback[$eventName][] = ['callback' => $callback, 'params' => $params];
         return $this;
     }
 
@@ -2089,14 +2089,8 @@ Class Artify {
             foreach ($this->callback[$eventName] as $callbackData) {
                 $callback = $callbackData['callback'];
                 $params = $callbackData['params'];
-                $ajaxPath = $callbackData['ajaxPath'];
 
                 if (is_callable($callback)) {
-
-                    if (!empty($ajaxPath)) {
-                        $this->handleAjax($ajaxPath, $data);
-                    }
-
                     $argsToPass = array_merge([$data, $this], $params);
                     $data = call_user_func_array($callback, $argsToPass);
                 }
