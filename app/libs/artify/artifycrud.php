@@ -1208,6 +1208,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
         );
     }
 
+    print_r($data);
+    die();
+
     if ($add_menu == "Si") {
 
         if($area_protegida_por_login == "Si") {
