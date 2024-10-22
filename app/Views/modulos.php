@@ -197,6 +197,8 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
             }
         });
 
+        $(".type_callback").select2();
+
         $('.tabla_principal_union').change(function() {
             let val = $('.tabla_principal_union').val(); // Obtenemos el array de valores seleccionados
             let lastSelected = val[val.length - 1]; // Obtenemos el último valor seleccionado
