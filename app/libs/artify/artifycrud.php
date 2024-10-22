@@ -1709,6 +1709,8 @@ function beforeloginCallback($data, $obj) {
             
                 if ($error == "Wrong number of segments") {
                     $error = "Debe ingresar 256 carácteres";
+                } else if($error == "Expired token") {
+                    $error = "Token Expirado";
                 }
                 // Si la licencia no es válida o ocurre un error
                 echo "Licencia no válida: " . $error;
