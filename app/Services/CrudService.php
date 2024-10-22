@@ -76,7 +76,9 @@ class CrudService
         $nuevo_nombre_campos,
         $totalRecordsInfo,
         $area_protegida_por_login,
-        $posicion_filtro
+        $posicion_filtro,
+        $file_callback,
+        $type_callback
         )
     {
         if($crudType == 'SQL'){
@@ -115,7 +117,9 @@ class CrudService
                 $nombre_modulo,
                 $totalRecordsInfo,
                 $area_protegida_por_login,
-                $posicion_filtro
+                $posicion_filtro,
+                $file_callback,
+                $type_callback
             );
         }
 
@@ -172,7 +176,9 @@ class CrudService
                 $nuevo_nombre_campos,
                 $totalRecordsInfo,
                 $area_protegida_por_login,
-                $posicion_filtro
+                $posicion_filtro,
+                $file_callback,
+                $type_callback
             );
 
             if($area_protegida_por_login == "Si"){
@@ -540,7 +546,9 @@ class CrudService
         $nuevo_nombre_campos,
         $totalRecordsInfo,
         $area_protegida_por_login,
-        $posicion_filtro
+        $posicion_filtro,
+        $file_callback,
+        $type_callback
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
@@ -576,23 +584,30 @@ class CrudService
             $controllerContent .= "
             }
             public function index()
-            {
-                \$settings[\"script_url\"] = \$_ENV['URL_ArtifyCrud'];
+            {";
 
-                \$_ENV[\"url_artify\"] = \"artify/functions.php\";
-                \$settings[\"url_artify\"] = \$_ENV[\"url_artify\"];
+            if(!empty($file_callback)){
+                $controllerContent .= "
+                    \$settings[\"script_url\"] = \$_ENV['URL_ArtifyCrud'];
+                    \$_ENV[\"url_artify\"] = \"artify/functions.php\";
+                    \$settings[\"url_artify\"] = \$_ENV[\"url_artify\"];
+                    \$settings[\"downloadURL\"] = \$_ENV['DOWNLOAD_URL'];
+                    \$settings[\"hostname\"] = \$_ENV['DB_HOST'];
+                    \$settings[\"database\"] = \$_ENV['DB_NAME'];
+                    \$settings[\"username\"] = \$_ENV['DB_USER'];
+                    \$settings[\"password\"] = \$_ENV['DB_PASS'];
+                    \$settings[\"dbtype\"] = \$_ENV['DB_TYPE'];
+                    \$settings[\"characterset\"] = \$_ENV[\"CHARACTER_SET\"];
 
-                \$settings[\"downloadURL\"] = \$_ENV['DOWNLOAD_URL'];
-                \$settings[\"hostname\"] = \$_ENV['DB_HOST'];
-                \$settings[\"database\"] = \$_ENV['DB_NAME'];
-                \$settings[\"username\"] = \$_ENV['DB_USER'];
-                \$settings[\"password\"] = \$_ENV['DB_PASS'];
-                \$settings[\"dbtype\"] = \$_ENV['DB_TYPE'];
-                \$settings[\"characterset\"] = \$_ENV[\"CHARACTER_SET\"];
-
-                \$artify = DB::ArtifyCrud(false, \"\", \"\",  \$settings);
-                \$queryfy = \$artify->getQueryfyObj();
+                    \$artify = DB::ArtifyCrud(false, \"\", \"\",  \$settings);
+                    \$queryfy = \$artify->getQueryfyObj();
                 ";
+            } else {
+                $controllerContent .= "
+                    \$artify = DB::ArtifyCrud();
+                    \$queryfy = \$artify->getQueryfyObj();
+                ";
+            }
 
                  if(isset($mostrar_campos_busqueda)){
 
