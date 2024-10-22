@@ -189,9 +189,36 @@ class CrudService
 
             if(!empty($file_callback)){
                 $fileName = $file_callback . ".php";
-                $phpCode = 'echo "Este es un archivo PHP generado dinámicamente.";';
+                $phpCode = '
+                    <?php
+                        require_once dirname(__DIR__, 3) . "/vendor/autoload.php";
 
-                // Llamar al método principal para crear el archivo y escribir el código
+                        // Cargar variables de entorno antes de iniciar la sesión
+                        $dotenv = DotenvVault\DotenvVault::createImmutable(dirname(__DIR__, 3));
+                        $dotenv->safeLoad();
+
+                        @session_name($_ENV["APP_NAME"]);
+                        @session_start();
+                        /*enable this for development purpose */
+                        //ini_set(\'display_startup_errors\', 1);
+                        //ini_set(\'display_errors\', 1);
+                        //error_reporting(-1);
+                        date_default_timezone_set(@date_default_timezone_get());
+                        define(\'ArtifyABSPATH\', dirname(__FILE__) . \'/\');
+                        require_once ArtifyABSPATH . "config/config.php";
+                        spl_autoload_register(\'artifyAutoLoad\');
+
+                        function artifyAutoLoad($class) {
+                            if (file_exists(ArtifyABSPATH . "classes/" . $class . ".php"))
+                                require_once ArtifyABSPATH . "classes/" . $class . ".php";
+                        }
+
+                        if (isset($_REQUEST["artify_instance"])) {
+                            $fomplusajax = new ArtifyAjaxCtrl();
+                            $fomplusajax->handleRequest();
+                        }
+                    ';
+
                 $this->generatePHPFile($fileName, $phpCode);
 
             }
@@ -250,7 +277,7 @@ class CrudService
         if ($this->createFile($filePath)) {
             $fullCode = "<?php\n\n" . $phpCode . "\n";
             file_put_contents($filePath, $fullCode);
-            echo "Archivo creado y código escrito exitosamente en: " . $filePath;
+            //echo "Archivo creado y código escrito exitosamente en: " . $filePath;
         } else {
             echo "Error al crear el archivo.";
         }
