@@ -16,6 +16,9 @@ $(document).ready(function(){
     };
 
     $.artify_actions = {
+        settings: {
+            url: artify_js.artifyurl + "artify/artifycrud.php",
+        },
         init: function () {
 
             $('body').tooltip({selector: '[data-toggle="tooltip"]'});
@@ -781,7 +784,7 @@ $(document).ready(function(){
                         data.search_text = request.term;
                         data.search_col = $(".artify_search_cols").val();
                         $.ajax({
-                            url: artify_js.artifyurl + "artify/artifycrud.php",
+                            url: this.settings.url,
                             dataType: "jsonp",
                             type: "post",
                             data: {
@@ -806,7 +809,7 @@ $(document).ready(function(){
                 type: "post",
                 dataType: "html",
                 cache: false,
-                url: artify_js.artifyurl + "artify/artifycrud.php",
+                url: this.settings.url,
                 beforeSend: function () {
                     $("#artify-ajax-loader").show();
                 },
@@ -828,7 +831,7 @@ $(document).ready(function(){
                 type: "post",
                 dataType: "html",
                 cache: false,
-                url: artify_js.artifyurl + "artify/artifycrud.php",
+                url: this.settings.url,
                 beforeSend: function () {
                     $("#artify-ajax-loader").show();
                 },
@@ -956,7 +959,7 @@ $(document).ready(function(){
                 type: "post",
                 dataType: "html",
                 cache: false,
-                url: artify_js.artifyurl + "artify/artifycrud.php",
+                url: this.settings.url,
                 data: {
                     "artify_data": data,
                     "artify_instance": instance,
@@ -995,7 +998,7 @@ $(document).ready(function(){
                     type: "post",
                     dataType: "html",
                     cache: false,
-                    url: artify_js.artifyurl + "artify/artifycrud.php",
+                    url: this.settings.url,
                     beforeSend: function () {
                         $("#artify-ajax-loader").show();
                     },
@@ -1021,7 +1024,7 @@ $(document).ready(function(){
                 type: "post",
                 dataType: "html",
                 cache: false,
-                url: artify_js.artifyurl + "artify/artifycrud.php",
+                url: this.settings.url,
                 data: {
                     "artify_data": data,
                     "artify_instance": instance,
@@ -1044,7 +1047,7 @@ $(document).ready(function(){
             var options = {
                 type: "post",
                 dataType: "html",
-                url: artify_js.artifyurl + "artify/artifycrud.php",
+                url: this.settings.url,
                 beforeSubmit: showRequest, // pre-submit callback 
                 success: showResponse,  // post-submit callback 
                 resetForm: artify_js.reset_form
@@ -1335,7 +1338,7 @@ $(document).ready(function(){
                     type: "post",
                     dataType: "html",
                     cache: false,
-                    url: artify_js.artifyurl + "artify/artifycrud.php",
+                    url: this.settings.url,
                     beforeSend: function () {
                         $("#artify-ajax-loader").show();
                     },

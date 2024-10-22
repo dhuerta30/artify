@@ -2079,8 +2079,8 @@ Class Artify {
      * @param   string   $callback                        Name of callback function
      * @return   object                                    Object of class
      */
-    public function addCallback($eventName, $callback, $params = array()) {
-        $this->callback[$eventName][] = ['callback' => $callback, 'params' => $params];
+    public function addCallback($eventName, $callback, $params = array(), $ajaxPath = 'artifycrud.php') {
+        $this->callback[$eventName][] = ['callback' => $callback, 'params' => $params, 'ajaxPath' => $ajaxPath];
         return $this;
     }
 
@@ -2089,14 +2089,33 @@ Class Artify {
             foreach ($this->callback[$eventName] as $callbackData) {
                 $callback = $callbackData['callback'];
                 $params = $callbackData['params'];
+                $ajaxPath = $callbackData['ajaxPath'];
 
                 if (is_callable($callback)) {
+
+                    if (!empty($ajaxPath)) {
+                        $this->handleAjax($ajaxPath, $data);
+                    }
+
                     $argsToPass = array_merge([$data, $this], $params);
                     $data = call_user_func_array($callback, $argsToPass);
                 }
             }
         }
         return $data;
+    }
+
+    private function handleAjax($ajaxPath, $data) {
+        // Lógica para manejar la solicitud AJAX
+        // Puedes utilizar curl, file_get_contents o algún método que se adapte a tus necesidades
+        // Asegúrate de que la ruta es válida y segura
+
+        // Ejemplo básico con file_get_contents (ajusta según tus necesidades)
+        $url = $ajaxPath . '?' . http_build_query($data); // Construye la URL de la solicitud
+        $response = file_get_contents($url); // Realiza la solicitud
+
+        // Maneja la respuesta de alguna manera si es necesario
+        return json_decode($response, true); // Decodifica la respuesta JSON
     }
 
     /**

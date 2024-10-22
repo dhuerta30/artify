@@ -63,7 +63,7 @@ class LoginController {
 	{
 		SessionManager::startSession();
 		SessionManager::destroy();
-		Redirect::to("login/index");
+		Redirect::to("Login/index");
 	}
 
     public function reset()
