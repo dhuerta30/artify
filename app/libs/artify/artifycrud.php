@@ -603,29 +603,34 @@ function despues_insertar_submenu($data, $obj){
     return $data;
 }
 
-function eliminar_menu($data, $obj){
+function eliminar_menu($data, $obj) {
     $id_menu = $data["id"];
     $id_usuario_session = $_SESSION["usuario"][0]["id"];
     
     $queryfy = $obj->getQueryfyObj();
+
+    // Eliminar de usuario_menu
     $queryfy->where("id_menu", $id_menu);
     $queryfy->where("id_usuario", $id_usuario_session);
     $queryfy->delete("usuario_menu");
 
+    // Buscar el id_submenu relacionado al id_menu
     $queryfy->where("id_menu", $id_menu);
     $id_menu_db = $queryfy->select("submenu");
 
-    if($id_menu_db){
+    // Verificar si se encontró el id_submenu
+    if (!empty($id_menu_db)) {
+        // Eliminar el submenu relacionado
         $queryfy->where("id_submenu", $id_menu_db[0]["id_submenu"]);
         $queryfy->delete("submenu");
 
+        // Eliminar de usuario_submenu relacionado
         $queryfy->where("id_menu", $id_menu);
         $queryfy->where("id_usuario", $id_usuario_session);
         $queryfy->delete("usuario_submenu");
-    }
-
-    if(!$id_menu_db){
-        $queryfy->where("id_menu", $id_menu_db[0]["id_menu"]);
+    } else {
+        // Si no hay submenus, actualizar el campo "submenu" en la tabla menu
+        $queryfy->where("id_menu", $id_menu);
         $queryfy->update("menu", array("submenu" => "No"));
     }
 
