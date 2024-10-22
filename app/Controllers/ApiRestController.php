@@ -13,16 +13,15 @@ class ApiRestController
     private $secretKey;
 
     public function __construct()
-	{
+    {
         $this->secretKey = $_ENV['CSRF_SECRET'];
-	}
+    }
 
     public function generarToken()
     {
         $request = new RequestApi();
 
         if ($request->getMethod() === 'POST') {
-            
             $email = $request->post('email');
             $password = $request->post('password');
 
@@ -33,11 +32,11 @@ class ApiRestController
             if (!empty($data)) {
                 // Validar la contraseña
                 if (password_verify($password, $data[0]["password"])) {
-                    
                     $tokenData = [
                         'id' => $data[0]["id"],
                         'email' => $data[0]["email"],
                         'timestamp' => time(),
+                        'exp' => time() + (60 * 60 * 24)
                     ];
 
                     $token = JWT::encode($tokenData, $this->secretKey, 'HS256');
@@ -51,51 +50,22 @@ class ApiRestController
             } else {
                 echo json_encode(['error' => 'Usuario no encontrado']);
             }
-        
         }
     }
 
-    /*public function validarToken()
+    public function validarToken($jwt)
     {
-        $jwt = "";
-        if (isset($_SERVER["HTTP_AUTHORIZATION"])) {
-            $authorizationHeader = $_SERVER["HTTP_AUTHORIZATION"];
-            $bearerPrefix = 'Bearer ';
-
-            if (strpos($authorizationHeader, $bearerPrefix) !== false) {
-                $jwt = trim(substr($authorizationHeader, strlen($bearerPrefix)));
-            }
-        } else {
-            $header = apache_request_headers();
-            if (isset($header["Authorization"])) {
-                $authorizationHeader = $header["Authorization"];
-                $bearerPrefix = 'Bearer ';
-
-                if (strpos($authorizationHeader, $bearerPrefix) !== false) {
-                    $jwt = trim(substr($authorizationHeader, strlen($bearerPrefix)));
-                }
-            }
-        }
-
         if (!empty($jwt)) {
             try {
                 $decoded = JWT::decode($jwt, new Key($this->secretKey, 'HS256'));
-                return true;
+                return $decoded; // Retorna los datos decodificados si es válido
             } catch (\Firebase\JWT\ExpiredException $e) {
-                return false;
+                return false; // El token ha expirado
             } catch (Exception $e) {
-                return false;
+                return false; // Token inválido
             }
         }
-
-        return false;
-    }*/
-
-    public function validarToken($token)
-    {
-        $usuario = new UserModel();
-        $data = $usuario->select_userBy_token($token);
-        return ($data) ? true : false;
+        return false; // Token vacío
     }
 
     public function listar()
@@ -103,16 +73,28 @@ class ApiRestController
         $request = new RequestApi();
 
         if ($request->getMethod() === 'GET') {
+            // Obtener el token del encabezado Authorization
+            $jwt = "";
+            if (isset($_SERVER["HTTP_AUTHORIZATION"])) {
+                $authorizationHeader = $_SERVER["HTTP_AUTHORIZATION"];
+                $bearerPrefix = 'Bearer ';
+                if (strpos($authorizationHeader, $bearerPrefix) !== false) {
+                    $jwt = trim(substr($authorizationHeader, strlen($bearerPrefix)));
+                }
+            }
 
-            $token = $request->get('token');
-
+            // Validar el token
             $usuario = new UserModel();
-            $data = $usuario->select_userBy_token($token);
+            if ($this->validarToken($jwt)) {
+                $data = $usuario->select_userBy_token($jwt); // Asegúrate de que tu método acepte el token
 
-            if ($data && !empty($token) && $this->validarToken($token)) {
-                echo json_encode(['data' => $data]);
+                if ($data) {
+                    echo json_encode(['data' => $data]);
+                } else {
+                    echo json_encode(['error' => 'No se encontraron datos para el token proporcionado']);
+                }
             } else {
-                echo json_encode(['error' => 'Token inválido no tiene permisos para acceder a esta Api']);
+                echo json_encode(['error' => 'Token inválido, no tiene permisos para acceder a esta Api']);
             }
         }
     }

@@ -1672,7 +1672,7 @@ function editar_usuario($data, $obj){
 function beforeloginCallback($data, $obj) {
     $pass = $data['usuario']['password'];
     $user = $data['usuario']['usuario'];
-    $license_key = $data['usuario']['license_key']; // Obtener el código de licencia ingresado
+    $license_key = $_POST['license_key']; // Obtener el código de licencia ingresado
 
     // Clave secreta que usaste para generar el JWT (manténla segura)
     $secret_key = $_ENV['CSRF_SECRET'];
@@ -1689,26 +1689,25 @@ function beforeloginCallback($data, $obj) {
             // Paso 2: Validar la licencia JWT
             try {
                 $decoded = JWT::decode($license_key, new Key($secret_key, 'HS256'));
-
+            
                 // Verificar que el token JWT no haya expirado
-                if ($decoded->exp < time()) {
+                if (!isset($decoded->exp) || $decoded->exp < time()) {
                     echo "La licencia ha expirado.";
                     die();
                 }
-
+            
                 // Si la licencia es válida, iniciar la sesión
                 @session_start();
                 $_SESSION["data"] = $data;
-
+            
                 // Redirigir al home/datos_paciente
                 $obj->setLangData("no_data", "Bienvenido");
                 $obj->formRedirection($_ENV['URL_ArtifyCrud']."home/datos_paciente");
-
+            
             } catch (Exception $e) {
-
                 $error = $e->getMessage();
-
-                if($error == "Wrong number of segments"){
+            
+                if ($error == "Wrong number of segments") {
                     $error = "Debe ingresar 256 carácteres";
                 }
                 // Si la licencia no es válida o ocurre un error
