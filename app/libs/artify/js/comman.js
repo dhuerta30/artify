@@ -17,7 +17,7 @@ $(document).ready(function(){
 
     $.artify_actions = {
         settings: {
-            url: artify_js.artifyurl + "artify/artifycrud.php",
+            url: artify_js.artifyurl,
         },
         init: function () {
 

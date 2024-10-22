@@ -2128,7 +2128,7 @@ Class Artify {
     }
 
     private function initializeJsSettings() {
-        $this->jsSettings["artifyurl"] = $this->settings["script_url"];
+        $this->jsSettings["artifyurl"] = $this->settings["script_url"] . $this->settings["url_artify"];
         $this->jsSettings["date"]["time_format"] = $this->settings["timeformat"];
         $this->jsSettings["date"]["date_format"] = $this->settings["dateformat"];
         $this->jsSettings["date"]["change_month"] = $this->settings["changeMonth"];

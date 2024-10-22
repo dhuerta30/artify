@@ -8,6 +8,7 @@ class DB {
     public static function ArtifyCrud($multi = false, $template = "", $skin = "", $dbSettings = array(), $settings = array())
     {
         $settings["script_url"] = $_ENV['URL_ArtifyCrud'];
+        $settings["url_artify"] = $_ENV["url_artify"];
         $settings["uploadURL"] = $_ENV['UPLOAD_URL'];
         if (!empty($dbSettings)) {
             $settings["script_url"] = $dbSettings['script_url'];
