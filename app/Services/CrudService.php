@@ -190,7 +190,6 @@ class CrudService
             if(!empty($file_callback)){
                 $fileName = $file_callback . ".php";
                 $phpCode = '
-                    <?php
                         require_once dirname(__DIR__, 3) . "/vendor/autoload.php";
 
                         // Cargar variables de entorno antes de iniciar la sesión
@@ -675,49 +674,52 @@ class CrudService
                 ";
 
                 if(isset($type_callback)){
-
-                    $values = explode(',', $type_callback);
-
-                    $values = array_filter($values, function ($value) {
+                    // Separar y limpiar las columnas originales
+                    $values_type_callback = explode(',', $type_callback);
+                    $values_type_callback = array_filter($values_type_callback, function ($value) {
                         return !empty(trim($value));
                     });
-                    
-                    $valuesString = '"' . implode('", "', $values) . '"';
+                            
+                    foreach ($values_type_callback as $index => $columnNombre) {
 
-                    if($valuesString == "Antes de Insertar"){
-                        $controllerContent .= "
-                            \$artify->addCallback(\"before_insert\", \"before_insert_{$tableName}\");
-                        ";
-                    } 
-                    
-                    if($valuesString == "Despues de Insertar"){
-                        $controllerContent .= "
-                            \$artify->addCallback(\"after_insert\", \"after_insert_{$tableName}\");
-                        ";
-                    }
+                        $value = $columnNombre;
 
-                    if($valuesString == "Antes de Actualizar"){
-                        $controllerContent .= "
-                            \$artify->addCallback(\"before_update\", \"before_update_{$tableName}\");
-                        ";
-                    }
-
-                    if($valuesString == "Despues de Actualizar"){
-                        $controllerContent .= "
-                            \$artify->addCallback(\"after_update\", \"after_update_{$tableName}\");
-                        ";
-                    }
-
-                    if($valuesString == "Antes de Eliminar"){
-                        $controllerContent .= "
-                            \$artify->addCallback(\"before_delete\", \"before_delete_{$tableName}\");
-                        ";
-                    }
-
-                    if($valuesString == "Despues de Eliminar"){
-                        $controllerContent .= "
-                            \$artify->addCallback(\"after_delete\", \"after_delete_{$tableName}\");
-                        ";
+                        if($value == "Antes de Insertar"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"before_insert\", \"before_insert_{$tableName}\");
+                            ";
+                        } 
+                        
+                        if($value == "Despues de Insertar"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"after_insert\", \"after_insert_{$tableName}\");
+                            ";
+                        }
+    
+                        if($value == "Antes de Actualizar"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"before_update\", \"before_update_{$tableName}\");
+                            ";
+                        }
+    
+                        if($value == "Despues de Actualizar"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"after_update\", \"after_update_{$tableName}\");
+                            ";
+                        }
+    
+                        if($value == "Antes de Eliminar"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"before_delete\", \"before_delete_{$tableName}\");
+                            ";
+                        }
+    
+                        if($value == "Despues de Eliminar"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"after_delete\", \"after_delete_{$tableName}\");
+                            ";
+                        }
+                        
                     }
                 }
 
