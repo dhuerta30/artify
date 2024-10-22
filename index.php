@@ -2,7 +2,7 @@
 require('vendor/autoload.php');
 $dotenv = DotenvVault\DotenvVault::createImmutable(__DIR__);
 $dotenv->safeLoad();
-require __DIR__ . '/app/libs/artify/artifycrud.php';
+require __DIR__ . '/app/libs/'.$_ENV["url_artify"];
 require __DIR__ . '/app/libs/docufy/docufy.php';
 
 // Enrutador simple
