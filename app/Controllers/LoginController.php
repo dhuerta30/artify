@@ -40,7 +40,7 @@ class LoginController {
 		<label for='license_key'>Código de Licencia:</label>
 		<div class='input-group'>
 			<div class='input-group-append'><span class='input-group-text' id='basic-addon1'><i class='fas fa-key'></i></span></div>
-    		<input type='text' class='form-control artify-form-control artify-text' name='license_key' required>
+    		<input type='text' class='form-control artify-form-control artify-text' name='license_key' placeholder='Ingrese su Código de Licencia' required>
 		</div>
 		");
 		$artify->addCallback("before_select", "beforeloginCallback");
