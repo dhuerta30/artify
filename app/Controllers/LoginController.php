@@ -36,6 +36,13 @@ class LoginController {
 		$artify->fieldRenameLable("password", "Contraseña");
         $artify->fieldAddOnInfo("usuario", "before", '<div class="input-group-append"><span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span></div>');
         $artify->fieldAddOnInfo("password", "before", '<div class="input-group-append"><span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span></div>');
+		$artify->formStaticFields("personalinfo", "html", "
+		<label for='license_key'>Código de Licencia:</label>
+		<div class='input-group'>
+			<div class='input-group-append'><span class='input-group-text' id='basic-addon1'><i class='fas fa-key'></i></span></div>
+    		<input type='text' class='form-control artify-form-control artify-text' name='license_key' required>
+		</div>
+		");
 		$artify->addCallback("before_select", "beforeloginCallback");
 		$artify->formFields(array("usuario", "password"));
 		$artify->setLangData("login", "Ingresar");
