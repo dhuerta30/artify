@@ -636,6 +636,18 @@ class CrudService
                             \$artify->addCallback(\"after_update\", array({$valuesString}));
                         ";
                     }
+
+                    if($valuesString == "Antes de Eliminar"){
+                        $controllerContent .= "
+                            \$artify->addCallback(\"before_delete\", array({$valuesString}));
+                        ";
+                    }
+
+                    if($valuesString == "Despues de Eliminar"){
+                        $controllerContent .= "
+                            \$artify->addCallback(\"after_delete\", array({$valuesString}));
+                        ";
+                    }
                 }
 
             } else {
