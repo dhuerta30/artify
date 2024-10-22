@@ -615,37 +615,37 @@ class CrudService
 
                     if($valuesString == "Antes de Insertar"){
                         $controllerContent .= "
-                            \$artify->addCallback(\"before_insert\", array({$valuesString}));
+                            \$artify->addCallback(\"before_insert\", \"before_insert_{$tableName}\");
                         ";
                     } 
                     
                     if($valuesString == "Despues de Insertar"){
                         $controllerContent .= "
-                            \$artify->addCallback(\"after_insert\", array({$valuesString}));
+                            \$artify->addCallback(\"after_insert\", \"after_insert_{$tableName}\");
                         ";
                     }
 
                     if($valuesString == "Antes de Actualizar"){
                         $controllerContent .= "
-                            \$artify->addCallback(\"before_update\", array({$valuesString}));
+                            \$artify->addCallback(\"before_update\", \"before_update_{$tableName}\");
                         ";
                     }
 
                     if($valuesString == "Despues de Actualizar"){
                         $controllerContent .= "
-                            \$artify->addCallback(\"after_update\", array({$valuesString}));
+                            \$artify->addCallback(\"after_update\", \"after_update_{$tableName}\");
                         ";
                     }
 
                     if($valuesString == "Antes de Eliminar"){
                         $controllerContent .= "
-                            \$artify->addCallback(\"before_delete\", array({$valuesString}));
+                            \$artify->addCallback(\"before_delete\", \"before_delete_{$tableName}\");
                         ";
                     }
 
                     if($valuesString == "Despues de Eliminar"){
                         $controllerContent .= "
-                            \$artify->addCallback(\"after_delete\", array({$valuesString}));
+                            \$artify->addCallback(\"after_delete\", \"after_delete_{$tableName}\");
                         ";
                     }
                 }
