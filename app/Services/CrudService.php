@@ -187,6 +187,17 @@ class CrudService
                 $this->generateViewNotLogin($nameview);
             }
 
+            if(!empty($file_callback)){
+                $fileGenerator = new CrudService();
+
+                $fileName = $file_callback.".php";
+                $phpCode = 'echo "Este es un archivo PHP generado dinámicamente.";';
+
+                // Llamar al método principal para crear el archivo y escribir el código
+                $fileGenerator->generatePHPFile($fileName, $phpCode);
+
+            }
+
             //$this->generateViewAdd($nameview);
         }
 
@@ -225,6 +236,41 @@ class CrudService
         }
 
         closedir($dir);
+    }
+
+    public function generatePHPFile($fileName, $phpCode) {
+        $filePath = __DIR__ . '/../libs/artify/' . $fileName;
+
+        if (!file_exists($filePath)) {
+            $this->writePHPCodeToFile($filePath, $phpCode);
+        } else {
+            echo "El archivo ya existe.";
+        }
+    }
+
+    private function writePHPCodeToFile($filePath, $phpCode) {
+        if ($this->createFile($filePath)) {
+            $fullCode = "<?php\n\n" . $phpCode . "\n";
+            file_put_contents($filePath, $fullCode);
+            echo "Archivo creado y código escrito exitosamente en: " . $filePath;
+        } else {
+            echo "Error al crear el archivo.";
+        }
+    }
+
+    // Método privado que se asegura de que el archivo sea creado correctamente
+    private function createFile($filePath) {
+        $directory = dirname($filePath);
+
+        if (!file_exists($directory)) {
+            mkdir($directory, 0755, true); // Crear directorio si no existe
+        }
+
+        if (file_put_contents($filePath, '') !== false) {
+            return true;
+        }
+
+        return false;
     }
 
     /*private function createTable($tableName, $columns)
