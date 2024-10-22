@@ -577,7 +577,20 @@ class CrudService
             }
             public function index()
             {
-                \$artify = DB::ArtifyCrud();
+                \$settings[\"script_url\"] = \$_ENV['URL_ArtifyCrud'];
+
+                \$_ENV[\"url_artify\"] = \"artify/functions.php\";
+                \$settings[\"url_artify\"] = \$_ENV[\"url_artify\"];
+
+                \$settings[\"downloadURL\"] = \$_ENV['DOWNLOAD_URL'];
+                \$settings[\"hostname\"] = \$_ENV['DB_HOST'];
+                \$settings[\"database\"] = \$_ENV['DB_NAME'];
+                \$settings[\"username\"] = \$_ENV['DB_USER'];
+                \$settings[\"password\"] = \$_ENV['DB_PASS'];
+                \$settings[\"dbtype\"] = \$_ENV['DB_TYPE'];
+                \$settings[\"characterset\"] = \$_ENV[\"CHARACTER_SET\"];
+
+                \$artify = DB::ArtifyCrud(false, \"\", \"\",  \$settings);
                 \$queryfy = \$artify->getQueryfyObj();
                 ";
 
