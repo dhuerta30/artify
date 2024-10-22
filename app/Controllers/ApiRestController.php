@@ -36,7 +36,7 @@ class ApiRestController
                         'id' => $data[0]["id"],
                         'email' => $data[0]["email"],
                         'timestamp' => time(),
-                        'exp' => time() + 40 // Expira en 40 segundos
+                        'exp' => time() + (60 * 60) // Expira en 1 hora
                     ];
 
                     $token = JWT::encode($tokenData, $this->secretKey, 'HS256');
