@@ -680,9 +680,9 @@ class CrudService
                         return !empty(trim($value));
                     });
                             
-                    foreach ($values_type_callback as $index => $columnNombre) {
+                    foreach ($values_type_callback as $index => $callback) {
 
-                        $value = $columnNombre;
+                        $value = $callback;
 
                         if($value == "Antes de Insertar"){
                             $controllerContent .= "
