@@ -1082,8 +1082,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $tipo_de_filtro = isset($data["modulos"]["tipo_de_filtro"]) ? $data["modulos"]["tipo_de_filtro"] : null;
     $totalRecordsInfo = $data["modulos"]["totalRecordsInfo"];
     $area_protegida_por_login = $data["modulos"]["area_protegida_por_login"];
-    $posicion_filtro = isset($data["modulos"]["posicion_filtro"]) ? $data["modulos"]["posicion_filtro"] : null;
-    $file_callback = isset($data["modulos"]["file_callback"]) ? $data["modulos"]["file_callback"] : null;
+    $posicion_filtro = !empty($data["modulos"]["posicion_filtro"]) ? $data["modulos"]["posicion_filtro"] : null;
+    $file_callback = !empty($data["modulos"]["file_callback"]) ? $data["modulos"]["file_callback"] : null;
     $type_callback = isset($data["modulos"]["type_callback"]) ? $data["modulos"]["type_callback"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
