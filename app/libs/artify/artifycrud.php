@@ -1083,6 +1083,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $totalRecordsInfo = $data["modulos"]["totalRecordsInfo"];
     $area_protegida_por_login = $data["modulos"]["area_protegida_por_login"];
     $posicion_filtro = isset($data["modulos"]["posicion_filtro"]) ? $data["modulos"]["posicion_filtro"] : null;
+    $file_callback = isset($data["modulos"]["file_callback"]) ? $data["modulos"]["file_callback"] : null;
+    $type_callback = isset($data["modulos"]["type_callback"]) ? $data["modulos"]["type_callback"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1138,7 +1140,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $nombre_modulo,
             $totalRecordsInfo,
             $area_protegida_por_login,
-            $posicion_filtro
+            $posicion_filtro,
+            $file_callback,
+            $type_callback
         );
     } 
     
@@ -1198,7 +1202,9 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $nuevo_nombre_campos,
             $totalRecordsInfo,
             $area_protegida_por_login,
-            $posicion_filtro
+            $posicion_filtro,
+            $file_callback,
+            $type_callback
         );
     }
 
@@ -1291,6 +1297,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["totalRecordsInfo"] = $totalRecordsInfo;
     $newdata["modulos"]["area_protegida_por_login"] = $area_protegida_por_login;
     $newdata["modulos"]["posicion_filtro"] = $posicion_filtro;
+    $newdata["modulos"]["file_callback"] = $file_callback;
+    $newdata["modulos"]["type_callback"] = $type_callback;
 
     return $newdata;
 }
