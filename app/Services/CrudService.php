@@ -231,7 +231,7 @@ class CrudService
                         if($value == "Antes de Insertar"){
                             $phpCode .= "
                                 function before_insert_{$tableName}(\$data, \$obj){
-                                
+
                                     return \$data;
                                 }
                             ";
@@ -279,6 +279,12 @@ class CrudService
 
                                     return \$data;
                                 }
+                            ";
+                        }
+
+                        if($value == "Eliminación Masiva"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"before_delete_selected\", \"before_delete_selected_{$tableName}\");
                             ";
                         }
                         
@@ -766,6 +772,12 @@ class CrudService
                         if($value == "Despues de Eliminar"){
                             $controllerContent .= "
                                 \$artify->addCallback(\"after_delete\", \"after_delete_{$tableName}\");
+                            ";
+                        }
+
+                        if($value == "Eliminación Masiva"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"before_delete_selected\", \"before_delete_selected_{$tableName}\");
                             ";
                         }
                         

@@ -84,10 +84,6 @@
                 
                     $artify->setSettings('printBtn', true);
                 
-                    $artify->setSettings('pdfBtn', true);
-                
-                    $artify->setSettings('csvBtn', true);
-                
                     $artify->setSettings('excelBtn', true);
                 
                 $artify->setSettings('inlineEditbtn', false);
@@ -100,13 +96,13 @@
             
                 $artify->setSettings('searchbox', true);
             
-                $artify->setSettings('clonebtn', true);
+                $artify->setSettings('clonebtn', false);
             
                 $artify->setSettings('checkboxCol', true);
                 $artify->setSettings('deleteMultipleBtn', true);
             
-                $artify->setSettings('refresh', true);
-            
+            $artify->setSettings('refresh', false);
+        
                 $artify->setSettings('addbtn', true);
             
                 $artify->setSettings('encryption', true);
