@@ -230,48 +230,54 @@ class CrudService
 
                         if($value == "Antes de Insertar"){
                             $phpCode .= "
-                                function before_insert_{$tableName}(){
+                                function before_insert_{$tableName}(\$data, \$obj){
                                 
+                                    return \$data;
                                 }
                             ";
                         } 
                         
                         if($value == "Despues de Insertar"){
                             $phpCode .= "
-                                function after_insert_{$tableName}(){
-                                
+                                function after_insert_{$tableName}(\$data, \$obj){
+
+                                    return \$data;
                                 }
                             ";
                         }
     
                         if($value == "Antes de Actualizar"){
                             $phpCode .= "
-                                function before_update_{$tableName}(){
-                                
+                                function before_update_{$tableName}(\$data, \$obj){
+
+                                    return \$data;
                                 }
                             ";
                         }
     
                         if($value == "Despues de Actualizar"){
                             $phpCode .= "
-                                function after_update_{$tableName}(){
-                                
+                                function after_update_{$tableName}(\$data, \$obj){
+
+                                    return \$data;
                                 }
                             ";
                         }
     
                         if($value == "Antes de Eliminar"){
                             $phpCode .= "
-                                function before_delete_{$tableName}(){
-                                
+                                function before_delete_{$tableName}(\$data, \$obj){
+
+                                    return \$data;
                                 }
                             ";
                         }
     
                         if($value == "Despues de Eliminar"){
                             $phpCode .= "
-                                function after_delete_{$tableName}(){
-                                
+                                function after_delete_{$tableName}(\$data, \$obj){
+
+                                    return \$data;
                                 }
                             ";
                         }

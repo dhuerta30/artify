@@ -90,8 +90,6 @@
                 
                     $artify->setSettings('excelBtn', true);
                 
-                $artify->formDisplayInPopup();
-            
                 $artify->setSettings('inlineEditbtn', false);
             
                 $artify->setSettings('hideAutoIncrement', false);
