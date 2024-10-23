@@ -283,20 +283,29 @@ class CrudService
                         }
 
                         if($value == "Eliminación Masiva"){
-                            $controllerContent .= "
-                                \$artify->addCallback(\"before_delete_selected\", \"before_delete_selected_{$tableName}\");
+                            $phpCode .= "
+                                function before_delete_selected_{$tableName}(\$data, \$obj){
+                                
+                                    return \$data;
+                                }
                             ";
                         }
 
                         if($value == "Antes de Actualizar Switch"){
-                            $controllerContent .= "
-                                \$artify->addCallback(\"before_switch_update\", \"before_switch_update_{$tableName}\");
+                            $phpCode .= "
+                                function before_switch_update_{$tableName}(\$data, \$obj){
+                                
+                                    return \$data;
+                                }
                             ";
                         }
 
                         if($value == "Despues de Actualizar Switch"){
-                            $controllerContent .= "
-                                \$artify->addCallback(\"after_switch_update\", \"after_switch_update_{$tableName}\");
+                            $phpCode .= "
+                                function after_switch_update_{$tableName}(\$data, \$obj){
+
+                                    return \$data;
+                                }
                             ";
                         }
                         
@@ -790,6 +799,24 @@ class CrudService
                         if($value == "Eliminación Masiva"){
                             $controllerContent .= "
                                 \$artify->addCallback(\"before_delete_selected\", \"before_delete_selected_{$tableName}\");
+                            ";
+                        }
+
+                        if($value == "Eliminación Masiva"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"before_delete_selected\", \"before_delete_selected_{$tableName}\");
+                            ";
+                        }
+
+                        if($value == "Antes de Actualizar Switch"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"before_switch_update\", \"before_switch_update_{$tableName}\");
+                            ";
+                        }
+
+                        if($value == "Despues de Actualizar Switch"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"after_switch_update\", \"after_switch_update_{$tableName}\");
                             ";
                         }
                         
