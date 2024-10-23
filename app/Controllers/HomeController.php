@@ -574,9 +574,92 @@ class HomeController
 
 	public function modulos()
 	{
-		$id_sesion_usuario = $_SESSION['usuario'][0]["id"];
 
-		$artify = DB::ArtifyCrud();
+		$tablas = DB::ArtifyCrud();
+		$tablas->fieldRenameLable("caracteres", "Caracteres");
+		$tablas->fieldRenameLable("valor_nulo", "Campo con valor vacio");
+		$tablas->setLangData("add", "Agregar Tabla");
+		$tablas->setLangData("add_row", "Agregar Campos");
+		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
+		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "campo_anterior", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
+		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
+		$tablas->setSettings("searchbox", true);
+		$tablas->setSettings("editbtn", true);
+		$tablas->setSettings("delbtn", true);
+		$tablas->formFieldValue("valor_nulo", "No");
+		$tablas->fieldTypes("modificar_campo", "select");
+		$tablas->fieldDataBinding("modificar_campo", array(
+			"Si" => "Si",
+			"No" => "No"
+		), "", "","array");
+		
+		$tablas->fieldTypes("tipo", "select");
+		$tablas->fieldDataBinding("tipo", array(
+			"Entero" => "Entero",
+			"Caracteres" => "Caracteres",
+			"Texto" => "Texto",
+			"Fecha" => "Fecha",
+			"Número Decimal" => "Número Decimal",
+			"Hora" => "Hora",
+			"Booleano" => "Verdadero o falso"
+		), "", "","array");
+
+		$tablas->fieldTypes("indice", "select");
+		$tablas->fieldDataBinding("indice", array(
+			"Primario" => "Primario",
+			"Sin Indice" => "Sin Indice"
+		), "", "","array");
+
+		$tablas->fieldTypes("valor_nulo", "select");
+		$tablas->fieldDataBinding("valor_nulo", array(
+			"Si" => "Si",
+			"No" => "No"
+		), "", "","array");
+
+		$tablas->fieldTypes("autoincremental", "select");
+		$tablas->fieldDataBinding("autoincremental", array(
+			"Si" => "Si",
+			"No" => "No"
+		), "", "","array");
+
+		$tablas->setSettings("template", "crear_tablas");
+		$tablas->setSettings("function_filter_and_search", true);
+		$tablas->fieldHideLable("tabla_modificada");
+		$tablas->fieldDataAttr("tabla_modificada", array("style"=>"display:none", "value"=>"Si"));
+		$tablas->crudRemoveCol(array("id_crear_tablas", "query_tabla", "modificar_tabla"));
+		$tablas->fieldCssClass("nombre_tabla", array("nombre_tabla"));
+		$tablas->fieldCssClass("query_tabla", array("query_tabla"));
+
+		$tablas->fieldCssClass("nombre_campo", array("nombre"));
+		$tablas->fieldCssClass("tipo", array("tipo_de_campo"));
+		$tablas->fieldCssClass("caracteres", array("longitud"));
+		$tablas->fieldCssClass("indice", array("indice"));
+		$tablas->fieldCssClass("valor_nulo", array("nulo"));
+		$tablas->fieldCssClass("autoincremental", array("autoincrementable"));
+		$tablas->fieldCssClass("modificar_tabla", array("modificar_tabla"));
+		$tablas->fieldCssClass("modificar_campo", array("modificar_campo"));
+		$tablas->fieldCssClass("nombre_nuevo_campo", array("nombre_nuevo_campo"));
+		$tablas->fieldCssClass("campo_anterior", array("campo_anterior"));
+
+		$tablas->buttonHide("submitBtn");
+		$tablas->buttonHide("submitBtnBack");
+		$tablas->buttonHide("cancel");
+
+		$tablas->buttonHide("submitBtnSaveBack");
+		$tablas->fieldAttributes("nombre_tabla", array("placeholder"=> "Nombre de la tabla de la base de datos"));
+		$tablas->fieldAttributes("modificar_tabla", array("placeholder"=> "CHANGE nombre_anterior_campo nombre_nuevo_campo VARCHAR(255) NOT NULL,", "style"=> "min-height: 200px; max-height: 200px;"));
+		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
+		$tablas->fieldRenameLable("modificar_tabla", "Modificar Campos de la tabla");
+		$tablas->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
+		$tablas->colRename("query_tabla", "Consulta BD para crear Tabla");
+		$tablas->addCallback("before_insert", "insertar_crear_tablas");
+		$tablas->addCallback("before_update", "editar_crear_tablas");
+		$tablas->addCallback("before_delete", "eliminar_crear_tablas");
+		$tablas->joinTable("estructura_tabla", "estructura_tabla.id_crear_tablas = crear_tablas.id_crear_tablas", "LEFT JOIN");
+		$render_tablas = $tablas->dbTable("crear_tablas")->render();
+
+		$id_sesion_usuario = $_SESSION['usuario'][0]["id"];
+		$artify = DB::ArtifyCrud(true);
 		$artify->addPlugin("bootstrap-switch-master");
 		
 		$scheme = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
@@ -1500,89 +1583,6 @@ class HomeController
 		$render = $artify->dbTable("modulos")->render();
 		$switch = $artify->loadPluginJsCode("bootstrap-switch-master",".actions_buttons_grid, .buttons_actions, .actions_buttons_grid_db, .buttons_actions_db");
 		$tags = $artify->loadPluginJsCode("bootstrap-tag-input",".tagsinput");
-
-		$tablas = DB::ArtifyCrud(true);
-		$tablas->fieldRenameLable("caracteres", "Caracteres");
-		$tablas->fieldRenameLable("valor_nulo", "Campo con valor vacio");
-		$tablas->setLangData("add", "Agregar Tabla");
-		$tablas->setLangData("add_row", "Agregar Campos");
-		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
-		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "campo_anterior", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
-		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
-		$tablas->setSettings("searchbox", true);
-		$tablas->setSettings("editbtn", true);
-		$tablas->setSettings("delbtn", true);
-		$tablas->formFieldValue("valor_nulo", "No");
-		$tablas->fieldTypes("modificar_campo", "select");
-		$tablas->fieldDataBinding("modificar_campo", array(
-			"Si" => "Si",
-			"No" => "No"
-		), "", "","array");
-		
-		$tablas->fieldTypes("tipo", "select");
-		$tablas->fieldDataBinding("tipo", array(
-			"Entero" => "Entero",
-			"Caracteres" => "Caracteres",
-			"Texto" => "Texto",
-			"Fecha" => "Fecha",
-			"Número Decimal" => "Número Decimal",
-			"Hora" => "Hora",
-			"Booleano" => "Verdadero o falso"
-		), "", "","array");
-
-		$tablas->fieldTypes("indice", "select");
-		$tablas->fieldDataBinding("indice", array(
-			"Primario" => "Primario",
-			"Sin Indice" => "Sin Indice"
-		), "", "","array");
-
-		$tablas->fieldTypes("valor_nulo", "select");
-		$tablas->fieldDataBinding("valor_nulo", array(
-			"Si" => "Si",
-			"No" => "No"
-		), "", "","array");
-
-		$tablas->fieldTypes("autoincremental", "select");
-		$tablas->fieldDataBinding("autoincremental", array(
-			"Si" => "Si",
-			"No" => "No"
-		), "", "","array");
-
-		$tablas->setSettings("template", "crear_tablas");
-		$tablas->setSettings("function_filter_and_search", true);
-		$tablas->fieldHideLable("tabla_modificada");
-		$tablas->fieldDataAttr("tabla_modificada", array("style"=>"display:none", "value"=>"Si"));
-		$tablas->crudRemoveCol(array("id_crear_tablas", "query_tabla", "modificar_tabla"));
-		$tablas->fieldCssClass("nombre_tabla", array("nombre_tabla"));
-		$tablas->fieldCssClass("query_tabla", array("query_tabla"));
-
-		$tablas->fieldCssClass("nombre_campo", array("nombre"));
-		$tablas->fieldCssClass("tipo", array("tipo_de_campo"));
-		$tablas->fieldCssClass("caracteres", array("longitud"));
-		$tablas->fieldCssClass("indice", array("indice"));
-		$tablas->fieldCssClass("valor_nulo", array("nulo"));
-		$tablas->fieldCssClass("autoincremental", array("autoincrementable"));
-		$tablas->fieldCssClass("modificar_tabla", array("modificar_tabla"));
-		$tablas->fieldCssClass("modificar_campo", array("modificar_campo"));
-		$tablas->fieldCssClass("nombre_nuevo_campo", array("nombre_nuevo_campo"));
-		$tablas->fieldCssClass("campo_anterior", array("campo_anterior"));
-
-		$tablas->buttonHide("submitBtn");
-		$tablas->buttonHide("submitBtnBack");
-		$tablas->buttonHide("cancel");
-
-		$tablas->buttonHide("submitBtnSaveBack");
-		$tablas->fieldAttributes("nombre_tabla", array("placeholder"=> "Nombre de la tabla de la base de datos"));
-		$tablas->fieldAttributes("modificar_tabla", array("placeholder"=> "CHANGE nombre_anterior_campo nombre_nuevo_campo VARCHAR(255) NOT NULL,", "style"=> "min-height: 200px; max-height: 200px;"));
-		$tablas->fieldAttributes("query_tabla", array("placeholder"=> "Rellena los campos de abajo para completar estos valores o ingresalos manualmente. Ejemplo: id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255)", "style"=> "min-height: 200px; max-height: 200px;"));
-		$tablas->fieldRenameLable("modificar_tabla", "Modificar Campos de la tabla");
-		$tablas->fieldRenameLable("query_tabla", "Consulta BD para crear Tabla");
-		$tablas->colRename("query_tabla", "Consulta BD para crear Tabla");
-		$tablas->addCallback("before_insert", "insertar_crear_tablas");
-		$tablas->addCallback("before_update", "editar_crear_tablas");
-		$tablas->addCallback("before_delete", "eliminar_crear_tablas");
-		$tablas->joinTable("estructura_tabla", "estructura_tabla.id_crear_tablas = crear_tablas.id_crear_tablas", "LEFT JOIN");
-		$render_tablas = $tablas->dbTable("crear_tablas")->render();
 
 		$pdf = DB::ArtifyCrud(true);
 		$pdf->tableHeading("Configuraciones de PDF");
