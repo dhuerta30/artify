@@ -956,6 +956,12 @@ class CrudService
                                     \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"input\");
                                 ";
                             }
+
+                            if($tipoDeCampo == "Campo de Fecha"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"date\");
+                                ";
+                            }
                 
                             $controllerContent .= "
                                 \$artify->fieldRenameLable(\"{$campoNombre}\", \"{$campoNuevoNombre}\");
