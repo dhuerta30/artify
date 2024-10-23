@@ -988,6 +988,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Nombre Columnas:</label>
 												{nombre_columnas}
+												<p style="font-size:13px;">seleccione la tabla para cargar estas columnas</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -1132,6 +1133,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Nombre Campos:</label>
 												{nombre_campos}
+												<p style="font-size:13px;">seleccione la tabla para cargar estos campos</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
