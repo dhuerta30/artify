@@ -230,43 +230,55 @@ class CrudService
 
                         if($value == "Antes de Insertar"){
                             $phpCode .= "
-                                \$artify->addCallback(\"before_insert\", \"before_insert_{$tableName}\");
+                                function before_insert_{$tableName}(){
+                                
+                                }
                             ";
                         } 
                         
                         if($value == "Despues de Insertar"){
                             $phpCode .= "
-                                \$artify->addCallback(\"after_insert\", \"after_insert_{$tableName}\");
+                                function after_insert_{$tableName}(){
+                                
+                                }
                             ";
                         }
     
                         if($value == "Antes de Actualizar"){
                             $phpCode .= "
-                                \$artify->addCallback(\"before_update\", \"before_update_{$tableName}\");
+                                function before_update_{$tableName}(){
+                                
+                                }
                             ";
                         }
     
                         if($value == "Despues de Actualizar"){
                             $phpCode .= "
-                                \$artify->addCallback(\"after_update\", \"after_update_{$tableName}\");
+                                function after_update_{$tableName}(){
+                                
+                                }
                             ";
                         }
     
                         if($value == "Antes de Eliminar"){
                             $phpCode .= "
-                                \$artify->addCallback(\"before_delete\", \"before_delete_{$tableName}\");
+                                function before_delete_{$tableName}(){
+                                
+                                }
                             ";
                         }
     
                         if($value == "Despues de Eliminar"){
                             $phpCode .= "
-                                \$artify->addCallback(\"after_delete\", \"after_delete_{$tableName}\");
+                                function after_delete_{$tableName}(){
+                                
+                                }
                             ";
                         }
                         
                     }
                 }
-                
+
                 $phpCode .= '';
 
                 $this->generatePHPFile($fileName, $phpCode);
