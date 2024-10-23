@@ -113,9 +113,6 @@ body {
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="create-pdf-tab" data-toggle="tab" href="#create-pdf" role="tab" aria-controls="create-pdf" aria-selected="false"><span class="circle-number">3</span> Configuraciones de PDF</a>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="config-api-tab" data-toggle="tab" href="#config-api" role="tab" aria-controls="config-api" aria-selected="false"><span class="circle-number">4</span> Configuración de Api</a>
-                    </li>
                 </ul>
             
                 <div class="tab-content pt-3" id="myTabContent">
@@ -129,9 +126,6 @@ body {
                     </div>
                     <div class="tab-pane fade" id="create-pdf" role="tabpanel" aria-labelledby="create-pdf-tab">
                         <?=$render_pdf?>
-                    </div>
-                    <div class="tab-pane fade" id="config-api" role="tabpanel" aria-labelledby="config-api-tab">
-                        <?=$render_conf?>
                     </div>
                 </div>
 

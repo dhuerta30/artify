@@ -82,11 +82,6 @@
                 
                     $artify->buttonHide("submitBtnSaveBack");
                 
-                    $action = $_ENV['BASE_URL'].'Personas/personas_pdf/id/{id_personas}';
-                    $text = "<i class='fa fa-file-pdf-o'></i>";
-                    $attr = array('title'=> 'Ver PDF', 'target'=> '_blank');
-                    $artify->enqueueBtnActions('artify-button-url', $action, 'url', $text, '', $attr);
-                
                     $artify->setSettings('printBtn', true);
                 
                     $artify->setSettings('pdfBtn', true);
@@ -122,7 +117,7 @@
             
                 $artify->setSettings('pagination', true);
             
-                $artify->setSettings('numberCol', true);
+                $artify->setSettings('numberCol', false);
             
                 $artify->setSettings('recordsPerPageDropdown', true);
             
@@ -135,22 +130,5 @@
 
             View::render('personas', ['render' => $render]);
         }
-                    public function personas_pdf(){
-                        
-                        $docufy = DB::Docufy();
-                        $docufy->setInvoiceDisplaySettings("header", "", false);
-                        $docufy->setInvoiceDisplaySettings("to", "", false);
-                        $docufy->setInvoiceDisplaySettings("from", "", false);
-                        $docufy->setInvoiceDisplaySettings("footer",  "", false);
-                        $docufy->setInvoiceDisplaySettings("payment", "", false);
-                        $docufy->setInvoiceDisplaySettings("message", "", false);
-                        $docufy->setInvoiceDisplaySettings("total", "subtotal", false);
-                        $docufy->setInvoiceDisplaySettings("total", "discount", false);
-                        $docufy->setInvoiceDisplaySettings("total", "tax", false);
-                        $docufy->setInvoiceDisplaySettings("total", "shipping", false);
-                        $docufy->setInvoiceDisplaySettings("total", "grandtotal", false);
-                        echo $docufy->render();
-                    }
-                
 
         }
