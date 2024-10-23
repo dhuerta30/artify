@@ -1085,6 +1085,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $posicion_filtro = !empty($data["modulos"]["posicion_filtro"]) ? $data["modulos"]["posicion_filtro"] : null;
     $file_callback = !empty($data["modulos"]["file_callback"]) ? $data["modulos"]["file_callback"] : null;
     $type_callback = isset($data["modulos"]["type_callback"]) ? $data["modulos"]["type_callback"] : null;
+    $type_fields = $data["modulos"]["type_fields"];
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
@@ -1204,7 +1205,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $area_protegida_por_login,
             $posicion_filtro,
             $file_callback,
-            $type_callback
+            $type_callback,
+            $type_fields
         );
     }
 
@@ -1299,6 +1301,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["posicion_filtro"] = $posicion_filtro;
     $newdata["modulos"]["file_callback"] = $file_callback;
     $newdata["modulos"]["type_callback"] = $type_callback;
+    $newdata["modulos"]["type_fields"] = $type_fields;
 
     return $newdata;
 }
