@@ -1051,8 +1051,8 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $mostrar_columnas_grilla = isset($data["modulos"]["mostrar_columnas_grilla"]) ? $data["modulos"]["mostrar_columnas_grilla"] : null;
     $mostrar_campos_formulario = isset($data["modulos"]["mostrar_campos_formulario"]) ? $data["modulos"]["mostrar_campos_formulario"] : null;
     $activar_recaptcha = $data["modulos"]["activar_recaptcha"];
-    $sitekey_recaptcha = isset($data["modulos"]["sitekey_recaptcha"]) ? $data["modulos"]["sitekey_recaptcha"] : null;
-    $sitesecret_recaptcha = isset($data["modulos"]["sitesecret_recaptcha"]) ? $data["modulos"]["sitesecret_recaptcha"] : null;
+    $sitekey_recaptcha = isset($data["modulos"]["sitekey_recaptcha"]) ?? null;
+    $sitesecret_repatcha = isset($data["modulos"]["sitesecret_repatcha"]) ?? null;
     $function_filter_and_search = $data["modulos"]["function_filter_and_search"];
 
     $activar_union_interna = $data["modulos"]["activar_union_interna"];
