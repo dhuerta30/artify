@@ -900,6 +900,69 @@ class CrudService
 
                 if(isset($mostrar_campos_formulario)){
 
+                    if (!empty($type_fields)) {
+                        $values_type_fields = explode(',', $type_fields);
+                        $values_type_fields = array_filter($values_type_fields, function ($value) {
+                            return !empty(trim($value));
+                        });
+                    
+                        // Asegurarse de que ambas matrices tengan la misma cantidad de elementos
+                        foreach ($values_type_fields as $index => $tipoDeCampo) {
+                            
+                            if($tipoDeCampo == "Imagen"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"FILE_NEW\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Archivo Único"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"FILE\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Multiples Archivos"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"FILE_MULTI\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Radiobox"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"radio\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Checkbox"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"checkbox\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Combobox"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"select\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Combobox Multiple"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"multiselect\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Campo de Texto"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"input\");
+                                ";
+                            }
+                
+                            $controllerContent .= "
+                                \$artify->fieldRenameLable(\"{$campoNombre}\", \"{$campoNuevoNombre}\");
+                            ";
+                        }
+                    }   
+
                     $values = explode(',', $mostrar_campos_formulario);
 
                     $values = array_filter($values, function ($value) {
@@ -1000,7 +1063,7 @@ class CrudService
                 }
 
 
-                if (!empty($nombre_campos) && !empty($nuevo_nombre_campos) && !empty($type_fields)) {
+                if (!empty($nombre_campos) && !empty($nuevo_nombre_campos)) {
 
                     // Separar y limpiar las columnas originales
                     $values_nombre_campos = explode(',', $nombre_campos);
@@ -1014,60 +1077,11 @@ class CrudService
                         return !empty(trim($value));
                     });
                 
-                    // Separar y limpiar los tipos de campo
-                    $values_type_fields = explode(',', $type_fields);
-                    $values_type_fields = array_filter($values_type_fields, function ($value) {
-                        return !empty(trim($value));
-                    });
-                
                     // Asegurarse de que ambas matrices tengan la misma cantidad de elementos
-                    if (count($values_nombre_campos) === count($values_nuevo_nombre_campos) && count($values_nuevo_nombre_campos) === count($values_type_fields)) {
+                    if (count($values_nombre_campos) === count($values_nuevo_nombre_campos)) {
                 
                         foreach ($values_nombre_campos as $index => $campoNombre) {
                             $campoNuevoNombre = $values_nuevo_nombre_campos[$index];
-                            $tipoDeCampo = $values_type_fields[$index];
-
-                            if($tipoDeCampo == "Imagen"){
-                                $controllerContent .= "
-                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"FILE_NEW\");
-                                ";
-                            }
-
-                            if($tipoDeCampo == "Archivo Único"){
-                                $controllerContent .= "
-                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"FILE\");
-                                ";
-                            }
-
-                            if($tipoDeCampo == "Multiples Archivos"){
-                                $controllerContent .= "
-                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"FILE_MULTI\");
-                                ";
-                            }
-
-                            if($tipoDeCampo == "Radiobox"){
-                                $controllerContent .= "
-                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"radio\");
-                                ";
-                            }
-
-                            if($tipoDeCampo == "Checkbox"){
-                                $controllerContent .= "
-                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"checkbox\");
-                                ";
-                            }
-
-                            if($tipoDeCampo == "Combobox"){
-                                $controllerContent .= "
-                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"select\");
-                                ";
-                            }
-
-                            if($tipoDeCampo == "Combobox Multiple"){
-                                $controllerContent .= "
-                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"multiselect\");
-                                ";
-                            }
                 
                             $controllerContent .= "
                                 \$artify->fieldRenameLable(\"{$campoNombre}\", \"{$campoNuevoNombre}\");
