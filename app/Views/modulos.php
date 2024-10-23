@@ -17,7 +17,7 @@
 }
 
 .bootstrap-tagsinput input {
-    width: 100%!important;
+    width: 200px!important;
 }
 
 .mt-custom {
