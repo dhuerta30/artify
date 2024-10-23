@@ -277,9 +277,9 @@ class CrudService
                         }
                         
                     }
+                } else {
+                    $phpCode .= '';
                 }
-
-                $phpCode .= '';
 
                 $this->generatePHPFile($fileName, $phpCode);
 
