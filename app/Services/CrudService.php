@@ -1033,9 +1033,15 @@ class CrudService
                                 ";
                             }
 
-                            if($tipoDeCampo == "Archivo"){
+                            if($tipoDeCampo == "Archivo Único"){
                                 $controllerContent .= "
                                     \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"file\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Multiples Archivos"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"FILE_MULTI\");
                                 ";
                             }
 
