@@ -192,10 +192,40 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         });
 
         $(".type_callback").select2();
-        $(".type_fields").tagsinput({
-            allowDuplicates: true,
+
+        $(function() {
+            var textosPermitidosList = ['Imagen', 'Archivo', 'Combobox', 'Combobox Multiple', 'Campo de Texto', 'Campo de Fecha', 'Campo de Hora'];
+
+            $('.type_fields').tagsinput({
+                allowDuplicates: true,
+                typeaheadjs: {
+                    name: 'textosPermitidosList',
+                    source: function(query, syncResults) {
+                        // Filtra los elementos de la lista permitida según el término de búsqueda
+                        var matches = textosPermitidosList.filter(function(item) {
+                            return item.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+                        });
+                        syncResults(matches);
+                    }
+                }
+            });
+
+            $('.type_fields').on('beforeItemAdd', function(event) {
+                var texto = event.item;
+
+                // Si el texto no está en la lista de permitidos, cancelamos la adición
+                if (textosPermitidosList.indexOf(texto) === -1) {
+                    event.cancel = true;
+                    Swal.fire({
+                        title: "Lo siento",
+                        text: 'Este texto no está permitido.',
+                        confirmButtonText: "Aceptar",
+                        icon: "error"
+                    });
+                }
+            });
         });
-        
+
         $('.tabla_principal_union').change(function() {
             let val = $('.tabla_principal_union').val(); // Obtenemos el array de valores seleccionados
             let lastSelected = val[val.length - 1]; // Obtenemos el último valor seleccionado
