@@ -279,6 +279,7 @@ class Queryfy
             $this->lastInsertId = $this->dbObj->lastInsertId();
             $this->resetAll();
         } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
             if ($this->dbTransaction == true) {
                 $this->dbRollBack = true;
                 $this->dbObj->rollBack();
