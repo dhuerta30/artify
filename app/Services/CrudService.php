@@ -308,6 +308,24 @@ class CrudService
                                 }
                             ";
                         }
+
+                        if($value == "Antes de Seleccionar"){
+                            $phpCode .= "
+                                function before_select_{$tableName}(\$data, \$obj){
+                                
+                                    return \$data;
+                                }
+                            ";
+                        }
+
+                        if($value == "Despues de Seleccionar"){
+                            $phpCode .= "
+                                function after_select_{$tableName}(\$data, \$obj){
+                                
+                                    return \$data;
+                                }
+                            ";
+                        }
                         
                     }
                 } else {
@@ -817,6 +835,18 @@ class CrudService
                         if($value == "Despues de Actualizar Switch"){
                             $controllerContent .= "
                                 \$artify->addCallback(\"after_switch_update\", \"after_switch_update_{$tableName}\");
+                            ";
+                        }
+
+                        if($value == "Antes de Seleccionar"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"before_select\", \"before_select_{$tableName}\");
+                            ";
+                        }
+
+                        if($value == "Despues de Seleccionar"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"after_select\", \"after_select_{$tableName}\");
                             ";
                         }
                         
