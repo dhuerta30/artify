@@ -274,7 +274,7 @@ class CrudService
 
     private function writePHPCodeToFile($filePath, $phpCode) {
         if ($this->createFile($filePath)) {
-            $fullCode = "<?php\n\n" . $phpCode . "\n";
+            $fullCode = "<?php\n" . $phpCode . "\n";
             file_put_contents($filePath, $fullCode);
             //echo "Archivo creado y código escrito exitosamente en: " . $filePath;
         } else {
