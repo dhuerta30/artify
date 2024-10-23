@@ -1000,35 +1000,40 @@ class CrudService
                 }
 
 
-                if(!empty($nombre_campos) && !empty($nuevo_nombre_campos)){
+                if (!empty($nombre_campos) && !empty($nuevo_nombre_campos) && !empty($type_fields)) {
 
                     // Separar y limpiar las columnas originales
                     $values_nombre_campos = explode(',', $nombre_campos);
                     $values_nombre_campos = array_filter($values_nombre_campos, function ($value) {
                         return !empty(trim($value));
                     });
-                    
+                
                     // Separar y limpiar los nuevos nombres de columnas
                     $values_nuevo_nombre_campos = explode(',', $nuevo_nombre_campos);
                     $values_nuevo_nombre_campos = array_filter($values_nuevo_nombre_campos, function ($value) {
                         return !empty(trim($value));
                     });
-
+                
+                    // Separar y limpiar los tipos de campo
+                    $values_type_fields = explode(',', $type_fields);
+                    $values_type_fields = array_filter($values_type_fields, function ($value) {
+                        return !empty(trim($value));
+                    });
+                
                     // Asegurarse de que ambas matrices tengan la misma cantidad de elementos
-                    if (count($values_nombre_campos) === count($values_nuevo_nombre_campos)) {
-                       
+                    if (count($values_nombre_campos) === count($values_nuevo_nombre_campos) && count($values_nuevo_nombre_campos) === count($values_type_fields)) {
+                
                         foreach ($values_nombre_campos as $index => $campoNombre) {
                             $campoNuevoNombre = $values_nuevo_nombre_campos[$index];
-
-                            $campoNombreCampo = $campoNombre;
-                            $campoNuevoNombreCampo = $campoNuevoNombre;
-
+                            $tipoDeCampo = $values_type_fields[$index];
+                
                             $controllerContent .= "
-                                \$artify->fieldRenameLable(\"{$campoNombreCampo}\", \"{$campoNuevoNombreCampo}\");
+                                \$artify->fieldRenameLable(\"{$campoNombre}\", \"{$campoNuevoNombre}\");
+                                \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"{$tipoDeCampo}\");
                             ";
                         }
                     }
-                }
+                }                
 
         if ($template_html == "Si") {
             $controllerContent .= "
