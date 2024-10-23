@@ -960,6 +960,11 @@ class CrudService
                                             \$artify->fieldTypes(\"{$campo}\", \"input\");
                                         ";
                                         break;
+                                    case "Campo de Área de Texto":
+                                        $controllerContent .= "
+                                            \$artify->fieldTypes(\"{$campo}\", \"textarea\");
+                                        ";
+                                        break;
                                     case "Campo de Fecha":
                                         $controllerContent .= "
                                             \$artify->fieldTypes(\"{$campo}\", \"date\");
