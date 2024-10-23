@@ -1146,7 +1146,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Tipo de Campo:</label>
 												{type_fields}
-												<p>Opciones: Imagen, Archivo, Combobox, Combobox Multiple, Campo de Texto, Campo de Fecha, Campos de Hora</p>
+												<p style="font-size:13px;">Opciones: Imagen, Archivo, Combobox, Combobox Multiple, Campo de Texto, Campo de Fecha, Campos de Hora</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
