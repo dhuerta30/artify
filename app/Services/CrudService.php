@@ -1026,10 +1026,45 @@ class CrudService
                         foreach ($values_nombre_campos as $index => $campoNombre) {
                             $campoNuevoNombre = $values_nuevo_nombre_campos[$index];
                             $tipoDeCampo = $values_type_fields[$index];
+
+                            if($tipoDeCampo == "Imagen"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"FILE_NEW\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Archivo"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"file\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Radiobox"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"radio\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Checkbox"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"checkbox\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Combobox"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"select\");
+                                ";
+                            }
+
+                            if($tipoDeCampo == "Combobox Multiple"){
+                                $controllerContent .= "
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"multiselect\");
+                                ";
+                            }
                 
                             $controllerContent .= "
                                 \$artify->fieldRenameLable(\"{$campoNombre}\", \"{$campoNuevoNombre}\");
-                                \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"{$tipoDeCampo}\");
                             ";
                         }
                     }
