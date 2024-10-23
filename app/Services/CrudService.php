@@ -285,18 +285,16 @@ class CrudService
     // Método privado que se asegura de que el archivo sea creado correctamente
     private function createFile($filePath) {
         $directory = dirname($filePath);
-    
-        // Crea el directorio si no existe
+
         if (!file_exists($directory)) {
-            mkdir($directory, 0755, true);
+            mkdir($directory, 0755, true); // Crear directorio si no existe
         }
-    
-        // Intenta crear un archivo vacío
-        if (!file_exists($filePath) && file_put_contents($filePath, '') !== false) {
-            return true; // Retorna verdadero si el archivo se creó exitosamente
+
+        if (file_put_contents($filePath, '') !== false) {
+            return true;
         }
-    
-        return false; // Retorna falso si el archivo ya existía o si hubo un error
+
+        return false;
     }
 
     private function generateCrudControllerSQL($tableName, $idTable = null, $query = null, $controllerName, $nameview, $template_html, $active_filter, $clone_row, $active_popup, $active_search, $activate_deleteMultipleBtn, $button_add, $actions_buttons_grid, $activate_nested_table, $buttons_actions, $refrescar_grilla, $encryption, $mostrar_campos_busqueda)
