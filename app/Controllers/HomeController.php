@@ -1322,17 +1322,6 @@ class HomeController
 		$artify->fieldTypes("nombre_campos", "multiselect");
 		$artify->fieldTypes("tabla_principal_union", "multiselect");
 		$artify->fieldTypes("tabla_secundaria_union", "multiselect");
-		/*$artify->fieldTypes("type_fields", "multiselect");
-		$artify->fieldDataBinding("type_fields", array(
-			"Input" => "Input",
-			"Imagen" => "Imagen",
-			"Archivo" => "Archivo",
-			"Combobox" => "Combobox",
-			"Combobox Multiple" => "Combobox Multiple",
-			"Campo de Texto" => "Campo de Texto",
-			"Campo de Fecha" => "Campo de Fecha",
-			"Campo de Hora" => "Campo de Hora"
-		), "", "", "array");*/
 
 		$artify->fieldTypes("type_callback", "multiselect");
 		$artify->fieldDataBinding("type_callback", array(
