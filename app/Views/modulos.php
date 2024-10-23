@@ -194,7 +194,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
         $(".type_callback").select2();
 
         $(function() {
-            var textosPermitidosList = ['Imagen', 'Archivo', 'Radiobox', 'Checkbox', 'Combobox', 'Combobox Multiple', 'Campo de Texto', 'Campo de Fecha', 'Campo de Fechay Hora', 'Campo de Hora'];
+            var textosPermitidosList = ['Imagen', 'Archivo', 'Radiobox', 'Checkbox', 'Combobox', 'Combobox Multiple', 'Campo de Texto', 'Campo de Fecha', 'Campo de Fecha y Hora', 'Campo de Hora'];
 
             $('.type_fields').tagsinput({
                 allowDuplicates: true,
