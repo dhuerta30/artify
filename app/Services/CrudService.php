@@ -333,7 +333,6 @@ class CrudService
                 }
 
                 $this->generatePHPFile($fileName, $phpCode);
-
             }
 
             //$this->generateViewAdd($nameview);
