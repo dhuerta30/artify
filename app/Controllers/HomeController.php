@@ -1146,6 +1146,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Tipo de Campo:</label>
 												{type_fields}
+												<p>Opciones: Imagen, Archivo, Combobox, Combobox Multiple, Campo de Texto, Campo de Fecha, Campos de Hora</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
@@ -1321,7 +1322,7 @@ class HomeController
 		$artify->fieldTypes("nombre_campos", "multiselect");
 		$artify->fieldTypes("tabla_principal_union", "multiselect");
 		$artify->fieldTypes("tabla_secundaria_union", "multiselect");
-		$artify->fieldTypes("type_fields", "multiselect");
+		/*$artify->fieldTypes("type_fields", "multiselect");
 		$artify->fieldDataBinding("type_fields", array(
 			"Input" => "Input",
 			"Imagen" => "Imagen",
@@ -1331,7 +1332,7 @@ class HomeController
 			"Campo de Texto" => "Campo de Texto",
 			"Campo de Fecha" => "Campo de Fecha",
 			"Campo de Hora" => "Campo de Hora"
-		), "", "", "array");
+		), "", "", "array");*/
 
 		$artify->fieldTypes("type_callback", "multiselect");
 		$artify->fieldDataBinding("type_callback", array(
@@ -1509,6 +1510,7 @@ class HomeController
 		$artify->fieldCssClass("nombre_modulo", array("nombre_modulo"));
 		$artify->fieldCssClass("posicion_filtro", array("posicion_filtro"));
 		$artify->fieldCssClass("type_callback", array("type_callback"));
+		$artify->fieldCssClass("type_fields", array("type_fields"));
 
 		$artify->fieldAttributes("id_tabla", array("readonly" => "true"));
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1538,6 +1540,7 @@ class HomeController
 			"buttons_actions"
 		));
 		$artify->formFields(array(
+			"type_fields",
 			"type_callback", 
 			"file_callback", 
 			"posicion_filtro", 
@@ -1601,6 +1604,7 @@ class HomeController
 			"buttons_actions"
 		));
 		$artify->editFormFields(array(
+			"type_fields",
 			"type_callback", 
 			"file_callback", 
 			"posicion_filtro", 
