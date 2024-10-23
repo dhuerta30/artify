@@ -1501,90 +1501,6 @@ class HomeController
 		$switch = $artify->loadPluginJsCode("bootstrap-switch-master",".actions_buttons_grid, .buttons_actions, .actions_buttons_grid_db, .buttons_actions_db");
 		$tags = $artify->loadPluginJsCode("bootstrap-tag-input",".tagsinput");
 
-		$config = DB::ArtifyCrud(true);
-		$html_template_config = '
-		<div class="card">
-		<div class="card-body bg-dark">
-			<h5 class="card-title mb-0">Configuración de Api</h5>
-		</div>
-		<div class="card-body bg-light">
-
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item border-0" role="presentation">
-					<a class="nav-link active" id="Apiconfig-tab" data-toggle="tab" href="#Apiconfig" role="tab" aria-controls="Apiconfig" aria-selected="false">Configuración de API</a>
-				</li>
-			</ul>
-
-  				<div class="tab-pane fade show active" id="Apiconfig" role="tabpanel" aria-labelledby="Apiconfig-tab">
-				
-					<div class="row mt-4">
-						<div class="col-md-4">
-							<div class="form-group">
-								<label class="form-label">Generar JWT Token Api:</label>
-								{generar_jwt_token}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-								<a href="javascript:;" class="btn btn-info generar_token_api d-none">Generar Token</a>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label class="form-label">Autenticar JWT Token Api:</label>
-								{autenticar_jwt_token}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label class="form-label">Tiempo de Caducidad token:</label>
-								{tiempo_caducidad_token}
-								<p class="artify_help_block help-block form-text with-errors"></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group mt-4 text-center">
-						<input type="submit" class="btn btn-primary artify-form-control artify-submit mb-3" data-action="insert" value="Guardar">
-						<button type="reset" class="btn btn-danger artify-form-control artify-button mb-3 artify-cancel-btn">Cancelar</button>
-					</div>
-
-
-				</div>
-			</div>
-
-		</div>';
-
-		$queryfy = $config->getQueryfyObj();
-		$configuraciones_api = $queryfy->select("configuraciones_api");
-
-		if($configuraciones_api[0]["generar_jwt_token"] == "Si"){
-			$_ENV["ENABLE_JWTAUTH"] = true;
-		} else {
-			$_ENV["ENABLE_JWTAUTH"] = false;
-		}
-
-		$config->setPK("id_configuraciones_api");
-		$config->set_template($html_template_config);
-		$config->fieldCssClass("generar_jwt_token", array("generar_jwt_token"));
-		$config->fieldCssClass("autenticar_jwt_token", array("autenticar_jwt_token"));
-		$config->fieldCssClass("tiempo_caducidad_token", array("tiempo_caducidad_token"));
-		$config->formFields(array("generar_jwt_token", "autenticar_jwt_token", "tiempo_caducidad_token"));
-		$config->formFieldValue("generar_jwt_token", "No");
-		$config->fieldNotMandatory("autenticar_jwt_token");
-		$config->fieldValidationType("tiempo_caducidad_token", "required", "", "Ingrese un tiempo de Caducidad para el token");
-		$config->setSettings("refresh", false);
-		$config->setSettings("editbtn", true);
-		$config->setSettings("delbtn", true);
-		$config->setSettings("function_filter_and_search", false);
-		$config->buttonHide("submitBtn");
-		$config->buttonHide("cancel");
-		$config->fieldTypes("generar_jwt_token", "select");
-		$config->fieldDataBinding("generar_jwt_token", array("Si" => "Si", "No" => "No"), "", "", "array");
-		$config->buttonHide("submitBtnSaveBack");
-		$config->addCallback("before_update", "actualizar_configuracion_api");
-		$config->fieldDataAttr("autenticar_jwt_token", array("disabled"=>"disabled"));
-		$config->fieldDataAttr("tiempo_caducidad_token", array("disabled"=>"disabled"));
-		$render_conf = $config->dbTable("configuraciones_api")->render("editform", array("id" => "1"));
-
 		$tablas = DB::ArtifyCrud(true);
 		$tablas->fieldRenameLable("caracteres", "Caracteres");
 		$tablas->fieldRenameLable("valor_nulo", "Campo con valor vacio");
@@ -1689,7 +1605,6 @@ class HomeController
 			[
 				'render' => $render, 
 				'tags' => $tags,
-				'render_conf' => $render_conf, 
 				'switch' => $switch, 
 				'render_tablas' => $render_tablas, 
 				'render_pdf' => $render_pdf
