@@ -215,8 +215,59 @@ class CrudService
                 if (isset($_REQUEST["artify_instance"])) {
                     $fomplusajax = new ArtifyAjaxCtrl();
                     $fomplusajax->handleRequest();
+                }';
+                
+                if(isset($type_callback)){
+                    // Separar y limpiar las columnas originales
+                    $values_type_callback = explode(',', $type_callback);
+                    $values_type_callback = array_filter($values_type_callback, function ($value) {
+                        return !empty(trim($value));
+                    });
+                            
+                    foreach ($values_type_callback as $index => $callback) {
+
+                        $value = $callback;
+
+                        if($value == "Antes de Insertar"){
+                            $phpCode .= "
+                                \$artify->addCallback(\"before_insert\", \"before_insert_{$tableName}\");
+                            ";
+                        } 
+                        
+                        if($value == "Despues de Insertar"){
+                            $phpCode .= "
+                                \$artify->addCallback(\"after_insert\", \"after_insert_{$tableName}\");
+                            ";
+                        }
+    
+                        if($value == "Antes de Actualizar"){
+                            $phpCode .= "
+                                \$artify->addCallback(\"before_update\", \"before_update_{$tableName}\");
+                            ";
+                        }
+    
+                        if($value == "Despues de Actualizar"){
+                            $phpCode .= "
+                                \$artify->addCallback(\"after_update\", \"after_update_{$tableName}\");
+                            ";
+                        }
+    
+                        if($value == "Antes de Eliminar"){
+                            $phpCode .= "
+                                \$artify->addCallback(\"before_delete\", \"before_delete_{$tableName}\");
+                            ";
+                        }
+    
+                        if($value == "Despues de Eliminar"){
+                            $phpCode .= "
+                                \$artify->addCallback(\"after_delete\", \"after_delete_{$tableName}\");
+                            ";
+                        }
+                        
+                    }
                 }
-            ';
+                
+                $phpCode .= '';
 
                 $this->generatePHPFile($fileName, $phpCode);
 
