@@ -1322,7 +1322,9 @@ class HomeController
 			"Despues de Actualizar" => "Despues de Actualizar",
 			"Antes de Eliminar" => "Antes de Eliminar",
 			"Despues de Eliminar" => "Despues de Eliminar",
-			"Eliminación Masiva" => "Eliminación Masiva"
+			"Eliminación Masiva" => "Eliminación Masiva",
+			"Antes de Actualizar Switch" => "Antes de Actualizar Switch",
+			"Despues de Actualizar Switch" => "Despues de Actualizar Switch"
 		), "", "", "array");
 
 		$artify->fieldTypes("tipo_de_filtro", "input");

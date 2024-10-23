@@ -287,6 +287,18 @@ class CrudService
                                 \$artify->addCallback(\"before_delete_selected\", \"before_delete_selected_{$tableName}\");
                             ";
                         }
+
+                        if($value == "Antes de Actualizar Switch"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"before_switch_update\", \"before_switch_update_{$tableName}\");
+                            ";
+                        }
+
+                        if($value == "Despues de Actualizar Switch"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"after_switch_update\", \"after_switch_update_{$tableName}\");
+                            ";
+                        }
                         
                     }
                 } else {
