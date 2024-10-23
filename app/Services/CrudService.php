@@ -931,7 +931,7 @@ class CrudService
 
         if ($activar_union_interna == "Si") {
 
-            /*$values_tabla_principal_union = explode(',', $campos_relacion_union_tabla_principal);
+            $values_tabla_principal_union = explode(',', $campos_relacion_union_tabla_principal);
             $values_tabla_principal_union = array_filter($values_tabla_principal_union, function ($value) {
                 return !empty(trim($value));
             });
@@ -950,10 +950,7 @@ class CrudService
                 $controllerContent .= "
                     \$artify->joinTable(\"{$tabla_secundaria_union}\", \"{$tabla_secundaria_union}.{$campoSecundario} = {$tabla_principal_union}.{$campoPrincipal}\", \"INNER JOIN\");
                 ";
-            }*/
-            $controllerContent .= "
-                
-            ";
+            }
         }        
 
         if(!empty($posicion_filtro) && $posicion_filtro == "Izquierda"){
