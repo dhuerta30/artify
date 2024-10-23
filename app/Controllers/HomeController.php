@@ -959,6 +959,7 @@ class HomeController
 											<div class="form-group">
 												<label class="form-label">Ordenar Grilla por:</label>
 												{ordenar_grilla_por}
+												<p style="font-size:13px;">seleccione la tabla para cargar estos campos</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 	
