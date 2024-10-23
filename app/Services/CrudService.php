@@ -1035,7 +1035,7 @@ class CrudService
 
                             if($tipoDeCampo == "Archivo Único"){
                                 $controllerContent .= "
-                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"file\");
+                                    \$artify->fieldTypes(\"{$campoNuevoNombre}\", \"FILE\");
                                 ";
                             }
 
