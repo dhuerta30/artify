@@ -1313,6 +1313,13 @@ class HomeController
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Activar Envio de Correos Electrónicos:</label>
+												{send_email}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
 									</div>
 
 								</div>
@@ -1505,6 +1512,9 @@ class HomeController
 		$artify->fieldTypes("area_protegida_por_login", "select");
 		$artify->fieldDataBinding("area_protegida_por_login", array("Si" => "Si", "No" => "No"), "", "", "array");
 
+		$artify->fieldTypes("send_email", "select");
+		$artify->fieldDataBinding("send_email", array("Si" => "Si", "No" => "No"), "", "", "array");
+
 		$artify->fieldTypes("tipo_orden", "select");
 		$artify->fieldDataBinding("tipo_orden", array("ASC" => "ASC", "DESC" => "DESC"), "", "", "array");
 		
@@ -1657,6 +1667,7 @@ class HomeController
 		$artify->fieldCssClass("type_callback", array("type_callback"));
 		$artify->fieldCssClass("type_fields", array("type_fields"));
 		$artify->fieldCssClass("type_union", array("type_union"));
+		$artify->fieldCssClass("send_email", array("send_email"));
 
 		$artify->fieldAttributes("id_tabla", array("readonly" => "true"));
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1686,6 +1697,7 @@ class HomeController
 			"buttons_actions"
 		));
 		$artify->formFields(array(
+			"send_email",
 			"type_union",
 			"text_no_data",
 			"type_fields",
@@ -1752,6 +1764,7 @@ class HomeController
 			"buttons_actions"
 		));
 		$artify->editFormFields(array(
+			"send_email",
 			"type_union",
 			"text_no_data",
 			"type_fields",
