@@ -1442,6 +1442,7 @@ class HomeController
 		$artify->formFieldValue("totalRecordsInfo", "Si");
 		$artify->formFieldValue("area_protegida_por_login", "Si");
 		$artify->formfieldValue("posicion_filtro", "Izquierda");
+		$artify->formfieldValue("send_email", "No");
 
 		$artify->setLangData("add", "Agregar Módulo");
 
