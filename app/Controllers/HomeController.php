@@ -1586,9 +1586,6 @@ class HomeController
 		$artify->fieldTypes("clone_row", "select");
 		$artify->fieldDataBinding("clone_row", array("Si" => "Si", "No" => "No"), "", "", "array");
 
-		$artify->fieldTypes("type_union", "multiselect");
-		$artify->fieldDataBinding("type_union", array("Interna" => "Interna", "Izquierda" => "Izquierda"), "", "", "array");
-
 		$artify->fieldTypes("tabla", "select");
 		
 		$artify->fieldCssClass("crud_type", array("crud_type"));
