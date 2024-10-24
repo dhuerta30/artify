@@ -1129,10 +1129,22 @@ class HomeController
 
 									<div class="row pt-4">
 										<div class="col-md-3">
-											<div class="form-group">
-												<label class="form-label">Activar Union Interna:</label>
-												{activar_union_interna}
-												<p class="artify_help_block help-block form-text with-errors"></p>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="form-label">Activar Union Interna:</label>
+													{activar_union_interna}
+													<p class="artify_help_block help-block form-text with-errors"></p>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="form-label">Tipo de Union:</label>
+													{type_union}
+													<p style="font-size: 14px;">Ejemplo: Interna, Izquierda</p>
+													<p class="artify_help_block help-block form-text with-errors"></p>
+												</div>
 											</div>
 										</div>
 										<div class="col-md-3">
@@ -1571,6 +1583,9 @@ class HomeController
 		$artify->fieldTypes("clone_row", "select");
 		$artify->fieldDataBinding("clone_row", array("Si" => "Si", "No" => "No"), "", "", "array");
 
+		$artify->fieldTypes("type_union", "select");
+		$artify->fieldDataBinding("type_union", array("Interna" => "Interna", "Izquierda" => "Izquierda"), "", "", "array");
+
 		$artify->fieldTypes("tabla", "select");
 		
 		$artify->fieldCssClass("crud_type", array("crud_type"));
@@ -1630,6 +1645,7 @@ class HomeController
 		$artify->fieldCssClass("posicion_filtro", array("posicion_filtro"));
 		$artify->fieldCssClass("type_callback", array("type_callback"));
 		$artify->fieldCssClass("type_fields", array("type_fields"));
+		$artify->fieldCssClass("type_union", array("type_union"));
 
 		$artify->fieldAttributes("id_tabla", array("readonly" => "true"));
 		$artify->fieldAttributes("consulta_pdf", array("placeholder"=> "Ejemplo: SELECT id as item FROM tabla", "style"=> "min-height: 200px; max-height: 200px;"));
@@ -1659,6 +1675,7 @@ class HomeController
 			"buttons_actions"
 		));
 		$artify->formFields(array(
+			"type_union",
 			"text_no_data",
 			"type_fields",
 			"type_callback", 
@@ -1707,7 +1724,7 @@ class HomeController
 			"marca_de_agua_pdf", 
 			"activate_pdf", 
 			"tabla", 
-			"id_tabla", 
+			"id_tabla",
 			"crud_type", 
 			"query", 
 			"controller_name", 
@@ -1724,6 +1741,7 @@ class HomeController
 			"buttons_actions"
 		));
 		$artify->editFormFields(array(
+			"type_union",
 			"text_no_data",
 			"type_fields",
 			"type_callback", 
