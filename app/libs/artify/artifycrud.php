@@ -1459,7 +1459,7 @@ function eliminar_modulos($data, $obj)
     $viewFilePath =  dirname(__DIR__, 3) . '/app/Views/' . $nameview . '.php';
     $viewFilePathEdit =  dirname(__DIR__, 3) . '/app/Views/editar_' . $nameview . '.php';
     $viewFilePathAdd =  dirname(__DIR__, 3) . '/app/Views/agregar_' . $nameview . '.php';
-    $function_callback = __DIR__ . $type_callback;
+    $function_callback = ArtifyABSPATH . $type_callback;
 
     if (file_exists($function_callback)) {
         unlink($function_callback);
