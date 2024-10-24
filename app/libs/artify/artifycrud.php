@@ -1464,7 +1464,7 @@ function eliminar_modulos($data, $obj)
     if (file_exists($function_callback)) {
         unlink($function_callback);
     } else {
-        echo "File or directory does not exist: " . $path;
+        echo "File or directory does not exist: " . $function_callback;
     }
    
     $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd];
