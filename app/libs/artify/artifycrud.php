@@ -1459,14 +1459,9 @@ function eliminar_modulos($data, $obj)
     $viewFilePath =  dirname(__DIR__, 3) . '/app/Views/' . $nameview . '.php';
     $viewFilePathEdit =  dirname(__DIR__, 3) . '/app/Views/editar_' . $nameview . '.php';
     $viewFilePathAdd =  dirname(__DIR__, 3) . '/app/Views/agregar_' . $nameview . '.php';
-    
-    if (file_exists($file_callback)) {
-        unlink(__DIR__ . '/'. $file_callback . '.php');
-    } else {
-        echo "File or directory does not exist: " . $file_callback;
-    }
+    $function_callback = ArtifyABSPATH . $file_callback . '.php';
    
-    $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd];
+    $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd, $function_callback];
 
     foreach ($filesToDelete as $filePath) {
         if ($filePath && file_exists($filePath)) {
