@@ -1488,7 +1488,13 @@ function eliminar_modulos($data, $obj)
     if (file_exists($templaesCrudDirPath) && is_dir($templaesCrudDirPath)) {
         try {
             if (eliminar_directorio_completo($templaesCrudDirPath)) {
-                echo "Directorio eliminado con éxito:";
+                echo "<script>
+                     Swal.fire({
+                        title: 'Módulo Eliminado con éxito',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    });
+                </script>";
             } else {
                 echo "Error al eliminar el directorio: $templaesCrudDirPath";
             }
