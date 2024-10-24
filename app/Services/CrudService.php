@@ -81,7 +81,8 @@ class CrudService
         $file_callback,
         $type_callback,
         $type_fields,
-        $text_no_data
+        $text_no_data,
+        $send_email
         )
     {
         if($crudType == 'SQL'){
@@ -185,7 +186,8 @@ class CrudService
                 $file_callback,
                 $type_callback,
                 $type_fields,
-                $text_no_data
+                $text_no_data,
+                $send_email
             );
 
             if($area_protegida_por_login == "Si"){
@@ -739,7 +741,8 @@ class CrudService
         $file_callback,
         $type_callback,
         $type_fields,
-        $text_no_data
+        $text_no_data,
+        $send_email
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
