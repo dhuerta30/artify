@@ -52,6 +52,7 @@ class CrudService
         $sitesecret_repatcha,
         $function_filter_and_search,
         $activar_union_interna,
+        $type_union,
         $tabla_principal_union,
         $tabla_secundaria_union,
         $campos_relacion_union_tabla_principal,
@@ -79,7 +80,8 @@ class CrudService
         $posicion_filtro,
         $file_callback,
         $type_callback,
-        $type_fields
+        $type_fields,
+        $text_no_data
         )
     {
         if($crudType == 'SQL'){
@@ -120,7 +122,8 @@ class CrudService
                 $area_protegida_por_login,
                 $posicion_filtro,
                 $file_callback,
-                $type_callback
+                $type_callback,
+                $text_no_data
             );
         }
 
@@ -153,6 +156,7 @@ class CrudService
                 $sitesecret_repatcha,
                 $function_filter_and_search,
                 $activar_union_interna,
+                $type_union,
                 $tabla_principal_union,
                 $tabla_secundaria_union,
                 $campos_relacion_union_tabla_principal,
@@ -180,7 +184,8 @@ class CrudService
                 $posicion_filtro,
                 $file_callback,
                 $type_callback,
-                $type_fields
+                $type_fields,
+                $text_no_data
             );
 
             if($area_protegida_por_login == "Si"){
@@ -687,6 +692,7 @@ class CrudService
         $sitesecret_repatcha,
         $function_filter_and_search,
         $activar_union_interna,
+        $type_union,
         $tabla_principal_union,
         $tabla_secundaria_union,
         $campos_relacion_union_tabla_principal,
@@ -714,7 +720,8 @@ class CrudService
         $posicion_filtro,
         $file_callback,
         $type_callback,
-        $type_fields
+        $type_fields,
+        $text_no_data
         )
     {
         $controllerPath = __DIR__ . '/../Controllers/' . $controllerName . 'Controller.php';
