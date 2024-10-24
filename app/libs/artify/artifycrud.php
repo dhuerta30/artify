@@ -1453,17 +1453,17 @@ function eliminar_modulos($data, $obj)
     $tabla = $query[0]["tabla"];
     $controller_name = $query[0]["controller_name"];
     $nameview = $query[0]["name_view"];
-    $type_callback = $query[0]["type_callback"];
+    $file_callback = $query[0]["file_callback"];
 
     $controllerFilePath = dirname(__DIR__, 3) . '/app/Controllers/' . $controller_name . 'Controller.php';
     $viewFilePath =  dirname(__DIR__, 3) . '/app/Views/' . $nameview . '.php';
     $viewFilePathEdit =  dirname(__DIR__, 3) . '/app/Views/editar_' . $nameview . '.php';
     $viewFilePathAdd =  dirname(__DIR__, 3) . '/app/Views/agregar_' . $nameview . '.php';
     
-    if (file_exists($type_callback)) {
-        unlink(__DIR__ . '/'. $type_callback);
+    if (file_exists($file_callback)) {
+        unlink(__DIR__ . '/'. $file_callback);
     } else {
-        echo "File or directory does not exist: " . $type_callback;
+        echo "File or directory does not exist: " . $file_callback;
     }
    
     $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd];
