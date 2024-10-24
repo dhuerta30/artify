@@ -658,8 +658,6 @@ class HomeController
 		$tablas->joinTable("estructura_tabla", "estructura_tabla.id_crear_tablas = crear_tablas.id_crear_tablas", "LEFT JOIN");
 
 		$estructura_tabla = DB::ArtifyCrud(true);
-		$estructura_tabla->formDisplayInPopup();
-
 		$estructura_tabla->fieldTypes("modificar_campo", "select");
 		$estructura_tabla->fieldDataBinding("modificar_campo", array(
 			"Si" => "Si",
