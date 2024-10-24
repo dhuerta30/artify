@@ -1151,7 +1151,7 @@ class HomeController
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="form-label">Tabla Principal Union Interna:</label>
+												<label class="form-label">Tabla Principal Union:</label>
 												{tabla_principal_union}
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
@@ -1160,7 +1160,7 @@ class HomeController
 											<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
-													<label class="form-label">Relación Union Principal:</label>
+													<label class="form-label">Relación Principal Union:</label>
 													{campos_relacion_union_tabla_principal}
 													<p style="font-size: 14px;">Ejemplo: Campo Relacional id_personas</p>
 													<p class="artify_help_block help-block form-text with-errors"></p>
@@ -1168,7 +1168,7 @@ class HomeController
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
-													<label class="form-label">Tabla secundaria Union Interna:</label>
+													<label class="form-label">Tabla secundaria Union:</label>
 													{tabla_secundaria_union}
 													<p class="artify_help_block help-block form-text with-errors"></p>
 												</div>
@@ -1177,7 +1177,7 @@ class HomeController
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="form-label">Relación Union Secundaria:</label>
+												<label class="form-label">Relación Secundaria Union:</label>
 												{campos_relacion_union_tabla_secundaria}
 												<p style="font-size: 14px;">Ejemplo: Campo Relacional id_personas</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
