@@ -1171,6 +1171,16 @@ class HomeController
 										</div>
 									</div>
 
+									<div class="row mt-4">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label class="form-label">Texto cuando no hay Datos:</label>
+												{text_no_data}
+												<p class="artify_help_block help-block form-text with-errors"></p>
+											</div>
+										</div>
+									</div>
+
 								</div>
 								<div class="tab-pane fade pb-3" id="camposformularios" role="tabpanel" aria-labelledby="camposformularios-tab">
 
@@ -1649,6 +1659,7 @@ class HomeController
 			"buttons_actions"
 		));
 		$artify->formFields(array(
+			"text_no_data",
 			"type_fields",
 			"type_callback", 
 			"file_callback", 
@@ -1713,6 +1724,7 @@ class HomeController
 			"buttons_actions"
 		));
 		$artify->editFormFields(array(
+			"text_no_data",
 			"type_fields",
 			"type_callback", 
 			"file_callback", 
