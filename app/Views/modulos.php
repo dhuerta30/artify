@@ -364,12 +364,14 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
                 $(".tabla_secundaria_union").removeAttr("disabled", "disabled");
                 $(".campos_relacion_union_tabla_principal").removeAttr("disabled", "disabled");
                 $(".campos_relacion_union_tabla_secundaria").removeAttr("disabled", "disabled");
+                $(".type_union").removeAttr("disabled", "disabled");
                 $(".esconder_tipo_union").removeClass("d-none");
             } else {
                 $(".tabla_principal_union").attr("disabled", "disabled");
                 $(".tabla_secundaria_union").attr("disabled", "disabled");
                 $(".campos_relacion_union_tabla_principal").attr("disabled", "disabled");
                 $(".campos_relacion_union_tabla_secundaria").attr("disabled", "disabled");
+                $(".type_union").attr("disabled", "disabled");
                 $(".esconder_tipo_union").addClass("d-none");
             }
         });
@@ -741,7 +743,7 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
     if(dataAction == "edit"){
 
         $(".tabla_left").hide();
-        
+
         $("form").on("keypress", "input", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
