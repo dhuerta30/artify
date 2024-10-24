@@ -695,7 +695,6 @@ class HomeController
 			"No" => "No"
 		), "", "","array");
 
-
 		$estructura_tabla->fieldGroups("group1",array("nombre_campo", "tipo", "caracteres"));
 		$estructura_tabla->fieldGroups("group2",array("autoincremental","indice", "valor_nulo"));
 		$estructura_tabla->formFields(array("nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo")); 
@@ -761,8 +760,19 @@ class HomeController
 				"Sin Indice",
 				"Sin Indice"
 			)));
+		$estructura_tabla->bulkCrudUpdate("modificar_campo", "select", array("data-cust-attr" =>"some-cust-val"),
+			array(
+				array(
+					"Si",
+					"Si"
+				),
+				array(
+					"No",
+					"No"
+				)
+			)
+		);
 		$estructura_tabla->crudRemoveCol(array("id_estructura_tabla", "id_crear_tablas"));
-		//$estructura_tabla->setSettings("template", "modulos");
 		$estructura_tabla->setSettings("searchbox", true);
 		$estructura_tabla->setSettings("viewbtn", false);
 		$estructura_tabla->setSettings("refresh", false);

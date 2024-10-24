@@ -849,19 +849,19 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
         $("#generateSQL").on("click", function() {
             let sqlStatements = `\n`;
-            const rows = document.querySelectorAll(".artify-left-join tbody tr");
+            const rows = document.querySelectorAll(".artify-table tbody tr");
 
             rows.forEach((row) => {
-                const nombreCampo = row.querySelector("input[name='estructura_tabla#$campo_anterior[]']").value;
-                const nuevoNombreCampo = row.querySelector("input[name='estructura_tabla#$nombre_nuevo_campo[]']").value;
-                const tipoCampo = row.querySelector("select[name='estructura_tabla#$tipo[]']").value;
-                const caracteres = row.querySelector("input[name='estructura_tabla#$caracteres[]']").value;
-                const autoincremental = row.querySelector("select[name='estructura_tabla#$autoincremental[]']").value;
-                const indice = row.querySelector("select[name='estructura_tabla#$indice[]']").value;
-                const valorNulo = row.querySelector("select[name='estructura_tabla#$valor_nulo[]']").value;
+                const nombreCampo = row.querySelector("input[name='nombre_campo[]']").value;
+                const nuevoNombreCampo = row.querySelector("input[name='nombre_nuevo_campo[]']").value;
+                const tipoCampo = row.querySelector("select[name='tipo[]']").value;
+                const caracteres = row.querySelector("input[name='caracteres[]']").value;
+                const autoincremental = row.querySelector("select[name='autoincremental[]']").value;
+                const indice = row.querySelector("select[name='indice[]']").value;
+                const valorNulo = row.querySelector("select[name='valor_nulo[]']").value;
 
                 // Verificar si el checkbox de modificado existe
-                let modificado = row.querySelector("select[name='estructura_tabla#$modificar_campo[]']").value;
+                let modificado = row.querySelector("select[name='modificar_campo[]']").value;
 
                 if (modificado == "Si") {
                     // Construir el tipo de datos
