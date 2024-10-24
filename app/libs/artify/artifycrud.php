@@ -1453,13 +1453,15 @@ function eliminar_modulos($data, $obj)
     $tabla = $query[0]["tabla"];
     $controller_name = $query[0]["controller_name"];
     $nameview = $query[0]["name_view"];
+    $type_callback = $query[0]["type_callback"];
 
     $controllerFilePath = dirname(__DIR__, 3) . '/app/Controllers/' . $controller_name . 'Controller.php';
     $viewFilePath =  dirname(__DIR__, 3) . '/app/Views/' . $nameview . '.php';
     $viewFilePathEdit =  dirname(__DIR__, 3) . '/app/Views/editar_' . $nameview . '.php';
     $viewFilePathAdd =  dirname(__DIR__, 3) . '/app/Views/agregar_' . $nameview . '.php';
+    $function_callback = dirname(__DIR__, 3) . '/app/libs/artify/'. $type_callback . '.php';
 
-    $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd];
+    $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd, $function_callback];
 
     foreach ($filesToDelete as $filePath) {
         if ($filePath && file_exists($filePath)) {
