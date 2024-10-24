@@ -1528,7 +1528,7 @@ class CrudService
 
         $controllerContent .= 
         "\n
-        }";
+    }";
 
         // Save the generated controller content to a file
         file_put_contents($controllerPath, $controllerContent);
