@@ -1453,16 +1453,18 @@ function eliminar_modulos($data, $obj)
     $tabla = $query[0]["tabla"];
     $controller_name = $query[0]["controller_name"];
     $nameview = $query[0]["name_view"];
-    $type_callback = $query[0]["type_callback"];
+    $type_callback = $query[0]["type_callback"]; // Restauramos la obtención de type_callback
 
     $controllerFilePath = dirname(__DIR__, 3) . '/app/Controllers/' . $controller_name . 'Controller.php';
-    $viewFilePath =  dirname(__DIR__, 3) . '/app/Views/' . $nameview . '.php';
-    $viewFilePathEdit =  dirname(__DIR__, 3) . '/app/Views/editar_' . $nameview . '.php';
-    $viewFilePathAdd =  dirname(__DIR__, 3) . '/app/Views/agregar_' . $nameview . '.php';
-    $function_callback = dirname(__DIR__, 3) . '/app/libs/artify/'. $type_callback . '.php';
+    $viewFilePath = dirname(__DIR__, 3) . '/app/Views/' . $nameview . '.php';
+    $viewFilePathEdit = dirname(__DIR__, 3) . '/app/Views/editar_' . $nameview . '.php';
+    $viewFilePathAdd = dirname(__DIR__, 3) . '/app/Views/agregar_' . $nameview . '.php';
+    $function_callback = ArtifyABSPATH . $type_callback . '.php'; // Archivo callback a eliminar
 
+    // Lista de archivos a eliminar (añadimos function_callback)
     $filesToDelete = [$controllerFilePath, $viewFilePath, $viewFilePathEdit, $viewFilePathAdd, $function_callback];
 
+    // Eliminar cada archivo si existe
     foreach ($filesToDelete as $filePath) {
         if ($filePath && file_exists($filePath)) {
             unlink($filePath);
@@ -1489,6 +1491,7 @@ function eliminar_modulos($data, $obj)
         return rmdir($dir);
     }
 
+    // Eliminar directorio de templates
     $templaesCrudDirPath = dirname(__DIR__, 3) . '/app/libs/artify/classes/templates/template_' . $nameview . '/';
     if (file_exists($templaesCrudDirPath) && is_dir($templaesCrudDirPath)) {
         try {
