@@ -659,14 +659,50 @@ class HomeController
 
 		$estructura_tabla = DB::ArtifyCrud(true);
 		$estructura_tabla->formDisplayInPopup();
+
+		$estructura_tabla->fieldTypes("modificar_campo", "select");
+		$estructura_tabla->fieldDataBinding("modificar_campo", array(
+			"Si" => "Si",
+			"No" => "No"
+		), "", "","array");
+		
+		$estructura_tabla->fieldTypes("tipo", "select");
+		$estructura_tabla->fieldDataBinding("tipo", array(
+			"Entero" => "Entero",
+			"Caracteres" => "Caracteres",
+			"Texto" => "Texto",
+			"Fecha" => "Fecha",
+			"Número Decimal" => "Número Decimal",
+			"Hora" => "Hora",
+			"Booleano" => "Verdadero o falso"
+		), "", "","array");
+
+		$estructura_tabla->fieldTypes("indice", "select");
+		$estructura_tabla->fieldDataBinding("indice", array(
+			"Primario" => "Primario",
+			"Sin Indice" => "Sin Indice"
+		), "", "","array");
+
+		$estructura_tabla->fieldTypes("valor_nulo", "select");
+		$estructura_tabla->fieldDataBinding("valor_nulo", array(
+			"Si" => "Si",
+			"No" => "No"
+		), "", "","array");
+
+		$estructura_tabla->fieldTypes("autoincremental", "select");
+		$estructura_tabla->fieldDataBinding("autoincremental", array(
+			"Si" => "Si",
+			"No" => "No"
+		), "", "","array");
+
+
 		$estructura_tabla->fieldGroups("group1",array("nombre_campo", "tipo", "caracteres"));
 		$estructura_tabla->fieldGroups("group2",array("autoincremental","indice", "valor_nulo"));
 		$estructura_tabla->formFields(array("nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo")); 
 		$estructura_tabla->setSearchCols(array("nombre_campo","campo_anterior", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
 		$estructura_tabla->dbTable("estructura_tabla");
 		$estructura_tabla->buttonHide("submitBtnSaveBack");
-		//$estructura_tabla->bulkCrudUpdate("nombre_campo", "text", array("data-some-attr" =>"some-dummy-val"));
-		$estructura_tabla->bulkCrudUpdate("campo_anterior", "text", array("data-some-attr" =>"some-dummy-val", "readonly" => "true"));
+		$estructura_tabla->bulkCrudUpdate("campo_anterior", "text", array("data-some-attr" =>"some-dummy-val"));
 		$estructura_tabla->bulkCrudUpdate("nombre_nuevo_campo", "text", array("data-some-attr" =>"some-dummy-val"));
 		$estructura_tabla->bulkCrudUpdate("caracteres", "text", array("data-some-attr" =>"some-dummy-val"));
 		$estructura_tabla->bulkCrudUpdate("tipo", "select", array("data-cust-attr" =>"some-cust-val"),array(
