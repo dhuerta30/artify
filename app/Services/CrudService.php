@@ -333,6 +333,24 @@ class CrudService
                                 }
                             ";
                         }
+
+                        if($value == "Formatear Datos de la Grilla"){
+                            $phpCode .= "
+                                function format_table_data_{$tableName}(\$data, \$obj){
+                                
+                                    return \$data;
+                                }
+                            ";
+                        }
+
+                        if($value == "Formatear Columnas de la Grilla"){
+                            $phpCode .= "
+                                function format_table_col_{$tableName}(){
+                                
+                                    return \$data;
+                                }
+                            ";
+                        }
                         
                     }
                 } else {
