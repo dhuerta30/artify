@@ -581,7 +581,7 @@ class HomeController
 		$tablas->setLangData("add", "Agregar Tabla");
 		$tablas->setLangData("add_row", "Agregar Campos");
 		$tablas->formFields(array("nombre_tabla", "query_tabla", "nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo"));
-		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada", "campo_anterior", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
+		$tablas->editFormFields(array("nombre_tabla", "modificar_tabla", "tabla_modificada"));
 		$tablas->setSearchCols(array("nombre_tabla", "tabla_modificada"));
 		$tablas->setSettings("searchbox", true);
 		$tablas->setSettings("editbtn", true);
@@ -656,6 +656,74 @@ class HomeController
 		$tablas->addCallback("before_update", "editar_crear_tablas");
 		$tablas->addCallback("before_delete", "eliminar_crear_tablas");
 		$tablas->joinTable("estructura_tabla", "estructura_tabla.id_crear_tablas = crear_tablas.id_crear_tablas", "LEFT JOIN");
+
+		$estructura_tabla = DB::ArtifyCrud(true);
+		$estructura_tabla->formDisplayInPopup();
+		$estructura_tabla->dbTable("estructura_tabla");
+		$estructura_tabla->bulkCrudUpdate("nombre_campo", "text", array("data-some-attr" =>"some-dummy-val"));
+		$estructura_tabla->bulkCrudUpdate("campo_anterior", "text", array("data-some-attr" =>"some-dummy-val", "readonly" => "true"));
+		$estructura_tabla->bulkCrudUpdate("nombre_nuevo_campo", "text", array("data-some-attr" =>"some-dummy-val"));
+		$estructura_tabla->bulkCrudUpdate("caracteres", "text", array("data-some-attr" =>"some-dummy-val"));
+		$estructura_tabla->bulkCrudUpdate("tipo", "select", array("data-cust-attr" =>"some-cust-val"),array(
+			array(
+				"Entero",
+				"Entero"
+			),
+			array(
+				"Caracteres",
+				"Caracteres"
+			),
+			array(
+				"Texto",
+				"Texto"
+			),
+			array(
+				"Fecha",
+				"Fecha"
+			),
+			array(
+				"Número Decimal",
+				"Número Decimal"
+			),
+			array(
+				"Hora",
+				"Hora"
+			),
+			array(
+				"Verdadero o falso",
+				"Verdadero o falso"
+			)));
+		$estructura_tabla->bulkCrudUpdate("autoincremental", "select", array("data-cust-attr" =>"some-cust-val"),array(
+				array(
+					"Si",
+					"Si"
+				),
+				array(
+					"No",
+					"No"
+				)));
+		$estructura_tabla->bulkCrudUpdate("valor_nulo", "select", array("data-cust-attr" =>"some-cust-val"),array(
+			array(
+				"Si",
+				"Si"
+			),
+			array(
+				"No",
+				"No"
+			)));
+		$estructura_tabla->crudRemoveCol(array("id_estructura_tabla", "id_crear_tablas"));
+		//$estructura_tabla->setSettings("template", "modulos");
+		$estructura_tabla->setSettings("searchbox", true);
+		$estructura_tabla->setSettings("viewbtn", false);
+		$estructura_tabla->setSettings("refresh", false);
+		$estructura_tabla->setSettings("printBtn", false);
+		$estructura_tabla->setSettings("editbtn", false);
+		$estructura_tabla->setSettings("delbtn", true);
+		$estructura_tabla->setSettings("pdfBtn", false);
+		$estructura_tabla->setSettings("csvBtn", false);
+		$estructura_tabla->setSettings("excelBtn", false);
+		$estructura_tabla->setSettings("function_filter_and_search", true);
+		$tablas->multiTableRelation("id_crear_tablas", "id_crear_tablas", $estructura_tabla);
 		$render_tablas = $tablas->dbTable("crear_tablas")->render();
 
 		$id_sesion_usuario = $_SESSION['usuario'][0]["id"];

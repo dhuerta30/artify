@@ -740,6 +740,8 @@ $(document).on("artify_after_ajax_action", function(event, obj, data){
 
     if(dataAction == "edit"){
 
+        $(".tabla_left").hide();
+        
         $("form").on("keypress", "input", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();

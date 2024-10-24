@@ -1,7 +1,7 @@
 <div class="component addrow float-right">
     <div class="control-group mb-3">
         <div class="controls">
-            <a class="artify-actions artify-button artify-button-add-row btn btn-success" href="javascript:;" data-action="add_row_artify">
+            <a class="artify-actions artify-button artify-button-add-row btn btn-success tabla_left" href="javascript:;" data-action="add_row_artify">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> <?php echo $lang["add_row"]; ?>
             </a>
             <a href="javascript:;" id="generateSQL" class="btn btn-primary generar_modificacion d-none">Generar Modificación</a>
@@ -26,7 +26,7 @@ foreach ($data as $rows) {
     $rowCount++;
 }
 ?>
-<div class="table-responsive mb-4">
+<div class="table-responsive tabla_left mb-4">
 <table class="table artify-left-join responsive">
     <thead>
         <tr class="bg-dark">
