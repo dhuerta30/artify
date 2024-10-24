@@ -1056,6 +1056,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $function_filter_and_search = $data["modulos"]["function_filter_and_search"];
 
     $activar_union_interna = $data["modulos"]["activar_union_interna"];
+    $type_union = isset($data["modulos"]["type_union"]) ? $data["modulos"]["type_union"] : null;
     $tabla_principal_union = isset($data["modulos"]["tabla_principal_union"]) ? $data["modulos"]["tabla_principal_union"] : null;
     $tabla_secundaria_union = isset($data["modulos"]["tabla_secundaria_union"]) ? $data["modulos"]["tabla_secundaria_union"] : null;
     $campos_relacion_union_tabla_principal = isset($data["modulos"]["campos_relacion_union_tabla_principal"]) ? $data["modulos"]["campos_relacion_union_tabla_principal"] : null;
@@ -1179,6 +1180,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
             $sitesecret_repatcha,
             $function_filter_and_search,
             $activar_union_interna,
+            $type_union,
             $tabla_principal_union,
             $tabla_secundaria_union,
             $campos_relacion_union_tabla_principal,
@@ -1274,6 +1276,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $newdata["modulos"]["sitesecret_repatcha"] = $sitesecret_repatcha;
     $newdata["modulos"]["function_filter_and_search"] = $function_filter_and_search;
     $newdata["modulos"]["activar_union_interna"] = $activar_union_interna;
+    $newdata["modulos"]["type_union"] = $type_union;
     $newdata["modulos"]["tabla_principal_union"] = $tabla_principal_union;
     $newdata["modulos"]["tabla_secundaria_union"] = $tabla_secundaria_union;
     $newdata["modulos"]["campos_relacion_union_tabla_principal"] = $campos_relacion_union_tabla_principal;

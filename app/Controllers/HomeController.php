@@ -1138,7 +1138,7 @@ class HomeController
 														<p class="artify_help_block help-block form-text with-errors"></p>
 													</div>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-6 union_ocultar d-none">
 													<div class="form-group">
 														<label class="form-label">Tipo de Union:</label>
 														{type_union}
