@@ -35,8 +35,3 @@
                                     return $data;
                                 }
                             
-                                function before_update_personas($data, $obj){
-
-                                    return $data;
-                                }
-                            

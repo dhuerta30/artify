@@ -1154,7 +1154,7 @@ class CrudService
             ";
         }
 
-        if ($activar_union_interna == "Si") {
+        if ($activar_union_interna == "Si"  && !empty($type_union)) {
 
             $values_tabla_principal_union = explode(',', $campos_relacion_union_tabla_principal);
             $values_tabla_principal_union = array_filter($values_tabla_principal_union, function ($value) {
@@ -1165,16 +1165,32 @@ class CrudService
             $values_tabla_secundaria_union = array_filter($values_tabla_secundaria_union, function ($value) {
                 return !empty(trim($value));
             });
-        
-            foreach ($values_tabla_principal_union as $index => $campoPrincipal) {
 
-                $campoSecundario = $values_tabla_secundaria_union[$index];
-    
-                $columnName = ucfirst(str_replace('_', ' ', $campoPrincipal));
-    
-                $controllerContent .= "
-                    \$artify->joinTable(\"{$tabla_secundaria_union}\", \"{$tabla_secundaria_union}.{$campoSecundario} = {$tabla_principal_union}.{$campoPrincipal}\", \"INNER JOIN\");
-                ";
+            $values_type_union = explode(',', $type_union);
+            $values_type_union = array_filter($values_type_union, function ($value) {
+                return !empty(trim($value));
+            });
+        
+            if (!empty($values_tabla_principal_union) && count($values_tabla_secundaria_union) === count($values_type_union)) {
+                foreach ($values_tabla_principal_union as $index => $campoPrincipal) {
+
+                    $campoSecundario = $values_tabla_secundaria_union[$index];
+                    $tipo = $values_type_union[$index];
+
+                    $columnName = ucfirst(str_replace('_', ' ', $campoPrincipal));
+        
+                    if($tipo == "Interna"){
+                            $controllerContent .= "
+                            \$artify->joinTable(\"{$tabla_secundaria_union}\", \"{$tabla_secundaria_union}.{$campoSecundario} = {$tabla_principal_union}.{$campoPrincipal}\", \"INNER JOIN\");
+                        ";
+                    }
+
+                    if($tipo == "Izquierda"){
+                        $controllerContent .= "
+                            \$artify->joinTable(\"{$tabla_secundaria_union}\", \"{$tabla_secundaria_union}.{$campoSecundario} = {$tabla_principal_union}.{$campoPrincipal}\", \"LEFT JOIN\");
+                        ";
+                    }
+                }
             }
         }        
 
@@ -1434,6 +1450,12 @@ class CrudService
         } else {
             $controllerContent .= "
                 \$artify->setSettings('totalRecordsInfo', false);
+            "; 
+        }
+
+        if(!empty($text_no_data)){
+            $controllerContent .= "
+                \$artify->setLangData('no_data', '{$text_no_data}');
             "; 
         }
 

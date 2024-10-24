@@ -43,8 +43,6 @@
                             
                                 $artify->addCallback("after_insert", "after_insert_personas");
                             
-                                $artify->addCallback("before_update", "before_update_personas");
-                            
                         $artify->setSearchCols(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "adjunto"));
                     
                         $artify->crudTableCol(array("id_personas", "nombre", "apellido", "fecha_nacimiento", "adjunto"));
@@ -76,7 +74,9 @@
                             
                 $artify->tableHeading('Módulo de Personas');
             
-                $artify->setSettings("actionFilterPosition", "top");
+                            $artify->joinTable("empleados", "empleados.id_personas = personas.id_personas", "INNER JOIN");
+                        
+                $artify->setSettings("actionFilterPosition", "left");
             
                 $artify->dbOrderBy("id_personas", "ASC");
             
@@ -89,8 +89,6 @@
                     $artify->setSettings('delbtn', true);
                 
                     $artify->buttonHide("submitBtnSaveBack");
-                
-                    $artify->setSettings('printBtn', true);
                 
                     $artify->setSettings('excelBtn', true);
                 
@@ -113,7 +111,7 @@
         
                 $artify->setSettings('addbtn', true);
             
-                $artify->setSettings('encryption', false);
+                $artify->setSettings('encryption', true);
             
                 $artify->setSettings('required', true);
             
@@ -124,6 +122,8 @@
                 $artify->setSettings('recordsPerPageDropdown', true);
             
                 $artify->setSettings('totalRecordsInfo', true);
+            
+                $artify->setLangData('no_data', 'No se encontraron Personas');
             
                 $artify->recordsPerPage(10);
             
