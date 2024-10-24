@@ -699,11 +699,10 @@ class HomeController
 		$estructura_tabla->fieldGroups("group1",array("nombre_campo", "tipo", "caracteres"));
 		$estructura_tabla->fieldGroups("group2",array("autoincremental","indice", "valor_nulo"));
 		$estructura_tabla->formFields(array("nombre_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo")); 
-		$estructura_tabla->setSearchCols(array("nombre_campo","campo_anterior", "nombre_nuevo_campo", "tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
+		$estructura_tabla->setSearchCols(array("nombre_campo","tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
 		$estructura_tabla->dbTable("estructura_tabla");
 		$estructura_tabla->buttonHide("submitBtnSaveBack");
-		$estructura_tabla->bulkCrudUpdate("campo_anterior", "text", array("data-some-attr" =>"some-dummy-val"));
-		$estructura_tabla->bulkCrudUpdate("nombre_nuevo_campo", "text", array("data-some-attr" =>"some-dummy-val"));
+		$estructura_tabla->bulkCrudUpdate("nombre_campo", "text", array("data-some-attr" =>"some-dummy-val"));
 		$estructura_tabla->bulkCrudUpdate("caracteres", "text", array("data-some-attr" =>"some-dummy-val"));
 		$estructura_tabla->bulkCrudUpdate("tipo", "select", array("data-cust-attr" =>"some-cust-val"),array(
 			array(
@@ -751,6 +750,15 @@ class HomeController
 			array(
 				"No",
 				"No"
+			)));
+		$estructura_tabla->bulkCrudUpdate("indice", "select", array("data-cust-attr" =>"some-cust-val"),array(
+			array(
+				"Primario",
+				"Primario"
+			),
+			array(
+				"Sin Indice",
+				"Sin Indice"
 			)));
 		$estructura_tabla->crudRemoveCol(array("id_estructura_tabla", "id_crear_tablas"));
 		//$estructura_tabla->setSettings("template", "modulos");
