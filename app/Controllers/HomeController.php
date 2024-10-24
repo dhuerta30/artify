@@ -1130,22 +1130,24 @@ class HomeController
 									<div class="row pt-4">
 										<div class="col-md-3">
 
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label class="form-label">Activar Union Interna:</label>
-													{activar_union_interna}
-													<p class="artify_help_block help-block form-text with-errors"></p>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="form-label">Activar Union Interna:</label>
+														{activar_union_interna}
+														<p class="artify_help_block help-block form-text with-errors"></p>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="form-label">Tipo de Union:</label>
+														{type_union}
+														<p style="font-size: 14px;">Ejemplo: Interna, Izquierda</p>
+														<p class="artify_help_block help-block form-text with-errors"></p>
+													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label class="form-label">Tipo de Union:</label>
-													{type_union}
-													<p style="font-size: 14px;">Ejemplo: Interna, Izquierda</p>
-													<p class="artify_help_block help-block form-text with-errors"></p>
-												</div>
-											</div>
+
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
@@ -1447,6 +1449,7 @@ class HomeController
 		$artify->fieldDataAttr("tabla_secundaria_union", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("posicion_filtro", array("disabled"=>"disabled"));
 		$artify->fieldDataAttr("tipo_de_filtro", array("disabled" => "disabled"));
+		$artify->fieldDataAttr("type_union", array("disabled" => "disabled"));
 				
 		$artify->fieldDataAttr("mostrar_campos_busqueda", array("placeholder" => "campo1/campo2/campo3/etc"));
 		$artify->fieldDataAttr("mostrar_columnas_grilla", array("placeholder" => "columna1/columna2/columna3/etc"));
