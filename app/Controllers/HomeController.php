@@ -1168,9 +1168,8 @@ class HomeController
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
-													<label class="form-label">Relación Union Secundaria:</label>
-													{campos_relacion_union_tabla_secundaria}
-													<p style="font-size: 14px;">Ejemplo: Campo Relacional id_personas</p>
+													<label class="form-label">Tabla secundaria Union Interna:</label>
+													{tabla_secundaria_union}
 													<p class="artify_help_block help-block form-text with-errors"></p>
 												</div>
 											</div>
@@ -1178,8 +1177,9 @@ class HomeController
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label class="form-label">Tabla secundaria Union Interna:</label>
-												{tabla_secundaria_union}
+												<label class="form-label">Relación Union Secundaria:</label>
+												{campos_relacion_union_tabla_secundaria}
+												<p style="font-size: 14px;">Ejemplo: Campo Relacional id_personas</p>
 												<p class="artify_help_block help-block form-text with-errors"></p>
 											</div>
 										</div>
