@@ -858,6 +858,18 @@ class CrudService
                                 \$artify->addCallback(\"after_select\", \"after_select_{$tableName}\");
                             ";
                         }
+
+                        if($value == "Formatear Datos de la Grilla"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"format_table_data\", \"format_table_data_{$tableName}\");
+                            ";
+                        }
+
+                        if($value == "Formatear Columnas de la Grilla"){
+                            $controllerContent .= "
+                                \$artify->addCallback(\"format_table_col\", \"format_table_col_{$tableName}\");
+                            ";
+                        }
                         
                     }
                 }
