@@ -1461,7 +1461,7 @@ function eliminar_modulos($data, $obj)
     $viewFilePathAdd =  dirname(__DIR__, 3) . '/app/Views/agregar_' . $nameview . '.php';
     
     if (file_exists($type_callback)) {
-        unlink(__DIR__ . $type_callback);
+        unlink(__DIR__ . '/'. $type_callback);
     } else {
         echo "File or directory does not exist: " . $type_callback;
     }
