@@ -1087,7 +1087,7 @@ function insertar_modulos($data, $obj, $id_sesion_usuario = null) {
     $file_callback = !empty($data["modulos"]["file_callback"]) ? $data["modulos"]["file_callback"] : null;
     $type_callback = isset($data["modulos"]["type_callback"]) ? $data["modulos"]["type_callback"] : null;
     $type_fields = $data["modulos"]["type_fields"];
-    $text_no_data = $data["modilos"]["text_no_data"];
+    $text_no_data = isset($data["modulos"]["text_no_data"]) ? $data["modulos"]["text_no_data"] : null;
 
     $activate_pdf = $data["modulos"]["activate_pdf"];
     $logo_pdf = isset($data["modulos"]["logo_pdf"]) ? $data["modulos"]["logo_pdf"] : null;
