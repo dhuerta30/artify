@@ -702,7 +702,8 @@ class HomeController
 		$estructura_tabla->setSearchCols(array("nombre_campo","tipo", "caracteres", "autoincremental", "indice", "valor_nulo", "modificar_campo"));
 		$estructura_tabla->dbTable("estructura_tabla");
 		$estructura_tabla->buttonHide("submitBtnSaveBack");
-		$estructura_tabla->bulkCrudUpdate("nombre_campo", "text", array("data-some-attr" =>"some-dummy-val"));
+		$estructura_tabla->bulkCrudUpdate("nombre_campo", "text", array("data-some-attr" =>"some-dummy-val", "readonly" => "true"));
+		$estructura_tabla->bulkCrudUpdate("nombre_nuevo_campo", "text", array("data-some-attr" =>"some-dummy-val"));
 		$estructura_tabla->bulkCrudUpdate("caracteres", "text", array("data-some-attr" =>"some-dummy-val"));
 		$estructura_tabla->bulkCrudUpdate("tipo", "select", array("data-cust-attr" =>"some-cust-val"),array(
 			array(
