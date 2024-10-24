@@ -1489,7 +1489,9 @@ class HomeController
 			"Antes de Actualizar Switch" => "Antes de Actualizar Switch",
 			"Despues de Actualizar Switch" => "Despues de Actualizar Switch",
 			"Antes de Seleccionar" => "Antes de Seleccionar",
-			"Despues de Seleccionar" => "Despues de Seleccionar"
+			"Despues de Seleccionar" => "Despues de Seleccionar",
+			"Formatear Datos de la Grilla" => "Formatear Datos de la Grilla",
+			"Formatear Columnas de la Grilla" => "Formatear Columnas de la Grilla"
 		), "", "", "array");
 
 		$artify->fieldTypes("tipo_de_filtro", "input");
